@@ -1,0 +1,29 @@
+.userNotLogged {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .register {
+    background: #efefef;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    .missing {
+      font-weight: bold;
+    }
+  }
+  .signIn {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    img {
+      padding: 20px;
+    }
+    .text {
+      font-size: 11px;
+      color: #212438;
+      padding: 20px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+/* eslint-disable no-underscore-dangle, no-console */
+
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
+import { HttpLink } from 'apollo-link-http';
+// Store local data inside the Apollo cache alongside remote data
+import { withClientState } from 'apollo-link-state';
+import fetch from 'isomorphic-fetch';
+
+import fragmentTypes from '../../fragmentTypes.json';
+// Options
+import typeDefs from './options';
+
+const apolloClient = (url, accountKey, language, ssrMode, accessToken, nowValue) => {
+  let cache;
+
+  if (!fragmentTypes) {
+    console.log('Found no fragment type definitions, continuing without fragmentMatcher');
+    cache = new InMemoryCache();
+  } else {
+    cache = new InMemoryCache({
+      fragmentMatcher: new IntrospectionFragmentMatcher({
+        introspectionQueryResultData: fragmentTypes,
+      }),
+    });
+  }
+
+  if (!ssrMode) {
+    cache = cache.restore(window.__APOLLO_STATE__);
+  }
+
+  const stateLink = withClientState({
+    cache,
+    typeDefs,
+  });
+
+  const headers = { 'x-account-key': accountKey, 'accept-language': language };
+  if (accessToken) {
+    headers.authorization = `Bearer ${accessToken}`;
+  }
+  if (nowValue) {
+    headers['x-now-value'] = nowValue;
+  }
+
+  return new ApolloClient({
+    link: ApolloLink.from([
+      stateLink,
+      new HttpLink({
+        // Graphql server URL
+        uri: url,
+        headers,
+      }),
+    ]),
+    ssrMode,
+    cache,
+    fetch,
+  });
+};
+
+export default apolloClient;

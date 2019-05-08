@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResponsiveSwitcher should render client-side markup for a high-end desktop device 1`] = `
+Array [
+  <div
+    hidden={true}
+    key="key-0"
+  />,
+  <div
+    className="screenwidth-1024-only"
+    key="key-1"
+  >
+    <div
+      className="version-b"
+    />
+  </div>,
+]
+`;
+
+exports[`ResponsiveSwitcher should render client-side markup for a low-end mobile device 1`] = `
+Array [
+  <div
+    className="screenwidth-320-only"
+    key="key-0"
+  >
+    <div
+      className="version-a"
+    />
+  </div>,
+  <div
+    hidden={true}
+    key="key-1"
+  />,
+]
+`;
+
+exports[`ResponsiveSwitcher should render client-side markup for a low-end mobile device if the resolution is below minimum 1`] = `
+Array [
+  <div
+    className="screenwidth-320-only"
+    key="key-0"
+  >
+    <div
+      className="version-a"
+    />
+  </div>,
+  <div
+    hidden={true}
+    key="key-1"
+  />,
+]
+`;
+
+exports[`ResponsiveSwitcher should render the server-side version of the markup 1`] = `
+Array [
+  <div
+    className="screenwidth-320-only"
+    key="key-0"
+  >
+    <div
+      className="version-a"
+    />
+  </div>,
+  <div
+    className="screenwidth-1024-only"
+    key="key-1"
+  >
+    <div
+      className="version-b"
+    />
+  </div>,
+]
+`;

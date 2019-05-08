@@ -1,0 +1,25 @@
+@import "../../styles/font-sizes";
+@import "../../styles/colors";
+
+%defaultColor {
+  color: $text-color-default;
+}
+
+%justified {
+  text-align: justify;
+}
+
+.basic {
+  @extend %defaultColor;
+  font-weight: bold;
+}
+
+.introduction {
+  @extend %defaultColor;
+  @extend %justified;
+  font-size: $font-size-medium-1;
+}
+
+
+
+

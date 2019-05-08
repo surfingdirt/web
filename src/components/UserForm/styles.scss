@@ -1,0 +1,97 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+
+.container {
+}
+
+.section {
+  margin: $margin-big $margin-big 0 0;
+  width: 100%;
+}
+
+.usernameField {}
+.firstnameField {}
+.lastnameField {}
+.emailField {}
+.passwordField {}
+.passwordConfirmationField {}
+
+.submitErrorLabel {}
+
+.errorMessage {
+  font-size: $font-size-medium-3;
+  color: $form-error-color;
+}
+
+.rowContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legend {
+  margin: 50px 0 0 0;
+  
+  color: $form-required-color;
+}
+
+.bottomContainer {
+  display: flex;
+  margin: $margin-medium-2 0 $margin-big 0;
+}
+
+.privacy {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  .yourPrivacyTitle {
+    font-weight: bold;
+  }
+  .yourPrivacyDescription {
+    margin-top: $margin-small-3;
+  }
+}
+
+.clickToAction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 40%;
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: $margin-small-2;
+    label {
+      padding: 0;
+      
+      text-transform: none;
+      font-weight: normal;
+  
+      color: #33415d;
+    }
+  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px){
+  .rowContainer {
+    flex-direction: column;
+  }
+  
+  .section {
+    margin: $margin-big 0 0 0;
+  }
+  
+  .bottomContainer {
+    flex-direction: column;
+  }
+  
+  .clickToAction, .privacy {
+    width: 100%;
+  }
+  
+  .clickToAction {
+    align-items: flex-start;
+    margin-top: $margin-small-2;
+  }
+}

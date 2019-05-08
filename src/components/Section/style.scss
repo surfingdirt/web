@@ -1,0 +1,17 @@
+@import "../../styles/boxmodel";
+@import "../../styles/font-faces";
+@import "../../styles/font-sizes";
+
+.section {
+  margin: $margin-big 0;
+}
+
+.section:first-of-type {
+  margin-top: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: $title-font-families;
+  font-size: $font-size-big-1;
+}

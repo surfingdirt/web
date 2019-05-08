@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header type "main" and className "override" should render as an h1 with class "main override" 1`] = `
+<h1
+  className="main override"
+>
+  This is a main h1 header with a class override
+</h1>
+`;
+
+exports[`Header type "main" and tag "h2" should render as an h2 with class "main" 1`] = `
+<h2
+  className="main"
+>
+  This is a main h2 header
+</h2>
+`;
+
+exports[`Header type "main" should render as an h1 with class "main" 1`] = `
+<h1
+  className="main"
+>
+  This is a main h1 header
+</h1>
+`;

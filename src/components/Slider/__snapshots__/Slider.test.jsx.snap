@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider should call a Carousel with default options 1`] = `
+<Fragment>
+  <Carousel
+    autoPlay={false}
+    axis="horizontal"
+    centerMode={false}
+    centerSlidePercentage={80}
+    dynamicHeight={false}
+    emulateTouch={false}
+    infiniteLoop={false}
+    interval={3000}
+    onChange={[Function]}
+    onClickItem={[Function]}
+    onClickThumb={[Function]}
+    selectedItem={0}
+    showArrows={true}
+    showIndicators={true}
+    showStatus={true}
+    showThumbs={false}
+    statusFormatter={[Function]}
+    stopOnHover={true}
+    swipeScrollTolerance={5}
+    swipeable={true}
+    transitionTime={350}
+    useKeyboardArrows={true}
+    verticalSwipe="standard"
+    width="100%"
+  >
+    <div>
+      <img
+        alt="Legend 1"
+        src="#"
+      />
+      <p
+        className="legend"
+      >
+        Legend 1
+      </p>
+    </div>
+    <div>
+      <img
+        alt="Legend 2"
+        src="#"
+      />
+      <p
+        className="legend"
+      >
+        Legend 2
+      </p>
+    </div>
+  </Carousel>
+</Fragment>
+`;
+
+exports[`Slider should render children wrapped in its own markup 1`] = `
+<div>
+  <div
+    className="carousel carousel-slider"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <button
+      className="control-arrow control-prev control-disabled"
+      onClick={[Function]}
+      type="button"
+    />
+    <div
+      className="slider-wrapper axis-horizontal"
+      style={Object {}}
+    >
+      <ul
+        className="slider animated"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "MozTransform": "translate3d(0%,0,0)",
+            "MozTransitionDuration": "350ms",
+            "MsTransform": "translate3d(0%,0,0)",
+            "MsTransitionDuration": "350ms",
+            "OTransform": "translate3d(0%,0,0)",
+            "OTransitionDuration": "350ms",
+            "WebkitTransform": "translate3d(0%,0,0)",
+            "WebkitTransitionDuration": "350ms",
+            "msTransform": "translate3d(0%,0,0)",
+            "msTransitionDuration": "350ms",
+            "transform": "translate3d(0%,0,0)",
+            "transitionDuration": "350ms",
+          }
+        }
+      >
+        <li
+          className="slide selected"
+          key="itemKey0/.0"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              alt="Legend 1"
+              src="#"
+            />
+            <p
+              className="legend"
+            >
+              Legend 1
+            </p>
+          </div>
+          <div>
+            <img
+              alt="Legend 2"
+              src="#"
+            />
+            <p
+              className="legend"
+            >
+              Legend 2
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button
+      className="control-arrow control-next control-disabled"
+      onClick={[Function]}
+      type="button"
+    />
+    <ul
+      className="control-dots"
+    >
+      <li
+        className="dot selected"
+        key="0/.0"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
+        value={0}
+      />
+    </ul>
+    <p
+      className="carousel-status"
+    >
+      1 of 1
+    </p>
+  </div>
+</div>
+`;

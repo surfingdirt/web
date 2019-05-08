@@ -1,0 +1,7 @@
+<svg width="15" height="15">
+    <circle cx="7.5" cy="7.5" r="7.5" />
+    <g transform="translate(3.3 3)">
+        <rect fill="#fff" transform="rotate(45 4.242641 4.242641)" x="3.74264069" y="-1.25735931" width="1" height="11" rx=".5"/>
+        <rect fill="#fff" transform="rotate(-45 4.242641 4.242641)" x="3.74264069" y="-1.25735931" width="1" height="11" rx=".5"/>
+    </g>
+</svg>

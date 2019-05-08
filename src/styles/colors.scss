@@ -1,0 +1,81 @@
+@import "_color-palette";
+
+/* Attribution of colors to features */
+
+// Background color
+$body-color-default: $theme-color3;
+$background-color-default: $theme-color2;
+
+// Text
+$text-color-default: $theme-color3;
+$text-color-dark: $theme-color1;
+
+// Links
+$link-color-default: $theme-color1;
+
+// Buttons
+$button-color-default: $theme-color1;
+$button-color-disabled: $theme-color4;
+
+$header-title-light: $theme-color3;
+
+// Headers
+$header-title: $theme-color2;
+$header-title-highlight: $theme-color1;
+
+// Forms
+$form-border-color: $theme-color4;
+$form-label-color: $theme-color3;
+$form-forgot-password-color: $theme-color4;
+$form-placeholder-color: $theme-color2;
+$form-required-color: $red-validation;
+$form-error-color: $red-validation;
+$form-error-secondColor: $theme-color3;
+
+// Icons
+$icon-color-default: $theme-color3;
+$icon-background-color-default: transparent;
+$icon-color-active: $theme-color1;
+$icon-background-color-active: $theme-color1;
+
+// Footer
+$footer-background: transparent;
+$footer-separator: $theme-color2;
+$footer-follow: $theme-color1;
+
+$view-all-link: $theme-color2;
+
+$menu-background: $theme-color2;
+$sign-in-background: $theme-color1;
+$menu-separator: $theme-color2;
+$menu-icon: $theme-color2;
+$menu-bottom-bar-border: $theme-color3;
+$menu-bottom-bar-item: $theme-color2;
+$menu-bottom-bar-item-active: $theme-color1;
+$menu-modal-title: $theme-color2;
+$menu-modal-main-item: $theme-color1;
+$menu-modal-sub-item: $theme-color1;
+
+$spinner-color: $theme-color1;
+
+$registration-steps-number-bg-done: $theme-color1;
+$registration-steps-number-text-done: $theme-color3;
+$registration-steps-label-done: $theme-color4;
+$registration-steps-number-bg-current: $theme-color2;
+$registration-steps-number-text-current: $theme-color3;
+$registration-steps-label-current: $text-color-dark;
+$registration-steps-number-bg-next: $theme-color3;
+$registration-steps-number-text-next: $theme-color4;
+$registration-steps-label-next: $theme-color4;
+$registration-steps-dashed-line: $theme-color4;
+
+$google-button-background: $google-blue;
+$facebook-button-background: $facebook-blue;
+
+// Live
+$livebutton-text-color: $theme-color3;
+$livebutton-background-color: $theme-color1;
+
+// Nav
+$navigation-entries-color: $theme-color3;
+$navigation-entries-color-selected: $theme-color1;

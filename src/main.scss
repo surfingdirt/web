@@ -1,0 +1,139 @@
+@import 'styles/boxmodel';
+@import "styles/colors";
+@import "styles/font-faces";
+@import "styles/font-sizes";
+@import "styles/reset";
+
+$nav-min-height: 300px;
+$nav-max-height: 500px;
+$nav-width: 240px;
+$app-opacity: .95;
+
+
+:global {
+  /****************************************************************************
+   * General
+   ***************************************************************************/
+  body, input, textarea, select, button {
+    font-family: $font-families;
+  }
+
+  body {
+    background: $body-color-default;
+    color: $text-color-default;
+    margin: 0;
+  }
+
+  #app_root {
+    min-height: 100vh;
+    background-color: rgba($background-color-default, $app-opacity);
+  }
+
+  a {
+    text-decoration: none;
+    color: $link-color-default;
+  }
+
+  p {
+    font-size: $font-size-medium-3;
+    line-height: 1.3em;
+  }
+
+  [role=button]:hover {
+    cursor: pointer;
+  }
+
+  .mouse-mode {
+    a:focus,
+    input:focus,
+    button:focus,
+    select:focus,
+    [role=button]:focus,
+    [tabindex='0']:focus {
+      outline: none;
+    }
+  }
+
+  /****************************************************************************
+   * SVGs
+   ***************************************************************************/
+  svg.full-svg {
+    stroke: currentColor;
+    fill: none;
+  }
+
+  svg.full-svg.active-svg {
+    stroke: $icon-color-active;
+    fill: $icon-background-color-active;
+  }
+
+  svg.hollow-svg {
+    stroke: none;
+    fill: currentColor;
+  }
+
+  svg.hollow-svg.active-svg {
+    fill: $icon-color-active;
+  }
+
+  /****************************************************************************
+   * Layout
+   ***************************************************************************/
+  .fullWidthContent,
+  .limitedWidthContent {
+    margin: 0 auto;
+  }
+
+  .fullWidthContent {
+    width: 100%;
+  }
+  .limitedWidthContent {
+    width: 100%;
+  }
+  .loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    width: 100%
+  }
+  .pageContainer {
+    padding: 1.25em 0;
+  }
+
+  .topLevelLandmark {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pageRoot {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .mainWrapper {
+    padding-left: $nav-width;
+  }
+
+  .main {
+    padding: 0 $padding-very-big;
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    width: $nav-width;
+    height: 100%;
+    z-index: 2;
+    background: $background-color-default;
+    box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, .2);
+  }
+
+  /****************************************************************************
+   * RTL fixes
+   ***************************************************************************/
+  [dir="rtl"] .rtlTransform {
+    transform: rotate(180deg);
+  }
+}

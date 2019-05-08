@@ -1,0 +1,10 @@
+@import '../../../styles/colors';
+
+.title {
+  display: block;
+  font-weight: bold;
+}
+.description {
+  display: block;
+  color: $theme-color4;
+}

@@ -1,0 +1,8 @@
+mutation login($facebookAccessToken: String!) {
+    login(input: { facebookAccessToken: $facebookAccessToken }) {
+        id
+        accessToken
+        tokenType
+        expiresIn
+    }
+}

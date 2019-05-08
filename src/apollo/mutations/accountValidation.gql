@@ -1,0 +1,39 @@
+mutation validateAccount(
+    $email: String!
+    $username: String!
+    $password: String!
+    $passwordConfirmation: String!
+    $firstname: String!
+    $lastname: String!
+    $gender: String!
+    $birthYear: String!
+    $country: String!
+    $phone: String!
+    $imageUrl: String!
+) {
+    validateAccount(
+        input: {
+            email: $email
+            username: $username
+            password: $password
+            passwordConfirmation: $passwordConfirmation
+            firstname: $firstname
+            lastname: $lastname
+            gender: $gender
+            birthYear: $birthYear
+            country: $country
+            phone: $phone
+            imageUrl: $imageUrl
+        }
+    ) {
+        responseStatus: status
+        type
+        message
+        errors {
+            username
+            email
+            accountKey
+            password
+        }
+    }
+}

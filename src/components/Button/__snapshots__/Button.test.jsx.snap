@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Render a button element 1`] = `
+<button
+  className="button buttonElement mainButton"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="label"
+  >
+    This is a main button
+  </span>
+</button>
+`;
+
+exports[`Button Render a link 1`] = `
+<a
+  className="button linkElement mainButton"
+  disabled={false}
+  href="toto"
+  onClick={[Function]}
+>
+  <span
+    className="label"
+  >
+    This is a button link
+  </span>
+</a>
+`;
+
+exports[`Button Render a loading button 1`] = `
+<button
+  className="button buttonElement mainButton loading"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <div
+    className="inlineSpinner spinner"
+  >
+    <span
+      className="SVGInline full"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<svg class=\\"SVGInline-svg full-svg\\"><g></g></svg>",
+        }
+      }
+    />
+  </div>
+</button>
+`;
+
+exports[`Button Render a negative button element 1`] = `
+<button
+  className="button buttonElement negativeButton"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="label"
+  >
+    This is a negative button
+  </span>
+</button>
+`;

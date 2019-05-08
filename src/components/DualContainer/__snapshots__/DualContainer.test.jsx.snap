@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dual Container should render a dual container with left & right elements 1`] = `
+<div
+  className="container"
+>
+  <span>
+    Left Element
+  </span>
+  <span>
+    Right Element
+  </span>
+</div>
+`;
+
+exports[`Dual Container should render a dual container with only left element 1`] = `
+<div
+  className="container"
+>
+  <span>
+    Left Element
+  </span>
+</div>
+`;

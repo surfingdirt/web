@@ -1,0 +1,112 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+
+$font-size: 1rem;
+$line-height: 1.2;
+$vertical-padding: .5rem;
+$horizontal-padding: 1.1em;
+
+.button {
+  padding: $vertical-padding $horizontal-padding;
+  margin: 0.25rem;
+  border: 0;
+  border-radius: 999px;
+  font-size: $font-size;
+  line-height: $line-height;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  .label {
+    text-align: center;
+  }
+
+  .contentWrapper {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.iconRight {
+  margin-left: $margin-small-2;
+}
+
+.iconLeft {
+  margin-right: $margin-small-2;
+}
+
+[dir=rtl] .icon {
+  transform: scaleX(-1);
+}
+
+/* Specific styles for buttons or links */
+.linkElement {
+  display: inline-block;
+}
+
+:global(.mouse-mode) .linkElement:focus {
+  outline: none;
+}
+
+.spinner {
+  width: 1rem;
+  height:1rem;
+  color: white;
+}
+
+/* Known button types */
+.mainButton,
+.negativeButton:hover,
+.largeButton {
+  background: $button-color-default;
+  color: $text-color-default;
+}
+
+.negativeButton {
+  background: transparent;
+  color: $button-color-default;
+  border: 2px solid $button-color-default;
+}
+
+.largeButton {
+  font-size: 2 * $font-size;
+  border-radius: ($line-height * 2 * $font-size + 2 * $vertical-padding) / 2;
+}
+
+/* Modifiers */
+.disabled {
+  background: $button-color-disabled;
+  color: $text-color-default;
+  cursor: default;
+}
+
+.socialLogin {    
+  font-weight: bold;
+
+  svg {
+    width: 30px;
+  }
+}
+
+.facebook {
+  background-color: $facebook-button-background;
+}
+
+.google {
+  background-color: $google-button-background;
+}
+
+.socialSpinner {
+  height: 50px;
+  border-radius: 999px;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem;
+  padding: $vertical-padding $horizontal-padding;
+}

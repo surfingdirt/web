@@ -1,0 +1,45 @@
+.col4 {
+  .div {
+    width: 25%;
+  }
+}
+.fixedCol3,
+.col3 {
+  .div {
+    width: 33.333%;
+  }
+}
+
+.col2 {
+  .div {
+    width: 50%;
+  }
+}
+
+%displayGrid {
+  display: grid;
+  grid-gap: 20px;
+  margin: 20px 0;
+}
+
+@supports (display: grid) {
+  .col4 {
+    @extend %displayGrid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .fixedCol3,
+  .col3 {
+    @extend %displayGrid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .col2 {
+    @extend %displayGrid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 750px){
+    .col4,
+    .col3 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

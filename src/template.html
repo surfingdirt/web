@@ -1,0 +1,33 @@
+<!-- <%- versionTag %> -->
+<!-- <%- nowValue %> -->
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="<%- lang %>" dir="<%- dir %>">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%- robotsMeta %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%- title %>
+
+    <%- css %>
+
+    <%- favicon %>
+
+    <%- meta %>
+
+    <%- script %>
+
+    <%- inlineStyle %>
+</head>
+<body>
+<div id="app_root"><%- html %></div>
+<%- js %>
+<script>
+  window.staticAppContextValues = <%- staticAppContextValues %>;
+  window.__APOLLO_STATE__ = <%- apolloState %>
+  window.main && window.main();
+</script>
+</body>
+</html>

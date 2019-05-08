@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SVG should add a class name 1`] = `
+<span
+  className="SVGInline toto full"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg toto-svg full-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;
+
+exports[`SVG should not render a label 1`] = `
+<span
+  aria-label="my icon"
+  className="SVGInline full"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg full-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;
+
+exports[`SVG should render a full icon 1`] = `
+<span
+  className="SVGInline full"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg full-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;
+
+exports[`SVG should render a hollow icon 1`] = `
+<span
+  className="SVGInline hollow"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg hollow-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;
+
+exports[`SVG should render an active hollow icon 1`] = `
+<span
+  className="SVGInline active hollow"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg active-svg hollow-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;
+
+exports[`SVG should render an active icon 1`] = `
+<span
+  className="SVGInline active full"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<svg class=\\"SVGInline-svg active-svg full-svg\\"><g></g></svg>",
+    }
+  }
+/>
+`;

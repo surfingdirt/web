@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paragraph type "basic" should render as an p with class "basic" 1`] = `
+<p
+  className="basic"
+>
+  This is a basic paragraph
+</p>
+`;
+
+exports[`Paragraph type "basic" should render as an p with classes "basic" and "override" 1`] = `
+<p
+  className="basic override"
+>
+  This is a basic paragraph with a class override
+</p>
+`;

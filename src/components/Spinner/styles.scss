@@ -1,0 +1,20 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+
+$size: 64px;
+
+.spinner,
+.inlineSpinner {
+  color: $spinner-color;
+}
+
+.spinner {
+  width: $size;
+  height: $size;
+  display: block;
+}
+
+.inlineSpinner {
+  display: inline-block;
+  margin: 0 $margin-small-2;
+}

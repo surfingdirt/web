@@ -1,0 +1,25 @@
+@import "../../styles/font-sizes";
+@import "../../styles/colors";
+
+%big {
+  font-size: $font-size-big-1;
+  font-weight: bold;
+}
+
+%medium {
+  font-size: $font-size-big-2;
+  font-weight: bold;
+}
+
+%defaultColor {
+  color: $header-title;
+}
+
+.main {
+  @extend %big;
+  color: $header-title;
+}
+
+.category {
+  @extend %medium, %defaultColor;
+}

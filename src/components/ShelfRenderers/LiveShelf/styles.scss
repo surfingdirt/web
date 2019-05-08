@@ -1,0 +1,50 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/font-sizes";
+
+$livebutton-size: 50px;
+$livebutton-font-size: $font-size-small-1;
+$livebutton-padding: $livebutton-size * 20 /100;
+$livebutton-inner-offset: 12%;
+$livebutton-inner-color: rgba($theme-color1, .9);
+$livebutton-outer-color: rgba($theme-color1, .6);
+$livebutton-shadow-color: rgba($theme-color1, .4);
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.liveButton {
+  position: relative;
+  margin-right: $margin-big;
+  box-sizing: border-box;
+  width: $livebutton-size;
+  height: $livebutton-size;
+  padding: $livebutton-padding;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: $livebutton-outer-color;
+  box-shadow: 0 0 4px 4px $livebutton-shadow-color;
+  color: $livebutton-text-color;
+  font-size: $livebutton-font-size;
+}
+
+.liveButton::after {
+  color: $livebutton-text-color;
+  content: 'live';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background: $livebutton-inner-color;
+  top: $livebutton-inner-offset;
+  left: $livebutton-inner-offset;
+  right: $livebutton-inner-offset;
+  bottom: $livebutton-inner-offset;
+  z-index: 1;
+  border-radius: 50%;
+  text-transform: uppercase;
+  box-shadow: 0 0 3px 3px $livebutton-shadow-color;
+}

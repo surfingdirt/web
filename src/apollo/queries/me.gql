@@ -1,0 +1,23 @@
+###############################################################################
+# ME
+# https://bitbucket.org/snippets/onrewind/yeBjbz
+###############################################################################
+query {
+  me {
+    id
+    username
+    email
+    firstname
+    lastname
+    gender
+    birthYear
+    country
+    phone
+    imageUrl
+    status
+    favoritesTeam: getFavoritesTeam {
+      id
+      name
+    }
+  }
+}
