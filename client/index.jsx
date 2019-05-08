@@ -21,22 +21,18 @@ history.listen(() => {
 window.main = () => {
   Loadable.preloadReady().then(() => {
     const {
-      accountKey,
       graphql,
       language,
       login: {
         data: { accessToken },
       },
-      nowValue,
     } = staticAppContextValues;
 
     const apolloClientInstance = apolloClient(
       graphql,
-      accountKey,
       language,
       false,
       accessToken,
-      nowValue,
     );
 
     ReactDOM.hydrate(

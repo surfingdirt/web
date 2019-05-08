@@ -12,7 +12,7 @@ import fragmentTypes from '../../fragmentTypes.json';
 // Options
 import typeDefs from './options';
 
-const apolloClient = (url, accountKey, language, ssrMode, accessToken, nowValue) => {
+const apolloClient = (url, language, ssrMode, accessToken) => {
   let cache;
 
   if (!fragmentTypes) {
@@ -35,12 +35,9 @@ const apolloClient = (url, accountKey, language, ssrMode, accessToken, nowValue)
     typeDefs,
   });
 
-  const headers = { 'x-account-key': accountKey, 'accept-language': language };
+  const headers = { 'accept-language': language, };
   if (accessToken) {
     headers.authorization = `Bearer ${accessToken}`;
-  }
-  if (nowValue) {
-    headers['x-now-value'] = nowValue;
   }
 
   return new ApolloClient({

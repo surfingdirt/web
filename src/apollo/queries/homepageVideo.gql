@@ -1,0 +1,14 @@
+query {
+  video(id: "fad35b22-9a1e-4b79-8d7f-71b69e80f3bd") {
+    id
+    title
+    description
+    mediaSubType
+    thumbs {
+      type
+      size
+      url
+    }
+    vendorUrl
+  }
+}

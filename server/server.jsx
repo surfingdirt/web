@@ -19,9 +19,8 @@ import apolloClient from '../src/apollo';
 import App from '../src/App';
 import contexts from '../src/contexts';
 import Favicon from '../src/images/favicon.png';
-import { getNowValue } from '../src/utils/devUtils';
 import { generateMediaQueries } from '../src/utils/styleUtils';
-import { accountKey, index, facebookAppId, googleClientId, port, twitterUsername } from '../config/index';
+import { index, port} from '../config/index';
 
 import Logger from './logger';
 import utils from './utils';
@@ -115,20 +114,13 @@ app.use(async (req, res, next) => {
 
     error500Page = ERROR_500_PAGES[language];
 
-    const nowValue = getNowValue(req, process.env.NODE_ENV);
-
     const staticAppContextValues = {
       SSR,
-      accountKey,
       availableLanguages,
       baseUrl,
       dir,
-      facebookAppId,
-      googleClientId,
-      twitterUsername,
       graphql,
       language,
-      nowValue,
       screenWidth,
       sportPlayer,
       translations,
@@ -139,12 +131,19 @@ app.use(async (req, res, next) => {
 
     const apolloClientInstance = apolloClient(
       graphql,
-      accountKey,
       language,
       true,
       accessToken,
-      nowValue,
     );
+
+    // try {
+    //   const data = await apolloClientInstance.query({ query: HOMEPAGE });
+    //   res.status(context.status || 200).end(data);
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    //
+    // return;
 
     // noinspection JSUnresolvedFunction
     const WrappedApp = (
@@ -197,7 +196,6 @@ app.use(async (req, res, next) => {
         .map((file) => `<script src="/${file}"></script>`)
         .join('\n'),
       lang: language,
-      nowValue,
       meta: meta || '',
       robotsMeta,
       script: (helmet && helmet.script && helmet.script.toString()) || '',
