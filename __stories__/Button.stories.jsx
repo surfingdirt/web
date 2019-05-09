@@ -30,7 +30,7 @@ storiesOf('Button', module).add('Button link', () => (
 
 storiesOf('Button', module).add('Link - new tab', () => (
   <BrowserRouter>
-    <Button href="https://www.onrewind.com" targetBlank label="New tab" />
+    <Button href="https://www.surfingdirt.com" targetBlank label="New tab" />
   </BrowserRouter>
 ));
 
