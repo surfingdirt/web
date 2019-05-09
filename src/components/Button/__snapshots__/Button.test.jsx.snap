@@ -19,7 +19,7 @@ exports[`Button Render a link 1`] = `
 <a
   className="button linkElement mainButton"
   disabled={false}
-  href="toto"
+  href="/toto"
   onClick={[Function]}
 >
   <span

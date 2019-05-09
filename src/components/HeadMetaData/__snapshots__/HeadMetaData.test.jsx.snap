@@ -4,7 +4,7 @@ exports[`HeadMetaData <meta> & <title> should be equal at passed props 1`] = `
 <HelmetWrapper
   defer={true}
   encodeSpecialCharacters={true}
-  titleTemplate="%s"
+  titleTemplate="%s | Israel Pro Football Leagues"
 >
   <title>
     Title
@@ -46,7 +46,7 @@ exports[`HeadMetaData Type: video => <meta> & <title> should be equal at passed 
 <HelmetWrapper
   defer={true}
   encodeSpecialCharacters={true}
-  titleTemplate="%s"
+  titleTemplate="%s | Israel Pro Football Leagues"
 >
   <title>
     Title
