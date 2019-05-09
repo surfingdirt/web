@@ -1,7 +1,0 @@
-mutation confirmAccount($confirmationToken: String!) {
-    confirmAccount(confirmationToken: $confirmationToken) {
-        id
-        username
-        email
-    }
-}

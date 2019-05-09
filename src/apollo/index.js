@@ -35,20 +35,13 @@ const apolloClient = (url, language, ssrMode, accessToken) => {
     typeDefs,
   });
 
-  const headers = { 'accept-language': language, };
+  const headers = { 'accept-language': language };
   if (accessToken) {
     headers.authorization = `Bearer ${accessToken}`;
   }
 
   return new ApolloClient({
-    link: ApolloLink.from([
-      stateLink,
-      new HttpLink({
-        // Graphql server URL
-        uri: url,
-        headers,
-      }),
-    ]),
+    link: ApolloLink.from([stateLink, new HttpLink({ uri: url, headers })]),
     ssrMode,
     cache,
     fetch,

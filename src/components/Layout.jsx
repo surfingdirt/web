@@ -6,10 +6,10 @@ import NavigationContent from 'Sections/NavigationContent';
 
 import { PAGE_TOP_ID } from 'Utils/shelfUtils';
 
-const Layout = ({ navItems, children }) => (
+const Layout = ({ children }) => (
   <div className="pageRoot" id={PAGE_TOP_ID}>
     <nav className="topLevelLandmark navigation">
-      <NavigationContent items={navItems} />
+      <NavigationContent />
     </nav>
     <div className="mainWrapper">
       <main className="topLevelLandmark main">{children}</main>
@@ -22,7 +22,6 @@ const Layout = ({ navItems, children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Layout;

@@ -2,13 +2,8 @@
 @import "styles/colors";
 @import "styles/font-faces";
 @import "styles/font-sizes";
-@import "styles/reset";
-
-$nav-min-height: 300px;
-$nav-max-height: 500px;
-$nav-width: 240px;
-$app-opacity: .95;
-
+@import "styles/remedy.css";
+@import "styles/project-reset";
 
 :global {
   /****************************************************************************
@@ -22,11 +17,6 @@ $app-opacity: .95;
     background: $body-color-default;
     color: $text-color-default;
     margin: 0;
-  }
-
-  #app_root {
-    min-height: 100vh;
-    background-color: rgba($background-color-default, $app-opacity);
   }
 
   a {
@@ -120,20 +110,10 @@ $app-opacity: .95;
     padding: 0 $padding-very-big;
   }
 
-  .navigation {
-    position: fixed;
-    top: 0;
-    width: $nav-width;
-    height: 100%;
-    z-index: 2;
-    background: $background-color-default;
-    box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, .2);
-  }
-
   /****************************************************************************
    * RTL fixes
    ***************************************************************************/
   [dir="rtl"] .rtlTransform {
-    transform: rotate(180deg);
+    transform: scale(-1, 1);
   }
 }

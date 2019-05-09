@@ -5,13 +5,5 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Oswald Regular';
-  font-weight: 400;
-  src: url('../fonts/Oswald-Regular.ttf');
-  font-display: swap;
-}
-
 /* Default font definition */
 $font-families: 'Roboto Regular', sans-serif;
-$title-font-families: 'Oswald Regular', sans-serif;

@@ -1,7 +1,0 @@
-mutation deleteAccount {
-    deleteAccount {
-        id
-        username
-        email
-    }
-}

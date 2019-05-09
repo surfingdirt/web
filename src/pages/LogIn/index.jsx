@@ -18,7 +18,7 @@ import PageContent from './pageContent';
 const { AppContext } = contexts;
 const { HOME } = routes;
 
-class SignInPage extends Component {
+class LogInPage extends Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -107,4 +107,4 @@ class SignInPage extends Component {
   }
 }
 
-export const SignIn = Translate(messages)(SignInPage);
+export const LogIn = Translate(messages)(LogInPage);

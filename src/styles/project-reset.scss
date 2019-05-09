@@ -1,23 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
+/* Project-specific resets */
 body {
   /* Since this is the default font size, all em sizes will be based on it. */
   font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: normal;
   margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
 }

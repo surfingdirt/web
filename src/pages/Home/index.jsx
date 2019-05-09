@@ -18,11 +18,10 @@ const Index = ({ t }) => {
         if (error) return <ErrorMessage />;
 
         const {
-          video: { id, title, thumbs, vendorUrl },
+          video: { title, thumbs, vendorUrl },
         } = data;
         return (
           <div>
-            <p>Video: {id} {title}</p>
             <p><img src={thumbs[0].url} alt={title} /></p>
             <a href={vendorUrl}>{title}</a>
           </div>

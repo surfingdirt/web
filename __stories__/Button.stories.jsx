@@ -24,7 +24,7 @@ storiesOf('Button', module).add('Negative button', () => (
 
 storiesOf('Button', module).add('Button link', () => (
   <BrowserRouter>
-    <Button href="https://www.onrewind.com" label="OnRewind" />
+    <Button href="https://www.surfingdirt.com" label="Surfing Dirt" />
   </BrowserRouter>
 ));
 
