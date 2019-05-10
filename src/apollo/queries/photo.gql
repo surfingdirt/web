@@ -1,15 +1,18 @@
-query video($id: ID!) {
-    video(id: $id) {
+query photo($id: ID!) {
+    photo(id: $id) {
         id
         title
         description
-        mediaSubType
+        images {
+          type
+          size
+          url
+        }
         thumbs {
           type
           size
           url
         }
-        vendorUrl
         album {
             id
             title

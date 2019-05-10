@@ -15,10 +15,14 @@ import contexts from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { HOME, LOGIN, VIDEO } = routes;
+const { ALBUM, HOME, LOGIN, USER, PHOTO, VIDEO } = routes;
 
+const Album = Loadable({
+  loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
+  loading,
+});
 const Home = Loadable({
-  loader: () => import(/* webpackChunkName: 'Index' */ './pages/Home').then((m) => m.Home),
+  loader: () => import(/* webpackChunkName: 'Home' */ './pages/Home').then((m) => m.Home),
   loading,
 });
 const LogIn = Loadable({
@@ -27,6 +31,14 @@ const LogIn = Loadable({
 });
 const Video = Loadable({
   loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
+  loading,
+});
+const Photo = Loadable({
+  loader: () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
+  loading,
+});
+const User = Loadable({
+  loader: () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
   loading,
 });
 const { AppContext, AppContextValueObject } = contexts;
@@ -64,7 +76,10 @@ class App extends React.Component {
         <Layout>
           <Switch>
             <Route exact path={HOME} component={Home} />
+            <Route exact path={ALBUM} component={Album} />
             <Route path={LOGIN} component={LogIn} />
+            <Route path={PHOTO} component={Photo} />
+            <Route path={USER} component={User} />
             <Route path={VIDEO} component={Video} />
 
             <Route component={Page404} />

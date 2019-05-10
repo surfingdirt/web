@@ -20,7 +20,7 @@ const Index = ({ t }) => {
         if (error) return <ErrorMessage />;
 
         const {
-          video: { id, title, thumbs, vendorUrl },
+          video: { id, title },
         } = data;
         return (
           <div>

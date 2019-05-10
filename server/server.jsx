@@ -34,11 +34,6 @@ const app = express();
 
 app.use(cookieParser());
 
-const ERROR_500_PAGES = {
-  ar: fs.readFileSync(`${rootDir}/src/pages/Page500/ar.html`, 'utf8'),
-  en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
-  he: fs.readFileSync(`${rootDir}/src/pages/Page500/he.html`, 'utf8'),
-};
 const REGULAR_PAGE = fs.readFileSync(`${rootDir}/dist/template.html`, 'utf8');
 
 // Use gzipped assets for JS, CSS & HTML
@@ -81,13 +76,14 @@ if (process.env.NODE_ENV !== 'production') {
   app.use('/storybook', express.static(`${rootDir}/storybook-static`));
 }
 
-const VERSION = process.env.VERSION || '';
-
 const screenWidth = undefined;
 const SSR = true;
 const { graphql, showErrors, sportPlayer, baseUrl } = index;
 
 // Default error page is in English
+const ERROR_500_PAGES = {
+  en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
+};
 let error500Page = ERROR_500_PAGES['en'];
 
 app.use(async (req, res, next) => {
@@ -192,7 +188,6 @@ app.use(async (req, res, next) => {
       script: (helmet && helmet.script && helmet.script.toString()) || '',
       staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
       title: (helmet && helmet.title && helmet.title.toString()) || '',
-      versionTag: VERSION,
     });
   } catch (err) {
     Logger.log(err);

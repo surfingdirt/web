@@ -1,0 +1,17 @@
+query album($id: ID!) {
+    album(id: $id) {
+        id
+        title
+        description
+        media {
+            id
+            title
+            mediaType
+            thumbs {
+                type
+                size
+                url
+            }
+        }
+    }
+}

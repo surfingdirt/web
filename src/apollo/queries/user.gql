@@ -1,0 +1,11 @@
+query user($userId: ID!) {
+    user(userId: $userId) {
+        userId
+        username
+        firstName
+        album{
+          id
+          title
+        }
+    }
+}
