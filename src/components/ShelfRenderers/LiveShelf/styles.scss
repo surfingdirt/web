@@ -6,9 +6,9 @@ $livebutton-size: 50px;
 $livebutton-font-size: $font-size-small-1;
 $livebutton-padding: $livebutton-size * 20 /100;
 $livebutton-inner-offset: 12%;
-$livebutton-inner-color: rgba($theme-color1, .9);
-$livebutton-outer-color: rgba($theme-color1, .6);
-$livebutton-shadow-color: rgba($theme-color1, .4);
+$livebutton-inner-color: rgba($brand-color1, .9);
+$livebutton-outer-color: rgba($brand-color1, .6);
+$livebutton-shadow-color: rgba($brand-color1, .4);
 
 .wrapper {
   display: flex;

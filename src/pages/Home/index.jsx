@@ -2,11 +2,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/homepageVideo.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
+import { videoRoute } from 'Utils/links';
 
 import messages from './messages';
 
@@ -18,12 +20,11 @@ const Index = ({ t }) => {
         if (error) return <ErrorMessage />;
 
         const {
-          video: { title, thumbs, vendorUrl },
+          video: { id, title, thumbs, vendorUrl },
         } = data;
         return (
           <div>
-            <p><img src={thumbs[0].url} alt={title} /></p>
-            <a href={vendorUrl}>{title}</a>
+            <Link to={videoRoute(id)}>Video page: {title}</Link>
           </div>
         );
       }}

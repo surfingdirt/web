@@ -1,0 +1,14 @@
+query video($id: ID!) {
+    video(id: $id) {
+        id
+        title
+        description
+        mediaSubType
+        thumbs {
+          type
+          size
+          url
+        }
+        vendorUrl
+    }
+}

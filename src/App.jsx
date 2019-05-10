@@ -15,10 +15,7 @@ import contexts from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const {
-  HOME,
-  LOGIN,
-} = routes;
+const { HOME, LOGIN, VIDEO } = routes;
 
 const Home = Loadable({
   loader: () => import(/* webpackChunkName: 'Index' */ './pages/Home').then((m) => m.Home),
@@ -26,6 +23,10 @@ const Home = Loadable({
 });
 const LogIn = Loadable({
   loader: () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
+  loading,
+});
+const Video = Loadable({
+  loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
   loading,
 });
 const { AppContext, AppContextValueObject } = contexts;
@@ -64,6 +65,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route path={LOGIN} component={LogIn} />
+            <Route path={VIDEO} component={Video} />
 
             <Route component={Page404} />
           </Switch>

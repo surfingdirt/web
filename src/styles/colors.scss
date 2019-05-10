@@ -3,79 +3,66 @@
 /* Attribution of colors to features */
 
 // Background color
-$body-color-default: $theme-color3;
-$background-color-default: $theme-color2;
+$background-color-default: $brand-color6;
 
 // Text
-$text-color-default: $theme-color3;
-$text-color-dark: $theme-color1;
+$text-color-default: $brand-color5;
 
 // Links
-$link-color-default: $theme-color1;
+$link-color-default: $brand-color1;
 
 // Buttons
-$button-color-default: $theme-color1;
-$button-color-disabled: $theme-color4;
+$button-color-default: $brand-color1;
+$button-color-disabled: $brand-color4;
 
-$header-title-light: $theme-color3;
+$header-title-light: $brand-color3;
 
 // Headers
-$header-title: $theme-color2;
-$header-title-highlight: $theme-color1;
+$header-title: $brand-color2;
+$header-title-highlight: $brand-color1;
 
 // Forms
-$form-border-color: $theme-color4;
-$form-label-color: $theme-color3;
-$form-forgot-password-color: $theme-color4;
-$form-placeholder-color: $theme-color2;
+$form-border-color: $brand-color4;
+$form-label-color: $brand-color3;
+$form-forgot-password-color: $brand-color4;
+$form-placeholder-color: $brand-color2;
 $form-required-color: $red-validation;
 $form-error-color: $red-validation;
-$form-error-secondColor: $theme-color3;
+$form-error-secondColor: $brand-color3;
 
 // Icons
-$icon-color-default: $theme-color3;
+$icon-color-default: $brand-color3;
 $icon-background-color-default: transparent;
-$icon-color-active: $theme-color1;
-$icon-background-color-active: $theme-color1;
+$icon-color-active: $brand-color1;
+$icon-background-color-active: $brand-color1;
 
 // Footer
 $footer-background: transparent;
-$footer-separator: $theme-color2;
-$footer-follow: $theme-color1;
+$footer-separator: $brand-color2;
+$footer-follow: $brand-color1;
 
-$view-all-link: $theme-color2;
+$view-all-link: $brand-color2;
 
-$menu-background: $theme-color2;
-$sign-in-background: $theme-color1;
-$menu-separator: $theme-color2;
-$menu-icon: $theme-color2;
-$menu-bottom-bar-border: $theme-color3;
-$menu-bottom-bar-item: $theme-color2;
-$menu-bottom-bar-item-active: $theme-color1;
-$menu-modal-title: $theme-color2;
-$menu-modal-main-item: $theme-color1;
-$menu-modal-sub-item: $theme-color1;
+$menu-background: $brand-color2;
+$sign-in-background: $brand-color1;
+$menu-separator: $brand-color2;
+$menu-icon: $brand-color2;
+$menu-bottom-bar-border: $brand-color3;
+$menu-bottom-bar-item: $brand-color2;
+$menu-bottom-bar-item-active: $brand-color1;
+$menu-modal-title: $brand-color2;
+$menu-modal-main-item: $brand-color1;
+$menu-modal-sub-item: $brand-color1;
 
-$spinner-color: $theme-color1;
-
-$registration-steps-number-bg-done: $theme-color1;
-$registration-steps-number-text-done: $theme-color3;
-$registration-steps-label-done: $theme-color4;
-$registration-steps-number-bg-current: $theme-color2;
-$registration-steps-number-text-current: $theme-color3;
-$registration-steps-label-current: $text-color-dark;
-$registration-steps-number-bg-next: $theme-color3;
-$registration-steps-number-text-next: $theme-color4;
-$registration-steps-label-next: $theme-color4;
-$registration-steps-dashed-line: $theme-color4;
+$spinner-color: $brand-color1;
 
 $google-button-background: $google-blue;
 $facebook-button-background: $facebook-blue;
 
 // Live
-$livebutton-text-color: $theme-color3;
-$livebutton-background-color: $theme-color1;
+$livebutton-text-color: $brand-color3;
+$livebutton-background-color: $brand-color1;
 
 // Nav
-$navigation-entries-color: $theme-color3;
-$navigation-entries-color-selected: $theme-color1;
+$navigation-entries-color: $brand-color3;
+$navigation-entries-color-selected: $brand-color1;

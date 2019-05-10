@@ -15,7 +15,7 @@
   
   padding: 10px;
 
-  color: $theme-color3;
+  color: $brand-color3;
   a {
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@
     p {
       margin: $margin-medium-2;
       a {
-        color: $theme-color3;
+        color: $brand-color3;
       }
     }
   }
@@ -63,11 +63,11 @@
   .poweredBy {
     margin-bottom: $margin-medium-2;
     
-    color: $theme-color3;
+    color: $brand-color3;
     
     text-align: center;
     a {
-      color: $theme-color3;
+      color: $brand-color3;
     }
   }
 }
@@ -92,11 +92,11 @@
         
         font-size: $font-size-big-3;
         a {
-          color: $theme-color3;
+          color: $brand-color3;
         }
       }
       p {
-        color: $theme-color3;
+        color: $brand-color3;
   
         font-size: $font-size-big-2;
         font-weight: bold;

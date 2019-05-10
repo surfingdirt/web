@@ -136,15 +136,6 @@ app.use(async (req, res, next) => {
       accessToken,
     );
 
-    // try {
-    //   const data = await apolloClientInstance.query({ query: HOMEPAGE });
-    //   res.status(context.status || 200).end(data);
-    // } catch (e) {
-    //   console.log(e);
-    // }
-    //
-    // return;
-
     // noinspection JSUnresolvedFunction
     const WrappedApp = (
       <Loadable.Capture
@@ -191,7 +182,7 @@ app.use(async (req, res, next) => {
       favicon: `<link rel="shortcut icon" href=${Favicon}>`,
       html,
       inlineStyle: `<style>${generateMediaQueries()}</style>`,
-      js: ['main.bundle.js']
+      js: null && ['main.bundle.js']
         .concat(scripts.map((x) => x.file))
         .map((file) => `<script src="/${file}"></script>`)
         .join('\n'),
