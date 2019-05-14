@@ -20,12 +20,12 @@ import { generateMediaQueries } from 'Utils/styleUtils';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
-import { index } from '../config';
+import { config } from '../config';
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
   const SSR = true;
-  const { graphql, showErrors, sportPlayer, baseUrl } = index;
+  const { graphql, showErrors, baseUrl } = config;
   // Default error page is in English
   const ERROR_500_PAGES = {
     en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
@@ -69,7 +69,6 @@ const Main = (rootDir) => {
         graphql,
         language,
         screenWidth,
-        sportPlayer,
         translations,
       };
       const appContextValueObject = new AppContextValueObject(staticAppContextValues);

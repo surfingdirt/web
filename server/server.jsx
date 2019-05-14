@@ -1,13 +1,11 @@
 /* eslint-disable */
-
 import Loadable from '@7rulnik/react-loadable';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
 import multer from 'multer';
 
-import { index, port } from '../config/index';
-
+import { config, port } from '../config';
 import Action from './action';
 import Assets, { assetsRoute } from './assets';
 import Main from './main';
@@ -38,10 +36,10 @@ Loadable.preloadAll()
         throw err;
       }
       // eslint-disable-next-line no-console
-      console.log(`Frontend server is listening on ${index.baseUrl}`);
+      console.log(`Frontend server is listening on ${config.baseUrl}`);
     });
   })
   .catch((err) => {
     // eslint-disable-next-line no-console
-    console.log('The following error occurred while running Loadable.preloadAll callback:', err);
+    console.log('An error occurred during Loadable.preloadAll callback:', err);
   });

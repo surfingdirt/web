@@ -25,17 +25,17 @@ export const Album = ({ match }) => {
         return (
           <div className={styles.page}>
             <h1>{title}</h1>
-            <ol>
+            <div className={styles.grid}>
               {media.map(({ id, title, mediaType, thumbs }) => (
-                <li key={id}>
+                <div key={id}>
                   <Link to={mediaType === 'PHOTO' ? photoRoute(id) : videoRoute(id)}>
                     {/* necessaire parce que les donnees de test sont pourries */}
                     <img src={thumbs && thumbs.length > 0 && thumbs[0].url} alt="thumb" />
                     <span>{title}</span>
                   </Link>
-                </li>
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         );
       }}

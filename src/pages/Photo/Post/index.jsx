@@ -12,6 +12,8 @@ export const NewPhoto = () => (
     <form action={actionRoute(PHOTO_NEW)} method="POST" encType="multipart/form-data">
       <input type="file" name="file" />
       <input type="text" name="title" defaultValue="Some title" />
+      <input type="hidden" name="albumId" defaultValue="a3833b1c-1db0-4a93-9efc-b6659400ce9f" />
+      <input type="hidden" name="mediaSubType" defaultValue="IMG" />
       <button type="submit">Post</button>
     </form>
   </div>

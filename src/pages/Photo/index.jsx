@@ -23,7 +23,7 @@ export const Photo = ({ match }) => {
           <div className={styles.page}>
             <p>This is the Photo page.</p>
             <p>
-              <img src={images[0].url} alt="" />
+              <img src={images[2].url} alt="" />
             </p>
             <p>
               <span>{title}</span>

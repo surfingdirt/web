@@ -4,7 +4,7 @@ export const port = 3033;
 
 export const fragmentTypesFile = './fragmentTypes.json';
 
-export const index = {
+export const config = {
   local: {
     port,
     baseUrl: `http://localhost:${port}`,

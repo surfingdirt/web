@@ -1,2 +1,9 @@
 .page {
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  grid-template-rows: 300px;
+}

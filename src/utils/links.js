@@ -1,4 +1,5 @@
-import routes, { ACTION_PREFIX } from '~/routes';
+import routes from '~/routes';
+import { ACTION_PREFIX } from '~/actions';
 
 const { ALBUM, USER, PHOTO, VIDEO } = routes;
 

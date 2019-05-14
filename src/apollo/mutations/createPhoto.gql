@@ -1,0 +1,7 @@
+mutation createPhoto(
+    $input: PhotoCreationInput!
+    $file: Upload!) {
+    createPhoto(input: $input, file: $file) {
+        id
+    }
+}
