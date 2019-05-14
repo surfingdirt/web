@@ -1,4 +1,4 @@
-import routes from '../routes';
+import routes, { ACTION_PREFIX } from '~/routes';
 
 const { ALBUM, USER, PHOTO, VIDEO } = routes;
 
@@ -11,3 +11,5 @@ export const photoRoute = (id) => PHOTO.replace(ID_REGEXP, id);
 export const videoRoute = (id) => VIDEO.replace(ID_REGEXP, id);
 
 export const userRoute = (id) => USER.replace(ID_REGEXP, id);
+
+export const actionRoute = (name) => `${ACTION_PREFIX}${name}`;

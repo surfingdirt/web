@@ -15,7 +15,7 @@ import contexts from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { ALBUM, HOME, LOGIN, USER, PHOTO, VIDEO } = routes;
+const { ALBUM, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, VIDEO } = routes;
 
 const Album = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
@@ -35,6 +35,10 @@ const Video = Loadable({
 });
 const Photo = Loadable({
   loader: () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
+  loading,
+});
+const NewPhoto = Loadable({
+  loader: () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
   loading,
 });
 const User = Loadable({
@@ -78,6 +82,7 @@ class App extends React.Component {
             <Route exact path={HOME} component={Home} />
             <Route exact path={ALBUM} component={Album} />
             <Route path={LOGIN} component={LogIn} />
+            <Route path={PHOTO_NEW} component={NewPhoto} />
             <Route path={PHOTO} component={Photo} />
             <Route path={USER} component={User} />
             <Route path={VIDEO} component={Video} />

@@ -9,6 +9,9 @@ import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import { videoRoute } from 'Utils/links';
+import routes from '~/routes';
+
+const { PHOTO_NEW } = routes;
 
 import messages from './messages';
 
@@ -23,9 +26,14 @@ const Index = ({ t }) => {
           video: { id, title },
         } = data;
         return (
-          <div>
-            <Link to={videoRoute(id)}>Video page: {title}</Link>
-          </div>
+          <ul>
+            <li>
+              <Link to={videoRoute(id)}>Video page: {title}</Link>
+            </li>
+            <li>
+              <Link to={PHOTO_NEW}>Post a new photo</Link>
+            </li>
+          </ul>
         );
       }}
     </Query>
