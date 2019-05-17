@@ -40,6 +40,7 @@ export default class MutationRunner {
         Authorization: `Bearer ${this.accessToken}`,
       },
     });
+    fs.unlinkSync(reqFile.path);
     this.checkStatus(response);
     const creationResponseBody = await response.json();
     return creationResponseBody.data[actionInfo.responseKey];

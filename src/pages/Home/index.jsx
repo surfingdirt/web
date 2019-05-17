@@ -8,10 +8,7 @@ import HOMEPAGE from 'Apollo/queries/homepageVideo.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
-import { videoRoute } from 'Utils/links';
-import routes from '~/routes';
-
-const { PHOTO_NEW } = routes;
+import { videoRoute, albumRoute } from 'Utils/links';
 
 import messages from './messages';
 
@@ -31,7 +28,7 @@ const Index = ({ t }) => {
               <Link to={videoRoute(id)}>Video page: {title}</Link>
             </li>
             <li>
-              <Link to={PHOTO_NEW}>Post a new photo</Link>
+              <Link to={albumRoute('a3833b1c-1db0-4a93-9efc-b6659400ce9f')}>Gallery</Link>
             </li>
           </ul>
         );

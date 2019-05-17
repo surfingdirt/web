@@ -8,6 +8,9 @@ import Spinner from 'Components/Spinner';
 import { photoRoute, videoRoute } from 'Utils/links';
 
 import styles from './styles.scss';
+import routes from '~/routes';
+
+const { PHOTO_NEW } = routes;
 
 export const Album = ({ match }) => {
   const { id } = match.params;
@@ -25,6 +28,7 @@ export const Album = ({ match }) => {
         return (
           <div className={styles.page}>
             <h1>{title}</h1>
+            <Link to={PHOTO_NEW}>Post a new photo</Link>
             <div className={styles.grid}>
               {media.map(({ id, title, mediaType, thumbs }) => (
                 <div key={id}>
