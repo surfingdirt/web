@@ -9,8 +9,11 @@ import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import { videoRoute, albumRoute } from 'Utils/links';
+import routes from '~/routes';
 
 import messages from './messages';
+
+const { LOGIN } = routes;
 
 const Index = ({ t }) => {
   return (
@@ -24,6 +27,9 @@ const Index = ({ t }) => {
         } = data;
         return (
           <ul>
+            <li>
+              <Link to={LOGIN}>Login page</Link>
+            </li>
             <li>
               <Link to={videoRoute(id)}>Video page: {title}</Link>
             </li>

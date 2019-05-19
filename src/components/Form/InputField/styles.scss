@@ -25,6 +25,7 @@ input {
   font-size: $font-size-small-1;
   background: transparent;
   padding-right: $padding-medium-2;
+  width: 100%;
 
   &[type="password"] {
     letter-spacing: .75em; /* Necessary? */

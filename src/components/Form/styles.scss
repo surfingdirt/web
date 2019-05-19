@@ -25,6 +25,7 @@ $inputHeight: 48px;
   width: 100%;
   height: $inputHeight;
   font-weight: bold;
+  background-color: $input-background-color;
 }
 
 %formLabelContainer {

@@ -1,6 +1,9 @@
 class GraphQLError extends Error {
-  constructor(message) {
+  constructor(message, code) {
     super(message);
-    this.name = "GraphQLError";
+    this.name = 'GraphQLError';
+    this.code = code;
   }
 }
+
+export default GraphQLError;

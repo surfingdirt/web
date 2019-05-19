@@ -7,14 +7,16 @@ import PropTypes from 'prop-types';
 import ArrowRight from 'Images/arrowRight2.svg';
 import React, { Fragment, PureComponent } from 'react';
 import { Field, Form } from 'react-final-form';
-import { Link } from 'react-router-dom';
+import actions from '~/actions';
 import Validation from 'Utils/fieldLevelValidation';
 import routes from '~/routes';
+import { actionRoute } from 'Utils/links';
 
 import translations from './messages';
 import styles from './styles.scss';
 
-const { FORGOT_PASSWORD, REGISTRATION_STEP1 } = routes;
+const { REGISTRATION_STEP1 } = routes;
+const { LOGIN } = actions;
 
 const composeValidators = (...validators) => (value) =>
   validators.reduce((error, validator) => error || validator(value), undefined);
@@ -35,7 +37,6 @@ class SignInPageContent extends PureComponent {
       props: { errorMessage, onSubmit, t },
     } = this;
 
-    const emailValidator = Validation.email(t('email'));
     const requiredValidator = Validation.required(t('required'));
 
     return (
@@ -46,21 +47,26 @@ class SignInPageContent extends PureComponent {
             <p className={styles.errorMessage} hidden={!errorMessage}>
               {errorMessage}
             </p>
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={handleSubmit}
+              method="POST"
+              encType="multipart/form-data"
+              action={actionRoute(LOGIN)}
+            >
               <div className={styles.inputsContainer}>
-                <div className={styles.emailField}>
+                <div className={styles.usernameField}>
                   <Field
-                    name="email"
+                    name="username"
                     component={InputField}
-                    type="email"
-                    label={t('email')}
+                    type="username"
+                    label={t('username')}
                     placeholder={t('inputPlaceholder')}
-                    validate={composeValidators(requiredValidator, emailValidator)}
+                    validate={composeValidators(requiredValidator)}
                   />
                 </div>
                 <div className={styles.passwordField}>
                   <Field
-                    name="password"
+                    name="userP"
                     component={InputField}
                     type="password"
                     label={t('password')}
@@ -70,9 +76,6 @@ class SignInPageContent extends PureComponent {
                 </div>
               </div>
               <div className={styles.bottomContainer}>
-                <div className={styles.forgotPassword}>
-                  <Link to={FORGOT_PASSWORD}>{t('forgotYourPassword')}</Link>
-                </div>
                 <Button
                   buttonType="submit"
                   className={styles.signInButton}

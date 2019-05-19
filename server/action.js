@@ -1,19 +1,34 @@
 import actions, { ACTION_PREFIX } from '~/actions';
-
-import { config } from '../config';
-import { CREATE_PHOTO } from 'Apollo/mutations/createPhoto.gql';
+import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
+import { LOGIN_MUTATION } from 'Apollo/mutations/loginUser.gql';
 import { photoRoute } from 'Utils/links';
+import routes from '~/routes';
+import Login from '~/Login';
+import { config } from '../config';
 
 import MutationRunner from './mutationRunner';
 
-const { PHOTO_NEW } = actions;
+const LoginCookie = Login.COOKIE_NAME;
+
+const { LOGIN, PHOTO_NEW } = actions;
+const { HOME } = routes;
 
 const actionInfoMap = {
   [PHOTO_NEW]: {
-    mutation: CREATE_PHOTO,
+    mutation: CREATE_PHOTO_MUTATION,
     hasFileUpload: true,
     responseKey: 'createPhoto',
     redirect: { route: photoRoute, selector: 'id' },
+  },
+  [LOGIN]: {
+    mutation: LOGIN_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'login',
+    cb: (res, data) => {
+      console.log('Login, got data', data);
+      res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
+      res.redirect(301, HOME);
+    },
   },
 };
 
@@ -41,6 +56,9 @@ const action = async (req, res, next) => {
       }
       const url = route(value);
       return res.redirect(301, url);
+    }
+    if (actionInfo.cb) {
+      return actionInfo.cb(res, result);
     }
 
     return next('Unhandled post-action hook');

@@ -4,6 +4,7 @@ const messages = (getText, getPlural) => (key) =>
     inputPlaceholder: getText(
       'Enter something',
     ) /* Text appearing inside a form field before the user entered anything */,
+    username: getText('Username') /* Label of a form field for the user's username */,
     email: getText('Email') /* Label of a form field for the user's email */,
     password: getText('Password') /* Label of a form field for the user's password */,
     required: getText(

@@ -38,7 +38,7 @@ class LogInPage extends Component {
     };
   }
 
-  async handleLogin({ email, password }, mutate) {
+  async handleLogin({ username, password }, mutate) {
     const {
       context: {
         login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
@@ -51,8 +51,8 @@ class LogInPage extends Component {
     try {
       const loginResponse = await mutate({
         variables: {
-          password,
-          email,
+          username,
+          userP: password,
         },
       });
       const {

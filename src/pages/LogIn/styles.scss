@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.emailField,
+.usernameField,
 .passwordField {
   width: 100%;
   margin: $margin-big $margin-big 0 $margin-big;
@@ -139,7 +139,7 @@
   .inputsContainer {
     flex-direction: column;
   }
-  .emailField,
+  .usernameField,
   .passwordField {
     max-width: 100%;
     margin: $margin-big 0 0 0;

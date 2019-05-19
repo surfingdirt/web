@@ -12,6 +12,7 @@ const resolverAliases = {};
   'models',
   'pages',
   'sections',
+  'server',
   'styles',
   'utils',
 ].forEach((folder) => {

@@ -16,7 +16,7 @@ export default class MutationRunner {
     const input = req.body;
     const reqFile = actionInfo.hasFileUpload ? req.file : null;
 
-    const variables = { input };
+    const variables = input;
     if (reqFile) {
       // Gotta have an entry
       variables.file = null;
@@ -30,6 +30,8 @@ export default class MutationRunner {
       const file = fs.readFileSync(reqFile.path);
       body.append('map', JSON.stringify({ '1': ['variables.file'] }));
       body.append('1', file, fileInfo);
+    } else {
+      body.append('map', JSON.stringify({}));
     }
 
     const response = await fetch(this.graphqlUrl, {
@@ -40,16 +42,23 @@ export default class MutationRunner {
         Authorization: `Bearer ${this.accessToken}`,
       },
     });
-    fs.unlinkSync(reqFile.path);
+    if (reqFile) {
+      fs.unlinkSync(reqFile.path);
+    }
     this.checkStatus(response);
-    const creationResponseBody = await response.json();
-    return creationResponseBody.data[actionInfo.responseKey];
+    const responseBody = await response.json();
+    // TODO: si responseBody conttient errors[], retourner la premiere erreur
+    if (responseBody.errors) {
+      const error = responseBody.errors[0];
+      throw new GraphQLError(error.message, error.extensions.code);
+    }
+    return responseBody.data[actionInfo.responseKey];
   }
 
   checkStatus(res) {
     if (!res.ok) {
       // res.status < 200 || res.status >= 300
-      throw new GraphQLError(res.statusText);
+      throw new GraphQLError(res.statusText, 0);
     }
   }
 }
