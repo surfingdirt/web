@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
 import multer from 'multer';
-import bodyParser from 'body-parser';
 
 import { config, port } from '../config';
 import Action from './action';
@@ -16,12 +15,11 @@ const rootDir = path.resolve(__dirname, '..');
 const app = express();
 app.use(cookieParser());
 
-// app.use(bodyParser.text({type: 'multipart/form-data'}));
-
 app.get(assetsRoute, Assets(rootDir));
 app.use(express.static(`${rootDir}/dist`));
 
-app.post('/actions/*', multer({ dest: 'uploads/' }).none(), Action);
+app.post('/actions/photo/post', multer({ dest: 'uploads/' }).single('file'), Action);
+app.post('/actions/*', multer().none(), Action);
 
 if (process.env.NODE_ENV !== 'production') {
   app.use('/storybook', express.static(`${rootDir}/storybook-static`));

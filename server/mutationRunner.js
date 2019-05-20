@@ -13,28 +13,42 @@ export default class MutationRunner {
 
   async run(actionInfo, req) {
     const query = actionInfo.mutation.loc.source.body;
+    const { hasFileUpload } = actionInfo;
+    const reqFile = hasFileUpload ? req.file : null;
+
     const input = req.body;
-    const reqFile = actionInfo.hasFileUpload ? req.file : null;
-
-    const variables = input;
-    if (reqFile) {
-      // Gotta have an entry
-      variables.file = null;
-    }
-
     const body = new FormData();
-    body.append('operations', JSON.stringify({ query, variables }));
-    if (reqFile) {
+
+    let response;
+    if (hasFileUpload) {
+      // Gotta have an entry for file
+      const variables = { input, file: null };
+      body.append('operations', JSON.stringify({ query, variables }));
       const { originalname: filename, mimetype: contentType, size: knownLength } = reqFile;
       const fileInfo = { filename, contentType, knownLength };
       const file = fs.readFileSync(reqFile.path);
       body.append('map', JSON.stringify({ '1': ['variables.file'] }));
       body.append('1', file, fileInfo);
+      response = await this.fetch(body);
+      fs.unlinkSync(reqFile.path);
     } else {
+      const variables = { input };
+      body.append('operations', JSON.stringify({ query, variables }));
       body.append('map', JSON.stringify({}));
+      response = await this.fetch(body);
     }
 
-    const response = await fetch(this.graphqlUrl, {
+    this.checkStatus(response);
+    const responseBody = await response.json();
+    if (responseBody.errors) {
+      const error = responseBody.errors[0];
+      throw new GraphQLError(error.message, error.extensions.code);
+    }
+    return responseBody.data[actionInfo.responseKey];
+  }
+
+  async fetch(body) {
+    return fetch(this.graphqlUrl, {
       method: 'POST',
       body,
       headers: {
@@ -42,17 +56,6 @@ export default class MutationRunner {
         Authorization: `Bearer ${this.accessToken}`,
       },
     });
-    if (reqFile) {
-      fs.unlinkSync(reqFile.path);
-    }
-    this.checkStatus(response);
-    const responseBody = await response.json();
-    // TODO: si responseBody conttient errors[], retourner la premiere erreur
-    if (responseBody.errors) {
-      const error = responseBody.errors[0];
-      throw new GraphQLError(error.message, error.extensions.code);
-    }
-    return responseBody.data[actionInfo.responseKey];
   }
 
   checkStatus(res) {

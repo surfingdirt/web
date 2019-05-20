@@ -1,6 +1,7 @@
 import actions, { ACTION_PREFIX } from '~/actions';
 import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
-import { LOGIN_MUTATION } from 'Apollo/mutations/loginUser.gql';
+import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
+import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';
 import { photoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
@@ -10,7 +11,7 @@ import MutationRunner from './mutationRunner';
 
 const LoginCookie = Login.COOKIE_NAME;
 
-const { LOGIN, PHOTO_NEW } = actions;
+const { LOGIN, LOGOUT, PHOTO_NEW } = actions;
 const { HOME } = routes;
 
 const actionInfoMap = {
@@ -25,8 +26,17 @@ const actionInfoMap = {
     hasFileUpload: false,
     responseKey: 'login',
     cb: (res, data) => {
-      console.log('Login, got data', data);
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
+      res.redirect(301, HOME);
+    },
+  },
+  [LOGOUT]: {
+    mutation: LOGOUT_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'logout',
+    cb: (res, data) => {
+      console.log('Logout', data);
+      res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
   },
@@ -40,9 +50,7 @@ const action = async (req, res, next) => {
   }
 
   const { graphql } = config;
-  const accessToken =
-    req.cookies.accessToken ||
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTgxNTM4NDIsInVpZCI6IjYwYmZiOGE3LTU3NTQtNDE4Ni1hY2QyLTQ0YjIwZWYzMjM5OSJ9.15_FRoHEfLPui1y0jzgZ-7J4K4ofiDXYJ4nEwD9pnY8';
+  const { accessToken } = req.cookies;
   const runner = new MutationRunner(graphql, accessToken);
   try {
     const result = await runner.run(actionInfo, req);

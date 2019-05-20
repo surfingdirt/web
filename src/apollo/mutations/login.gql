@@ -1,5 +1,5 @@
-mutation login($username: String!, $userP: String!) {
-    login(input: { username: $username, userP: $userP }) {
+mutation login($input: LoginInput!) {
+    login(input: $input) {
         uid
         accessToken
         tokenType

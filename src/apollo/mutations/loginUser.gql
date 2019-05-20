@@ -1,8 +1,0 @@
-mutation login($username: String!, $userP: String!) {
-    login(input: { username: $username, userP: $userP }) {
-        uid
-        accessToken
-        tokenType
-        expiresIn
-    }
-}

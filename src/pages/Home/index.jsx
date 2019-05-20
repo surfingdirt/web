@@ -8,14 +8,27 @@ import HOMEPAGE from 'Apollo/queries/homepageVideo.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
-import { videoRoute, albumRoute } from 'Utils/links';
+import { videoRoute, albumRoute, actionRoute } from 'Utils/links';
+import actions from '~/actions';
+import contexts from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
 
+const { AppContext } = contexts;
+
+const { LOGOUT } = actions;
 const { LOGIN } = routes;
 
-const Index = ({ t }) => {
+const renderLogout = () => (
+  <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">
+    <button type="submit">Logout</button>
+  </form>
+);
+
+const Index = ({ t }, context) => {
+  const isLoggedIn = !!context.login.data.accessToken;
+
   return (
     <Query query={HOMEPAGE}>
       {({ loading, error, data }) => {
@@ -27,9 +40,7 @@ const Index = ({ t }) => {
         } = data;
         return (
           <ul>
-            <li>
-              <Link to={LOGIN}>Login page</Link>
-            </li>
+            <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
             <li>
               <Link to={videoRoute(id)}>Video page: {title}</Link>
             </li>
@@ -42,6 +53,8 @@ const Index = ({ t }) => {
     </Query>
   );
 };
+
+Index.contextType = AppContext;
 
 Index.propTypes = {
   match: PropTypes.shape({
