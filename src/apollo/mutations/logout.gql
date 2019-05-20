@@ -1,5 +1,3 @@
 mutation {
-    logout {
-        status
-    }
+    logout
 }
