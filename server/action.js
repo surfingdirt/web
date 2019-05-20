@@ -35,7 +35,6 @@ const actionInfoMap = {
     hasFileUpload: false,
     responseKey: 'logout',
     cb: (res, data) => {
-      console.log('Logout', data);
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
