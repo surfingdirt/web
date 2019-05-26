@@ -16,6 +16,7 @@ class AppContextValueObject {
       baseUrl: '',
       dir: 'ltr',
       facebookAppId: '',
+      galleryAlbumId: '',
       googleClientId: '',
       twitterUsername: '',
       graphql: '',

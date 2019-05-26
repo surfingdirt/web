@@ -34,7 +34,7 @@ const actionInfoMap = {
     mutation: LOGOUT_MUTATION,
     hasFileUpload: false,
     responseKey: 'logout',
-    cb: (res, data) => {
+    cb: (res) => {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },

@@ -9,12 +9,14 @@ export const config = {
     port,
     baseUrl: `http://localhost:${port}`,
     graphql: 'http://localhost:4000',
+    galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: true,
   },
   production: {
     port,
     baseUrl: `https://beta.surfingdirt.com`,
     graphql: 'https://graphql.surfingdirt.com/',
+    galleryAlbumId: '',
     showErrors: false,
   },
 }[env];

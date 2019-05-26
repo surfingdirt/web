@@ -4,7 +4,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-import HOMEPAGE from 'Apollo/queries/homepageVideo.gql';
+import HOMEPAGE from 'Apollo/queries/home.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
@@ -30,22 +30,21 @@ const Index = ({ t }, context) => {
   const isLoggedIn = !!context.login.data.accessToken;
 
   return (
-    <Query query={HOMEPAGE}>
+    <Query query={HOMEPAGE} variables={{ albumId: context.galleryAlbumId }}>
       {({ loading, error, data }) => {
         if (loading) return <Spinner />;
         if (error) return <ErrorMessage />;
 
         const {
-          video: { id, title },
+          album: { id, title, description },
         } = data;
         return (
           <ul>
             <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
             <li>
-              <Link to={videoRoute(id)}>Video page: {title}</Link>
-            </li>
-            <li>
-              <Link to={albumRoute('a3833b1c-1db0-4a93-9efc-b6659400ce9f')}>Gallery</Link>
+              <Link to={albumRoute(id)}>
+                {title} - {description}
+              </Link>
             </li>
           </ul>
         );
