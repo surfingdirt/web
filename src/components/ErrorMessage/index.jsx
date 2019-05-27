@@ -1,5 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const ErrorMessage = () => <div>Error message</div>;
+import KnownErrors from 'Error/knownErrors';
+
+const ErrorMessage = ({ code, message }) => {
+  return (
+    <Fragment>
+      <div>{KnownErrors[message] || 'unknownErrorName'}</div>
+      <div>{code}</div>
+    </Fragment>
+  );
+};
 
 export default ErrorMessage;

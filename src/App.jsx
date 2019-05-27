@@ -15,10 +15,14 @@ import contexts from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { ALBUM, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, VIDEO } = routes;
+const { ALBUM, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, VIDEO } = routes;
 
 const Album = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
+  loading,
+});
+const Error = Loadable({
+  loader: () => import(/* webpackChunkName: 'Error' */ './pages/Error').then((m) => m.Error),
   loading,
 });
 const Home = Loadable({
@@ -81,6 +85,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={ALBUM} component={Album} />
+            <Route exact path={ERROR} component={Error} />
             <Route path={LOGIN} component={LogIn} />
             <Route path={PHOTO_NEW} component={NewPhoto} />
             <Route path={PHOTO} component={Photo} />

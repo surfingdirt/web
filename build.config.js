@@ -7,6 +7,7 @@ const resolverAliases = {};
 [
   'apollo',
   'components',
+  'error',
   'hocs',
   'images',
   'models',

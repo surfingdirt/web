@@ -8,7 +8,7 @@ import HOMEPAGE from 'Apollo/queries/home.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
-import { videoRoute, albumRoute, actionRoute } from 'Utils/links';
+import { albumRoute, actionRoute } from 'Utils/links';
 import actions from '~/actions';
 import contexts from '~/contexts';
 import routes from '~/routes';

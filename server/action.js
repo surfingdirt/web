@@ -2,7 +2,7 @@ import actions, { ACTION_PREFIX } from '~/actions';
 import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
 import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
 import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';
-import { photoRoute } from 'Utils/links';
+import { errorRoute, photoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
 import { config } from '../config';
@@ -20,6 +20,7 @@ const actionInfoMap = {
     hasFileUpload: true,
     responseKey: 'createPhoto',
     redirect: { route: photoRoute, selector: 'id' },
+    onError: (error, next) => {},
   },
   [LOGIN]: {
     mutation: LOGIN_MUTATION,
@@ -28,6 +29,9 @@ const actionInfoMap = {
     cb: (res, data) => {
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
       res.redirect(301, HOME);
+    },
+    onError: (error, res, next) => {
+      return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
   [LOGOUT]: {
@@ -38,6 +42,7 @@ const actionInfoMap = {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
+    onError: (error, next) => {},
   },
 };
 
@@ -51,9 +56,14 @@ const action = async (req, res, next) => {
   const { graphql } = config;
   const { accessToken } = req.cookies;
   const runner = new MutationRunner(graphql, accessToken);
+  let result;
   try {
-    const result = await runner.run(actionInfo, req);
+    result = await runner.run(actionInfo, req);
+  } catch (e) {
+    return actionInfo.onError(e, res, next);
+  }
 
+  try {
     if (actionInfo.redirect) {
       const { route, selector } = actionInfo.redirect;
       // TODO: handle more complex selectors:
@@ -67,12 +77,12 @@ const action = async (req, res, next) => {
     if (actionInfo.cb) {
       return actionInfo.cb(res, result);
     }
-
-    return next('Unhandled post-action hook');
   } catch (e) {
     // TODO: look at error handling.
     return next(e);
   }
+
+  return next('Unhandled post-action hook');
 };
 
 export default action;
