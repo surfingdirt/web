@@ -1,9 +1,10 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import PHOTO from 'Apollo/queries/photo.gql';
-import ErrorMessage from 'Components/ErrorMessage';
-import Spinner from 'Components/Spinner';
+import DataRenderer from 'Components/DataRenderer';
+import { userRoute } from 'Utils/links';
 
 import styles from './styles.scss';
 
@@ -11,26 +12,33 @@ export const Photo = ({ match }) => {
   const { id } = match.params;
 
   return (
-    <Query query={PHOTO} variables={{ id }}>
-      {({ loading, error, data }) => {
-        if (loading) return <Spinner />;
-        if (error) return <ErrorMessage />;
-
+    <DataRenderer
+      query={PHOTO}
+      variables={{ id }}
+      render={(data) => {
         const {
-          photo: { title, images },
+          photo: {
+            title,
+            images,
+            submitter: { userId, username },
+          },
         } = data;
         return (
           <div className={styles.page}>
-            <p>This is the Photo page.</p>
+            <h1>{title}</h1>
             <p>
               <img src={images[2].url} alt="" />
             </p>
             <p>
-              <span>{title}</span>
+              Owner: <Link to={userRoute(userId)}>{username}</Link>
             </p>
           </div>
         );
       }}
-    </Query>
+    />
   );
+};
+
+Photo.propTypes = {
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
