@@ -1,14 +1,32 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-import KnownErrors from 'Error/knownErrors';
+import errorCodes from 'Error/errorCodes';
+import Translate from 'Hocs/Translate';
 
-const ErrorMessage = ({ code, message }) => {
+import translations from './messages';
+
+const DEFAULT_MESSAGE = 'unknownErrorName';
+
+const ErrorMessage = ({ t, code, message }) => {
+  const messageName = message || errorCodes[code] || DEFAULT_MESSAGE;
+
   return (
     <Fragment>
-      <div>{KnownErrors[message] || 'unknownErrorName'}</div>
+      <div>{t(messageName)}</div>
       <div>{code}</div>
     </Fragment>
   );
 };
 
-export default ErrorMessage;
+ErrorMessage.propTypes = {
+  t: PropTypes.func.isRequired,
+  code: PropTypes.string.isRequired,
+  message: PropTypes.string,
+};
+
+ErrorMessage.defaultProps = {
+  message: '',
+};
+
+export default Translate(translations)(ErrorMessage);

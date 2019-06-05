@@ -20,7 +20,9 @@ const actionInfoMap = {
     hasFileUpload: true,
     responseKey: 'createPhoto',
     redirect: { route: photoRoute, selector: 'id' },
-    onError: (error, next) => {},
+    onError: (error, res, next) => {
+      // TODO: handle photo upload errors
+    },
   },
   [LOGIN]: {
     mutation: LOGIN_MUTATION,
@@ -29,9 +31,6 @@ const actionInfoMap = {
     cb: (res, data) => {
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
       res.redirect(301, HOME);
-    },
-    onError: (error, res, next) => {
-      return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
   [LOGOUT]: {
@@ -42,7 +41,9 @@ const actionInfoMap = {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
-    onError: (error, next) => {},
+    onError: (error, res, next) => {
+      // TODO: handle logout errors
+    },
   },
 };
 
@@ -59,8 +60,11 @@ const action = async (req, res, next) => {
   let result;
   try {
     result = await runner.run(actionInfo, req);
-  } catch (e) {
-    return actionInfo.onError(e, res, next);
+  } catch (error) {
+    if (actionInfo.onError) {
+      return actionInfo.onError(error, res, next);
+    }
+    return res.redirect(301, errorRoute(error.code, error.message));
   }
 
   try {
