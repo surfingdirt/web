@@ -1,10 +1,9 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import VIDEO from 'Apollo/queries/video.gql';
-import ErrorMessage from 'Components/ErrorMessage';
-import Spinner from 'Components/Spinner';
+import DataRenderer from 'Components/DataRenderer';
 import { albumRoute, userRoute } from 'Utils/links';
 
 import styles from './styles.scss';
@@ -13,11 +12,10 @@ export const Video = ({ match }) => {
   const { id } = match.params;
 
   return (
-    <Query query={VIDEO} variables={{ id }}>
-      {({ loading, error, data }) => {
-        if (loading) return <Spinner />;
-        if (error) return <ErrorMessage />;
-
+    <DataRenderer
+      query={VIDEO}
+      variables={{ id }}
+      render={(data) => {
         const {
           video: { title, thumbs, album, submitter, vendorUrl },
         } = data;
@@ -39,6 +37,10 @@ export const Video = ({ match }) => {
           </div>
         );
       }}
-    </Query>
+    />
   );
+};
+
+Video.propTypes = {
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };

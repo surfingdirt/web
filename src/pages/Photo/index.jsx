@@ -30,7 +30,8 @@ export const Photo = ({ match }) => {
               <img src={images[2].url} alt="" />
             </p>
             <p>
-              Owner: <Link to={userRoute(userId)}>{username}</Link>
+              <span>Owner:</span>
+              <Link to={userRoute(userId)}>{username}</Link>
             </p>
           </div>
         );

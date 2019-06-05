@@ -1,10 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
+import DataRenderer from 'Components/DataRenderer';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
@@ -27,14 +28,19 @@ const renderLogout = () => (
 );
 
 const Index = ({ t }, context) => {
-  const isLoggedIn = !!context.login.data.accessToken;
+  const {
+    galleryAlbumId,
+    login: {
+      data: { accessToken },
+    },
+  } = context;
+  const isLoggedIn = !!accessToken;
 
   return (
-    <Query query={HOMEPAGE} variables={{ albumId: context.galleryAlbumId }}>
-      {({ loading, error, data }) => {
-        if (loading) return <Spinner />;
-        if (error) return <ErrorMessage />;
-
+    <DataRenderer
+      query={HOMEPAGE}
+      variables={{ albumId: galleryAlbumId }}
+      render={(data) => {
         const {
           album: { id, title, description },
         } = data;
@@ -43,22 +49,19 @@ const Index = ({ t }, context) => {
             <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
             <li>
               <Link to={albumRoute(id)}>
-                {title} - {description}
+                <span>{title}</span>-<span>{description}</span>
               </Link>
             </li>
           </ul>
         );
       }}
-    </Query>
+    />
   );
 };
 
 Index.contextType = AppContext;
 
 Index.propTypes = {
-  match: PropTypes.shape({
-    url: PropTypes.string,
-  }).isRequired,
   t: PropTypes.func.isRequired,
 };
 

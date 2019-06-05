@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 
-import LOGIN from 'Apollo/mutations/login.gql';
-import Header from 'Components/Header';
-import HeadMetaData from 'Components/HeadMetaData';
-import PageContainer from 'Components/PageContainer';
-import Translate from 'Hocs/Translate';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
+
+import LOGIN from 'Apollo/mutations/login.gql';
+import Header from 'Components/Header';
+import PageContainer from 'Components/PageContainer';
+import Translate from 'Hocs/Translate';
 import contexts from '~/contexts';
 import routes from '~/routes';
 
@@ -22,9 +22,6 @@ class LogInPage extends Component {
   static contextType = AppContext;
 
   static propTypes = {
-    match: PropTypes.shape({
-      url: PropTypes.string,
-    }).isRequired,
     t: PropTypes.func.isRequired,
   };
 
@@ -73,7 +70,7 @@ class LogInPage extends Component {
 
   render() {
     const {
-      props: { match, t },
+      props: { t },
       state: { errorMessage },
       context: {
         login: {
@@ -81,10 +78,6 @@ class LogInPage extends Component {
         },
       },
     } = this;
-    const DESCRIPTION = t('description');
-    const PICTURE = 'picture';
-    const NAME = t('name');
-    const { url } = match;
 
     if (accessToken) {
       return <Redirect to={HOME} />;
@@ -92,7 +85,6 @@ class LogInPage extends Component {
 
     return (
       <PageContainer className="limitedWidthContent">
-        <HeadMetaData description={DESCRIPTION} image={PICTURE} title={NAME} url={url} />
         <Header type="main">{t('signIn')}</Header>
         <Mutation mutation={LOGIN}>
           {(mutate) => (
