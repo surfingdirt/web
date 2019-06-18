@@ -5,11 +5,9 @@ import FooterContent from 'Sections/FooterContent';
 import NavigationContent from 'Sections/NavigationContent';
 import Masthead from 'Sections/Masthead';
 
-import { PAGE_TOP_ID } from 'Utils/shelfUtils';
-
-const Layout = ({ children, title }) => (
-  <div className="pageRoot" id={PAGE_TOP_ID}>
-    <Masthead title={title} />
+const Layout = ({ children }) => (
+  <div className="pageRoot">
+    <Masthead />
     <nav className="topLevelLandmark navigation">
       <NavigationContent />
     </nav>

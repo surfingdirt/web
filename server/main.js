@@ -20,7 +20,7 @@ import { generateMediaQueries } from 'Utils/styleUtils';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
-import { config } from '../config';
+import { config, title } from '../config';
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
@@ -71,6 +71,7 @@ const Main = (rootDir) => {
         language,
         screenWidth,
         translations,
+        title,
       };
       const appContextValueObject = new AppContextValueObject(staticAppContextValues);
       const accessToken = req.cookies.accessToken || '';

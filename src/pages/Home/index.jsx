@@ -1,13 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
 import DataRenderer from 'Components/DataRenderer';
-import ErrorMessage from 'Components/ErrorMessage';
-import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import { albumRoute, actionRoute } from 'Utils/links';
 import actions from '~/actions';

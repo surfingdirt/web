@@ -81,7 +81,7 @@ class App extends React.Component {
   renderApp(contextValues) {
     return (
       <AppContext.Provider value={contextValues}>
-        <Layout title={"Surfing Dirt"}>
+        <Layout>
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={ALBUM} component={Album} />

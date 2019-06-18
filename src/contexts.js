@@ -44,6 +44,7 @@ class AppContextValueObject {
       screenWidth: undefined,
       sportPlayer: { iframe: '', src: '' },
       translations: {},
+      title: '',
     };
 
     Object.keys(values).forEach((key) => {
