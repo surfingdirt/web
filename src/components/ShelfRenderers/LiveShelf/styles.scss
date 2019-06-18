@@ -3,7 +3,7 @@
 @import "../../../styles/font-sizes";
 
 $livebutton-size: 50px;
-$livebutton-font-size: $font-size-small-1;
+$livebutton-font-size: $font-size-small;
 $livebutton-padding: $livebutton-size * 20 /100;
 $livebutton-inner-offset: 12%;
 $livebutton-inner-color: red;
@@ -27,12 +27,12 @@ $livebutton-shadow-color: red;
   border-radius: 50%;
   background: $livebutton-outer-color;
   box-shadow: 0 0 4px 4px $livebutton-shadow-color;
-  color: $livebutton-text-color;
+  color:red;
   font-size: $livebutton-font-size;
 }
 
 .liveButton::after {
-  color: $livebutton-text-color;
+  color: red;
   content: 'live';
   display: flex;
   align-items: center;

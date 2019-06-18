@@ -10,7 +10,7 @@
    * General
    ***************************************************************************/
   body, input, textarea, select, button {
-    font-family: $font-families;
+    font-family: $default-font-families;
   }
 
   body {
@@ -25,7 +25,7 @@
   }
 
   p {
-    font-size: $font-size-medium-3;
+    font-size: $font-size-medium;
     line-height: 1.3em;
   }
 

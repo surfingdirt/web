@@ -1,5 +1,7 @@
 const env = process.env.NODE_ENV || 'local';
 
+export const title = 'Surfing Dirt';
+
 export const port = 3033;
 
 export const fragmentTypesFile = './fragmentTypes.json';

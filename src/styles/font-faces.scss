@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'Bungee Regular';
+  font-weight: 400;
+  src: url('../fonts/Bungee-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Roboto Regular';
   font-weight: 400;
   src: url('../fonts/RobotoRegular.ttf');
@@ -6,4 +13,5 @@
 }
 
 /* Default font definition */
-$font-families: 'Roboto Regular', sans-serif;
+$default-font-families: 'Roboto Regular', sans-serif;
+$title-font-families: 'Bungee Regular', sans-serif;

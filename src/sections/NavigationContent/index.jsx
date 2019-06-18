@@ -17,9 +17,7 @@ class NavigationContent extends React.Component {
     const { t } = this.props;
     return (
       <Fragment>
-        <Link to={HOME} className={styles.logoLink}>
-          <SVG className={styles.logoImage} icon={Logo} label={t('logoAlt')} hollow />
-        </Link>
+        Navigation
       </Fragment>
     );
   }

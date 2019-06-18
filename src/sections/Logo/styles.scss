@@ -1,0 +1,17 @@
+@import '../../styles/boxmodel';
+@import '../../styles/colors';
+@import '../../styles/font-faces';
+@import '../../styles/font-sizes';
+
+.logoImage {
+  display: inline-block;
+  width: 3em;
+  margin-right: $margin-small-2;
+}
+
+.title {
+  font-family: $title-font-families;
+  font-size: $font-size-big;
+  color: $masthead-title-color;
+  line-height: 1em;
+}

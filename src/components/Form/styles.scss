@@ -36,7 +36,7 @@ $inputHeight: 48px;
 
 %formLabel {
   padding: 5px;
-  font-size: $font-size-medium-3;
+  font-size: $font-size-medium;
   font-weight: bold;
   text-transform: uppercase;
   color: $form-label-color;
@@ -45,6 +45,6 @@ $inputHeight: 48px;
 %formRequired {
   position: absolute;
   top: 1px;
-  font-size: $font-size-small-1;
+  font-size: $font-size-small;
   color: $form-required-color;
 }

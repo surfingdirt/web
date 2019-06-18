@@ -6,10 +6,10 @@ import { Route, Switch } from 'react-router';
 
 import ME from 'Apollo/queries/me.gql';
 import ErrorMessage from 'Components/ErrorMessage';
-import Layout from 'Components/Layout';
 import loading from 'Components/Loading/Loading';
 import Spinner from 'Components/Spinner';
 import { Page404 } from 'Pages/Page404';
+import Layout from 'Sections/Layout';
 
 import contexts from '~/contexts';
 import '~/main.scss';
@@ -81,7 +81,7 @@ class App extends React.Component {
   renderApp(contextValues) {
     return (
       <AppContext.Provider value={contextValues}>
-        <Layout>
+        <Layout title={"Surfing Dirt"}>
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={ALBUM} component={Album} />

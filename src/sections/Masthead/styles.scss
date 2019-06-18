@@ -1,0 +1,35 @@
+@import '../../styles/boxmodel';
+@import '../../styles/colors';
+@import '../../styles/font-faces';
+@import '../../styles/font-sizes';
+@import '../../styles/media-queries';
+
+$height-default: 60px;
+$padding-default: 50px;
+$logo-width-default: 150px;
+
+.wrapper {
+  display: flex;
+  padding: 0 $padding-default;
+  height: $height-default;
+  background: $masthead-background-color;
+  justify-items: center;
+  align-items: center;
+  font-size: $font-size-big;
+}
+
+.logoLink {
+  display: inline-flex;
+  width: $logo-width-default;
+  flex-direction: row;
+}
+
+@media (max-width: $mobile-big-max) {
+  .wrapper {
+    padding: 0;
+  }
+
+  .logoLink {
+    margin: 0 auto;
+  }
+}

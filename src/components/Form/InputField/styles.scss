@@ -22,7 +22,7 @@ label {
 
 input {
   border: 0;
-  font-size: $font-size-small-1;
+  font-size: $font-size-small;
   background: transparent;
   padding-right: $padding-medium-2;
   width: 100%;
@@ -34,7 +34,7 @@ input {
   &::placeholder {
     color: $form-placeholder-color;
     letter-spacing: normal; /* Necessary? */
-    font-size: $font-size-small-1;
+    font-size: $font-size-small;
   }
 }
 
@@ -43,7 +43,7 @@ input {
 }
 
 .displayErrorLabel {
-  font-size: $font-size-medium-3;
+  font-size: $font-size-medium;
   display: inline-block;
   color: $form-error-color;
   margin: $margin-small-3 $margin-medium-1 0;
