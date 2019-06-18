@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Logo from 'Components/Logo';
 import routes from '~/routes';
@@ -11,22 +12,18 @@ import styles from './styles.scss';
 const { HOME } = routes;
 const { AppContext } = contexts;
 
-const Masthead = ({}, context) => {
-  const { title } = context;
+const Masthead = ({ className }, { title }) => (
+  <header className={classnames(styles.wrapper, className)}>
+    <Link to={HOME} className={styles.logoLink}>
+      <Logo title={title} />
+    </Link>
+  </header>
+);
 
-  return (
-    <header className={styles.wrapper}>
-      <Link to={HOME} className={styles.logoLink}>
-        <Logo title={title} />
-      </Link>
-    </header>
-  );
+Masthead.propTypes = {
+  className: PropTypes.string.isRequired,
 };
 
 Masthead.contextType = AppContext;
-
-Masthead.propTypes = {
-  title: PropTypes.string.isRequired,
-};
 
 export default Masthead;

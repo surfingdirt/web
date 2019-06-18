@@ -69,44 +69,18 @@
   /****************************************************************************
    * Layout
    ***************************************************************************/
-  .fullWidthContent,
-  .limitedWidthContent {
-    margin: 0 auto;
+  html,
+  body,
+  #app_root {
+    height: 100%;
   }
 
-  .fullWidthContent {
-    width: 100%;
-  }
-  .limitedWidthContent {
-    width: 100%;
-  }
   .loadingContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 400px;
     width: 100%
-  }
-  .pageContainer {
-    padding: 1.25em 0;
-  }
-
-  .topLevelLandmark {
-    position: relative;
-    z-index: 1;
-  }
-
-  .pageRoot {
-    position: relative;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .mainWrapper {
-  }
-
-  .navigation {
-    width: 200px;
   }
 
   .main {

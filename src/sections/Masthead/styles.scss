@@ -4,14 +4,12 @@
 @import '../../styles/font-sizes';
 @import '../../styles/media-queries';
 
-$height-default: 60px;
 $padding-default: 50px;
 $logo-width-default: 150px;
 
 .wrapper {
   display: flex;
   padding: 0 $padding-default;
-  height: $height-default;
   background: $masthead-background-color;
   justify-items: center;
   align-items: center;

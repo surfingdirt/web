@@ -1,0 +1,13 @@
+@import '../../styles/colors';
+
+.wrapper {
+  background-color: $container-background-color-default;
+}
+
+.linkList {
+  list-style-type: none;
+
+  a {
+    color: $text-color-default;
+  }
+}

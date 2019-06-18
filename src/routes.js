@@ -1,5 +1,6 @@
 const routes = {
   ALBUM: '/album/:id',
+  ALBUMS: '/albums',
   ERROR: '/error/:id/:message',
   HOME: '/',
   LOGIN: '/login',
@@ -10,7 +11,7 @@ const routes = {
   VIDEO: '/video/:id',
   VIDEO_EDIT: '/edit-video',
   VIDEO_NEW: '/new-video',
-  USER: '/user/:id',
-  USERS: '/users',
+  USER: '/rider/:id',
+  USERS: '/riders',
 };
 export default routes;
