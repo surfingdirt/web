@@ -1,7 +1,23 @@
-$brand-color1: #2ea3bc;
-$brand-color2: #986934;
-$brand-color3: #b4873c;
-$brand-color4: #c09d46;
-$brand-color5: #fffffe;
-//$brand-color6: #211710;
-$brand-color6: #3b2b22;
+// Below are listed authorised brand colors.
+// They must not be used directly in components, but rather be mapped
+// in colors.scss to define functional colors.
+
+$brand-bright: #f6d58A;
+$brand-dark1: #292b31;
+$brand-dark2: #110d0d;
+$brand-highlight1: #1fa3bc;
+$brand-highlight2: #eee;
+
+// Regular logo colors (light theme)
+$brand-logo-regular1: #231f20;
+$brand-logo-regular2: #996a34;
+$brand-logo-regular3: #b4883c;
+$brand-logo-regular4: #f6d58a;
+$brand-logo-regular5: #26a3bc;
+
+// Inverted logo colors (dark theme)
+$brand-logo-inverted1: #140e0a;
+$brand-logo-inverted2: #996a34;
+$brand-logo-inverted3: #b6893e;
+$brand-logo-inverted4: #c39f44;
+$brand-logo-inverted5: #1fa3bc;

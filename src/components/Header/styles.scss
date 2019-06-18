@@ -12,14 +12,10 @@
 }
 
 %defaultColor {
-  color: $header-title;
+  color: $header-title-color;
 }
 
 .main {
-  @extend %big;
-  color: $header-title;
+  @extend %big, %defaultColor;
 }
 
-.category {
-  @extend %medium, %defaultColor;
-}

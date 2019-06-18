@@ -2,8 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
-import Logo from 'Images/logo.png';
+import Logo from 'Images/logo-regular.svg';
 import routes from '~/routes';
 
 import styles from './styles.scss';
@@ -17,7 +18,7 @@ class NavigationContent extends React.Component {
     return (
       <Fragment>
         <Link to={HOME} className={styles.logoLink}>
-          <img className={styles.logoImage} src={Logo} alt={t('logoAlt')} />
+          <SVG className={styles.logoImage} icon={Logo} label={t('logoAlt')} hollow />
         </Link>
       </Fragment>
     );

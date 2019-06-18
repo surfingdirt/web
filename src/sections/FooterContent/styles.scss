@@ -15,7 +15,7 @@
   
   padding: 10px;
 
-  color: $brand-color3;
+  color: red;
   a {
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@
     p {
       margin: $margin-medium-2;
       a {
-        color: $brand-color3;
+        color: red;
       }
     }
   }
@@ -63,11 +63,11 @@
   .poweredBy {
     margin-bottom: $margin-medium-2;
     
-    color: $brand-color3;
+    color: red;
     
     text-align: center;
     a {
-      color: $brand-color3;
+      color: red;
     }
   }
 }
@@ -92,11 +92,11 @@
         
         font-size: $font-size-big-3;
         a {
-          color: $brand-color3;
+          color: red;
         }
       }
       p {
-        color: $brand-color3;
+        color: red;
   
         font-size: $font-size-big-2;
         font-weight: bold;

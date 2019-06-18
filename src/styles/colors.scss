@@ -2,70 +2,89 @@
 
 /* Attribution of colors to features */
 
+
+/******************************************************************************
+ * GENERAL STYLING
+ *****************************************************************************/
+
 // Background color
-$background-color-default: $brand-color6;
+$background-color-default: $brand-dark1;
 
 // Text
-$text-color-default: $brand-color5;
+$text-color-default: $brand-bright;
+$text-color-inverted: $brand-dark2;
+
+
+/******************************************************************************
+ * GENERIC ELEMENT STYLING
+ *****************************************************************************/
 
 // Links
-$link-color-default: $brand-color1;
+$link-color-default: $brand-highlight1;
 
 // Buttons
-$button-color-default: $brand-color1;
-$button-color-disabled: $brand-color4;
+$button-color-default: $brand-bright;
+$button-color-disabled: $brand-dark2;
 
 // Inputs
-$input-background-color: $brand-color5;
-
-$header-title-light: $brand-color3;
+$input-text-color: $brand-dark2;
+$input-background-color: $brand-bright;
 
 // Headers
-$header-title: $brand-color2;
-$header-title-highlight: $brand-color1;
+$header-title-color: $brand-bright;
+
+
+/******************************************************************************
+ * FUNCTIONAL STYLING
+ *****************************************************************************/
+
+// Nav
+$navigation-entries-color: $brand-bright;
+$navigation-entries-color-selected: $brand-bright;
+
+// Menu
+$menu-background: $brand-dark2;
+$sign-in-background: $brand-bright;
+$menu-separator: $brand-bright;
+$menu-icon: $brand-bright;
+$menu-bottom-bar-border: $brand-bright;
+$menu-bottom-bar-item: $brand-bright;
+$menu-bottom-bar-item-active: $brand-bright;
+$menu-modal-title: $brand-bright;
+$menu-modal-main-item: $brand-bright;
+$menu-modal-sub-item: $brand-bright;
+
+// Spinner
+$spinner-color: $brand-bright;
 
 // Forms
-$form-border-color: $brand-color4;
-$form-label-color: $brand-color3;
-$form-forgot-password-color: $brand-color4;
-$form-placeholder-color: $brand-color2;
+$form-border-color: $brand-bright;
+$form-label-color: $brand-bright;
+$form-forgot-password-color: $brand-bright;
+$form-placeholder-color: $brand-bright;
 $form-required-color: $red-validation;
 $form-error-color: $red-validation;
-$form-error-secondColor: $brand-color3;
-
-// Icons
-$icon-color-default: $brand-color3;
-$icon-background-color-default: transparent;
-$icon-color-active: $brand-color1;
-$icon-background-color-active: $brand-color1;
+$form-error-secondColor: $brand-dark2;
 
 // Footer
 $footer-background: transparent;
-$footer-separator: $brand-color2;
-$footer-follow: $brand-color1;
+$footer-separator: $brand-bright;
+$footer-follow: $brand-bright;
 
-$view-all-link: $brand-color2;
 
-$menu-background: $brand-color2;
-$sign-in-background: $brand-color1;
-$menu-separator: $brand-color2;
-$menu-icon: $brand-color2;
-$menu-bottom-bar-border: $brand-color3;
-$menu-bottom-bar-item: $brand-color2;
-$menu-bottom-bar-item-active: $brand-color1;
-$menu-modal-title: $brand-color2;
-$menu-modal-main-item: $brand-color1;
-$menu-modal-sub-item: $brand-color1;
+/******************************************************************************
+ * MISC
+ *****************************************************************************/
 
-$spinner-color: $brand-color1;
+// Icons
+$icon-color-default: $brand-bright;
+$icon-background-color-default: transparent;
+$icon-color-active: $brand-highlight1;
+$icon-background-color-active: $brand-highlight2;
 
+// Misc
+$view-all-link: $brand-bright;
+
+// 3rd-party
 $google-button-background: $google-blue;
 $facebook-button-background: $facebook-blue;
-
-// Live
-$livebutton-text-color: $brand-color3;
-$livebutton-background-color: $brand-color1;
-
-// Nav
-$navigation-entries-color: $brand-color3;
-$navigation-entries-color-selected: $brand-color1;
