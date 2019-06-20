@@ -3,7 +3,7 @@
 import GOOGLE_LOGIN from 'Apollo/mutations/googleLogin.gql';
 import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
-import Google from 'Images/google.svg';
+import Google from 'Images/_old/google.svg';
 import { InlineSpinner } from 'Components/Spinner';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';

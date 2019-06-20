@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import SVG from 'Components/SVG';
-import Like from 'Images/like.svg';
-import Share from 'Images/share.svg';
+import Like from 'Images/_old/like.svg';
+import Share from 'Images/_old/share.svg';
 import React, { Fragment } from 'react';
 
 const style = {

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 
 import SVG from 'Components/SVG';
-import SpinnerSVG from 'Images/spinner.svg';
+import SpinnerSVG from 'Images/_old/spinner.svg';
 import React from 'react';
 
 import styles from './styles.scss';

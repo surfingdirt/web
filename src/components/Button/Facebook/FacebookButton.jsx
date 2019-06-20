@@ -3,7 +3,7 @@
 import FACEBOOK_LOGIN from 'Apollo/mutations/facebookLogin.gql';
 import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
-import Facebook from 'Images/facebook-logo-white.svg';
+import Facebook from 'Images/_old/facebook-logo-white.svg';
 import { InlineSpinner } from 'Components/Spinner';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';

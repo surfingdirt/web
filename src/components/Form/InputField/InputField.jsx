@@ -4,9 +4,9 @@ import classnames from 'classnames';
 
 import SVG from 'Components/SVG';
 
-import Completed from 'Images/completed.svg';
-import Empty from 'Images/empty.svg';
-import Error from 'Images/error.svg';
+import Completed from 'Images/_old/completed.svg';
+import Empty from 'Images/_old/empty.svg';
+import Error from 'Images/_old/error.svg';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import formStyles from '../styles.scss';

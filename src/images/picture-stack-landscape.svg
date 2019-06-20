@@ -1,0 +1,16 @@
+<svg viewBox="0 0 24 24">
+    <g transform="matrix(1,0,0,1,0,0)">
+        <path d="M 2.25,0.75h13.5c0.414,0,0.75,0.336,0.75,0.75v15c0,0.414-0.336,0.75-0.75,0.75H2.25 c-0.414,0-0.75-0.336-0.75-0.75v-15C1.5,1.086,1.836,0.75,2.25,0.75z "
+              fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M 19.5,3.75V19.5c0,0.414-0.336,0.75-0.75,0.75H4.5 " fill="none" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M 22.5,6.75 V22.5c0,0.414-0.336,0.75-0.75,0.75H7.5 " fill="none" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M 16.5,12.75h-15 " fill="none" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+        <path d="M 6,12.75l4.153-5.932c0.475-0.679,1.411-0.843,2.089-0.368 c0.099,0.069,0.189,0.15,0.268,0.24l3.99,4.56 "
+              fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M 5.25,4.125c0.207,0,0.375,0.168,0.375,0.375S5.457,4.875,5.25,4.875 S4.875,4.707,4.875,4.5S5.043,4.125,5.25,4.125"
+              fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+</svg>

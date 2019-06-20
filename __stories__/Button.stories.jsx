@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import Button from 'Components/Button';
-import Next from 'Images/arrow-next.svg';
-import Prev from 'Images/arrow-prev.svg';
+import Next from 'Images/_old/arrow-next.svg';
+import Prev from 'Images/_old/arrow-prev.svg';
 import React, { Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 

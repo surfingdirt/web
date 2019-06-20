@@ -2,7 +2,7 @@
 
 import SVG from 'Components/SVG';
 
-import ArrowDown from 'Images/arrowDown.svg';
+import ArrowDown from 'Images/_old/arrowDown.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 

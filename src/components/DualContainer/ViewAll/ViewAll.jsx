@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import SVG from 'Components/SVG';
 
 import Translate from 'Hocs/Translate';
-import ArrowRight from 'Images/arrowRight.svg';
+import ArrowRight from 'Images/_old/arrowRight.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';

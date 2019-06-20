@@ -3,7 +3,7 @@ import Button from 'Components/Button';
 import CheckboxField from 'Components/Form/CheckboxField';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
-import Next from 'Images/arrow-next.svg';
+import Next from 'Images/_old/arrow-next.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';

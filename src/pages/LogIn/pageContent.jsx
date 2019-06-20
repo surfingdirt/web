@@ -4,7 +4,7 @@ import GoogleButton from 'Components/Button/Google';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
-import ArrowRight from 'Images/arrowRight2.svg';
+import ArrowRight from 'Images/_old/arrowRight2.svg';
 import React, { Fragment, PureComponent } from 'react';
 import { Field, Form } from 'react-final-form';
 import actions from '~/actions';

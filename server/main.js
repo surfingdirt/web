@@ -15,7 +15,7 @@ import Loadable from '@7rulnik/react-loadable';
 import apolloClient from '~/apollo';
 import contexts from '~/contexts';
 import App from '~/App';
-import Favicon from 'Images/favicon.png';
+import Favicon from 'Images/_old/favicon.png';
 import { generateMediaQueries } from 'Utils/styleUtils';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';

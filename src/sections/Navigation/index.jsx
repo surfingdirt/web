@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Translate from 'Hocs/Translate';
+import NavigationLink from 'Components/NavigationLink';
+import icons from 'Utils/icons';
 import { albumRoute } from 'Utils/links';
 import contexts from '~/contexts';
 import routes from '~/routes';
@@ -18,13 +19,13 @@ const Navigation = ({ className, t }, { galleryAlbumId }) => (
   <nav className={classnames(styles.wrapper, className)}>
     <ul className={styles.linkList}>
       <li>
-        <Link to={albumRoute(galleryAlbumId)}>{t('gallery')}</Link>
+        <NavigationLink to={albumRoute(galleryAlbumId)} icon={icons.HOT} label={t('gallery')} />
       </li>
       <li>
-        <Link to={ALBUMS}>{t('albums')}</Link>
+        <NavigationLink to={ALBUMS} icon={icons.ALBUM} label={t('albums')} />
       </li>
       <li>
-        <Link to={USERS}>{t('riders')}</Link>
+        <NavigationLink to={USERS} icon={icons.USERS} label={t('riders')} />
       </li>
     </ul>
   </nav>

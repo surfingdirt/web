@@ -1,0 +1,19 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+
+.wrapper {
+  color: $navigationlink-color;
+  line-height: 2.5em;
+
+  span {
+    display: inline-block;
+    vertical-align: sub;
+  }
+}
+
+.defaultIcon {
+  display: inline-block;
+  width: 1.25em;
+  margin-right: $margin-small-3;
+  color: $navigationlink-color;
+}

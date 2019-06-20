@@ -1,6 +1,6 @@
 import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
-import Logo from 'Images/logo.png';
+import Logo from 'Images/_old/logo.png';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import contexts from '~/contexts';
