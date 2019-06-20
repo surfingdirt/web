@@ -9,7 +9,7 @@ import ErrorMessage from 'Components/ErrorMessage';
 import loading from 'Components/Loading';
 import Spinner from 'Components/Spinner';
 import { Page404 } from 'Pages/Page404';
-import Index from 'Sections/Layout/index';
+import Layout from 'Sections/Layout';
 
 import contexts from '~/contexts';
 import '~/main.scss';
@@ -81,7 +81,7 @@ class App extends React.Component {
   renderApp(contextValues) {
     return (
       <AppContext.Provider value={contextValues}>
-        <Index>
+        <Layout>
           <Switch>
             <Route exact path={HOME} component={Home} />
             <Route exact path={ALBUM} component={Album} />
@@ -94,7 +94,7 @@ class App extends React.Component {
 
             <Route component={Page404} />
           </Switch>
-        </Index>
+        </Layout>
       </AppContext.Provider>
     );
   }

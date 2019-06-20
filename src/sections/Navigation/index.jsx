@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
 import NavigationLink from 'Components/NavigationLink';
@@ -15,21 +16,24 @@ import messages from './messages';
 const { ALBUMS, USERS } = routes;
 const { AppContext } = contexts;
 
-const Navigation = ({ className, t }, { galleryAlbumId }) => (
-  <nav className={classnames(styles.wrapper, className)}>
-    <ul className={styles.linkList}>
-      <li>
-        <NavigationLink to={albumRoute(galleryAlbumId)} icon={icons.HOT} label={t('gallery')} />
-      </li>
-      <li>
-        <NavigationLink to={ALBUMS} icon={icons.ALBUM} label={t('albums')} />
-      </li>
-      <li>
-        <NavigationLink to={USERS} icon={icons.USERS} label={t('riders')} />
-      </li>
-    </ul>
-  </nav>
-);
+const Navigation = ({ className, t }, { galleryAlbumId }) => {
+  const items = [
+    { to: albumRoute(galleryAlbumId), icon: icons.HOT, label: t('gallery') },
+    { to: ALBUMS, icon: icons.ALBUM, label: t('albums') },
+    { to: USERS, icon: icons.USERS, label: t('riders') },
+  ];
+  return (
+    <nav className={classnames(styles.wrapper, className)}>
+      <ul className={styles.linkList}>
+        {items.map((props) => (
+          <li key={props.to}>
+            <NavigationLink {...props} />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
 Navigation.propTypes = {
   t: PropTypes.func.isRequired,
@@ -38,4 +42,4 @@ Navigation.propTypes = {
 
 Navigation.contextType = AppContext;
 
-export default Translate(messages)(Navigation);
+export default Translate(messages)(withRouter(Navigation));
