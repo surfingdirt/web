@@ -3,7 +3,7 @@
 @import '../../styles/font-sizes';
 @import '../../styles/media-queries';
 
-$masthead-height: 3.75em;
+$masthead-height: 3.75rem;
 $footer-height: 2.5em;
 $max-content-width: 1545px;
 
@@ -54,7 +54,6 @@ $rhs-width-small: 60px;
 @media (min-width: $desktop-max) {
   .wrapper {
     $vertical-gap: $medium-gap;
-    padding: $masthead-height + $vertical-gap 0 $vertical-gap;
     grid-template-columns: $lhs-width-big 1fr $rhs-width-big;
   }
 }

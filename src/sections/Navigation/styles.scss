@@ -1,11 +1,15 @@
+@import '../../styles/boxmodel';
 @import '../../styles/colors';
 
 .wrapper {
   background-color: $container-background-color-default;
+  text-align: center;
 }
 
 .linkList {
   list-style-type: none;
+  margin: $margin-medium-2 0;
+  padding: 0;
 
   a {
     color: $text-color-default;

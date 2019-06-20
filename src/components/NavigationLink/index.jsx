@@ -11,23 +11,23 @@ import icons from 'Utils/icons';
 
 import styles from './styles.scss';
 
+const getIcon = (type) => {
+  switch (type) {
+    case icons.ALBUM:
+      return <SVG icon={Album} label="" className={classnames(styles.defaultIcon)} />;
+
+    case icons.HOT:
+      return <SVG icon={Hot} label="" className={classnames(styles.defaultIcon)} />;
+
+    case icons.USERS:
+      return <SVG icon={Users} label="" className={classnames(styles.defaultIcon)} />;
+
+    default:
+      return null;
+  }
+};
+
 const NavigationLink = ({ className, icon, label, to }) => {
-  const getIcon = (type) => {
-    switch (type) {
-      case icons.ALBUM:
-        return <SVG icon={Album} label="" className={classnames(styles.defaultIcon)} />;
-
-      case icons.HOT:
-        return <SVG icon={Hot} label="" className={classnames(styles.defaultIcon)} />;
-
-      case icons.USERS:
-        return <SVG icon={Users} label="" className={classnames(styles.defaultIcon)} />;
-
-      default:
-        return null;
-    }
-  };
-
   return (
     <Link to={to} className={classnames(className, styles.wrapper)}>
       <span>{getIcon(icon)}</span>

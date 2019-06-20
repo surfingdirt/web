@@ -1,5 +1,6 @@
 const routes = {
   ALBUM: '/album/:id',
+  ALBUM_NEW: '/new-album',
   ALBUMS: '/albums',
   ERROR: '/error/:id/:message',
   HOME: '/',

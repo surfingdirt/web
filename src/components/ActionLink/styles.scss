@@ -1,0 +1,17 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+
+.wrapper {
+}
+
+.defaultIcon {
+  display: inline-block;
+  color: $navigationlink-color;
+  line-height: 0;
+  width: 1.5em;
+  border-radius: 50%;
+  border: 2px solid $navigationlink-color;
+  background-color: $navigationlink-color-inverted;
+  padding: .5em;
+  box-sizing: content-box;
+}
