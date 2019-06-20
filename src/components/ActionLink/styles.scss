@@ -1,5 +1,6 @@
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import '../../styles/media-queries';
 
 .wrapper {
 }
@@ -8,10 +9,23 @@
   display: inline-block;
   color: $navigationlink-color;
   line-height: 0;
-  width: 1.5em;
+  width: 1.25em;
   border-radius: 50%;
   border: 2px solid $navigationlink-color;
   background-color: $navigationlink-color-inverted;
   padding: .5em;
   box-sizing: content-box;
+}
+
+@media (min-width: $desktop-big) {
+  .defaultIcon {
+    width: 2em;
+    padding: .75em;
+  }
+}
+
+@media (min-width: $desktop-max) {
+  .defaultIcon {
+    border-width: 3px;
+  }
 }
