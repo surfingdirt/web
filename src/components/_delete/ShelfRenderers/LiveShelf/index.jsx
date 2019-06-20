@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from 'Components/Grid';
-import TextVideo from 'Components/VideoRenderers/TextVideo';
+import TextVideo from 'Components/_delete/VideoRenderers/TextVideo/index';
 
 import styles from './styles.scss';
 

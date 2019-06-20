@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from 'Components/Grid';
-import ThumbVideo from 'Components/VideoRenderers/ThumbVideo';
+import ThumbVideo from 'Components/_delete/VideoRenderers/ThumbVideo/index';
 
 const VODShelf = ({ items, colCount }) => {
   return <Grid renderer={ThumbVideo} type={`col${colCount}`} items={items.slice(0, colCount)} />;

@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router';
 
 import ME from 'Apollo/queries/me.gql';
 import ErrorMessage from 'Components/ErrorMessage';
-import loading from 'Components/Loading/Loading';
+import loading from 'Components/Loading';
 import Spinner from 'Components/Spinner';
 import { Page404 } from 'Pages/Page404';
 import Index from 'Sections/Layout/index';

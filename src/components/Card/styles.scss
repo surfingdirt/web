@@ -1,0 +1,16 @@
+@import '../../styles/boxmodel';
+@import '../../styles/colors';
+@import '../../styles/font-sizes';
+@import '../../styles/media-queries';
+
+.wrapper {
+  padding: $padding-medium-1;
+  background-color: $card-background-color;
+}
+
+.content {
+}
+
+.title {
+  margin: $margin-medium-1 0;
+}

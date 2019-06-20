@@ -18,6 +18,7 @@ $text-color-inverted: $brand-dark2;
 $scrollbar-color-thumb: $brand-dark2;
 $scrollbar-color-track: $brand-dark1;
 
+
 /******************************************************************************
  * GENERIC ELEMENT STYLING
  *****************************************************************************/
@@ -44,13 +45,26 @@ $header-title-color: $brand-bright;
  * FUNCTIONAL STYLING
  *****************************************************************************/
 
+// Cards
+$card-background-color: $brand-dark2;
+
+// Footer
+$footer-background: transparent;
+$footer-separator: $brand-bright;
+$footer-follow: $brand-bright;
+
+// Forms
+$form-border-color: $brand-bright;
+$form-label-color: $brand-bright;
+$form-forgot-password-color: $brand-bright;
+$form-placeholder-color: $brand-bright;
+$form-required-color: $red-validation;
+$form-error-color: $red-validation;
+$form-error-secondColor: $brand-dark2;
+
 // Masthead
 $masthead-background-color: $brand-bright;
 $masthead-title-color: $brand-dark2;
-
-// Nav
-$navigation-entries-color: $brand-bright;
-$navigation-entries-color-selected: $brand-bright;
 
 // Menu
 $menu-background: $brand-dark2;
@@ -64,23 +78,12 @@ $menu-modal-title: $brand-bright;
 $menu-modal-main-item: $brand-bright;
 $menu-modal-sub-item: $brand-bright;
 
+// Nav
+$navigation-entries-color: $brand-bright;
+$navigation-entries-color-selected: $brand-bright;
+
 // Spinner
 $spinner-color: $brand-bright;
-
-// Forms
-$form-border-color: $brand-bright;
-$form-label-color: $brand-bright;
-$form-forgot-password-color: $brand-bright;
-$form-placeholder-color: $brand-bright;
-$form-required-color: $red-validation;
-$form-error-color: $red-validation;
-$form-error-secondColor: $brand-dark2;
-
-// Footer
-$footer-background: transparent;
-$footer-separator: $brand-bright;
-$footer-follow: $brand-bright;
-
 
 /******************************************************************************
  * MISC

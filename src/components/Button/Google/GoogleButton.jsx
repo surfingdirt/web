@@ -1,7 +1,7 @@
 /* global gapi */
 
 import GOOGLE_LOGIN from 'Apollo/mutations/googleLogin.gql';
-import Button from 'Components/Button/Button';
+import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import Google from 'Images/google.svg';
 import { InlineSpinner } from 'Components/Spinner';

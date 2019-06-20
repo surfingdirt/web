@@ -1,13 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
 import LOGIN from 'Apollo/mutations/login.gql';
 import Header from 'Components/Header';
-import PageContainer from 'Components/PageContainer';
 import Translate from 'Hocs/Translate';
 import contexts from '~/contexts';
 import routes from '~/routes';
@@ -84,7 +83,7 @@ class LogInPage extends Component {
     }
 
     return (
-      <PageContainer className="limitedWidthContent">
+      <Fragment>
         <Header type="main">{t('signIn')}</Header>
         <Mutation mutation={LOGIN}>
           {(mutate) => (
@@ -94,7 +93,7 @@ class LogInPage extends Component {
             />
           )}
         </Mutation>
-      </PageContainer>
+      </Fragment>
     );
   }
 }

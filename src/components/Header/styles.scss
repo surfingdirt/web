@@ -1,14 +1,17 @@
+@import "../../styles/font-faces";
 @import "../../styles/font-sizes";
 @import "../../styles/colors";
 
+%titleFont {
+  font-family: $title-font-families;
+}
+
 %big {
   font-size: $font-size-big;
-  font-weight: bold;
 }
 
 %medium {
   font-size: $font-size-medium;
-  font-weight: bold;
 }
 
 %defaultColor {
@@ -16,6 +19,9 @@
 }
 
 .main {
-  @extend %big, %defaultColor;
+  @extend %big, %defaultColor, %titleFont;
 }
 
+.listItem {
+  @extend %medium, %defaultColor, %titleFont;
+}

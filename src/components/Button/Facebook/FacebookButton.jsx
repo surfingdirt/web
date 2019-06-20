@@ -1,7 +1,7 @@
 /* global FB */
 
 import FACEBOOK_LOGIN from 'Apollo/mutations/facebookLogin.gql';
-import Button from 'Components/Button/Button';
+import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import Facebook from 'Images/facebook-logo-white.svg';
 import { InlineSpinner } from 'Components/Spinner';
