@@ -70,4 +70,17 @@ $max-content-width: 1545px;
 
 .main {
   grid-area: main;
+  //overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
 }
+// TODO: figure something out
+//.main::-webkit-scrollbar {
+//  width: 5px;
+//}
+//.main::-webkit-scrollbar-button {
+//  background-color: $scrollbar-color-thumb;
+//}
+//.main::-webkit-scrollbar-track {
+//  background-color: $scrollbar-color-track;
+//}
