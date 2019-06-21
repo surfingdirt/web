@@ -27,9 +27,9 @@ const getIcon = (type) => {
   }
 };
 
-const NavigationLink = ({ className, icon, label, to }) => {
+const NavigationLink = ({ active, className, icon, label, to }) => {
   return (
-    <Link to={to} className={classnames(className, styles.wrapper)}>
+    <Link to={to} className={classnames(className, styles.wrapper, { [styles.active]: active })}>
       <span>{getIcon(icon)}</span>
       <span>{label}</span>
     </Link>
@@ -37,6 +37,7 @@ const NavigationLink = ({ className, icon, label, to }) => {
 };
 
 NavigationLink.propTypes = {
+  active: PropTypes.bool,
   className: PropTypes.string,
   icon: PropTypes.node,
   label: PropTypes.string.isRequired,
@@ -44,6 +45,7 @@ NavigationLink.propTypes = {
 };
 
 NavigationLink.defaultProps = {
+  active: false,
   className: null,
   icon: null,
 };

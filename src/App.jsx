@@ -42,7 +42,8 @@ const Photo = Loadable({
   loading,
 });
 const NewPhoto = Loadable({
-  loader: () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
+  loader: () =>
+    import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
   loading,
 });
 const User = Loadable({
@@ -53,6 +54,17 @@ const { AppContext, AppContextValueObject } = contexts;
 
 const MOUSE_MODE_CLASS = 'mouse-mode';
 const MOUSE_MOVE_EVENT = 'mousemove';
+
+const DefaultLayoutRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(matchProps) => (
+      <Layout>
+        <Component {...matchProps} />
+      </Layout>
+    )}
+  />
+);
 
 class App extends React.Component {
   static propTypes = {
@@ -81,20 +93,18 @@ class App extends React.Component {
   renderApp(contextValues) {
     return (
       <AppContext.Provider value={contextValues}>
-        <Layout>
-          <Switch>
-            <Route exact path={HOME} component={Home} />
-            <Route exact path={ALBUM} component={Album} />
-            <Route exact path={ERROR} component={Error} />
-            <Route path={LOGIN} component={LogIn} />
-            <Route path={PHOTO_NEW} component={NewPhoto} />
-            <Route path={PHOTO} component={Photo} />
-            <Route path={USER} component={User} />
-            <Route path={VIDEO} component={Video} />
+        <Switch>
+          <DefaultLayoutRoute exact path={HOME} component={Home} />
+          <DefaultLayoutRoute exact path={ALBUM} component={Album} />
+          <DefaultLayoutRoute exact path={ERROR} component={Error} />
+          <DefaultLayoutRoute path={LOGIN} component={LogIn} />
+          <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} />
+          <DefaultLayoutRoute path={PHOTO} component={Photo} />
+          <DefaultLayoutRoute path={USER} component={User} />
+          <DefaultLayoutRoute path={VIDEO} component={Video} />
 
-            <Route component={Page404} />
-          </Switch>
-        </Layout>
+          <DefaultLayoutRoute component={Page404} />
+        </Switch>
       </AppContext.Provider>
     );
   }

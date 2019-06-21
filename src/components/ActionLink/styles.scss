@@ -7,12 +7,12 @@
 
 .defaultIcon {
   display: inline-block;
-  color: $navigationlink-color;
+  color: $actionlink-color;
   line-height: 0;
   width: 1.25em;
   border-radius: 50%;
-  border: 2px solid $navigationlink-color;
-  background-color: $navigationlink-color-inverted;
+  border: 2px solid $actionlink-color;
+  background-color: $actionlink-color-inverted;
   padding: .5em;
   box-sizing: content-box;
 }

@@ -2,8 +2,26 @@
 @import "../../styles/colors";
 
 .wrapper {
+  padding: $padding-small-3 $padding-small-1 $padding-small-2;
+  border-radius: 3px;
   color: $navigationlink-color;
   line-height: 2.5em;
+
+  .defaultIcon {
+    display: inline-block;
+    width: 1.25em;
+    margin-right: $margin-small-2;
+    color: $navigationlink-color;
+    background-color: $navigationlink-background-color;
+  }
+
+  &.active {
+    color: $navigationlink-color-active;
+    background-color: $navigationlink-background-color-active;
+    .defaultIcon {
+      color: $navigationlink-color-active;
+    }
+  }
 
   span {
     display: inline-block;
@@ -11,9 +29,3 @@
   }
 }
 
-.defaultIcon {
-  display: inline-block;
-  width: 1.25em;
-  margin-right: $margin-small-2;
-  color: $navigationlink-color;
-}

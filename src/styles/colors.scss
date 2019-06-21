@@ -45,6 +45,10 @@ $header-title-color: $brand-bright;
  * FUNCTIONAL STYLING
  *****************************************************************************/
 
+// Action links
+$actionlink-color: $brand-bright;
+$actionlink-color-inverted: $brand-dark2;
+
 // Cards
 $card-background-color: $brand-dark2;
 
@@ -84,7 +88,9 @@ $navigation-entries-color-selected: $brand-bright;
 
 // Navigation links
 $navigationlink-color: $brand-bright;
-$navigationlink-color-inverted: $brand-dark2;
+$navigationlink-background-color: transparent;
+$navigationlink-color-active: $brand-dark2;
+$navigationlink-background-color-active: $brand-bright;
 
 // Spinner
 $spinner-color: $brand-bright;
