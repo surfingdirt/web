@@ -18,7 +18,7 @@ $rhs-width-big: 200px;
 $rhs-width-medium: 100px;
 $rhs-width-small: 60px;
 
-$header-padding-default: 50px;
+$logo-margin-default: 50px;
 $logo-width-default: 150px;
 
 /******************************************************************************
@@ -82,33 +82,19 @@ $logo-width-default: 150px;
 }
 
 .headerBackground {
-  position: absolute;
-  background: $masthead-background-color;
-  z-index: 0;
-}
-
-.headerContents {
   position: fixed;
-  top: 0;
   width: 100%;
   max-width: $max-content-width;
   height: $masthead-height;
-
-  display: flex;
-  padding: 0 $header-padding-default;
   background: $masthead-background-color;
-  justify-items: center;
-  align-items: center;
-  font-size: $font-size-big;
 }
 
 .logo {
   grid-area: logo;
-}
-
-.logoLink {
   display: inline-flex;
   width: $logo-width-default;
+  align-items: center;
+  margin-left: $logo-margin-default;
   flex-direction: row;
 }
 

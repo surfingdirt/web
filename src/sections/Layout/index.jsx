@@ -34,8 +34,8 @@ class Layout extends React.Component {
         <div className={styles.headerBackground} />
 
         <header className={styles.header}>
-          <div className={styles.headerContents} />
-          <Link to={HOME} className={classnames(styles.logoLink, styles.logo)}>
+          <div className={styles.headerBackground} />
+          <Link to={HOME} className={styles.logo}>
             <Logo title={title} />
           </Link>
           <div className={styles.search}>Search</div>
