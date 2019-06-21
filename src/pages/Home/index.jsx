@@ -24,42 +24,45 @@ const renderLogout = () => (
   </form>
 );
 
-const Index = ({ t }, context) => {
-  const {
-    galleryAlbumId,
-    login: {
-      data: { accessToken },
-    },
-  } = context;
-  const isLoggedIn = !!accessToken;
+class HomeRaw extends React.Component {
+  static contextType = AppContext;
 
-  return (
-    <DataRenderer
-      query={HOMEPAGE}
-      variables={{ albumId: galleryAlbumId }}
-      render={(data) => {
-        const {
-          album: { id, title, description },
-        } = data;
-        return (
-          <ul>
-            <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
-            <li>
-              <Link to={albumRoute(id)}>
-                <span>{title}</span>-<span>{description}</span>
-              </Link>
-            </li>
-          </ul>
-        );
-      }}
-    />
-  );
-};
+  static propTypes = {
+    t: PropTypes.func.isRequired,
+  };
 
-Index.contextType = AppContext;
+  render() {
+    const { t } = this.props;
+    const {
+      galleryAlbumId,
+      login: {
+        data: { accessToken },
+      },
+    } = this.context;
+    const isLoggedIn = !!accessToken;
 
-Index.propTypes = {
-  t: PropTypes.func.isRequired,
-};
+    return (
+      <DataRenderer
+        query={HOMEPAGE}
+        variables={{ albumId: galleryAlbumId }}
+        render={(data) => {
+          const {
+            album: { id, title, description },
+          } = data;
+          return (
+            <ul>
+              <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
+              <li>
+                <Link to={albumRoute(id)}>
+                  <span>{title}</span>-<span>{description}</span>
+                </Link>
+              </li>
+            </ul>
+          );
+        }}
+      />
+    );
+  }
+}
 
-export const Home = Translate(messages)(Index);
+export const Home = Translate(messages)(HomeRaw);
