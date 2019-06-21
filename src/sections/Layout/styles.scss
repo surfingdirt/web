@@ -18,16 +18,25 @@ $rhs-width-big: 200px;
 $rhs-width-medium: 100px;
 $rhs-width-small: 60px;
 
+$header-padding-default: 50px;
+$logo-width-default: 150px;
+
+/******************************************************************************
+ * WRAPPER
+ *****************************************************************************/
+
 .wrapper {
+  position: relative;
+  z-index: 1;
   display: grid;
   height: 100%;
   margin: 0 auto;
   max-width: $max-content-width;
-  padding-top: $masthead-height;
-  grid-template-rows: 1fr $footer-height;
+  grid-template-rows: $masthead-height 1fr $footer-height;
   grid-template-areas:
-          "navigation main actions"
-          "footer main actions";
+          "logo search activity profile"
+          "navigation main actions actions"
+          "footer main actions actions";
   grid-row-gap: 0;
 }
 
@@ -58,13 +67,84 @@ $rhs-width-small: 60px;
   }
 }
 
-.masthead {
+
+/******************************************************************************
+ * HEADER
+ *****************************************************************************/
+
+.header {
+  display: contents;
+
+  &>* {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.headerBackground {
+  position: absolute;
+  background: $masthead-background-color;
+  z-index: 0;
+}
+
+.headerContents {
   position: fixed;
   top: 0;
   width: 100%;
   max-width: $max-content-width;
   height: $masthead-height;
+
+  display: flex;
+  padding: 0 $header-padding-default;
+  background: $masthead-background-color;
+  justify-items: center;
+  align-items: center;
+  font-size: $font-size-big;
 }
+
+.logo {
+  grid-area: logo;
+}
+
+.logoLink {
+  display: inline-flex;
+  width: $logo-width-default;
+  flex-direction: row;
+}
+
+@media (max-width: $mobile-big-max) {
+  .headerContents {
+    padding: 0;
+  }
+
+  .logoLink {
+    margin: 0 auto;
+  }
+}
+
+.search {
+  grid-area: search;
+  color: $brand-dark2; // DELETE
+}
+
+.activity {
+  grid-area: activity;
+  color: $brand-dark2; // DELETE
+}
+
+.profile {
+  grid-area: profile;
+  color: $brand-dark2; // DELETE
+}
+
+.more {
+  display: none;
+}
+
+
+/******************************************************************************
+ * LHS
+ *****************************************************************************/
 
 .navigation {
   grid-area: navigation;
@@ -74,9 +154,19 @@ $rhs-width-small: 60px;
   grid-area: footer;
 }
 
+
+/******************************************************************************
+ * RHS
+ *****************************************************************************/
+
 .actions {
   grid-area: actions;
 }
+
+
+/******************************************************************************
+ * MAIN
+ *****************************************************************************/
 
 .main {
   grid-area: main;
