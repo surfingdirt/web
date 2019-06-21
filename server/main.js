@@ -15,7 +15,9 @@ import Loadable from '@7rulnik/react-loadable';
 import apolloClient from '~/apollo';
 import contexts from '~/contexts';
 import App from '~/App';
-import Favicon from 'Images/_old/favicon.png';
+import Favicon from 'Images/favicon.ico';
+import Favicon16 from 'Images/favicon-16x16.png';
+import Favicon32 from 'Images/favicon-32x32.png';
 import { generateMediaQueries } from 'Utils/styleUtils';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
@@ -123,6 +125,8 @@ const Main = (rootDir) => {
           .join('\n'),
         dir,
         favicon: `<link rel="shortcut icon" href=${Favicon}>`,
+        favicon16: `<link rel="icon" type="image/png" sizes="16x16" href="${Favicon16}">`,
+        favicon32: `<link rel="icon" type="image/png" sizes="32x32" href="${Favicon32}">`,
         html,
         inlineStyle: `<style>${generateMediaQueries()}</style>`,
         js:

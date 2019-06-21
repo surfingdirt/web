@@ -51,6 +51,13 @@ assetHook({
   name: '[name].[ext]',
 });
 
+assetHook({
+  extensions: ['ico'],
+  mimetype: 'image/ico',
+  publicPath: '/images/',
+  name: '[name].[ext]',
+});
+
 rawHook({
   extensions: ['svg', 'gql', 'graphql'],
 });

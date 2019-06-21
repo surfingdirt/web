@@ -3,7 +3,7 @@ module.exports = {
   setupTestFrameworkScriptFile: './src/setupTests.js',
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
-    '\\.(svg|png)$': '<rootDir>/src/fakeSVG.js',
+    '\\.(svg|png|ico)$': '<rootDir>/src/fakeSVG.js',
   },
   transform: {
     '.*': 'babel-jest',
