@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import Logo from 'Components/Logo';
+import SVG from 'Components/SVG';
+import Search from 'Images/search-circle.svg';
 import Actions from 'Sections/Actions';
 import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
@@ -27,29 +29,29 @@ class Layout extends React.Component {
     const {
       children,
       match: { url },
+      t,
     } = this.props;
     const { title } = this.context;
     return (
       <div className={styles.wrapper}>
-        <div className={styles.headerBackground} />
-
         <header className={styles.header}>
           <div className={styles.headerBackground} />
           <Link to={HOME} className={styles.logo}>
             <Logo title={title} />
           </Link>
-          <div className={styles.search}>Search</div>
+          <div className={styles.search}>
+            <SVG icon={Search} label="search" />
+          </div>
           <div className={styles.activity}>Activity</div>
           <div className={styles.profile}>Profile</div>
         </header>
-
-        <div className={styles.more}>More</div>
 
         <Navigation className={styles.navigation} url={url} />
         <Footer className={styles.footer} />
         <Actions className={styles.actions} />
         <Main className={styles.main}>{children}</Main>
-        <div className={styles.headerBackground} />
+
+        <div className={styles.more}>More</div>
       </div>
     );
   }
