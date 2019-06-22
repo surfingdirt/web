@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 
 import Logo from 'Components/Logo';
 import SVG from 'Components/SVG';
+import BottomBar from 'Images/bottom-bar.svg';
 import Search from 'Images/search-circle.svg';
+import ThreeDots from 'Images/navigation-menu-horizontal.svg';
 import Actions from 'Sections/Actions';
 import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
@@ -29,7 +30,6 @@ class Layout extends React.Component {
     const {
       children,
       match: { url },
-      t,
     } = this.props;
     const { title } = this.context;
     return (
@@ -51,7 +51,14 @@ class Layout extends React.Component {
         <Actions className={styles.actions} />
         <Main className={styles.main}>{children}</Main>
 
-        <div className={styles.more}>More</div>
+        <nav className={styles.bottomBar}>
+          <div className={styles.more}>
+            <SVG icon={ThreeDots} hollow label="" className={styles.moreIcon}/>
+          </div>
+          <div className={styles.bottomBarBackground}>
+            <SVG icon={BottomBar} hollow label="" />
+          </div>
+        </nav>
       </div>
     );
   }

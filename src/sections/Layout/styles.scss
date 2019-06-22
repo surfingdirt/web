@@ -48,7 +48,7 @@ $logo-width-default: 150px;
 @media (max-width: $mobile-layout-threshold) {
   .wrapper {
     grid-template-rows: $masthead-height 1fr $bottom-bar-height;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr .5fr;
     grid-template-areas:
             "logo logo logo search"
             "main main main main"
@@ -127,17 +127,28 @@ $logo-width-default: 150px;
   }
 }
 
-.search {
-  grid-area: search;
-  width: 3em;}
-
 .search,
 .activity,
-.profile {
+.profile,
+.more {
   display: flex;
   align-items: center;
-  color: $brand-dark2; // DELETE
+  justify-content: center;
+  color: $brand-bright; // DELETE
   padding: 0 $padding-small-2;
+}
+
+.search {
+  grid-area: search;
+  width: 3em;
+  color: $brand-dark2; // DELETE
+}
+
+@media (min-width: $mobile-layout-threshold) {
+  .activity,
+  .profile {
+    color: $brand-dark2; // DELETE
+  }
 }
 
 .activity {
@@ -154,16 +165,38 @@ $logo-width-default: 150px;
  * BOTTOM BAR
  *****************************************************************************/
 
-.more {
-  grid-area: more;
+.bottomBar {
+  display: contents;
+
+  &>* {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.bottomBarBackground {
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  max-width: $max-content-width;
+  height: $bottom-bar-height;
+  color: $brand-dark2;
 }
 
 @media (min-width: $mobile-layout-threshold) {
-  .more {
+  .bottomBar {
     display: none;
   }
 }
 
+.more {
+  grid-area: more;
+}
+
+.moreIcon {
+  width: 1.5em;
+}
 
 /******************************************************************************
  * LHS
@@ -198,6 +231,14 @@ $logo-width-default: 150px;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
 }
+
+@media (max-width: $mobile-layout-threshold) {
+  .main {
+    margin-bottom: -$bottom-bar-height;
+  }
+}
+
+
 // TODO: figure something out
 //.main::-webkit-scrollbar {
 //  width: 5px;
