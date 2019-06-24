@@ -8,7 +8,7 @@ $mobile-layout-threshold: $tablet-max;
 
 $masthead-height: 3.75rem;
 $footer-height: 2.5em;
-$bottom-bar-height: 4.5em;
+$bottom-bar-height: 4.5rem;
 $max-content-width: 1545px;
 
 $large-gap: $margin-huge;
@@ -24,6 +24,14 @@ $rhs-width-small: 60px;
 
 $logo-margin-default: 50px;
 $logo-width-default: 150px;
+
+%bottomBarItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $brand-bright; // DELETE
+  padding: 0 $padding-small-2;
+}
 
 /******************************************************************************
  * WRAPPER
@@ -52,7 +60,7 @@ $logo-width-default: 150px;
     grid-template-areas:
             "logo logo logo search"
             "main main main main"
-            "profile activity button more";
+            "profile activity actionButton more";
     grid-row-gap: 0;
   }
 
@@ -121,34 +129,23 @@ $logo-width-default: 150px;
   flex-direction: row;
 }
 
-@media (min-width: $mobile-layout-threshold) {
-  .logo {
-    margin: 0 0 0 $logo-margin-default;
-  }
-}
-
 .search,
 .activity,
 .profile,
 .more {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $brand-bright; // DELETE
-  padding: 0 $padding-small-2;
+  @extend %bottomBarItem;
+}
+
+.activity,
+.profile,
+.more {
+  background-color: $brand-dark2; // DELETE
 }
 
 .search {
   grid-area: search;
   width: 3em;
   color: $brand-dark2; // DELETE
-}
-
-@media (min-width: $mobile-layout-threshold) {
-  .activity,
-  .profile {
-    color: $brand-dark2; // DELETE
-  }
 }
 
 .activity {
@@ -159,6 +156,28 @@ $logo-width-default: 150px;
   grid-area: profile;
 }
 
+.actionButton {
+  position: relative;
+  top: -$bottom-bar-height / 2;
+  transform: rotateZ(-45deg);
+}
+
+@media (min-width: $mobile-layout-threshold) {
+  .logo {
+    margin: 0 0 0 $logo-margin-default;
+  }
+
+  .activity,
+  .profile {
+    color: $brand-dark2; // DELETE
+  }
+
+  .activity,
+  .profile,
+  .more {
+    background-color: $brand-bright; // DELETE
+  }
+}
 
 
 /******************************************************************************
@@ -172,6 +191,19 @@ $logo-width-default: 150px;
     position: relative;
     z-index: 1;
   }
+}
+
+.actionButtonWrapper {
+  grid-area: actionButton;
+  @extend %bottomBarItem;
+}
+
+.closeIcon {
+  font-size: .75em;
+}
+
+.actionWave {
+
 }
 
 .bottomBarBackground {
@@ -196,6 +228,12 @@ $logo-width-default: 150px;
 
 .moreIcon {
   width: 1.5em;
+}
+
+.bottomBarActionContainer {
+  position: absolute;
+  bottom: 120px;
+  display: none;
 }
 
 /******************************************************************************

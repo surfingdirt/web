@@ -1,0 +1,21 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+@import '../../styles/media-queries';
+
+.wrapper {
+  display: inline-block;
+  color: $bottom-bar-action-button-color;
+  line-height: 0;
+  font-size: 1em;
+  width: 1.25em;
+  border-radius: 50%;
+  border: 2px solid $bottom-bar-action-button-color;
+  background-color: $bottom-bar-action-button-background-color;
+  padding: .5em;
+  box-sizing: content-box;
+
+  &:active {
+    color: $bottom-bar-action-button-color-active;
+    background-color: $bottom-bar-action-button-background-color-active;
+  }
+}
