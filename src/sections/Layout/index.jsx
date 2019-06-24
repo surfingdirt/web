@@ -26,6 +26,8 @@ import styles from './styles.scss';
 const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
 const { AppContext } = contexts;
 
+const RESIZE = 'resize';
+
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -36,23 +38,38 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { bottomBarActionsOpen: false };
+    this.state = { bottomBarActionsOpen: false, actionButtonOrigin: [0, 0] };
 
     this.onActionButtonClick = this.onActionButtonClick.bind(this);
     this.closeActionButtons = this.closeActionButtons.bind(this);
+    this.onResize = this.onResize.bind(this);
 
     this.actionButtonRef = React.createRef();
-    this.actionButtonWrapperRef = React.createRef();
   }
 
   componentDidMount() {
-    console.log('actionButtonRef', this.actionButtonRef.current);
-    console.log('actionButtonWrapperRef', this.actionButtonWrapperRef.current);
+    window.addEventListener(RESIZE, this.onResize);
+    this.onResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(RESIZE, this.onResize);
+  }
+
+  onResize() {
+    this.setState({
+      actionButtonOrigin: this.getOrigin(),
+    });
   }
 
   onActionButtonClick() {
     const { bottomBarActionsOpen } = this.state;
     this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
+  }
+
+  getOrigin() {
+    const buttonEl = this.actionButtonRef.current;
+    return [buttonEl.offsetLeft + buttonEl.offsetWidth, buttonEl.offsetTop];
   }
 
   closeActionButtons() {
@@ -66,7 +83,7 @@ class Layout extends React.Component {
       t,
     } = this.props;
 
-    const { bottomBarActionsOpen } = this.state;
+    const { bottomBarActionsOpen, actionButtonOrigin } = this.state;
 
     const { title } = this.context;
 
@@ -102,10 +119,12 @@ class Layout extends React.Component {
           <div className={styles.actionButtonWrapper} ref={this.actionButtonWrapperRef}>
             <BottomBarActionButton
               ref={this.actionButtonRef}
-              className={classnames(styles.actionButton, {
-                [styles.actionButtonActive]: bottomBarActionsOpen,
-              })}
-              icon={getIcon(icons.CLOSE, t('actionButton'), styles.closeIcon)}
+              className={styles.actionButton}
+              icon={getIcon(
+                icons.CLOSE,
+                t('actionButton'),
+                classnames(styles.closeIcon, { [styles.closeIconActive]: bottomBarActionsOpen }),
+              )}
               onClick={this.onActionButtonClick}
               active={bottomBarActionsOpen}
             />
@@ -113,6 +132,7 @@ class Layout extends React.Component {
               className={classnames(styles.bottomBarActionContainer, {
                 [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
               })}
+              origin={actionButtonOrigin}
               items={actionItems}
               open={bottomBarActionsOpen}
               onNavigation={this.closeActionButtons}

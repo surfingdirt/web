@@ -160,12 +160,6 @@ $logo-width-default: 150px;
 .actionButton {
   position: relative;
   top: -$bottom-bar-height / 2;
-  transform: rotateZ(-45deg);
-  transition: all $bottom-bar-action-button-toggle-duration;
-
-  &.actionButtonActive {
-    transform: rotateZ(0);
-  }
 }
 
 @media (min-width: $mobile-layout-threshold) {
@@ -207,6 +201,13 @@ $logo-width-default: 150px;
 
 .closeIcon {
   font-size: .75em;
+  display: inline-block;
+  transform: rotateZ(-45deg);
+  transition: all $bottom-bar-action-button-toggle-duration;
+
+  &.closeIconActive {
+    transform: rotateZ(0);
+  }
 }
 
 .actionWave {

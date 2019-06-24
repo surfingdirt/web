@@ -7,20 +7,25 @@ import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
 
-// TODO: calculer les offsets de facon dynamique
-const offsets = [
-  [-40, -80],
-  [ 20, -150],
-  [120, -150],
-];
+const RADIUS = 100;
+const START_ANGLE = 180 - 22.5;
+const ANGULAR_DISTANCE = 45;
 
-const BottomBarActions = ({ className, items, onNavigation, open }) => {
+const BottomBarActions = ({ className, items, onNavigation, open, origin }) => {
+  const offsets = items.map((item, i) => {
+    const angle = ((START_ANGLE - i * ANGULAR_DISTANCE) * Math.PI) / 180;
+    const x = origin[0] + RADIUS * Math.cos(angle);
+    const y = origin[1] - RADIUS * Math.sin(angle);
+
+    return [x, y];
+  });
+
   return (
     <div className={classnames(styles.wrapper, className)}>
       <ul className={styles.linkList}>
         {items.map((props, index) => {
           const [x, y] = offsets[index];
-          const style = open ? {transform: `translate(${x}px, ${y}px)`} : {};
+          const style = open ? { transform: `translate(${x}px, ${y}px)` } : {};
           const buttonProps = Object.assign({}, props, { icon: getIcon(props.icon) });
 
           return (
@@ -44,7 +49,8 @@ BottomBarActions.propTypes = {
     }),
   ).isRequired,
   onNavigation: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  origin: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default BottomBarActions;
