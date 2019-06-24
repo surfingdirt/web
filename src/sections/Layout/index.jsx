@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
@@ -32,12 +33,40 @@ class Layout extends React.Component {
 
   static contextType = AppContext;
 
+  constructor(props) {
+    super(props);
+
+    this.state = { bottomBarActionsOpen: false };
+
+    this.onActionButtonClick = this.onActionButtonClick.bind(this);
+    this.closeActionButtons = this.closeActionButtons.bind(this);
+
+    this.actionButtonRef = React.createRef();
+    this.actionButtonWrapperRef = React.createRef();
+  }
+
+  componentDidMount() {
+    console.log('actionButtonRef', this.actionButtonRef.current);
+    console.log('actionButtonWrapperRef', this.actionButtonWrapperRef.current);
+  }
+
+  onActionButtonClick() {
+    const { bottomBarActionsOpen } = this.state;
+    this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
+  }
+
+  closeActionButtons() {
+    this.setState({ bottomBarActionsOpen: false });
+  }
+
   render() {
     const {
       children,
       match: { url },
       t,
     } = this.props;
+
+    const { bottomBarActionsOpen } = this.state;
 
     const { title } = this.context;
 
@@ -70,13 +99,24 @@ class Layout extends React.Component {
           <button type="button" className={styles.more}>
             <SVG icon={ThreeDots} hollow label={t('more')} className={styles.moreIcon} />
           </button>
-          <div className={styles.actionButtonWrapper}>
+          <div className={styles.actionButtonWrapper} ref={this.actionButtonWrapperRef}>
             <BottomBarActionButton
-              className={styles.actionButton}
-              icon={getIcon(icons.CLOSE, t('close'), styles.closeIcon)}
-              active={false}
+              ref={this.actionButtonRef}
+              className={classnames(styles.actionButton, {
+                [styles.actionButtonActive]: bottomBarActionsOpen,
+              })}
+              icon={getIcon(icons.CLOSE, t('actionButton'), styles.closeIcon)}
+              onClick={this.onActionButtonClick}
+              active={bottomBarActionsOpen}
             />
-            <BottomBarActions className={styles.bottomBarActionContainer} items={actionItems} />
+            <BottomBarActions
+              className={classnames(styles.bottomBarActionContainer, {
+                [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
+              })}
+              items={actionItems}
+              open={bottomBarActionsOpen}
+              onNavigation={this.closeActionButtons}
+            />
 
             {/*<div className={styles.actionWave}>*/}
             {/*<SVG icon={BottomBar} hollow label="" />*/}

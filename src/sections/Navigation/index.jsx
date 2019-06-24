@@ -16,31 +16,35 @@ import messages from './messages';
 const { ALBUMS, USERS } = routes;
 const { AppContext } = contexts;
 
-const Navigation = ({ className, t, url }, { galleryAlbumId }) => {
-  const items = [
-    { to: albumRoute(galleryAlbumId), icon: icons.HOT, label: t('gallery') },
-    { to: ALBUMS, icon: icons.ALBUM, label: t('albums') },
-    { to: USERS, icon: icons.USERS, label: t('riders') },
-  ];
-  return (
-    <nav className={classnames(styles.wrapper, className)}>
-      <ul className={styles.linkList}>
-        {items.map((props) => (
-          <li key={props.to}>
-            <NavigationLink {...props} active={props.to === url} />
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+class Navigation extends React.Component {
+  static propTypes = {
+    t: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  };
 
-Navigation.propTypes = {
-  t: PropTypes.func.isRequired,
-  className: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};
+  static contextType = AppContext;
 
-Navigation.contextType = AppContext;
+  render() {
+    const { className, t, url } = this.props;
+    const { galleryAlbumId } = this.context;
+    const items = [
+      { to: albumRoute(galleryAlbumId), icon: icons.HOT, label: t('gallery') },
+      { to: ALBUMS, icon: icons.ALBUM, label: t('albums') },
+      { to: USERS, icon: icons.USERS, label: t('riders') },
+    ];
+    return (
+      <nav className={classnames(styles.wrapper, className)}>
+        <ul className={styles.linkList}>
+          {items.map((props) => (
+            <li key={props.to}>
+              <NavigationLink {...props} active={props.to === url} />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  }
+}
 
 export default Translate(messages)(withRouter(Navigation));

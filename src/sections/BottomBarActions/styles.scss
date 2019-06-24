@@ -1,17 +1,21 @@
+@import "../../styles/animations";
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
 
 .wrapper {
-  text-align: center;
 }
 
 .linkList {
   list-style-type: none;
-  margin: $margin-medium-2 0;
+  margin: 0;
   padding: 0;
 
   li {
-    margin: $margin-medium-2 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    transition: all $bottom-bar-action-button-scatter-duration;
   }
 
   a {

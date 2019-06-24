@@ -1,3 +1,4 @@
+@import '../../styles/animations';
 @import '../../styles/boxmodel';
 @import '../../styles/colors';
 @import '../../styles/font-sizes';
@@ -160,6 +161,11 @@ $logo-width-default: 150px;
   position: relative;
   top: -$bottom-bar-height / 2;
   transform: rotateZ(-45deg);
+  transition: all $bottom-bar-action-button-toggle-duration;
+
+  &.actionButtonActive {
+    transform: rotateZ(0);
+  }
 }
 
 @media (min-width: $mobile-layout-threshold) {
@@ -195,6 +201,7 @@ $logo-width-default: 150px;
 
 .actionButtonWrapper {
   grid-area: actionButton;
+  background-color: $brand-dark2; // DELETE
   @extend %bottomBarItem;
 }
 
@@ -231,9 +238,13 @@ $logo-width-default: 150px;
 }
 
 .bottomBarActionContainer {
-  position: absolute;
-  bottom: 120px;
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+
+  &.bottomBarActionContainerVisible {
+    pointer-events: initial;
+    opacity: 1;
+  }
 }
 
 /******************************************************************************

@@ -130,7 +130,7 @@ const Main = (rootDir) => {
         html,
         inlineStyle: `<style>${generateMediaQueries()}</style>`,
         js:
-          null &&
+          // null &&
           ['main.bundle.js']
             .concat(scripts.map((x) => x.file))
             .map((file) => `<script src="/${file}"></script>`)

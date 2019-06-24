@@ -13,8 +13,9 @@
   background-color: $bottom-bar-action-button-background-color;
   padding: .5em;
   box-sizing: content-box;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
 
-  &:active {
+  &.active {
     color: $bottom-bar-action-button-color-active;
     background-color: $bottom-bar-action-button-background-color-active;
   }
