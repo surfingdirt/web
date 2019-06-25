@@ -69,7 +69,10 @@ class Layout extends React.Component {
 
   getOrigin() {
     const buttonEl = this.actionButtonRef.current;
-    return [buttonEl.offsetLeft + buttonEl.offsetWidth, buttonEl.offsetTop];
+    return [
+      buttonEl.offsetLeft + buttonEl.offsetWidth,
+      buttonEl.offsetTop - buttonEl.offsetHeight / 2,
+    ];
   }
 
   closeActionButtons() {
@@ -138,9 +141,9 @@ class Layout extends React.Component {
               onNavigation={this.closeActionButtons}
             />
 
-            {/*<div className={styles.actionWave}>*/}
-            {/*<SVG icon={BottomBar} hollow label="" />*/}
-            {/*</div>*/}
+            <div className={styles.bottomBarBackground}>
+              <SVG icon={BottomBar} hollow label="" />
+            </div>
           </div>
         </nav>
       </div>

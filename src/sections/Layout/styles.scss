@@ -4,13 +4,27 @@
 @import '../../styles/font-sizes';
 @import '../../styles/media-queries';
 
+%navigationItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $bottom-bar-text-color;
+  padding: 0 $padding-small-2;
+  background: transparent;
+  border: 0;
+  z-index: 2;
+}
 
-$mobile-layout-threshold: $tablet-max;
+$mobile-layout-threshold-min: $tablet-max + 1px;
+$mobile-layout-threshold-max: $tablet-max;
+
+$max-content-width: 1545px;
 
 $masthead-height: 3.75rem;
+
 $footer-height: 2.5em;
-$bottom-bar-height: 4.5rem;
-$max-content-width: 1545px;
+
+$bottom-bar-height: 3.625rem;
 
 $large-gap: $margin-huge;
 $medium-gap: $margin-medium-1;
@@ -26,14 +40,6 @@ $rhs-width-small: 60px;
 $logo-margin-default: 50px;
 $logo-width-default: 150px;
 
-%bottomBarItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $brand-bright; // DELETE
-  padding: 0 $padding-small-2;
-}
-
 /******************************************************************************
  * WRAPPER
  *****************************************************************************/
@@ -45,24 +51,18 @@ $logo-width-default: 150px;
   height: 100vh;
   margin: 0 auto;
   max-width: $max-content-width;
-  grid-template-rows: $masthead-height 1fr $footer-height;
-  grid-template-areas:
-          "logo search activity profile"
-          "navigation main actions actions"
-          "footer main actions actions";
-  grid-row-gap: 0;
 }
 
-
-@media (max-width: $mobile-layout-threshold) {
+@media (max-width: $mobile-layout-threshold-max) {
   .wrapper {
     grid-template-rows: $masthead-height 1fr $bottom-bar-height;
-    grid-template-columns: 1fr 1fr 1fr .5fr;
+    grid-template-columns: 1fr 75px 75px 80px 65px;
     grid-template-areas:
-            "logo logo logo search"
-            "main main main main"
-            "profile activity actionButton more";
+            "logo logo logo logo search"
+            "main main main main main"
+            ". profile activity actionButton more";
     grid-row-gap: 0;
+    grid-column-gap: 0;
   }
 
   .actions,
@@ -72,9 +72,15 @@ $logo-width-default: 150px;
   }
 }
 
-@media (min-width: $mobile-layout-threshold) {
+@media (min-width: $mobile-layout-threshold-min) {
   .wrapper {
+    grid-template-rows: $masthead-height 1fr $footer-height;
     grid-template-columns: $lhs-width-small 1fr $rhs-width-small;
+    grid-template-areas:
+            "logo search activity profile"
+            "navigation main actions actions"
+            "footer main actions actions";
+    grid-row-gap: 0;
     grid-column-gap: $small-gap;
   }
 }
@@ -109,7 +115,7 @@ $logo-width-default: 150px;
 
   &>* {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 }
 
@@ -130,23 +136,9 @@ $logo-width-default: 150px;
   flex-direction: row;
 }
 
-.search,
-.activity,
-.profile,
-.more {
-  @extend %bottomBarItem;
-}
-
-.activity,
-.profile,
-.more {
-  background-color: $brand-dark2; // DELETE
-}
-
 .search {
   grid-area: search;
   width: 3em;
-  color: $brand-dark2; // DELETE
 }
 
 .activity {
@@ -157,25 +149,9 @@ $logo-width-default: 150px;
   grid-area: profile;
 }
 
-.actionButton {
-  position: relative;
-  top: -$bottom-bar-height / 2;
-}
-
-@media (min-width: $mobile-layout-threshold) {
+@media (min-width: $mobile-layout-threshold-max) {
   .logo {
     margin: 0 0 0 $logo-margin-default;
-  }
-
-  .activity,
-  .profile {
-    color: $brand-dark2; // DELETE
-  }
-
-  .activity,
-  .profile,
-  .more {
-    background-color: $brand-bright; // DELETE
   }
 }
 
@@ -187,55 +163,35 @@ $logo-width-default: 150px;
 .bottomBar {
   display: contents;
 
-  &>* {
+  & > * {
     position: relative;
     z-index: 1;
   }
 }
 
-.actionButtonWrapper {
-  grid-area: actionButton;
-  background-color: $brand-dark2; // DELETE
-  @extend %bottomBarItem;
-}
-
-.closeIcon {
-  font-size: .75em;
-  display: inline-block;
-  transform: rotateZ(-45deg);
-  transition: all $bottom-bar-action-button-toggle-duration;
-
-  &.closeIconActive {
-    transform: rotateZ(0);
-  }
-}
-
-.actionWave {
-
-}
-
-.bottomBarBackground {
-  position: fixed;
-  bottom: 0;
-  z-index: 0;
-  width: 100%;
-  max-width: $max-content-width;
-  height: $bottom-bar-height;
-  color: $brand-dark2;
-}
-
-@media (min-width: $mobile-layout-threshold) {
+@media (min-width: $mobile-layout-threshold-min) {
   .bottomBar {
     display: none;
   }
 }
 
-.more {
-  grid-area: more;
+.bottomBarBackground {
+  position: fixed;
+  z-index: 0;
+  width: $mobile-layout-threshold-max;
+  height: $bottom-bar-height;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  color: $bottom-bar-background-color;
+  pointer-events: none;
 }
 
-.moreIcon {
-  width: 1.5em;
+.actionButton {
+  position: relative;
+  z-index: 0;
+  transform: translate(-50%, -55%);
+  margin-left: 50%;
 }
 
 .bottomBarActionContainer {
@@ -247,6 +203,43 @@ $logo-width-default: 150px;
     opacity: 1;
   }
 }
+
+.actionButtonWrapper,
+.search,
+.activity,
+.profile,
+.more {
+  @extend %navigationItem;
+}
+
+.actionButtonWrapper {
+  display: block;
+  grid-area: actionButton;
+  padding: 0;
+}
+
+.more {
+  grid-area: more;
+  background: transparent;
+  border: 0;
+  z-index: 2;
+}
+
+.moreIcon {
+  width: 1.5em;
+}
+
+.closeIcon {
+  display: inline-block;
+  width: 1.25rem;
+  transform: rotateZ(-45deg);
+  transition: all $bottom-bar-action-button-toggle-duration;
+
+  &.closeIconActive {
+    transform: rotateZ(0);
+  }
+}
+
 
 /******************************************************************************
  * LHS
@@ -282,14 +275,14 @@ $logo-width-default: 150px;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
 }
 
-@media (max-width: $mobile-layout-threshold) {
+@media (max-width: $mobile-layout-threshold-max) {
   .main {
     margin-bottom: -$bottom-bar-height;
   }
 }
 
 
-// TODO: figure something out
+// TODO: figure something out for scrollbars
 //.main::-webkit-scrollbar {
 //  width: 5px;
 //}
