@@ -1,8 +1,24 @@
 @import "../../styles/animations";
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import "../../styles/z-indices";
+
+$z-index-action-buttons: 2;
+$z-index-overlay: 1;
 
 .wrapper {
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-overlay;
+  background: radial-gradient(circle at 80% 100%, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: all $bottom-bar-action-button-scatter-duration $default-transition-function;
 }
 
 .linkList {
@@ -13,10 +29,10 @@
   li {
     margin: 0;
     position: absolute;
-    z-index: 0;
+    z-index: $z-index-action-buttons;
     top: 0;
     left: -40px;
-    transition: all $bottom-bar-action-button-scatter-duration;
+    transition: all $bottom-bar-action-button-scatter-duration $default-transition-function;
   }
 
   a {

@@ -138,7 +138,7 @@ class Layout extends React.Component {
               origin={actionButtonOrigin}
               items={actionItems}
               open={bottomBarActionsOpen}
-              onNavigation={this.closeActionButtons}
+              onCloseRequest={this.closeActionButtons}
             />
 
             <div className={styles.bottomBarBackground}>
