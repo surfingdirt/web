@@ -4,9 +4,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import BottomBarActionButton from 'Components/BottomBarActionButton';
+import PopupActionButton from 'Components/PopupActionButton';
 import Logo from 'Components/Logo';
-import NamedIcon from 'Components/NamedIcon';
+import NamedNavigationItem from 'Components/NamedNavigationItem';
 import Profile from 'Components/Profile';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
@@ -96,6 +96,8 @@ class Layout extends React.Component {
       { to: VIDEO_NEW, icon: icons.VIDEO, label: t('postAVideo') },
     ];
 
+    const overlayStyle = { opacity: bottomBarActionsOpen ? '1.0' : '0' };
+
     return (
       <div className={styles.wrapper}>
         <header className={styles.header}>
@@ -107,9 +109,9 @@ class Layout extends React.Component {
             {getIcon({ type: icons.SEARCH, label: t('search'), standardIcon: true })}
           </div>
           <div className={styles.activity}>
-            <NamedIcon
+            <NamedNavigationItem
               label={t('activity')}
-              icon={getIcon({ type: icons.ACTIVITY, standardIcon: true, presentationOnly: true })}
+              visual={getIcon({ type: icons.ACTIVITY, standardIcon: true, presentationOnly: true })}
             />
           </div>
           <Profile className={styles.profile} to="toto" name="Mikael" />
@@ -121,44 +123,51 @@ class Layout extends React.Component {
         <Main className={styles.main}>{children}</Main>
 
         <nav className={styles.bottomBar}>
+          <div className={styles.overlay} style={overlayStyle} onClick={this.onActionButtonClick} />
+
           <button type="button" className={styles.more}>
-            <NamedIcon
+            <NamedNavigationItem
               label={t('more')}
-              icon={getIcon({ type: icons.THREEDOTS, presentationOnly: true, standardIcon: true })}
+              visual={getIcon({
+                type: icons.THREEDOTS,
+                presentationOnly: true,
+                standardIcon: true,
+              })}
             />
           </button>
 
-          <div className={styles.actionButtonWrapper}>
-            <BottomBarActionButton
-              ref={this.actionButtonRef}
-              className={styles.actionButton}
-              onClick={this.onActionButtonClick}
-              active={bottomBarActionsOpen}
-            >
-              <NamedIcon
-                label={t('actionButton')}
-                icon={getIcon({
+          <div className={styles.plusButtonWrapper}>
+            <span aria-hidden="true" className={styles.plusLabel}>
+              {t('actionButton')}
+            </span>
+            <div className={styles.plusButtonOffset} onClick={this.onActionButtonClick}>
+              <PopupActionButton
+                ref={this.actionButtonRef}
+                className={styles.plusButton}
+                active={bottomBarActionsOpen}
+              >
+                {getIcon({
                   type: icons.CLOSE,
+                  label: t('actionButton'),
                   className: classnames(styles.closeIcon, {
                     [styles.closeIconActive]: bottomBarActionsOpen,
                   }),
                 })}
+              </PopupActionButton>
+
+              <BottomBarActions
+                className={classnames(styles.bottomBarActionContainer, {
+                  [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
+                })}
+                origin={actionButtonOrigin}
+                items={actionItems}
+                open={bottomBarActionsOpen}
+                onCloseRequest={this.closeActionButtons}
               />
-            </BottomBarActionButton>
-
-            <BottomBarActions
-              className={classnames(styles.bottomBarActionContainer, {
-                [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
-              })}
-              origin={actionButtonOrigin}
-              items={actionItems}
-              open={bottomBarActionsOpen}
-              onCloseRequest={this.closeActionButtons}
-            />
-
-            <div className={styles.bottomBarBackground}>
-              <SVG icon={BottomBar} hollow presentationOnly />
             </div>
+          </div>
+          <div className={styles.bottomBarBackground}>
+            <SVG icon={BottomBar} hollow presentationOnly />
           </div>
         </nav>
       </div>
