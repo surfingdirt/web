@@ -43,7 +43,6 @@ $logo-width-default: 150px;
   padding: 0 $padding-small-2;
   background: transparent;
   border: 0;
-  //z-index: 2;
 }
 
 
@@ -122,7 +121,7 @@ $logo-width-default: 150px;
 
   &>* {
     position: relative;
-    z-index: 2;
+    z-index: $z-index-header-items;
   }
 }
 
@@ -145,7 +144,6 @@ $logo-width-default: 150px;
 
 .search {
   grid-area: search;
-  width: 3em;
 }
 
 .activity {
@@ -227,13 +225,9 @@ $logo-width-default: 150px;
 
 .more {
   grid-area: more;
-  background: transparent;
-  border: 0;
-  //z-index: 2;
-}
-
-.moreIcon {
-  width: 1.5em;
+  padding-right: $padding-small-2;
+  margin-right: $margin-small-2;
+  z-index: $z-index-bottom-bar-more-button;
 }
 
 .closeIcon {

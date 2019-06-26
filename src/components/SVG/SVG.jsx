@@ -14,6 +14,10 @@ export default class SVG extends PureComponent {
     icon: PropTypes.string.isRequired,
     // The label to associate with the icon
     label: (props, propName) => {
+      if (props[propName] === '') {
+        throw new Error('Empty label should be replaced with presentationOnly.');
+      }
+
       if (
         typeof props.onClick === 'function' &&
         typeof props[propName] === 'undefined' &&
@@ -29,24 +33,28 @@ export default class SVG extends PureComponent {
     onClick: PropTypes.func,
     // True if the icon is just for looks and should not be visible to screen readers.
     presentationOnly: PropTypes.bool,
+    // Apply standard styles
+    standardIcon: PropTypes.bool,
   };
 
   static defaultProps = {
     active: false,
     className: null,
     hollow: false,
-    label: '',
+    label: null,
     onClick: null,
     presentationOnly: false,
+    standardIcon: false,
   };
 
   render() {
-    const { className, active, icon, label, hollow, onClick } = this.props;
+    const { className, active, icon, label, hollow, onClick, standardIcon } = this.props;
 
     const actualClassName = classnames(
       className,
       active ? 'active' : '',
       hollow ? 'hollow' : 'full',
+      standardIcon ? 'standardIcon' : '',
     );
 
     const attributes = { svg: icon, className: actualClassName };

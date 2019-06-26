@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import BottomBarActionButton from 'Components/BottomBarActionButton';
 import Logo from 'Components/Logo';
+import Profile from 'Components/Profile';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
 import BottomBar from 'Images/bottom-bar.svg';
@@ -104,10 +105,10 @@ class Layout extends React.Component {
             <Logo title={title} />
           </Link>
           <div className={styles.search}>
-            <SVG icon={Search} label={t('search')} />
+            <SVG icon={Search} label={t('search')} standardIcon />
           </div>
           <div className={styles.activity}>{t('activity')}</div>
-          <div className={styles.profile}>{t('profile')}</div>
+          <Profile className={styles.profile} to="toto" name="Mikael" />
         </header>
 
         <Navigation className={styles.navigation} url={url} />
@@ -117,7 +118,7 @@ class Layout extends React.Component {
 
         <nav className={styles.bottomBar}>
           <button type="button" className={styles.more}>
-            <SVG icon={ThreeDots} hollow label={t('more')} className={styles.moreIcon} />
+            <SVG icon={ThreeDots} hollow label={t('more')} className={styles.moreIcon} standardIcon />
           </button>
           <div className={styles.actionButtonWrapper} ref={this.actionButtonWrapperRef}>
             <BottomBarActionButton
@@ -142,7 +143,7 @@ class Layout extends React.Component {
             />
 
             <div className={styles.bottomBarBackground}>
-              <SVG icon={BottomBar} hollow label="" />
+              <SVG icon={BottomBar} hollow presentationOnly />
             </div>
           </div>
         </nav>
