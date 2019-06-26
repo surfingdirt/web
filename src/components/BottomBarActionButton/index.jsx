@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import styles from './styles.scss';
 
 const BottomBarActionButton = React.forwardRef(function BottomBarActionButton(
-  { active, className, icon, onClick, to },
+  { active, className, children, onClick, to },
   ref,
 ) {
   const Tag = to ? Link : 'button';
@@ -19,7 +19,7 @@ const BottomBarActionButton = React.forwardRef(function BottomBarActionButton(
       to={to}
       className={classnames(className, styles.wrapper, { [styles.active]: active })}
     >
-      {icon}
+      {children}
     </Tag>
   );
 });
@@ -27,7 +27,7 @@ const BottomBarActionButton = React.forwardRef(function BottomBarActionButton(
 BottomBarActionButton.propTypes = {
   active: PropTypes.bool,
   className: PropTypes.string,
-  icon: PropTypes.node,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   to: PropTypes.string,
 };
@@ -35,7 +35,6 @@ BottomBarActionButton.propTypes = {
 BottomBarActionButton.defaultProps = {
   active: false,
   className: null,
-  icon: null,
   onClick: null,
   to: null,
 };

@@ -20,7 +20,7 @@ const BottomBarActions = ({ className, items, onCloseRequest, open, origin }) =>
     return [x, y];
   });
 
-  const backgroundStyle = { opacity: (open ? '1.0' : '0') };
+  const backgroundStyle = { opacity: open ? '1.0' : '0' };
 
   return (
     <div className={classnames(styles.wrapper, className)}>
@@ -29,11 +29,13 @@ const BottomBarActions = ({ className, items, onCloseRequest, open, origin }) =>
         {items.map((props, index) => {
           const [x, y] = offsets[index];
           const style = open ? { transform: `translate(${x}px, ${y}px)` } : {};
-          const buttonProps = Object.assign({}, props, { icon: getIcon(props.icon) });
+          const buttonProps = Object.assign({}, props);
 
           return (
             <li key={props.icon} style={style}>
-              <BottomBarActionButton {...buttonProps} onClick={onCloseRequest} />
+              <BottomBarActionButton {...buttonProps} onClick={onCloseRequest}>
+                {getIcon({ type: props.icon })}
+              </BottomBarActionButton>
             </li>
           );
         })}

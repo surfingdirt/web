@@ -30,7 +30,7 @@ const getIcon = (type) => {
 const NavigationLink = ({ active, className, icon, label, to }) => {
   return (
     <Link to={to} className={classnames(className, styles.wrapper, { [styles.active]: active })}>
-      <span>{getIcon(icon)}</span>
+      <span>{getIcon({type: icon})}</span>
       <span>{label}</span>
     </Link>
   );

@@ -9,7 +9,7 @@ import styles from './styles.scss';
 
 const ActionLink = ({ className, icon, label, to }) => (
   <Link to={to} className={classnames(className, styles.wrapper)}>
-    {getIcon(icon, label, styles.defaultIcon)}
+    {getIcon({ type: icon, label, className: styles.defaultIcon })}
   </Link>
 );
 

@@ -6,12 +6,11 @@ import { Link } from 'react-router-dom';
 
 import BottomBarActionButton from 'Components/BottomBarActionButton';
 import Logo from 'Components/Logo';
+import NamedIcon from 'Components/NamedIcon';
 import Profile from 'Components/Profile';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
 import BottomBar from 'Images/bottom-bar.svg';
-import Search from 'Images/search-circle.svg';
-import ThreeDots from 'Images/navigation-menu-horizontal.svg';
 import Actions from 'Sections/Actions';
 import BottomBarActions from 'Sections/BottomBarActions';
 import Footer from 'Sections/Footer';
@@ -105,9 +104,14 @@ class Layout extends React.Component {
             <Logo title={title} />
           </Link>
           <div className={styles.search}>
-            <SVG icon={Search} label={t('search')} standardIcon />
+            {getIcon({ type: icons.SEARCH, label: t('search'), standardIcon: true })}
           </div>
-          <div className={styles.activity}>{t('activity')}</div>
+          <div className={styles.activity}>
+            <NamedIcon
+              label={t('activity')}
+              icon={getIcon({ type: icons.ACTIVITY, standardIcon: true, presentationOnly: true })}
+            />
+          </div>
           <Profile className={styles.profile} to="toto" name="Mikael" />
         </header>
 
@@ -118,20 +122,30 @@ class Layout extends React.Component {
 
         <nav className={styles.bottomBar}>
           <button type="button" className={styles.more}>
-            <SVG icon={ThreeDots} hollow label={t('more')} className={styles.moreIcon} standardIcon />
+            <NamedIcon
+              label={t('more')}
+              icon={getIcon({ type: icons.THREEDOTS, presentationOnly: true, standardIcon: true })}
+            />
           </button>
-          <div className={styles.actionButtonWrapper} ref={this.actionButtonWrapperRef}>
+
+          <div className={styles.actionButtonWrapper}>
             <BottomBarActionButton
               ref={this.actionButtonRef}
               className={styles.actionButton}
-              icon={getIcon(
-                icons.CLOSE,
-                t('actionButton'),
-                classnames(styles.closeIcon, { [styles.closeIconActive]: bottomBarActionsOpen }),
-              )}
               onClick={this.onActionButtonClick}
               active={bottomBarActionsOpen}
-            />
+            >
+              <NamedIcon
+                label={t('actionButton')}
+                icon={getIcon({
+                  type: icons.CLOSE,
+                  className: classnames(styles.closeIcon, {
+                    [styles.closeIconActive]: bottomBarActionsOpen,
+                  }),
+                })}
+              />
+            </BottomBarActionButton>
+
             <BottomBarActions
               className={classnames(styles.bottomBarActionContainer, {
                 [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,

@@ -195,8 +195,18 @@ $logo-width-default: 150px;
 .actionButton {
   position: relative;
   z-index: $z-index-bottom-bar-action-button;
-  transform: translate(-50%, -55%);
   margin-left: 50%;
+  transform: translate(-50%, -50%);
+
+  .closeIcon {
+    display: block;
+    transform: rotateZ(-45deg);
+    transition: all $bottom-bar-action-button-toggle-duration $default-transition-function;
+
+    &.closeIconActive {
+      transform: rotateZ(0);
+    }
+  }
 }
 
 .bottomBarActionContainer {
@@ -228,17 +238,7 @@ $logo-width-default: 150px;
   padding-right: $padding-small-2;
   margin-right: $margin-small-2;
   z-index: $z-index-bottom-bar-more-button;
-}
-
-.closeIcon {
-  display: inline-block;
-  width: 1.25rem;
-  transform: rotateZ(-45deg);
-  transition: all $bottom-bar-action-button-toggle-duration $default-transition-function;
-
-  &.closeIconActive {
-    transform: rotateZ(0);
-  }
+  font-size: 1rem;
 }
 
 

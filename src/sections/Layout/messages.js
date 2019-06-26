@@ -1,9 +1,9 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     actionButton: getText(
-      'Post new items',
+      'Add',
       'Page Layout',
-    ) /* Label for a button which opens a list of links to post new items */,
+    ) /* Label for a button which opens a list of links to add new items */,
     activity: getText(
       'Activity',
       'Page Layout',

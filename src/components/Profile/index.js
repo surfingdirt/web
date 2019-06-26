@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SVG from 'Components/SVG';
-import ProfileIcon from 'Images/single-neutral-circle.svg';
+import NamedIcon from 'Components/NamedIcon';
+import icons, { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
+
+const { PROFILE } = icons;
 
 const Profile = ({ className, name, to }) => {
   return (
     <Link to={to} className={classnames(className, styles.wrapper)}>
-      <SVG icon={ProfileIcon} label={name} standardIcon />
+      <NamedIcon
+        label={name}
+        icon={getIcon({ type: PROFILE, presentationOnly: true, standardIcon: true })}
+      />
     </Link>
   );
 };
