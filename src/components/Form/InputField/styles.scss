@@ -28,7 +28,7 @@ input {
   width: 100%;
 
   &[type="password"] {
-    letter-spacing: .75em; /* Necessary? */
+    letter-spacing: .75rem; /* Necessary? */
   }
 
   &::placeholder {

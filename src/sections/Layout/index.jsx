@@ -96,8 +96,6 @@ class Layout extends React.Component {
       { to: VIDEO_NEW, icon: icons.VIDEO, label: t('postAVideo') },
     ];
 
-    const overlayStyle = { opacity: bottomBarActionsOpen ? '1.0' : '0' };
-
     return (
       <div className={styles.wrapper}>
         <header className={styles.header}>
@@ -123,7 +121,12 @@ class Layout extends React.Component {
         <Main className={styles.main}>{children}</Main>
 
         <nav className={styles.bottomBar}>
-          <div className={styles.overlay} style={overlayStyle} onClick={this.onActionButtonClick} />
+          <div
+            className={classnames(styles.overlay, {
+              [styles.overlayVisible]: bottomBarActionsOpen,
+            })}
+            onClick={this.closeActionButtons}
+          />
 
           <button type="button" className={styles.more}>
             <NamedNavigationItem
@@ -137,10 +140,7 @@ class Layout extends React.Component {
           </button>
 
           <div className={styles.plusButtonWrapper}>
-            <span aria-hidden="true" className={styles.plusLabel}>
-              {t('actionButton')}
-            </span>
-            <div className={styles.plusButtonOffset} onClick={this.onActionButtonClick}>
+            <button className={styles.plusButtonOffset} onClick={this.onActionButtonClick}>
               <PopupActionButton
                 ref={this.actionButtonRef}
                 className={styles.plusButton}
@@ -164,7 +164,13 @@ class Layout extends React.Component {
                 open={bottomBarActionsOpen}
                 onCloseRequest={this.closeActionButtons}
               />
-            </div>
+            </button>
+            <NamedNavigationItem
+              aria-hidden="true"
+              className={styles.plusLabel}
+              label={t('actionButton')}
+              visual={<div className={styles.plusPlaceholder} />}
+            />
           </div>
           <div className={styles.bottomBarBackground}>
             <SVG icon={BottomBar} hollow presentationOnly />

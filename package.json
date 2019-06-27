@@ -21,8 +21,7 @@
     "last 2 versions",
     "last 3 Chrome major versions",
     "last 2 Firefox major versions",
-    "Safari > 10",
-    "IE >= 11"
+    "Safari > 10"
   ],
   "devDependencies": {
     "eslint-import-resolver-babel-module": "^5.0.1",

@@ -43,7 +43,7 @@ export const getIcon = ({type, label, className, standardIcon = false, presentat
       icon = Activity;
       break;
     case icons.ALBUM:
-      icon = Activity;
+      icon = Album;
       break;
     case icons.CLOSE:
       icon = Close;

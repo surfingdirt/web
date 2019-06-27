@@ -1,11 +1,8 @@
-/* All font sizes are in em, based on a body font-size of 16px. */
-
+/* All font sizes are in rem, based on a body font-size of 16px. */
 $font-size-huge: 1.875rem; /* 30px */
-
 $font-size-big: 1.25rem; /* 20px */
-
 $font-size-medium: 1rem; /* 16px */
-
-$font-size-small: .625rem; /* 10px */
-
+$font-size-small: .75rem; /* 12px */
 $font-size-tiny: .5rem; /* 8px */
+
+$navigation-item-font-size: $font-size-small;
