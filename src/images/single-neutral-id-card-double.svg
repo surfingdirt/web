@@ -1,16 +1,14 @@
 <svg viewBox="0 0 24 24">
-    <g transform="matrix(1,0,0,1,0,0)">
         <path d="M 8.25,8.25c1.45,0,2.625,1.175,2.625,2.625S9.7,13.5,8.25,13.5s-2.625-1.175-2.625-2.625S6.8,8.25,8.25,8.25z "
-              fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M 3.75,18.75c0-2.485,2.015-4.5,4.5-4.5s4.5,2.015,4.5,4.5H3.75z " fill="none"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M 14.25,11.25h4.5 " fill="none" stroke-width="1.5" stroke-linecap="round"
+               stroke-width="1.5" ></path>
+        <path d="M 3.75,18.75c0-2.485,2.015-4.5,4.5-4.5s4.5,2.015,4.5,4.5H3.75z " 
+              stroke-width="1.5" ></path>
+        <path d="M 14.25,11.25h4.5 "  stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round"></path>
-        <path d="M 14.25,14.25h6 " fill="none" stroke-width="1.5" stroke-linecap="round"
+        <path d="M 14.25,14.25h6 "  stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round"></path>
         <path d="M 21.75,5.25H2.25 c-0.828,0-1.5,0.672-1.5,1.5v15c0,0.828,0.672,1.5,1.5,1.5h3c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5h7.5 c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5v-15C23.25,5.922,22.578,5.25,21.75,5.25z "
-              fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M 23.25,2.25 c0-0.828-0.672-1.5-1.5-1.5H2.25c-0.828,0-1.5,0.672-1.5,1.5" fill="none"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-    </g>
+               stroke-width="1.5" ></path>
+        <path d="M 23.25,2.25 c0-0.828-0.672-1.5-1.5-1.5H2.25c-0.828,0-1.5,0.672-1.5,1.5" 
+              stroke-width="1.5" ></path>
 </svg>
