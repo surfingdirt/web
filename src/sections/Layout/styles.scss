@@ -16,9 +16,9 @@ $footer-height: 2.5rem;
 
 $bottom-bar-height: 3.625rem;
 
-$large-gap: $margin-huge;
-$medium-gap: $margin-medium-1;
 $small-gap: $margin-small-2;
+$medium-gap: $margin-medium-1;
+$large-gap: $margin-huge;
 
 $lhs-width-big: 250px;
 $lhs-width-small: 180px;
@@ -81,33 +81,32 @@ $logo-width-default: 150px;
 @media (min-width: $mobile-layout-threshold-min) {
   .wrapper {
     grid-template-rows: $masthead-height 1fr $footer-height;
-    grid-template-columns: $lhs-width-small 1fr $rhs-width-small/2 $rhs-width-small/2;
+    grid-template-columns: $lhs-width-small $lhs-width-small 1fr $rhs-width-small $rhs-width-small;
     grid-template-areas:
-            "logo search activity profile"
-            "navigation main actions actions"
-            "footer main actions actions";
+            "logo logo search activity profile"
+            "navigation main main main actions"
+            "footer main main main actions";
     grid-row-gap: 0;
-    grid-column-gap: $small-gap;
+    //grid-column-gap: $small-gap;
   }
 }
 
 @media (min-width: $desktop-small) {
   .wrapper {
-    grid-column-gap: $medium-gap;
+    //grid-column-gap: $medium-gap;
   }
 }
 
 @media (min-width: $desktop-big) {
   .wrapper {
-    grid-template-columns: $lhs-width-big 1fr $rhs-width-medium/2 $rhs-width-medium/2;
-    grid-column-gap: $large-gap;
+    grid-template-columns: $lhs-width-big $lhs-width-big 1fr $rhs-width-medium $rhs-width-medium;
+    //grid-column-gap: $large-gap;
   }
 }
 
 @media (min-width: $desktop-max) {
   .wrapper {
-    $vertical-gap: $medium-gap;
-    grid-template-columns: $lhs-width-big 1fr $rhs-width-big/2 $rhs-width-big/2;
+    grid-template-columns: $lhs-width-big $lhs-width-big 1fr $rhs-width-big $rhs-width-big;
   }
 }
 
@@ -144,6 +143,7 @@ $logo-width-default: 150px;
 
 .search {
   grid-area: search;
+  justify-content: start;
 }
 
 .activity {
@@ -240,7 +240,6 @@ $logo-width-default: 150px;
   }
 }
 
-
 .bottomBarActionContainer {
   pointer-events: none;
   opacity: 0;
@@ -306,26 +305,27 @@ $logo-width-default: 150px;
 
 .main {
   grid-area: main;
-  padding-top: $margin-medium-1;
+  margin-bottom: -$bottom-bar-height;
+  padding-top: $padding-medium-1;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
 }
 
-@media (max-width: $mobile-layout-threshold-max) {
+@media (min-width: $mobile-layout-threshold-min) {
   .main {
-    margin-bottom: -$bottom-bar-height;
+    margin: 0 $small-gap;
   }
 }
 
+@media (min-width: $desktop-small) {
+  .main {
+    margin: 0 $medium-gap;
+  }
+}
 
-// TODO: figure something out for scrollbars
-//.main::-webkit-scrollbar {
-//  width: 5px;
-//}
-//.main::-webkit-scrollbar-button {
-//  background-color: $scrollbar-color-thumb;
-//}
-//.main::-webkit-scrollbar-track {
-//  background-color: $scrollbar-color-track;
-//}
+@media (min-width: $desktop-big) {
+  .main {
+    margin: 0 $large-gap;
+  }
+}

@@ -140,7 +140,11 @@ class Layout extends React.Component {
           </button>
 
           <div className={styles.plusButtonWrapper}>
-            <button className={styles.plusButtonOffset} onClick={this.onActionButtonClick}>
+            <button
+              type="button"
+              className={styles.plusButtonOffset}
+              onClick={this.onActionButtonClick}
+            >
               <PopupActionButton
                 ref={this.actionButtonRef}
                 className={styles.plusButton}
