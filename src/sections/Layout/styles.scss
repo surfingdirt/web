@@ -307,7 +307,7 @@ $logo-width-default: 150px;
 .main {
   grid-area: main;
   margin-bottom: -$bottom-bar-height;
-  padding-top: $padding-medium-1;
+  padding: $padding-medium-1;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;

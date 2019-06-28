@@ -3,7 +3,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import LOGIN from 'Apollo/mutations/login.gql';
 import Header from 'Components/Header';

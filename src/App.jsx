@@ -16,7 +16,7 @@ import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { ALBUM, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, VIDEO } = routes;
+const { ALBUM, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, PROFILE, VIDEO } = routes;
 
 const Album = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
@@ -34,21 +34,25 @@ const LogIn = Loadable({
   loader: () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
   loading,
 });
-const Video = Loadable({
-  loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
+const NewPhoto = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
   loading,
 });
 const Photo = Loadable({
   loader: () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
   loading,
 });
-const NewPhoto = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
+const Profile = Loadable({
+  loader: () => import(/* webpackChunkName: 'Profile' */ './pages/Profile').then((m) => m.Profile),
   loading,
 });
 const User = Loadable({
   loader: () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
+  loading,
+});
+const Video = Loadable({
+  loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
   loading,
 });
 
@@ -100,6 +104,7 @@ class App extends React.Component {
           <DefaultLayoutRoute path={LOGIN} component={LogIn} />
           <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} />
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
+          <DefaultLayoutRoute path={PROFILE} component={Profile} />
           <DefaultLayoutRoute path={USER} component={User} />
           <DefaultLayoutRoute path={VIDEO} component={Video} />
 

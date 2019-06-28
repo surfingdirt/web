@@ -4,23 +4,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
+import Card from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
-import { albumRoute, actionRoute } from 'Utils/links';
-import actions from '~/actions';
+import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
-import routes from '~/routes';
 
 import messages from './messages';
-
-const { LOGOUT } = actions;
-const { LOGIN } = routes;
-
-const renderLogout = () => (
-  <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">
-    <button type="submit">Logout</button>
-  </form>
-);
 
 class HomeRaw extends React.Component {
   static contextType = AppContext;
@@ -31,13 +21,7 @@ class HomeRaw extends React.Component {
 
   render() {
     const { t } = this.props;
-    const {
-      galleryAlbumId,
-      login: {
-        data: { accessToken },
-      },
-    } = this.context;
-    const isLoggedIn = !!accessToken;
+    const { galleryAlbumId } = this.context;
 
     return (
       <DataRenderer
@@ -48,14 +32,11 @@ class HomeRaw extends React.Component {
             album: { id, title, description },
           } = data;
           return (
-            <ul>
-              <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
-              <li>
-                <Link to={albumRoute(id)}>
-                  <span>{title} - {description}</span>
-                </Link>
-              </li>
-            </ul>
+            <Card title={title} type="main">
+              <Link to={albumRoute(id)}>
+                <span>{description}</span>
+              </Link>
+            </Card>
           );
         }}
       />

@@ -150,6 +150,12 @@ const Main = (rootDir) => {
       return res.status(500).end(error500Page);
     }
 
+    // Server-side redirects are caught here and applied:
+    const { action, url: redirectUrl } = context;
+    if (action === 'REPLACE' && redirectUrl) {
+      return res.redirect(301, redirectUrl);
+    }
+
     // Sends the response back to the client
     res.status(context.status || 200).end(document);
   };
