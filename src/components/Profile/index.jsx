@@ -4,12 +4,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import NamedNavigationItem from 'Components/NamedNavigationItem';
+import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import AppContext from '~/contexts';
+import routes from '~/routes';
 
+import messages from './messages';
 import styles from './styles.scss';
 
 const { PROFILE } = icons;
+const { LOGIN, PROFILE: PROFILE_PAGE } = routes;
 
 class Profile extends React.Component {
   static contextType = AppContext;
@@ -17,7 +21,7 @@ class Profile extends React.Component {
   static propTypes = {
     /* Common props */
     className: PropTypes.string,
-    to: PropTypes.string.isRequired,
+    t: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -25,9 +29,9 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { className, to } = this.props;
+    const { className, t } = this.props;
 
-    let {
+    const {
       login: {
         data: {
           me: { username },
@@ -35,12 +39,15 @@ class Profile extends React.Component {
       },
     } = this.context;
 
-    username = username || 'login!';
+    const loggedIn = !!username;
+
+    const title = loggedIn ? username : t('login');
+    const to = loggedIn ? PROFILE_PAGE : LOGIN;
 
     return (
       <Link to={to} className={classnames(className, styles.wrapper)}>
         <NamedNavigationItem
-          label={username}
+          label={title}
           visual={getIcon({ type: PROFILE, presentationOnly: true, standardIcon: true })}
         />
       </Link>
@@ -48,4 +55,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default Translate(messages)(Profile);

@@ -102,13 +102,13 @@ export class AppContextValueObject {
     this.values.login.data.accessToken = accessToken;
   }
 
-  setUser({ id, username, email, bookmarks, likes, watches }) {
-    this.values.login.data.me = { id, username, email, bookmarks, likes, watches };
+  setUser({ avatar, email, status, userId, username }) {
+    this.values.login.data.me = { avatar, email, status, userId, username, };
   }
 
   resetUser() {
     this.setUser({
-      id: null,
+      userId: null,
       username: '',
       email: '',
     });

@@ -69,7 +69,6 @@ const DefaultLayoutRoute = ({ component: Component, ...rest }) => (
 class App extends React.Component {
   static propTypes = {
     appContextValueObject: PropTypes.instanceOf(AppContextValueObject).isRequired,
-    component: PropTypes.node.isRequired,
   };
 
   constructor(props) {
@@ -133,7 +132,7 @@ class App extends React.Component {
           if (isLoading) return <Spinner />;
           if (error) return <ErrorMessage />;
 
-          if (me && me.id) {
+          if (me && me.userId) {
             appContextValueObject.setUser(me);
           } else {
             appContextValueObject.resetUser();
