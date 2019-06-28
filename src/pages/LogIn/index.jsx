@@ -8,13 +8,12 @@ import { Redirect } from 'react-router-dom';
 import LOGIN from 'Apollo/mutations/login.gql';
 import Header from 'Components/Header';
 import Translate from 'Hocs/Translate';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
 import PageContent from './pageContent';
 
-const { AppContext } = contexts;
 const { HOME } = routes;
 
 class LogInPage extends Component {

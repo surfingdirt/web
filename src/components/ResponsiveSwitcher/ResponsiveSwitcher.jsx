@@ -2,10 +2,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 import { getActiveScreenWidth, getClassNameForWidth } from '~/responsiveConfig';
-
-const { AppContext } = contexts;
 
 /*
  * Example

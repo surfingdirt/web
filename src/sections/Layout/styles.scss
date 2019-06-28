@@ -87,20 +87,17 @@ $logo-width-default: 150px;
             "navigation main main main actions"
             "footer main main main actions";
     grid-row-gap: 0;
-    //grid-column-gap: $small-gap;
   }
 }
 
 @media (min-width: $desktop-small) {
   .wrapper {
-    //grid-column-gap: $medium-gap;
   }
 }
 
 @media (min-width: $desktop-big) {
   .wrapper {
     grid-template-columns: $lhs-width-big $lhs-width-big 1fr $rhs-width-medium $rhs-width-medium;
-    //grid-column-gap: $large-gap;
   }
 }
 

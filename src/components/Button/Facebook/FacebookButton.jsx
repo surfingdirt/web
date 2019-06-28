@@ -1,19 +1,18 @@
 /* global FB */
 
-import FACEBOOK_LOGIN from 'Apollo/mutations/facebookLogin.gql';
-import Button from 'Components/Button';
-import Translate from 'Hocs/Translate';
-import Facebook from 'Images/_old/facebook-logo-white.svg';
-import { InlineSpinner } from 'Components/Spinner';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import contexts from '~/contexts';
+
+import FACEBOOK_LOGIN from 'Apollo/mutations/facebookLogin.gql';
+import Button from 'Components/Button';
+import { InlineSpinner } from 'Components/Spinner';
+import Translate from 'Hocs/Translate';
+import Facebook from 'Images/_old/facebook-logo-white.svg';
+import AppContext from '~/contexts';
 
 import messages from '../messages';
 import styles from '../styles.scss';
-
-const { AppContext } = contexts;
 
 class FacebookButton extends Component {
   static contextType = AppContext;

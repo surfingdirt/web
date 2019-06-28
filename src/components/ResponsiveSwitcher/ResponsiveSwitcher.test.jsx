@@ -1,15 +1,13 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import contexts from '~/contexts';
+
+import AppContext from '~/contexts';
 import { standardScreenWidths } from '~/responsiveConfig';
 
 import ResponsiveSwitcher from './ResponsiveSwitcher';
 
 const { MOBILE_LOW, DESKTOP_LOW } = standardScreenWidths;
-
-// noinspection JSUnusedLocalSymbols
-const { AppContext } = contexts;
 
 const VersionA = ({ className }) => <div className={classnames(className, 'version-a')} />;
 VersionA.propTypes = { className: PropTypes.string };

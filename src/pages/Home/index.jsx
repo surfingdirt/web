@@ -8,12 +8,10 @@ import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
 import { albumRoute, actionRoute } from 'Utils/links';
 import actions from '~/actions';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
-
-const { AppContext } = contexts;
 
 const { LOGOUT } = actions;
 const { LOGIN } = routes;
@@ -54,7 +52,7 @@ class HomeRaw extends React.Component {
               <li>{isLoggedIn ? renderLogout() : <Link to={LOGIN}>Login page</Link>}</li>
               <li>
                 <Link to={albumRoute(id)}>
-                  <span>{title}</span>-<span>{description}</span>
+                  <span>{title} - {description}</span>
                 </Link>
               </li>
             </ul>

@@ -11,7 +11,8 @@ import Spinner from 'Components/Spinner';
 import { Page404 } from 'Pages/Page404';
 import Layout from 'Sections/Layout';
 
-import contexts from '~/contexts';
+import AppContext, { AppContextValueObject } from '~/contexts';
+
 import '~/main.scss';
 import routes from '~/routes';
 
@@ -50,7 +51,6 @@ const User = Loadable({
   loader: () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
   loading,
 });
-const { AppContext, AppContextValueObject } = contexts;
 
 const MOUSE_MODE_CLASS = 'mouse-mode';
 const MOUSE_MOVE_EVENT = 'mousemove';
@@ -69,6 +69,7 @@ const DefaultLayoutRoute = ({ component: Component, ...rest }) => (
 class App extends React.Component {
   static propTypes = {
     appContextValueObject: PropTypes.instanceOf(AppContextValueObject).isRequired,
+    component: PropTypes.node.isRequired,
   };
 
   constructor(props) {

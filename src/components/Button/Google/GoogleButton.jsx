@@ -1,19 +1,19 @@
 /* global gapi */
 
-import GOOGLE_LOGIN from 'Apollo/mutations/googleLogin.gql';
-import Button from 'Components/Button';
-import Translate from 'Hocs/Translate';
-import Google from 'Images/_old/google.svg';
-import { InlineSpinner } from 'Components/Spinner';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import contexts from '~/contexts';
+
+import GOOGLE_LOGIN from 'Apollo/mutations/googleLogin.gql';
+import Button from 'Components/Button';
+import { InlineSpinner } from 'Components/Spinner';
+import Translate from 'Hocs/Translate';
+import Google from 'Images/_old/google.svg';
+
+import AppContext from '~/contexts';
 
 import messages from '../messages';
 import styles from '../styles.scss';
-
-const { AppContext } = contexts;
 
 class GoogleButton extends Component {
   static contextType = AppContext;

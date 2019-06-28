@@ -7,7 +7,7 @@ const { HOME } = routes;
 const LoginCookie = Login.COOKIE_NAME;
 const signupDestinationKey = 'signUpDestination';
 
-class AppContextValueObject {
+export class AppContextValueObject {
   constructor(values) {
     this.values = {
       SSR: false,
@@ -121,7 +121,4 @@ class AppContextValueObject {
 
 const AppContext = React.createContext(AppContextValueObject);
 
-export default {
-  AppContext,
-  AppContextValueObject,
-};
+export default AppContext;

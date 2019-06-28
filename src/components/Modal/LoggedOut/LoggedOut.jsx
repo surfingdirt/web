@@ -1,15 +1,14 @@
-import Button from 'Components/Button';
-import Translate from 'Hocs/Translate';
-import Logo from 'Images/_old/logo.png';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import contexts from '~/contexts';
+
+import Button from 'Components/Button';
+import Translate from 'Hocs/Translate';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { AppContext } = contexts;
 const { REGISTRATION_STEP1, SIGN_IN } = routes;
 
 class LoggedOutModal extends Component {
@@ -30,7 +29,6 @@ class LoggedOutModal extends Component {
     return (
       <div className={styles.userNotLogged} aria-label={t('userNotLogged')}>
         <div className={styles.signIn}>
-          <img src={Logo} alt="" />
           <p className={styles.text}>{t('loginRequired')}</p>
           <Button label={t('signIn')} href={SIGN_IN} onClick={saveOrigin} />
         </div>

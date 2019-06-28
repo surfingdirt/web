@@ -12,13 +12,14 @@ import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
 import Loadable from '@7rulnik/react-loadable';
 
-import apolloClient from '~/apollo';
-import contexts from '~/contexts';
-import App from '~/App';
 import Favicon from 'Images/favicon.ico';
 import Favicon16 from 'Images/favicon-16x16.png';
 import Favicon32 from 'Images/favicon-32x32.png';
 import { generateMediaQueries } from 'Utils/styleUtils';
+import apolloClient from '~/apollo';
+import { AppContextValueObject } from '~/contexts';
+import App from '~/App';
+
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
@@ -33,9 +34,6 @@ const Main = (rootDir) => {
     en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
   };
   let error500Page = ERROR_500_PAGES['en'];
-
-  // noinspection JSUnusedLocalSymbols
-  const { AppContext, AppContextValueObject } = contexts;
 
   const REGULAR_PAGE = fs.readFileSync(`${rootDir}/dist/template.html`, 'utf8');
 
@@ -148,9 +146,8 @@ const Main = (rootDir) => {
         console.log('Server-side error:');
         console.log(JSON.stringify(err, null, 2));
         return next(err);
-      } else {
-        return res.status(500).end(error500Page);
       }
+      return res.status(500).end(error500Page);
     }
 
     // Sends the response back to the client

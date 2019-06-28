@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import Translate from 'Hocs/Translate';
 import { Helmet } from 'react-helmet';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 
-const { AppContext } = contexts;
 const VIDEO = 'video';
 
 class HeadMetaData extends PureComponent {

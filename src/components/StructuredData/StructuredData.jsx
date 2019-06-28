@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
-import contexts from '~/contexts';
 
-const { AppContext } = contexts;
+import AppContext from '~/contexts';
+
 const SPORT = 'football';
 
 class StructuredData extends PureComponent {

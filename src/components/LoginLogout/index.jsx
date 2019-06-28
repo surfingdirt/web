@@ -1,19 +1,18 @@
-import Button from 'Components/Button';
-import SVG from 'Components/SVG';
-import Translate from 'Hocs/Translate';
-import Account from 'Images/account.svg';
 import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import contexts from '~/contexts';
+import Button from 'Components/Button';
+import SVG from 'Components/SVG';
+import Translate from 'Hocs/Translate';
+
+import AppContext from '~/contexts';
 import routes from '~/routes';
 import translations from './messages';
 
 import styles from './styles.scss';
 
 const { HOME, SIGN_IN } = routes;
-const { AppContext } = contexts;
 
 class LoginLogout extends PureComponent {
   static propTypes = {
@@ -51,7 +50,6 @@ class LoginLogout extends PureComponent {
     return (
       <Fragment>
         <Link to={SIGN_IN}>
-          <SVG icon={Account} hollow />
           {t('signIn')}
         </Link>
       </Fragment>

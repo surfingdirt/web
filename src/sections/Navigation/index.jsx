@@ -7,14 +7,13 @@ import Translate from 'Hocs/Translate';
 import NavigationLink from 'Components/NavigationLink';
 import icons from 'Utils/icons';
 import { albumRoute } from 'Utils/links';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import styles from './styles.scss';
 import messages from './messages';
 
 const { ALBUMS, USERS } = routes;
-const { AppContext } = contexts;
 
 class Navigation extends React.Component {
   static propTypes = {

@@ -2,9 +2,8 @@ import Gettext from 'node-gettext';
 import React from 'react';
 import setDisplayName from 'recompose/setDisplayName';
 import wrapDisplayName from 'recompose/wrapDisplayName';
-import contexts from '~/contexts';
 
-const { AppContext } = contexts;
+import AppContext from '~/contexts';
 
 const LC_MESSAGE = 'messages';
 const NUMBER_REGEX = /{{n}}|%d/;

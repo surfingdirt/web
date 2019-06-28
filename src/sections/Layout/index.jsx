@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import PopupActionButton from 'Components/PopupActionButton';
 import Logo from 'Components/Logo';
 import NamedNavigationItem from 'Components/NamedNavigationItem';
-import Profile from 'Components/Profile';
+import Profile from 'Components/Profile/index';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
 import BottomBar from 'Images/bottom-bar.svg';
@@ -17,20 +17,21 @@ import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
 import Navigation from 'Sections/Navigation';
 import icons, { getIcon } from 'Utils/icons';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
 
 const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
-const { AppContext } = contexts;
 
 const RESIZE = 'resize';
 
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    match: PropTypes.objectOf(PropTypes.any).isRequired,
+    t: PropTypes.func.isRequired,
   };
 
   static contextType = AppContext;
