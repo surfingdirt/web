@@ -11,7 +11,11 @@ export const DefaultLayoutRoute = ({ component: Component, login, ...rest }) => 
     render={(matchProps) => {
       const content = <Component {...matchProps} />;
       if (login) {
-        return <EnforceLogin rule={login}>{content}</EnforceLogin>;
+        return (
+          <Layout>
+            <EnforceLogin rule={login}>{content}</EnforceLogin>
+          </Layout>
+        );
       }
       return <Layout>{content}</Layout>;
     }}
