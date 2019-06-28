@@ -13,7 +13,7 @@ const RADIUS = 100;
 const START_ANGLE = 180 - 22.5;
 const ANGULAR_DISTANCE = 45;
 
-const BottomBarActions = ({ className, items, onCloseRequest, open, origin }) => {
+const BottomBarActions = ({ className, items, open, origin }) => {
   const offsets = items.map((item, i) => {
     const angle = ((START_ANGLE - i * ANGULAR_DISTANCE) * Math.PI) / 180;
     const x = origin[0] + RADIUS * Math.cos(angle) + HORIZONTAL_OFFSET;
@@ -32,7 +32,7 @@ const BottomBarActions = ({ className, items, onCloseRequest, open, origin }) =>
 
           return (
             <li key={props.icon} style={style}>
-              <PopupActionButton {...buttonProps} onClick={onCloseRequest}>
+              <PopupActionButton {...buttonProps}>
                 {getIcon({ type: props.icon })}
               </PopupActionButton>
             </li>
@@ -52,7 +52,6 @@ BottomBarActions.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  onCloseRequest: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   origin: PropTypes.arrayOf(PropTypes.number).isRequired,
 };

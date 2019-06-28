@@ -15,11 +15,12 @@ import messages from './messages';
 
 const { ALBUMS, USERS } = routes;
 
-class Navigation extends React.Component {
+class NavigationRaw extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    innerRef: PropTypes.any.isRequired,
     onCloseClick: PropTypes.func.isRequired,
     openOnMobile: PropTypes.bool.isRequired,
     currentUrl: PropTypes.string.isRequired,
@@ -28,7 +29,7 @@ class Navigation extends React.Component {
   static contextType = AppContext;
 
   render() {
-    const { className, currentUrl, id, onCloseClick, openOnMobile, t } = this.props;
+    const { className, currentUrl, id, innerRef, onCloseClick, openOnMobile, t } = this.props;
     const { galleryAlbumId } = this.context;
     const items = [
       { to: albumRoute(galleryAlbumId), icon: icons.HOT, label: t('gallery') },
@@ -37,11 +38,10 @@ class Navigation extends React.Component {
     ];
     return (
       <nav
-        id={id}
         className={classnames(styles.wrapper, className, { [styles.openOnMobile]: openOnMobile })}
         aria-label={t('linkNav')}
       >
-        <div className={styles.positioner}>
+        <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
           <ul className={styles.linkList}>
             {items.map((props) => (
               <li key={props.to}>
@@ -57,5 +57,9 @@ class Navigation extends React.Component {
     );
   }
 }
-
-export default Translate(messages)(withRouter(Navigation));
+const TranslatedNavigation = Translate(messages)(withRouter(NavigationRaw));
+const Navigation = React.forwardRef((props, ref) => (
+  <TranslatedNavigation innerRef={ref} {...props} />
+));
+Navigation.displayName = 'Navigation';
+export default Navigation;

@@ -32,6 +32,7 @@ const NAVIGATION_ID = '123';
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    history: PropTypes.objectOf(PropTypes.any).isRequired,
     match: PropTypes.objectOf(PropTypes.any).isRequired,
     t: PropTypes.func.isRequired,
   };
@@ -48,25 +49,34 @@ class Layout extends React.Component {
     };
 
     this.toggleActionButtons = this.toggleActionButtons.bind(this);
-    this.toggleNavigationMenu = this.toggleNavigationMenu.bind(this);
+    this.openNavigationMenu = this.openNavigationMenu.bind(this);
 
-    this.closeActionButtons = this.closeActionButtons.bind(this);
     this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
 
     this.closeAll = this.closeAll.bind(this);
 
     this.onResize = this.onResize.bind(this);
+    this.onNavigation = this.onNavigation.bind(this);
 
     this.actionButtonRef = React.createRef();
+    this.navigationMenuRef = React.createRef();
   }
 
   componentDidMount() {
     window.addEventListener(RESIZE, this.onResize);
     this.onResize();
+
+    const { history } = this.props;
+    this.unlisten = history.listen(this.onNavigation);
   }
 
   componentWillUnmount() {
     window.removeEventListener(RESIZE, this.onResize);
+    this.unlisten();
+  }
+
+  onNavigation() {
+    this.closeAll();
   }
 
   onResize() {
@@ -88,13 +98,15 @@ class Layout extends React.Component {
     this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
   }
 
-  toggleNavigationMenu() {
-    const { navigationMenuOpen } = this.state;
-    this.setState({ navigationMenuOpen: !navigationMenuOpen });
-  }
-
-  closeActionButtons() {
-    this.setState({ bottomBarActionsOpen: false });
+  openNavigationMenu() {
+    this.setState({ navigationMenuOpen: true }, () => {
+      // Find the first focusable item. Stick to links for now.
+      // TODO: use a focus trap in the mobile navigation.
+      const links = this.navigationMenuRef.current.getElementsByTagName('a');
+      if (links && links.length >= 1) {
+        links[0].focus();
+      }
+    });
   }
 
   closeNavigationMenu() {
@@ -147,6 +159,7 @@ class Layout extends React.Component {
           currentUrl={url}
           onCloseClick={this.closeNavigationMenu}
           openOnMobile={navigationMenuOpen}
+          ref={this.navigationMenuRef}
         />
         <Footer className={styles.footer} />
         <Actions className={styles.actions} items={actionItems} />
@@ -166,7 +179,8 @@ class Layout extends React.Component {
             className={styles.more}
             aria-haspopup="true"
             aria-expanded={navigationMenuOpen}
-            onClick={this.toggleNavigationMenu}
+            aria-controls={NAVIGATION_ID}
+            onClick={this.openNavigationMenu}
           >
             <NamedNavigationItem
               label={t('more')}
@@ -205,7 +219,6 @@ class Layout extends React.Component {
                 origin={actionButtonOrigin}
                 items={actionItems}
                 open={bottomBarActionsOpen}
-                onCloseRequest={this.closeActionButtons}
               />
             </button>
             <NamedNavigationItem
