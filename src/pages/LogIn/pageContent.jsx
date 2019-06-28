@@ -1,21 +1,16 @@
 import Button from 'Components/Button';
-import FacebookButton from 'Components/Button/Facebook';
-import GoogleButton from 'Components/Button/Google';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
-import ArrowRight from 'Images/_old/arrowRight2.svg';
 import React, { Fragment, PureComponent } from 'react';
 import { Field, Form } from 'react-final-form';
 import actions from '~/actions';
 import Validation from 'Utils/fieldLevelValidation';
-import routes from '~/routes';
 import { actionRoute } from 'Utils/links';
 
 import translations from './messages';
 import styles from './styles.scss';
 
-const { REGISTRATION_STEP1 } = routes;
 const { LOGIN } = actions;
 
 const composeValidators = (...validators) => (value) =>
@@ -85,33 +80,7 @@ class SignInPageContent extends PureComponent {
                   type="negative"
                 />
               </div>
-              <div className={styles.separator}>
-                <div className={styles.line} />
-                <span>or</span>
-                <div className={styles.line} />
-              </div>
-              <div className={styles.socialLogins}>
-                <FacebookButton />
-                <GoogleButton />
-              </div>
             </form>
-            <div className={styles.noAccountContainer}>
-              <h2 className={styles.noAccountTitle}>{t('noAccount')}</h2>
-              <p className={styles.noAccountSubtitle}>{t('noAccountSubtitle')}</p>
-              <p className={styles.noAccountFeature}>{t('noAccountFeature1')}</p>
-              <p className={styles.noAccountFeature}>{t('noAccountFeature2')}</p>
-              <p className={styles.noAccountFeature}>{t('noAccountFeature3')}</p>
-              <p className={styles.noAccountFeature}>{t('noAccountFeature4')}</p>
-              <div className={styles.register}>
-                <Button
-                  iconRight={ArrowRight}
-                  buttonType="link"
-                  className={styles.registerButton}
-                  label={t('register')}
-                  href={REGISTRATION_STEP1}
-                />
-              </div>
-            </div>
           </Fragment>
         )}
       />

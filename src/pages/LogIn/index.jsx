@@ -33,7 +33,7 @@ class LogInPage extends Component {
     };
   }
 
-  async handleLogin({ username, password }, mutate) {
+  async handleLogin({ username, userP }, mutate) {
     const {
       context: {
         login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
@@ -46,18 +46,22 @@ class LogInPage extends Component {
     try {
       const loginResponse = await mutate({
         variables: {
-          username,
-          userP: password,
+          input: {
+            username,
+            userP,
+          },
         },
       });
       const {
         data: { login },
       } = loginResponse;
 
-      if (login.id) {
-        onLoginSuccess(login);
-        errorMessage = null;
+      if (!login.uid) {
+        throw new Error('Bad response');
       }
+
+      onLoginSuccess(login);
+      errorMessage = null;
     } catch (e) {
       onLoginFailure();
       errorMessage = t('UserNotAuthorized');

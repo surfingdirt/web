@@ -56,7 +56,7 @@ export class AppContextValueObject {
     });
 
     this.values.login.onSuccess = ({ accessToken, expires }) => {
-      Cookies.set(LoginCookie, accessToken, { expires });
+      Cookies.set(LoginCookie, accessToken, { expires: new Date(expires * 1000) });
 
       const destination = this.values.login.getOrigin() || HOME;
       this.values.login.clearOrigin();
