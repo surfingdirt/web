@@ -16,7 +16,7 @@ import BottomBarActions from 'Sections/BottomBarActions';
 import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
 import Navigation from 'Sections/Navigation';
-import icons, { getIcon } from 'Utils/icons';
+import icons, { getIcon, sizes } from 'Utils/icons';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -24,6 +24,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
+const { STANDARD } = sizes;
 
 const RESIZE = 'resize';
 
@@ -142,12 +143,12 @@ class Layout extends React.Component {
             <Logo title={title} />
           </Link>
           <div className={styles.search}>
-            {getIcon({ type: icons.SEARCH, label: t('search'), standardIcon: true })}
+            {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
           </div>
           <div className={styles.activity}>
             <NamedNavigationItem
               label={t('activity')}
-              visual={getIcon({ type: icons.ACTIVITY, standardIcon: true, presentationOnly: true })}
+              visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
             />
           </div>
           <Profile className={styles.profile} />
@@ -187,7 +188,7 @@ class Layout extends React.Component {
               visual={getIcon({
                 type: icons.THREEDOTS,
                 presentationOnly: true,
-                standardIcon: true,
+                size: STANDARD,
               })}
             />
           </button>

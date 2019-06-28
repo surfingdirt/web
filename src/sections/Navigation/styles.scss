@@ -19,12 +19,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .closeBtn {
   flex: 0 0 $bottom-bar-height;
-  align-self: end;
+  align-self: flex-end;
   width: 80px;
   background: none;
   border: none;

@@ -36,16 +36,16 @@ const icons = {
   USERS,
   VIDEO,
 };
-
 export default icons;
 
-export const getIcon = ({
-  type,
-  label,
-  className,
-  standardIcon = false,
-  presentationOnly = false,
-}) => {
+const SMALL = 'small';
+const STANDARD = 'standard';
+export const sizes = {
+  SMALL,
+  STANDARD,
+};
+
+export const getIcon = ({ type, label, className, size, presentationOnly }) => {
   let hollow = true;
   let icon = null;
 
@@ -84,7 +84,7 @@ export const getIcon = ({
     default:
       throw new Error(`Unsupported action link type '${type}'`);
   }
-  const props = { className, hollow, icon, label, presentationOnly, standardIcon };
+  const props = { className, hollow, icon, label, presentationOnly, size };
   return <SVG {...props} />;
 };
 
@@ -93,12 +93,12 @@ getIcon.propTypes = {
   type: PropTypes.string.isRequired,
   label: PropTypes.string,
   presentationOnly: PropTypes.bool,
-  standardIcon: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 getIcon.defaultProps = {
   className: null,
   label: null,
   presentationOnly: false,
-  standardIcon: false,
+  size: STANDARD,
 };

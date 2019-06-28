@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import NamedNavigationItem from 'Components/NamedNavigationItem';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon } from 'Utils/icons';
+import icons, { getIcon, sizes } from 'Utils/icons';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -14,6 +14,7 @@ import styles from './styles.scss';
 
 const { PROFILE } = icons;
 const { LOGIN, PROFILE: PROFILE_PAGE } = routes;
+const { STANDARD } = sizes;
 
 class Profile extends React.Component {
   static contextType = AppContext;
@@ -48,7 +49,7 @@ class Profile extends React.Component {
       <Link to={to} className={classnames(className, styles.wrapper)}>
         <NamedNavigationItem
           label={title}
-          visual={getIcon({ type: PROFILE, presentationOnly: true, standardIcon: true })}
+          visual={getIcon({ type: PROFILE, presentationOnly: true, size: STANDARD })}
         />
       </Link>
     );

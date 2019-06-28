@@ -72,12 +72,19 @@
     fill: $icon-color-active;
   }
 
+  .mallIcon {
+    display: inline-block;
+    width: $smallIconSize;
+    height: $smallIconSize;
+  }
+
   .standardIcon {
     display: inline-block;
     width: $standardIconSize;
     height: $standardIconSize;
   }
 
+  svg.smallIcon-svg,
   svg.standardIcon-svg {
     display: inline-block;
     width: 100%;

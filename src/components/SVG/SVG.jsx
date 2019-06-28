@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import SVGInline from 'react-svg-inline';
 
+import { sizes } from 'Utils/icons';
+const { SMALL, STANDARD } = sizes;
+
 export default class SVG extends PureComponent {
   static propTypes = {
     // Whether to draw the icon as already activated.
@@ -33,8 +36,7 @@ export default class SVG extends PureComponent {
     onClick: PropTypes.func,
     // True if the icon is just for looks and should not be visible to screen readers.
     presentationOnly: PropTypes.bool,
-    // Apply standard styles
-    standardIcon: PropTypes.bool,
+    size: PropTypes.string,
   };
 
   static defaultProps = {
@@ -44,18 +46,17 @@ export default class SVG extends PureComponent {
     label: null,
     onClick: null,
     presentationOnly: false,
-    standardIcon: false,
+    size: null,
   };
 
   render() {
-    const { className, active, icon, label, hollow, onClick, standardIcon } = this.props;
+    const { className, active, icon, label, hollow, onClick, size } = this.props;
 
-    const actualClassName = classnames(
-      className,
-      active ? 'active' : '',
-      hollow ? 'hollow' : 'full',
-      standardIcon ? 'standardIcon' : '',
-    );
+    const actualClassName = classnames(className, hollow ? 'hollow' : 'full', {
+      active,
+      standardIcon: size === STANDARD,
+      smallIcon: size === SMALL,
+    });
 
     const attributes = { svg: icon, className: actualClassName };
     if (label) {

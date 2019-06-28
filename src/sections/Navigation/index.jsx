@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
 import NavigationLink from 'Components/NavigationLink';
-import icons, { getIcon } from 'Utils/icons';
+import icons, { getIcon, sizes } from 'Utils/icons';
 import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import routes from '~/routes';
@@ -14,6 +14,7 @@ import styles from './styles.scss';
 import messages from './messages';
 
 const { ALBUMS, USERS } = routes;
+const { STANDARD } = sizes;
 
 class NavigationRaw extends React.Component {
   static propTypes = {
@@ -50,7 +51,7 @@ class NavigationRaw extends React.Component {
             ))}
           </ul>
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
-            {getIcon({ type: icons.CLOSE, standardIcon: true, label: t('close') })}
+            {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
           </button>
         </div>
       </nav>
