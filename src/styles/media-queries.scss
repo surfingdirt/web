@@ -1,3 +1,4 @@
+// Absolute sizes
 $mobile-small-max: 320px;
 $mobile-big-max: 375px;
 
@@ -7,3 +8,7 @@ $desktop-min: 800px;
 $desktop-small: 1024px;
 $desktop-big: 1440px;
 $desktop-max: 1920px;
+
+// Logical sizes
+$mobile-layout-threshold-min: $tablet-max + 1px;
+$mobile-layout-threshold-max: $tablet-max;

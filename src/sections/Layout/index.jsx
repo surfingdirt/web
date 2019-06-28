@@ -27,6 +27,8 @@ const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
 
 const RESIZE = 'resize';
 
+const NAVIGATION_ID = '123';
+
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -39,10 +41,20 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { bottomBarActionsOpen: false, actionButtonOrigin: [0, 0] };
+    this.state = {
+      bottomBarActionsOpen: false,
+      navigationMenuOpen: false,
+      actionButtonOrigin: [0, 0],
+    };
 
-    this.onActionButtonClick = this.onActionButtonClick.bind(this);
+    this.toggleActionButtons = this.toggleActionButtons.bind(this);
+    this.toggleNavigationMenu = this.toggleNavigationMenu.bind(this);
+
     this.closeActionButtons = this.closeActionButtons.bind(this);
+    this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
+
+    this.closeAll = this.closeAll.bind(this);
+
     this.onResize = this.onResize.bind(this);
 
     this.actionButtonRef = React.createRef();
@@ -63,11 +75,6 @@ class Layout extends React.Component {
     });
   }
 
-  onActionButtonClick() {
-    const { bottomBarActionsOpen } = this.state;
-    this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
-  }
-
   getOrigin() {
     const buttonEl = this.actionButtonRef.current;
     return [
@@ -76,8 +83,26 @@ class Layout extends React.Component {
     ];
   }
 
+  toggleActionButtons() {
+    const { bottomBarActionsOpen } = this.state;
+    this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
+  }
+
+  toggleNavigationMenu() {
+    const { navigationMenuOpen } = this.state;
+    this.setState({ navigationMenuOpen: !navigationMenuOpen });
+  }
+
   closeActionButtons() {
     this.setState({ bottomBarActionsOpen: false });
+  }
+
+  closeNavigationMenu() {
+    this.setState({ navigationMenuOpen: false });
+  }
+
+  closeAll() {
+    this.setState({ bottomBarActionsOpen: false, navigationMenuOpen: false });
   }
 
   render() {
@@ -87,7 +112,7 @@ class Layout extends React.Component {
       t,
     } = this.props;
 
-    const { bottomBarActionsOpen, actionButtonOrigin } = this.state;
+    const { bottomBarActionsOpen, navigationMenuOpen, actionButtonOrigin } = this.state;
 
     const { title } = this.context;
 
@@ -113,24 +138,36 @@ class Layout extends React.Component {
               visual={getIcon({ type: icons.ACTIVITY, standardIcon: true, presentationOnly: true })}
             />
           </div>
-          <Profile className={styles.profile} to="toto" name="Mikael" />
+          <Profile className={styles.profile} />
         </header>
 
-        <Navigation className={styles.navigation} url={url} />
+        <Navigation
+          className={styles.navigation}
+          id={NAVIGATION_ID}
+          currentUrl={url}
+          onCloseClick={this.closeNavigationMenu}
+          openOnMobile={navigationMenuOpen}
+        />
         <Footer className={styles.footer} />
         <Actions className={styles.actions} items={actionItems} />
         <Main className={styles.main}>{children}</Main>
 
-        <nav className={styles.bottomBar}>
+        <nav className={styles.bottomBar} aria-label={t('actionNav')}>
           <div
             aria-hidden="true"
-            className={classnames(styles.overlay, {
+            className={classnames(styles.overlay, styles.actionButtonOverlay, {
               [styles.overlayVisible]: bottomBarActionsOpen,
             })}
-            onClick={this.closeActionButtons}
+            onClick={this.closeAll}
           />
 
-          <button type="button" className={styles.more}>
+          <button
+            type="button"
+            className={styles.more}
+            aria-haspopup="true"
+            aria-expanded={navigationMenuOpen}
+            onClick={this.toggleNavigationMenu}
+          >
             <NamedNavigationItem
               label={t('more')}
               visual={getIcon({
@@ -145,7 +182,7 @@ class Layout extends React.Component {
             <button
               type="button"
               className={styles.plusButtonOffset}
-              onClick={this.onActionButtonClick}
+              onClick={this.toggleActionButtons}
             >
               <PopupActionButton
                 ref={this.actionButtonRef}
@@ -182,6 +219,14 @@ class Layout extends React.Component {
             <SVG icon={BottomBar} hollow presentationOnly />
           </div>
         </nav>
+
+        <div
+          aria-hidden="true"
+          className={classnames(styles.overlay, styles.navigationMenuOverlay, {
+            [styles.overlayVisible]: navigationMenuOpen,
+          })}
+          onClick={this.closeAll}
+        />
       </div>
     );
   }

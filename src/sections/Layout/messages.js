@@ -1,5 +1,9 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    actionNav: getText(
+      'Actions',
+      'Page Layout',
+    ) /* Label for a navigation section containing links to add new items */,
     actionButton: getText(
       'Add',
       'Page Layout',
