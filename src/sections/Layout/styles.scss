@@ -2,6 +2,7 @@
 @import '../../styles/boxmodel';
 @import '../../styles/colors';
 @import '../../styles/font-sizes';
+@import "../../styles/icons";
 @import '../../styles/media-queries';
 @import "../../styles/z-indices";
 
@@ -40,7 +41,7 @@ $logo-width-default: 150px;
   align-items: center;
   justify-content: center;
   color: $bottom-bar-text-color;
-  padding: 0 $padding-small-2;
+  padding: 0 $padding-small-3;
   background: transparent;
   border: 0;
 }
@@ -64,7 +65,7 @@ $logo-width-default: 150px;
     grid-template-rows: $masthead-height 1fr $bottom-bar-height;
     grid-template-columns: 1fr 75px 75px 80px 65px;
     grid-template-areas:
-            "logo logo logo logo search"
+            "logo logo logo logo logo"
             "main main main main main"
             ". profile activity actionButton more";
     grid-row-gap: 0;
@@ -83,7 +84,7 @@ $logo-width-default: 150px;
     grid-template-rows: $masthead-height 1fr $footer-height;
     grid-template-columns: $lhs-width-small $lhs-width-small 1fr $rhs-width-small $rhs-width-small;
     grid-template-areas:
-            "logo logo search activity profile"
+            "logo logo logo activity profile"
             "navigation main main main actions"
             "footer main main main actions";
     grid-row-gap: 0;
@@ -139,6 +140,8 @@ $logo-width-default: 150px;
 }
 
 .search {
+  // Remove when search exists:
+  display: none;
   grid-area: search;
   justify-content: start;
 }
@@ -205,7 +208,8 @@ $logo-width-default: 150px;
   padding: 0;
 
   .plusPlaceholder {
-    height: 2rem;
+    width: $standardIconSize;
+    height: $standardIconSize;
   }
 
   .plusLabel {

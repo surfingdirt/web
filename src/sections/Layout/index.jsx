@@ -123,6 +123,7 @@ class Layout extends React.Component {
 
         <nav className={styles.bottomBar}>
           <div
+            aria-hidden="true"
             className={classnames(styles.overlay, {
               [styles.overlayVisible]: bottomBarActionsOpen,
             })}

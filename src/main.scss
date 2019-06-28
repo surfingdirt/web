@@ -1,5 +1,6 @@
 @import 'styles/boxmodel';
 @import "styles/colors";
+@import "styles/icons";
 @import "styles/font-faces";
 @import "styles/font-sizes";
 @import "styles/remedy.css";
@@ -71,9 +72,16 @@
     fill: $icon-color-active;
   }
 
+  .standardIcon {
+    display: inline-block;
+    width: $standardIconSize;
+    height: $standardIconSize;
+  }
+
   svg.standardIcon-svg {
     display: inline-block;
-    width: 2rem;
+    width: 100%;
+    height: 100%;
   }
 
 

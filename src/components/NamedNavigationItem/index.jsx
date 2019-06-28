@@ -6,7 +6,7 @@ import styles from './styles.scss';
 const NamedNavigationItem = ({ label, visual }) => {
   return (
     <div className={styles.wrapper}>
-      {visual}
+      <span className={styles.visual}>{visual}</span>
       <span className={styles.label}>{label}</span>
     </div>
   );
