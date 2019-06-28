@@ -4,11 +4,17 @@
 
 .wrapper {
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .label {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: $navigation-item-font-size;
+  text-align: center;
 }
