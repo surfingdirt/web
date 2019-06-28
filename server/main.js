@@ -11,6 +11,8 @@ import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
 import Loadable from '@7rulnik/react-loadable';
+import slugify from 'slugify';
+import useragent from 'useragent';
 
 import Favicon from 'Images/favicon.ico';
 import Favicon16 from 'Images/favicon-16x16.png';
@@ -41,6 +43,9 @@ const Main = (rootDir) => {
     const context = {}; // required
     const modules = new Set();
     let document;
+
+    const { family } = useragent.parse(req.headers['user-agent']);
+    const agentBodyClass = slugify(family, { lower: true });
 
     try {
       const { availableLanguages, language, dir } = utils.getLanguagesAndDirFromRequest(req);
@@ -135,6 +140,7 @@ const Main = (rootDir) => {
             .join('\n'),
         lang: language,
         meta: meta || '',
+        agentBodyClass,
         robotsMeta,
         script: (helmet && helmet.script && helmet.script.toString()) || '',
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),

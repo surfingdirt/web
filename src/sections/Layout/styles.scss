@@ -51,9 +51,14 @@ $logo-width-default: 150px;
   position: relative;
   z-index: 1;
   display: grid;
-  height: 100vh;
+  height: calc(100vh);
   margin: 0 auto;
   max-width: $max-content-width;
+}
+
+// @see https://dev.to/peiche/100vh-behavior-on-chrome-2hm8
+:global(.chrome-mobile) .wrapper {
+  height: calc(100vh - 56px);
 }
 
 @media (max-width: $mobile-layout-threshold-max) {
