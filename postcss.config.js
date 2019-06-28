@@ -6,6 +6,5 @@ module.exports = ({ file, options, env }) => ({
     // 'postcss-clean': env === 'production' ? options.clean : false,
     'postcss-rtl': {},
     'postcss-discard-comments': { removeAll: true },
-    autoprefixer: { grid: true },
   },
 });
