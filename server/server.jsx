@@ -13,6 +13,7 @@ import Main from './main';
 const rootDir = path.resolve(__dirname, '..');
 
 const app = express();
+app.disable('x-powered-by');
 app.use(cookieParser());
 
 app.get(assetsRoute, Assets(rootDir));

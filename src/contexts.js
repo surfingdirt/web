@@ -86,6 +86,10 @@ export class AppContextValueObject {
     };
 
     this.values.login.clearOrigin = () => {
+      if (!global.window) {
+        // Don't worry about that on the server.
+        return null;
+      }
       sessionStorage.removeItem(signupDestinationKey);
     };
 
@@ -103,7 +107,7 @@ export class AppContextValueObject {
   }
 
   setUser({ avatar, email, status, userId, username }) {
-    this.values.login.data.me = { avatar, email, status, userId, username, };
+    this.values.login.data.me = { avatar, email, status, userId, username };
   }
 
   resetUser() {

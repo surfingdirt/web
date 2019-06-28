@@ -2,14 +2,15 @@ import Loadable from '@7rulnik/react-loadable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Route, Switch } from 'react-router';
+import { Switch } from 'react-router';
 
 import ME from 'Apollo/queries/me.gql';
+import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
 import ErrorMessage from 'Components/ErrorMessage';
 import loading from 'Components/Loading';
+import { DefaultLayoutRoute } from 'Components/Route';
 import Spinner from 'Components/Spinner';
 import { Page404 } from 'Pages/Page404';
-import Layout from 'Sections/Layout';
 
 import AppContext, { AppContextValueObject } from '~/contexts';
 
@@ -59,17 +60,6 @@ const Video = Loadable({
 const MOUSE_MODE_CLASS = 'mouse-mode';
 const MOUSE_MOVE_EVENT = 'mousemove';
 
-const DefaultLayoutRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(matchProps) => (
-      <Layout>
-        <Component {...matchProps} />
-      </Layout>
-    )}
-  />
-);
-
 class App extends React.Component {
   static propTypes = {
     appContextValueObject: PropTypes.instanceOf(AppContextValueObject).isRequired,
@@ -101,8 +91,8 @@ class App extends React.Component {
           <DefaultLayoutRoute exact path={HOME} component={Home} />
           <DefaultLayoutRoute exact path={ALBUM} component={Album} />
           <DefaultLayoutRoute exact path={ERROR} component={Error} />
-          <DefaultLayoutRoute path={LOGIN} component={LogIn} />
-          <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} />
+          <DefaultLayoutRoute path={LOGIN} login={FORBIDDEN} component={LogIn} />
+          <DefaultLayoutRoute path={PHOTO_NEW} login={MANDATORY} component={NewPhoto} />
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
           <DefaultLayoutRoute path={PROFILE} component={Profile} />
           <DefaultLayoutRoute path={USER} component={User} />
