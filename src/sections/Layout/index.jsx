@@ -17,6 +17,7 @@ import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
 import LinkNavigation from 'Sections/LinkNavigation';
 import icons, { getIcon, sizes } from 'Utils/icons';
+import {focusFirstFocusableItemInside} from 'Utils/misc';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -28,7 +29,8 @@ const { STANDARD } = sizes;
 
 const RESIZE = 'resize';
 
-const NAVIGATION_ID = 'nav123-nav123';
+const NAVIGATION_ID = 'link-navigation-items';
+const ACTION_ITEMS_ID = 'action-items';
 
 const Header = ({ t, title }) => (
   <header className={styles.header}>
@@ -56,6 +58,7 @@ Header.propTypes = {
 const BottomBar = ({
   actionButtonRef,
   actionButtonOrigin,
+  actionLinkListRef,
   actionItems,
   bottomBarActionsOpen,
   closeAll,
@@ -92,7 +95,14 @@ const BottomBar = ({
     </button>
 
     <div className={styles.plusButtonWrapper}>
-      <button type="button" className={styles.plusButtonOffset} onClick={onPlusClick}>
+      <button
+        type="button"
+        className={styles.plusButtonOffset}
+        onClick={onPlusClick}
+        aria-haspopup="true"
+        aria-expanded={bottomBarActionsOpen}
+        aria-controls={ACTION_ITEMS_ID}
+      >
         <PopupActionButton
           ref={actionButtonRef}
           className={styles.plusButton}
@@ -111,9 +121,11 @@ const BottomBar = ({
           className={classnames(styles.bottomBarActionContainer, {
             [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
           })}
-          origin={actionButtonOrigin}
+          id={ACTION_ITEMS_ID}
           items={actionItems}
           open={bottomBarActionsOpen}
+          origin={actionButtonOrigin}
+          ref={actionLinkListRef}
         />
       </button>
       <NamedNavigationItem
@@ -130,6 +142,9 @@ const BottomBar = ({
 );
 BottomBar.propTypes = {
   actionButtonRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
+  actionLinkListRef: PropTypes.shape({
     current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
   }).isRequired,
   actionButtonOrigin: PropTypes.arrayOf(PropTypes.number).isRequired,
@@ -179,6 +194,7 @@ class Layout extends React.Component {
 
     this.actionButtonRef = React.createRef();
     this.navigationMenuRef = React.createRef();
+    this.actionLinkListRef = React.createRef();
   }
 
   componentDidMount() {
@@ -214,17 +230,18 @@ class Layout extends React.Component {
 
   toggleActionButtons() {
     const { bottomBarActionsOpen } = this.state;
-    this.setState({ bottomBarActionsOpen: !bottomBarActionsOpen });
+    const newlyOpen = !bottomBarActionsOpen
+    this.setState({ bottomBarActionsOpen: newlyOpen });
+
+    if (newlyOpen) {
+      focusFirstFocusableItemInside(this.actionLinkListRef.current);
+    }
   }
 
   openNavigationMenu() {
     this.setState({ navigationMenuOpen: true }, () => {
-      // Find the first focusable item. Stick to links for now.
       // TODO: use a focus trap in the mobile navigation.
-      const links = this.navigationMenuRef.current.getElementsByTagName('a');
-      if (links && links.length >= 1) {
-        links[0].focus();
-      }
+      focusFirstFocusableItemInside(this.navigationMenuRef.current);
     });
   }
 
@@ -255,6 +272,7 @@ class Layout extends React.Component {
 
     const bottomBarProps = {
       actionButtonRef: this.actionButtonRef,
+      actionLinkListRef: this.actionLinkListRef,
       actionButtonOrigin,
       actionItems,
       closeAll: this.closeAll,

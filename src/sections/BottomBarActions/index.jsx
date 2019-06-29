@@ -13,7 +13,7 @@ const RADIUS = 100;
 const START_ANGLE = 180 - 22.5;
 const ANGULAR_DISTANCE = 45;
 
-const BottomBarActions = ({ className, items, open, origin }) => {
+const BottomBarActionsRaw = ({ className, id, innerRef, items, open, origin }) => {
   const offsets = items.map((item, i) => {
     const angle = ((START_ANGLE - i * ANGULAR_DISTANCE) * Math.PI) / 180;
     const x = origin[0] + RADIUS * Math.cos(angle) + HORIZONTAL_OFFSET;
@@ -24,7 +24,7 @@ const BottomBarActions = ({ className, items, open, origin }) => {
 
   return (
     <div className={classnames(styles.wrapper, className)}>
-      <ul className={styles.linkList}>
+      <ul className={styles.linkList} id={id} ref={innerRef}>
         {items.map((props, index) => {
           const [x, y] = offsets[index];
           const style = open ? { transform: `translate(${x}px, ${y}px)` } : {};
@@ -43,8 +43,12 @@ const BottomBarActions = ({ className, items, open, origin }) => {
   );
 };
 
-BottomBarActions.propTypes = {
+BottomBarActionsRaw.propTypes = {
   className: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  innerRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       to: PropTypes.string.isRequired,
@@ -55,5 +59,10 @@ BottomBarActions.propTypes = {
   open: PropTypes.bool.isRequired,
   origin: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
+
+const BottomBarActions = React.forwardRef((props, ref) => (
+  <BottomBarActionsRaw innerRef={ref} {...props} />
+));
+BottomBarActions.displayName = 'LinkNavigation';
 
 export default BottomBarActions;
