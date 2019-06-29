@@ -358,8 +358,35 @@ $logo-width-default: 150px;
 /******************************************************************************
  * GRID FALLBACKS
  *****************************************************************************/
-@supports not (display: grid) {
-  nav, footer {
+// Not the right way to do this, I know.
+@supports (not (display: grid)) {
+  .header {
+    display: flex;
+  }
+  .wrapper {
+    float: left;
+    width: 250px;
+  }
+  .wrapper {
+    float: right;
+    width: 100px;
+  }
+  .wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+  }
+  .bottomBarBackground {
     display: none;
+  }
+  .bottomBar {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 80px;
+  }
+  .more {
+    position: absolute;
+    right: 0;
   }
 }
