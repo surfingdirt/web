@@ -10,12 +10,12 @@ import NamedNavigationItem from 'Components/NamedNavigationItem';
 import Profile from 'Components/Profile/index';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
-import BottomBar from 'Images/bottom-bar.svg';
+import BottomBarBackground from 'Images/bottom-bar.svg';
 import Actions from 'Sections/Actions';
 import BottomBarActions from 'Sections/BottomBarActions';
 import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
-import Navigation from 'Sections/Navigation';
+import LinkNavigation from 'Sections/LinkNavigation';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import AppContext from '~/contexts';
 import routes from '~/routes';
@@ -28,7 +28,125 @@ const { STANDARD } = sizes;
 
 const RESIZE = 'resize';
 
-const NAVIGATION_ID = '123';
+const NAVIGATION_ID = 'nav123-nav123';
+
+const Header = ({ t, title }) => (
+  <header className={styles.header}>
+    <div className={styles.headerBackground} />
+    <Link to={HOME} className={styles.logo}>
+      <Logo title={title} />
+    </Link>
+    <div className={styles.search}>
+      {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
+    </div>
+    <div className={styles.activity}>
+      <NamedNavigationItem
+        label={t('activity')}
+        visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
+      />
+    </div>
+    <Profile className={styles.profile} />
+  </header>
+);
+Header.propTypes = {
+  t: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+const BottomBar = ({
+  actionButtonRef,
+  actionButtonOrigin,
+  actionItems,
+  bottomBarActionsOpen,
+  closeAll,
+  navigationMenuOpen,
+  onPlusClick,
+  openNavigationMenu,
+  t,
+}) => (
+  <nav className={styles.bottomBar} aria-label={t('actionNav')}>
+    <div
+      aria-hidden="true"
+      className={classnames(styles.overlay, styles.actionButtonOverlay, {
+        [styles.overlayVisible]: bottomBarActionsOpen,
+      })}
+      onClick={closeAll}
+    />
+
+    <button
+      type="button"
+      className={styles.more}
+      aria-haspopup="true"
+      aria-expanded={navigationMenuOpen}
+      aria-controls={NAVIGATION_ID}
+      onClick={openNavigationMenu}
+    >
+      <NamedNavigationItem
+        label={t('more')}
+        visual={getIcon({
+          type: icons.THREEDOTS,
+          presentationOnly: true,
+          size: STANDARD,
+        })}
+      />
+    </button>
+
+    <div className={styles.plusButtonWrapper}>
+      <button type="button" className={styles.plusButtonOffset} onClick={onPlusClick}>
+        <PopupActionButton
+          ref={actionButtonRef}
+          className={styles.plusButton}
+          active={bottomBarActionsOpen}
+        >
+          {getIcon({
+            type: icons.CLOSE,
+            label: t('actionButton'),
+            className: classnames(styles.closeIcon, {
+              [styles.closeIconActive]: bottomBarActionsOpen,
+            }),
+          })}
+        </PopupActionButton>
+
+        <BottomBarActions
+          className={classnames(styles.bottomBarActionContainer, {
+            [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
+          })}
+          origin={actionButtonOrigin}
+          items={actionItems}
+          open={bottomBarActionsOpen}
+        />
+      </button>
+      <NamedNavigationItem
+        aria-hidden="true"
+        className={styles.plusLabel}
+        label={t('actionButton')}
+        visual={<div className={styles.plusPlaceholder} />}
+      />
+    </div>
+    <div className={styles.bottomBarBackground}>
+      <SVG icon={BottomBarBackground} hollow presentationOnly />
+    </div>
+  </nav>
+);
+BottomBar.propTypes = {
+  actionButtonRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
+  actionButtonOrigin: PropTypes.arrayOf(PropTypes.number).isRequired,
+  actionItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  bottomBarActionsOpen: PropTypes.bool.isRequired,
+  closeAll: PropTypes.func.isRequired,
+  navigationMenuOpen: PropTypes.bool.isRequired,
+  onPlusClick: PropTypes.func.isRequired,
+  openNavigationMenu: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
+};
 
 class Layout extends React.Component {
   static propTypes = {
@@ -135,26 +253,24 @@ class Layout extends React.Component {
       { to: VIDEO_NEW, icon: icons.VIDEO, label: t('postAVideo') },
     ];
 
+    const bottomBarProps = {
+      actionButtonRef: this.actionButtonRef,
+      actionButtonOrigin,
+      actionItems,
+      closeAll: this.closeAll,
+      bottomBarActionsOpen,
+      navigationMenuOpen,
+      onPlusClick: this.toggleActionButtons,
+      openNavigationMenu: this.openNavigationMenu,
+      t,
+      toggleActionButtons: this.toggleActionButtons,
+    };
+
     return (
       <div className={styles.wrapper}>
-        <header className={styles.header}>
-          <div className={styles.headerBackground} />
-          <Link to={HOME} className={styles.logo}>
-            <Logo title={title} />
-          </Link>
-          <div className={styles.search}>
-            {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
-          </div>
-          <div className={styles.activity}>
-            <NamedNavigationItem
-              label={t('activity')}
-              visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
-            />
-          </div>
-          <Profile className={styles.profile} />
-        </header>
+        <Header t={t} title={title} />
 
-        <Navigation
+        <LinkNavigation
           className={styles.navigation}
           id={NAVIGATION_ID}
           currentUrl={url}
@@ -163,76 +279,10 @@ class Layout extends React.Component {
           ref={this.navigationMenuRef}
         />
         <Footer className={styles.footer} />
-        <Actions className={styles.actions} items={actionItems} />
+        <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
         <Main className={styles.main}>{children}</Main>
 
-        <nav className={styles.bottomBar} aria-label={t('actionNav')}>
-          <div
-            aria-hidden="true"
-            className={classnames(styles.overlay, styles.actionButtonOverlay, {
-              [styles.overlayVisible]: bottomBarActionsOpen,
-            })}
-            onClick={this.closeAll}
-          />
-
-          <button
-            type="button"
-            className={styles.more}
-            aria-haspopup="true"
-            aria-expanded={navigationMenuOpen}
-            aria-controls={NAVIGATION_ID}
-            onClick={this.openNavigationMenu}
-          >
-            <NamedNavigationItem
-              label={t('more')}
-              visual={getIcon({
-                type: icons.THREEDOTS,
-                presentationOnly: true,
-                size: STANDARD,
-              })}
-            />
-          </button>
-
-          <div className={styles.plusButtonWrapper}>
-            <button
-              type="button"
-              className={styles.plusButtonOffset}
-              onClick={this.toggleActionButtons}
-            >
-              <PopupActionButton
-                ref={this.actionButtonRef}
-                className={styles.plusButton}
-                active={bottomBarActionsOpen}
-              >
-                {getIcon({
-                  type: icons.CLOSE,
-                  label: t('actionButton'),
-                  className: classnames(styles.closeIcon, {
-                    [styles.closeIconActive]: bottomBarActionsOpen,
-                  }),
-                })}
-              </PopupActionButton>
-
-              <BottomBarActions
-                className={classnames(styles.bottomBarActionContainer, {
-                  [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
-                })}
-                origin={actionButtonOrigin}
-                items={actionItems}
-                open={bottomBarActionsOpen}
-              />
-            </button>
-            <NamedNavigationItem
-              aria-hidden="true"
-              className={styles.plusLabel}
-              label={t('actionButton')}
-              visual={<div className={styles.plusPlaceholder} />}
-            />
-          </div>
-          <div className={styles.bottomBarBackground}>
-            <SVG icon={BottomBar} hollow presentationOnly />
-          </div>
-        </nav>
+        <BottomBar {...bottomBarProps} />
 
         <div
           aria-hidden="true"

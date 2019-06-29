@@ -6,9 +6,9 @@ import ActionLink from 'Components/ActionLink';
 
 import styles from './styles.scss';
 
-const Actions = ({ className, items }) => {
+const Actions = ({ className, items, label }) => {
   return (
-    <aside className={classnames(styles.wrapper, className)}>
+    <nav className={classnames(styles.wrapper, className)} aria-label={label}>
       <ul className={styles.linkList}>
         {items.map((props) => (
           <li key={props.to}>
@@ -16,7 +16,7 @@ const Actions = ({ className, items }) => {
           </li>
         ))}
       </ul>
-    </aside>
+    </nav>
   );
 };
 
@@ -29,6 +29,7 @@ Actions.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default Actions;

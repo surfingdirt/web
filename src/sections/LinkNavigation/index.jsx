@@ -16,12 +16,14 @@ import messages from './messages';
 const { ALBUMS, USERS } = routes;
 const { STANDARD } = sizes;
 
-class NavigationRaw extends React.Component {
+class LinkNavigationRaw extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    innerRef: PropTypes.any.isRequired,
+    innerRef: PropTypes.shape({
+      current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+    }).isRequired,
     onCloseClick: PropTypes.func.isRequired,
     openOnMobile: PropTypes.bool.isRequired,
     currentUrl: PropTypes.string.isRequired,
@@ -58,9 +60,9 @@ class NavigationRaw extends React.Component {
     );
   }
 }
-const TranslatedNavigation = Translate(messages)(withRouter(NavigationRaw));
-const Navigation = React.forwardRef((props, ref) => (
-  <TranslatedNavigation innerRef={ref} {...props} />
+const TranslatedLinkNavigation = Translate(messages)(withRouter(LinkNavigationRaw));
+const LinkNavigation = React.forwardRef((props, ref) => (
+  <TranslatedLinkNavigation innerRef={ref} {...props} />
 ));
-Navigation.displayName = 'Navigation';
-export default Navigation;
+LinkNavigation.displayName = 'LinkNavigation';
+export default LinkNavigation;
