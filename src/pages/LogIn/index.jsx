@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import LOGIN from 'Apollo/mutations/login.gql';
-import Header, {headerTypes} from 'Components/Header';
+import Heading, {headingTypes} from 'Components/Heading';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 import routes from '~/routes';
@@ -15,7 +15,7 @@ import messages from './messages';
 import PageContent from './pageContent';
 
 const { HOME } = routes;
-const { PRIMARY } = headerTypes;
+const { PRIMARY } = headingTypes;
 
 class LogInPage extends Component {
   static contextType = AppContext;
@@ -88,7 +88,7 @@ class LogInPage extends Component {
 
     return (
       <Fragment>
-        <Header type={PRIMARY}>{t('signIn')}</Header>
+        <Heading type={PRIMARY}>{t('signIn')}</Heading>
         <Mutation mutation={LOGIN}>
           {(mutate) => (
             <PageContent

@@ -3,9 +3,11 @@
 @import "../../styles/colors";
 
 .primary {
+  font-family: $title-font-families;
   font-size: $font-size-huge;
 }
 
 .secondary {
+  font-family: $title-font-families;
   font-size: $font-size-big;
 }

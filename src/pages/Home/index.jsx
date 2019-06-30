@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
-import Card from 'Components/Card';
+import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
 import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import messages from './messages';
+
+const { STANDARD } = cardTypes;
 
 class HomeRaw extends React.Component {
   static contextType = AppContext;
@@ -32,10 +34,12 @@ class HomeRaw extends React.Component {
             album: { id, title, description },
           } = data;
           return (
-            <Card title={title} type="main">
-              <Link to={albumRoute(id)}>
-                <span>{description}</span>
-              </Link>
+            <Card title={'This is the homepage'} type={STANDARD}>
+              <p>Some content</p>
+              <p>Some content</p>
+              <p>Some content</p>
+              <p>Some content</p>
+              <p>Some content</p>
             </Card>
           );
         }}

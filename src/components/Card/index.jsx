@@ -1,43 +1,82 @@
 /* eslint-disable no-console */
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 
-import Header, { headerTypes } from 'Components/Header';
+import Heading, { headingTypes } from 'Components/Heading';
 import Translate from 'Hocs/Translate';
 
 import messages from './messages';
 import styles from './styles.scss';
 
+const BARE = 'bare';
 const HERO = 'hero';
-const FREE = 'free';
-const FLOW = 'flow';
+const STANDARD = 'standard';
 
 export const cardTypes = {
+  BARE,
   HERO,
-  FREE,
-  FLOW,
+  STANDARD,
 };
 
-const { PRIMARY } = headerTypes;
+const classMapping = {
+  [BARE]: null,
+  [HERO]: null,
+  [STANDARD]: null,
+};
 
-const Card = ({ children, className, title, type }) => {
-  return (
-    <section className={classnames(className, styles.wrapper)}>
-      <div className={styles.content}>{children}</div>
-      {title && (
-        <Header className={styles.title} type={PRIMARY}>
-          {title}
-        </Header>
-      )}
-    </section>
+const { PRIMARY } = headingTypes;
+
+const renderContent = (props) => {
+  const { headingType, heroContent, title, type, children } = props;
+  switch (type) {
+    case BARE:
+      return children;
+    case HERO:
+      return (
+        <Fragment>
+          <div className={styles.heroContent}>{heroContent}</div>
+          <div className={styles.contentWrapper}>
+            <Heading className={styles.title} type={headingType}>
+              {title}
+            </Heading>
+            {children}
+          </div>
+        </Fragment>
+      );
+    case STANDARD:
+      return (
+        <div className={styles.contentWrapper}>
+          <Heading className={styles.title} type={headingType}>
+            {title}
+          </Heading>
+          <div className={styles.content}>{children}</div>
+        </div>
+      );
+    default:
+      throw new Error(`Unsupported card type '${type}'`);
+  }
+};
+
+const Card = (props) => {
+  const { className, negative, type } = props;
+  const actualClassName = classnames(
+    styles.wrapper,
+    classMapping[type],
+    { [styles.negative]: negative },
+    className,
   );
+
+  return <section className={actualClassName}>{renderContent(props)}</section>;
 };
 
 Card.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  headingType: PropTypes.string,
+  heroContent: PropTypes.node,
+  negative: PropTypes.bool,
   t: PropTypes.func.isRequired,
   title: PropTypes.string,
   type: (props, propName, componentName) => {
@@ -56,6 +95,9 @@ Card.propTypes = {
 
 Card.defaultProps = {
   className: null,
+  headingType: PRIMARY,
+  heroContent: null,
+  negative: false,
   title: null,
 };
 

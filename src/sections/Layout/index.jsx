@@ -13,7 +13,6 @@ import Translate from 'Hocs/Translate';
 import BottomBarBackground from 'Images/bottom-bar.svg';
 import Actions from 'Sections/Actions';
 import BottomBarActions from 'Sections/BottomBarActions';
-import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
 import LinkNavigation from 'Sections/LinkNavigation';
 import icons, { getIcon, sizes } from 'Utils/icons';
@@ -297,7 +296,7 @@ class Layout extends React.Component {
           openOnMobile={navigationMenuOpen}
           ref={this.navigationMenuRef}
         />
-        <Footer className={styles.footer} />
+
         <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
         <Main className={styles.main}>{children}</Main>
 

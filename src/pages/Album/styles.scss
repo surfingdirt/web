@@ -1,15 +1,18 @@
-.page {
-}
-
-.grid {
+.items {
   display: grid;
+  list-style: none;
   grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
   grid-gap: 40px;
+  justify-items: center;
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .grid {
+  .items {
     grid-template-columns: repeat(2, 1fr);
   }
 }

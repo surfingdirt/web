@@ -4,13 +4,29 @@
 @import '../../styles/media-queries';
 
 .wrapper {
-  padding: $padding-medium-1;
+  color: $card-text-color;
   background-color: $card-background-color;
+
+  &.negative {
+    color: $card-text-color-negative;
+    background-color: $card-background-color-negative;
+  }
+}
+
+.heroContent {
+  img,
+  iframe {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
+.contentWrapper {
+  padding: $padding-medium-1;
 }
 
 .content {
 }
 
 .title {
-  margin: $margin-medium-1 0;
 }

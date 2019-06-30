@@ -3,6 +3,8 @@
 @import '../../styles/constants';
 @import '../../styles/media-queries';
 
+$footer-height: 2.5rem;
+
 .wrapper {
   background-color: $container-background-color-default;
   color: $container-text-color-default;
@@ -34,15 +36,7 @@
   background: none;
   border: none;
   color: inherit;
-}
-
-@media (min-width: $mobile-layout-threshold-max) {
-  .positioner {
-    display: contents;
-  }
-  .closeBtn {
-    display: none;
-  }
+  order: 3;
 }
 
 .linkList {
@@ -50,3 +44,34 @@
   margin: $margin-medium-2 0;
   padding: 0;
 }
+
+.footer {
+  order: 1;
+  flex-grow: 1;
+  margin: $margin-medium-2 0;
+}
+
+.linkList {
+  order: 2;
+}
+
+@media (min-width: $mobile-layout-threshold-max) {
+  .positioner {
+  }
+
+  .closeBtn {
+    display: none;
+  }
+
+  .footer {
+    order: initial;
+    flex-grow: 0;
+  }
+
+  .linkList {
+    order: initial;
+    flex-grow: 1;
+  }
+}
+
+

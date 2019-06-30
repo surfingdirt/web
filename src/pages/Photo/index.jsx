@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import PHOTO from 'Apollo/queries/photo.gql';
-import Card from 'Components/Card';
+import Card, {cardTypes} from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import { userRoute } from 'Utils/links';
 
 import styles from './styles.scss';
+
+const { HERO } = cardTypes;
 
 export const Photo = ({ match }) => {
   const { id } = match.params;
@@ -24,12 +26,11 @@ export const Photo = ({ match }) => {
           },
         } = data;
         return (
-          <Card title={title} type="main">
-            <img src={images[2].url} alt="" />
-            <p>
-              <span>Owner:</span>
+          <Card title={title} type={HERO} heroContent={<img src={images[2].url} alt="" />}>
+            <div>
+              <span>Posted by:</span>{' '}
               <Link to={userRoute(userId)}>{username}</Link>
-            </p>
+            </div>
           </Card>
         );
       }}

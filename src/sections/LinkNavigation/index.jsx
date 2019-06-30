@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
 import NavigationLink from 'Components/NavigationLink';
+import Footer from 'Sections/Footer';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
@@ -55,6 +56,7 @@ class LinkNavigationRaw extends React.Component {
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
             {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
           </button>
+          <Footer className={styles.footer} />
         </div>
       </nav>
     );

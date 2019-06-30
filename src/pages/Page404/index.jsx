@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
 
-import Header, { headerTypes } from 'Components/Header';
+import Heading, { headingTypes } from 'Components/Heading';
 import HeadMetaData from 'Components/HeadMetaData';
 import Paragraph from 'Components/Paragraph/index';
 import Translate from 'Hocs/Translate';
@@ -11,7 +11,7 @@ import Translate from 'Hocs/Translate';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { PRIMARY } = headerTypes;
+const { PRIMARY } = headingTypes;
 
 class RawPage404 extends React.Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class RawPage404 extends React.Component {
           return (
             <div className={styles.container}>
               <HeadMetaData description={DESCRIPTION} image={PICTURE} title={NAME} url={url} />
-              <Header type={PRIMARY}>{t('pageNotFound')}</Header>
+              <Heading type={PRIMARY}>{t('pageNotFound')}</Heading>
               <Paragraph>{t('thePageYouRequested')}</Paragraph>
             </div>
           );
