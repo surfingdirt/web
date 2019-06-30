@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 
 import GOOGLE_LOGIN from 'Apollo/mutations/googleLogin.gql';
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import { InlineSpinner } from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import Google from 'Images/_old/google.svg';

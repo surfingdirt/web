@@ -3,13 +3,11 @@ import { addDecorator, addParameters, configure } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { po } from 'gettext-parser';
 import React from 'react';
-import contexts from '~/contexts';
+import AppContext from '~/contexts';
 
 import '../src/main.scss';
 import { storybookViewports } from '../src/responsiveConfig';
 import theme from './theme';
-
-const { AppContext } = contexts;
 
 const translations = po.parse(`
   "Content-Type: text/plain; charset=UTF-8\\n"

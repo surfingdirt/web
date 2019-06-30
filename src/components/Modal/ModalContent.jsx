@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
 
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import SVG from 'Components/SVG';
 import ReactFocusTrap from 'focus-trap-react';
 import Translate from 'Hocs/Translate';

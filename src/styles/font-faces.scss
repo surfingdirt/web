@@ -6,12 +6,34 @@
 }
 
 @font-face {
+  font-family: 'Boton Regular';
+  font-weight: 300;
+  src: url('../fonts/Boton-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boton Roman';
+  font-weight: 400;
+  src: url('../fonts/Boton-Roman.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boton Medium';
+  font-weight: 700;
+  src: url('../fonts/Boton-Medium.otf');
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Roboto Regular';
   font-weight: 400;
-  src: url('../fonts/RobotoRegular.ttf');
+  src: url('../fonts/Roboto-Regular.ttf');
   font-display: swap;
 }
 
 /* Default font definition */
 $default-font-families: 'Roboto Regular', sans-serif;
+$paragraph-font-families: 'Boton Roman', 'Roboto Regular', sans-serif;
 $title-font-families: 'Bungee Regular', sans-serif;

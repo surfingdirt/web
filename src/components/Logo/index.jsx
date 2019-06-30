@@ -10,7 +10,7 @@ const Logo = ({ title }) => {
   return (
     <Fragment>
       <SVG className={styles.logoImage} icon={LogoImage} presentationOnly hollow />
-      <h1 className={styles.title}>{title}</h1>
+      <div className={styles.title}>{title}</div>
     </Fragment>
   );
 };

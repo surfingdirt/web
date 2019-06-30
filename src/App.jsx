@@ -17,8 +17,12 @@ import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { ALBUM, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, PROFILE, VIDEO } = routes;
+const { ABOUT, ALBUM, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, PROFILE, VIDEO } = routes;
 
+const About = Loadable({
+  loader: () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
+  loading,
+});
 const Album = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
   loading,
@@ -89,6 +93,8 @@ class App extends React.Component {
       <AppContext.Provider value={contextValues}>
         <Switch>
           <DefaultLayoutRoute exact path={HOME} component={Home} />
+
+          <DefaultLayoutRoute exact path={ABOUT} component={About} />
           <DefaultLayoutRoute exact path={ALBUM} component={Album} />
           <DefaultLayoutRoute exact path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} login={FORBIDDEN} component={LogIn} />

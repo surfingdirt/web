@@ -10,14 +10,24 @@ import Translate from 'Hocs/Translate';
 import messages from './messages';
 import styles from './styles.scss';
 
-export const cardTypes = headerTypes;
+const HERO = 'hero';
+const FREE = 'free';
+const FLOW = 'flow';
+
+export const cardTypes = {
+  HERO,
+  FREE,
+  FLOW,
+};
+
+const { PRIMARY } = headerTypes;
 
 const Card = ({ children, className, title, type }) => {
   return (
     <section className={classnames(className, styles.wrapper)}>
       <div className={styles.content}>{children}</div>
       {title && (
-        <Header className={styles.title} type={type}>
+        <Header className={styles.title} type={PRIMARY}>
           {title}
         </Header>
       )}
@@ -36,7 +46,7 @@ Card.propTypes = {
       return new Error(`Empty type set for component '${componentName}'`);
     }
 
-    if (!cardTypes.includes(type)) {
+    if (!Object.values(cardTypes).includes(type)) {
       return new Error(`Invalid type set for component '${componentName}': '${type}'`);
     }
 

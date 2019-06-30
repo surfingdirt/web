@@ -1,7 +1,9 @@
 const routes = {
+  ABOUT: '/about',
   ALBUM: '/album/:id',
   ALBUM_NEW: '/new-album',
   ALBUMS: '/albums',
+  CONTACT: '/contact',
   ERROR: '/error/:id/:message',
   HOME: '/',
   LOGIN: '/login',

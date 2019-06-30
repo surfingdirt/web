@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
 

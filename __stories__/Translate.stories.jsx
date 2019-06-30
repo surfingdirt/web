@@ -4,7 +4,7 @@ import { po } from 'gettext-parser';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
 import React from 'react';
-import contexts from '../src/contexts';
+import AppContext from '../src/contexts';
 
 const esTranslations = `
   "Content-Type: text/plain; charset=UTF-8\\n"
@@ -48,8 +48,6 @@ msgid_plural "I have %d things"
 msgstr[0] "J'ai %d chose"
 msgstr[1] "J'ai %d choses"
 `;
-
-const { AppContext } = contexts;
 
 const HelloWorldRaw = ({ getText }) => <span>{getText('Hello World!')}</span>;
 HelloWorldRaw.propTypes = {

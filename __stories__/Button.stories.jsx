@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import Next from 'Images/_old/arrow-next.svg';
 import Prev from 'Images/_old/arrow-prev.svg';
 import React, { Fragment } from 'react';
@@ -65,7 +65,7 @@ storiesOf('Button', module).add('Loading button', () => {
           <button onClick={this.toggle} type="button">
             Toggle loading
           </button>
-          <Button label="Ready" loading={this.state.loading} />
+          <Button label="Ready" loading={this.state.loading} disabled={this.state.loading} />
         </div>
       );
     }
@@ -84,40 +84,3 @@ storiesOf('Button', module).add('Loading button', () => {
     </BrowserRouter>
   );
 });
-
-storiesOf('Button', module).add('Buttons with icons - RTL', () => (
-  <BrowserRouter>
-    <ul>
-      <li>
-        <p>LTR:</p>
-        <Button label="With next icon" iconRight={Next} />
-      </li>
-      <li>
-        <p>RTL:</p>
-        <div dir="rtl">
-          <Button label="With next icon" iconRight={Next} />
-        </div>
-      </li>
-      <li>
-        <p>LTR:</p>
-        <Button label="With prev icon" iconLeft={Prev} />
-      </li>
-      <li>
-        <p>RTL:</p>
-        <div dir="rtl">
-          <Button label="With prev icon" iconLeft={Prev} />
-        </div>
-      </li>
-      <li>
-        <p>LTR:</p>
-        <Button label="With both icons" iconLeft={Prev} iconRight={Next} />
-      </li>
-      <li>
-        <p>RTL:</p>
-        <div dir="rtl">
-          <Button label="With both icons" iconLeft={Prev} iconRight={Next} />
-        </div>
-      </li>
-    </ul>
-  </BrowserRouter>
-));

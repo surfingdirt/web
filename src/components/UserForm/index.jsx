@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import CheckboxField from 'Components/Form/CheckboxField';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';

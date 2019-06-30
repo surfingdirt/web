@@ -4,12 +4,14 @@ import React from 'react';
 
 import styles from './styles.scss';
 
-const typeMapping = {
-  main: ['h1', 'main'],
-  listItem: ['h2', 'listItem'],
-};
+const PRIMARY = 'primary';
+const SECONDARY = 'secondary';
+export const headerTypes = { PRIMARY, SECONDARY };
 
-export const headerTypes = Object.keys(typeMapping);
+const typeMapping = {
+  [PRIMARY]: ['h1', 'main'],
+  [SECONDARY]: ['h2', 'listItem'],
+};
 
 export default class Header extends React.PureComponent {
   static propTypes = {
@@ -19,7 +21,7 @@ export default class Header extends React.PureComponent {
         return new Error(`Empty type set for component '${componentName}'`);
       }
 
-      if (!headerTypes.includes(type)) {
+      if (!Object.values(headerTypes).includes(type)) {
         return new Error(`Invalid type set for component '${componentName}': '${type}'`);
       }
 

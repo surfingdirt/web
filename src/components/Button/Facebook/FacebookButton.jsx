@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 
 import FACEBOOK_LOGIN from 'Apollo/mutations/facebookLogin.gql';
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import { InlineSpinner } from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import Facebook from 'Images/_old/facebook-logo-white.svg';

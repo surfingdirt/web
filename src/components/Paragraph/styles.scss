@@ -1,25 +1,9 @@
+@import "../../styles/font-faces";
 @import "../../styles/font-sizes";
 @import "../../styles/colors";
 
-%defaultColor {
-  color: $text-color-default;
+.default {
+  font-family: $paragraph-font-families;
 }
-
-%justified {
-  text-align: justify;
-}
-
-.basic {
-  @extend %defaultColor;
-  font-weight: bold;
-}
-
-.introduction {
-  @extend %defaultColor;
-  @extend %justified;
-  font-size: $font-size-medium;
-}
-
-
 
 

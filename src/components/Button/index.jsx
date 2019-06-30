@@ -18,18 +18,18 @@ const typeMapping = {
 export const buttonTypes = Object.values(typeMapping).map((m) => m[0]);
 
 const Button = ({
-                  className,
-                  label,
-                  disabled,
-                  loading,
-                  onClick,
-                  type,
-                  href,
-                  targetBlank,
-                  buttonType,
-                  iconLeft,
-                  iconRight,
-                }) => {
+  className,
+  label,
+  disabled,
+  loading,
+  onClick,
+  type,
+  href,
+  targetBlank,
+  buttonType,
+  iconLeft,
+  iconRight,
+}) => {
   const hasIcon = iconLeft || iconRight;
 
   let actualElement;

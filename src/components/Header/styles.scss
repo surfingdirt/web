@@ -2,26 +2,10 @@
 @import "../../styles/font-sizes";
 @import "../../styles/colors";
 
-%titleFont {
-  font-family: $title-font-families;
+.primary {
+  font-size: $font-size-huge;
 }
 
-%big {
+.secondary {
   font-size: $font-size-big;
-}
-
-%medium {
-  font-size: $font-size-medium;
-}
-
-%defaultColor {
-  color: $header-title-color;
-}
-
-.main {
-  @extend %big, %defaultColor, %titleFont;
-}
-
-.listItem {
-  @extend %medium, %defaultColor, %titleFont;
 }

@@ -1,4 +1,4 @@
-import Button from 'Components/Button';
+import Button from 'Components/Button/index';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';

@@ -142,6 +142,7 @@ $logo-width-default: 150px;
   max-width: $max-content-width;
   height: $masthead-height;
   background: $masthead-background-color;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
 }
 
 .logo {
@@ -330,27 +331,34 @@ $logo-width-default: 150px;
 .main {
   grid-area: main;
   margin-bottom: -$bottom-bar-height;
-  padding: $padding-medium-1;
+  padding: $padding-small-2;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
 }
 
+.main::after {
+  content: ' ';
+  display: block;
+  height: $bottom-bar-height + $margin-big;
+}
+
 @media (min-width: $mobile-layout-threshold-min) {
   .main {
-    margin: 0 $small-gap;
+    padding: $padding-medium-2;
+    margin: 0 $small-gap $margin-medium-2;
   }
 }
 
 @media (min-width: $desktop-small) {
   .main {
-    margin: 0 $medium-gap;
+    margin: 0 $medium-gap $margin-medium-2;
   }
 }
 
 @media (min-width: $desktop-big) {
   .main {
-    margin: 0 $large-gap;
+    margin: 0 $large-gap $margin-medium-2;
   }
 }
 

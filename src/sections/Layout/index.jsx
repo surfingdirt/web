@@ -17,7 +17,7 @@ import Footer from 'Sections/Footer';
 import Main from 'Sections/Main';
 import LinkNavigation from 'Sections/LinkNavigation';
 import icons, { getIcon, sizes } from 'Utils/icons';
-import {focusFirstFocusableItemInside} from 'Utils/misc';
+import { focusFirstFocusableItemInside } from 'Utils/misc';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -230,7 +230,7 @@ class Layout extends React.Component {
 
   toggleActionButtons() {
     const { bottomBarActionsOpen } = this.state;
-    const newlyOpen = !bottomBarActionsOpen
+    const newlyOpen = !bottomBarActionsOpen;
     this.setState({ bottomBarActionsOpen: newlyOpen });
 
     if (newlyOpen) {

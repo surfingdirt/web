@@ -9,9 +9,11 @@
 
 // Background color
 $background-color-default: $brand-dark1;
+$background-color-inverted: $brand-bright;
 
 // Text
 $text-color-default: $brand-bright;
+$text-color-dropcap: $brand-highlight1;
 $text-color-inverted: $brand-dark2;
 
 // Scrollbars
@@ -31,8 +33,14 @@ $container-text-color-default: $brand-bright;
 $link-color-default: $brand-highlight1;
 
 // Buttons
-$button-color-default: $brand-bright;
-$button-color-disabled: $brand-dark2;
+$button-text-color-default: $brand-dark2;
+$button-background-color-default: $brand-bright;
+
+$button-text-color-negative: $brand-bright;
+$button-background-color-negative: $brand-dark2;
+
+$button-text-color-disabled: rgba($brand-bright, .7);
+$button-background-color-disabled: transparent;
 
 // Inputs
 $input-text-color: $brand-dark2;
@@ -68,6 +76,9 @@ $card-background-color: $brand-dark2;
 $footer-background: transparent;
 $footer-separator: $brand-bright;
 $footer-follow: $brand-bright;
+
+// Footer
+$footer-link-color: $brand-bright;
 
 // Forms
 $form-border-color: $brand-bright;

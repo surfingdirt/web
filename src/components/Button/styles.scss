@@ -62,14 +62,14 @@ $horizontal-padding: 1.1rem;
 .mainButton,
 .negativeButton:hover,
 .largeButton {
-  background: $button-color-default;
-  color: $text-color-default;
+  background: $button-background-color-default;
+  color: $button-text-color-default;
+  border: 2px solid currentColor;
 }
 
 .negativeButton {
-  background: transparent;
-  color: $button-color-default;
-  border: 2px solid $button-color-default;
+  background: $button-background-color-negative;
+  color: $button-text-color-negative;
 }
 
 .largeButton {
@@ -79,8 +79,8 @@ $horizontal-padding: 1.1rem;
 
 /* Modifiers */
 .disabled {
-  background: $button-color-disabled;
-  color: $text-color-default;
+  background: $button-background-color-disabled;
+  color: $button-text-color-disabled;
   cursor: default;
 }
 
