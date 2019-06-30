@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import PopupActionButton from 'Components/PopupActionButton';
-import Logo from 'Components/Logo';
+import Logo, { logoTypes } from 'Components/Logo';
 import NamedNavigationItem from 'Components/NamedNavigationItem';
 import Profile from 'Components/Profile/index';
 import SVG from 'Components/SVG';
@@ -26,6 +26,7 @@ import styles from './styles.scss';
 
 const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
 const { STANDARD } = sizes;
+const { HEADER_HORIZONTAL } = logoTypes;
 
 const RESIZE = 'resize';
 
@@ -36,7 +37,7 @@ const Header = ({ t, title }) => (
   <header className={styles.header}>
     <div className={styles.headerBackground} />
     <Link to={HOME} className={styles.logo}>
-      <Logo title={title} />
+      <Logo title={title} type={HEADER_HORIZONTAL} />
     </Link>
     <div className={styles.search}>
       {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}

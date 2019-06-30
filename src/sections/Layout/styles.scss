@@ -348,6 +348,10 @@ $logo-width-default: 150px;
     padding: $padding-medium-2;
     margin: 0 $small-gap $margin-medium-2;
   }
+
+  .main::after {
+    display: none;
+  }
 }
 
 @media (min-width: $desktop-small) {
