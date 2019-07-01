@@ -1,3 +1,15 @@
-<svg viewBox="0 0 640 58" >
-    <path d="M641,0.803470635 C641,0.803470635 597,0.800003052 576,0.800003052 C555,0.800003052 557,24 535,24 C513,24 517,0.803470635 496,0.803470635 C475,0.803470635 1,0.803470635 1,0.803470635 L0.997078159,58 L641.002922,58 C641.000974,19.8689804 641,0.803470635 641,0.803470635 Z"></path>
+<svg viewBox="0 0 640 60">
+    <defs>
+        <path id="wave" d="M641,0.803470635 C641,0.803470635 597,0.800003052 576,0.800003052 C555,0.800003052 557,24 535,24 C513,24 517,0.803470635 496,0.803470635 C475,0.803470635 1,0.803470635 1,0.803470635 L0.997078159,58 L641.002922,58 C641.000974,19.8689804 641,0.803470635 641,0.803470635 Z"></path>
+        <filter id="filter">
+            <feOffset dx="3" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+
+    <use filter="url(#filter)" href="#wave"></use>
+    <g transform="translate(0.000000, 2.000000)">
+        <use href="#wave"></use>
+    </g>
 </svg>
