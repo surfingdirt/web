@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 
-import Card from 'Components/Card';
+import Card, { cardTypes } from 'Components/Card';
 import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
@@ -14,6 +14,8 @@ import messages from './messages';
 
 const { LOGOUT } = actions;
 const { HOME } = routes;
+
+const { STANDARD } = cardTypes;
 
 class ProfileRaw extends React.Component {
   static contextType = AppContext;
@@ -38,7 +40,7 @@ class ProfileRaw extends React.Component {
     }
 
     return (
-      <Card title={username} type="main">
+      <Card title={username} type={STANDARD}>
         {avatar ? (
           <p>
             <img src={avatar} alt={t('avatar')} />
