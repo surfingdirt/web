@@ -15,10 +15,10 @@ const Footer = ({ className, t }) => {
   return (
     <footer className={classnames(styles.wrapper, className)}>
       <ul>
-        <li>
+        <li className={styles.link}>
           <Link to={ABOUT}>{t('about')}</Link>
         </li>
-        <li>
+        <li className={styles.link}>
           <Link to={CONTACT}>{t('contact')}</Link>
         </li>
       </ul>

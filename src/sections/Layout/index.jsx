@@ -217,6 +217,8 @@ class Layout extends React.Component {
   onResize() {
     this.setState({
       actionButtonOrigin: this.getOrigin(),
+      bottomBarActionsOpen: false,
+      navigationMenuOpen: false,
     });
   }
 
