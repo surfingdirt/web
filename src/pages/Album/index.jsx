@@ -27,6 +27,7 @@ export const Album = ({ match }) => {
         } = data;
 
         // TODO: refine this after settling on a design, as this will guide which image size loads.
+        // Note: keep it simple with 3 media queries
         const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024px) 150px`;
 
         return (

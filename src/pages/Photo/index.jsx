@@ -28,6 +28,7 @@ export const Photo = ({ match }) => {
         } = data;
 
         // TODO: add sizes attr to ResponsiveImage to guide which image size loads.
+        // Note: keep it simple with 3 media queries
         return (
           <Card
             title={title}
