@@ -2,29 +2,65 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MEDIUM = 'MEDIUM';
-const Photo = ({ alt, className, images, sizes }) => {
-  const { url: src } = images.find((i) => i.size === MEDIUM);
+const JPG = 'JPG';
+const WEBP = 'WEBP';
 
-  const dedupedSizes = images.reduce((acc, { url, width }) => {
-    acc[width] = url;
+const mimeTypes = {
+  [JPG]: 'image/jpg',
+  [WEBP]: 'image/webp',
+};
+
+const findDefaultImage = (list) => list.find((i) => i.size === MEDIUM && i.type === JPG);
+
+const buildListsByType = (list) =>
+  list.reduce((acc, { url, width, type }) => {
+    if (!acc[type]) {
+      acc[type] = {
+        mime: mimeTypes[type],
+        images: {},
+      };
+    }
+
+    const { images } = acc[type];
+
+    if (images[width]) {
+      return acc;
+    }
+
+    images[width] = url;
     return acc;
   }, {});
-  const srcSet = Object.entries(dedupedSizes)
-    .map(([width, url]) => `${url} ${width}w`)
-    .join(', ');
 
-  const attrs = {
+const Photo = ({ alt, className, images, sizes }) => {
+  const { url: src } = findDefaultImage(images);
+
+  const imagesByType = buildListsByType(images);
+
+  const sources = Object.values(imagesByType).map(({ mime, images: list }) => {
+    const srcSet = Object.entries(list)
+      .map(([width, url]) => `${url} ${width}w`)
+      .join(', ');
+    return { mime, srcSet };
+  });
+
+  const imgAttrs = {
     alt,
     className,
     src,
-    srcSet,
   };
 
   if (sizes) {
     attrs.sizes = sizes;
   }
 
-  return <img {...attrs} />;
+  return (
+    <picture>
+      {sources.map(({ mime, srcSet }) => (
+        <source key={mime} type={mime} srcSet={srcSet} />
+      ))}
+      <img {...imgAttrs} />
+    </picture>
+  );
 };
 
 Photo.propTypes = {
