@@ -11,11 +11,15 @@ query album($id: ID!) {
                 type
                 size
                 url
+                height
+                width
             }
             images {
                 type
                 size
                 url
+                height
+                width
             }
         }
     }

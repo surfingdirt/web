@@ -31,7 +31,7 @@ const buildListsByType = (list) =>
     return acc;
   }, {});
 
-const Photo = ({ alt, className, images, sizes }) => {
+const ResponsiveImage = ({ alt, className, images, sizes }) => {
   const { url: src } = findDefaultImage(images);
 
   const imagesByType = buildListsByType(images);
@@ -50,7 +50,7 @@ const Photo = ({ alt, className, images, sizes }) => {
   };
 
   if (sizes) {
-    attrs.sizes = sizes;
+    imgAttrs.sizes = sizes;
   }
 
   return (
@@ -63,7 +63,7 @@ const Photo = ({ alt, className, images, sizes }) => {
   );
 };
 
-Photo.propTypes = {
+ResponsiveImage.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,
   images: PropTypes.arrayOf(
@@ -78,9 +78,9 @@ Photo.propTypes = {
   sizes: PropTypes.string,
 };
 
-Photo.defaultProps = {
+ResponsiveImage.defaultProps = {
   className: '',
   sizes: null,
 };
 
-export default Photo;
+export default ResponsiveImage;

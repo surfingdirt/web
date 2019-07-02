@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PHOTO from 'Apollo/queries/photo.gql';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
-import PhotoRenderer from 'Components/Photo';
+import ResponsiveImage from 'Components/ResponsiveImage';
 import { userRoute } from 'Utils/links';
 
 import styles from './styles.scss';
@@ -26,11 +26,13 @@ export const Photo = ({ match }) => {
             submitter: { userId, username },
           },
         } = data;
+
+        // TODO: add sizes attr to ResponsiveImage to guide which image size loads.
         return (
           <Card
             title={title}
             type={HERO}
-            heroContent={<PhotoRenderer alt="" className={styles.heroImage} images={images} />}
+            heroContent={<ResponsiveImage alt="" className={styles.heroImage} images={images} />}
           >
             <div>
               <span>Posted by:</span> <Link to={userRoute(userId)}>{username}</Link>
