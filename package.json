@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clear-babel-cache": "rm -rf ./node_modules/.cache/babel-loader",
-    "build:local": "NODE_ENV=local webpack --watch",
+    "build:local": "webpack --watch",
     "build": "webpack && npm run build-storybook",
     "analyze": "npx webpack --profile --json > webpack-stats.json && npx webpack-bundle-analyzer webpack-stats.json dist",
     "start:local": "npm run clear-babel-cache && NODE_ENV=local npx nodemon index.js",
-    "start": "NODE_ENV=production node index.js",
+    "start": "node index.js",
     "storybook": "npx start-storybook --quiet --ci -p 9001",
     "build-storybook": "npx build-storybook -c .storybook",
     "test": "concurrently 'npm run storybook' 'wait-on http-get://localhost:9001 && jest' -k -s first",
