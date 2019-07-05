@@ -1,8 +1,9 @@
+_notes
 .DS_Store
 .cache/
 .idea
 dist/*
 node_modules
 storybook-static/
-webpack-stats.json
 uploads/*
+webpack-stats.json
