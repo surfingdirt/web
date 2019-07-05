@@ -17,7 +17,7 @@ const Assets = (rootDir) => {
           res.set('Content-Type', 'text/css');
           break;
         case 'js':
-          res.set('Content-Type', 'application/js');
+          res.set('Content-Type', 'application/javascript');
           break;
         case 'png':
           res.set('Content-Type', 'image/png');
