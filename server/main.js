@@ -40,6 +40,8 @@ const Main = (rootDir) => {
   const REGULAR_PAGE = fs.readFileSync(`${rootDir}/dist/template.html`, 'utf8');
 
   return async (req, res, next) => {
+    res.set('Content-Type', 'text/html; charset=utf-8');
+
     const context = {}; // required
     const modules = new Set();
     let document;
