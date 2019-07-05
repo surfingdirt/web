@@ -13,14 +13,14 @@ export const config = {
     showErrors: true,
   },
   beta: {
-    port,
+    port: 8002,
     baseUrl: `https://beta.surfingdirt.com`,
     graphql: 'https://beta-graphql.surfingdirt.com/',
     galleryAlbumId: '',
     showErrors: false,
   },
   production: {
-    port,
+    port: 8001,
     baseUrl: `https://www.surfingdirt.com`,
     graphql: 'https://graphql.surfingdirt.com/',
     galleryAlbumId: '',
