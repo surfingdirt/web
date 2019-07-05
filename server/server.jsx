@@ -5,7 +5,7 @@ import express from 'express';
 import path from 'path';
 import multer from 'multer';
 
-import { config, port } from '../config';
+import { config } from '../config';
 import Action from './action';
 import Assets, { assetsRoute } from './assets';
 import Main from './main';
@@ -31,14 +31,14 @@ app.use(Main(rootDir));
 Loadable.preloadAll()
   .then(() => {
     // Launch frontend server:
-    app.listen(port, (err) => {
+    app.listen(config.port, (err) => {
       if (err) {
         // eslint-disable-next-line no-console
         console.log('Something bad happened while starting frontend server.');
         throw err;
       }
       // eslint-disable-next-line no-console
-      console.log(`Frontend server is listening on ${config.baseUrl}`);
+      console.log(`Frontend server is listening on port ${config.port}`);
     });
   })
   .catch((err) => {
