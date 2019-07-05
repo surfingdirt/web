@@ -15,14 +15,14 @@ export const config = {
     port: 8002,
     baseUrl: `https://beta.surfingdirt.com`,
     graphql: 'https://beta-graphql.surfingdirt.com/',
-    galleryAlbumId: '',
+    galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: false,
   },
   production: {
     port: 8001,
     baseUrl: `https://www.surfingdirt.com`,
     graphql: 'https://graphql.surfingdirt.com/',
-    galleryAlbumId: '',
+    galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: false,
   },
 }[env];
