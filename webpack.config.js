@@ -6,9 +6,7 @@ const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
 
 const buildConfig = require('./build.config.js');
 
-const mode = ['production', 'staging'].includes(process.env.NODE_ENV)
-  ? 'production'
-  : 'development';
+const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const devtool = mode === 'production' ? '' : 'eval-source-map';
 
 module.exports = {
