@@ -321,9 +321,9 @@ $logo-width-default: 150px;
 
 .main {
   grid-area: main;
-  margin-top: -$bottom-bar-height;
+  margin-top: -$masthead-height;
   margin-bottom: -$bottom-bar-height;
-  padding: $padding-small-2 0;
+  padding: $padding-small-2 + $masthead-height 0 $padding-small-2;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
@@ -332,7 +332,7 @@ $logo-width-default: 150px;
 .main::after {
   content: ' ';
   display: block;
-  height: $bottom-bar-height + $margin-big;
+  height: $margin-big;
 }
 
 @media (min-width: $mobile-layout-threshold-min) {
