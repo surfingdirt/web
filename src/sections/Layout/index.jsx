@@ -13,7 +13,6 @@ import Translate from 'Hocs/Translate';
 import BottomBarBackground from 'Images/bottom-bar.svg';
 import Actions from 'Sections/Actions';
 import BottomBarActions from 'Sections/BottomBarActions';
-import Main from 'Sections/Main';
 import LinkNavigation from 'Sections/LinkNavigation';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { focusFirstFocusableItemInside } from 'Utils/misc';
@@ -28,12 +27,17 @@ const { STANDARD } = sizes;
 const { HEADER_HORIZONTAL } = logoTypes;
 
 const RESIZE = 'resize';
+const SCROLL = 'scroll';
+
+const SCROLL_THRESHOLD = 60;
+const DOWN = 1;
+const UP = 0;
 
 const NAVIGATION_ID = 'link-navigation-items';
 const ACTION_ITEMS_ID = 'action-items';
 
-const Header = ({ t, title }) => (
-  <header className={styles.header}>
+const Header = ({ headerRef, t, title }) => (
+  <header className={styles.header} ref={headerRef}>
     <div className={styles.headerBackground} />
     <Link to={HOME} className={styles.logo}>
       <Logo title={title} type={HEADER_HORIZONTAL} />
@@ -51,6 +55,9 @@ const Header = ({ t, title }) => (
   </header>
 );
 Header.propTypes = {
+  headerRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
   t: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
@@ -61,13 +68,14 @@ const BottomBar = ({
   actionLinkListRef,
   actionItems,
   bottomBarActionsOpen,
+  bottomBarRef,
   closeAll,
   navigationMenuOpen,
   onPlusClick,
   openNavigationMenu,
   t,
 }) => (
-  <nav className={styles.bottomBar} aria-label={t('actionNav')}>
+  <nav className={styles.bottomBar} aria-label={t('actionNav')} ref={bottomBarRef}>
     <div
       aria-hidden="true"
       className={classnames(styles.overlay, styles.actionButtonOverlay, {
@@ -155,6 +163,9 @@ BottomBar.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  bottomBarRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
   bottomBarActionsOpen: PropTypes.bool.isRequired,
   closeAll: PropTypes.func.isRequired,
   navigationMenuOpen: PropTypes.bool.isRequired,
@@ -182,17 +193,20 @@ class Layout extends React.Component {
       actionButtonOrigin: [0, 0],
     };
 
+    this.currentScrollTop = 0;
+
     this.toggleActionButtons = this.toggleActionButtons.bind(this);
     this.openNavigationMenu = this.openNavigationMenu.bind(this);
-
     this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
-
     this.closeAll = this.closeAll.bind(this);
-
     this.onResize = this.onResize.bind(this);
+    this.onScroll = this.onScroll.bind(this);
     this.onNavigation = this.onNavigation.bind(this);
 
     this.actionButtonRef = React.createRef();
+    this.bottomBarRef = React.createRef();
+    this.headerRef = React.createRef();
+    this.mainRef = React.createRef();
     this.navigationMenuRef = React.createRef();
     this.actionLinkListRef = React.createRef();
   }
@@ -201,12 +215,18 @@ class Layout extends React.Component {
     window.addEventListener(RESIZE, this.onResize);
     this.onResize();
 
+    this.mainRef.current.addEventListener(SCROLL, this.onScroll, { passive: true });
+    this.onScroll();
+
     const { history } = this.props;
     this.unlisten = history.listen(this.onNavigation);
   }
 
   componentWillUnmount() {
     window.removeEventListener(RESIZE, this.onResize);
+
+    this.mainRef.current.removeEventListener(SCROLL, this.onScroll);
+
     this.unlisten();
   }
 
@@ -220,6 +240,34 @@ class Layout extends React.Component {
       bottomBarActionsOpen: false,
       navigationMenuOpen: false,
     });
+  }
+
+  onScroll() {
+    const {
+      mainRef: {
+        current: { scrollTop },
+      },
+      headerRef: { current: headerEl },
+      bottomBarRef: { current: bottomBarEl },
+    } = this;
+
+    const direction = scrollTop > this.currentScrollTop ? DOWN : UP;
+    let hideNav;
+    if (direction === UP) {
+      hideNav = false;
+    } else {
+      if (scrollTop > SCROLL_THRESHOLD) {
+        hideNav = true;
+      } else {
+        hideNav = false;
+      }
+    }
+
+    // Skip the whole React state thing because this is a performance-sensitive animation:
+    headerEl.classList.toggle(styles.hideNav, hideNav);
+    bottomBarEl.classList.toggle(styles.hideNav, hideNav);
+
+    this.currentScrollTop = scrollTop;
   }
 
   getOrigin() {
@@ -279,6 +327,7 @@ class Layout extends React.Component {
       actionItems,
       closeAll: this.closeAll,
       bottomBarActionsOpen,
+      bottomBarRef: this.bottomBarRef,
       navigationMenuOpen,
       onPlusClick: this.toggleActionButtons,
       openNavigationMenu: this.openNavigationMenu,
@@ -288,7 +337,7 @@ class Layout extends React.Component {
 
     return (
       <div className={styles.wrapper}>
-        <Header t={t} title={title} />
+        <Header headerRef={this.headerRef} t={t} title={title} />
 
         <LinkNavigation
           className={styles.navigation}
@@ -300,7 +349,10 @@ class Layout extends React.Component {
         />
 
         <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
-        <Main className={styles.main}>{children}</Main>
+
+        <main ref={this.mainRef} className={styles.main}>
+          {children}
+        </main>
 
         <BottomBar {...bottomBarProps} />
 

@@ -126,7 +126,6 @@ $logo-width-default: 150px;
 
 .header {
   display: contents;
-
   &>* {
     position: relative;
     z-index: $z-index-header-items;
@@ -179,7 +178,6 @@ $logo-width-default: 150px;
 
 .bottomBar {
   display: contents;
-
   & > * {
     position: relative;
     z-index: $z-index-bottom-bar-items;
@@ -244,7 +242,7 @@ $logo-width-default: 150px;
 
       .closeIcon {
         display: block;
-        transform: rotateZ(-225deg);
+        transform: rotateZ(-135deg);
         transition: all $bottom-bar-action-button-toggle-duration $default-transition-function;
         &.closeIconActive {
           transform: rotateZ(0);
@@ -323,6 +321,7 @@ $logo-width-default: 150px;
 
 .main {
   grid-area: main;
+  margin-top: -$bottom-bar-height;
   margin-bottom: -$bottom-bar-height;
   padding: $padding-small-2 0;
   overflow-y: auto;
@@ -359,6 +358,27 @@ $logo-width-default: 150px;
   }
 }
 
+
+/******************************************************************************
+ * MISC
+ *****************************************************************************/
+
+@media (max-width: $mobile-layout-threshold-max) {
+  .header > *,
+  .bottomBar > * {
+    transform: translateY(0);
+    transition: all $default-transition-duration $default-transition-function;
+  }
+
+  .header.hideNav > * {
+    transform: translateY(-$masthead-height);
+  }
+  .header.hideNav > .activity,
+  .header.hideNav > .profile,
+  .bottomBar.hideNav > * {
+    transform: translateY(2 * $bottom-bar-height);
+  }
+}
 
 /******************************************************************************
  * GRID FALLBACKS
