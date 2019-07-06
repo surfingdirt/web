@@ -82,7 +82,7 @@ const BottomBar = ({
       aria-haspopup="true"
       aria-expanded={navigationMenuOpen}
       aria-controls={NAVIGATION_ID}
-      onClick={openNavigationMenu}
+      onTouchStart={openNavigationMenu}
     >
       <NamedNavigationItem
         label={t('more')}
@@ -98,7 +98,7 @@ const BottomBar = ({
       <button
         type="button"
         className={styles.plusButtonOffset}
-        onClick={onPlusClick}
+        onTouchStart={onPlusClick}
         aria-haspopup="true"
         aria-expanded={bottomBarActionsOpen}
         aria-controls={ACTION_ITEMS_ID}
