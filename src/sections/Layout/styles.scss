@@ -244,7 +244,7 @@ $logo-width-default: 150px;
 
       .closeIcon {
         display: block;
-        transform: rotateZ(-45deg);
+        transform: rotateZ(-225deg);
         transition: all $bottom-bar-action-button-toggle-duration $default-transition-function;
         &.closeIconActive {
           transform: rotateZ(0);
@@ -324,7 +324,7 @@ $logo-width-default: 150px;
 .main {
   grid-area: main;
   margin-bottom: -$bottom-bar-height;
-  padding: $padding-small-2;
+  padding: $padding-small-2 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
