@@ -1,6 +1,19 @@
 query {
   me {
-    avatar
+    avatar {
+      size
+      width
+      height
+      type
+      url
+    }
+    cover {
+      size
+      width
+      height
+      type
+      url
+    }
     email
     firstName
     lang

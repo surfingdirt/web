@@ -11,12 +11,13 @@ import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
+import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 
 const { PROFILE } = icons;
 const { LOGIN, PROFILE: PROFILE_PAGE } = routes;
 const { STANDARD } = sizes;
 
-class Profile extends React.Component {
+class NavigationProfile extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -35,7 +36,7 @@ class Profile extends React.Component {
     const {
       login: {
         data: {
-          me: { username },
+          me: { avatar, username },
         },
       },
     } = this.context;
@@ -45,15 +46,19 @@ class Profile extends React.Component {
     const title = loggedIn ? username : t('login');
     const to = loggedIn ? PROFILE_PAGE : LOGIN;
 
+    const visual =
+      loggedIn && avatar.length > 0 ? (
+        <UserProfile images={avatar} type={userProfileTypes.STANDARD} />
+      ) : (
+        getIcon({ type: PROFILE, presentationOnly: true, size: STANDARD })
+      );
+
     return (
       <Link to={to} className={classnames(className, styles.wrapper)}>
-        <NamedNavigationItem
-          label={title}
-          visual={getIcon({ type: PROFILE, presentationOnly: true, size: STANDARD })}
-        />
+        <NamedNavigationItem label={title} visual={visual} />
       </Link>
     );
   }
 }
 
-export default Translate(messages)(Profile);
+export default Translate(messages)(NavigationProfile);

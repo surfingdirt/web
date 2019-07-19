@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles.scss';
+
 const MEDIUM = 'MEDIUM';
 const JPG = 'JPG';
 const WEBP = 'WEBP';
@@ -31,7 +33,7 @@ const buildListsByType = (list) =>
     return acc;
   }, {});
 
-const ResponsiveImage = ({ alt, className, images, sizes }) => {
+const ResponsiveImage = ({ alt, className, images,objectFit, sizes }) => {
   const { url: src } = findDefaultImage(images);
 
   const imagesByType = buildListsByType(images);
@@ -54,7 +56,7 @@ const ResponsiveImage = ({ alt, className, images, sizes }) => {
   }
 
   return (
-    <picture>
+    <picture className={objectFit ? styles.objectFit : null}>
       {sources.map(({ mime, srcSet }) => (
         <source key={mime} type={mime} srcSet={srcSet} />
       ))}
@@ -66,6 +68,7 @@ const ResponsiveImage = ({ alt, className, images, sizes }) => {
 ResponsiveImage.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,
+  objectFit: PropTypes.bool,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.number.isRequired,
@@ -80,6 +83,7 @@ ResponsiveImage.propTypes = {
 
 ResponsiveImage.defaultProps = {
   className: '',
+  objectFit: false,
   sizes: null,
 };
 

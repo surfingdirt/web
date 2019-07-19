@@ -7,5 +7,19 @@ query user($userId: ID!) {
           id
           title
         }
+        avatar {
+          size
+          width
+          height
+          type
+          url
+        }
+        cover {
+          size
+          width
+          height
+          type
+          url
+        }
     }
 }

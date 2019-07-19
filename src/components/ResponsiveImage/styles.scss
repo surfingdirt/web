@@ -1,27 +1,11 @@
-@import '../../styles/boxmodel';
-@import '../../styles/colors';
-@import '../../styles/font-faces';
-@import '../../styles/font-sizes';
+.objectFit {
+  width: 100%;
+  height: 100%;
+  display: flex;
 
-.logoImage {
-  display: inline-block;
-  width: 3rem;
-  margin-right: $margin-small-2;
-  line-height: 0;
-}
-
-.title {
-  font-family: $title-font-families;
-  font-size: $font-size-big;
-  color: $masthead-title-color;
-  line-height: 1rem;
-}
-
-.bigLogo {
-  width: 12rem;
-}
-
-.bigTitle {
-  font-size: 3rem;
-  line-height: 1em;
+  img {
+    object-fit: cover;
+    height: auto;
+    width:100%;
+  }
 }

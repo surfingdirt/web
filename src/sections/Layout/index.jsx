@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import PopupActionButton from 'Components/PopupActionButton';
 import Logo, { logoTypes } from 'Components/Logo';
 import NamedNavigationItem from 'Components/NamedNavigationItem';
-import Profile from 'Components/Profile/index';
+import Profile from 'Components/NavigationProfile/index';
 import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
 import BottomBarBackground from 'Images/bottom-bar.svg';

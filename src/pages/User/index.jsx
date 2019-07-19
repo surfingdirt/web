@@ -17,9 +17,9 @@ export const User = ({ match }) => {
       variables={{ userId }}
       render={(data) => {
         const {
-          user: { username, album },
+          user: { username, album, avatar },
         } = data;
-
+console.log({avatar});
         const { id, title } = album;
         return (
           <div className={styles.page}>

@@ -1,0 +1,17 @@
+@import "../../styles/constants";
+
+.wrapper {
+  border-radius: 50%;
+}
+
+.small {
+  width: $profile-size-small;
+}
+
+.standard {
+  width: $profile-size-standard;
+}
+
+.large {
+  width: $profile-size-large;
+}

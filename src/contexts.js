@@ -25,18 +25,11 @@ export class AppContextValueObject {
         data: {
           accessToken: null,
           me: {
-            id: null,
-            username: '',
+            avatar: null,
+            cover: null,
             email: '',
-            firstname: '',
-            lastname: '',
-            gender: '',
-            birthYear: '',
-            country: '',
-            phone: '',
-            imageUrl: '',
-            status: '',
-            favoritesTeam: [],
+            userId: null,
+            username: '',
           },
         },
       },
@@ -106,8 +99,8 @@ export class AppContextValueObject {
     this.values.login.data.accessToken = accessToken;
   }
 
-  setUser({ avatar, email, status, userId, username }) {
-    this.values.login.data.me = { avatar, email, status, userId, username };
+  setUser({ avatar, cover, email, status, userId, username }) {
+    this.values.login.data.me = { avatar, cover, email, status, userId, username };
   }
 
   resetUser() {

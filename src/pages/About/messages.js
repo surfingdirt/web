@@ -1,6 +1,6 @@
 const messages = (getText, getPlural) => (key) =>
   ({
-    title: getText("We're coming back!", 'About') /* Title of the page */,
+    title: getText('Surfing Dirt is back!', 'About') /* Title of the About page */,
     paragraph1: getText(
       'Remember before Facebook? There were so many resources for mountainboarding online. Forums, websites, photo galleries… Where are those now? The sad answer is they’re mostly gone. Facebook has made it so easy to post photos and videos and share them that people slowly stopped using other sites. That’s actually what happened to the old Surfing Dirt forum!',
       'About',

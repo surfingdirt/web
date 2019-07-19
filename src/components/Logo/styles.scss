@@ -1,11 +1,12 @@
 @import '../../styles/boxmodel';
 @import '../../styles/colors';
+@import '../../styles/constants';
 @import '../../styles/font-faces';
 @import '../../styles/font-sizes';
 
 .logoImage {
   display: inline-block;
-  width: 3rem;
+  width: $logo-size;
   margin-right: $margin-small-2;
   line-height: 0;
 }

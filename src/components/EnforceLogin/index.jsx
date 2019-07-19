@@ -53,7 +53,6 @@ class EnforceLogin extends React.Component {
         break;
     }
 
-    clearOrigin();
     return children;
   }
 }
