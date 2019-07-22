@@ -22,7 +22,7 @@ export default class MutationRunner {
     let response;
     if (hasFileUpload) {
       // Gotta have an entry for file
-      const variables = { input, file: null };
+      const variables = { ...req.body, file: null };
       body.append('operations', JSON.stringify({ query, variables }));
       const { originalname: filename, mimetype: contentType, size: knownLength } = reqFile;
       const fileInfo = { filename, contentType, knownLength };

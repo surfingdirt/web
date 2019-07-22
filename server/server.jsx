@@ -19,7 +19,14 @@ app.use(cookieParser());
 app.get(assetsRoute, Assets(rootDir));
 app.use(express.static(`${rootDir}/dist`));
 
-app.post('/actions/photo/post', multer({ dest: 'uploads/' }).single('file'), Action);
+const postActions = [
+  '/actions/avatar/post',
+  '/actions/cover/post',
+  '/actions/photo/post',
+];
+postActions.forEach(a => {
+  app.post(a, multer({ dest: 'uploads/' }).single('file'), Action);
+});
 app.post('/actions/*', multer().none(), Action);
 
 if (process.env.NODE_ENV !== 'production') {

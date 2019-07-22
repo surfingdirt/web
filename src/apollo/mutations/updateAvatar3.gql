@@ -1,0 +1,10 @@
+mutation UpdateAvatar(
+    $file: Upload!) {
+    updateAvatar(file: $file) {
+      size
+      width
+      height
+      type
+      url
+    }
+}

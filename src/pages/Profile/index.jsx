@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 
+import AvatarUpdateForm from 'Components/AvatarUpdateForm';
+import CoverUpdateForm from 'Components/CoverUpdateForm';
 import Card, { cardTypes } from 'Components/Card';
 import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 import Translate from 'Hocs/Translate';
@@ -43,15 +45,20 @@ class ProfileRaw extends React.Component {
       return <Redirect to={HOME} />;
     }
 
-    const hasAvatar = avatar.length > 0;
-    const hasCover = cover.length > 0;
+    const hasAvatar = avatar && avatar.length > 0;
+    const hasCover = cover && cover.length > 0;
 
     return (
       <Card title={username} type={STANDARD}>
         <div className={styles.topSection}>
           {hasCover ? (
             <div className={styles.coverPositionner}>
-              <ResponsiveImage alt={t('cover')} images={cover} className={styles.coverImage} objectFit />
+              <ResponsiveImage
+                alt={t('cover')}
+                images={cover}
+                className={styles.coverImage}
+                objectFit
+              />
             </div>
           ) : null}
           <div className={styles.topSectionContent}>
@@ -64,6 +71,8 @@ class ProfileRaw extends React.Component {
                 <p>No avatar!</p>
               )}
             </div>
+            <AvatarUpdateForm />
+            <CoverUpdateForm />
           </div>
         </div>
         <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">

@@ -1,5 +1,7 @@
 import actions, { ACTION_PREFIX } from '~/actions';
 import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
+import { UPDATE_AVATAR_MUTATION } from 'Apollo/mutations/updateAvatar3.gql';
+import { UPDATE_COVER_MUTATION } from 'Apollo/mutations/updateCover.gql';
 import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
 import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';
 import { errorRoute, photoRoute } from 'Utils/links';
@@ -11,18 +13,37 @@ import MutationRunner from './mutationRunner';
 
 const LoginCookie = Login.COOKIE_NAME;
 
-const { LOGIN, LOGOUT, PHOTO_NEW } = actions;
-const { ERROR, HOME } = routes;
+const { LOGIN, LOGOUT, PHOTO_NEW, AVATAR_UPDATE, COVER_UPDATE } = actions;
+const { ERROR, HOME, PROFILE } = routes;
 
 const actionInfoMap = {
+  [AVATAR_UPDATE]: {
+    mutation: UPDATE_AVATAR_MUTATION,
+    hasFileUpload: true,
+    responseKey: 'updateAvatar',
+    redirect: { route: PROFILE },
+    onError: (error, res) => {
+      console.error('Avatar update error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [COVER_UPDATE]: {
+    mutation: UPDATE_COVER_MUTATION,
+    hasFileUpload: true,
+    responseKey: 'updateCover',
+    redirect: { route: PROFILE },
+    onError: (error, res) => {
+      console.error('Cover update error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
   [PHOTO_NEW]: {
     mutation: CREATE_PHOTO_MUTATION,
     hasFileUpload: true,
     responseKey: 'createPhoto',
     redirect: { route: photoRoute, selector: 'id' },
-    onError: (error, res, next) => {
-      // TODO: handle photo upload errors
-      console.log('Photo upload error:', error);
+    onError: (error, res) => {
+      console.error('Photo upload error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
       }
@@ -37,6 +58,10 @@ const actionInfoMap = {
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
       res.redirect(301, HOME);
     },
+    onError: (error, res) => {
+      console.error('Login error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
   },
   [LOGOUT]: {
     mutation: LOGOUT_MUTATION,
@@ -46,7 +71,8 @@ const actionInfoMap = {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
-    onError: (error, res, next) => {
+    onError: (error, res) => {
+      console.error('Logout error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
@@ -76,11 +102,14 @@ const action = async (req, res, next) => {
     if (actionInfo.redirect) {
       const { route, selector } = actionInfo.redirect;
       // TODO: handle more complex selectors:
-      const value = result[selector];
-      if (!value) {
-        return next(`Could not resolve selector '${selector}' on GraphQL response object.`);
+      let url = route;
+      if (selector) {
+        const value = result[selector];
+        if (!value) {
+          return next(`Could not resolve selector '${selector}' on GraphQL response object.`);
+        }
+        url = route(value);
       }
-      const url = route(value);
       return res.redirect(301, url);
     }
     if (actionInfo.cb) {

@@ -1,0 +1,10 @@
+mutation UpdateCover(
+    $file: Upload!) {
+    updateCover(file: $file) {
+      size
+      width
+      height
+      type
+      url
+    }
+}
