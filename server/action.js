@@ -12,7 +12,7 @@ import MutationRunner from './mutationRunner';
 const LoginCookie = Login.COOKIE_NAME;
 
 const { LOGIN, LOGOUT, PHOTO_NEW } = actions;
-const { HOME } = routes;
+const { ERROR, HOME } = routes;
 
 const actionInfoMap = {
   [PHOTO_NEW]: {
@@ -22,6 +22,11 @@ const actionInfoMap = {
     redirect: { route: photoRoute, selector: 'id' },
     onError: (error, res, next) => {
       // TODO: handle photo upload errors
+      console.log('Photo upload error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
     },
   },
   [LOGIN]: {
@@ -42,7 +47,7 @@ const actionInfoMap = {
       res.redirect(301, HOME);
     },
     onError: (error, res, next) => {
-      // TODO: handle logout errors
+      return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
 };
