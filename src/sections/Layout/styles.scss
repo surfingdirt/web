@@ -115,7 +115,10 @@ $logo-width-default: 150px;
 
 @media (min-width: $desktop-max) {
   .wrapper {
-    grid-template-columns: $lhs-width-big $lhs-width-big 1fr $rhs-width-big $rhs-width-big;
+    grid-template-columns: $lhs-width-big $lhs-width-big 1fr $rhs-width-medium $rhs-width-medium;
+    grid-template-areas:
+            "logo logo logo activity profile"
+            "navigation main main actions actions";
   }
 }
 
