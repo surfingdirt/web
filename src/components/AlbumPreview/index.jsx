@@ -12,6 +12,13 @@ import styles from './styles.scss';
 const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024px) 150px`;
 
 const AlbumPreview = ({ album: { id: albumId, media, title: albumTitle } }) => {
+  if (!media) {
+    throw new Error('Media not set');
+  }
+  if (media.length == 0) {
+    return null;
+  }
+
   return (
     <Fragment>
       <ul className={styles.items}>

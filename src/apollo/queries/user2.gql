@@ -6,6 +6,15 @@ query user($userId: ID!) {
         album{
           id
           title
+          media {
+            images {
+                size
+                width
+                height
+                type
+                url
+            }
+          }
         }
         avatar {
           size

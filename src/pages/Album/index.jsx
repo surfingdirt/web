@@ -24,29 +24,15 @@ export const Album = ({ match }) => {
       variables={{ id: albumId }}
       render={(data) => {
         const {
-          album: { title: albumTitle, media },
+          album: { title: albumTitle },
         } = data;
-
-        // TODO: refine this after settling on a design, as this will guide which image size loads.
-        // Note: keep it simple with 3 media queries
-        const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024px) 150px`;
 
         return (
           <Card title={albumTitle} type={STANDARD}>
             <Link to={PHOTO_NEW}>Post a new photo</Link>
 
+            <p>TODO: replace this preview display with a full-fletched grid</p>
             <AlbumPreview album={data.album} />
-
-            <ul className={styles.items}>
-              {media.map(({ id, title, mediaType, thumbs }) => (
-                <li key={id}>
-                  <Link to={mediaType === 'PHOTO' ? photoRoute(id) : videoRoute(id)}>
-                    <ResponsiveImage alt="" images={thumbs} sizes={sizes} />
-                    <span>{title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </Card>
         );
       }}
