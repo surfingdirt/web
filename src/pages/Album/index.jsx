@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import ALBUM from 'Apollo/queries/album.gql';
+import AlbumPreview from 'Components/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import ResponsiveImage from 'Components/ResponsiveImage';
@@ -33,6 +34,8 @@ export const Album = ({ match }) => {
         return (
           <Card title={albumTitle} type={STANDARD}>
             <Link to={PHOTO_NEW}>Post a new photo</Link>
+
+            <AlbumPreview album={data.album} />
 
             <ul className={styles.items}>
               {media.map(({ id, title, mediaType, thumbs }) => (
