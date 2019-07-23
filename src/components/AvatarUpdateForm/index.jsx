@@ -7,7 +7,7 @@ const { AVATAR_UPDATE } = actions;
 
 const AvatarUpdateForm = () => (
   <form action={actionRoute(AVATAR_UPDATE)} method="POST" encType="multipart/form-data">
-    <p>Avatar:</p>
+    <span>Avatar:</span>
     <input type="file" name="file" />
     <button type="submit">Update</button>
   </form>

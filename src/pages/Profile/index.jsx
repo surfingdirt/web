@@ -3,24 +3,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 
-import AvatarUpdateForm from 'Components/AvatarUpdateForm';
-import CoverUpdateForm from 'Components/CoverUpdateForm';
+import Cover from 'Components/Cover';
 import Card, { cardTypes } from 'Components/Card';
-import UserProfile, { userProfileTypes } from 'Components/UserProfile';
+import Heading, { headingTypes } from 'Components/Heading';
 import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
-import styles from './styles.scss';
 import messages from './messages';
-import ResponsiveImage from 'Components/ResponsiveImage';
+import styles from './styles.scss';
 
 const { LOGOUT } = actions;
 const { HOME } = routes;
 
-const { STANDARD } = cardTypes;
+const { BARE } = cardTypes;
+const { PRIMARY } = headingTypes;
 
 class ProfileRaw extends React.Component {
   static contextType = AppContext;
@@ -45,39 +44,18 @@ class ProfileRaw extends React.Component {
       return <Redirect to={HOME} />;
     }
 
-    const hasAvatar = avatar && avatar.length > 0;
-    const hasCover = cover && cover.length > 0;
-
     return (
-      <Card title={username} type={STANDARD}>
-        <div className={styles.topSection}>
-          {hasCover ? (
-            <div className={styles.coverPositionner}>
-              <ResponsiveImage
-                alt={t('cover')}
-                images={cover}
-                className={styles.coverImage}
-                objectFit
-              />
-            </div>
-          ) : null}
-          <div className={styles.topSectionContent}>
-            <div className={styles.avatar}>
-              {hasAvatar ? (
-                <p>
-                  <UserProfile images={avatar} type={userProfileTypes.STANDARD} />
-                </p>
-              ) : (
-                <p>No avatar!</p>
-              )}
-            </div>
-            <AvatarUpdateForm />
-            <CoverUpdateForm />
-          </div>
+      <Card type={BARE}>
+        <Cover cover={cover} avatar={avatar} withUpdateForms />
+        <div className={styles.contentWrapper}>
+          <Heading className={styles.username} type={PRIMARY}>
+            {username}
+          </Heading>
+
+          <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">
+            <button type="submit">{t('logout')}</button>
+          </form>
         </div>
-        <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">
-          <button type="submit">{t('logout')}</button>
-        </form>
       </Card>
     );
   }

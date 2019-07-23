@@ -7,7 +7,7 @@ const { COVER_UPDATE } = actions;
 
 const CoverUpdateForm = () => (
   <form action={actionRoute(COVER_UPDATE)} method="POST" encType="multipart/form-data">
-    <p>Cover:</p>
+    <span>Cover:</span>
     <input type="file" name="file" />
     <button type="submit">Update</button>
   </form>

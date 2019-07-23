@@ -7,7 +7,9 @@ import styles from './styles.scss';
 const SMALL = 'small';
 const STANDARD = 'standard';
 const LARGE = 'large';
-export const userProfileTypes = { SMALL, STANDARD, LARGE };
+const RESPONSIVE = 'responsive';
+
+export const userProfileTypes = { SMALL, STANDARD, LARGE, RESPONSIVE };
 
 class UserProfile extends React.Component {
   static propTypes = {

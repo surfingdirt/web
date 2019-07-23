@@ -1,23 +1,5 @@
-.topSection {
-  position: relative;
-  min-height: 200px;
+@import '../../styles/boxmodel';
+
+.contentWrapper {
+  padding: 0 $padding-medium-1 $padding-medium-1;
 }
-
-.coverPositionner {
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.coverImage {
-}
-
-.topSectionContent {
-  position: relative;
-  z-index: 1;
-}
-
-

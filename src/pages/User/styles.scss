@@ -1,2 +1,5 @@
-.page {
+@import '../../styles/boxmodel';
+
+.contentWrapper {
+  padding: 0 $padding-medium-1 $padding-medium-1;
 }
