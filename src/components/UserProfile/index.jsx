@@ -4,12 +4,13 @@ import React from 'react';
 
 import styles from './styles.scss';
 
+const FILL = 'fill';
 const SMALL = 'small';
 const STANDARD = 'standard';
 const LARGE = 'large';
 const RESPONSIVE = 'responsive';
 
-export const userProfileTypes = { SMALL, STANDARD, LARGE, RESPONSIVE };
+export const userProfileTypes = { FILL, SMALL, STANDARD, LARGE, RESPONSIVE };
 
 class UserProfile extends React.Component {
   static propTypes = {

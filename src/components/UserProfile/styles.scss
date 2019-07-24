@@ -3,28 +3,40 @@
 
 .wrapper {
   border-radius: 50%;
+  border: 8px solid;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
 }
 
 .small {
   width: $profile-size-small;
+  height: $profile-size-small;
 }
 
 .standard {
   width: $profile-size-standard;
+  height: $profile-size-standard;
 }
 
 .large {
   width: $profile-size-large;
+  height: $profile-size-large;
 }
 
 .responsive {
   width: $profile-size-small;
+  height: $profile-size-small;
 
   @media (min-width: $desktop-small) {
     width: $profile-size-standard;
+    height: $profile-size-standard;
   }
 
   @media (min-width: $desktop-big) {
     width: $profile-size-large;
+    height: $profile-size-large;
   }
 }

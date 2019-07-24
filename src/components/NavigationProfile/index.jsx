@@ -48,7 +48,7 @@ class NavigationProfile extends React.Component {
     const hasAvatar = avatar && avatar.length > 0
     const visual =
       loggedIn && hasAvatar ? (
-        <UserProfile images={avatar} type={userProfileTypes.STANDARD} />
+        <UserProfile images={avatar} type={userProfileTypes.FILL} />
       ) : (
         getIcon({ type: PROFILE, presentationOnly: true, size: STANDARD })
       );
