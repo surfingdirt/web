@@ -3,7 +3,6 @@
 
 .wrapper {
   border-radius: 50%;
-  border: 8px solid;
 }
 
 .fill {
@@ -14,29 +13,35 @@
 .small {
   width: $profile-size-small;
   height: $profile-size-small;
+  border: 2px solid;
 }
 
 .standard {
   width: $profile-size-standard;
   height: $profile-size-standard;
+  border: 4px solid;
 }
 
 .large {
   width: $profile-size-large;
   height: $profile-size-large;
+  border: 8px solid;
 }
 
 .responsive {
   width: $profile-size-small;
   height: $profile-size-small;
+  border: 2px solid;
 
   @media (min-width: $desktop-small) {
     width: $profile-size-standard;
     height: $profile-size-standard;
+    border: 4px solid;
   }
 
   @media (min-width: $desktop-big) {
     width: $profile-size-large;
     height: $profile-size-large;
+    border: 8px solid;
   }
 }
