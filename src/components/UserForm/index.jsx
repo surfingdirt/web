@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import Validation from 'Utils/fieldLevelValidation';
-import messages from './messages';
 
+import messages from './messages';
 import styles from './styles.scss';
 
 const composeValidators = (...validators) => (value) =>

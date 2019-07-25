@@ -1,54 +1,15 @@
 @import "../../../styles/boxmodel";
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
-@import "../styles";
 
-.inputContainer {
-  @extend %formInputContainer;
+.label {
+
 }
 
-.labelContainer {
-  @extend %formLabelContainer;
-  left: 20px;
+.input {
+
 }
 
-label {
-  @extend %formLabel;
-}
+.error {
 
-.requiredElement {
-  @extend %formRequired;
-}
-
-input {
-  border: 0;
-  font-size: $font-size-small;
-  background: transparent;
-  padding-right: $padding-medium-2;
-  width: 100%;
-
-  &[type="password"] {
-    letter-spacing: .75rem; /* Necessary? */
-  }
-
-  &::placeholder {
-    color: $form-placeholder-color;
-    letter-spacing: normal; /* Necessary? */
-    font-size: $font-size-small;
-  }
-}
-
-.inputStatus {
-  margin-top: 5px;
-}
-
-.displayErrorLabel {
-  font-size: $font-size-medium;
-  display: inline-block;
-  color: $form-error-color;
-  margin: $margin-small-3 $margin-medium-1 0;
-}
-
-.errorIcon {
-  color: $form-error-color;
 }

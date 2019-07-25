@@ -10,14 +10,12 @@ const InputField = (data) => {
     input,
     label,
     meta: { touched, error, submitError },
+    onChange,
+    id,
     placeholder,
     required,
     type,
   } = data;
-
-  const {
-    displayErrorLabel,
-  } = styles;
 
   let displayError = null;
   if (submitError) {
@@ -28,16 +26,19 @@ const InputField = (data) => {
 
   return (
     <Fragment>
-      <label htmlFor={input.name}>{label}</label>
+      <label className={styles.label} htmlFor={id}>
+        {label}
+      </label>
       <input
+        className={styles.input}
         {...input}
-        id={input.name}
-        name={input.name}
+        id={id}
+        onChange={onChange}
         placeholder={placeholder}
         required={required}
         type={type}
       />
-      {displayError && <span className={displayErrorLabel}>{displayError}</span>}
+      {displayError && <span className={styles.error}>{displayError}</span>}
     </Fragment>
   );
 };
@@ -45,6 +46,7 @@ const InputField = (data) => {
 InputField.propTypes = {
   errorLabel: PropTypes.string,
   input: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
   }),
   label: PropTypes.string,
@@ -59,6 +61,7 @@ InputField.defaultProps = {
   errorLabel: '',
   input: {
     name: '',
+    id: '',
   },
   label: '',
   placeholder: '',
