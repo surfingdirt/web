@@ -5,17 +5,11 @@ import React, { Fragment } from 'react';
 
 import styles from './styles.scss';
 
-const InputField = (data) => {
-  const {
-    input,
-    label,
-    meta: { touched, error, submitError },
-    onChange,
-    id,
-    placeholder,
-    required,
-    type,
-  } = data;
+const InputField = (props) => {
+  const { input, meta, ...rest } = props;
+
+  const { touched, error, submitError } = meta;
+  const { label, id, placeholder, required, type } = rest;
 
   let displayError = null;
   if (submitError) {
@@ -31,12 +25,11 @@ const InputField = (data) => {
       </label>
       <input
         className={styles.input}
-        {...input}
         id={id}
-        onChange={onChange}
         placeholder={placeholder}
         required={required}
         type={type}
+        {...input}
       />
       {displayError && <span className={styles.error}>{displayError}</span>}
     </Fragment>
