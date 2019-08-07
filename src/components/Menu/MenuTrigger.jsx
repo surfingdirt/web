@@ -11,6 +11,8 @@ class MenuTriggerRaw extends React.Component {
     innerRef: PropTypes.shape({
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
+    menuActive: PropTypes.bool.isRequired,
+    menuId: PropTypes.string.isRequired,
     onToggleActive: PropTypes.func.isRequired,
   };
 
@@ -25,7 +27,7 @@ class MenuTriggerRaw extends React.Component {
   }
 
   toggleActive() {
-    this.props.onToggleActive(!this.context.active);
+    this.props.onToggleActive(!this.props.menuActive);
   }
 
   handleKeyUp(e) {
@@ -43,37 +45,33 @@ class MenuTriggerRaw extends React.Component {
   }
 
   render() {
-    // TODO: generate active and id
-    const active = false;
-    const id = 123;
+    const { children, className, innerRef, menuActive, menuId } = this.props;
 
     const actualClassName = classnames(
       styles.menuTrigger,
-      this.props.className,
-      active ? styles.menuTriggerActive : styles.menuTriggerInactive,
+      className,
+      menuActive ? styles.menuTriggerActive : styles.menuTriggerInactive,
     );
 
     return (
       <div
+        ref={innerRef}
         className={actualClassName}
         onClick={this.handleClick}
         onKeyUp={this.handleKeyUp}
         onKeyDown={this.handleKeyDown}
         tabIndex="0"
         role="button"
-        aria-owns={id}
+        aria-owns={menuId}
         aria-haspopup="true"
       >
-        {this.props.children}
+        {children}
       </div>
     );
   }
 }
 
-const MenuTrigger = React.forwardRef((props, ref) => (
-  <MenuTriggerRaw innerRef={ref} {...props} />
-));
+const MenuTrigger = React.forwardRef((props, ref) => <MenuTriggerRaw innerRef={ref} {...props} />);
 MenuTrigger.displayName = 'MenuTrigger';
-
 
 export default MenuTrigger;

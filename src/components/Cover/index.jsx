@@ -21,8 +21,8 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
   const options = [];
   if (withUpdateForms) {
-    options.push(<MenuOption>{t('updateAvatar')}</MenuOption>);
-    options.push(<MenuOption>{t('updateCover')}</MenuOption>);
+    options.push(<MenuOption key="1">{t('updateAvatar')}</MenuOption>);
+    options.push(<MenuOption key="2">{t('updateCover')}</MenuOption>);
   }
 
   // {withUpdateForms && false && (
@@ -50,7 +50,7 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
       <div className={styles.coverContent}>
         {options.length > 0 && (
-          <Menu className={styles.coverMenu}>
+          <Menu className={styles.coverMenu} menuId="123456789">
             <MenuTrigger className={styles.coverMenuTrigger}>
               {getIcon({
                 className: styles.coverMenuDots,

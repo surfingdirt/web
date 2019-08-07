@@ -5,10 +5,16 @@ import PropTypes from 'prop-types';
 import MenuOption from './MenuOption';
 import styles from './styles.scss';
 
-class MenuOptions extends React.Component {
+class MenuOptionsRaw extends React.Component {
   static propTypes = {
-    onSelectionMade: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+    innerRef: PropTypes.shape({
+      current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+    }).isRequired,
     horizontalPlacement: PropTypes.string,
+    menuActive: PropTypes.bool.isRequired,
+    menuId: PropTypes.string.isRequired,
+    onSelectionMade: PropTypes.func.isRequired,
     verticalPlacement: PropTypes.string,
   };
 
@@ -19,8 +25,6 @@ class MenuOptions extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.optionsRef = React.createRef();
 
     this.state = {
       activeIndex: 0,
@@ -65,7 +69,8 @@ class MenuOptions extends React.Component {
   }
 
   updateFocusIndexBy(delta) {
-    const optionNodes = this.optionsRef.current.querySelectorAll('.Menu__MenuOption');
+    const { innerRef } = this.props;
+    const optionNodes = innerRef.current.querySelectorAll('.Menu__MenuOption');
     this.normalizeSelectedBy(delta, optionNodes.length);
     this.setState({ activeIndex: this.selectedIndex }, () => {
       optionNodes[this.selectedIndex].focus();
@@ -73,16 +78,19 @@ class MenuOptions extends React.Component {
   }
 
   renderOptions() {
+    const { children } = this.props;
+    const { activeIndex } = this.state;
     let index = 0;
-    return React.Children.map(this.props.children, (c) => {
+    return React.Children.map(children, (c) => {
       let clonedOption = c;
       if (c.type === MenuOption) {
-        const active = this.state.activeIndex === index;
+        const active = activeIndex === index;
         clonedOption = React.cloneElement(c, {
           active,
+          key: index,
           index,
-          _internalFocus: this.focusOption,
-          _internalSelect: this.onSelectionMade,
+          internalFocus: this.focusOption,
+          internalSelect: this.onSelectionMade,
         });
         index += 1;
       }
@@ -91,7 +99,7 @@ class MenuOptions extends React.Component {
   }
 
   render() {
-    const { horizontalPlacement, verticalPlacement } = this.props;
+    const { horizontalPlacement, innerRef, menuActive, menuId, verticalPlacement } = this.props;
 
     const actualClassName = classnames(
       styles.menuOptions,
@@ -101,12 +109,12 @@ class MenuOptions extends React.Component {
 
     return (
       <div
-        id={this.context.id}
-        ref={this.optionsRef}
+        id={menuId}
+        ref={innerRef}
         role="menu"
         tabIndex="-1"
-        aria-expanded={this.context.active}
-        style={{ visibility: this.context.active ? 'visible' : 'hidden' }}
+        aria-expanded={menuActive}
+        style={{ visibility: menuActive ? 'visible' : 'hidden' }}
         className={actualClassName}
         onKeyDown={this.handleKeys}
       >
@@ -115,5 +123,8 @@ class MenuOptions extends React.Component {
     );
   }
 }
+
+const MenuOptions = React.forwardRef((props, ref) => <MenuOptionsRaw innerRef={ref} {...props} />);
+MenuOptions.displayName = 'MenuOptions';
 
 export default MenuOptions;

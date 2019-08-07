@@ -8,15 +8,21 @@ class MenuOption extends React.Component {
   static propTypes = {
     active: PropTypes.bool,
     children: PropTypes.node.isRequired,
-    onSelect: PropTypes.func.isRequired,
-    onDisabledSelect: PropTypes.func.isRequired,
+    disabledSelect: PropTypes.func,
     disabled: PropTypes.bool,
+    internalFocus: PropTypes.func,
+    internalSelect: PropTypes.func,
+    onSelect: PropTypes.func,
     role: PropTypes.string,
   };
 
   static defaultProps = {
     active: false,
     disabled: false,
+    disabledSelect: null,
+    internalFocus: null,
+    internalSelect: null,
+    onSelect: null,
     role: 'menuitem',
   };
 
@@ -27,13 +33,14 @@ class MenuOption extends React.Component {
   }
 
   notifyDisabledSelect() {
-    if (this.props.onDisabledSelect) {
-      this.props.onDisabledSelect();
+    const { disabledSelect } = this.props;
+    if (disabledSelect) {
+      disabledSelect();
     }
   }
 
   onSelect() {
-    const { disabled, onSelect, _internalSelect } = this.props;
+    const { disabled, internalSelect, onSelect } = this.props;
 
     if (disabled) {
       this.notifyDisabledSelect();
@@ -43,7 +50,7 @@ class MenuOption extends React.Component {
     if (onSelect) {
       onSelect();
     }
-    _internalSelect();
+    internalSelect();
   }
 
   handleKeyUp(e) {
@@ -64,12 +71,17 @@ class MenuOption extends React.Component {
   }
 
   handleHover() {
-    const { _internalFocus, index } = this.props;
-    _internalFocus(index);
+    const { internalFocus, index } = this.props;
+    internalFocus(index);
   }
 
   render() {
-    const { active, disabled, role, children, ...otherProps } = this.props;
+    const {
+      active,
+      disabled,
+      role,
+      children,
+    } = this.props;
 
     const actualClassName = classnames(styles.menuOption, {
       [styles.menuOptionActive]: active,
@@ -78,7 +90,6 @@ class MenuOption extends React.Component {
 
     return (
       <div
-        {...otherProps}
         onClick={this.handleClick}
         onKeyUp={this.handleKeyUp}
         onKeyDown={this.handleKeyDown}

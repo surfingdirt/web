@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import MenuOptions from './MenuOptions';
 import MenuTrigger from './MenuTrigger';
 
-import uuid from './uuid';
 import styles from './styles.scss';
 
 class Menu extends React.Component {
@@ -13,12 +12,14 @@ class Menu extends React.Component {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     keepOpenOnSelect: PropTypes.bool,
+    menuId: PropTypes.string.isRequired,
     preferredHorizontal: PropTypes.oneOf(['left', 'right']),
     preferredVertical: PropTypes.oneOf(['top', 'bottom']),
   };
 
   static defaultProps = {
     className: null,
+    keepOpenOnSelect: null,
     preferredHorizontal: 'right',
     preferredVertical: 'bottom',
   };
@@ -31,10 +32,9 @@ class Menu extends React.Component {
     this.optionsRef = React.createRef();
     this.mounted = false;
 
-    const { preferredHorizontal, preferredVertical } = this.props;
+    const { menuId, preferredHorizontal, preferredVertical } = this.props;
 
     this.state = {
-      id: uuid(),
       active: false,
       selectedIndex: 0,
       horizontalPlacement: preferredHorizontal,
@@ -88,8 +88,8 @@ class Menu extends React.Component {
     const { active } = this.state;
 
     if (active) {
-      // TODO: this propbably won't work
-      this.optionsRef.current.focusOption(0);
+      // TODO: tell the first option it should be focused
+      // this.optionsRef.current.focusOption(0);
       this.updatePositioning();
     }
   }
@@ -137,7 +137,8 @@ class Menu extends React.Component {
   renderTrigger() {
     this.assertIsSane();
 
-    const { children } = this.props;
+    const { children, menuId } = this.props;
+    const { active: menuActive} = this.state;
     let trigger = null;
 
     React.Children.forEach(children, (child) => {
@@ -145,8 +146,10 @@ class Menu extends React.Component {
         return;
       }
       trigger = React.cloneElement(child, {
-        ref: this.triggerRef,
+        menuActive,
+        menuId,
         onToggleActive: this.handleTriggerToggle,
+        ref: this.triggerRef,
       });
     });
     return trigger;
@@ -155,7 +158,8 @@ class Menu extends React.Component {
   renderMenuOptions() {
     this.assertIsSane();
 
-    const { children } = this.props;
+    const { children, menuId } = this.props;
+    const { active: menuActive, horizontalPlacement, verticalPlacement } = this.state;
     let options = null;
 
     React.Children.forEach(children, (child) => {
@@ -164,8 +168,10 @@ class Menu extends React.Component {
       }
       options = React.cloneElement(child, {
         ref: this.optionsRef,
-        horizontalPlacement: this.state.horizontalPlacement,
-        verticalPlacement: this.state.verticalPlacement,
+        menuActive,
+        menuId,
+        horizontalPlacement,
+        verticalPlacement,
         onSelectionMade: this.onSelectionMade,
       });
     });
