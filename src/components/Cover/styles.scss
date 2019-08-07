@@ -25,8 +25,27 @@
 }
 
 .coverContent {
+  height: 300px;
+  padding: $padding-medium-2;
   position: relative;
   z-index: 1;
+}
+
+.coverMenu {
+  position: absolute;
+  top: $padding-medium-2;
+  right: $padding-medium-2;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.coverMenuTrigger {
+  width: 1.5rem;
+}
+
+.coverMenuDots {
+
 }
 
 .avatarPositionner {

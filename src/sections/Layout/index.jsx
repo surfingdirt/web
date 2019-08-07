@@ -95,7 +95,7 @@ const BottomBar = ({
       <NamedNavigationItem
         label={t('more')}
         visual={getIcon({
-          type: icons.THREEDOTS,
+          type: icons.THREEDOTS_HORIZONTAL,
           presentationOnly: true,
           size: STANDARD,
         })}

@@ -40,6 +40,10 @@ class Menu extends React.Component {
       horizontalPlacement: preferredHorizontal,
       verticalPlacement: preferredVertical,
     };
+
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleKeys = this.handleKeys.bind(this);
+    this.handleTriggerToggle = this.handleTriggerToggle.bind(this);
   }
 
   componentDidMount() {

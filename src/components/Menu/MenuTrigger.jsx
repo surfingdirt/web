@@ -4,13 +4,25 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
-class MenuTrigger extends React.Component {
+class MenuTriggerRaw extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string.isRequired,
+    innerRef: PropTypes.shape({
+      current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+    }).isRequired,
     onToggleActive: PropTypes.func.isRequired,
   };
 
   static defaultProps = {};
+
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
 
   toggleActive() {
     this.props.onToggleActive(!this.context.active);
@@ -35,9 +47,9 @@ class MenuTrigger extends React.Component {
     const active = false;
     const id = 123;
 
-
     const actualClassName = classnames(
       styles.menuTrigger,
+      this.props.className,
       active ? styles.menuTriggerActive : styles.menuTriggerInactive,
     );
 
@@ -57,5 +69,11 @@ class MenuTrigger extends React.Component {
     );
   }
 }
+
+const MenuTrigger = React.forwardRef((props, ref) => (
+  <MenuTriggerRaw innerRef={ref} {...props} />
+));
+MenuTrigger.displayName = 'MenuTrigger';
+
 
 export default MenuTrigger;

@@ -8,7 +8,8 @@ import Close from 'Images/close.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
 import Video from 'Images/go-pro-bold.svg';
-import ThreeDots from 'Images/navigation-menu-horizontal.svg';
+import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
+import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Profile from 'Images/single-neutral-circle-alternate-bold.svg';
 import Search from 'Images/search-alternate-bold.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
@@ -20,7 +21,8 @@ const HOT = 'hot';
 const PHOTO = 'photo';
 const PROFILE = 'profile';
 const SEARCH = 'search';
-const THREEDOTS = 'threedots';
+const THREEDOTS_HORIZONTAL = 'threedots-horizontal';
+const THREEDOTS_VERTICAL = 'threedots-vertical';
 const USERS = 'users';
 const VIDEO = 'video';
 
@@ -32,7 +34,8 @@ const icons = {
   PHOTO,
   PROFILE,
   SEARCH,
-  THREEDOTS,
+  THREEDOTS_HORIZONTAL,
+  THREEDOTS_VERTICAL,
   USERS,
   VIDEO,
 };
@@ -71,8 +74,11 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
     case icons.SEARCH:
       icon = Search;
       break;
-    case icons.THREEDOTS:
-      icon = ThreeDots;
+    case icons.THREEDOTS_HORIZONTAL:
+      icon = ThreeDotsHorizontal;
+      break;
+    case icons.THREEDOTS_VERTICAL:
+      icon = ThreeDotsVertical;
       break;
     case icons.USERS:
       hollow = false;

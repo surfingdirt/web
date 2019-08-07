@@ -13,7 +13,7 @@ class MenuOptions extends React.Component {
   };
 
   static defaultProps = {
-    horizontalPlacement: 'left',
+    horizontalPlacement: 'right',
     verticalPlacement: 'bottom',
   };
 

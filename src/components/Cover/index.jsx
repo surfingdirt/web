@@ -7,11 +7,13 @@ import Menu, { MenuOption, MenuOptions, MenuTrigger } from 'Components/Menu';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 import Translate from 'Hocs/Translate';
+import icons, { getIcon, sizes } from 'Utils/icons';
 
 import styles from './styles.scss';
 import messages from './messages';
 
 const { RESPONSIVE } = userProfileTypes;
+const { STANDARD } = sizes;
 
 const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
@@ -22,6 +24,17 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
     options.push(<MenuOption>{t('updateAvatar')}</MenuOption>);
     options.push(<MenuOption>{t('updateCover')}</MenuOption>);
   }
+
+  // {withUpdateForms && false && (
+  //   <div className={styles.avatarFormPositionner}>
+  //     <AvatarUpdateForm />
+  //   </div>
+  // )}
+  // {withUpdateForms && false && (
+  //   <div className={styles.coverFormPositionner}>
+  //     <CoverUpdateForm />
+  //   </div>
+  // )}
 
   return (
     <div className={styles.coverWrapper}>
@@ -36,15 +49,18 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
       )}
 
       <div className={styles.coverContent}>
-        {withUpdateForms && false && (
-          <div className={styles.avatarFormPositionner}>
-            <AvatarUpdateForm />
-          </div>
-        )}
-        {withUpdateForms && false && (
-          <div className={styles.coverFormPositionner}>
-            <CoverUpdateForm />
-          </div>
+        {options.length > 0 && (
+          <Menu className={styles.coverMenu}>
+            <MenuTrigger className={styles.coverMenuTrigger}>
+              {getIcon({
+                className: styles.coverMenuDots,
+                label: t('coverMenuLabel'),
+                type: icons.THREEDOTS_VERTICAL,
+                size: STANDARD,
+              })}
+            </MenuTrigger>
+            <MenuOptions onSelectionMade={console.log}>{options}</MenuOptions>
+          </Menu>
         )}
       </div>
     </div>
