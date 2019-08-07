@@ -8,7 +8,11 @@ import styles from './styles.scss';
 const InputField = (props) => {
   const { input, meta, ...rest } = props;
 
+  const { onChange: inputOnChange, ...inputAttrs } = input;
+  const onChange = rest.onChange || inputOnChange;
+
   const { touched, error, submitError } = meta;
+
   const { label, id, placeholder, required, type } = rest;
 
   let displayError = null;
@@ -29,7 +33,8 @@ const InputField = (props) => {
         placeholder={placeholder}
         required={required}
         type={type}
-        {...input}
+        onChange={onChange}
+        {...inputAttrs}
       />
       {displayError && <span className={styles.error}>{displayError}</span>}
     </Fragment>
@@ -37,7 +42,6 @@ const InputField = (props) => {
 };
 
 InputField.propTypes = {
-  errorLabel: PropTypes.string,
   input: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -45,13 +49,10 @@ InputField.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
-  requiredLabel: PropTypes.string,
   type: PropTypes.string,
-  validLabel: PropTypes.string,
 };
 
 InputField.defaultProps = {
-  errorLabel: '',
   input: {
     name: '',
     id: '',
@@ -59,9 +60,7 @@ InputField.defaultProps = {
   label: '',
   placeholder: '',
   required: true,
-  requiredLabel: '',
   type: '',
-  validLabel: '',
 };
 
 export default InputField;

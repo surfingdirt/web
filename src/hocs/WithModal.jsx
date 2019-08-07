@@ -1,5 +1,6 @@
-import Modal from 'Components/Modal';
 import React, { PureComponent } from 'react';
+
+import Modal from 'Components/Modal';
 
 const withModal = ({ modalContent, shouldShowModal, modalTitle, ariaLabel }) => (BaseComponent) => {
   class WithModal extends PureComponent {

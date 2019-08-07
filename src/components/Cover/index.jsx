@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import AvatarUpdateForm from 'Components/AvatarUpdateForm';
 import CoverUpdateForm from 'Components/CoverUpdateForm';
+import Menu, { MenuOption, MenuOptions, MenuTrigger } from 'Components/Menu';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 import Translate from 'Hocs/Translate';
@@ -15,6 +16,12 @@ const { RESPONSIVE } = userProfileTypes;
 const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
+
+  const options = [];
+  if (withUpdateForms) {
+    options.push(<MenuOption>{t('updateAvatar')}</MenuOption>);
+    options.push(<MenuOption>{t('updateCover')}</MenuOption>);
+  }
 
   return (
     <div className={styles.coverWrapper}>
@@ -29,12 +36,12 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
       )}
 
       <div className={styles.coverContent}>
-        {withUpdateForms && (
+        {withUpdateForms && false && (
           <div className={styles.avatarFormPositionner}>
             <AvatarUpdateForm />
           </div>
         )}
-        {withUpdateForms && (
+        {withUpdateForms && false && (
           <div className={styles.coverFormPositionner}>
             <CoverUpdateForm />
           </div>
