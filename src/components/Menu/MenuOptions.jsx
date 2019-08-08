@@ -8,6 +8,7 @@ import styles from './styles.scss';
 class MenuOptionsRaw extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    focusedOptionIndex: PropTypes.number,
     innerRef: PropTypes.shape({
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
@@ -19,6 +20,7 @@ class MenuOptionsRaw extends React.Component {
   };
 
   static defaultProps = {
+    focusedOptionIndex: null,
     horizontalPlacement: 'right',
     verticalPlacement: 'bottom',
   };
@@ -29,6 +31,9 @@ class MenuOptionsRaw extends React.Component {
     this.state = {
       activeIndex: 0,
     };
+    
+    this.focusOption = this.focusOption.bind(this);
+    this.onSelectionMade = this.onSelectionMade.bind(this);
   }
 
   onSelectionMade() {
@@ -70,7 +75,7 @@ class MenuOptionsRaw extends React.Component {
 
   updateFocusIndexBy(delta) {
     const { innerRef } = this.props;
-    const optionNodes = innerRef.current.querySelectorAll('.Menu__MenuOption');
+    const optionNodes = innerRef.current.querySelectorAll(styles.menuOption);
     this.normalizeSelectedBy(delta, optionNodes.length);
     this.setState({ activeIndex: this.selectedIndex }, () => {
       optionNodes[this.selectedIndex].focus();

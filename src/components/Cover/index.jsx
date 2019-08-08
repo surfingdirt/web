@@ -21,8 +21,36 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
   const options = [];
   if (withUpdateForms) {
-    options.push(<MenuOption key="1">{t('updateAvatar')}</MenuOption>);
-    options.push(<MenuOption key="2">{t('updateCover')}</MenuOption>);
+    options.push(
+      <MenuOption
+        key="1"
+        onSelect={() => {
+          console.log('click updateAvatar');
+        }}
+      >
+        {t('updateAvatar')}
+      </MenuOption>,
+    );
+    options.push(
+      <MenuOption
+        key="2"
+        onSelect={() => {
+          console.log('click updateCover');
+        }}
+      >
+        {t('updateCover')}
+      </MenuOption>,
+    );
+    options.push(
+      <MenuOption
+        key="3"
+        onSelect={() => {
+          console.log('click updateCover');
+        }}
+      >
+        {t('updateCover')}
+      </MenuOption>,
+    );
   }
 
   // {withUpdateForms && false && (
@@ -53,7 +81,6 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
           <Menu className={styles.coverMenu} menuId="123456789">
             <MenuTrigger className={styles.coverMenuTrigger}>
               {getIcon({
-                className: styles.coverMenuDots,
                 label: t('coverMenuLabel'),
                 type: icons.THREEDOTS_VERTICAL,
                 size: STANDARD,

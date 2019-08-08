@@ -36,6 +36,7 @@ class Menu extends React.Component {
 
     this.state = {
       active: false,
+      focusedOptionIndex: null,
       selectedIndex: 0,
       horizontalPlacement: preferredHorizontal,
       verticalPlacement: preferredVertical,
@@ -81,17 +82,27 @@ class Menu extends React.Component {
   }
 
   handleTriggerToggle() {
-    this.setState({ active: !this.state.active }, this.afterTriggerToggle);
+    const newActive = !this.state.active;
+    this.setState({ active: newActive, focusedOptionIndex: 0 }, this.afterTriggerToggle);
   }
 
   afterTriggerToggle() {
     const { active } = this.state;
 
     if (active) {
-      // TODO: tell the first option it should be focused
-      // this.optionsRef.current.focusOption(0);
       this.updatePositioning();
     }
+  }
+
+  findOptionsChild() {
+    const { children } = this.props;
+    let optionsChild = null;
+    React.Children.forEach(children, (child) => {
+      if (child.type === MenuOptions) {
+        optionsChild = child;
+      }
+    });
+    return optionsChild;
   }
 
   updatePositioning() {
@@ -138,7 +149,7 @@ class Menu extends React.Component {
     this.assertIsSane();
 
     const { children, menuId } = this.props;
-    const { active: menuActive} = this.state;
+    const { active: menuActive } = this.state;
     let trigger = null;
 
     React.Children.forEach(children, (child) => {
@@ -158,24 +169,24 @@ class Menu extends React.Component {
   renderMenuOptions() {
     this.assertIsSane();
 
-    const { children, menuId } = this.props;
-    const { active: menuActive, horizontalPlacement, verticalPlacement } = this.state;
-    let options = null;
+    const { menuId } = this.props;
+    const {
+      active: menuActive,
+      focusedOptionIndex,
+      horizontalPlacement,
+      verticalPlacement,
+    } = this.state;
+    const options = this.findOptionsChild();
 
-    React.Children.forEach(children, (child) => {
-      if (child.type !== MenuOptions) {
-        return;
-      }
-      options = React.cloneElement(child, {
-        ref: this.optionsRef,
-        menuActive,
-        menuId,
-        horizontalPlacement,
-        verticalPlacement,
-        onSelectionMade: this.onSelectionMade,
-      });
+    return React.cloneElement(options, {
+      focusedOptionIndex,
+      horizontalPlacement,
+      menuActive,
+      menuId,
+      onSelectionMade: this.onSelectionMade,
+      ref: this.optionsRef,
+      verticalPlacement,
     });
-    return options;
   }
 
   render() {
@@ -187,8 +198,6 @@ class Menu extends React.Component {
         onKeyDown={this.handleKeys}
         onBlur={this.handleBlur}
         ref={this.menuRef}
-        role="menu"
-        tabIndex="-1"
       >
         {this.renderTrigger()}
         {this.renderMenuOptions()}

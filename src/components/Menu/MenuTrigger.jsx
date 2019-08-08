@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
+const KEY_ENTER = 'Enter';
+const ROLE_BUTTON = 'button';
+
 class MenuTriggerRaw extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
     innerRef: PropTypes.shape({
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
@@ -16,7 +19,9 @@ class MenuTriggerRaw extends React.Component {
     onToggleActive: PropTypes.func.isRequired,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    className: null,
+  };
 
   constructor(props) {
     super(props);
@@ -37,7 +42,7 @@ class MenuTriggerRaw extends React.Component {
   }
 
   handleKeyDown(e) {
-    if (e.key === 'Enter') this.toggleActive();
+    if (e.key === KEY_ENTER) this.toggleActive();
   }
 
   handleClick() {
@@ -61,7 +66,7 @@ class MenuTriggerRaw extends React.Component {
         onKeyUp={this.handleKeyUp}
         onKeyDown={this.handleKeyDown}
         tabIndex="0"
-        role="button"
+        role={ROLE_BUTTON}
         aria-owns={menuId}
         aria-haspopup="true"
       >

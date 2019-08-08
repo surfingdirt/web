@@ -97,16 +97,13 @@ $masthead-background-color: $brand-bright;
 $masthead-title-color: $brand-dark2;
 
 // Menu
-$menu-background: $brand-dark2;
-$sign-in-background: $brand-bright;
-$menu-separator: $brand-bright;
+$menu-option-background-color: $brand-bright;
+$menu-option-text-color: $brand-dark2;
+$menu-option-active-background-color: $brand-dark2;
+$menu-option-active-text-color: $brand-bright;
+$menu-border-color: $brand-bright;
+$menu-separator-color: $brand-bright;
 $menu-icon: $brand-bright;
-$menu-bottom-bar-border: $brand-bright;
-$menu-bottom-bar-item: $brand-bright;
-$menu-bottom-bar-item-active: $brand-bright;
-$menu-modal-title: $brand-bright;
-$menu-modal-main-item: $brand-bright;
-$menu-modal-sub-item: $brand-bright;
 
 // Navigation
 $navigation-entries-color: $brand-bright;

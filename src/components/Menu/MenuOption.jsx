@@ -30,6 +30,11 @@ class MenuOption extends React.Component {
     super(props);
 
     this.state = {};
+
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleHover = this.handleHover.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   notifyDisabledSelect() {

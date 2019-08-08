@@ -1,40 +1,56 @@
-.menu {
+@import '../../styles/boxmodel';
+@import '../../styles/colors';
+@import '../../styles/constants';
 
+.menu {
 }
 
 .menuOptions {
-  &.menuOptionsHorizontal-left {
 
+  &.menuOptionsHorizontal-left {
   }
 
   &.menuOptionsHorizontal-right {
-
   }
 
   &.menuOptionsVertical-top {
-
   }
 
   &.menuOptionsVertical-bottom {
-
   }
 }
 
 .menuOption {
-  &.menuOptionActive {
+  padding: $padding-small-3 $padding-small-2;
+  border-color: $menu-border-color;
+  border-width: 0 1px;
+  border-style: solid;
+  line-height: 1.5em;
+  background-color: $menu-option-background-color;
+  color: $menu-option-text-color;
 
+  &:first-child {
+    border-radius: $widget-border-radius $widget-border-radius 0 0;
+    border-width: 1px 1px 0 1px;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $widget-border-radius $widget-border-radius;
+    border-width: 0px 1px 1px 1px;
+  }
+
+  &.menuOptionActive {
+    background-color: $menu-option-active-background-color;
+    color: $menu-option-active-text-color;
   }
 
   &.menuOptionDisabled {
-
   }
 }
 
 .menuTrigger {
   &.menuTriggerActive {
-
   }
   &.menuTriggerInactive {
-
   }
 }
