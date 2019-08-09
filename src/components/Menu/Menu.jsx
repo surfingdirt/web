@@ -18,10 +18,13 @@ class Menu extends React.Component {
     className: PropTypes.string,
     menuId: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        onSelect: PropTypes.func.isRequired,
-      }).isRequired,
+      PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          onSelect: PropTypes.func.isRequired,
+        }).isRequired,
+      ]),
     ).isRequired,
     preferredHorizontal: PropTypes.oneOf([LEFT, RIGHT]),
     preferredVertical: PropTypes.oneOf([TOP, BOTTOM]),

@@ -4,7 +4,7 @@ import Button from 'Components/Button/index';
 import SVG from 'Components/SVG';
 import ReactFocusTrap from 'focus-trap-react';
 import Translate from 'Hocs/Translate';
-import Close from 'Images/_old/close.svg';
+import Close from 'Images/remove-circle-regular.svg';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

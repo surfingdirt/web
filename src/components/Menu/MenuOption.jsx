@@ -16,7 +16,7 @@ class MenuOptionRaw extends React.Component {
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
     onCloseRequested: PropTypes.func,
-    onSelect: PropTypes.func.isRequired,
+    onSelect: PropTypes.func,
   };
 
   static defaultProps = {
@@ -25,7 +25,8 @@ class MenuOptionRaw extends React.Component {
     disabledSelect: null,
     handleBlur: null,
     handleKeys: null,
-    onCloseRequested: () => {},
+    onCloseRequested: null,
+    onSelect: null,
   };
 
   constructor(props) {

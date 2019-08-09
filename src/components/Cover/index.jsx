@@ -18,58 +18,25 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
 
-  const options = [];
-  if (withUpdateForms) {
-    options.push({
-      label: t('updateAvatar'),
-      onSelect: () => {
-        console.log('click updateAvatar');
-      },
-    });
-    options.push({
-      label: t('updateCover'),
-      onSelect: () => {
-        console.log('click updateCover');
-      },
-    });
-    options.push({
-      label: 'Do something',
-      onSelect: () => {
-        console.log('click Do something');
-      },
-    });
-    // options.push(
-    //   <MenuOption
-    //     key="1"
-    //     onSelect={() => {
-    //       console.log('click updateAvatar');
-    //     }}
-    //   >
-    //     {t('updateAvatar')}
-    //   </MenuOption>,
-    // );
-    // options.push(
-    //   <MenuOption
-    //     key="2"
-    //     onSelect={() => {
-    //       console.log('click updateCover');
-    //     }}
-    //   >
-    //     {t('updateCover')}
-    //   </MenuOption>,
-    // );
-    // options.push(
-    //   <MenuOption
-    //     key="3"
-    //     onSelect={() => {
-    //       console.log('click updateCover 2');
-    //     }}
-    //   >
-    //     {t('updateCover')}
-    //   </MenuOption>,
-    // );
-  }
-
+  const options = withUpdateForms
+    ? [
+        {
+          label: t('updateAvatar'),
+          onSelect: () => {
+            console.log('click updateAvatar');
+          },
+        },
+        {
+          label: t('updateCover'),
+          onSelect: () => {
+            console.log('click updateCover');
+          },
+        },
+        () => {
+          return <span>This is a span</span>;
+        },
+      ]
+    : [];
   // {withUpdateForms && false && (
   //   <div className={styles.avatarFormPositionner}>
   //     <AvatarUpdateForm />
@@ -95,7 +62,12 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
       <div className={styles.coverContent}>
         {options.length > 0 && (
-          <Menu menuId={COVER_MENU} triggerLabel={t('coverMenuLabel')} className={styles.coverMenu} options={options} />
+          <Menu
+            menuId={COVER_MENU}
+            triggerLabel={t('coverMenuLabel')}
+            className={styles.coverMenu}
+            options={options}
+          />
         )}
       </div>
     </div>

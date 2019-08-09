@@ -26,10 +26,13 @@ class MenuOptionsRaw extends React.Component {
       }).isRequired,
     ).isRequired,
     options: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        onSelect: PropTypes.func.isRequired,
-      }).isRequired,
+      PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          onSelect: PropTypes.func.isRequired,
+        }).isRequired,
+      ]),
     ).isRequired,
     verticalPlacement: PropTypes.string,
   };
@@ -50,21 +53,29 @@ class MenuOptionsRaw extends React.Component {
       options,
     } = this.props;
 
-    return options.map(({ label, onSelect }, index) => {
+    return options.map((option, index) => {
       const active = activeOptionIndex === index;
-
       const attrs = {
         active,
         index,
         handleBlur,
         handleKeys,
         onCloseRequested,
-        onSelect,
         ref: optionItemRefs[index],
       };
+
+      let content;
+      if (typeof option === 'function') {
+        content = option();
+      } else {
+        const { label, onSelect } = option;
+        content = label;
+        attrs.onSelect = onSelect;
+      }
+
       return (
-        <MenuOption key={label} {...attrs}>
-          {label}
+        <MenuOption key={index} {...attrs}>
+          {content}
         </MenuOption>
       );
     });
