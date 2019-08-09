@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
-class MenuOption extends React.Component {
+class MenuOptionRaw extends React.Component {
   static propTypes = {
     active: PropTypes.bool,
     children: PropTypes.node.isRequired,
@@ -12,6 +12,9 @@ class MenuOption extends React.Component {
     disabled: PropTypes.bool,
     handleBlur: PropTypes.func,
     handleKeys: PropTypes.func,
+    innerRef: PropTypes.shape({
+      current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+    }).isRequired,
     onCloseRequested: PropTypes.func,
     onSelect: PropTypes.func.isRequired,
   };
@@ -52,7 +55,7 @@ class MenuOption extends React.Component {
   }
 
   render() {
-    const { active, children, disabled, handleBlur, handleKeys } = this.props;
+    const { active, children, disabled, handleBlur, handleKeys, innerRef } = this.props;
 
     const actualClassName = classnames(styles.menuOption, {
       [styles.menuOptionActive]: active,
@@ -68,11 +71,15 @@ class MenuOption extends React.Component {
         role="menuitem"
         tabIndex="-1"
         aria-disabled={disabled}
+        ref={innerRef}
       >
         {children}
       </div>
     );
   }
 }
+
+const MenuOption = React.forwardRef((props, ref) => <MenuOptionRaw innerRef={ref} {...props} />);
+MenuOption.displayName = 'MenuOption';
 
 export default MenuOption;

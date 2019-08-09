@@ -3,11 +3,14 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import MenuOption from './MenuOption';
+import { positions } from './constants';
 import styles from './styles.scss';
+
+const { BOTTOM, RIGHT } = positions;
 
 class MenuOptionsRaw extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    activeOptionIndex: PropTypes.number,
     handleBlur: PropTypes.func.isRequired,
     handleKeys: PropTypes.func.isRequired,
     horizontalPlacement: PropTypes.string,
@@ -17,41 +20,53 @@ class MenuOptionsRaw extends React.Component {
     menuActive: PropTypes.bool.isRequired,
     menuId: PropTypes.string.isRequired,
     onCloseRequested: PropTypes.func.isRequired,
+    optionItemRefs: PropTypes.arrayOf(
+      PropTypes.shape({
+        current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+      }).isRequired,
+    ).isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        onSelect: PropTypes.func.isRequired,
+      }).isRequired,
+    ).isRequired,
     verticalPlacement: PropTypes.string,
   };
 
   static defaultProps = {
-    horizontalPlacement: 'right',
-    verticalPlacement: 'bottom',
+    activeOptionIndex: null,
+    horizontalPlacement: RIGHT,
+    verticalPlacement: BOTTOM,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeIndex: 0,
-    };
-  }
-
   renderOptions() {
-    const { children, handleBlur, handleKeys, onCloseRequested } = this.props;
-    const { activeIndex } = this.state;
-    let index = 0;
-    return React.Children.map(children, (c) => {
-      let clonedOption = c;
-      if (c.type === MenuOption) {
-        const active = activeIndex === index;
-        clonedOption = React.cloneElement(c, {
-          active,
-          key: index,
-          index,
-          handleBlur,
-          handleKeys,
-          onCloseRequested,
-        });
-        index += 1;
-      }
-      return clonedOption;
+    const {
+      activeOptionIndex,
+      handleBlur,
+      handleKeys,
+      onCloseRequested,
+      optionItemRefs,
+      options,
+    } = this.props;
+
+    return options.map(({ label, onSelect }, index) => {
+      const active = activeOptionIndex === index;
+
+      const attrs = {
+        active,
+        index,
+        handleBlur,
+        handleKeys,
+        onCloseRequested,
+        onSelect,
+        ref: optionItemRefs[index],
+      };
+      return (
+        <MenuOption key={label} {...attrs}>
+          {label}
+        </MenuOption>
+      );
     });
   }
 

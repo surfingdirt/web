@@ -6,7 +6,9 @@ export const positions = {
 };
 
 export const keys = {
+  DOWN: 'ArrowDown',
   ENTER: 'Enter',
   ESCAPE: 'Escape',
   SPACE: ' ',
+  UP: 'ArrowUp',
 };

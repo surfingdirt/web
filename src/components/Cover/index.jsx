@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 
 import AvatarUpdateForm from 'Components/AvatarUpdateForm';
 import CoverUpdateForm from 'Components/CoverUpdateForm';
-import Menu, { MenuOption, MenuOptions, MenuTrigger } from 'Components/Menu';
+import Menu from 'Components/Menu';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
 import { COVER_MENU } from '~/ids';
 
 import styles from './styles.scss';
 import messages from './messages';
 
 const { RESPONSIVE } = userProfileTypes;
-const { STANDARD } = sizes;
 
 const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
@@ -22,36 +20,54 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
   const options = [];
   if (withUpdateForms) {
-    options.push(
-      <MenuOption
-        key="1"
-        onSelect={() => {
-          console.log('click updateAvatar');
-        }}
-      >
-        {t('updateAvatar')}
-      </MenuOption>,
-    );
-    options.push(
-      <MenuOption
-        key="2"
-        onSelect={() => {
-          console.log('click updateCover');
-        }}
-      >
-        {t('updateCover')}
-      </MenuOption>,
-    );
-    options.push(
-      <MenuOption
-        key="3"
-        onSelect={() => {
-          console.log('click updateCover 2');
-        }}
-      >
-        {t('updateCover')}
-      </MenuOption>,
-    );
+    options.push({
+      label: t('updateAvatar'),
+      onSelect: () => {
+        console.log('click updateAvatar');
+      },
+    });
+    options.push({
+      label: t('updateCover'),
+      onSelect: () => {
+        console.log('click updateCover');
+      },
+    });
+    options.push({
+      label: 'Do something',
+      onSelect: () => {
+        console.log('click Do something');
+      },
+    });
+    // options.push(
+    //   <MenuOption
+    //     key="1"
+    //     onSelect={() => {
+    //       console.log('click updateAvatar');
+    //     }}
+    //   >
+    //     {t('updateAvatar')}
+    //   </MenuOption>,
+    // );
+    // options.push(
+    //   <MenuOption
+    //     key="2"
+    //     onSelect={() => {
+    //       console.log('click updateCover');
+    //     }}
+    //   >
+    //     {t('updateCover')}
+    //   </MenuOption>,
+    // );
+    // options.push(
+    //   <MenuOption
+    //     key="3"
+    //     onSelect={() => {
+    //       console.log('click updateCover 2');
+    //     }}
+    //   >
+    //     {t('updateCover')}
+    //   </MenuOption>,
+    // );
   }
 
   // {withUpdateForms && false && (
@@ -79,16 +95,7 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
       <div className={styles.coverContent}>
         {options.length > 0 && (
-          <Menu menuId={COVER_MENU} className={styles.coverMenu}>
-            <MenuTrigger>
-              {getIcon({
-                label: t('coverMenuLabel'),
-                type: icons.THREEDOTS_VERTICAL,
-                size: STANDARD,
-              })}
-            </MenuTrigger>
-            <MenuOptions>{options}</MenuOptions>
-          </Menu>
+          <Menu menuId={COVER_MENU} triggerLabel={t('coverMenuLabel')} className={styles.coverMenu} options={options} />
         )}
       </div>
     </div>

@@ -2,29 +2,39 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import icons, { getIcon, sizes } from 'Utils/icons';
+
 import MenuOptions from './MenuOptions';
 import MenuTrigger from './MenuTrigger';
 import { keys, positions } from './constants';
 import styles from './styles.scss';
 
+const { DOWN, ESCAPE, ENTER, UP } = keys;
 const { RIGHT, LEFT, TOP, BOTTOM } = positions;
-const { ESCAPE } = keys;
+const { STANDARD } = sizes;
 
 class Menu extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
     className: PropTypes.string,
-    keepOpenOnSelect: PropTypes.bool,
     menuId: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        onSelect: PropTypes.func.isRequired,
+      }).isRequired,
+    ).isRequired,
     preferredHorizontal: PropTypes.oneOf([LEFT, RIGHT]),
     preferredVertical: PropTypes.oneOf([TOP, BOTTOM]),
+    trigger: PropTypes.node,
+    triggerLabel: PropTypes.string,
   };
 
   static defaultProps = {
     className: null,
-    keepOpenOnSelect: null,
     preferredHorizontal: RIGHT,
     preferredVertical: BOTTOM,
+    trigger: null,
+    triggerLabel: null,
   };
 
   constructor(props) {
@@ -33,16 +43,14 @@ class Menu extends React.Component {
     this.menuRef = React.createRef();
     this.triggerRef = React.createRef();
     this.optionsRef = React.createRef();
+    this.optionItemRefs = props.options.map(() => React.createRef());
     this.mounted = false;
 
     const { preferredHorizontal, preferredVertical } = this.props;
 
-    const optionsCount = this.countOptionDescendants();
-    console.log({optionsCount});
-
     this.state = {
       active: false,
-      focusedOptionIndex: null,
+      activeOptionIndex: null,
       horizontalPlacement: preferredHorizontal,
       verticalPlacement: preferredVertical,
     };
@@ -58,16 +66,14 @@ class Menu extends React.Component {
   }
 
   onSelectionMade() {
-    if (!this.props.keepOpenOnSelect) {
-      this.closeMenu(this.focusTrigger);
-    }
+    this.closeMenu(this.focusTrigger);
   }
 
   closeMenu(cb) {
     if (cb) {
-      this.setState({ active: false }, cb);
+      this.setState({ active: false, activeOptionIndex: null }, cb);
     } else {
-      this.setState({ active: false });
+      this.setState({ active: false, activeOptionIndex: null });
     }
   }
 
@@ -75,7 +81,7 @@ class Menu extends React.Component {
     this.triggerRef.current.focus();
   }
 
-  handleBlur(e) {
+  handleBlur() {
     // Give next element a tick to take focus
     setTimeout(() => {
       if (!this.mounted) {
@@ -89,7 +95,7 @@ class Menu extends React.Component {
 
   handleTriggerToggle() {
     const newActive = !this.state.active;
-    this.setState({ active: newActive, focusedOptionIndex: 0 }, this.afterTriggerToggle);
+    this.setState({ active: newActive, activeOptionIndex: 0 }, this.afterTriggerToggle);
   }
 
   afterTriggerToggle() {
@@ -98,27 +104,6 @@ class Menu extends React.Component {
     if (active) {
       this.updatePositioning();
     }
-  }
-
-  findOptionsChild() {
-    const { children } = this.props;
-    let optionsChild = null;
-    React.Children.forEach(children, (child) => {
-      if (child.type === MenuOptions) {
-        optionsChild = child;
-      }
-    });
-    return optionsChild;
-  }
-
-  countOptionDescendants() {
-    const optionsChild = this.findOptionsChild();
-    let count = 0;
-
-    React.Children.forEach(optionsChild, () => {
-      count += 1;
-    });
-    return count;
   }
 
   updatePositioning() {
@@ -147,67 +132,88 @@ class Menu extends React.Component {
   }
 
   handleKeys(e) {
-    console.log('Menu - handleKeys', e.key);
-    if (e.key === ESCAPE) {
-      this.closeMenu(this.focusTrigger);
-    }
-  }
+    let { activeOptionIndex } = this.state;
+    const { options } = this.props;
 
-  assertIsSane() {
-    const { children } = this.props;
-
-    const ok = React.Children.count(children) === 2;
-    if (!ok) {
-      throw new Error('Menu can only take two children: a MenuTrigger, and a MenuOptions');
+    switch (e.key) {
+      case ESCAPE:
+        this.closeMenu(this.focusTrigger);
+        break;
+      case ENTER:
+        {
+          const currentOption = options[activeOptionIndex];
+          if (currentOption.onSelect) {
+            currentOption.onSelect();
+          }
+          this.closeMenu(this.focusTrigger);
+        }
+        break;
+      case DOWN:
+      case UP:
+        activeOptionIndex += e.key === DOWN ? 1 : -1;
+        if (activeOptionIndex > options.length - 1) {
+          activeOptionIndex = 0;
+        }
+        if (activeOptionIndex < 0) {
+          activeOptionIndex = options.length - 1;
+        }
+        this.optionItemRefs[activeOptionIndex].current.focus();
+        this.setState({ activeOptionIndex });
+        break;
+      default:
+        break;
     }
   }
 
   renderTrigger() {
-    this.assertIsSane();
-
-    const { children, menuId } = this.props;
+    const { menuId, trigger, triggerLabel } = this.props;
     const { active: menuActive } = this.state;
-    let trigger = null;
 
-    React.Children.forEach(children, (child) => {
-      if (child.type !== MenuTrigger) {
-        return;
-      }
-      trigger = React.cloneElement(child, {
-        menuActive,
-        menuId,
-        onToggleActive: this.handleTriggerToggle,
-        ref: this.triggerRef,
-      });
-    });
-    return trigger;
+    const attrs = {
+      menuActive,
+      menuId,
+      onToggleActive: this.handleTriggerToggle,
+      ref: this.triggerRef,
+    };
+
+    return (
+      <MenuTrigger {...attrs}>
+        {trigger ||
+          getIcon({
+            label: triggerLabel,
+            type: icons.THREEDOTS_VERTICAL,
+            size: STANDARD,
+          })}
+      </MenuTrigger>
+    );
   }
 
-  renderMenuOptions() {
-    this.assertIsSane();
-
-    const { menuId } = this.props;
+  renderOptions() {
+    const { menuId, options } = this.props;
     const { handleBlur, handleKeys } = this;
 
     const {
       active: menuActive,
-      focusedOptionIndex,
+      activeOptionIndex,
       horizontalPlacement,
       verticalPlacement,
     } = this.state;
-    const options = this.findOptionsChild();
 
-    return React.cloneElement(options, {
-      focusedOptionIndex,
+    const attrs = {
+      activeOptionIndex,
       horizontalPlacement,
       menuActive,
       menuId,
       handleBlur,
       handleKeys,
       onCloseRequested: this.closeMenu,
+      optionItemRefs: this.optionItemRefs,
+      options,
       ref: this.optionsRef,
       verticalPlacement,
-    });
+    };
+
+    return <MenuOptions {...attrs} />;
   }
 
   render() {
@@ -222,7 +228,7 @@ class Menu extends React.Component {
         ref={this.menuRef}
       >
         {this.renderTrigger()}
-        {this.renderMenuOptions()}
+        {this.renderOptions()}
       </div>
     );
   }
