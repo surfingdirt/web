@@ -8,6 +8,7 @@ import ResponsiveImage from 'Components/ResponsiveImage';
 import UserProfile, { userProfileTypes } from 'Components/UserProfile';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
+import { COVER_MENU } from '~/ids';
 
 import styles from './styles.scss';
 import messages from './messages';
@@ -45,7 +46,7 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
       <MenuOption
         key="3"
         onSelect={() => {
-          console.log('click updateCover');
+          console.log('click updateCover 2');
         }}
       >
         {t('updateCover')}
@@ -78,15 +79,15 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
 
       <div className={styles.coverContent}>
         {options.length > 0 && (
-          <Menu className={styles.coverMenu} menuId="123456789">
-            <MenuTrigger className={styles.coverMenuTrigger}>
+          <Menu menuId={COVER_MENU} className={styles.coverMenu}>
+            <MenuTrigger>
               {getIcon({
                 label: t('coverMenuLabel'),
                 type: icons.THREEDOTS_VERTICAL,
                 size: STANDARD,
               })}
             </MenuTrigger>
-            <MenuOptions onSelectionMade={console.log}>{options}</MenuOptions>
+            <MenuOptions>{options}</MenuOptions>
           </Menu>
         )}
       </div>

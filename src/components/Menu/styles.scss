@@ -35,8 +35,25 @@ $border-width: 1px;
     border-width: 0 $border-width $border-width $border-width;
   }
 
-  &.menuOptionActive {
+  &:hover {
+    cursor: pointer;
     background-color: $menu-option-active-background-color;
     color: $menu-option-active-text-color;
+  }
+}
+
+.menuOptionActive {
+  background-color: $menu-option-active-background-color;
+  color: $menu-option-active-text-color;
+}
+
+:global(.mouse-mode) {
+  .menuOption:hover {
+    background-color: $menu-option-active-background-color;
+    color: $menu-option-active-text-color;
+  }
+  .menuOptionActive {
+    background-color: $menu-option-background-color;
+    color: $menu-option-text-color;
   }
 }

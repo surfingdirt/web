@@ -10,20 +10,19 @@ class MenuOption extends React.Component {
     children: PropTypes.node.isRequired,
     disabledSelect: PropTypes.func,
     disabled: PropTypes.bool,
-    internalFocus: PropTypes.func,
-    internalSelect: PropTypes.func,
-    onSelect: PropTypes.func,
-    role: PropTypes.string,
+    handleBlur: PropTypes.func,
+    handleKeys: PropTypes.func,
+    onCloseRequested: PropTypes.func,
+    onSelect: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     active: false,
     disabled: false,
     disabledSelect: null,
-    internalFocus: null,
-    internalSelect: null,
-    onSelect: null,
-    role: 'menuitem',
+    handleBlur: null,
+    handleKeys: null,
+    onCloseRequested: () => {},
   };
 
   constructor(props) {
@@ -31,62 +30,29 @@ class MenuOption extends React.Component {
 
     this.state = {};
 
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  notifyDisabledSelect() {
-    const { disabledSelect } = this.props;
-    if (disabledSelect) {
-      disabledSelect();
-    }
-  }
-
-  onSelect() {
-    const { disabled, internalSelect, onSelect } = this.props;
+  handleClick() {
+    const { disabled, disabledSelect, onCloseRequested, onSelect } = this.props;
 
     if (disabled) {
-      this.notifyDisabledSelect();
+      if (disabledSelect) {
+        disabledSelect();
+      }
       // Early return if disabled
       return;
     }
     if (onSelect) {
       onSelect();
     }
-    internalSelect();
-  }
-
-  handleKeyUp(e) {
-    if (e.key === ' ') {
-      this.onSelect();
+    if (onCloseRequested) {
+      onCloseRequested();
     }
-  }
-
-  handleKeyDown(e) {
-    e.preventDefault();
-    if (e.key === 'Enter') {
-      this.onSelect();
-    }
-  }
-
-  handleClick() {
-    this.onSelect();
-  }
-
-  handleHover() {
-    const { internalFocus, index } = this.props;
-    internalFocus(index);
   }
 
   render() {
-    const {
-      active,
-      disabled,
-      role,
-      children,
-    } = this.props;
+    const { active, children, disabled, handleBlur, handleKeys } = this.props;
 
     const actualClassName = classnames(styles.menuOption, {
       [styles.menuOptionActive]: active,
@@ -96,11 +62,10 @@ class MenuOption extends React.Component {
     return (
       <div
         onClick={this.handleClick}
-        onKeyUp={this.handleKeyUp}
-        onKeyDown={this.handleKeyDown}
-        onMouseOver={this.handleHover}
+        onBlur={handleBlur}
+        onKeyDown={handleKeys}
         className={actualClassName}
-        role={role}
+        role="menuitem"
         tabIndex="-1"
         aria-disabled={disabled}
       >

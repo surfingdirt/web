@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 
 import MenuOptions from './MenuOptions';
 import MenuTrigger from './MenuTrigger';
-
+import { keys, positions } from './constants';
 import styles from './styles.scss';
+
+const { RIGHT, LEFT, TOP, BOTTOM } = positions;
+const { ESCAPE } = keys;
 
 class Menu extends React.Component {
   static propTypes = {
@@ -13,15 +16,15 @@ class Menu extends React.Component {
     className: PropTypes.string,
     keepOpenOnSelect: PropTypes.bool,
     menuId: PropTypes.string.isRequired,
-    preferredHorizontal: PropTypes.oneOf(['left', 'right']),
-    preferredVertical: PropTypes.oneOf(['top', 'bottom']),
+    preferredHorizontal: PropTypes.oneOf([LEFT, RIGHT]),
+    preferredVertical: PropTypes.oneOf([TOP, BOTTOM]),
   };
 
   static defaultProps = {
     className: null,
     keepOpenOnSelect: null,
-    preferredHorizontal: 'right',
-    preferredVertical: 'bottom',
+    preferredHorizontal: RIGHT,
+    preferredVertical: BOTTOM,
   };
 
   constructor(props) {
@@ -32,16 +35,19 @@ class Menu extends React.Component {
     this.optionsRef = React.createRef();
     this.mounted = false;
 
-    const { menuId, preferredHorizontal, preferredVertical } = this.props;
+    const { preferredHorizontal, preferredVertical } = this.props;
+
+    const optionsCount = this.countOptionDescendants();
+    console.log({optionsCount});
 
     this.state = {
       active: false,
       focusedOptionIndex: null,
-      selectedIndex: 0,
       horizontalPlacement: preferredHorizontal,
       verticalPlacement: preferredVertical,
     };
 
+    this.closeMenu = this.closeMenu.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleKeys = this.handleKeys.bind(this);
     this.handleTriggerToggle = this.handleTriggerToggle.bind(this);
@@ -105,6 +111,16 @@ class Menu extends React.Component {
     return optionsChild;
   }
 
+  countOptionDescendants() {
+    const optionsChild = this.findOptionsChild();
+    let count = 0;
+
+    React.Children.forEach(optionsChild, () => {
+      count += 1;
+    });
+    return count;
+  }
+
   updatePositioning() {
     const {
       preferredHorizontal: horizontalPlacement,
@@ -118,20 +134,21 @@ class Menu extends React.Component {
     // Only update preferred placement positions if necessary to keep menu from
     // appearing off-screen.
     if (triggerRect.left + optionsRect.width > window.innerWidth) {
-      positionState.horizontalPlacement = 'left';
+      positionState.horizontalPlacement = LEFT;
     } else if (optionsRect.left < 0) {
-      positionState.horizontalPlacement = 'right';
+      positionState.horizontalPlacement = RIGHT;
     }
     if (triggerRect.bottom + optionsRect.height > window.innerHeight) {
-      positionState.verticalPlacement = 'top';
+      positionState.verticalPlacement = TOP;
     } else if (optionsRect.top < 0) {
-      positionState.verticalPlacement = 'bottom';
+      positionState.verticalPlacement = BOTTOM;
     }
     this.setState(positionState);
   }
 
   handleKeys(e) {
-    if (e.key === 'Escape') {
+    console.log('Menu - handleKeys', e.key);
+    if (e.key === ESCAPE) {
       this.closeMenu(this.focusTrigger);
     }
   }
@@ -170,6 +187,8 @@ class Menu extends React.Component {
     this.assertIsSane();
 
     const { menuId } = this.props;
+    const { handleBlur, handleKeys } = this;
+
     const {
       active: menuActive,
       focusedOptionIndex,
@@ -183,7 +202,9 @@ class Menu extends React.Component {
       horizontalPlacement,
       menuActive,
       menuId,
-      onSelectionMade: this.onSelectionMade,
+      handleBlur,
+      handleKeys,
+      onCloseRequested: this.closeMenu,
       ref: this.optionsRef,
       verticalPlacement,
     });
@@ -191,12 +212,13 @@ class Menu extends React.Component {
 
   render() {
     const { className } = this.props;
+    const { handleBlur, handleKeys } = this;
 
     return (
       <div
         className={classnames(styles.menu, className)}
-        onKeyDown={this.handleKeys}
-        onBlur={this.handleBlur}
+        onBlur={handleBlur}
+        onKeyDown={handleKeys}
         ref={this.menuRef}
       >
         {this.renderTrigger()}

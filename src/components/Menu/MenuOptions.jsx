@@ -8,19 +8,19 @@ import styles from './styles.scss';
 class MenuOptionsRaw extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    focusedOptionIndex: PropTypes.number,
+    handleBlur: PropTypes.func.isRequired,
+    handleKeys: PropTypes.func.isRequired,
+    horizontalPlacement: PropTypes.string,
     innerRef: PropTypes.shape({
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
-    horizontalPlacement: PropTypes.string,
     menuActive: PropTypes.bool.isRequired,
     menuId: PropTypes.string.isRequired,
-    onSelectionMade: PropTypes.func.isRequired,
+    onCloseRequested: PropTypes.func.isRequired,
     verticalPlacement: PropTypes.string,
   };
 
   static defaultProps = {
-    focusedOptionIndex: null,
     horizontalPlacement: 'right',
     verticalPlacement: 'bottom',
   };
@@ -31,59 +31,10 @@ class MenuOptionsRaw extends React.Component {
     this.state = {
       activeIndex: 0,
     };
-    
-    this.focusOption = this.focusOption.bind(this);
-    this.onSelectionMade = this.onSelectionMade.bind(this);
-  }
-
-  onSelectionMade() {
-    this.props.onSelectionMade();
-  }
-
-  moveSelectionUp() {
-    this.updateFocusIndexBy(-1);
-  }
-
-  moveSelectionDown() {
-    this.updateFocusIndexBy(1);
-  }
-
-  handleKeys(e) {
-    const options = {
-      ArrowDown: this.moveSelectionDown,
-      ArrowUp: this.moveSelectionUp,
-      Escape: this.closeMenu,
-    };
-    if (options[e.key]) {
-      options[e.key].call(this);
-    }
-  }
-
-  normalizeSelectedBy(delta, numOptions) {
-    this.selectedIndex += delta;
-    if (this.selectedIndex > numOptions - 1) {
-      this.selectedIndex = 0;
-    } else if (this.selectedIndex < 0) {
-      this.selectedIndex = numOptions - 1;
-    }
-  }
-
-  focusOption(index) {
-    this.selectedIndex = index;
-    this.updateFocusIndexBy(0);
-  }
-
-  updateFocusIndexBy(delta) {
-    const { innerRef } = this.props;
-    const optionNodes = innerRef.current.querySelectorAll(styles.menuOption);
-    this.normalizeSelectedBy(delta, optionNodes.length);
-    this.setState({ activeIndex: this.selectedIndex }, () => {
-      optionNodes[this.selectedIndex].focus();
-    });
   }
 
   renderOptions() {
-    const { children } = this.props;
+    const { children, handleBlur, handleKeys, onCloseRequested } = this.props;
     const { activeIndex } = this.state;
     let index = 0;
     return React.Children.map(children, (c) => {
@@ -94,8 +45,9 @@ class MenuOptionsRaw extends React.Component {
           active,
           key: index,
           index,
-          internalFocus: this.focusOption,
-          internalSelect: this.onSelectionMade,
+          handleBlur,
+          handleKeys,
+          onCloseRequested,
         });
         index += 1;
       }
@@ -104,7 +56,15 @@ class MenuOptionsRaw extends React.Component {
   }
 
   render() {
-    const { horizontalPlacement, innerRef, menuActive, menuId, verticalPlacement } = this.props;
+    const {
+      handleBlur,
+      handleKeys,
+      horizontalPlacement,
+      innerRef,
+      menuActive,
+      menuId,
+      verticalPlacement,
+    } = this.props;
 
     const actualClassName = classnames(
       styles.menuOptions,
@@ -121,7 +81,8 @@ class MenuOptionsRaw extends React.Component {
         aria-expanded={menuActive}
         style={{ visibility: menuActive ? 'visible' : 'hidden' }}
         className={actualClassName}
-        onKeyDown={this.handleKeys}
+        onBlur={handleBlur}
+        onKeyDown={handleKeys}
       >
         {this.renderOptions()}
       </div>

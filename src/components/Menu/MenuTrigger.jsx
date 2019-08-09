@@ -2,10 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import { keys } from './constants';
 import styles from './styles.scss';
 
-const KEY_ENTER = 'Enter';
-const ROLE_BUTTON = 'button';
+const { ENTER, SPACE } = keys;
 
 class MenuTriggerRaw extends React.Component {
   static propTypes = {
@@ -32,17 +32,20 @@ class MenuTriggerRaw extends React.Component {
   }
 
   toggleActive() {
-    this.props.onToggleActive(!this.props.menuActive);
+    const { onToggleActive, menuActive } = this.props;
+    onToggleActive(!menuActive);
   }
 
   handleKeyUp(e) {
-    if (e.key === ' ') {
+    if (e.key === SPACE) {
       this.toggleActive();
     }
   }
 
   handleKeyDown(e) {
-    if (e.key === KEY_ENTER) this.toggleActive();
+    if (e.key === ENTER) {
+      this.toggleActive();
+    }
   }
 
   handleClick() {
@@ -66,7 +69,7 @@ class MenuTriggerRaw extends React.Component {
         onKeyUp={this.handleKeyUp}
         onKeyDown={this.handleKeyDown}
         tabIndex="0"
-        role={ROLE_BUTTON}
+        role="button"
         aria-owns={menuId}
         aria-haspopup="true"
       >
