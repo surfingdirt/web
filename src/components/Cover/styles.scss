@@ -6,12 +6,25 @@
   position: relative;
   margin-bottom: $margin-small-1 + $profile-size-small / 2; // 39px
 
+  .coverContent {
+    height: 180px;
+    padding: $padding-medium-2;
+    position: relative;
+    z-index: 1;
+  }
+
   @media (min-width: $desktop-small) {
     margin-bottom: $margin-small-1 + $profile-size-standard / 2; // 15 px + 3rem = 63px
+    .coverContent {
+      height: 300px;
+    }
   }
 
   @media (min-width: $desktop-big) {
     margin-bottom: $margin-medium-2 + $profile-size-large / 2; // 20 px + 3rem = 68px
+    .coverContent {
+      height: 400px;
+    }
   }
 }
 
@@ -22,13 +35,6 @@
   top: 0;
   bottom: 0;
   z-index: 0;
-}
-
-.coverContent {
-  height: 300px;
-  padding: $padding-medium-2;
-  position: relative;
-  z-index: 1;
 }
 
 .coverMenu {
