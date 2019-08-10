@@ -12,7 +12,7 @@ import icons, { getIcon, sizes } from 'Utils/icons';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { PRIMARY } = headingTypes;
+const { MODAL } = headingTypes;
 const { CLOSE } = icons;
 const { STANDARD } = sizes;
 
@@ -49,7 +49,7 @@ const ModalContent = ({
         <div className={styles.modal} ref={modalRef}>
           <div className={styles.header}>
             <div className={styles.title} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
-              <Heading type={PRIMARY}>{modalTitle}</Heading>
+              <Heading type={MODAL} className={styles.heading}>{modalTitle}</Heading>
             </div>
             <button className={styles.close} onClick={onClose} ref={buttonRef} type="button">
               {getIcon({ type: CLOSE, label: t('labelClose'), size: STANDARD })}

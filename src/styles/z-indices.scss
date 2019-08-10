@@ -2,12 +2,13 @@
  * Z-INDICES
  *****************************************************************************/
 
+// "Page layout" layout context
 $z-index-navigation-menu: 4;
-
 $z-index-bottom-bar-items: 2;
 $z-index-bottom-bar-more-button: $z-index-bottom-bar-items;
 $z-index-bottom-bar-background: 1;
-
 $z-index-header-items: 2;
-
 $z-content: 0;
+
+// Modal
+$z-index-modal-cover: 1;

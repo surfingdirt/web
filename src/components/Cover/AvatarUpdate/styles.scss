@@ -1,7 +1,41 @@
 @import "../../../styles/boxmodel";
 @import "../../../styles/colors";
+@import "../../../styles/constants";
 @import "../../../styles/font-sizes";
 
+$content-max-width: 30rem;
+$canvas-size: 180px;
+
+.form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.fileLabel {
+  display: block;
+  max-width: $content-max-width;
+  margin: $margin-small-3 auto;
+  text-align: center;
+}
+
 .preview {
-  width: 320px;
+  width: $canvas-size;
+  height: $canvas-size;
+  max-width: 30vw;
+  max-height: 30vw;
+  margin: $margin-medium-2 auto;
+  &.empty {
+    border: $widget-border-width solid $widget-border-color;
+  }
+}
+
+.fileInput {
+  height: 0;
+  visibility: hidden;
+}
+
+.buttons {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  text-align: center;
 }

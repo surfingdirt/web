@@ -6,11 +6,13 @@ import styles from './styles.scss';
 
 const PRIMARY = 'primary';
 const SECONDARY = 'secondary';
-export const headingTypes = { PRIMARY, SECONDARY };
+const MODAL = 'modal';
+export const headingTypes = { PRIMARY, SECONDARY, MODAL };
 
 const typeMapping = {
   [PRIMARY]: ['h1', 'primary'],
   [SECONDARY]: ['h2', 'secondary'],
+  [MODAL]: ['h1', 'modal'],
 };
 
 export default class Heading extends React.PureComponent {

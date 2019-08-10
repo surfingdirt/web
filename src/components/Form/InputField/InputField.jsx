@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
@@ -13,7 +14,7 @@ const InputField = (props) => {
 
   const { touched, error, submitError } = meta;
 
-  const { label, id, placeholder, required, type } = rest;
+  const { className, label, id, placeholder, required, type } = rest;
 
   let displayError = null;
   if (submitError) {
@@ -28,7 +29,7 @@ const InputField = (props) => {
         {label}
       </label>
       <input
-        className={styles.input}
+        className={classnames(styles.input, className)}
         id={id}
         placeholder={placeholder}
         required={required}
@@ -43,6 +44,7 @@ const InputField = (props) => {
 
 InputField.propTypes = {
   input: PropTypes.shape({
+    className: PropTypes.string,
     id: PropTypes.string,
     name: PropTypes.string,
   }),
@@ -54,6 +56,7 @@ InputField.propTypes = {
 
 InputField.defaultProps = {
   input: {
+    className: null,
     name: '',
     id: '',
   },

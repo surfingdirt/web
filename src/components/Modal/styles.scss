@@ -2,6 +2,10 @@
 @import "../../styles/colors";
 @import "../../styles/constants";
 @import "../../styles/media-queries";
+@import "../../styles/z-indices";
+
+$header-content-distance: $margin-small-2;
+$destkop-modal-width: 640px;
 
 .cover {
   position: fixed;
@@ -9,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: $z-index-modal-cover;
   transform: translateZ(0);
   background: rgba(#000, .7);
 }
@@ -25,7 +29,6 @@
   flex-direction: column;
   justify-content: space-between;
 
-  padding: $padding-small-1;
   border: $widget-border-width $widget-border-color solid;
   border-radius: $widget-border-radius;
   background-color: $background-color-default;
@@ -33,15 +36,17 @@
   @media screen and (min-width: $desktop-min) {
     left: 50%;
     top: 50%;
-    height: auto;
+    bottom: auto;
+    right: auto;
     transform: translate(-50%, -50%);
-    width: 640px;
+    width: $destkop-modal-width;
   }
 }
 
 .close {
   border: 0;
   padding: 0;
+  margin: $header-content-distance;
   align-self: start;
   cursor: pointer;
   background: transparent;
@@ -54,14 +59,18 @@
 
 .header {
   min-height: 2rem;
-  margin-bottom: $margin-medium-1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: $modal-header-background-color;
 }
 
 .title {
-  margin-bottom: $margin-medium-2;
+  padding: $header-content-distance;
+}
+
+.heading {
+  color: $modal-header-text-color;
 }
 
 :global(.mouse-mode) .title:focus {
@@ -70,6 +79,7 @@
 
 .content {
   flex-grow: 1;
+  padding: $padding-small-2;
   overflow-y: auto;
   overflow-x: hidden;
 }

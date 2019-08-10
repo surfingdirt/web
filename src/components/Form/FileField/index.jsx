@@ -5,21 +5,24 @@ import { Field } from 'react-final-form';
 import InputField from 'Components/Form/InputField';
 
 const FileField = (props) => {
-  const { allowNull, id, label, name, onChange } = props;
-  const attrs = { id, label, name, onChange };
+  const { allowNull, className, id, label, name, onChange } = props;
+  const attrs = { className, id, label, name, onChange };
   return <Field allowNull={allowNull} component={InputField} type="file" {...attrs} />;
 };
 
 FileField.propTypes = {
   allowNull: PropTypes.bool,
+  className: PropTypes.string,
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 };
 
 FileField.defaultProps = {
   allowNull: false,
+  className: null,
+  label: null,
   onChange: null,
 };
 

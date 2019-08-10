@@ -1,8 +1,9 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
-import Button from 'Components/Button/index';
+import Button, { buttonTypes } from 'Components/Button/index';
 import FileField from 'Components/Form/FileField/index';
 import Translate from 'Hocs/Translate/index';
 import { actionRoute } from 'Utils/links';
@@ -16,6 +17,7 @@ const { AVATAR_UPDATE } = actions;
 const MAX_TARGET_SIZE = 640;
 const MAX_WIDTH = MAX_TARGET_SIZE;
 const MAX_HEIGHT = MAX_TARGET_SIZE;
+const { negativeButton } = buttonTypes;
 
 const getOrientation = (file) => {
   return new Promise((resolve) => {
@@ -154,12 +156,12 @@ class AvatarUpdateForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.previewRef = React.createRef();
+    this.fileInputRef = React.createRef();
 
     this.state = { fileData: null };
   }
 
   // TODO: drop final form for this, it's not useful
-
 
   onFileChange(e) {
     console.log('onFileChange', e);
@@ -185,26 +187,40 @@ class AvatarUpdateForm extends React.Component {
         onSubmit={this.onSubmit}
         render={({ handleSubmit, submitting, submitError, errors }) => (
           <form
+            className={styles.form}
             onSubmit={handleSubmit}
             action={actionRoute(AVATAR_UPDATE)}
             method="POST"
             encType="multipart/form-data"
           >
-            <FileField
-              id="avatar"
-              name="file"
-              label={t('avatar')}
-              canvasRef={this.previewRef}
-              onChange={this.onFileChange}
-            />
-            <canvas ref={this.previewRef} className={styles.preview} />
+            <label htmlFor="avatar" className={styles.fileLabel}>
+              {t('avatar1')}
+            </label>
+            <label htmlFor="avatar" className={styles.fileLabel}>
+              {t('avatar2')}
+            </label>
+            <label htmlFor="avatar" className={styles.fileLabel}>
+              <canvas ref={this.previewRef} className={classnames(styles.preview, styles.empty)} />
+            </label>
 
-            <Button
-              buttonType="submit"
-              label={t('update')}
-              disabled={submitting}
-              loading={submitting}
-            />
+            <div className={styles.fileInput}>
+              <FileField
+                id="avatar"
+                name="file"
+                canvasRef={this.previewRef}
+                onChange={this.onFileChange}
+              />
+            </div>
+
+            <div className={styles.buttons}>
+              <Button
+                buttonType="submit"
+                label={t('send')}
+                disabled={submitting}
+                loading={submitting}
+              />
+              <Button buttonType="reset" type="negative" label={t('cancel')} />
+            </div>
           </form>
         )}
       />

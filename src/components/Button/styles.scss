@@ -64,12 +64,13 @@ $horizontal-padding: 1.1rem;
 .largeButton {
   background: $button-background-color-default;
   color: $button-text-color-default;
-  border: 2px solid currentColor;
+  border: 2px solid $button-text-color-default;
 }
 
 .negativeButton {
-  background: $button-background-color-negative;
+  background: transparent;
   color: $button-text-color-negative;
+  border: 2px solid $button-text-color-negative;
 }
 
 .largeButton {
