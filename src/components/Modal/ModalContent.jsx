@@ -21,8 +21,9 @@ const ModalContent = ({
   onClickAway,
   onClose,
   t,
-}) =>
-  ReactDOM.createPortal(
+}) => {
+  console.log('ModalContent - render');
+  return ReactDOM.createPortal(
     <ReactFocusTrap
       focusTrapOptions={{
         initialFocus: modalTitle ? '#modal-title' : '#modal-content',
@@ -70,5 +71,6 @@ const ModalContent = ({
     </ReactFocusTrap>,
     document.body,
   );
+};
 
 export default Translate(messages)(ModalContent);

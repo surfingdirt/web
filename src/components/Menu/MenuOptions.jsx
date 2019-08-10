@@ -43,6 +43,11 @@ class MenuOptionsRaw extends React.Component {
     verticalPlacement: BOTTOM,
   };
 
+  constructor(props) {
+    super(props);
+    console.log('MenuOptions - constructor');
+  }
+
   renderOptions() {
     const {
       activeOptionIndex,
@@ -82,6 +87,7 @@ class MenuOptionsRaw extends React.Component {
   }
 
   render() {
+    console.log('MenuOptions - render');
     const {
       handleBlur,
       handleKeys,

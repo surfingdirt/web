@@ -32,11 +32,14 @@ class Modal extends Component {
   constructor(props) {
     super(props);
 
-    addPageClass();
     this.state = { isOpen: true };
 
     this.buttonRef = React.createRef();
     this.modalRef = React.createRef();
+  }
+
+  componentDidMount() {
+    addPageClass();
   }
 
   componentWillUnmount() {

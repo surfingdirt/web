@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
-import Button from 'Components/Button';
-import FileField from 'Components/Form/FileField';
-import Translate from 'Hocs/Translate';
+import Button from 'Components/Button/index';
+import FileField from 'Components/Form/FileField/index';
+import Translate from 'Hocs/Translate/index';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 

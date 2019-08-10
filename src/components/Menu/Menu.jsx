@@ -34,7 +34,7 @@ class Menu extends React.Component {
 
   static defaultProps = {
     className: null,
-    preferredHorizontal: RIGHT,
+    preferredHorizontal: LEFT,
     preferredVertical: BOTTOM,
     trigger: null,
     triggerLabel: null,
@@ -62,6 +62,8 @@ class Menu extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleKeys = this.handleKeys.bind(this);
     this.handleTriggerToggle = this.handleTriggerToggle.bind(this);
+
+    console.log('Menu - constructor');
   }
 
   componentDidMount() {
@@ -220,6 +222,7 @@ class Menu extends React.Component {
   }
 
   render() {
+    console.log('Menu - render', this.state);
     const { className } = this.props;
     const { handleBlur, handleKeys } = this;
 

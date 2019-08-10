@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 
 import Modal from 'Components/Modal';
 
-const withModal = ({ modalContent, shouldShowModal, modalTitle, ariaLabel }) => (BaseComponent) => {
+const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel }) => (
+  BaseComponent,
+) => {
   class WithModal extends PureComponent {
     constructor(props) {
       super(props);
@@ -11,6 +13,8 @@ const withModal = ({ modalContent, shouldShowModal, modalTitle, ariaLabel }) => 
 
       this.clickListener = this.clickListener.bind(this);
       this.onModalClose = this.onModalClose.bind(this);
+
+      console.log('WithModal - constructor');
     }
 
     onModalClose() {
@@ -20,7 +24,7 @@ const withModal = ({ modalContent, shouldShowModal, modalTitle, ariaLabel }) => 
     clickListener(event) {
       const { showModal } = this.state;
 
-      if (shouldShowModal()) {
+      if ((shouldShowModal())) {
         event.stopPropagation();
         this.setState({ showModal: !showModal });
       }
@@ -28,6 +32,8 @@ const withModal = ({ modalContent, shouldShowModal, modalTitle, ariaLabel }) => 
 
     render() {
       const { showModal } = this.state;
+
+      console.log('WithModal - render', showModal);
 
       const clonedBaseComponent = React.cloneElement(BaseComponent, {
         onClickCapture: this.clickListener,

@@ -2,7 +2,7 @@
 @import '../../styles/colors';
 @import '../../styles/constants';
 
-$border-width: 1px;
+$border-width: $widget-border-width;
 
 .menu {
 }
@@ -19,7 +19,7 @@ $border-width: 1px;
 
 .menuOption {
   padding: $padding-small-3 $padding-small-2;
-  border-color: 0 $menu-border-color solid;
+  border-color: 0 $widget-border-color solid;
   line-height: 1.5em;
   background-color: $menu-option-background-color;
   color: $menu-option-text-color;
