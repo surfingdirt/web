@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import USER from 'Apollo/queries/user2.gql';
 import AlbumPreview from 'Components/AlbumPreview';
-import Cover from 'Components/Cover';
+import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Heading, { headingTypes } from 'Components/Heading';

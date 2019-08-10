@@ -41,35 +41,28 @@
 }
 
 .close {
+  border: 0;
+  padding: 0;
+  align-self: start;
   cursor: pointer;
+  background: transparent;
   color: $modal-close-button-color;
-}
-
-.icon svg {
-  width: 30px;
-  height: 30px;
 }
 
 .scrolling {
   overflow: hidden;
 }
 
-.content {
-  height: 80%;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-}
-
 .header {
-  height: 10%;
+  min-height: 2rem;
+  margin-bottom: $margin-medium-1;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .title {
-  margin: $margin-medium-2;
+  margin-bottom: $margin-medium-2;
   font-weight: bold;
 }
 
@@ -77,9 +70,14 @@
   outline: none;
 }
 
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 .actions {
   height: 10%;
-  padding: $padding-medium-2 0 0 0;
+  padding: $padding-medium-2 0 0;
   text-align: right;
 }

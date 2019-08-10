@@ -1,15 +1,20 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
 
-import Button from 'Components/Button/index';
-import SVG from 'Components/SVG';
-import ReactFocusTrap from 'focus-trap-react';
-import Translate from 'Hocs/Translate';
-import Close from 'Images/remove-circle-regular.svg';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactFocusTrap from 'focus-trap-react';
+
+import Button from 'Components/Button';
+import Heading, {headingTypes} from 'Components/Heading';
+import Translate from 'Hocs/Translate';
+import icons, { getIcon, sizes } from 'Utils/icons';
 
 import messages from './messages';
 import styles from './styles.scss';
+
+const { PRIMARY } = headingTypes;
+const { CLOSE } = icons;
+const { STANDARD } = sizes;
 
 const ModalContent = ({
   ariaLabel,
@@ -22,7 +27,6 @@ const ModalContent = ({
   onClose,
   t,
 }) => {
-  console.log('ModalContent - render');
   return ReactDOM.createPortal(
     <ReactFocusTrap
       focusTrapOptions={{
@@ -45,13 +49,11 @@ const ModalContent = ({
         <div className={styles.modal} ref={modalRef}>
           <div className={styles.header}>
             <div className={styles.title} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
-              {modalTitle && modalTitle}
+              <Heading type={PRIMARY}>{modalTitle}</Heading>
             </div>
-            <div>
-              <button className={styles.close} onClick={onClose} ref={buttonRef} type="button">
-                <SVG className={styles.icon} icon={Close} label={t('labelClose')} />
-              </button>
-            </div>
+            <button className={styles.close} onClick={onClose} ref={buttonRef} type="button">
+              {getIcon({ type: CLOSE, label: t('labelClose'), size: STANDARD })}
+            </button>
           </div>
           <div
             aria-label={ariaLabel}

@@ -13,8 +13,6 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
 
       this.clickListener = this.clickListener.bind(this);
       this.onModalClose = this.onModalClose.bind(this);
-
-      console.log('WithModal - constructor');
     }
 
     onModalClose() {
@@ -24,7 +22,7 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     clickListener(event) {
       const { showModal } = this.state;
 
-      if ((shouldShowModal())) {
+      if (shouldShowModal()) {
         event.stopPropagation();
         this.setState({ showModal: !showModal });
       }
@@ -33,11 +31,13 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     render() {
       const { showModal } = this.state;
 
-      console.log('WithModal - render', showModal);
-
-      const clonedBaseComponent = React.cloneElement(BaseComponent, {
-        onClickCapture: this.clickListener,
-      });
+      const attrs = { onClickCapture: this.clickListener };
+      const clonedBaseComponent =
+        typeof BaseComponent === 'string' ? (
+          <div {...attrs}>{BaseComponent}</div>
+        ) : (
+          React.cloneElement(BaseComponent, attrs)
+        );
 
       return (
         <div>

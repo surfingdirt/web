@@ -13,6 +13,8 @@ import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Profile from 'Images/single-neutral-circle-alternate-bold.svg';
 import Search from 'Images/search-alternate-bold.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
+// import Close from 'Images/remove-circle-regular.svg';
+
 
 const ACTIVITY = 'activity';
 const ALBUM = 'album';

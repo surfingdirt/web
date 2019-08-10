@@ -62,16 +62,10 @@ class Menu extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleKeys = this.handleKeys.bind(this);
     this.handleTriggerToggle = this.handleTriggerToggle.bind(this);
-
-    console.log('Menu - constructor');
   }
 
   componentDidMount() {
     this.mounted = true;
-  }
-
-  onSelectionMade() {
-    this.closeMenu(this.focusTrigger);
   }
 
   closeMenu(cb) {
@@ -222,7 +216,6 @@ class Menu extends React.Component {
   }
 
   render() {
-    console.log('Menu - render', this.state);
     const { className } = this.props;
     const { handleBlur, handleKeys } = this;
 

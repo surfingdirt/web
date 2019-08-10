@@ -25,6 +25,11 @@ $border-width: $widget-border-width;
   color: $menu-option-text-color;
   margin: $border-width 0;
 
+  & > * {
+    display: inline-block;
+    width: 100%;
+  }
+
   &:first-child {
     margin-top: 0;
     border-width: $border-width $border-width 0 $border-width;

@@ -26,7 +26,7 @@ class Modal extends Component {
   static defaultProps = {
     cancel: false,
     modalTitle: '',
-    onClose: () => {},
+    onClose: null,
   };
 
   constructor(props) {
@@ -57,7 +57,9 @@ class Modal extends Component {
 
     removePageClass();
     this.setState({ isOpen: false });
-    onClose();
+    if (onClose) {
+      onClose();
+    }
   };
 
   render() {
