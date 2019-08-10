@@ -6,15 +6,23 @@ import WithModal from 'Hocs/WithModal';
 import AvatarUpdateModal from './Form';
 import messages from './messages';
 
-const menuEntrylabel = 'Updateyo!';
-const modalTitle = 'Update your avatar, yo!';
-const ariaLabel = 'Update your avatar, yo!';
+const Modal = ({ t }) => {
+  const menuEntryLabel = t('updateAvatarMenuEntryLabel');
+  const modalTitle = t('updateAvatarModalTitle');
+  const ariaLabel = t('updateAvatarDialogLabel');
 
-const Modal = WithModal({
-  modalContent: <AvatarUpdateModal />,
-  modalTitle,
-  ariaLabel,
-  shouldShowModal: () => true,
-})(menuEntrylabel);
+  const Content = WithModal({
+    modalContent: <AvatarUpdateModal />,
+    modalTitle,
+    ariaLabel,
+    shouldShowModal: () => true,
+  })(menuEntryLabel);
 
-export default Modal;
+  return <Content />;
+};
+
+Modal.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default Translate(messages)(Modal);
