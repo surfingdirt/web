@@ -5,6 +5,7 @@
 
 $content-max-width: 30rem;
 $canvas-size: 180px;
+$content-height: 200px;
 
 .form {
   max-width: 640px;
@@ -17,17 +18,56 @@ $canvas-size: 180px;
   margin: $margin-small-3 auto;
   text-align: center;
   cursor: pointer;
+  font-size: $font-size-small;
+}
+
+.dynamicContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: $margin-medium-2 auto;
+  height: $content-height;
+  &.empty {
+    border: $widget-border-width solid $widget-border-color;
+  }
+}
+
+.error {
+  visibility: hidden;
+  font-size: $font-size-big;
+  &.visibleError {
+    visibility: visible;
+  }
+}
+
+.instructions {
+  display: none;
+  font-size: $font-size-medium;
+}
+
+
+.empty {
+  .preview {
+    display: none;
+  }
+
+  .instructions {
+    display: initial;
+  }
 }
 
 .preview {
   width: $canvas-size;
   height: $canvas-size;
-  max-width: 30vw;
-  max-height: 30vw;
-  margin: $margin-medium-2 auto;
-  &.empty {
-    border: $widget-border-width solid $widget-border-color;
-  }
+}
+
+.error {
+  text-align: center;
+  color: $form-error-color;
+}
+
+.preview {
 }
 
 .fileInput {

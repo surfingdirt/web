@@ -9,6 +9,12 @@ const messages = (getText, getPlural) => (key) =>
     cancel: getText(
       'Cancel',
     ) /* Label for a button to stop the current operation */,
+    instructions: getText(
+      'Click here to choose a file',
+    ) /* Help message */,
+    invalidImage: getText(
+      'Invalid image',
+    ) /* Error message displayed when the user chose a image file that cannot be read */,
     send: getText(
       'Send picture',
     ) /* Label for a button to send a picture */,
