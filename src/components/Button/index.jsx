@@ -7,15 +7,19 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles.scss';
 
-const typeMapping = {
-  main: ['mainButton'],
-  negative: ['negativeButton'],
-  disabled: ['disabledButton'],
-  large: ['largeButton'],
-};
+const MAIN = 'main';
+const NEGATIVE = 'negative';
+const DISABLED = 'disabled';
+const LARGE = 'large';
 
-// Get all declared button types.
-export const buttonTypes = Object.values(typeMapping).map((m) => m[0]);
+export const buttonTypes = { MAIN, NEGATIVE, DISABLED, LARGE };
+
+const typeMapping = {
+  [MAIN]: 'mainButton',
+  [NEGATIVE]: 'negativeButton',
+  [DISABLED]: 'disabledButton',
+  [LARGE]: 'largeButton',
+};
 
 const Button = ({
   className,
@@ -70,7 +74,7 @@ const Button = ({
   }
 
   /* Styles */
-  const typeClassName = typeMapping[type][0];
+  const typeClassName = typeMapping[type];
   const actualClassName = classnames(
     styles.button,
     elementClassName,

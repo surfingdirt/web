@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
-import Button, { buttonTypes } from 'Components/Button/index';
-import FileField from 'Components/Form/FileField/index';
-import Translate from 'Hocs/Translate/index';
+import Button, { buttonTypes } from 'Components/Button';
+import FileField from 'Components/Form/FileField';
+import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 
@@ -17,7 +17,7 @@ const { AVATAR_UPDATE } = actions;
 const MAX_TARGET_SIZE = 640;
 const MAX_WIDTH = MAX_TARGET_SIZE;
 const MAX_HEIGHT = MAX_TARGET_SIZE;
-const { negativeButton } = buttonTypes;
+const { NEGATIVE } = buttonTypes;
 
 const getOrientation = (file) => {
   return new Promise((resolve) => {
@@ -152,20 +152,17 @@ class AvatarUpdateForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onFileChange = this.onFileChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.state = { fileData: null };
 
     this.previewRef = React.createRef();
-    this.fileInputRef = React.createRef();
 
-    this.state = { fileData: null };
+    this.onFileChange = this.onFileChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
-  // TODO: drop final form for this, it's not useful
-
   onFileChange(e) {
-    console.log('onFileChange', e);
-    // TODO: resize and possibly rotate the image on the fly.
+    console.log('onFileChange', e.target);
 
     const file = e.target.files[0];
     const p = getOrientation(file).then((orientation) => {
@@ -179,12 +176,17 @@ class AvatarUpdateForm extends React.Component {
     // TODO: add validation in some other method.
   }
 
+  validate(args) {
+    console.log(args);
+  }
+
   render() {
     const { t } = this.props;
 
     return (
       <Form
         onSubmit={this.onSubmit}
+        validate={this.validate}
         render={({ handleSubmit, submitting, submitError, errors }) => (
           <form
             className={styles.form}
@@ -219,7 +221,7 @@ class AvatarUpdateForm extends React.Component {
                 disabled={submitting}
                 loading={submitting}
               />
-              <Button buttonType="reset" type="negative" label={t('cancel')} />
+              <Button buttonType="reset" type={NEGATIVE} label={t('cancel')} />
             </div>
           </form>
         )}
