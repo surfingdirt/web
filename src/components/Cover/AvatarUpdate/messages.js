@@ -1,10 +1,10 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     avatar1: getText(
-      'Choose a picture to represent yourself throughout the site.',
+      'Choose a picture to represent yourself on the site.',
     ) /* Label for a form field to choose a profile picture (part 1) */,
     avatar2: getText(
-      'Make it personal and recognizable, it tells people who you are!',
+      'Make it personal and easy to recognize!',
     ) /* Label for a form field to choose a profile picture  (part 2) */,
     cancel: getText(
       'Cancel',
