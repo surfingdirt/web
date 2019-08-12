@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Translate from 'Hocs/Translate';
 import WithModal from 'Hocs/WithModal';
 
-import AvatarUpdateModal from './Form';
+import AvatarUpdateForm from './Form';
 import messages from './messages';
 
 const Modal = ({ t }) => {
@@ -12,7 +12,7 @@ const Modal = ({ t }) => {
   const ariaLabel = t('updateAvatarDialogLabel');
 
   const Content = WithModal({
-    modalContent: <AvatarUpdateModal />,
+    modalContent: <AvatarUpdateForm />,
     modalTitle,
     ariaLabel,
     shouldShowModal: () => true,

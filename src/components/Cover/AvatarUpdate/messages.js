@@ -15,9 +15,9 @@ const messages = (getText, getPlural) => (key) =>
     invalidImage: getText(
       'Invalid image',
     ) /* Error message displayed when the user chose a image file that cannot be read */,
-    send: getText(
-      'Send picture',
-    ) /* Label for a button to send a picture */,
+    upload: getText(
+      'Upload',
+    ) /* Label for a button to upload a picture */,
     updateAvatarMenuEntryLabel: getText(
       'Update profile picture',
     ) /* Label for a menu entry to change the user's profile picture */,

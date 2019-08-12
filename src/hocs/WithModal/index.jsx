@@ -39,12 +39,14 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
           React.cloneElement(BaseComponent, attrs)
         );
 
+      const clonedContent = React.cloneElement(modalContent, { closeModal: this.onModalClose });
+
       return (
         <div>
           {clonedBaseComponent}
           {showModal && (
             <Modal modalTitle={modalTitle} ariaLabel={ariaLabel} onClose={this.onModalClose}>
-              {modalContent}
+              {clonedContent}
             </Modal>
           )}
         </div>

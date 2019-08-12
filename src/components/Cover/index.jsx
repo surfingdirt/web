@@ -13,7 +13,6 @@ import messages from './messages';
 
 const { RESPONSIVE } = userProfileTypes;
 
-
 const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
