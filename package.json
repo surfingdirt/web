@@ -54,6 +54,7 @@
     "apollo-link": "^1.2.3",
     "apollo-link-http": "^1.5.5",
     "apollo-link-state": "^0.4.2",
+    "apollo-upload-client": "11.0.0",
     "asset-require-hook": "^1.2.0",
     "autoprefixer": "^9.3.1",
     "babel-core": "^7.0.0-bridge.0",

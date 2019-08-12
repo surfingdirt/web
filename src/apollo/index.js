@@ -3,7 +3,7 @@
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
-import { HttpLink } from 'apollo-link-http';
+import { createUploadLink } from 'apollo-upload-client';
 // Store local data inside the Apollo cache alongside remote data
 import { withClientState } from 'apollo-link-state';
 import fetch from 'isomorphic-fetch';
@@ -40,8 +40,10 @@ const apolloClient = (url, language, ssrMode, accessToken) => {
     headers.authorization = `Bearer ${accessToken}`;
   }
 
+  const uploadLink = createUploadLink({ uri: url, headers });
+
   return new ApolloClient({
-    link: ApolloLink.from([stateLink, new HttpLink({ uri: url, headers })]),
+    link: ApolloLink.from([stateLink, uploadLink]),
     ssrMode,
     cache,
     fetch,
