@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import styles from 'Components/Menu/styles.scss';
 import Translate from 'Hocs/Translate';
 import WithModal from 'Hocs/WithModal';
 
@@ -16,7 +18,7 @@ const Modal = ({ t }) => {
     modalTitle,
     ariaLabel,
     shouldShowModal: () => true,
-  })(menuEntryLabel);
+  })(<div className={styles.menuEntry}>{menuEntryLabel}</div>);
 
   return <Content />;
 };

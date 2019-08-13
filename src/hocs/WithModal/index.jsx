@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 
 import Modal from 'Components/Modal';
 
@@ -42,14 +42,14 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
       const clonedContent = React.cloneElement(modalContent, { closeModal: this.onModalClose });
 
       return (
-        <div>
+        <Fragment>
           {clonedBaseComponent}
           {showModal && (
             <Modal modalTitle={modalTitle} ariaLabel={ariaLabel} onClose={this.onModalClose}>
               {clonedContent}
             </Modal>
           )}
-        </div>
+        </Fragment>
       );
     }
   }

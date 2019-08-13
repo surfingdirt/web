@@ -17,8 +17,12 @@ $border-width: $widget-border-width;
   border-radius: $widget-border-radius;
 }
 
-.menuOption {
+.menuEntry {
+  display: block;
   padding: $padding-small-3 $padding-small-2;
+}
+
+.menuOption {
   border-color: 0 $widget-border-color solid;
   line-height: 1.5em;
   background-color: $menu-option-background-color;
