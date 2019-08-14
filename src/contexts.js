@@ -93,6 +93,11 @@ export class AppContextValueObject {
       }
       return sessionStorage.getItem(signupDestinationKey);
     };
+
+    this.values.updateAvatar = (avatar) => {
+      // TODO: figure out why this does not cause a re-render of parts that use it
+      this.values.login.data.me.avatar = avatar;
+    };
   }
 
   setAccessToken(accessToken) {

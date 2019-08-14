@@ -1,6 +1,6 @@
 import actions, { ACTION_PREFIX } from '~/actions';
 import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
-import { UPDATE_AVATAR_MUTATION } from 'Apollo/mutations/updateAvatar3.gql';
+import { UPDATE_AVATAR_MUTATION } from 'Apollo/mutations/updateAvatar.gql';
 import { UPDATE_COVER_MUTATION } from 'Apollo/mutations/updateCover.gql';
 import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
 import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';

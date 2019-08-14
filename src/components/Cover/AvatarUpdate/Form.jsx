@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
-import UPDATE_AVATAR from 'Apollo/mutations/updateAvatar3.gql';
+import UPDATE_AVATAR from 'Apollo/mutations/updateAvatar.gql';
 import Button, { buttonTypes } from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -22,6 +23,8 @@ const MAX_WIDTH = MAX_TARGET_SIZE;
 const MAX_HEIGHT = MAX_TARGET_SIZE;
 
 class AvatarUpdateForm extends React.Component {
+  static contextType = AppContext;
+
   static propTypes = {
     t: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,
@@ -30,7 +33,7 @@ class AvatarUpdateForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { fileData: null, displayError: null };
+    this.state = { fileData: null, displayError: null, submitted: false };
 
     this.formRef = React.createRef();
     this.fileRef = React.createRef();
@@ -41,29 +44,22 @@ class AvatarUpdateForm extends React.Component {
     this.onCancel = this.onCancel.bind(this);
   }
 
-  async onSubmit(mutate, values) {
-    const { closeModal } = this.props;
+  async onSubmit(mutate) {
+    const { closeModal, t } = this.props;
+    const { files } = this.fileRef.current;
+    if (files.length === 0) {
+      this.setState({ displayError: t('pleasePickAFile') });
+      return;
+    }
 
-    const payload = { variables: { file: this.fileRef.current.files[0] } };
-    console.log('Payload', payload);
-    const response = await mutate(payload);
-    console.log('Mutation response', response);
+    const response = await mutate({ variables: { file: files[0] } });
+    const { avatar } = response.data.updateAvatar;
+    this.context.updateAvatar(avatar);
+
     closeModal();
 
-    // console.log('onSubmit', values, this.state.fileData);
-    // const fd = new FormData();
-    // fd.append(this.previewRef.current.name, this.state.fileData);
-    // fetch(this.formRef.current.action, {
-    //   method: 'POST',
-    //   body: fd,
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log('response data', data);
-    //   })
-    //   .then(closeModal);
+    // TODO: replace a reload with an in-place data update
+    window.location.reload();
   }
 
   onCancel() {
@@ -92,7 +88,7 @@ class AvatarUpdateForm extends React.Component {
           MAX_WIDTH,
           MAX_HEIGHT,
         );
-        this.setState({ fileData });
+        this.setState({ fileData, displayError: null });
         return resolve();
       } catch (e) {
         console.error('Error while manipulating image file:', e.message);
@@ -107,19 +103,18 @@ class AvatarUpdateForm extends React.Component {
     return (
       <Mutation
         mutation={UPDATE_AVATAR}
-        onCompleted={({ ...rest }) => {
-          console.log('Complete', rest);
+        onCompleted={() => {
           this.setState({ displayError: null });
         }}
         onError={({ ...rest }) => {
           console.log('Error', rest);
-          this.setState({ displayError: 'some graphql error' });
+          this.setState({ displayError: t('backendError') });
         }}
       >
         {(updateAvatar) => (
           <Form
             onSubmit={(values) => {
-              this.onSubmit(updateAvatar, values);
+              return this.onSubmit(updateAvatar, values);
             }}
             validate={this.validate}
             render={({ handleSubmit, submitting, submitError, errors }) => {
