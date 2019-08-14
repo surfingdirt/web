@@ -98,6 +98,11 @@ export class AppContextValueObject {
       // TODO: figure out why this does not cause a re-render of parts that use it
       this.values.login.data.me.avatar = avatar;
     };
+
+    this.values.updateCover = (cover) => {
+      // TODO: figure out why this does not cause a re-render of parts that use it
+      this.values.login.data.me.cover = cover;
+    };
   }
 
   setAccessToken(accessToken) {

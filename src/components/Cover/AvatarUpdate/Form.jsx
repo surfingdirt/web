@@ -12,11 +12,13 @@ import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
-import messages from './messages';
-import styles from './styles.scss';
+import messages from '../messages';
+import styles from '../modal.scss';
 
 const { AVATAR_UPDATE } = actions;
 const { NEGATIVE } = buttonTypes;
+
+const PREVIEW_SIZE = 180;
 
 const MAX_TARGET_SIZE = 640;
 const MAX_WIDTH = MAX_TARGET_SIZE;
@@ -33,7 +35,7 @@ class AvatarUpdateForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { fileData: null, displayError: null, submitted: false };
+    this.state = { fileData: null, displayError: null, uploadWidth: null, uploadHeight: null };
 
     this.formRef = React.createRef();
     this.fileRef = React.createRef();
@@ -82,13 +84,14 @@ class AvatarUpdateForm extends React.Component {
       }
 
       try {
-        const fileData = await previewResizeAndOrientFile(
+        const { blob: fileData, width, height } = await previewResizeAndOrientFile(
           fileEl.files[0],
           this.previewRef.current,
           MAX_WIDTH,
           MAX_HEIGHT,
         );
-        this.setState({ fileData, displayError: null });
+
+        this.setState({ fileData, displayError: null, uploadWidth: width, uploadHeight: height });
         return resolve();
       } catch (e) {
         console.error('Error while manipulating image file:', e.message);
@@ -111,16 +114,21 @@ class AvatarUpdateForm extends React.Component {
           this.setState({ displayError: t('backendError') });
         }}
       >
-        {(updateAvatar) => (
+        {(mutate) => (
           <Form
             onSubmit={(values) => {
-              return this.onSubmit(updateAvatar, values);
+              return this.onSubmit(mutate, values);
             }}
             validate={this.validate}
             render={({ handleSubmit, submitting, submitError, errors }) => {
               const empty = !this.state.fileData;
               const errorMessage = errors.file || submitError || this.state.displayError;
               const hasError = !!errorMessage;
+
+              const previewWidth = PREVIEW_SIZE;
+              const previewHeight = (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
+              const previewStyle = { width: `${previewWidth}px`, height: `${previewHeight}px` };
+
               return (
                 <form
                   className={styles.form}
@@ -130,13 +138,13 @@ class AvatarUpdateForm extends React.Component {
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
-                  <label htmlFor="avatar" className={styles.fileLabel}>
+                  <label htmlFor="fileInput" className={styles.fileLabel}>
                     {t('avatar1')}
                   </label>
-                  <label htmlFor="avatar" className={styles.fileLabel}>
+                  <label htmlFor="fileInput" className={styles.fileLabel}>
                     {t('avatar2')}
                   </label>
-                  <label htmlFor="avatar" className={styles.fileLabel}>
+                  <label htmlFor="fileInput" className={styles.fileLabel}>
                     <div className={classnames(styles.dynamicContent, { [styles.empty]: empty })}>
                       <div
                         className={classnames(styles.error, { [styles.visibleError]: hasError })}
@@ -144,7 +152,11 @@ class AvatarUpdateForm extends React.Component {
                         {errorMessage}
                       </div>
                       <span className={styles.instructions}>{t('instructions')}</span>
-                      <canvas ref={this.previewRef} className={styles.preview} />
+                      <canvas
+                        ref={this.previewRef}
+                        className={styles.preview}
+                        style={previewStyle}
+                      />
                     </div>
                     <div className={styles.fileInput}>
                       <Field name="file">
@@ -152,7 +164,7 @@ class AvatarUpdateForm extends React.Component {
                           return (
                             <input
                               type="file"
-                              id="avatar"
+                              id="fileInput"
                               name="file"
                               ref={this.fileRef}
                               onChange={onChange}

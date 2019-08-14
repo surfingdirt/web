@@ -22,7 +22,7 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     clickListener(event) {
       const { showModal } = this.state;
 
-      if (shouldShowModal()) {
+      if (typeof shouldShowModal === 'function' ? shouldShowModal() : true) {
         event.stopPropagation();
         this.setState({ showModal: !showModal });
       }

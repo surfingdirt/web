@@ -8,6 +8,7 @@ import Translate from 'Hocs/Translate';
 import { COVER_MENU } from '~/ids';
 
 import AvatarUpdateModal from './AvatarUpdate/Modal';
+import CoverUpdateModal from './CoverUpdate/Modal';
 import styles from './styles.scss';
 import messages from './messages';
 
@@ -17,17 +18,7 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
 
-  const options = withUpdateForms
-    ? [
-        () => <AvatarUpdateModal />,
-        {
-          label: t('updateCover'),
-          onSelect: () => {
-            console.log('click updateCover');
-          },
-        },
-      ]
-    : [];
+  const options = withUpdateForms ? [() => <AvatarUpdateModal />, () => <CoverUpdateModal />] : [];
 
   return (
     <div className={styles.coverWrapper}>

@@ -120,7 +120,14 @@ const getBlob = (file, orientation, canvasEl, maxWidth, maxHeight) => {
         for (let i = 0; i < blobBin.length; i++) {
           array.push(blobBin.charCodeAt(i));
         }
-        resolve(new Blob([new Uint8Array(array)], { type: 'image/jpeg', name: 'photo.jpg' }));
+
+        const payload = {
+          blob: new Blob([new Uint8Array(array)], { type: 'image/jpeg', name: 'photo.jpg' }),
+          width,
+          height,
+        }
+
+        resolve(payload);
       });
     });
     reader.readAsDataURL(file);
@@ -128,9 +135,6 @@ const getBlob = (file, orientation, canvasEl, maxWidth, maxHeight) => {
 };
 
 export const previewResizeAndOrientFile = async (file, canvasEl, maxWidth, maxHeight) => {
-  const fileData = await getOrientation(file).then((orientation) => {
-    return getBlob(file, orientation, canvasEl, maxWidth, maxHeight);
-  });
-
-  return fileData;
+  const orientation = await getOrientation(file);
+  return getBlob(file, orientation, canvasEl, maxWidth, maxHeight);
 };

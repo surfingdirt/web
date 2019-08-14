@@ -5,16 +5,16 @@ import styles from 'Components/Menu/styles.scss';
 import Translate from 'Hocs/Translate';
 import WithModal from 'Hocs/WithModal';
 
-import AvatarUpdateForm from './Form';
+import CoverUpdateForm from './Form';
 import messages from '../messages';
 
 const Modal = ({ t }) => {
-  const menuEntryLabel = t('updateAvatarMenuEntryLabel');
-  const modalTitle = t('updateAvatarModalTitle');
-  const ariaLabel = t('updateAvatarDialogLabel');
+  const menuEntryLabel = t('updateCoverMenuEntryLabel');
+  const modalTitle = t('updateCoverModalTitle');
+  const ariaLabel = t('updateCoverDialogLabel');
 
   const Content = WithModal({
-    modalContent: <AvatarUpdateForm />,
+    modalContent: <CoverUpdateForm />,
     modalTitle,
     ariaLabel,
   })(<div className={styles.menuEntry}>{menuEntryLabel}</div>);
