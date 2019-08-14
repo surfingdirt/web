@@ -1,4 +1,4 @@
-query user($userId: ID!) {
+query userProfile($userId: ID!) {
     user(userId: $userId) {
         userId
         username
@@ -29,6 +29,30 @@ query user($userId: ID!) {
           height
           type
           url
+        }
+    }
+    listAlbums(userId: $userId) {
+        id
+        title
+        description
+        media {
+            id
+            title
+            mediaType
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
         }
     }
 }

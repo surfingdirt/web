@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
 
-import Heading, { headingTypes } from 'Components/Heading';
+import Heading, { headingTypes } from 'Components/Heading/index';
 import HeadMetaData from 'Components/HeadMetaData';
 import Paragraph from 'Components/Paragraph/index';
 import Translate from 'Hocs/Translate';

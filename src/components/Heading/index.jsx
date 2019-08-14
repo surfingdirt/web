@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.scss';
 
@@ -30,24 +31,31 @@ export default class Heading extends React.PureComponent {
       return undefined;
     },
     className: PropTypes.string,
+    link: PropTypes.string,
     tag: PropTypes.string,
     children: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
-    className: '',
-    tag: '',
+    className: null,
+    link: null,
+    tag: null,
   };
 
   render() {
-    const { type, tag, className, children } = this.props;
-
+    const { className, children, link, tag, type } = this.props;
     const [defaultTag, defaultClassName] = typeMapping[type];
 
     const Tag = tag || defaultTag;
 
     const actualClassName = classnames(styles[defaultClassName], className);
-
+    if (link) {
+      return (
+        <Link to={link} className={styles.titleLink}>
+          <Tag className={actualClassName}>{children}</Tag>
+        </Link>
+      );
+    }
     return <Tag className={actualClassName}>{children}</Tag>;
   }
 }

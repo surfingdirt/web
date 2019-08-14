@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import ReactFocusTrap from 'focus-trap-react';
 
 import Button from 'Components/Button';
-import Heading, {headingTypes} from 'Components/Heading';
+import Heading, {headingTypes} from 'Components/Heading/index';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 

@@ -2,6 +2,10 @@
 @import "../../styles/font-sizes";
 @import "../../styles/colors";
 
+.titleLink {
+  color: $text-color-default;
+}
+
 .primary {
   font-family: $title-font-families;
   font-size: $font-size-huge;

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import Heading, { headingTypes } from 'Components/Heading';
+import Heading, { headingTypes } from 'Components/Heading/index';
 import React from 'react';
 
 const { PRIMARY, SECONDARY } = headingTypes;

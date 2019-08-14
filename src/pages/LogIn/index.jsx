@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import LOGIN from 'Apollo/mutations/login.gql';
-import Heading, {headingTypes} from 'Components/Heading';
+import Heading, {headingTypes} from 'Components/Heading/index';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 import routes from '~/routes';

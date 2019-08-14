@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 
-import Heading, { headingTypes } from 'Components/Heading';
+import Heading, { headingTypes } from 'Components/Heading/index';
 import Translate from 'Hocs/Translate';
 
 import messages from './messages';
@@ -29,7 +29,7 @@ const classMapping = {
 const { PRIMARY } = headingTypes;
 
 const renderContent = (props) => {
-  const { headingType, heroContent, title, type, children } = props;
+  const { children, headingType, heroContent, title, titleLink, type } = props;
   switch (type) {
     case BARE:
       return children;
@@ -38,7 +38,7 @@ const renderContent = (props) => {
         <Fragment>
           <div className={styles.heroContent}>{heroContent}</div>
           <div className={styles.contentWrapper}>
-            <Heading className={styles.title} type={headingType}>
+            <Heading className={styles.title} type={headingType} link={titleLink}>
               {title}
             </Heading>
             {children}
@@ -48,7 +48,7 @@ const renderContent = (props) => {
     case STANDARD:
       return (
         <div className={styles.contentWrapper}>
-          <Heading className={styles.title} type={headingType}>
+          <Heading className={styles.title} type={headingType} link={titleLink}>
             {title}
           </Heading>
           <div className={styles.content}>{children}</div>
@@ -79,6 +79,7 @@ Card.propTypes = {
   negative: PropTypes.bool,
   t: PropTypes.func.isRequired,
   title: PropTypes.string,
+  titleLink: PropTypes.string,
   type: (props, propName, componentName) => {
     const type = props[propName];
     if (!type) {
@@ -99,6 +100,7 @@ Card.defaultProps = {
   heroContent: null,
   negative: false,
   title: null,
+  titleLink: null,
 };
 
 export default Translate(messages)(Card);

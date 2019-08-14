@@ -1,24 +1,27 @@
 /* eslint-disable import/prefer-default-export */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
+import { Query } from 'react-apollo';
 
+import USER_PROFILE from 'Apollo/queries/user4.gql';
+import AlbumPreview from 'Components/AlbumPreview';
 import Cover from 'Components/Cover';
 import Card, { cardTypes } from 'Components/Card';
-import Heading, { headingTypes } from 'Components/Heading';
+import ErrorMessage from 'Components/ErrorMessage';
+import Heading, { headingTypes } from 'Components/Heading/index';
+import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
-import { actionRoute } from 'Utils/links';
-import actions from '~/actions';
+import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { LOGOUT } = actions;
 const { HOME } = routes;
 
-const { BARE } = cardTypes;
+const { BARE, STANDARD } = cardTypes;
 const { PRIMARY } = headingTypes;
 
 class ProfileRaw extends React.Component {
@@ -34,7 +37,7 @@ class ProfileRaw extends React.Component {
     const {
       login: {
         data: {
-          me: { avatar, cover, username },
+          me: { username, userId },
         },
       },
     } = this.context;
@@ -45,14 +48,42 @@ class ProfileRaw extends React.Component {
     }
 
     return (
-      <Card type={BARE}>
-        <Cover cover={cover} avatar={avatar} withUpdateForms />
-        <div className={styles.contentWrapper}>
-          <Heading className={styles.username} type={PRIMARY}>
-            {username}
-          </Heading>
-        </div>
-      </Card>
+      <Query query={USER_PROFILE} variables={{ userId }}>
+        {({ loading, error, data }) => {
+          if (loading) return <Spinner />;
+          if (error) return <ErrorMessage />;
+
+          const {
+            user: { avatar, cover },
+            listAlbums,
+          } = data;
+
+          return (
+            <Fragment>
+              <Card type={BARE}>
+                <Cover cover={cover} avatar={avatar} withUpdateForms />
+                <div className={styles.contentWrapper}>
+                  <Heading className={styles.username} type={PRIMARY}>
+                    {username}
+                  </Heading>
+                </div>
+              </Card>
+
+              {listAlbums.map((album) => (
+                <Card
+                  className={styles.albumCard}
+                  key={album.id}
+                  title={album.title}
+                  titleLink={albumRoute(album.id)}
+                  type={STANDARD}
+                >
+                  <AlbumPreview album={album} />
+                </Card>
+              ))}
+            </Fragment>
+          );
+        }}
+      </Query>
     );
   }
 }
