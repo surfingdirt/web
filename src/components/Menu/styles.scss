@@ -18,6 +18,14 @@ $border-width: $widget-border-width;
   border-radius: $widget-border-radius;
 }
 
+.menuOptionsHorizontal-left .menuOption .menuEntry {
+  text-align: right;
+}
+
+.menuOptionsHorizontal-right .menuOption .menuEntry {
+  text-align: left;
+}
+
 .menuOption {
   border-color: 0 $widget-border-color solid;
   line-height: 1.5em;
