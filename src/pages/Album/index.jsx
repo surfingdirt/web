@@ -6,11 +6,7 @@ import ALBUM from 'Apollo/queries/album.gql';
 import AlbumPreview from 'Components/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
-import ResponsiveImage from 'Components/ResponsiveImage';
-import { photoRoute, videoRoute } from 'Utils/links';
 import routes from '~/routes';
-
-import styles from './styles.scss';
 
 const { PHOTO_NEW } = routes;
 const { STANDARD } = cardTypes;

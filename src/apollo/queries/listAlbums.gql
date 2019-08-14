@@ -1,0 +1,26 @@
+query listAlbums {
+    listAlbums {
+        id
+        title
+        description
+        media {
+            id
+            title
+            mediaType
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
+        }
+    }
+}

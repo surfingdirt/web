@@ -12,10 +12,7 @@ import styles from './styles.scss';
 const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024px) 150px`;
 
 const AlbumPreview = ({ album: { id: albumId, media, title: albumTitle } }) => {
-  if (!media) {
-    throw new Error('Media not set');
-  }
-  if (media.length == 0) {
+  if (!media || media.length === 0) {
     return null;
   }
 
@@ -41,9 +38,9 @@ const AlbumPreview = ({ album: { id: albumId, media, title: albumTitle } }) => {
 };
 
 AlbumPreview.propTypes = {
-  album: PropTypes.objectOf({
+  album: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    media: PropTypes.arrayOf().isRequired,
+    media: PropTypes.any,
     title: PropTypes.string.isRequired,
   }).isRequired,
 };
