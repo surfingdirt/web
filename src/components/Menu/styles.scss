@@ -1,6 +1,7 @@
 @import '../../styles/boxmodel';
 @import '../../styles/colors';
 @import '../../styles/constants';
+@import '../../styles/font-sizes';
 
 $border-width: $widget-border-width;
 
@@ -17,21 +18,31 @@ $border-width: $widget-border-width;
   border-radius: $widget-border-radius;
 }
 
-.menuEntry {
-  display: block;
-  padding: $padding-small-3 $padding-small-2;
-}
-
 .menuOption {
   border-color: 0 $widget-border-color solid;
   line-height: 1.5em;
   background-color: $menu-option-background-color;
-  color: $menu-option-text-color;
   margin: $border-width 0;
 
-  & > * {
+  .menuEntry {
     display: inline-block;
     width: 100%;
+    border: 0;
+    padding: $padding-small-3 $padding-small-2;
+    background: $menu-option-background-color;
+    font-size: $font-size-medium;
+    text-align: initial;
+    color: $menu-option-text-color;
+  }
+
+  &:hover {
+    background-color: $menu-option-active-background-color;
+    color: $menu-option-active-text-color;
+    .menuEntry {
+      background-color: $menu-option-active-background-color;
+      color: $menu-option-active-text-color;
+      cursor: pointer;
+    }
   }
 
   &:first-child {
@@ -45,9 +56,6 @@ $border-width: $widget-border-width;
   }
 
   &:hover {
-    cursor: pointer;
-    background-color: $menu-option-active-background-color;
-    color: $menu-option-active-text-color;
   }
 }
 

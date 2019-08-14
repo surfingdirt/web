@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import Menu from 'Components/Menu';
 import ResponsiveImage from 'Components/ResponsiveImage';
-import UserProfile, { userProfileTypes } from 'Components/UserProfile';
+import LogoutForm from 'Components/User/LogoutForm';
+import menuStyles from 'Components/Menu/styles.scss';
+import UserProfile, { userProfileTypes } from 'Components/User/UserProfile';
 import Translate from 'Hocs/Translate';
 import { COVER_MENU } from '~/ids';
 
@@ -18,7 +20,11 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
 
-  const options = withUpdateForms ? [() => <AvatarUpdateModal />, () => <CoverUpdateModal />] : [];
+  const options = withUpdateForms ? [
+    () => <AvatarUpdateModal />,
+    () => <CoverUpdateModal />,
+    () => <LogoutForm buttonClassName={menuStyles.menuEntry} />,
+  ] : [];
 
   return (
     <div className={styles.coverWrapper}>

@@ -11,7 +11,7 @@ import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
-import UserProfile, { userProfileTypes } from 'Components/UserProfile';
+import UserProfile, { userProfileTypes } from 'Components/User/UserProfile';
 
 const { PROFILE } = icons;
 const { LOGIN, PROFILE: PROFILE_PAGE } = routes;

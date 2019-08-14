@@ -51,10 +51,6 @@ class ProfileRaw extends React.Component {
           <Heading className={styles.username} type={PRIMARY}>
             {username}
           </Heading>
-
-          <form action={actionRoute(LOGOUT)} method="POST" encType="multipart/form-data">
-            <button type="submit">{t('logout')}</button>
-          </form>
         </div>
       </Card>
     );

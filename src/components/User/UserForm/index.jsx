@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import Button from 'Components/Button/index';
-import CheckboxField from 'Components/Form/CheckboxField';
-import InputField from 'Components/Form/InputField';
-import Translate from 'Hocs/Translate';
+import CheckboxField from 'Components/Form/CheckboxField/index';
+import InputField from 'Components/Form/InputField/index';
+import Translate from 'Hocs/Translate/index';
 import Next from 'Images/_old/arrow-next.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
