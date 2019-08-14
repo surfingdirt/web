@@ -41,6 +41,7 @@ $border-width: $widget-border-width;
     font-size: $font-size-medium;
     text-align: initial;
     color: $menu-option-text-color;
+    cursor: pointer;
   }
 
   &:hover {
@@ -49,7 +50,6 @@ $border-width: $widget-border-width;
     .menuEntry {
       background-color: $menu-option-active-background-color;
       color: $menu-option-active-text-color;
-      cursor: pointer;
     }
   }
 
@@ -70,6 +70,10 @@ $border-width: $widget-border-width;
 .menuOptionActive {
   background-color: $menu-option-active-background-color;
   color: $menu-option-active-text-color;
+  .menuEntry {
+    background-color: $menu-option-active-background-color;
+    color: $menu-option-active-text-color;
+  }
 }
 
 :global(.mouse-mode) {
