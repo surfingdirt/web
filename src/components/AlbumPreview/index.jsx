@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty';
+import { headingTypes } from 'Components/Heading';
 import Paragraph from 'Components/Paragraph';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
@@ -11,6 +12,7 @@ import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
 import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
+const { SECONDARY } = headingTypes;
 
 // TODO: refine this after settling on a design, as this will guide which image size loads.
 // Note: keep it simple with 3 media queries
@@ -32,6 +34,7 @@ const AlbumPreview = ({
       title={albumTitle}
       titleLink={albumRoute(albumId)}
       type={STANDARD}
+      headingType={SECONDARY}
     >
       {isEmpty ? (
         <Empty />

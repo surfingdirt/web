@@ -1,6 +1,7 @@
 @import "../../styles/font-faces";
 @import "../../styles/font-sizes";
 @import "../../styles/colors";
+@import "../../styles/media-queries";
 
 .titleLink {
   color: $text-color-default;
@@ -8,11 +9,17 @@
 
 .primary {
   font-family: $title-font-families;
-  font-size: $font-size-huge;
+  font-size: $font-size-big;
+  @media (min-width: $mobile-layout-threshold-min) {
+    font-size: $font-size-huge;
+  }
 }
 
 .secondary,
 .modal {
   font-family: $title-font-families;
-  font-size: $font-size-big;
+  font-size: $font-size-medium;
+  @media (min-width: $mobile-layout-threshold-min) {
+    font-size: $font-size-big;
+  }
 }

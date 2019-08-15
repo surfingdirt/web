@@ -1,13 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
+import AlbumPreview from 'Components/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
-import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import messages from './messages';
@@ -23,24 +22,36 @@ class HomeRaw extends React.Component {
 
   render() {
     const { t } = this.props;
-    const { galleryAlbumId } = this.context;
+    const {
+      galleryAlbumId,
+      login: {
+        data: {
+          me: { userId },
+        },
+      },
+    } = this.context;
+
+    const loggedIn = !!userId;
 
     return (
       <DataRenderer
         query={HOMEPAGE}
-        variables={{ albumId: galleryAlbumId }}
+        variables={{ galleryAlbumId }}
         render={(data) => {
-          const {
-            album: { id, title, description },
-          } = data;
+          const { album: galleryAlbum, listAlbums } = data;
           return (
-            <Card title={'This is the homepage'} type={STANDARD}>
-              <p>Some content</p>
-              <p>Some content</p>
-              <p>Some content</p>
-              <p>Some content</p>
-              <p>Some content</p>
-            </Card>
+            <Fragment>
+              <Card title={'The mountainboarding social network'} type={STANDARD}>
+                <p>Some static content</p>
+                <p>Some static content</p>
+              </Card>
+
+              <AlbumPreview album={galleryAlbum} />
+
+              {listAlbums.map((album) => (
+                <AlbumPreview album={album} key={album.id} />
+              ))}
+            </Fragment>
           );
         }}
       />

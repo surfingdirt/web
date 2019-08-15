@@ -1,7 +1,34 @@
-query home($albumId: ID!){
-  album(id: $albumId) {
-    id
-    title
-    description
-  }
+query home($galleryAlbumId: ID!) {
+    album(id: $galleryAlbumId) {
+        id
+        title
+        description
+        media {
+            id
+            mediaType
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+        }
+    }
+    listAlbums {
+        id
+        title
+        description
+        media {
+            id
+            mediaType
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+        }
+    }
 }

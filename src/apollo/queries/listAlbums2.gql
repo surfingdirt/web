@@ -5,16 +5,8 @@ query listAlbums {
         description
         media {
             id
-            title
             mediaType
             thumbs {
-                type
-                size
-                url
-                height
-                width
-            }
-            images {
                 type
                 size
                 url

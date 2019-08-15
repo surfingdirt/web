@@ -42,11 +42,6 @@ class ProfileRaw extends React.Component {
       },
     } = this.context;
 
-    const isLoggedIn = !!username;
-    if (!isLoggedIn) {
-      return <Redirect to={HOME} />;
-    }
-
     return (
       <Query query={USER_PROFILE} variables={{ userId }}>
         {({ loading, error, data }) => {
