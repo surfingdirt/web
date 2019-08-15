@@ -17,7 +17,20 @@ import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
 import routes from '~/routes';
 
-const { ABOUT, ALBUM, ALBUMS, ERROR, HOME, LOGIN, USER, PHOTO, PHOTO_NEW, PROFILE, VIDEO } = routes;
+const {
+  ABOUT,
+  ALBUM,
+  ALBUMS,
+  ERROR,
+  HOME,
+  LOGIN,
+  USER,
+  PHOTO,
+  PHOTO_NEW,
+  PHOTO_NEW_FOR_ALBUM,
+  PROFILE,
+  VIDEO,
+} = routes;
 
 const About = Loadable({
   loader: () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
@@ -98,14 +111,15 @@ class App extends React.Component {
         <Switch>
           <DefaultLayoutRoute exact path={HOME} component={Home} />
 
-          <DefaultLayoutRoute exact path={ABOUT} component={About} />
-          <DefaultLayoutRoute exact path={ALBUM} component={Album} />
-          <DefaultLayoutRoute exact path={ALBUMS} component={Albums} />
-          <DefaultLayoutRoute exact path={ERROR} component={Error} />
-          <DefaultLayoutRoute path={LOGIN} login={FORBIDDEN} component={LogIn} />
-          <DefaultLayoutRoute path={PHOTO_NEW} login={MANDATORY} component={NewPhoto} />
+          <DefaultLayoutRoute path={ABOUT} component={About} />
+          <DefaultLayoutRoute path={ALBUM} component={Album} exact />
+          <DefaultLayoutRoute path={ALBUMS} component={Albums} />
+          <DefaultLayoutRoute path={ERROR} component={Error} />
+          <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
+          <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} login={MANDATORY} />
+          <DefaultLayoutRoute path={PHOTO_NEW_FOR_ALBUM} component={NewPhoto} login={MANDATORY} />
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
-          <DefaultLayoutRoute path={PROFILE} component={Profile} />
+          <DefaultLayoutRoute path={PROFILE} component={Profile} login={MANDATORY} />
           <DefaultLayoutRoute path={USER} component={User} />
           <DefaultLayoutRoute path={VIDEO} component={Video} />
 

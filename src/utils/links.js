@@ -3,12 +3,14 @@ import querystring from 'querystring';
 import routes from '~/routes';
 import { ACTION_PREFIX } from '~/actions';
 
-const { ALBUM, ERROR, USER, PHOTO, VIDEO } = routes;
+const { ALBUM, ERROR, USER, PHOTO, PHOTO_NEW_FOR_ALBUM, VIDEO } = routes;
 
 const ID_REGEXP = new RegExp(':id');
 const MESSAGE_REGEXP = new RegExp(':message');
 
 export const albumRoute = (id) => ALBUM.replace(ID_REGEXP, id);
+
+export const newPhotoForAlbumRoute = (id) => PHOTO_NEW_FOR_ALBUM.replace(ID_REGEXP, id);
 
 export const errorRoute = (code, message = '') => ERROR.replace(ID_REGEXP, code).replace(MESSAGE_REGEXP, querystring.escape(message));
 

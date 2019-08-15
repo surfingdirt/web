@@ -5,29 +5,39 @@ import { Link } from 'react-router-dom';
 import ALBUM from 'Apollo/queries/album.gql';
 import AlbumPreview from 'Components/AlbumPreview';
 import DataRenderer from 'Components/DataRenderer';
+import { newPhotoForAlbumRoute } from 'Utils/links';
+import AppContext from '~/contexts';
 import routes from '~/routes';
 
 const { PHOTO_NEW } = routes;
 
-export const Album = ({ match }) => {
-  const { id: albumId } = match.params;
+export class Album extends React.Component {
+  static propTypes = {
+    match: PropTypes.objectOf(PropTypes.any).isRequired,
+  };
 
-  return (
-    <DataRenderer
-      query={ALBUM}
-      variables={{ id: albumId }}
-      render={({ album }) => (
-        <Fragment>
-          <Link to={PHOTO_NEW}>Post a new photo</Link>
+  static contextType = AppContext;
 
-          <p>TODO: replace this preview display with a full-fletched grid</p>
-          <AlbumPreview album={album} />
-        </Fragment>
-      )}
-    />
-  );
-};
+  render() {
+    const { match } = this.props;
+    const { galleryAlbumId } = this.context;
+    const { id: albumId } = match.params;
 
-Album.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+    const newLink = albumId === galleryAlbumId ? PHOTO_NEW : newPhotoForAlbumRoute(albumId);
+
+    return (
+      <DataRenderer
+        query={ALBUM}
+        variables={{ id: albumId }}
+        render={({ album }) => (
+          <Fragment>
+            <Link to={newLink}>Post a new photo</Link>
+
+            <p>TODO: replace this preview display with a full-fletched grid</p>
+            <AlbumPreview album={album} />
+          </Fragment>
+        )}
+      />
+    );
+  }
+}

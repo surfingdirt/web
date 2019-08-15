@@ -10,6 +10,7 @@ const routes = {
   PHOTO: '/photo/:id',
   PHOTO_EDIT: '/edit-photo',
   PHOTO_NEW: '/new-photo',
+  PHOTO_NEW_FOR_ALBUM: '/album/:id/new-photo',
   PROFILE: '/profile',
   VIDEO: '/video/:id',
   VIDEO_EDIT: '/edit-video',
