@@ -31,7 +31,7 @@ $height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 
   align-items: center;
   margin: 0 $margin-small-2 0 0;
   overflow: hidden;
-  flex: 1 0 $width1;
+  flex: 0 0 $width1;
   height: $height1;
 
   @media (min-width: $mobile-layout-threshold-min) {
