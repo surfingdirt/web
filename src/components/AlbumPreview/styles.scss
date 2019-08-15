@@ -18,6 +18,10 @@ $height4: calc((100vw - 330px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 
 $width5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5);
 $height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
 
+.wrapper {
+  margin: $margin-medium-1 0;
+}
+
 .items {
   display: flex;
   list-style: none;
@@ -57,4 +61,8 @@ $height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 
 
 .link {
   display: block;
+}
+
+.description {
+  margin-bottom: 0;
 }

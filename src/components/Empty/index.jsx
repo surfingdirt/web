@@ -12,4 +12,4 @@ EmptyRaw.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export const Albums = Translate(messages)(EmptyRaw);
+export default Translate(messages)(EmptyRaw);

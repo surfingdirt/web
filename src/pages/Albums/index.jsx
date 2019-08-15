@@ -3,12 +3,9 @@ import { Query } from 'react-apollo';
 
 import ALBUMS from 'Apollo/queries/listAlbums.gql';
 import AlbumPreview from 'Components/AlbumPreview';
-import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
-
-const { STANDARD } = cardTypes;
 
 export const Albums = () => (
   <Query query={ALBUMS}>
@@ -23,9 +20,7 @@ export const Albums = () => (
       }
 
       return albums.map((album) => (
-        <Card title={album.title} type={STANDARD} key={album.id}>
-          <AlbumPreview album={album} />
-        </Card>
+        <AlbumPreview album={album} key={album.id} showAttribution />
       ));
     }}
   </Query>

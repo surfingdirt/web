@@ -7,11 +7,10 @@ import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Heading, { headingTypes } from 'Components/Heading/index';
-import { albumRoute } from 'Utils/links';
 
 import styles from './styles.scss';
 
-const { BARE, STANDARD } = cardTypes;
+const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;
 
 export const User = ({ match }) => {
@@ -39,15 +38,7 @@ export const User = ({ match }) => {
             </Card>
 
             {listAlbums.map((album) => (
-              <Card
-                className={styles.albumCard}
-                key={album.id}
-                title={album.title}
-                titleLink={albumRoute(album.id)}
-                type={STANDARD}
-              >
-                <AlbumPreview album={album} />
-              </Card>
+              <AlbumPreview album={album} key={album.id} />
             ))}
           </Fragment>
         );

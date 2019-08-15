@@ -70,15 +70,7 @@ class ProfileRaw extends React.Component {
               </Card>
 
               {listAlbums.map((album) => (
-                <Card
-                  className={styles.albumCard}
-                  key={album.id}
-                  title={album.title}
-                  titleLink={albumRoute(album.id)}
-                  type={STANDARD}
-                >
-                  <AlbumPreview album={album} />
-                </Card>
+                <AlbumPreview album={album} key={album.id} renderIfEmpty />
               ))}
             </Fragment>
           );
