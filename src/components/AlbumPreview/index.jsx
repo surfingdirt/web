@@ -40,13 +40,13 @@ const AlbumPreview = ({
         <Empty />
       ) : (
         <ul className={styles.items}>
-          {media.map(({ id, mediaType, thumbs }) => (
+          {media.map(({ id, mediaType, title, thumbs }) => (
             <li key={id} className={styles.item}>
               <Link
                 className={styles.link}
                 to={mediaType === 'PHOTO' ? photoRoute(id) : videoRoute(id)}
               >
-                <ResponsiveImage alt="" images={thumbs} sizes={sizes} />
+                <ResponsiveImage alt={title} images={thumbs} sizes={sizes} />
               </Link>
             </li>
           ))}
@@ -59,6 +59,7 @@ const AlbumPreview = ({
 
 AlbumPreview.propTypes = {
   album: PropTypes.shape({
+    description: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     media: PropTypes.any,
     title: PropTypes.string.isRequired,

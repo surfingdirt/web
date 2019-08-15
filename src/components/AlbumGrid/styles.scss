@@ -1,0 +1,22 @@
+@import '../../styles/boxmodel';
+@import '../../styles/media-queries';
+
+$gutter: $margin-big;
+
+.masonry {
+  display: flex;
+  margin-left: -$gutter;
+  width: auto;
+}
+
+.column {
+  padding-left: $gutter;
+  background-clip: padding-box;
+
+  & > .link {
+    display: block;
+    background: grey;
+    margin-bottom: $gutter;
+  }
+}
+

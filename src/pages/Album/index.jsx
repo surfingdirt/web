@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import ALBUM from 'Apollo/queries/album.gql';
-import AlbumPreview from 'Components/AlbumPreview';
+import AlbumGrid from 'Components/AlbumGrid';
 import DataRenderer from 'Components/DataRenderer';
 import { newPhotoForAlbumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
@@ -29,12 +29,12 @@ export class Album extends React.Component {
       <DataRenderer
         query={ALBUM}
         variables={{ id: albumId }}
-        render={({ album }) => (
+        render={({ album: { media } }) => (
           <Fragment>
             <Link to={newLink}>Post a new photo</Link>
 
             <p>TODO: replace this preview display with a full-fletched grid</p>
-            <AlbumPreview album={album} />
+            <AlbumGrid media={media} />
           </Fragment>
         )}
       />

@@ -1,11 +1,14 @@
+.img {
+  width: 100%;
+}
+
 .objectFit {
   width: 100%;
   height: 100%;
   display: flex;
 
-  img {
+  .img {
     object-fit: cover;
     height: auto;
-    width:100%;
   }
 }

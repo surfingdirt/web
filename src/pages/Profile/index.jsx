@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router';
 import { Query } from 'react-apollo';
 
 import USER_PROFILE from 'Apollo/queries/user.gql';
@@ -14,12 +13,9 @@ import Paragraph from 'Components/Paragraph';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
-import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
-
-const { HOME } = routes;
 
 const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;

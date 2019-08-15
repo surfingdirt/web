@@ -131,6 +131,7 @@
     "react-dom": "^16.6.0",
     "react-final-form": "^4.0.2",
     "react-helmet": "5.2.0",
+    "react-masonry-css": "1.0.12",
     "react-responsive-carousel": "^3.1.45",
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",

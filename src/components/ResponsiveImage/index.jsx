@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
@@ -33,7 +34,7 @@ const buildListsByType = (list) =>
     return acc;
   }, {});
 
-const ResponsiveImage = ({ alt, className, images,objectFit, sizes }) => {
+const ResponsiveImage = ({ alt, className, images, objectFit, sizes }) => {
   const { url: src } = findDefaultImage(images);
 
   const imagesByType = buildListsByType(images);
@@ -47,7 +48,7 @@ const ResponsiveImage = ({ alt, className, images,objectFit, sizes }) => {
 
   const imgAttrs = {
     alt,
-    className,
+    className: classnames(styles.img, className),
     src,
   };
 
