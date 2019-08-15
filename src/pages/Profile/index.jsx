@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import { Query } from 'react-apollo';
 
-import USER_PROFILE from 'Apollo/queries/user4.gql';
+import USER_PROFILE from 'Apollo/queries/user.gql';
 import AlbumPreview from 'Components/AlbumPreview';
 import Cover from 'Components/Cover';
 import Card, { cardTypes } from 'Components/Card';
 import ErrorMessage from 'Components/ErrorMessage';
 import Heading, { headingTypes } from 'Components/Heading/index';
+import Paragraph from 'Components/Paragraph';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
-import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -21,7 +21,7 @@ import styles from './styles.scss';
 
 const { HOME } = routes;
 
-const { BARE, STANDARD } = cardTypes;
+const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;
 
 class ProfileRaw extends React.Component {
@@ -54,7 +54,7 @@ class ProfileRaw extends React.Component {
           if (error) return <ErrorMessage />;
 
           const {
-            user: { avatar, cover },
+            user: { avatar, bio, cover },
             listAlbums,
           } = data;
 
@@ -66,6 +66,7 @@ class ProfileRaw extends React.Component {
                   <Heading className={styles.username} type={PRIMARY}>
                     {username}
                   </Heading>
+                  {bio && <Paragraph className={styles.bio}>{bio}</Paragraph>}
                 </div>
               </Card>
 

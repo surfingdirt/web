@@ -3,6 +3,7 @@ query userProfile($userId: ID!) {
         userId
         username
         firstName
+        bio
         album{
           id
           title

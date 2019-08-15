@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import USER from 'Apollo/queries/user4.gql';
+import USER from 'Apollo/queries/user.gql';
 import AlbumPreview from 'Components/AlbumPreview';
 import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Card';

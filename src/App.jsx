@@ -4,7 +4,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { Switch } from 'react-router';
 
-import ME from 'Apollo/queries/me3.gql';
+import ME from 'Apollo/queries/me.gql';
 import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
 import ErrorMessage from 'Components/ErrorMessage';
 import loading from 'Components/Loading';
