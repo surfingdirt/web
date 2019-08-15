@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 
 import ALBUM from 'Apollo/queries/album.gql';
 import AlbumGrid from 'Components/AlbumGrid';
+import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import { newPhotoForAlbumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
 const { PHOTO_NEW } = routes;
+const { STANDARD } = cardTypes;
 
 export class Album extends React.Component {
   static propTypes = {
@@ -29,13 +31,11 @@ export class Album extends React.Component {
       <DataRenderer
         query={ALBUM}
         variables={{ id: albumId }}
-        render={({ album: { media } }) => (
-          <Fragment>
+        render={({ album: { media, title } }) => (
+          <Card type={STANDARD} title={title}>
             <Link to={newLink}>Post a new photo</Link>
-
-            <p>TODO: replace this preview display with a full-fletched grid</p>
             <AlbumGrid media={media} />
-          </Fragment>
+          </Card>
         )}
       />
     );
