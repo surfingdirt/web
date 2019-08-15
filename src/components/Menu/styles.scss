@@ -14,7 +14,7 @@ $border-width: $widget-border-width;
 .menuOptions {
   overflow: hidden;
   background-color: $menu-option-active-background-color;
-  border: $border-width $menu-option-background-color solid;
+  border: $border-width $menu-border-color solid;
   border-radius: $widget-border-radius;
 }
 
