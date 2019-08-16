@@ -48,7 +48,7 @@ export default class Heading extends React.PureComponent {
 
     const Tag = tag || defaultTag;
 
-    const actualClassName = classnames(styles[defaultClassName], className);
+    const actualClassName = classnames(styles.heading, styles[defaultClassName], className);
     if (link) {
       return (
         <Link to={link} className={styles.titleLink}>

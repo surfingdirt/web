@@ -1,6 +1,8 @@
 // Theme color definitions are in the brand file:
 @import 'brand';
 
+$readable-brand-bright: rgba($brand-bright, .8);
+
 // Other colors
 $red-validation: #fd204d;
 $google-blue: #4285f4;

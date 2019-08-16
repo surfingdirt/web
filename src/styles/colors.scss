@@ -11,8 +11,11 @@
 $background-color-default: $brand-dark1;
 $background-color-inverted: $brand-bright;
 
+// Content area
+$content-background-color: $brand-bright;
+
 // Text
-$text-color-default: $brand-bright;
+$text-color-default: $readable-brand-bright;
 $text-color-dropcap: $brand-highlight1;
 $text-color-inverted: $brand-dark2;
 
@@ -27,7 +30,7 @@ $scrollbar-color-track: $brand-dark1;
 
 // Containers
 $container-background-color-default: $brand-dark2;
-$container-text-color-default: $brand-bright;
+$container-text-color-default: $readable-brand-bright;
 
 // Links
 $link-color-default: $brand-highlight1;
@@ -37,18 +40,18 @@ $button-text-color-default: $brand-dark2;
 $button-background-color-default: $brand-bright;
 $button-border-color-default: transparent;
 
-$button-text-color-negative: $brand-bright;
+$button-text-color-negative: $readable-brand-bright;
 $button-background-color-negative: $brand-dark2;
 
-$button-text-color-disabled: rgba($brand-bright, .7);
+$button-text-color-disabled: rgba($readable-brand-bright, .6);
 $button-background-color-disabled: transparent;
 
 // Inputs
 $input-text-color: $brand-dark2;
 $input-background-color: $brand-bright;
 
-// Headers
-$header-title-color: $brand-bright;
+// Headings
+$heading-title-color: $brand-bright;
 
 // Widgets in general
 $widget-border-color: $brand-bright;
@@ -73,7 +76,7 @@ $bottom-bar-action-button-background-color-active: $brand-dark2;
 $bottom-bar-action-button-shadow-color: rgba(0, 0, 0, 0.7);
 
 // Cards
-$card-text-color: $brand-bright;
+$card-text-color: $readable-brand-bright;
 $card-background-color: $brand-dark2;
 $card-text-color-negative: $brand-dark2;
 $card-background-color-negative: $brand-bright;
@@ -103,7 +106,7 @@ $masthead-title-color: $brand-dark2;
 $menu-option-background-color: $brand-bright;
 $menu-option-text-color: $brand-dark2;
 $menu-option-active-background-color: $brand-dark2;
-$menu-option-active-text-color: $brand-bright;
+$menu-option-active-text-color: $readable-brand-bright;
 $menu-border-color: $brand-dark2;
 $menu-separator-color: $brand-bright;
 $menu-icon: $brand-bright;
@@ -120,6 +123,7 @@ $navigation-menu-background-color: $brand-dark2;
 
 // Navigation links
 $navigationlink-color: $brand-bright;
+$navigationlink-text-color: $readable-brand-bright;
 $navigationlink-background-color: transparent;
 $navigationlink-color-active: $brand-dark2;
 $navigationlink-background-color-active: $brand-bright;

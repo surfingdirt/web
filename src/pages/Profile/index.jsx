@@ -57,7 +57,7 @@ class ProfileRaw extends React.Component {
                   <Heading className={styles.username} type={PRIMARY}>
                     {username}
                   </Heading>
-                  {bio && <Paragraph className={styles.bio}>{bio}</Paragraph>}
+                  {bio && <Paragraph widthDropCap className={styles.bio}>{bio}</Paragraph>}
                 </div>
               </Card>
 

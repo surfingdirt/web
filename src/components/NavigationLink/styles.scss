@@ -27,11 +27,20 @@
     .defaultIcon {
       color: $navigationlink-color-active;
     }
+
+    .label {
+      color: $navigationlink-color-active;
+    }
   }
 
   span {
     display: inline-block;
     vertical-align: sub;
   }
+
+  .label {
+    color: $navigationlink-text-color;
+  }
+
 }
 

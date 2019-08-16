@@ -53,6 +53,7 @@ $logo-width-default: 150px;
   height: calc(100vh);
   margin: 0 auto;
   max-width: $max-content-width;
+  background: $content-background-color;
 }
 
 // @see https://dev.to/peiche/100vh-behavior-on-chrome-2hm8

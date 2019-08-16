@@ -11,7 +11,7 @@ const NavigationLink = ({ active, className, icon, label, to }) => {
   return (
     <Link to={to} className={classnames(className, styles.wrapper, { [styles.active]: active })}>
       <span className={styles.defaultIcon}>{getIcon({ type: icon })}</span>
-      <span>{label}</span>
+      <span className={styles.label}>{label}</span>
     </Link>
   );
 };

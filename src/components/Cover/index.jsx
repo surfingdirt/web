@@ -20,11 +20,13 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
   const hasAvatar = avatar && avatar.length > 0;
   const hasCover = cover && cover.length > 0;
 
-  const options = withUpdateForms ? [
-    () => <AvatarUpdateModal />,
-    () => <CoverUpdateModal />,
-    () => <LogoutForm buttonClassName={menuStyles.menuEntry} />,
-  ] : [];
+  const options = withUpdateForms
+    ? [
+        () => <AvatarUpdateModal />,
+        () => <CoverUpdateModal />,
+        () => <LogoutForm buttonClassName={menuStyles.menuEntry} />,
+      ]
+    : [];
 
   return (
     <div className={styles.coverWrapper}>

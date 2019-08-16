@@ -3,6 +3,10 @@
 @import "../../styles/colors";
 @import "../../styles/media-queries";
 
+.heading {
+  color: $heading-title-color;
+}
+
 .titleLink {
   color: $text-color-default;
 }

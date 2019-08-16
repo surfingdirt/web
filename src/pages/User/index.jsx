@@ -7,6 +7,7 @@ import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import Heading, { headingTypes } from 'Components/Heading/index';
+import Paragraph from 'Components/Paragraph';
 
 import styles from './styles.scss';
 
@@ -22,7 +23,7 @@ export const User = ({ match }) => {
       variables={{ userId }}
       render={(data) => {
         const {
-          user: { avatar, cover, username },
+          user: { avatar, bio, cover, username },
           listAlbums,
         } = data;
 
@@ -34,6 +35,7 @@ export const User = ({ match }) => {
                 <Heading className={styles.username} type={PRIMARY}>
                   {username}
                 </Heading>
+                {bio && <Paragraph widthDropCap className={styles.bio}>{bio}</Paragraph>}
               </div>
             </Card>
 
