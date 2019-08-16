@@ -2,14 +2,67 @@
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 
-.label {
+$column-width-left: 30%;
+$column-width-right: 70%;
 
-}
-
-.input {
-
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $margin-medium-2;
 }
 
 .error {
-
+  flex: $column-width-left 0 0;
+  color: $form-error-color;
+  text-align: right;
+  padding-right: $padding-small-2;
 }
+
+.inputAndError {
+  display: flex;
+  flex-direction: column;
+  flex: $column-width-left 1 0;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: $margin-small-2;
+}
+
+.input {
+  border: 0;
+  padding: $padding-small-3;
+  font-size: $font-size-medium;
+  background: $input-background-color;
+}
+
+
+//$percent-left: 40%;
+//$percent-right: 60%;
+//
+//.wrapper {
+//}
+//
+//.label {
+//  display: inline-block;
+//  width: $percent-left;
+//}
+//
+//.inputAndError {
+//}
+//
+//.input {
+//  display: inline-block;
+//  width: $percent-right;
+//  border: 0;
+//  padding: $padding-small-3;
+//  font-size: $font-size-medium;
+//  background: $input-background-color;
+//}
+//
+//.error {
+//  color: $form-error-color;
+//  display: block;
+//  margin-left: $percent-left;
+//  width: $percent-right;
+//}

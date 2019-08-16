@@ -52,6 +52,7 @@ class SignInPageContent extends PureComponent {
                 <div className={styles.usernameField}>
                   <Field
                     name="username"
+                    id="username"
                     component={InputField}
                     type="username"
                     label={t('username')}
@@ -62,6 +63,7 @@ class SignInPageContent extends PureComponent {
                 <div className={styles.passwordField}>
                   <Field
                     name="userP"
+                    id="userP"
                     component={InputField}
                     type="password"
                     label={t('password')}

@@ -59,7 +59,7 @@ const AlbumPreview = ({
 
 AlbumPreview.propTypes = {
   album: PropTypes.shape({
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     id: PropTypes.string.isRequired,
     media: PropTypes.any,
     title: PropTypes.string.isRequired,

@@ -8,146 +8,15 @@
 
 .inputsContainer {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 
 .usernameField,
 .passwordField {
   width: 100%;
-  margin: $margin-big $margin-big 0 $margin-big;
-}
-
-.socialConnect {
-  margin: 0 auto;
-  
-  text-align: center;
-  .separator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: $margin-small-2;
-    .line {
-      width: 133px;
-      height: 1px;
-      
-      background: $form-border-color;
-    }
-    .text {
-      padding: 0 $margin-small-2;
-      margin-bottom: $margin-small-3;
-    }
-  }
 }
 
 .bottomContainer {
-  margin-top: 5px;
-  padding-right: 30px;
-
   text-align: right;
-  .forgotPassword {    
-    a {
-      color: $link-color-default;
-  
-      text-decoration: underline;
-      font-size: $font-size-small;
-      font-weight: bold;
-      font-family: sans-serif;
-    }
-  }
-  
-  .signInButton {
-    margin-top: $margin-medium-2;
-    margin-right: 0;
-  }
-}
-
-.separator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  .line {
-    width: 45%;
-    height: 1px;
-    
-    background-color: #e1e1e1;
-  }
-  span {
-    padding: $padding-small-2;
-    
-    color: #d6d6d6;
-  }
-}
-
-.socialLogins {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 20px;
-  button {
-    width: 45%;
-  }
-}
-
-.noAccountContainer {
-  padding: 30px;
-  margin-top: 10px;
-
-  background-color: #efefef;
-  .noAccountTitle {
-    color: #212438;
-
-    font-size: 17px;
-    font-weight: bold;
-  }
-  .noAccountSubtitle {
-    margin-bottom: 10px;
-
-    color: #212438;
-
-    font-size: 11px;
-  }
-  .noAccountFeature {
-    padding-left: 10px;
-    margin-bottom: 5px;
-
-    color: #212438;
-
-    font-size: 12px;
-    font-weight: bold;
-  }
-  .register {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-    .registerButton {
-      width: 50%;
-    }
-    svg {
-      width: 10px;
-      height: 10px;
-
-      stroke: red;
-    }
-  }
-}
-
-/* Media Queries */
-@media screen and (max-width: 600px){
-  .inputsContainer {
-    flex-direction: column;
-  }
-  .usernameField,
-  .passwordField {
-    max-width: 100%;
-    margin: $margin-big 0 0 0;
-  }
-  .socialLogins {
-    flex-direction: column;
-    button {
-      width: 100%;
-    }
-  }
 }

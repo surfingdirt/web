@@ -14,7 +14,7 @@ const InputField = (props) => {
 
   const { touched, error, submitError } = meta;
 
-  const { className, label, id, placeholder, required, type } = rest;
+  const { className, id, label, placeholder, required, type } = rest;
 
   let displayError = null;
   if (submitError) {
@@ -24,21 +24,25 @@ const InputField = (props) => {
   }
 
   return (
-    <Fragment>
-      <label className={styles.label} htmlFor={id}>
-        {label}
+    <div className={styles.wrapper}>
+      <label className={styles.error} htmlFor={id}>
+        {displayError}
       </label>
-      <input
-        className={classnames(styles.input, className)}
-        id={id}
-        placeholder={placeholder}
-        required={required}
-        type={type}
-        onChange={onChange}
-        {...inputAttrs}
-      />
-      {displayError && <span className={styles.error}>{displayError}</span>}
-    </Fragment>
+      <div className={styles.inputAndError}>
+        <label className={styles.label} htmlFor={id}>
+          {label}
+        </label>
+        <input
+          className={classnames(styles.input, className)}
+          id={id}
+          placeholder={placeholder}
+          required={required}
+          type={type}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      </div>
+    </div>
   );
 };
 
