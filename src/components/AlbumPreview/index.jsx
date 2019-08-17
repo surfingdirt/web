@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty';
-import { headingTypes } from 'Components/Heading';
+import Heading, { headingTypes } from 'Components/Heading';
 import Paragraph from 'Components/Paragraph';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
 
 import styles from './styles.scss';
 
-const { STANDARD } = cardTypes;
+const { BARE } = cardTypes;
 const { SECONDARY } = headingTypes;
 
 // TODO: refine this after settling on a design, as this will guide which image size loads.
@@ -29,13 +29,7 @@ const AlbumPreview = ({
   }
 
   return (
-    <Card
-      className={styles.wrapper}
-      title={albumTitle}
-      titleLink={albumRoute(albumId)}
-      type={STANDARD}
-      headingType={SECONDARY}
-    >
+    <Card className={styles.wrapper} type={BARE}>
       {isEmpty ? (
         <Empty />
       ) : (
@@ -52,7 +46,12 @@ const AlbumPreview = ({
           ))}
         </ul>
       )}
-      {description && <Paragraph className={styles.description}>{description}</Paragraph>}
+      <div className={styles.contentWrapper}>
+        <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
+          {albumTitle}
+        </Heading>
+        {description && <Paragraph className={styles.description}>{description}</Paragraph>}
+      </div>
     </Card>
   );
 };

@@ -22,12 +22,15 @@
 }
 
 .contentWrapper {
-  padding: $padding-medium-1;
+  padding: $padding-small-1;
+  @media (min-width: $desktop-layout-threshold-min) {
+    padding: $padding-medium-1;
+  }
 }
 
 .content {
 }
 
 .title {
-  margin: 0 0 1rem;
+  margin: 0 0 $margin-medium-1;
 }

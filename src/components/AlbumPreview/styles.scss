@@ -3,20 +3,20 @@
 
 $aspect-ratio: 16 / 9;
 
-$width1: calc((100vw - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 2.5);
-$height1: calc((100vw - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
+$width1: calc((100vw - #{$margin-small-2}) / 2.5);
+$height1: calc((100vw - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
 
-$width2: calc((100vw - 300px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 2.5);
-$height2: calc((100vw - 300px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
+$width2: calc((100vw - 300px - #{$margin-small-2}) / 2.5);
+$height2: calc((100vw - 300px - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
 
-$width3: calc((100vw - 300px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 3.5);
-$height3: calc((100vw - 300px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 3.5  / #{$aspect-ratio});
+$width3: calc((100vw - 300px - #{$margin-small-2}) / 3.5);
+$height3: calc((100vw - 300px - #{$margin-small-2}) / 3.5  / #{$aspect-ratio});
 
-$width4: calc((100vw - 330px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5);
-$height4: calc((100vw - 330px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
+$width4: calc((100vw - 330px - #{$margin-small-2}) / 4.5);
+$height4: calc((100vw - 330px - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
 
-$width5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5);
-$height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
+$width5: calc((100vw - 520px - #{$margin-small-2}) / 4.5);
+$height5: calc((100vw - 520px - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
 
 .wrapper {
   margin: $margin-medium-1 0;
@@ -38,7 +38,7 @@ $height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 
   flex: 0 0 $width1;
   height: $height1;
 
-  @media (min-width: $mobile-layout-threshold-min) {
+  @media (min-width: $desktop-layout-threshold-min) {
     flex-basis: $width2;
     height: $height2;
   }
@@ -59,8 +59,11 @@ $height5: calc((100vw - 520px - 2 * #{$margin-medium-1} - #{$margin-small-2}) / 
   }
 }
 
-.link {
-  display: block;
+.contentWrapper {
+  padding: $padding-small-1;
+  @media (min-width: $desktop-layout-threshold-min) {
+    padding: $padding-medium-1;
+  }
 }
 
 .description {

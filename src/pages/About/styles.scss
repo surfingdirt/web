@@ -46,7 +46,7 @@ section p:last-child {
 }
 
 @supports (display: grid) {
-  @media (min-width: $mobile-layout-threshold-min) {
+  @media (min-width: $desktop-layout-threshold-min) {
     .wrapper {
       display: grid;
       min-height: calc(100vh - 100px);

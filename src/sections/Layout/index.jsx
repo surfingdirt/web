@@ -27,11 +27,6 @@ const { STANDARD } = sizes;
 const { HEADER_HORIZONTAL } = logoTypes;
 
 const RESIZE = 'resize';
-const SCROLL = 'scroll';
-
-const SCROLL_THRESHOLD = 60;
-const DOWN = 1;
-const UP = 0;
 
 const NAVIGATION_ID = 'link-navigation-items';
 const ACTION_ITEMS_ID = 'action-items';
@@ -193,14 +188,11 @@ class Layout extends React.Component {
       actionButtonOrigin: [0, 0],
     };
 
-    this.currentScrollTop = 0;
-
     this.toggleActionButtons = this.toggleActionButtons.bind(this);
     this.openNavigationMenu = this.openNavigationMenu.bind(this);
     this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
     this.closeAll = this.closeAll.bind(this);
     this.onResize = this.onResize.bind(this);
-    this.onScroll = this.onScroll.bind(this);
     this.onNavigation = this.onNavigation.bind(this);
 
     this.actionButtonRef = React.createRef();
@@ -215,17 +207,12 @@ class Layout extends React.Component {
     window.addEventListener(RESIZE, this.onResize);
     this.onResize();
 
-    this.mainRef.current.addEventListener(SCROLL, this.onScroll, { passive: true });
-    this.onScroll();
-
     const { history } = this.props;
     this.unlisten = history.listen(this.onNavigation);
   }
 
   componentWillUnmount() {
     window.removeEventListener(RESIZE, this.onResize);
-
-    this.mainRef.current.removeEventListener(SCROLL, this.onScroll);
 
     this.unlisten();
   }
@@ -240,34 +227,6 @@ class Layout extends React.Component {
       bottomBarActionsOpen: false,
       navigationMenuOpen: false,
     });
-  }
-
-  onScroll() {
-    const {
-      mainRef: {
-        current: { scrollTop },
-      },
-      headerRef: { current: headerEl },
-      bottomBarRef: { current: bottomBarEl },
-    } = this;
-
-    const direction = scrollTop > this.currentScrollTop ? DOWN : UP;
-    let hideNav;
-    if (direction === UP) {
-      hideNav = false;
-    } else {
-      if (scrollTop > SCROLL_THRESHOLD) {
-        hideNav = true;
-      } else {
-        hideNav = false;
-      }
-    }
-
-    // Skip the whole React state thing because this is a performance-sensitive animation:
-    headerEl.classList.toggle(styles.hideNav, hideNav);
-    bottomBarEl.classList.toggle(styles.hideNav, hideNav);
-
-    this.currentScrollTop = scrollTop;
   }
 
   getOrigin() {

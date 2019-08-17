@@ -71,6 +71,7 @@ $logo-width-default: 150px;
             ". profile activity actionButton more";
     grid-row-gap: 0;
     grid-column-gap: 0;
+    background: transparent;
   }
 
   .actions {
@@ -92,7 +93,7 @@ $logo-width-default: 150px;
   }
 }
 
-@media (min-width: $mobile-layout-threshold-min) {
+@media (min-width: $desktop-layout-threshold-min) {
   .wrapper {
     grid-template-rows: $masthead-height 1fr;
     grid-template-columns: $lhs-width-small $lhs-width-small 1fr $rhs-width-small $rhs-width-small;
@@ -188,7 +189,7 @@ $logo-width-default: 150px;
   }
 }
 
-@media (min-width: $mobile-layout-threshold-min) {
+@media (min-width: $desktop-layout-threshold-min) {
   .bottomBar {
     display: none;
   }
@@ -331,18 +332,19 @@ $logo-width-default: 150px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;
+
+  &::after {
+    content: ' ';
+    display: block;
+    height: $margin-big;
+  }
 }
 
-.main::after {
-  content: ' ';
-  display: block;
-  height: $margin-big;
-}
-
-@media (min-width: $mobile-layout-threshold-min) {
+@media (min-width: $desktop-layout-threshold-min) {
   .main {
     padding: $padding-medium-2;
-    margin: 0 $small-gap $margin-medium-2;
+    padding-bottom: 0;
+    margin: 0 $small-gap;
   }
 
   .main::after {
@@ -352,37 +354,16 @@ $logo-width-default: 150px;
 
 @media (min-width: $desktop-small) {
   .main {
-    margin: 0 $medium-gap $margin-medium-2;
+    margin: 0 $medium-gap;
   }
 }
 
 @media (min-width: $desktop-big) {
   .main {
-    margin: 0 $large-gap $margin-medium-2;
+    margin: 0 $large-gap;
   }
 }
 
-
-/******************************************************************************
- * MISC
- *****************************************************************************/
-
-@media (max-width: $mobile-layout-threshold-max) {
-  .header > *,
-  .bottomBar > * {
-    transform: translateY(0);
-    transition: all $default-transition-duration $default-transition-function;
-  }
-
-  .header.hideNav > * {
-    transform: translateY(-$masthead-height);
-  }
-  .header.hideNav > .activity,
-  .header.hideNav > .profile,
-  .bottomBar.hideNav > * {
-    transform: translateY(2 * $bottom-bar-height);
-  }
-}
 
 /******************************************************************************
  * GRID FALLBACKS
@@ -413,7 +394,7 @@ $logo-width-default: 150px;
     left: 0;
     height: 2rem;
   }
-  @media (min-width: $mobile-layout-threshold-min) {
+  @media (min-width: $desktop-layout-threshold-min) {
     .bottomBar {
       display: none;
     }

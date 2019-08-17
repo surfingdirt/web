@@ -14,7 +14,7 @@
 .primary {
   font-family: $title-font-families;
   font-size: $font-size-big;
-  @media (min-width: $mobile-layout-threshold-min) {
+  @media (min-width: $desktop-layout-threshold-min) {
     font-size: $font-size-huge;
   }
 }
@@ -23,7 +23,7 @@
 .modal {
   font-family: $title-font-families;
   font-size: $font-size-medium;
-  @media (min-width: $mobile-layout-threshold-min) {
+  @media (min-width: $desktop-layout-threshold-min) {
     font-size: $font-size-big;
   }
 }

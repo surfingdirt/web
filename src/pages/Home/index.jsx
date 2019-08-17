@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import HOMEPAGE from 'Apollo/queries/home.gql';
 import AlbumPreview from 'Components/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
+import Paragraph from 'Components/Paragraph';
 import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
@@ -42,8 +43,20 @@ class HomeRaw extends React.Component {
           return (
             <Fragment>
               <Card title={'The mountainboarding social network'} type={STANDARD}>
-                <p>Some static content</p>
-                <p>Some static content</p>
+                <Paragraph widthDropCap>
+                  Welcome to Surfing Dirt! Ipsa ad commodi occaecati earum quas. Alias et quasi quos
+                  autem. Earum autem impedit sunt tenetur quod omnis. Molestias vel qui et ad culpa
+                  est qui. Ut ea numquam quod doloribus. Provident aliquid repudiandae porro velit
+                  libero expedita velit unde.
+                </Paragraph>
+                <Paragraph>
+                  Sapiente cumque maiores commodi id veritatis fugiat. Impedit blanditiis ea esse
+                  dolores mollitia ipsa voluptate atque. Harum et quos similique in sit.
+                </Paragraph>
+                <Paragraph>
+                  Blanditiis vero modi aut facilis amet pariatur cumque optio. Numquam in
+                  perferendis inventore doloremque. Nemo est inventore qui sunt iure unde.
+                </Paragraph>
               </Card>
 
               <AlbumPreview album={galleryAlbum} />
