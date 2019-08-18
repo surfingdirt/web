@@ -26,8 +26,36 @@ export class NewVideo extends React.Component {
     return (
       <Card title="Video post page" type={STANDARD} className={styles.page}>
         <form action={actionRoute(VIDEO_NEW)} method="POST" encType="multipart/form-data">
-          <input type="text" name="url" defaultValue="Some url" />
-          <input type="text" name="title" defaultValue="Some title" />
+          <div className={styles.input}>
+            <label>
+              Title
+              <input type="text" name="title" defaultValue="Some title" />
+            </label>
+          </div>
+          <div className={styles.input}>
+            <label>
+              Description
+              <input type="text" name="description" defaultValue="" />
+            </label>
+          </div>
+          <div className={styles.input}>
+            <label>
+              Vendor key
+              <input type="text" name="vendorKey" defaultValue="" />
+            </label>
+          </div>
+          <div className={styles.input}>
+            <label>
+              mediaSubType
+              <select name="mediaSubType">
+                <option />
+                <option value="YOUTUBE">youtube</option>
+                <option value="VIMEO">vimeo</option>
+                <option value="DAILYMOTION">dailymotion</option>
+                <option value="FACEBOOK">facebook</option>
+              </select>
+            </label>
+          </div>
           <input type="hidden" name="albumId" defaultValue={albumId || galleryAlbumId} />
           <button type="submit">Post</button>
         </form>

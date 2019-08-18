@@ -32,6 +32,7 @@ const {
   PROFILE,
   VIDEO,
   VIDEO_NEW,
+  VIDEO_NEW_FOR_ALBUM,
 } = routes;
 
 const About = Loadable({
@@ -135,7 +136,8 @@ class App extends React.Component {
           <DefaultLayoutRoute path={PROFILE} component={Profile} login={MANDATORY} />
           <DefaultLayoutRoute path={USER} component={User} />
           <DefaultLayoutRoute path={VIDEO} component={Video} exact />
-          <DefaultLayoutRoute path={VIDEO_NEW} component={NewVideo} />
+          <DefaultLayoutRoute path={VIDEO_NEW} component={NewVideo} login={MANDATORY} />
+          <DefaultLayoutRoute path={VIDEO_NEW_FOR_ALBUM} component={NewVideo} login={MANDATORY} />
 
           <DefaultLayoutRoute component={Page404} />
         </Switch>

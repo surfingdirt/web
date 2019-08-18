@@ -15,6 +15,7 @@ const routes = {
   VIDEO: '/video/:id',
   VIDEO_EDIT: '/edit-video',
   VIDEO_NEW: '/new-video',
+  VIDEO_NEW_FOR_ALBUM: '/album/:id/new-video',
   USER: '/rider/:id',
   USERS: '/riders',
 };
