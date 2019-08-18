@@ -1,10 +1,11 @@
 import actions, { ACTION_PREFIX } from '~/actions';
+import { CREATE_ALBUM_MUTATION } from 'Apollo/mutations/createAlbum2.gql';
 import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
 import { UPDATE_AVATAR_MUTATION } from 'Apollo/mutations/updateAvatar.gql';
 import { UPDATE_COVER_MUTATION } from 'Apollo/mutations/updateCover2.gql';
 import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
 import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';
-import { errorRoute, photoRoute } from 'Utils/links';
+import { albumRoute, errorRoute, photoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
 import { config } from '../config';
@@ -13,10 +14,23 @@ import MutationRunner from './mutationRunner';
 
 const LoginCookie = Login.COOKIE_NAME;
 
-const { LOGIN, LOGOUT, PHOTO_NEW, AVATAR_UPDATE, COVER_UPDATE } = actions;
+const { ALBUM_NEW, AVATAR_UPDATE, COVER_UPDATE, LOGIN, LOGOUT, PHOTO_NEW, } = actions;
 const { ERROR, HOME, PROFILE } = routes;
 
 const actionInfoMap = {
+  [ALBUM_NEW]: {
+    mutation: CREATE_ALBUM_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'createAlbum',
+    redirect: { route: albumRoute, selector: 'id' },
+    onError: (error, res) => {
+      console.error('Album creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
   [AVATAR_UPDATE]: {
     mutation: UPDATE_AVATAR_MUTATION,
     hasFileUpload: true,

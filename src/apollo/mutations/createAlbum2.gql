@@ -1,0 +1,5 @@
+mutation createAlbum($input: AlbumCreationInput!) {
+    createAlbum(input: $input) {
+        id
+    }
+}

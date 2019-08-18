@@ -20,6 +20,7 @@ import routes from '~/routes';
 const {
   ABOUT,
   ALBUM,
+  ALBUM_NEW,
   ALBUMS,
   ERROR,
   HOME,
@@ -30,6 +31,7 @@ const {
   PHOTO_NEW_FOR_ALBUM,
   PROFILE,
   VIDEO,
+  VIDEO_NEW,
 } = routes;
 
 const About = Loadable({
@@ -56,9 +58,19 @@ const LogIn = Loadable({
   loader: () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
   loading,
 });
+const NewAlbum = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post').then((m) => m.NewAlbum),
+  loading,
+});
 const NewPhoto = Loadable({
   loader: () =>
     import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
+  loading,
+});
+const NewVideo = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post').then((m) => m.NewVideo),
   loading,
 });
 const Photo = Loadable({
@@ -113,6 +125,7 @@ class App extends React.Component {
 
           <DefaultLayoutRoute path={ABOUT} component={About} />
           <DefaultLayoutRoute path={ALBUM} component={Album} exact />
+          <DefaultLayoutRoute path={ALBUM_NEW} component={NewAlbum} exact />
           <DefaultLayoutRoute path={ALBUMS} component={Albums} />
           <DefaultLayoutRoute path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
@@ -121,7 +134,8 @@ class App extends React.Component {
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
           <DefaultLayoutRoute path={PROFILE} component={Profile} login={MANDATORY} />
           <DefaultLayoutRoute path={USER} component={User} />
-          <DefaultLayoutRoute path={VIDEO} component={Video} />
+          <DefaultLayoutRoute path={VIDEO} component={Video} exact />
+          <DefaultLayoutRoute path={VIDEO_NEW} component={NewVideo} />
 
           <DefaultLayoutRoute component={Page404} />
         </Switch>

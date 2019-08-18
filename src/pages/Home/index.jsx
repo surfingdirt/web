@@ -42,7 +42,7 @@ class HomeRaw extends React.Component {
           const { album: galleryAlbum, listAlbums } = data;
           return (
             <Fragment>
-              <Card title={'The mountainboarding social network'} type={STANDARD}>
+              <Card title="The mountainboarding social network" type={STANDARD}>
                 <Paragraph widthDropCap>
                   Welcome to Surfing Dirt! Ipsa ad commodi occaecati earum quas. Alias et quasi quos
                   autem. Earum autem impedit sunt tenetur quod omnis. Molestias vel qui et ad culpa
