@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty';
 import Heading, { headingTypes } from 'Components/Heading';
+import MediaThumb from 'Components/MediaThumb';
 import Paragraph from 'Components/Paragraph';
-import ResponsiveImage from 'Components/ResponsiveImage';
-import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
+import { albumRoute } from 'Utils/links';
 
 import styles from './styles.scss';
 
@@ -34,22 +33,21 @@ const AlbumPreview = ({
         <Empty />
       ) : (
         <ul className={styles.items}>
-          {media.map(({ id, mediaType, title, thumbs }) => (
-            <li key={id} className={styles.item}>
-              <Link
-                className={styles.link}
-                to={mediaType === 'PHOTO' ? photoRoute(id) : videoRoute(id)}
-              >
-                <ResponsiveImage alt={title} images={thumbs} sizes={sizes} />
-              </Link>
-            </li>
-          ))}
+          {media.map(({ id, mediaType, title, thumbs }) => {
+            const attrs = { className: styles.link, id, mediaType, title, thumbs };
+            return (
+              <li key={id} className={styles.item}>
+                <MediaThumb key={id} {...attrs} />
+              </li>
+            );
+          })}
         </ul>
       )}
       <div className={styles.contentWrapper}>
         <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
           {albumTitle}
         </Heading>
+        <p>TODO: showAttribution</p>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}
       </div>
     </Card>
