@@ -48,7 +48,7 @@ const ResponsiveImage = ({ alt, className, images, maxHeight, objectFit, sizes,}
 
   // Enforce height by setting a max-width / aspectRatio
   const style = {
-    'max-width': `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`,
+    maxWidth: `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`,
   }
 
   const imgAttrs = {
@@ -91,7 +91,7 @@ ResponsiveImage.propTypes = {
 
 ResponsiveImage.defaultProps = {
   className: '',
-  maxHeight: 80,
+  maxHeight: 75,
   objectFit: false,
   sizes: null,
 };
