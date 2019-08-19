@@ -78,6 +78,10 @@ $horizontal-padding: 1.1rem;
   border-radius: ($line-height * 2 * $font-size + 2 * $vertical-padding) / 2;
 }
 
+.bareButton {
+
+}
+
 /* Modifiers */
 .disabled {
   background: $button-background-color-disabled;

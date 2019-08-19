@@ -11,14 +11,16 @@ const MAIN = 'main';
 const NEGATIVE = 'negative';
 const DISABLED = 'disabled';
 const LARGE = 'large';
+const BARE = 'bare';
 
-export const buttonTypes = { MAIN, NEGATIVE, DISABLED, LARGE };
+export const buttonTypes = { BARE, DISABLED, LARGE, MAIN, NEGATIVE, };
 
 const typeMapping = {
-  [MAIN]: 'mainButton',
-  [NEGATIVE]: 'negativeButton',
+  [BARE]: 'bareButton',
   [DISABLED]: 'disabledButton',
   [LARGE]: 'largeButton',
+  [MAIN]: 'mainButton',
+  [NEGATIVE]: 'negativeButton',
 };
 
 const Button = ({

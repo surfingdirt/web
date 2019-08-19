@@ -20,12 +20,12 @@ $icon-size-desktop: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0) 30%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 30%);
 }
 
 .playIcon svg {
   width: $icon-size-mobile;
-  fill: $play-icon-fill-color;
+  fill: rgba($play-icon-fill-color, .5);
 
   @media (min-width: $desktop-min) {
     width: $icon-size-desktop;

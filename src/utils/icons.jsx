@@ -7,13 +7,15 @@ import Album from 'Images/picture-stack-landscape-bold.svg';
 import Close from 'Images/close.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
+import Next from 'Images/arrow-right.svg';
 import Play from 'Images/video-player-movie.svg';
-import Video from 'Images/go-pro-bold.svg';
-import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
-import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
+import Previous from 'Images/arrow-left.svg';
 import Profile from 'Images/single-neutral-circle-alternate-bold.svg';
 import Search from 'Images/search-alternate-bold.svg';
+import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
+import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
+import Video from 'Images/go-pro-bold.svg';
 // import Close from 'Images/remove-circle-regular.svg';
 
 
@@ -21,8 +23,10 @@ const ACTIVITY = 'activity';
 const ALBUM = 'album';
 const CLOSE = 'close';
 const HOT = 'hot';
+const NEXT = 'next';
 const PHOTO = 'photo';
 const PLAY = 'play';
+const PREVIOUS = 'previous';
 const PROFILE = 'profile';
 const SEARCH = 'search';
 const THREEDOTS_HORIZONTAL = 'threedots-horizontal';
@@ -35,8 +39,10 @@ const icons = {
   ALBUM,
   CLOSE,
   HOT,
+  NEXT,
   PHOTO,
   PLAY,
+  PREVIOUS,
   PROFILE,
   SEARCH,
   THREEDOTS_HORIZONTAL,
@@ -70,11 +76,17 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
     case icons.HOT:
       icon = Hot;
       break;
+    case icons.NEXT:
+      icon = Next;
+      break;
     case icons.PHOTO:
       icon = Photo;
       break;
     case icons.PLAY:
       icon = Play;
+      break;
+    case icons.PREVIOUS:
+      icon = Previous;
       break;
     case icons.PROFILE:
       icon = Profile;
@@ -96,7 +108,7 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       icon = Video;
       break;
     default:
-      throw new Error(`Unsupported action link type '${type}'`);
+      throw new Error(`Unsupported icon type '${type}'`);
   }
   const props = { className, hollow, icon, label, presentationOnly, size };
   return <SVG {...props} />;

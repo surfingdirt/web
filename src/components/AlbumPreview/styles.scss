@@ -1,6 +1,12 @@
 @import '../../styles/boxmodel';
+@import '../../styles/colors';
 @import "../../styles/layout";
 @import '../../styles/media-queries';
+
+// Buttons
+$button-width: $margin-medium-1;
+
+// Items
 
 $aspect-ratio: 16 / 9;
 
@@ -10,64 +16,110 @@ $height1: calc((100vw - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
 $width2: calc((100vw - 300px - #{$margin-small-2}) / 2.5);
 $height2: calc((100vw - 300px - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
 
-$width3: calc((100vw - 300px - #{$margin-small-2}) / 3.5);
-$height3: calc((100vw - 300px - #{$margin-small-2}) / 3.5  / #{$aspect-ratio});
+$width3: calc((100vw - 300px - #{$margin-small-2 + $button-width}) / 3.5);
+$height3: calc((100vw - 300px - #{$margin-small-2 + $button-width}) / 3.5  / #{$aspect-ratio});
 
-$width4: calc((100vw - 330px - #{$margin-small-2}) / 4.5);
-$height4: calc((100vw - 330px - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
+$width4: calc((100vw - 330px - #{$margin-small-2 + $button-width}) / 4.5);
+$height4: calc((100vw - 330px - #{$margin-small-2 + $button-width}) / 4.5  / #{$aspect-ratio});
 
 // (Max width for .main - thee two columns - content margin and padding - item spacing) / 4.5 items
-$width5: ($max-content-width - $lhs-width-big - $rhs-width-big - (2 * $large-gap + 2 * $padding-medium-2 + 4 * $margin-small-2) / 1rem * 16px) / 4.5;
+$width5: ($max-content-width - $lhs-width-big - $rhs-width-big - (2 * $large-gap + 2 * $padding-medium-2 + 4 * $margin-small-2 + 2 * $button-width) / 1rem * 16px) / 4.5;
 $height5: $width5 / $aspect-ratio;
 
 .wrapper {
   margin: $margin-medium-1 0;
 }
 
-.items {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-x: auto;
+.itemWrapper {
+  position: relative;
+
+  .previous,
+  .next {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: $button-width;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: $album-preview-button-color;
+    opacity: .5;
+
+    @media (min-width: $desktop-layout-threshold-min) {
+      display: flex;
+    }
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    & svg {
+      width: 80%;
+    }
+  }
+
+  .previous {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+
+    @media (min-width: $desktop-layout-threshold-min) {
+      margin: 0 $button-width;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin: 0 $margin-small-2 0 0;
+      overflow: hidden;
+      flex: 0 0 $width1;
+      height: $height1;
+
+      @media (min-width: $desktop-layout-threshold-min) {
+        flex-basis: $width2;
+        height: $height2;
+      }
+
+      @media (min-width: $desktop-min) {
+        flex-basis: $width3;
+        height: $height3;
+      }
+
+      @media (min-width: $desktop-small) {
+        flex-basis: $width4;
+        height: $height4;
+      }
+
+      @media (min-width: $desktop-big) {
+        flex-basis: $width5;
+        height: $height5;
+      }
+    }
+  }
 }
 
-.item {
-  display: flex;
-  align-items: center;
-  margin: 0 $margin-small-2 0 0;
-  overflow: hidden;
-  flex: 0 0 $width1;
-  height: $height1;
-
-  @media (min-width: $desktop-layout-threshold-min) {
-    flex-basis: $width2;
-    height: $height2;
-  }
-
-  @media (min-width: $desktop-min) {
-    flex-basis: $width3;
-    height: $height3;
-  }
-
-  @media (min-width: $desktop-small) {
-    flex-basis: $width4;
-    height: $height4;
-  }
-
-  @media (min-width: $desktop-big) {
-    flex-basis: $width5;
-    height: $height5;
-  }
-}
 
 .contentWrapper {
   padding: $padding-small-1;
   @media (min-width: $desktop-layout-threshold-min) {
     padding: $padding-medium-1;
   }
+  .description {
+    margin-bottom: 0;
+  }
 }
 
-.description {
-  margin-bottom: 0;
-}
