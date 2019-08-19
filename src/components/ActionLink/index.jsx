@@ -7,15 +7,17 @@ import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
 
-const ActionLink = ({ className, icon, label, to }) => (
-  <Link to={to} className={classnames(className, styles.wrapper)}>
-    {getIcon({ type: icon, label, className: styles.defaultIcon })}
+const ActionLink = ({ className, icon, iconClassName, label, to }) => (
+  <Link to={to} className={classnames(className, styles.wrapper)} title={label}>
+    {getIcon({ type: icon, label, className: classnames(styles.defaultIcon, iconClassName) })}
+    <span className={styles.label} aria-hidden="true">{label}</span>
   </Link>
 );
 
 ActionLink.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.node,
+  iconClassName: PropTypes.string,
   label: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
@@ -23,6 +25,7 @@ ActionLink.propTypes = {
 ActionLink.defaultProps = {
   className: null,
   icon: null,
+  iconClassName: null,
 };
 
 export default ActionLink;

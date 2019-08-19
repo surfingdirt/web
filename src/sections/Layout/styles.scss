@@ -68,7 +68,7 @@ $logo-width-default: 150px;
     grid-template-areas:
             "logo logo logo logo logo"
             "main main main main main"
-            ". profile activity actionButton more";
+            ". activity profile actionButton more";
     grid-row-gap: 0;
     grid-column-gap: 0;
     background: transparent;
@@ -163,6 +163,8 @@ $logo-width-default: 150px;
 }
 
 .activity {
+  // Remove when activity exists:
+  display: none;
   grid-area: activity;
 }
 

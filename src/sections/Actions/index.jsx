@@ -10,9 +10,9 @@ const Actions = ({ className, items, label }) => {
   return (
     <nav className={classnames(styles.wrapper, className)} aria-label={label}>
       <ul className={styles.linkList}>
-        {items.map((props) => (
-          <li key={props.to}>
-            <ActionLink {...props} />
+        {items.map((item) => (
+          <li key={item.to}>
+            <ActionLink {...item} className={styles.actionLink} iconClassName={styles.icon} />
           </li>
         ))}
       </ul>

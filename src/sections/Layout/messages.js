@@ -12,22 +12,22 @@ const messages = (getText, getPlural) => (key) =>
       'Activity',
       'Page Layout',
     ) /* Label for a link to a page where the user can see the activity on the site  */,
-    createAnAlbum: getText(
-      'Create an album',
+    addAnAlbum: getText(
+      'Add an album',
       'Actions',
-    ) /* Label of a link to a page where a user could create a new album */,
+    ) /* Label of a link to a page where a user could create a new album. Please keep this translation as short as possible */,
     more: getText(
       'More',
       'Page Layout',
     ) /* Label for a button which opens a list of additional navigation items */,
-    postAPhoto: getText(
-      'Post a photo',
+    addAPhoto: getText(
+      'Add a photo',
       'Actions',
-    ) /* Label of a link to a page where a user could add a new photo */,
-    postAVideo: getText(
-      'Post a video',
+    ) /* Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible */,
+    addAVideo: getText(
+      'Add a video',
       'Actions',
-    ) /* Label of a link to a page where a user could add a new video */,
+    ) /* Label of a link to a page where a user could add a new video. Please keep this translation as short as possible. */,
     profile: getText('Profile', 'Page Layout') /* Label for a link to the user's profile page */,
     search: getText('Search', 'Page Layout') /* Label for a button which opens up the search bar */,
   }[key]);

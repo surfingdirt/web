@@ -1,9 +1,20 @@
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import "../../styles/font-sizes";
 @import "../../styles/icons";
 @import '../../styles/media-queries';
 
 .wrapper {
+}
+
+.label {
+  display: block;
+  margin: $margin-small-3 $margin-small-3 0;
+  color: $action-bar-button-label-color;
+  font-size: $font-size-small;
+  @media (max-width: $desktop-big) {
+    display: none;
+  }
 }
 
 .defaultIcon {

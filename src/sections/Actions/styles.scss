@@ -2,20 +2,25 @@
 @import "../../styles/colors";
 
 .wrapper {
+  display: flex;
+  padding-bottom: 10vh;
+  align-items: flex-end;
+  justify-content: center;
   background-color: $container-background-color-default;
-  text-align: center;
 }
 
 .linkList {
   list-style-type: none;
-  margin: $margin-medium-2 0;
   padding: 0;
 
   li {
-    margin: $margin-medium-2 0;
+    margin: $margin-big 0;
+    text-align: center;
   }
+  .actionLink {
 
-  a {
-    color: $text-color-default;
+  }
+  .icon  {
+    background: $action-bar-button-color;
   }
 }
