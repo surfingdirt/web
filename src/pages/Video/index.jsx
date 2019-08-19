@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import VIDEO from 'Apollo/queries/video.gql';
+import VIDEO from 'Apollo/queries/video2.gql';
 import DataRenderer from 'Components/DataRenderer';
 import { albumRoute, userRoute } from 'Utils/links';
 
@@ -17,23 +17,12 @@ export const Video = ({ match }) => {
       variables={{ id }}
       render={(data) => {
         const {
-          video: { title, thumbs, album, submitter, vendorUrl },
+          video: { title, embedUrl },
         } = data;
         return (
           <div className={styles.page}>
             <h1>{title}</h1>
-            <p>
-              <img src={thumbs[0].url} alt="" />
-            </p>
-            <p>
-              <a href={vendorUrl}>{title}</a>
-            </p>
-            <p>
-              Posted by <Link to={userRoute(submitter.userId)}>{submitter.username}</Link>
-            </p>
-            <p>
-              In album <Link to={albumRoute(album.id)}>{album.title}</Link>
-            </p>
+            <iframe src={embedUrl} />
           </div>
         );
       }}

@@ -53,6 +53,7 @@ export class NewVideo extends React.Component {
                 <option value="VIMEO">vimeo</option>
                 <option value="DAILYMOTION">dailymotion</option>
                 <option value="FACEBOOK">facebook</option>
+                <option value="INSTAGRAM">Instagram</option>
               </select>
             </label>
           </div>

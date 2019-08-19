@@ -11,6 +11,7 @@ query video($id: ID!) {
           height
           width
         }
+        embedUrl
         vendorUrl
         album {
             id
