@@ -34,8 +34,8 @@ const buildListsByType = (list) =>
     return acc;
   }, {});
 
-const ResponsiveImage = ({ alt, className, images, objectFit, sizes }) => {
-  const { url: src } = findDefaultImage(images);
+const ResponsiveImage = ({ alt, className, images, maxHeight, objectFit, sizes,}) => {
+  const { url: src, width: aspectRatioWidth, height: aspectRatioHeight } = findDefaultImage(images);
 
   const imagesByType = buildListsByType(images);
 
@@ -46,10 +46,16 @@ const ResponsiveImage = ({ alt, className, images, objectFit, sizes }) => {
     return { mime, srcSet };
   });
 
+  // Enforce height by setting a max-width / aspectRatio
+  const style = {
+    'max-width': `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`,
+  }
+
   const imgAttrs = {
     alt,
     className: classnames(styles.img, className),
     src,
+    style,
   };
 
   if (sizes) {
@@ -69,7 +75,6 @@ const ResponsiveImage = ({ alt, className, images, objectFit, sizes }) => {
 ResponsiveImage.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,
-  objectFit: PropTypes.bool,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.number.isRequired,
@@ -79,11 +84,14 @@ ResponsiveImage.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  maxHeight: PropTypes.number,
+  objectFit: PropTypes.bool,
   sizes: PropTypes.string,
 };
 
 ResponsiveImage.defaultProps = {
   className: '',
+  maxHeight: 80,
   objectFit: false,
   sizes: null,
 };
