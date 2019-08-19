@@ -13,9 +13,8 @@ const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024p
 
 const breakpointColumnsObj = {
   360: 1,
-  640: 2,
-  960: 3,
-  default: 4,
+  960: 2,
+  default: 3,
 };
 
 export default class AlbumGrid extends React.PureComponent {

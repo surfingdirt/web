@@ -1,22 +1,36 @@
 @import '../../styles/boxmodel';
 @import '../../styles/media-queries';
 
-$gutter: $margin-big;
+$gutter-mobile: $margin-small-1;
+$gutter-desktop: $margin-big;
 
 .masonry {
   display: flex;
-  margin-left: -$gutter;
+  margin-left: -$gutter-mobile;
   width: auto;
 }
 
 .column {
-  padding-left: $gutter;
+  padding-left: $gutter-mobile;
   background-clip: padding-box;
 
   & > .link {
     display: block;
     background: grey;
-    margin-bottom: $gutter;
+    margin-bottom: $gutter-mobile;
   }
 }
 
+@media (min-width: $desktop-min) {
+  .masonry {
+    margin-left: -$gutter-desktop;
+  }
+
+  .column {
+    padding-left: $gutter-desktop;
+
+    & > .link {
+      margin-bottom: $gutter-desktop;
+    }
+  }
+}
