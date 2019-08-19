@@ -1,9 +1,4 @@
-@import '../../styles/colors';
 @import '../../styles/constants';
-
-.spinner {
-  color: $spinner-color-negative;
-}
 
 .spinner svg {
   width: $spinner-size;

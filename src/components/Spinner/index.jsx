@@ -6,9 +6,9 @@ import React from 'react';
 
 import styles from './styles.scss';
 
-const Spinner = ({ className }) => (
+const Spinner = ({ className, negative = true }) => (
   <div className="loadingContainer">
-    <div className={classnames(styles.inlineSpinner, className)}>
+    <div className={classnames(styles.spinner, { [styles.negative]: negative }, className)}>
       <SVG icon={SpinnerSVG} />
     </div>
   </div>
@@ -16,8 +16,8 @@ const Spinner = ({ className }) => (
 
 export default Spinner;
 
-export const InlineSpinner = ({ className }) => (
-  <div className={classnames(styles.inlineSpinner, className)}>
+export const InlineSpinner = ({ className, negative = true }) => (
+  <div className={classnames(styles.inlineSpinner, { [styles.negative]: negative }, className)}>
     <SVG icon={SpinnerSVG} />
   </div>
 );

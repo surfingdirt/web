@@ -6,7 +6,11 @@ $size: 64px;
 .spinner,
 .inlineSpinner {
   color: $spinner-color;
+  &.negative {
+    color: $spinner-color-negative;
+  }
 }
+
 
 .spinner {
   width: $size;
