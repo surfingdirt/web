@@ -6,7 +6,6 @@ import React from 'react';
 import AppContext from '~/contexts';
 
 import '../src/main.scss';
-import { storybookViewports } from '../src/responsiveConfig';
 import theme from './theme';
 
 const translations = po.parse(`
@@ -35,24 +34,9 @@ addDecorator(withKnobs);
 addDecorator(withA11y);
 
 addParameters({
-  /**
-   * Web Accessbility
-   * Text elements must have sufficient color contrast against the background but for the moment
-   * the color contrast analyzer fail because the ratio is not enough good.
-   * https://dequeuniversity.com/rules/axe/2.6/color-contrast
-   * TODO: find colors that pass the guidelines.
-   */
-  a11y: {
-    options: {
-      rules: {
-        'color-contrast': { enabled: false },
-      },
-    },
-  },
   options: {
     theme,
   },
-  viewport: { viewports: storybookViewports },
 });
 
 function loadStories() {

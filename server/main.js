@@ -17,7 +17,6 @@ import useragent from 'useragent';
 import Favicon from 'Images/favicon.ico';
 import Favicon16 from 'Images/favicon-16x16.png';
 import Favicon32 from 'Images/favicon-32x32.png';
-import { generateMediaQueries } from 'Utils/styleUtils';
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import App from '~/App';
@@ -133,7 +132,7 @@ const Main = (rootDir) => {
         favicon16: `<link rel="icon" type="image/png" sizes="16x16" href="${Favicon16}">`,
         favicon32: `<link rel="icon" type="image/png" sizes="32x32" href="${Favicon32}">`,
         html,
-        inlineStyle: `<style>${generateMediaQueries()}</style>`,
+        inlineStyle: `<style></style>`,
         js:
           // null &&
           ['main.bundle.js']
