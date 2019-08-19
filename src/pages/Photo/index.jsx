@@ -1,46 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import PHOTO from 'Apollo/queries/photo.gql';
-import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
-import ResponsiveImage from 'Components/ResponsiveImage';
-import { userRoute } from 'Utils/links';
+import MediaPageContent from 'Components/MediaPageContent';
+import { mediaTypes } from 'Utils/media';
 
-import styles from './styles.scss';
-
-const { HERO } = cardTypes;
+const { PHOTO: PHOTO_TYPE } = mediaTypes;
 
 export const Photo = ({ match }) => {
   const { id } = match.params;
+
   return (
     <DataRenderer
       query={PHOTO}
       variables={{ id }}
-      render={(data) => {
-        const {
-          photo: {
-            title,
-            images,
-            submitter: { userId, username },
-          },
-        } = data;
-
-        // TODO: add sizes attr to ResponsiveImage to guide which image size loads.
-        // Note: keep it simple with 3 media queries
-        return (
-          <Card
-            title={title}
-            type={HERO}
-            heroContent={<ResponsiveImage alt="" className={styles.heroImage} images={images} />}
-          >
-            <div>
-              <span>Posted by:</span> <Link to={userRoute(userId)}>{username}</Link>
-            </div>
-          </Card>
-        );
-      }}
+      render={({ photo }) => <MediaPageContent mediaType={PHOTO_TYPE} media={photo}Z />}
     />
   );
 };

@@ -6,9 +6,9 @@ import React from 'react';
 
 import styles from './styles.scss';
 
-const Spinner = () => (
+const Spinner = ({ className }) => (
   <div className="loadingContainer">
-    <div className={styles.spinner}>
+    <div className={classnames(styles.inlineSpinner, className)}>
       <SVG icon={SpinnerSVG} />
     </div>
   </div>

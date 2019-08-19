@@ -7,6 +7,7 @@ import Album from 'Images/picture-stack-landscape-bold.svg';
 import Close from 'Images/close.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
+import Play from 'Images/video-player-movie.svg';
 import Video from 'Images/go-pro-bold.svg';
 import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
 import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
@@ -21,6 +22,7 @@ const ALBUM = 'album';
 const CLOSE = 'close';
 const HOT = 'hot';
 const PHOTO = 'photo';
+const PLAY = 'play';
 const PROFILE = 'profile';
 const SEARCH = 'search';
 const THREEDOTS_HORIZONTAL = 'threedots-horizontal';
@@ -34,6 +36,7 @@ const icons = {
   CLOSE,
   HOT,
   PHOTO,
+  PLAY,
   PROFILE,
   SEARCH,
   THREEDOTS_HORIZONTAL,
@@ -69,6 +72,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.PHOTO:
       icon = Photo;
+      break;
+    case icons.PLAY:
+      icon = Play;
       break;
     case icons.PROFILE:
       icon = Profile;

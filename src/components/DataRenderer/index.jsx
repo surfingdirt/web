@@ -5,11 +5,13 @@ import { Query } from 'react-apollo';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 
+import styles from './styles.scss';
+
 const DataRenderer = ({ query, variables, render }) => {
   return (
     <Query query={query} variables={variables}>
       {({ loading, error, data }) => {
-        if (loading) return <Spinner />;
+        if (loading) return <Spinner className={styles.spinner} />;
         if (error) return <ErrorMessage />;
 
         return render(data);
