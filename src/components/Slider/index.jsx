@@ -186,13 +186,13 @@ class Slider extends React.PureComponent {
       quickState: { currentSwipePosition },
       stepRefs,
     } = this;
-    const stepsSliderStyle = {};
+    const sliderStyle = {};
 
     if (mounted && children.length > 0) {
       if (touching) {
-        stepsSliderStyle.transform = `translate(${-currentSwipePosition}px)`;
+        sliderStyle.transform = `translate(${-currentSwipePosition}px)`;
       } else {
-        stepsSliderStyle.transform = `translate(${-targetPosition}px)`;
+        sliderStyle.transform = `translate(${-targetPosition}px)`;
       }
     }
 
@@ -218,7 +218,7 @@ class Slider extends React.PureComponent {
             onTouchStart={this.touchStart}
             onTouchMove={this.touchMove}
             onTouchEnd={this.touchEnd}
-            style={stepsSliderStyle}
+            style={sliderStyle}
             className={classNames(styles.slideContainer, !touching && styles.withTransitions)}
           >
             {React.Children.map(children, (child, index) =>
