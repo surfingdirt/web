@@ -1,9 +1,13 @@
 query video($id: ID!) {
     video(id: $id) {
-        id
-        title
         description
+        embedUrl
+        height
+        id
         mediaSubType
+        title
+        vendorUrl
+        width
         thumbs {
           type
           size
@@ -11,8 +15,6 @@ query video($id: ID!) {
           height
           width
         }
-        embedUrl
-        vendorUrl
         album {
             id
             title
