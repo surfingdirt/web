@@ -1,4 +1,5 @@
 @import '../../styles/boxmodel';
+@import "../../styles/layout";
 @import '../../styles/media-queries';
 
 $aspect-ratio: 16 / 9;
@@ -15,8 +16,9 @@ $height3: calc((100vw - 300px - #{$margin-small-2}) / 3.5  / #{$aspect-ratio});
 $width4: calc((100vw - 330px - #{$margin-small-2}) / 4.5);
 $height4: calc((100vw - 330px - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
 
-$width5: calc((100vw - 520px - #{$margin-small-2}) / 4.5);
-$height5: calc((100vw - 520px - #{$margin-small-2}) / 4.5  / #{$aspect-ratio});
+// (Max width for .main - thee two columns - content margin and padding - item spacing) / 4.5 items
+$width5: ($max-content-width - $lhs-width-big - $rhs-width-big - (2 * $large-gap + 2 * $padding-medium-2 + 4 * $margin-small-2) / 1rem * 16px) / 4.5;
+$height5: $width5 / $aspect-ratio;
 
 .wrapper {
   margin: $margin-medium-1 0;
