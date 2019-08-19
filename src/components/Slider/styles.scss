@@ -1,0 +1,25 @@
+@import "../../styles/colors";
+@import "../../styles/constants";
+
+.container {
+  display: flex;
+}
+
+.slideContainer {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  &.withTransitions {
+    transition: all .5s;
+  }
+}
+
+.sliderOverflow {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.initialCursor {
+  cursor: initial;
+}

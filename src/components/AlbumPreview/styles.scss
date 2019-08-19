@@ -30,8 +30,37 @@ $height5: $width5 / $aspect-ratio;
   margin: $margin-medium-1 0;
 }
 
-.itemWrapper {
+.items {
   position: relative;
+  margin: 0;
+  padding: 0;
+  @media (min-width: $desktop-layout-threshold-min) {
+    margin: 0 $button-width;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    margin: 0 $margin-small-2 0 0;
+    overflow: hidden;
+    flex: 0 0 $width1;
+    height: $height1;
+    @media (min-width: $desktop-layout-threshold-min) {
+      flex-basis: $width2;
+      height: $height2;
+    }
+    @media (min-width: $desktop-min) {
+      flex-basis: $width3;
+      height: $height3;
+    }
+    @media (min-width: $desktop-small) {
+      flex-basis: $width4;
+      height: $height4;
+    }
+    @media (min-width: $desktop-big) {
+      flex-basis: $width5;
+      height: $height5;
+    }
+  }
 
   .previous,
   .next {
@@ -63,52 +92,11 @@ $height5: $width5 / $aspect-ratio;
   }
 
   .previous {
-    left: 0;
+    left: -$button-width;
   }
 
   .next {
-    right: 0;
-  }
-
-  .items {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow-x: auto;
-
-    @media (min-width: $desktop-layout-threshold-min) {
-      margin: 0 $button-width;
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      margin: 0 $margin-small-2 0 0;
-      overflow: hidden;
-      flex: 0 0 $width1;
-      height: $height1;
-
-      @media (min-width: $desktop-layout-threshold-min) {
-        flex-basis: $width2;
-        height: $height2;
-      }
-
-      @media (min-width: $desktop-min) {
-        flex-basis: $width3;
-        height: $height3;
-      }
-
-      @media (min-width: $desktop-small) {
-        flex-basis: $width4;
-        height: $height4;
-      }
-
-      @media (min-width: $desktop-big) {
-        flex-basis: $width5;
-        height: $height5;
-      }
-    }
+    right: -$button-width;
   }
 }
 
