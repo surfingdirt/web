@@ -22,7 +22,6 @@ const INITIAL_STATE = {
   mounted: false,
 };
 const INITIAL_QUICK_STATE = {
-  // maxSwipe: null,
   swipeTranslateX: null,
   touchStartX: null,
   touchMoveX: null,
@@ -159,19 +158,27 @@ class Slider extends React.PureComponent {
 
   async performSlide(slideDir) {
     const {
-      state: { targetIndex },
+      state: { targetIndex, targetPosition: oldTargetPosition },
       props: { onSlideChange },
       context: { dir },
     } = this;
+
+    const { scrollWidth, offsetWidth } = this.sliderEl;
+    const maxTranslateX = scrollWidth - offsetWidth;
 
     const increment = (slideDir === FORWARD ? 1 : -1) * (dir === RTL ? -1 : 1);
     let newTargetIndex = targetIndex + increment;
     newTargetIndex = clamp(0, newTargetIndex, this.stepRefs.length - 1);
 
+    const targetPosition = clamp(0, this.getTargetPosition(newTargetIndex), maxTranslateX);
+
+    if (oldTargetPosition === targetPosition) {
+      return;
+    }
     this.setState(
       {
         targetIndex: newTargetIndex,
-        targetPosition: this.getTargetPosition(newTargetIndex),
+        targetPosition,
       },
       () => {
         onSlideChange(newTargetIndex);
@@ -196,20 +203,11 @@ class Slider extends React.PureComponent {
       }
     }
 
+    const isAtBeginning = targetIndex === 0;
+    const isAtEnd = targetIndex === children.length - 1;
+
     return (
       <div className={classNames(styles.container, className)}>
-        {targetIndex === 0 ? (
-          <div className={classNames(styles.initialCursor)} />
-        ) : (
-          <button
-            className={classNames('rtlTransform', prevClassName)}
-            type="button"
-            aria-label={t('previous')}
-            onClick={() => this.performSlide(BACK)}
-          >
-            {getIcon({ type: PREVIOUS })}
-          </button>
-        )}
         <div className={styles.sliderOverflow}>
           <div
             ref={(ref) => {
@@ -226,9 +224,17 @@ class Slider extends React.PureComponent {
             )}
           </div>
         </div>
-        {targetIndex === children.length - 1 ? (
-          <div className={classNames(styles.initialCursor)} />
-        ) : (
+        {!isAtBeginning && (
+          <button
+            className={classNames('rtlTransform', prevClassName)}
+            type="button"
+            aria-label={t('previous')}
+            onClick={() => this.performSlide(BACK)}
+          >
+            {getIcon({ type: PREVIOUS })}
+          </button>
+        )}
+        {!isAtEnd && (
           <button
             className={classNames('rtlTransform', nextClassName)}
             type="button"

@@ -6,7 +6,7 @@ import Empty from 'Components/Empty';
 import Heading, { headingTypes } from 'Components/Heading';
 import MediaThumb from 'Components/MediaThumb';
 import Paragraph from 'Components/Paragraph';
-import StepSlider from 'Components/Slider';
+import Slider from 'Components/Slider';
 import { albumRoute } from 'Utils/links';
 
 import styles from './styles.scss';
@@ -29,7 +29,7 @@ const AlbumPreview = ({
       {isEmpty ? (
         <Empty />
       ) : (
-        <StepSlider
+        <Slider
           className={styles.items}
           prevClassName={styles.previous}
           nextClassName={styles.next}
@@ -42,7 +42,7 @@ const AlbumPreview = ({
               </div>
             );
           })}
-        </StepSlider>
+        </Slider>
       )}
       <div className={styles.contentWrapper}>
         <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
