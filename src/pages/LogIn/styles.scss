@@ -1,6 +1,12 @@
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import "../../styles/constants";
 @import "../../styles/font-sizes";
+
+.form {
+  max-width: $form-max-width;
+  margin: 0 auto;
+}
 
 .errorMessage {
   color: $form-error-color;

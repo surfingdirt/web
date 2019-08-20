@@ -7,15 +7,17 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles.scss';
 
-const MAIN = 'main';
-const NEGATIVE = 'negative';
+const ACTION = 'action';
+const BARE = 'bare';
 const DISABLED = 'disabled';
 const LARGE = 'large';
-const BARE = 'bare';
+const MAIN = 'main';
+const NEGATIVE = 'negative';
 
-export const buttonTypes = { BARE, DISABLED, LARGE, MAIN, NEGATIVE, };
+export const buttonTypes = { ACTION, BARE, DISABLED, LARGE, MAIN, NEGATIVE, };
 
 const typeMapping = {
+  [ACTION]: 'actionButton',
   [BARE]: 'bareButton',
   [DISABLED]: 'disabledButton',
   [LARGE]: 'largeButton',

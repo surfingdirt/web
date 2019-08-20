@@ -15,7 +15,7 @@ export const Photo = ({ match }) => {
     <DataRenderer
       query={PHOTO}
       variables={{ id }}
-      render={({ photo }) => <MediaPageContent mediaType={PHOTO_TYPE} media={photo}Z />}
+      render={({ photo }) => <MediaPageContent mediaType={PHOTO_TYPE} media={photo} />}
     />
   );
 };

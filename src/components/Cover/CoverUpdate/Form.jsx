@@ -16,7 +16,7 @@ import messages from '../messages';
 import styles from '../modal.scss';
 
 const { COVER_UPDATE } = actions;
-const { NEGATIVE } = buttonTypes;
+const { ACTION, NEGATIVE } = buttonTypes;
 
 const PREVIEW_SIZE = 180;
 
@@ -180,6 +180,7 @@ class CoverUpdateForm extends React.Component {
                       label={t('upload')}
                       disabled={submitting}
                       loading={submitting}
+                      type={ACTION}
                     />
                     <Button
                       buttonType="reset"

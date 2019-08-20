@@ -1,6 +1,7 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
 @import "../../styles/font-faces";
 @import "../../styles/font-sizes";
-@import "../../styles/colors";
 @import "../../styles/media-queries";
 
 .heading {
@@ -14,8 +15,10 @@
 .primary {
   font-family: $title-font-families;
   font-size: $font-size-big;
+  margin-bottom: $margin-small-1;
   @media (min-width: $desktop-layout-threshold-min) {
     font-size: $font-size-huge;
+    margin-bottom: $margin-medium-2;
   }
 }
 
@@ -23,7 +26,9 @@
 .modal {
   font-family: $title-font-families;
   font-size: $font-size-medium;
+  margin-bottom: $margin-small-1;
   @media (min-width: $desktop-layout-threshold-min) {
     font-size: $font-size-big;
+    margin-bottom: $margin-medium-2;
   }
 }

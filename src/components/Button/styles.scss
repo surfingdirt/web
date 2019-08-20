@@ -1,5 +1,6 @@
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import "../../styles/constants";
 @import "../../styles/font-sizes";
 
 $font-size: 1rem;
@@ -80,6 +81,12 @@ $horizontal-padding: 1.1rem;
 
 .bareButton {
 
+}
+
+.actionButton {
+  background: $button-background-color-action;
+  border: $widget-border-width solid $button-border-color-action;
+  color: $button-border-color-action;
 }
 
 /* Modifiers */

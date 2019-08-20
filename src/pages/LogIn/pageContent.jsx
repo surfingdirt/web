@@ -1,4 +1,4 @@
-import Button from 'Components/Button/index';
+import Button, { buttonTypes } from 'Components/Button/index';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
@@ -12,9 +12,7 @@ import translations from './messages';
 import styles from './styles.scss';
 
 const { LOGIN } = actions;
-
-const composeValidators = (...validators) => (value) =>
-  validators.reduce((error, validator) => error || validator(value), undefined);
+const { ACTION } = buttonTypes;
 
 class SignInPageContent extends PureComponent {
   static propTypes = {
@@ -37,54 +35,58 @@ class SignInPageContent extends PureComponent {
     return (
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, submitting }) => (
-          <Fragment>
-            <p className={styles.errorMessage} hidden={!errorMessage}>
-              {errorMessage}
-            </p>
-            <form
-              onSubmit={handleSubmit}
-              method="POST"
-              encType="multipart/form-data"
-              action={actionRoute(LOGIN)}
-            >
-              <div className={styles.inputsContainer}>
-                <div className={styles.usernameField}>
-                  <Field
-                    name="username"
-                    id="username"
-                    component={InputField}
-                    type="username"
-                    label={t('username')}
-                    placeholder={t('inputPlaceholder')}
-                    validate={composeValidators(requiredValidator)}
+        render={(props) => {
+          const { handleSubmit, invalid, submitting } = props;
+          return (
+            <Fragment>
+              <p className={styles.errorMessage} hidden={!errorMessage}>
+                {errorMessage}
+              </p>
+              <form
+                className={styles.form}
+                onSubmit={handleSubmit}
+                method="POST"
+                encType="multipart/form-data"
+                action={actionRoute(LOGIN)}
+              >
+                <div className={styles.inputsContainer}>
+                  <div className={styles.usernameField}>
+                    <Field
+                      name="username"
+                      id="username"
+                      component={InputField}
+                      type="username"
+                      label={t('username')}
+                      placeholder={t('inputPlaceholder')}
+                      validate={requiredValidator}
+                    />
+                  </div>
+                  <div className={styles.passwordField}>
+                    <Field
+                      name="userP"
+                      id="userP"
+                      component={InputField}
+                      type="password"
+                      label={t('password')}
+                      placeholder={t('inputPlaceholder')}
+                      validate={requiredValidator}
+                    />
+                  </div>
+                </div>
+                <div className={styles.bottomContainer}>
+                  <Button
+                    type={ACTION}
+                    buttonType="submit"
+                    className={styles.signInButton}
+                    disabled={submitting || invalid}
+                    label={t('signIn')}
+                    loading={submitting}
                   />
                 </div>
-                <div className={styles.passwordField}>
-                  <Field
-                    name="userP"
-                    id="userP"
-                    component={InputField}
-                    type="password"
-                    label={t('password')}
-                    placeholder={t('inputPlaceholder')}
-                    validate={requiredValidator}
-                  />
-                </div>
-              </div>
-              <div className={styles.bottomContainer}>
-                <Button
-                  buttonType="submit"
-                  className={styles.signInButton}
-                  disabled={submitting}
-                  label={t('signIn')}
-                  loading={submitting}
-                  type="negative"
-                />
-              </div>
-            </form>
-          </Fragment>
-        )}
+              </form>
+            </Fragment>
+          );
+        }}
       />
     );
   }

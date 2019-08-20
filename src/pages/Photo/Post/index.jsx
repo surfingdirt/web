@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+import ALBUM from 'Apollo/queries/album.gql';
 import Card, { cardTypes } from 'Components/Card';
+import DataRenderer from 'Components/DataRenderer';
 import PhotoUploadForm from 'Components/Photo/UploadForm';
 import Translate from 'Hocs/Translate';
-import actions from '~/actions';
+import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { PHOTO_NEW } = actions;
 const { STANDARD } = cardTypes;
 
 class NewPhotoRaw extends React.Component {
@@ -24,12 +26,20 @@ class NewPhotoRaw extends React.Component {
   render() {
     const { match, t } = this.props;
     const { galleryAlbumId } = this.context;
-    const { id: albumId } = match.params;
-
+    const { id } = match.params;
+    const albumId = id || galleryAlbumId;
     return (
-      <Card title={t('photoPostPage')} type={STANDARD} className={styles.page}>
-        <PhotoUploadForm albumId={albumId || galleryAlbumId} />
-      </Card>
+      <DataRenderer
+        query={ALBUM}
+        variables={{ id: albumId }}
+        render={({ album: { title } }) => (
+          <Card title={t('photoPostPage')} type={STANDARD} className={styles.page}>
+            <span className={styles.postingTo}>{t('postingToAlbum')}{':'}</span>
+            <Link to={albumRoute(albumId)}>{title}</Link>
+            <PhotoUploadForm albumId={albumId} />
+          </Card>
+        )}
+      />
     );
   }
 }

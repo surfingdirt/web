@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
@@ -6,19 +6,22 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
-import Button from 'Components/Button';
+import Button, { buttonTypes } from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
+import Validation from 'Utils/fieldLevelValidation';
 import { actionRoute, photoRoute } from 'Utils/links';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
+import InputField from 'Components/Form/InputField';
 
 const { PHOTO_NEW } = actions;
+const { ACTION } = buttonTypes;
 
-const PREVIEW_SIZE = 180;
+const PREVIEW_SIZE = 50;
 const mediaSubType = 'IMG';
 
 // TODO: take this in from the context
@@ -65,7 +68,7 @@ class PhotoUploadForm extends React.Component {
     });
   }
 
-  async validate() {
+  async validate(values) {
     const { t } = this.props;
 
     const fileEl = this.fileRef.current;
@@ -73,9 +76,14 @@ class PhotoUploadForm extends React.Component {
       return Promise.resolve();
     }
 
+    const errors = {};
+    if (!values.title) {
+      errors.title = t('required');
+    }
+
     return new Promise(async (resolve) => {
       if (fileEl.files.length === 0) {
-        return resolve();
+        return resolve(errors);
       }
 
       try {
@@ -87,10 +95,11 @@ class PhotoUploadForm extends React.Component {
         );
 
         this.setState({ fileData, displayError: null, uploadWidth: width, uploadHeight: height });
-        return resolve();
+        return resolve(errors);
       } catch (e) {
         console.error('Error while manipulating image file:', e.message);
-        return resolve({ file: t('invalidImage') });
+        errors.file = t('invalidImage');
+        return resolve(errors);
       }
     });
   }
@@ -102,6 +111,8 @@ class PhotoUploadForm extends React.Component {
     if (redirectTo) {
       return <Redirect to={redirectTo} />;
     }
+
+    const requiredValidator = Validation.required(t('required'));
 
     return (
       <Mutation
@@ -121,7 +132,7 @@ class PhotoUploadForm extends React.Component {
               return this.onSubmit(mutate, values);
             }}
             validate={this.validate}
-            render={({ handleSubmit, submitting, submitError, errors }) => {
+            render={({ handleSubmit, invalid, submitting, submitError, errors }) => {
               const empty = !this.state.fileData;
               const errorMessage = errors.file || submitError || this.state.displayError;
               const hasError = !!errorMessage;
@@ -129,7 +140,7 @@ class PhotoUploadForm extends React.Component {
               const previewWidth = PREVIEW_SIZE;
               const previewHeight =
                 (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
-              const previewStyle = { width: `${previewWidth}px`, height: `${previewHeight}px` };
+              const previewStyle = { width: `${previewWidth}vw`, height: `${previewHeight}vw` };
 
               return (
                 <form
@@ -140,9 +151,6 @@ class PhotoUploadForm extends React.Component {
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
-                  <label htmlFor="fileInput" className={styles.fileLabel}>
-                    {t('instructions1')}
-                  </label>
                   <label htmlFor="fileInput" className={styles.fileLabel}>
                     <div className={classnames(styles.dynamicContent, { [styles.empty]: empty })}>
                       <div
@@ -174,24 +182,42 @@ class PhotoUploadForm extends React.Component {
                     </div>
                   </label>
 
-                  <div className={styles.buttons}>
-                    <Button
-                      buttonType="submit"
-                      label={t('upload')}
-                      disabled={submitting}
-                      loading={submitting}
-                    />
-                  </div>
-                  <Field name="title">{(props) => <input {...props.input} type="text" />}</Field>
-                  <Field name="description">
-                    {(props) => <input {...props.input} type="text" />}
-                  </Field>
+                  <Field
+                    name="title"
+                    id="title"
+                    component={InputField}
+                    type="text"
+                    label={t('title')}
+                    placeholder={t('titlePlaceHolder')}
+                    validate={requiredValidator}
+                  />
+                  <Field
+                    className={styles.description}
+                    name="description"
+                    id="description"
+                    component={InputField}
+                    type="textarea"
+                    label={t('description')}
+                    placeholder={t('descriptionPlaceHolder')}
+                    required={false}
+                  />
+
                   <Field name="albumId">
                     {(props) => <input {...props.input} type="hidden" />}
                   </Field>
                   <Field name="mediaSubType">
                     {(props) => <input {...props.input} type="hidden" />}
                   </Field>
+
+                  <div className={styles.buttons}>
+                    <Button
+                      buttonType="submit"
+                      label={t('upload')}
+                      disabled={submitting || invalid}
+                      loading={submitting}
+                      type={ACTION}
+                    />
+                  </div>
                 </form>
               );
             }}

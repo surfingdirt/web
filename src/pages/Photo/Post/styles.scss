@@ -1,2 +1,9 @@
+@import "../../../styles/boxmodel";
+
 .page {
+  padding-bottom: $padding-big;
+}
+
+.postingTo {
+  margin-right: $margin-one-char;
 }

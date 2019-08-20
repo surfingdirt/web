@@ -2,7 +2,9 @@
 
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
+
+import DualContainer from 'Components/DualContainer';
 
 import styles from './styles.scss';
 
@@ -25,22 +27,37 @@ const InputField = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <label className={styles.error} htmlFor={id}>
-        {displayError}
-      </label>
       <div className={styles.inputAndError}>
-        <label className={styles.label} htmlFor={id}>
-          {label}
-        </label>
-        <input
-          className={classnames(styles.input, className)}
-          id={id}
-          placeholder={placeholder}
-          required={required}
-          type={type}
-          onChange={onChange}
-          {...inputAttrs}
-        />
+        <DualContainer>
+          <label className={styles.label} htmlFor={id}>
+            {label}
+          </label>
+          {displayError && (
+            <label className={styles.error} htmlFor={id}>
+              {displayError}
+            </label>
+          )}
+        </DualContainer>
+        {type === 'textarea' ? (
+          <textarea
+            className={classnames(styles.input, className)}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            onChange={onChange}
+            {...inputAttrs}
+          />
+        ) : (
+          <input
+            className={classnames(styles.input, className)}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            type={type}
+            onChange={onChange}
+            {...inputAttrs}
+          />
+        )}
       </div>
     </div>
   );
