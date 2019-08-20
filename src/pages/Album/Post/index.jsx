@@ -2,23 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Card, { cardTypes } from 'Components/Card';
-import { actionRoute } from 'Utils/links';
-import actions from '~/actions';
+import AlbumCreationForm from 'Components/Album/CreationForm';
+import Translate from 'Hocs/Translate';
 
+import messages from './messages';
 import styles from './styles.scss';
 
-const { ALBUM_NEW } = actions;
 const { STANDARD } = cardTypes;
 
-export class NewAlbum extends React.Component {
+class NewAlbumRaw extends React.Component {
+  static propTypes = {
+    t: PropTypes.func.isRequired,
+  };
+
   render() {
+    const { t } = this.props;
     return (
-      <Card title="Album post page" type={STANDARD} className={styles.page}>
-        <form action={actionRoute(ALBUM_NEW)} method="POST" encType="multipart/form-data">
-          <input type="text" name="title" defaultValue="Some album title" />
-          <button type="submit">Post</button>
-        </form>
+      <Card title={t('albumCreationPage')} type={STANDARD} className={styles.page}>
+        <AlbumCreationForm />
       </Card>
     );
   }
 }
+
+export const NewAlbum = Translate(messages)(NewAlbumRaw);

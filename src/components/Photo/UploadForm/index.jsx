@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
@@ -7,21 +7,19 @@ import { Redirect } from 'react-router';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import Button, { buttonTypes } from 'Components/Button';
+import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
-import Validation from 'Utils/fieldLevelValidation';
 import { actionRoute, photoRoute } from 'Utils/links';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
-import InputField from 'Components/Form/InputField';
 
 const { PHOTO_NEW } = actions;
 const { ACTION } = buttonTypes;
 
-const PREVIEW_SIZE = 30;
 const mediaSubType = 'IMG';
 
 // TODO: take this in from the context
@@ -113,8 +111,6 @@ class PhotoUploadForm extends React.Component {
       return <Redirect to={redirectTo} />;
     }
 
-    const requiredValidator = Validation.required(t('required'));
-
     return (
       <Mutation
         mutation={CREATE_PHOTO_MUTATION}
@@ -196,7 +192,6 @@ class PhotoUploadForm extends React.Component {
                     type="text"
                     label={t('title')}
                     placeholder={t('titlePlaceHolder')}
-                    validate={requiredValidator}
                   />
                   <Field
                     className={styles.description}
