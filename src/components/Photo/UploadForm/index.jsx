@@ -3,40 +3,47 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
+import { Redirect } from 'react-router';
 
-import UPDATE_AVATAR from 'Apollo/mutations/updateAvatar.gql';
-import Button, { buttonTypes } from 'Components/Button';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
+import Button from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
-import { actionRoute } from 'Utils/links';
+import { actionRoute, photoRoute } from 'Utils/links';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
-import messages from '../messages';
-import styles from '../modal.scss';
+import messages from './messages';
+import styles from './styles.scss';
 
-const { AVATAR_UPDATE } = actions;
-const { NEGATIVE } = buttonTypes;
+const { PHOTO_NEW } = actions;
 
 const PREVIEW_SIZE = 180;
+const mediaSubType = 'IMG';
 
 // TODO: take this in from the context
-const MAX_TARGET_SIZE = 640;
+const MAX_TARGET_SIZE = 1920;
 const MAX_WIDTH = MAX_TARGET_SIZE;
 const MAX_HEIGHT = MAX_TARGET_SIZE;
 
-class AvatarUpdateForm extends React.Component {
+class PhotoUploadForm extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
+    albumId: PropTypes.string.isRequired,
     t: PropTypes.func.isRequired,
-    closeModal: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    this.state = { fileData: null, displayError: null, uploadWidth: null, uploadHeight: null };
+    this.state = {
+      fileData: null,
+      displayError: null,
+      uploadWidth: null,
+      uploadHeight: null,
+      redirectTo: null,
+    };
 
     this.formRef = React.createRef();
     this.fileRef = React.createRef();
@@ -44,32 +51,18 @@ class AvatarUpdateForm extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.validate = this.validate.bind(this);
-    this.onCancel = this.onCancel.bind(this);
   }
 
-  async onSubmit(mutate) {
+  async onSubmit(mutate, values) {
     const { fileData } = this.state;
 
-    const { closeModal, t } = this.props;
-    if (!fileData) {
-      this.setState({ displayError: t('pleasePickAFile') });
-      return;
-    }
+    const { file: unused, ...input } = values;
+    const response = await mutate({ variables: { file: fileData, input } });
+    const { id } = response.data.createPhoto;
 
-    const response = await mutate({ variables: { file: fileData } });
-    const { avatar } = response.data.updateAvatar;
-    this.context.updateAvatar(avatar);
-
-    closeModal();
-
-    // TODO: replace a reload with an in-place data update
-    window.location.reload();
-  }
-
-  onCancel() {
-    const { closeModal } = this.props;
-
-    closeModal();
+    this.setState({
+      redirectTo: photoRoute(id),
+    });
   }
 
   async validate() {
@@ -103,21 +96,27 @@ class AvatarUpdateForm extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { albumId, t } = this.props;
+    const { redirectTo } = this.state;
+
+    if (redirectTo) {
+      return <Redirect to={redirectTo} />;
+    }
 
     return (
       <Mutation
-        mutation={UPDATE_AVATAR}
+        mutation={CREATE_PHOTO_MUTATION}
         onCompleted={() => {
           this.setState({ displayError: null });
         }}
         onError={({ ...rest }) => {
-          console.log('Error', rest);
+          console.error('Error', rest);
           this.setState({ displayError: t('backendError') });
         }}
       >
         {(mutate) => (
           <Form
+            initialValues={{ albumId, mediaSubType }}
             onSubmit={(values) => {
               return this.onSubmit(mutate, values);
             }}
@@ -128,23 +127,21 @@ class AvatarUpdateForm extends React.Component {
               const hasError = !!errorMessage;
 
               const previewWidth = PREVIEW_SIZE;
-              const previewHeight = (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
+              const previewHeight =
+                (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
               const previewStyle = { width: `${previewWidth}px`, height: `${previewHeight}px` };
 
               return (
                 <form
                   className={styles.form}
                   onSubmit={handleSubmit}
-                  action={actionRoute(AVATAR_UPDATE)}
+                  action={actionRoute(PHOTO_NEW)}
                   method="POST"
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
                   <label htmlFor="fileInput" className={styles.fileLabel}>
-                    {t('avatar1')}
-                  </label>
-                  <label htmlFor="fileInput" className={styles.fileLabel}>
-                    {t('avatar2')}
+                    {t('instructions1')}
                   </label>
                   <label htmlFor="fileInput" className={styles.fileLabel}>
                     <div className={classnames(styles.dynamicContent, { [styles.empty]: empty })}>
@@ -153,7 +150,7 @@ class AvatarUpdateForm extends React.Component {
                       >
                         {errorMessage}
                       </div>
-                      <span className={styles.instructions}>{t('instructions')}</span>
+                      <span className={styles.instructions}>{t('instructions2')}</span>
                       <canvas
                         ref={this.previewRef}
                         className={styles.preview}
@@ -184,13 +181,17 @@ class AvatarUpdateForm extends React.Component {
                       disabled={submitting}
                       loading={submitting}
                     />
-                    <Button
-                      buttonType="reset"
-                      type={NEGATIVE}
-                      label={t('cancel')}
-                      onClick={this.onCancel}
-                    />
                   </div>
+                  <Field name="title">{(props) => <input {...props.input} type="text" />}</Field>
+                  <Field name="description">
+                    {(props) => <input {...props.input} type="text" />}
+                  </Field>
+                  <Field name="albumId">
+                    {(props) => <input {...props.input} type="hidden" />}
+                  </Field>
+                  <Field name="mediaSubType">
+                    {(props) => <input {...props.input} type="hidden" />}
+                  </Field>
                 </form>
               );
             }}
@@ -201,4 +202,4 @@ class AvatarUpdateForm extends React.Component {
   }
 }
 
-export default Translate(messages)(AvatarUpdateForm);
+export default Translate(messages)(PhotoUploadForm);

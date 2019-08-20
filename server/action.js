@@ -1,11 +1,11 @@
 import actions, { ACTION_PREFIX } from '~/actions';
-import { CREATE_ALBUM_MUTATION } from 'Apollo/mutations/createAlbum2.gql';
-import { CREATE_PHOTO_MUTATION } from 'Apollo/mutations/createPhoto.gql';
-import { CREATE_VIDEO_MUTATION } from 'Apollo/mutations/createVideo2.gql';
-import { UPDATE_AVATAR_MUTATION } from 'Apollo/mutations/updateAvatar.gql';
-import { UPDATE_COVER_MUTATION } from 'Apollo/mutations/updateCover2.gql';
-import { LOGIN_MUTATION } from 'Apollo/mutations/login.gql';
-import { LOGOUT_MUTATION } from 'Apollo/mutations/logout.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
+import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
+import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
+import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
+import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
+import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import { albumRoute, errorRoute, photoRoute, videoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';

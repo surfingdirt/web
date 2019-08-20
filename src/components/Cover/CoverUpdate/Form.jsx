@@ -20,6 +20,7 @@ const { NEGATIVE } = buttonTypes;
 
 const PREVIEW_SIZE = 180;
 
+// TODO: take this in from the context
 const MAX_TARGET_SIZE = 1280;
 const MAX_WIDTH = MAX_TARGET_SIZE;
 const MAX_HEIGHT = MAX_TARGET_SIZE;
@@ -47,14 +48,15 @@ class CoverUpdateForm extends React.Component {
   }
 
   async onSubmit(mutate) {
+    const { fileData } = this.state;
     const { closeModal, t } = this.props;
     const { files } = this.fileRef.current;
-    if (files.length === 0) {
+    if (!fileData) {
       this.setState({ displayError: t('pleasePickAFile') });
       return;
     }
 
-    const response = await mutate({ variables: { file: files[0] } });
+    const response = await mutate({ variables: { file: fileData } });
     const { cover } = response.data.updateCover;
     this.context.updateCover(cover);
 
