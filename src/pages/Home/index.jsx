@@ -11,6 +11,7 @@ import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 
 import messages from './messages';
+import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
@@ -42,21 +43,21 @@ class HomeRaw extends React.Component {
           const { album: galleryAlbum, listAlbums } = data;
           return (
             <Fragment>
-              <Card title="The mountainboarding social network" type={STANDARD}>
-                <Paragraph widthDropCap>
-                  Welcome to Surfing Dirt! Ipsa ad commodi occaecati earum quas. Alias et quasi quos
-                  autem. Earum autem impedit sunt tenetur quod omnis. Molestias vel qui et ad culpa
-                  est qui. Ut ea numquam quod doloribus. Provident aliquid repudiandae porro velit
-                  libero expedita velit unde.
-                </Paragraph>
-                <Paragraph>
-                  Sapiente cumque maiores commodi id veritatis fugiat. Impedit blanditiis ea esse
-                  dolores mollitia ipsa voluptate atque. Harum et quos similique in sit.
-                </Paragraph>
-                <Paragraph>
-                  Blanditiis vero modi aut facilis amet pariatur cumque optio. Numquam in
-                  perferendis inventore doloremque. Nemo est inventore qui sunt iure unde.
-                </Paragraph>
+              <Card title={t('title')} type={STANDARD}>
+                <details className={styles.intro}>
+                  <summary className={styles.introSummary}>
+                    <Paragraph
+                      widthDropCap
+                      className={styles.introParagraph}
+                      dataContent={t('more')}
+                    >
+                      {t('paragraph1')}
+                    </Paragraph>
+                  </summary>
+                  <Paragraph>{t('paragraph2')}</Paragraph>
+                  <Paragraph>{t('paragraph3')}</Paragraph>
+                  <Paragraph>{t('paragraph4')}</Paragraph>
+                </details>
               </Card>
 
               <AlbumPreview album={galleryAlbum} />

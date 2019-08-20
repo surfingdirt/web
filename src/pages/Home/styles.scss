@@ -1,0 +1,19 @@
+@import '../../styles/boxmodel';
+@import '../../styles/colors';
+@import '../../styles/font-sizes';
+
+.introSummary {
+  display: block;
+}
+
+.introParagraph::after {
+  content: attr(data-content);
+  color: $link-color-default;
+  cursor: pointer;
+  font-size: $font-size-medium;
+  margin: $margin-one-char;
+}
+
+.intro[open] .introParagraph::after {
+  content: '';
+}

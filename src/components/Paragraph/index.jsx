@@ -43,23 +43,31 @@ export default class Paragraph extends React.PureComponent {
 
       return undefined;
     },
-    className: PropTypes.string,
-    widthDropCap: PropTypes.bool,
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    dataContent: PropTypes.string,
+    widthDropCap: PropTypes.bool,
   };
 
   static defaultProps = {
-    className: '',
+    className: null,
+    dataContent: null,
     type: STANDARD,
     widthDropCap: false,
   };
 
   render() {
-    const { children, className, type, widthDropCap } = this.props;
+    const { children, className, dataContent, type, widthDropCap } = this.props;
 
     const typeClassName = classMapping[type];
     const actualClassName = classnames(styles.default, styles[typeClassName], className);
 
-    return <p className={actualClassName}>{widthDropCap ? insertDropCap(children) : children}</p>;
+    const attrs = dataContent ? { 'data-content': dataContent } : {};
+
+    return (
+      <p className={actualClassName} {...attrs}>
+        {widthDropCap ? insertDropCap(children) : children}
+      </p>
+    );
   }
 }
