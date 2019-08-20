@@ -8,7 +8,7 @@ $button-width: $margin-medium-1;
 
 // Items
 
-$aspect-ratio: 16 / 9;
+$aspect-ratio: 4 / 3;
 
 $width1: calc((100vw - #{$margin-small-2}) / 2.5);
 $height1: calc((100vw - #{$margin-small-2}) / 2.5  / #{$aspect-ratio});
