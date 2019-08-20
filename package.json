@@ -105,7 +105,7 @@
     "jest-transform-graphql": "^2.1.0",
     "js-cookie": "^2.2.0",
     "jsdom": "^13.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "lodash.template": "^4.4.0",
     "lodash.templatesettings": "^4.1.0",
     "mini-css-extract-plugin": "0.4.0",
