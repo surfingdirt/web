@@ -5,7 +5,6 @@
 
 $content-max-width: 30rem;
 $canvas-size: 180px;
-$content-height: 40vw;
 
 $description-line-count: 3;
 
@@ -30,8 +29,8 @@ $description-line-count: 3;
   align-items: center;
   flex-direction: column;
   margin: $margin-medium-2 auto;
-  height: $content-height;
   &.empty {
+    height: 30vh;
     border: $widget-border-width solid $widget-border-color;
   }
 }

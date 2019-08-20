@@ -21,7 +21,7 @@ import InputField from 'Components/Form/InputField';
 const { PHOTO_NEW } = actions;
 const { ACTION } = buttonTypes;
 
-const PREVIEW_SIZE = 50;
+const PREVIEW_SIZE = 30;
 const mediaSubType = 'IMG';
 
 // TODO: take this in from the context
@@ -49,6 +49,7 @@ class PhotoUploadForm extends React.Component {
     };
 
     this.formRef = React.createRef();
+    this.dynamicContentRef = React.createRef();
     this.fileRef = React.createRef();
     this.previewRef = React.createRef();
 
@@ -137,10 +138,13 @@ class PhotoUploadForm extends React.Component {
               const errorMessage = errors.file || submitError || this.state.displayError;
               const hasError = !!errorMessage;
 
-              const previewWidth = PREVIEW_SIZE;
-              const previewHeight =
-                (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
-              const previewStyle = { width: `${previewWidth}vw`, height: `${previewHeight}vw` };
+              let previewWidth = 0;
+              let previewHeight = 0;
+              if (this.dynamicContentRef.current) {
+                previewWidth = this.dynamicContentRef.current.offsetWidth;
+                previewHeight = (this.state.uploadHeight * previewWidth) / this.state.uploadWidth;
+              }
+              const previewStyle = { width: `${previewWidth}px`, height: `${previewHeight}px` };
 
               return (
                 <form
@@ -152,7 +156,10 @@ class PhotoUploadForm extends React.Component {
                   ref={this.formRef}
                 >
                   <label htmlFor="fileInput" className={styles.fileLabel}>
-                    <div className={classnames(styles.dynamicContent, { [styles.empty]: empty })}>
+                    <div
+                      className={classnames(styles.dynamicContent, { [styles.empty]: empty })}
+                      ref={this.dynamicContentRef}
+                    >
                       <div
                         className={classnames(styles.error, { [styles.visibleError]: hasError })}
                       >
