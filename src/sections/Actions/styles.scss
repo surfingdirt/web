@@ -3,7 +3,6 @@
 
 .wrapper {
   display: flex;
-  padding-bottom: 10vh;
   align-items: flex-end;
   justify-content: center;
   background-color: $container-background-color-default;
@@ -16,6 +15,9 @@
   li {
     margin: $margin-big 0;
     text-align: center;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   .actionLink {
 
