@@ -98,28 +98,28 @@ describe('Parsing returns the right data', () => {
 
     expect(extractKeyAndSubType(facebookUrls[1])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'kody.stewart.739/videos/10162168992300290',
+      vendorKey: '10162168992300290',
     });
     expect(extractKeyAndSubType('http://' + facebookUrls[1])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'kody.stewart.739/videos/10162168992300290',
+      vendorKey: '10162168992300290',
     });
     expect(extractKeyAndSubType('https://' + facebookUrls[1])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'kody.stewart.739/videos/10162168992300290',
+      vendorKey: '10162168992300290',
     });
 
     expect(extractKeyAndSubType(facebookUrls[2])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'freshfishfilms/videos/733411660429890',
+      vendorKey: '733411660429890',
     });
     expect(extractKeyAndSubType('http://' + facebookUrls[2])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'freshfishfilms/videos/733411660429890',
+      vendorKey: '733411660429890',
     });
     expect(extractKeyAndSubType('https://' + facebookUrls[2])).toEqual({
       mediaSubType: FACEBOOK,
-      vendorKey: 'freshfishfilms/videos/733411660429890',
+      vendorKey: '733411660429890',
     });
   });
 
