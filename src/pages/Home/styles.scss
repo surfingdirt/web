@@ -59,6 +59,8 @@ $cover-card-content-distance-desktop: $margin-very-big;
 
 .introParagraph {
   margin: 0;
+  column-count: auto;
+  column-width: 16rem;
 }
 
 .introParagraph::after {
@@ -71,4 +73,8 @@ $cover-card-content-distance-desktop: $margin-very-big;
 
 .intro[open] .introParagraph::after {
   content: '';
+}
+
+.title2 {
+  margin-top: $margin-medium-2;
 }

@@ -12,9 +12,10 @@
   font-family: $title-font-families;
   font-size: $dropcap-font-size;
   float: left;
-  line-height: 1;
+  line-height: 4rem;
   margin-right: 0.05rem;
-  margin-top: .15rem;
+  position: relative;
+  top: .25rem;
   color: $text-color-dropcap;
 }
 

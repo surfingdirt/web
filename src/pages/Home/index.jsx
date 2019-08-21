@@ -17,7 +17,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
-const { PRIMARY } = headingTypes;
+const { PRIMARY, SECONDARY } = headingTypes;
 const { NO_TEXT } = logoTypes;
 
 class HomeRaw extends React.Component {
@@ -69,9 +69,12 @@ class HomeRaw extends React.Component {
                       {t('paragraph1')}
                     </Paragraph>
                   </summary>
+
+                  <Heading type={SECONDARY} className={styles.title2}>{t('title2')}</Heading>
                   <Paragraph>{t('paragraph2')}</Paragraph>
+
+                  <Heading type={SECONDARY}>{t('title3')}</Heading>
                   <Paragraph>{t('paragraph3')}</Paragraph>
-                  <Paragraph>{t('paragraph4')}</Paragraph>
                 </details>
               </Card>
 
