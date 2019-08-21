@@ -4,7 +4,7 @@ import Header from './Header';
 
 describe('Header', () => {
   it('type "main" should render as an h1 with class "main"', () => {
-    const wrapper = mount(<Heading type="main">This is a main h1 header</Header>);
+    const wrapper = mount(<Heading type="main">This is a main h1 header</Heading>);
     expect(wrapper).toMatchSnapshot();
 
     const header = wrapper.find('h1.main');
