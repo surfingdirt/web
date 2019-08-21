@@ -13,7 +13,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { HERO } = cardTypes;
-const { PHOTO, VIDEO } = mediaTypes;
+const { VIDEO } = mediaTypes;
 
 const getHeroContent = (media, mediaType, t) => {
   let heroContent;
