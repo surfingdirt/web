@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 import Card, { cardTypes } from 'Components/Card';
 import Paragraph from 'Components/Paragraph/index';
@@ -19,14 +19,37 @@ const { VIDEO } = mediaTypes;
 
 const getHeroContent = (media, mediaType, t) => {
   let heroContent;
+  const { description, title } = media;
 
   if (mediaType === VIDEO) {
-    const { embedUrl, width, height } = media;
-
-    heroContent = <VideoEmbed url={embedUrl} height={height} width={width} />;
+    const { embedUrl, height, width } = media;
+    heroContent = (
+      <Fragment>
+        <Helmet>
+          {title && <title>{title}</title>}
+          {title && <meta name="og:title" content={title} />}
+          {description && <meta name="og:description" content={description} />}
+          {description && <meta name="description" content={description} />}
+        </Helmet>
+        <VideoEmbed url={embedUrl} height={height} width={width} />
+      </Fragment>
+    );
   } else {
     const { images } = media;
-    heroContent = <ResponsiveImage alt="" images={images} />;
+    const largeImage = images.find((i) => {
+      return i.size === 'LARGE';
+    });
+    heroContent = (
+      <Fragment>
+        <Helmet>
+          {title && <title>{title}</title>}
+          {title && <meta name="og:title" content={title} />}
+          {description && <meta name="og:description" content={description} />}
+          {largeImage && <meta name="og:image" content={largeImage.url} />}
+        </Helmet>
+        <ResponsiveImage alt="" images={images} />
+      </Fragment>
+    );
   }
 
   return heroContent;
@@ -45,11 +68,6 @@ const MediaPageContent = (props) => {
 
   return (
     <Card title={title} type={HERO} heroContent={heroContent}>
-      <Helmet>
-        {title && <title>{title}</title>}
-        {description && <meta name="description" content={description} />}
-      </Helmet>
-
       <div>
         {description && <Paragraph>{description}</Paragraph>}
         <div className={styles.metadataItem}>

@@ -33,6 +33,8 @@ export const User = ({ match }) => {
             <Helmet>
               {username && <title>{username}</title>}
               {bio && <meta name="description" content={bio} />}
+              {username && <meta name="og:title" content={username} />}
+              {bio && <meta name="og:description" content={bio} />}
             </Helmet>
 
             <Card type={BARE}>
