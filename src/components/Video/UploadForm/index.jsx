@@ -17,9 +17,11 @@ import actions from '~/actions';
 
 import messages from './messages';
 import styles from './styles.scss';
+import icons, { getIcon, sizes } from 'Utils/icons';
 
 const { VIDEO_NEW } = actions;
 const { ACTION } = buttonTypes;
+const { STANDARD } = sizes;
 
 const VIDEO_PREVIEW_WIDTH = 16;
 const VIDEO_PREVIEW_HEIGHT = 9;
@@ -162,7 +164,12 @@ class VideoUploadForm extends React.Component {
                   encType="multipart/form-data"
                 >
                   <div className={classnames(styles.preview, { [styles.empty]: !preview })}>
-                    {preview || <p>{t('pasteBelow')}</p>}
+                    {preview || (
+                      <div className={styles.content}>
+                        {getIcon({ type: icons.PLAY, size: STANDARD })}
+                        <p>{t('pasteBelow')}</p>
+                      </div>
+                    )}
                   </div>
 
                   <p

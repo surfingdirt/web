@@ -18,7 +18,6 @@ import Users from 'Images/single-neutral-id-card-double.svg';
 import Video from 'Images/go-pro-bold.svg';
 // import Close from 'Images/remove-circle-regular.svg';
 
-
 const ACTIVITY = 'activity';
 const ALBUM = 'album';
 const CLOSE = 'close';

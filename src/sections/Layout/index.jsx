@@ -276,7 +276,7 @@ class Layout extends React.Component {
     const actionItems = [
       { to: ALBUM_NEW, icon: icons.ALBUM, label: t('addAnAlbum') },
       { to: PHOTO_NEW, icon: icons.PHOTO, label: t('addAPhoto') },
-      { to: VIDEO_NEW, icon: icons.VIDEO, label: t('addAVideo') },
+      { to: VIDEO_NEW, icon: icons.PLAY, label: t('addAVideo') },
     ];
 
     const bottomBarProps = {

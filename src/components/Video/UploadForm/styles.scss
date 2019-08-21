@@ -41,12 +41,13 @@ $description-line-count: 3;
     height: 0;
     padding-top: 56.25%;
     border: $widget-border-width solid $widget-border-color;
-    p {
+    .content {
+      display: flex;
+      flex-direction: column;
       position: absolute;
       top: 0;
       height: 100%;
       width: 100%;
-      display: flex;
       align-items: center;
       justify-content: center;
       margin: 0;

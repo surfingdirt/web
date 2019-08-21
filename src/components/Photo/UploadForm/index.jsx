@@ -16,9 +16,11 @@ import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
+import icons, { getIcon, sizes } from 'Utils/icons';
 
 const { PHOTO_NEW } = actions;
 const { ACTION } = buttonTypes;
+const { STANDARD } = sizes;
 
 const mediaSubType = 'IMG';
 
@@ -156,11 +158,16 @@ class PhotoUploadForm extends React.Component {
                       ref={this.dynamicContentRef}
                     >
                       <p
-                        className={classnames(styles.error, { [styles.visibleError]: !!errorMessage })}
+                        className={classnames(styles.error, {
+                          [styles.visibleError]: !!errorMessage,
+                        })}
                       >
                         {errorMessage}
                       </p>
-                      <span className={styles.instructions}>{t('instructions')}</span>
+                      <span className={styles.instructions}>
+                        {getIcon({ type: icons.PHOTO, size: STANDARD })}
+                        <p>{t('instructions')}</p>
+                      </span>
                       <canvas
                         ref={this.previewRef}
                         className={styles.preview}
