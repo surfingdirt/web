@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 
 import USER_PROFILE from 'Apollo/queries/user.gql';
-import AlbumPreview from 'Components/AlbumPreview';
+import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover';
 import Card, { cardTypes } from 'Components/Card';
 import ErrorMessage from 'Components/ErrorMessage';

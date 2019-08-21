@@ -1,27 +1,26 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
 import Button, { buttonTypes } from 'Components/Button';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
-import { actionRoute, albumRoute } from 'Utils/links';
+import { actionRoute, videoRoute } from 'Utils/links';
 import actions from '~/actions';
-import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ALBUM_NEW } = actions;
+const { VIDEO_NEW } = actions;
 const { ACTION } = buttonTypes;
 
-class AlbumCreationForm extends React.Component {
-  static contextType = AppContext;
-
+class VideoUploadForm extends React.Component {
   static propTypes = {
+    albumId: PropTypes.string.isRequired,
     t: PropTypes.func.isRequired,
   };
 
@@ -34,6 +33,7 @@ class AlbumCreationForm extends React.Component {
     };
 
     this.formRef = React.createRef();
+    this.previewRef = React.createRef();
 
     this.onSubmit = this.onSubmit.bind(this);
     this.validate = this.validate.bind(this);
@@ -41,10 +41,10 @@ class AlbumCreationForm extends React.Component {
 
   async onSubmit(mutate, input) {
     const response = await mutate({ variables: { input } });
-    const { id } = response.data.createAlbum;
+    const { id } = response.data.createVideo;
 
     this.setState({
-      redirectTo: albumRoute(id),
+      redirectTo: videoRoute(id),
     });
   }
 
@@ -56,12 +56,16 @@ class AlbumCreationForm extends React.Component {
       errors.title = t('required');
     }
 
+    if (!values.url) {
+      errors.url = t('required');
+    }
+
     return errors;
   }
 
   render() {
+    const { albumId, t } = this.props;
     const { redirectTo } = this.state;
-    const { t } = this.props;
 
     if (redirectTo) {
       return <Redirect to={redirectTo} />;
@@ -69,7 +73,7 @@ class AlbumCreationForm extends React.Component {
 
     return (
       <Mutation
-        mutation={CREATE_ALBUM_MUTATION}
+        mutation={CREATE_VIDEO_MUTATION}
         onCompleted={() => {
           this.setState({ displayError: null });
         }}
@@ -80,6 +84,7 @@ class AlbumCreationForm extends React.Component {
       >
         {(mutate) => (
           <Form
+            initialValues={{ albumId }}
             onSubmit={(values) => {
               return this.onSubmit(mutate, values);
             }}
@@ -91,12 +96,20 @@ class AlbumCreationForm extends React.Component {
                 <form
                   className={styles.form}
                   onSubmit={handleSubmit}
-                  action={actionRoute(ALBUM_NEW)}
+                  action={actionRoute(VIDEO_NEW)}
                   method="POST"
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
                   {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                  <Field
+                    name="url"
+                    id="url"
+                    component={InputField}
+                    type="text"
+                    label={t('url')}
+                    placeholder={t('urlPlaceholder')}
+                  />
                   <Field
                     name="title"
                     id="title"
@@ -116,10 +129,17 @@ class AlbumCreationForm extends React.Component {
                     required={false}
                   />
 
+                  <Field name="albumId">
+                    {(props) => <input {...props.input} type="hidden" />}
+                  </Field>
+                  <Field name="mediaSubType">
+                    {(props) => <input {...props.input} type="hidden" />}
+                  </Field>
+
                   <div className={styles.buttons}>
                     <Button
                       buttonType="submit"
-                      label={t('create')}
+                      label={t('upload')}
                       disabled={submitting || invalid}
                       loading={submitting}
                       type={ACTION}
@@ -135,4 +155,4 @@ class AlbumCreationForm extends React.Component {
   }
 }
 
-export default Translate(messages)(AlbumCreationForm);
+export default Translate(messages)(VideoUploadForm);

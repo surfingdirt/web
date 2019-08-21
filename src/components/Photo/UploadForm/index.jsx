@@ -161,7 +161,7 @@ class PhotoUploadForm extends React.Component {
                       >
                         {errorMessage}
                       </div>
-                      <span className={styles.instructions}>{t('instructions2')}</span>
+                      <span className={styles.instructions}>{t('instructions')}</span>
                       <canvas
                         ref={this.previewRef}
                         className={styles.preview}
@@ -191,7 +191,7 @@ class PhotoUploadForm extends React.Component {
                     component={InputField}
                     type="text"
                     label={t('title')}
-                    placeholder={t('titlePlaceHolder')}
+                    placeholder={t('titlePlaceholder')}
                   />
                   <Field
                     className={styles.description}
@@ -200,7 +200,7 @@ class PhotoUploadForm extends React.Component {
                     component={InputField}
                     type="textarea"
                     label={t('description')}
-                    placeholder={t('descriptionPlaceHolder')}
+                    placeholder={t('descriptionPlaceholder')}
                     required={false}
                   />
 

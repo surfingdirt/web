@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import ALBUMS from 'Apollo/queries/listAlbums2.gql';
-import AlbumPreview from 'Components/AlbumPreview';
+import AlbumPreview from 'Components/Album/AlbumPreview';
 import Empty from 'Components/Empty';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';

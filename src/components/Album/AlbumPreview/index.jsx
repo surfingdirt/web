@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card, { cardTypes } from 'Components/Card';
-import Empty from 'Components/Empty';
-import Heading, { headingTypes } from 'Components/Heading';
-import MediaThumb from 'Components/MediaThumb';
-import Paragraph from 'Components/Paragraph';
-import Slider from 'Components/Slider';
+import Card, { cardTypes } from 'Components/Card/index';
+import Empty from 'Components/Empty/index';
+import Heading, { headingTypes } from 'Components/Heading/index';
+import MediaThumb from 'Components/Media/MediaThumb/index';
+import Paragraph from 'Components/Paragraph/index';
+import Slider from 'Components/Slider/index';
 import { albumRoute } from 'Utils/links';
 
 import styles from './styles.scss';

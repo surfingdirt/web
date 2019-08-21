@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ResponsiveImage from 'Components/ResponsiveImage';
+import ResponsiveImage from 'Components/ResponsiveImage/index';
 import icons, { getIcon } from 'Utils/icons';
 import { photoRoute, videoRoute } from 'Utils/links';
 import { mediaTypes } from 'Utils/media';

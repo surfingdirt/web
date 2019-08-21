@@ -66,6 +66,8 @@ const actionInfoMap = {
     },
   },
   [VIDEO_NEW]: {
+    // TODO: add mediaSubType and vendorKey processing right here in some preProcess method hook
+    // This is necessary because JS-less form will submit a url, not separate parts
     mutation: CREATE_VIDEO_MUTATION,
     hasFileUpload: false,
     responseKey: 'createVideo',

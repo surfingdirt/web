@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import USER from 'Apollo/queries/user.gql';
-import AlbumPreview from 'Components/AlbumPreview';
+import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import VIDEO from 'Apollo/queries/video.gql';
 import DataRenderer from 'Components/DataRenderer';
-import MediaPageContent from 'Components/MediaPageContent';
+import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
 
 const { VIDEO: VIDEO_TYPE } = mediaTypes;

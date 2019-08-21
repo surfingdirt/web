@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-css';
 
-import MediaThumb from 'Components/MediaThumb';
+import MediaThumb from 'Components/Media/MediaThumb/index';
 
 import styles from './styles.scss';
 

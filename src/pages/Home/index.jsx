@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
-import AlbumPreview from 'Components/AlbumPreview';
+import AlbumPreview from 'Components/Album/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
 import Paragraph from 'Components/Paragraph';
 import DataRenderer from 'Components/DataRenderer';

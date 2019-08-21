@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import PHOTO from 'Apollo/queries/photo.gql';
 import DataRenderer from 'Components/DataRenderer';
-import MediaPageContent from 'Components/MediaPageContent';
+import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
 
 const { PHOTO: PHOTO_TYPE } = mediaTypes;

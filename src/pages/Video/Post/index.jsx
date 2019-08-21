@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+import ALBUM from 'Apollo/queries/album.gql';
 import Card, { cardTypes } from 'Components/Card';
-import { actionRoute } from 'Utils/links';
-import actions from '~/actions';
+import DataRenderer from 'Components/DataRenderer';
+import VideoUploadForm from 'Components/Video/UploadForm';
+import Translate from 'Hocs/Translate';
+import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import styles from './styles.scss';
+import messages from './messages';
 
-const { VIDEO_NEW } = actions;
 const { STANDARD } = cardTypes;
 
-export class NewVideo extends React.Component {
+export class NewVideoRaw extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
   };
@@ -19,48 +23,24 @@ export class NewVideo extends React.Component {
   static contextType = AppContext;
 
   render() {
-    const { match } = this.props;
+    const { match, t } = this.props;
     const { galleryAlbumId } = this.context;
-    const { id: albumId } = match.params;
-
+    const { id } = match.params;
+    const albumId = id || galleryAlbumId;
     return (
-      <Card title="Video post page" type={STANDARD} className={styles.page}>
-        <form action={actionRoute(VIDEO_NEW)} method="POST" encType="multipart/form-data">
-          <div className={styles.input}>
-            <label>
-              Title
-              <input type="text" name="title" defaultValue="Some title" />
-            </label>
-          </div>
-          <div className={styles.input}>
-            <label>
-              Description
-              <input type="text" name="description" defaultValue="" />
-            </label>
-          </div>
-          <div className={styles.input}>
-            <label>
-              Vendor key
-              <input type="text" name="vendorKey" defaultValue="" />
-            </label>
-          </div>
-          <div className={styles.input}>
-            <label>
-              mediaSubType
-              <select name="mediaSubType">
-                <option />
-                <option value="YOUTUBE">youtube</option>
-                <option value="VIMEO">vimeo</option>
-                <option value="DAILYMOTION">dailymotion</option>
-                <option value="FACEBOOK">facebook</option>
-                <option value="INSTAGRAM">Instagram</option>
-              </select>
-            </label>
-          </div>
-          <input type="hidden" name="albumId" defaultValue={albumId || galleryAlbumId} />
-          <button type="submit">Post</button>
-        </form>
-      </Card>
+      <DataRenderer
+        query={ALBUM}
+        variables={{ id: albumId }}
+        render={({ album: { title } }) => (
+          <Card title={t('videoPostPage')} type={STANDARD} className={styles.page}>
+            <span className={styles.postingTo}>{t('postingToAlbum')}{':'}</span>
+            <Link to={albumRoute(albumId)}>{title}</Link>
+            <VideoUploadForm albumId={albumId} />
+          </Card>
+        )}
+      />
     );
   }
 }
+
+export const NewVideo = Translate(messages)(NewVideoRaw);

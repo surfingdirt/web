@@ -2,6 +2,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/constants";
 @import "../../../styles/font-sizes";
+@import "../../../styles/media-queries";
 
 $content-max-width: 30rem;
 $canvas-size: 180px;
@@ -10,8 +11,12 @@ $description-line-count: 3;
 
 .form {
   display: block;
-  margin: 0 auto $margin-big;
+  margin: $margin-medium-1 auto $margin-big;
   max-width: $content-max-width;
+
+  @media (min-width: $desktop-min) {
+    margin: $margin-big auto;
+  }
 }
 
 .fileLabel {

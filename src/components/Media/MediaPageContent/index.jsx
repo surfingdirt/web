@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Card, { cardTypes } from 'Components/Card';
-import Paragraph from 'Components/Paragraph';
-import ResponsiveImage from 'Components/ResponsiveImage';
-import Translate from 'Hocs/Translate';
+import Card, { cardTypes } from 'Components/Card/index';
+import Paragraph from 'Components/Paragraph/index';
+import ResponsiveImage from 'Components/ResponsiveImage/index';
+import Translate from 'Hocs/Translate/index';
 import { albumRoute, userRoute } from 'Utils/links';
 import { mediaTypes } from 'Utils/media';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import ALBUM from 'Apollo/queries/album.gql';
-import AlbumGrid from 'Components/AlbumGrid';
+import AlbumGrid from 'Components/Album/AlbumGrid';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import { newPhotoForAlbumRoute } from 'Utils/links';
