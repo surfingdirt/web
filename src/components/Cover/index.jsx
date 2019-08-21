@@ -63,7 +63,7 @@ Cover.propTypes = {
       url: PropTypes.string.isRequired,
       width: PropTypes.number.isRequired,
     }),
-  ).isRequired,
+  ),
   cover: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.number.isRequired,
@@ -72,12 +72,14 @@ Cover.propTypes = {
       url: PropTypes.string.isRequired,
       width: PropTypes.number.isRequired,
     }),
-  ).isRequired,
+  ),
   t: PropTypes.func.isRequired,
   withUpdateForms: PropTypes.bool,
 };
 
 Cover.defaultProps = {
+  avatar: null,
+  cover: null,
   withUpdateForms: false,
 };
 

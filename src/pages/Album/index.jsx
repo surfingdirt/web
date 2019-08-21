@@ -35,8 +35,8 @@ export class Album extends React.Component {
         render={({ album: { description, media, title } }) => (
           <Card type={STANDARD} title={title}>
             <Helmet>
-              {title && <meta name="og:title" content={title} />}
-              {description && <meta name="og:description" content={description} />}
+              {title && <meta property="og:title" content={title} />}
+              {description && <meta property="og:description" content={description} />}
             </Helmet>
 
             <Link to={newLink}>Post a new photo yo</Link>

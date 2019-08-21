@@ -27,9 +27,9 @@ const getHeroContent = (media, mediaType, t) => {
       <Fragment>
         <Helmet>
           {title && <title>{title}</title>}
-          {title && <meta name="og:title" content={title} />}
-          {description && <meta name="og:description" content={description} />}
-          {description && <meta name="description" content={description} />}
+          {title && <meta property="og:title" content={title} />}
+          {description && <meta property="og:description" content={description} />}
+          {description && <meta property="description" content={description} />}
         </Helmet>
         <VideoEmbed url={embedUrl} height={height} width={width} />
       </Fragment>
@@ -43,9 +43,9 @@ const getHeroContent = (media, mediaType, t) => {
       <Fragment>
         <Helmet>
           {title && <title>{title}</title>}
-          {title && <meta name="og:title" content={title} />}
-          {description && <meta name="og:description" content={description} />}
-          {largeImage && <meta name="og:image" content={largeImage.url} />}
+          {title && <meta property="og:title" content={title} />}
+          {description && <meta property="og:description" content={description} />}
+          {largeImage && <meta property="og:image" content={largeImage.url} />}
         </Helmet>
         <ResponsiveImage alt="" images={images} />
       </Fragment>
