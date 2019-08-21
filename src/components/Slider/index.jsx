@@ -20,6 +20,9 @@ const INITIAL_STATE = {
   targetPosition: 0,
   touching: false,
   mounted: false,
+  isAtBeginning: true,
+  isAtEnd: false,
+  overflows: false,
 };
 const INITIAL_QUICK_STATE = {
   swipeTranslateX: null,
@@ -70,8 +73,12 @@ class Slider extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { scrollWidth, offsetWidth } = this.sliderEl;
+    const overflows = scrollWidth > offsetWidth;
+
     this.setState({
       mounted: true,
+      overflows,
     });
   }
 
@@ -171,6 +178,8 @@ class Slider extends React.PureComponent {
     newTargetIndex = clamp(0, newTargetIndex, this.stepRefs.length - 1);
 
     const targetPosition = clamp(0, this.getTargetPosition(newTargetIndex), maxTranslateX);
+    const isAtEnd = targetPosition >= maxTranslateX;
+    const isAtBeginning = targetPosition === 0;
 
     if (oldTargetPosition === targetPosition) {
       return;
@@ -179,6 +188,8 @@ class Slider extends React.PureComponent {
       {
         targetIndex: newTargetIndex,
         targetPosition,
+        isAtBeginning,
+        isAtEnd,
       },
       () => {
         onSlideChange(newTargetIndex);
@@ -189,7 +200,7 @@ class Slider extends React.PureComponent {
   render() {
     const {
       props: { children, t, className, nextClassName, prevClassName },
-      state: { targetIndex, targetPosition, touching, mounted },
+      state: { targetPosition, touching, mounted, isAtBeginning, isAtEnd, overflows },
       quickState: { currentSwipePosition },
       stepRefs,
     } = this;
@@ -202,10 +213,6 @@ class Slider extends React.PureComponent {
         sliderStyle.transform = `translate(${-targetPosition}px)`;
       }
     }
-
-    const isAtBeginning = targetIndex === 0;
-    const isAtEnd = targetIndex === children.length - 1;
-
     return (
       <div className={classNames(styles.container, className)}>
         <div className={styles.sliderOverflow}>
@@ -224,7 +231,7 @@ class Slider extends React.PureComponent {
             )}
           </div>
         </div>
-        {!isAtBeginning && (
+        {!isAtBeginning && overflows && (
           <button
             className={classNames('rtlTransform', prevClassName)}
             type="button"
@@ -234,7 +241,7 @@ class Slider extends React.PureComponent {
             {getIcon({ type: PREVIOUS })}
           </button>
         )}
-        {!isAtEnd && (
+        {!isAtEnd && overflows && (
           <button
             className={classNames('rtlTransform', nextClassName)}
             type="button"
