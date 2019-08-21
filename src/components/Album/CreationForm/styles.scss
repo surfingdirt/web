@@ -42,7 +42,10 @@ $description-line-count: 3;
 
 .error {
   visibility: hidden;
+  min-height: 1.3rem;
   font-size: $font-size-big;
+  text-align: center;
+  color: $form-error-color;
   &.visibleError {
     visibility: visible;
   }
@@ -52,7 +55,6 @@ $description-line-count: 3;
   display: none;
   font-size: $font-size-medium;
 }
-
 
 .empty {
   .preview {
@@ -67,14 +69,6 @@ $description-line-count: 3;
 .preview {
   width: $canvas-size;
   height: $canvas-size;
-}
-
-.error {
-  text-align: center;
-  color: $form-error-color;
-}
-
-.preview {
 }
 
 .fileInput {

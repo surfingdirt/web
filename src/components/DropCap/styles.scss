@@ -13,8 +13,8 @@
   font-size: $dropcap-font-size;
   float: left;
   line-height: 1;
-  margin-right: 0.05em;
-  margin-top: .15em;
+  margin-right: 0.05rem;
+  margin-top: .15rem;
   color: $text-color-dropcap;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .dropcap:before {
-  margin-bottom: -0.175em;
+  margin-bottom: -0.175rem;
 }
 
 .dropcap:after {
-  margin-top: -0.05em;
+  margin-top: -0.05rem;
 }

@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Card, { cardTypes } from 'Components/Card/index';
+import Card, { cardTypes } from 'Components/Card';
 import Paragraph from 'Components/Paragraph/index';
-import ResponsiveImage from 'Components/ResponsiveImage/index';
+import ResponsiveImage from 'Components/ResponsiveImage';
+import VideoEmbed from 'Components/Video/Embed';
 import Translate from 'Hocs/Translate/index';
 import { albumRoute, userRoute } from 'Utils/links';
 import { mediaTypes } from 'Utils/media';
@@ -21,24 +22,10 @@ const getHeroContent = (media, mediaType, t) => {
   if (mediaType === VIDEO) {
     const { embedUrl, width, height } = media;
 
-    const wrapperStyle = {
-      paddingTop: `${(100 * height) / width}%`,
-    };
-    const videoStyle = {};
-
-    heroContent = (
-      <div className={styles.videoWrapper} style={wrapperStyle}>
-        <iframe
-          className={styles.video}
-          style={videoStyle}
-          title={t('videoContent')}
-          src={embedUrl}
-        />
-      </div>
-    );
+    heroContent = <VideoEmbed url={embedUrl} height={height} width={width} />;
   } else {
     const { images } = media;
-    heroContent = <ResponsiveImage alt="" className={styles.photo} images={images} />;
+    heroContent = <ResponsiveImage alt="" images={images} />;
   }
 
   return heroContent;

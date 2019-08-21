@@ -19,67 +19,39 @@ $description-line-count: 3;
   }
 }
 
-.fileLabel {
-  display: block;
-  max-width: $content-max-width;
-  margin: $margin-small-3 auto;
+.error {
+  visibility: hidden;
+  min-height: 1.3rem;
+  font-size: $font-size-big;
   text-align: center;
-  cursor: pointer;
-  font-size: $font-size-small;
+  color: $form-error-color;
+  &.visibleError {
+    visibility: visible;
+  }
 }
 
-.dynamicContent {
+.preview {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: $margin-medium-2 auto;
   &.empty {
-    height: 30vh;
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
     border: $widget-border-width solid $widget-border-color;
+    p {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
   }
-}
-
-.error {
-  visibility: hidden;
-  font-size: $font-size-big;
-  &.visibleError {
-    visibility: visible;
-  }
-}
-
-.instructions {
-  display: none;
-  font-size: $font-size-medium;
-}
-
-
-.empty {
-  .preview {
-    display: none;
-  }
-
-  .instructions {
-    display: initial;
-  }
-}
-
-.preview {
-  width: $canvas-size;
-  height: $canvas-size;
-}
-
-.error {
-  text-align: center;
-  color: $form-error-color;
-}
-
-.preview {
-}
-
-.fileInput {
-  height: 0;
-  visibility: hidden;
 }
 
 .description {

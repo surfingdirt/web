@@ -5,6 +5,12 @@ const messages = (getText, getPlural) => (key) =>
     descriptionPlaceholder: getText(
       'Enter a description',
     ) /* Help text to tell the user what to type */,
+    notUnderstood: getText(
+      'Could not understand this address',
+    ) /* Error message showed when a user entered a video address that could not be understood */,
+    pasteBelow: getText(
+      'Paste a video address below',
+    ) /* Help text instructing what to do to upload a video */,
     required: getText(
       'Required',
     ) /* Short adjective indicating the user must fill a particular form field */,

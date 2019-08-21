@@ -132,7 +132,6 @@ class PhotoUploadForm extends React.Component {
             render={({ handleSubmit, invalid, submitting, submitError, errors }) => {
               const empty = !this.state.fileData;
               const errorMessage = errors.file || submitError || this.state.displayError;
-              const hasError = !!errorMessage;
 
               let previewWidth = 0;
               let previewHeight = 0;
@@ -156,11 +155,11 @@ class PhotoUploadForm extends React.Component {
                       className={classnames(styles.dynamicContent, { [styles.empty]: empty })}
                       ref={this.dynamicContentRef}
                     >
-                      <div
-                        className={classnames(styles.error, { [styles.visibleError]: hasError })}
+                      <p
+                        className={classnames(styles.error, { [styles.visibleError]: !!errorMessage })}
                       >
                         {errorMessage}
-                      </div>
+                      </p>
                       <span className={styles.instructions}>{t('instructions')}</span>
                       <canvas
                         ref={this.previewRef}

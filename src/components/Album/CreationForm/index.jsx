@@ -14,6 +14,7 @@ import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
+import classnames from 'classnames';
 
 const { ALBUM_NEW } = actions;
 const { ACTION } = buttonTypes;
@@ -96,7 +97,11 @@ class AlbumCreationForm extends React.Component {
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
-                  {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                  <p
+                    className={classnames(styles.error, { [styles.visibleError]: !!errorMessage })}
+                  >
+                    {errorMessage}
+                  </p>
                   <Field
                     name="title"
                     id="title"

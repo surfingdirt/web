@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
+import createDecorator from 'final-form-calculate';
 
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
 import Button, { buttonTypes } from 'Components/Button';
 import InputField from 'Components/Form/InputField';
+import VideoEmbed from 'Components/Video/Embed';
 import Translate from 'Hocs/Translate';
 import { actionRoute, videoRoute } from 'Utils/links';
+import { buildEmbedUrl, extractKeyAndSubType } from 'Utils/video';
 import actions from '~/actions';
 
 import messages from './messages';
@@ -17,6 +20,47 @@ import styles from './styles.scss';
 
 const { VIDEO_NEW } = actions;
 const { ACTION } = buttonTypes;
+
+const VIDEO_PREVIEW_WIDTH = 16;
+const VIDEO_PREVIEW_HEIGHT = 9;
+
+const urlParser = createDecorator({
+  field: 'url',
+  updates: {
+    mediaSubType: (url) => {
+      const { mediaSubType } = extractKeyAndSubType(url);
+      return mediaSubType;
+    },
+    // TODO: implement this through a call to graphQL. Otherwise the same-domain restriction means this is a no-go:
+    // title: (url) =>
+    //   new Promise((resolve, reject) => {
+    //     const { mediaSubType } = extractKeyAndSubType(url);
+    //     if (!mediaSubType) {
+    //       return reject();
+    //     }
+    //     const options = {};
+    //     fetch(url, options)
+    //       .then((response) => response.text())
+    //       .then((page) => {
+    //         console.log('Fetched:', page);
+    //         const regex = /<title>(.*)<\/title>/;
+    //         const match = page.match(regex);
+    //         console.log(match);
+    //         if (match.length >= 1) {
+    //           return resolve(match[1]);
+    //         } else {
+    //           return reject();
+    //         }
+    //       }).catch((e) => {
+    //         console.error('Error while fetching title', e);
+    //       });
+    //   }),
+    vendorKey: (url) => {
+      const { vendorKey } = extractKeyAndSubType(url);
+      return vendorKey;
+    },
+  },
+});
 
 class VideoUploadForm extends React.Component {
   static propTypes = {
@@ -32,14 +76,12 @@ class VideoUploadForm extends React.Component {
       redirectTo: null,
     };
 
-    this.formRef = React.createRef();
-    this.previewRef = React.createRef();
-
     this.onSubmit = this.onSubmit.bind(this);
     this.validate = this.validate.bind(this);
   }
 
-  async onSubmit(mutate, input) {
+  async onSubmit(mutate, { url, mediaSubType, ...rest }) {
+    const input = Object.assign({}, rest, { mediaSubType: mediaSubType.toUpperCase() });
     const response = await mutate({ variables: { input } });
     const { id } = response.data.createVideo;
 
@@ -58,9 +100,23 @@ class VideoUploadForm extends React.Component {
 
     if (!values.url) {
       errors.url = t('required');
+    } else {
+      const { mediaSubType, vendorKey } = extractKeyAndSubType(values.url);
+      if (!mediaSubType || !vendorKey) {
+        errors.url = t('notUnderstood');
+      }
     }
 
     return errors;
+  }
+
+  renderPreview(mediaSubType, vendorKey) {
+    if (!mediaSubType || !vendorKey) {
+      return null;
+    }
+
+    const url = buildEmbedUrl(mediaSubType, vendorKey);
+    return <VideoEmbed url={url} height={VIDEO_PREVIEW_HEIGHT} width={VIDEO_PREVIEW_WIDTH} />;
   }
 
   render() {
@@ -88,10 +144,15 @@ class VideoUploadForm extends React.Component {
             onSubmit={(values) => {
               return this.onSubmit(mutate, values);
             }}
+            decorators={[urlParser]}
             validate={this.validate}
-            render={({ handleSubmit, invalid, submitting, submitError }) => {
+            render={({ handleSubmit, invalid, submitting, submitError, values }) => {
+              const { mediaSubType, vendorKey } = values;
               const { displayError } = this.state;
               const errorMessage = submitError || displayError;
+
+              const preview = this.renderPreview(mediaSubType, vendorKey);
+
               return (
                 <form
                   className={styles.form}
@@ -99,9 +160,16 @@ class VideoUploadForm extends React.Component {
                   action={actionRoute(VIDEO_NEW)}
                   method="POST"
                   encType="multipart/form-data"
-                  ref={this.formRef}
                 >
-                  {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                  <div className={classnames(styles.preview, { [styles.empty]: !preview })}>
+                    {preview || <p>{t('pasteBelow')}</p>}
+                  </div>
+
+                  <p
+                    className={classnames(styles.error, { [styles.visibleError]: !!errorMessage })}
+                  >
+                    {errorMessage}
+                  </p>
                   <Field
                     name="url"
                     id="url"
@@ -110,6 +178,7 @@ class VideoUploadForm extends React.Component {
                     label={t('url')}
                     placeholder={t('urlPlaceholder')}
                   />
+
                   <Field
                     name="title"
                     id="title"
@@ -118,6 +187,7 @@ class VideoUploadForm extends React.Component {
                     label={t('title')}
                     placeholder={t('titlePlaceholder')}
                   />
+
                   <Field
                     className={styles.description}
                     name="description"
@@ -133,6 +203,9 @@ class VideoUploadForm extends React.Component {
                     {(props) => <input {...props.input} type="hidden" />}
                   </Field>
                   <Field name="mediaSubType">
+                    {(props) => <input {...props.input} type="hidden" />}
+                  </Field>
+                  <Field name="vendorKey">
                     {(props) => <input {...props.input} type="hidden" />}
                   </Field>
 
