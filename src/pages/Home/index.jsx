@@ -5,15 +5,20 @@ import PropTypes from 'prop-types';
 import HOMEPAGE from 'Apollo/queries/home.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
+import Heading, { headingTypes } from 'Components/Heading';
+import Logo, { logoTypes } from 'Components/Logo';
 import Paragraph from 'Components/Paragraph';
 import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
+import coverImage from 'Images/home-cover-s.jpg';
 import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
+const { PRIMARY } = headingTypes;
+const { NO_TEXT } = logoTypes;
 
 class HomeRaw extends React.Component {
   static contextType = AppContext;
@@ -43,7 +48,17 @@ class HomeRaw extends React.Component {
           const { album: galleryAlbum, listAlbums } = data;
           return (
             <Fragment>
-              <Card title={t('title')} type={STANDARD}>
+              <div className={styles.coverCard}>
+                <Heading type={PRIMARY} className={styles.title}>
+                  {t('title')}
+                </Heading>
+                <Logo type={NO_TEXT} className={styles.splashLogo} title="" />
+                <div
+                  style={{ backgroundImage: `url(${coverImage})` }}
+                  className={styles.coverImage}
+                />
+              </div>
+              <Card type={STANDARD}>
                 <details className={styles.intro}>
                   <summary className={styles.introSummary}>
                     <Paragraph

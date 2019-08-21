@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Heading from './index';
 
 describe('Header', () => {
   it('type "main" should render as an h1 with class "main"', () => {
@@ -16,7 +16,7 @@ describe('Header', () => {
     const wrapper = mount(
       <Heading type="main" className="override">
         This is a main h1 header with a class override
-      </Header>,
+      </Heading>,
     );
     expect(wrapper).toMatchSnapshot();
 
@@ -29,7 +29,7 @@ describe('Header', () => {
     const wrapper = mount(
       <Heading type="main" tag="h2">
         This is a main h2 header
-      </Header>,
+      </Heading>,
     );
     expect(wrapper).toMatchSnapshot();
 

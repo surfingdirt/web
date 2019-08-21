@@ -48,9 +48,11 @@ const renderContent = (props) => {
     case STANDARD:
       return (
         <div className={styles.contentWrapper}>
-          <Heading className={styles.title} type={headingType} link={titleLink}>
-            {title}
-          </Heading>
+          {title && (
+            <Heading className={styles.title} type={headingType} link={titleLink}>
+              {title}
+            </Heading>
+          )}
           <div className={styles.content}>{children}</div>
         </div>
       );
