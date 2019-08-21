@@ -126,7 +126,7 @@ class App extends React.Component {
 
           <DefaultLayoutRoute path={ABOUT} component={About} />
           <DefaultLayoutRoute path={ALBUM} component={Album} exact />
-          <DefaultLayoutRoute path={ALBUM_NEW} component={NewAlbum} exact />
+          <DefaultLayoutRoute path={ALBUM_NEW} component={NewAlbum} exact login={MANDATORY} />
           <DefaultLayoutRoute path={ALBUMS} component={Albums} />
           <DefaultLayoutRoute path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
