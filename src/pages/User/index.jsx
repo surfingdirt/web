@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 import USER from 'Apollo/queries/user.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
@@ -29,13 +30,22 @@ export const User = ({ match }) => {
 
         return (
           <Fragment>
+            <Helmet>
+              {username && <title>{username}</title>}
+              {bio && <meta name="description" content={bio} />}
+            </Helmet>
+
             <Card type={BARE}>
               <Cover cover={cover} avatar={avatar} />
               <div className={styles.contentWrapper}>
                 <Heading className={styles.username} type={PRIMARY}>
                   {username}
                 </Heading>
-                {bio && <Paragraph widthDropCap className={styles.bio}>{bio}</Paragraph>}
+                {bio && (
+                  <Paragraph widthDropCap className={styles.bio}>
+                    {bio}
+                  </Paragraph>
+                )}
               </div>
             </Card>
 

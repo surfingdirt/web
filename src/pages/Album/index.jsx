@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import ALBUM from 'Apollo/queries/album.gql';
 import AlbumGrid from 'Components/Album/AlbumGrid';
@@ -31,9 +32,14 @@ export class Album extends React.Component {
       <DataRenderer
         query={ALBUM}
         variables={{ id: albumId }}
-        render={({ album: { media, title } }) => (
+        render={({ album: { description, media, title } }) => (
           <Card type={STANDARD} title={title}>
-            <Link to={newLink}>Post a new photo</Link>
+            <Helmet>
+              {title && <title>{title}</title>}
+              {description && <meta name="description" content={description} />}
+            </Helmet>
+
+            <Link to={newLink}>Post a new photo yo</Link>
             <AlbumGrid media={media} />
           </Card>
         )}

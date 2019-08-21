@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
@@ -48,6 +49,10 @@ class HomeRaw extends React.Component {
           const { album: galleryAlbum, listAlbums } = data;
           return (
             <Fragment>
+              <Helmet>
+                <title>Surfing Dirt</title>
+              </Helmet>
+
               <div className={styles.coverCard}>
                 <Heading type={PRIMARY} className={styles.title}>
                   {t('title')}
@@ -70,7 +75,9 @@ class HomeRaw extends React.Component {
                     </Paragraph>
                   </summary>
 
-                  <Heading type={SECONDARY} className={styles.title2}>{t('title2')}</Heading>
+                  <Heading type={SECONDARY} className={styles.title2}>
+                    {t('title2')}
+                  </Heading>
                   <Paragraph>{t('paragraph2')}</Paragraph>
 
                   <Heading type={SECONDARY}>{t('title3')}</Heading>

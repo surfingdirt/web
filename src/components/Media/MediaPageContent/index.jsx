@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {Helmet} from "react-helmet";
 
 import Card, { cardTypes } from 'Components/Card';
 import Paragraph from 'Components/Paragraph/index';
@@ -44,6 +45,11 @@ const MediaPageContent = (props) => {
 
   return (
     <Card title={title} type={HERO} heroContent={heroContent}>
+      <Helmet>
+        {title && <title>{title}</title>}
+        {description && <meta name="description" content={description} />}
+      </Helmet>
+
       <div>
         {description && <Paragraph>{description}</Paragraph>}
         <div className={styles.metadataItem}>
