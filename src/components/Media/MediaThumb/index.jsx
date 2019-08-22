@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ class MediaThumb extends React.PureComponent {
     className: PropTypes.string,
     id: PropTypes.string.isRequired,
     mediaType: PropTypes.string.isRequired,
+    objectFit: PropTypes.bool,
     t: PropTypes.func.isRequired,
     title: PropTypes.string,
     thumbs: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -29,16 +31,21 @@ class MediaThumb extends React.PureComponent {
 
   static defaultProps = {
     className: null,
+    objectFit: false,
     title: null,
   };
 
   render() {
-    const { className, id, mediaType, t, title, thumbs } = this.props;
+    const { className, id, mediaType, objectFit, t, title, thumbs } = this.props;
     const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
     const alt = title || t('thumbAlt');
-    const responsiveImage = <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} />;
+    const responsiveImage = <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit />;
     return (
-      <Link className={className} to={to} title={title}>
+      <Link
+        className={classnames(className, { [styles.objectFit]: objectFit })}
+        to={to}
+        title={title}
+      >
         {mediaType === PHOTO ? (
           responsiveImage
         ) : (

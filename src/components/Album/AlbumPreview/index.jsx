@@ -38,7 +38,7 @@ const AlbumPreview = ({
             const attrs = { id, mediaType, title, thumbs };
             return (
               <div key={id} className={styles.item}>
-                <MediaThumb key={id} {...attrs} />
+                <MediaThumb key={id} {...attrs} objectFit />
               </div>
             );
           })}

@@ -32,3 +32,9 @@ $icon-size-desktop: 3rem;
     height: $icon-size-desktop;
   }
 }
+
+.objectFit {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
