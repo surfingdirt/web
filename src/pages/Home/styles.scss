@@ -53,6 +53,11 @@ $cover-card-content-distance-desktop: $margin-very-big;
   }
 }
 
+.intro {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
 .introSummary {
   display: block;
 }
