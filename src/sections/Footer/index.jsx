@@ -9,7 +9,7 @@ import routes from '~/routes';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ABOUT, CONTACT } = routes;
+const { ABOUT } = routes;
 
 const Footer = ({ className, t }) => {
   return (
@@ -19,7 +19,12 @@ const Footer = ({ className, t }) => {
           <Link to={ABOUT}>{t('about')}</Link>
         </li>
         <li className={styles.link}>
-          <Link to={CONTACT}>{t('contact')}</Link>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd-T8XLnoGn1ujbXK4bZg7cCL1v-2JlhCrkPyAZfUXRpVj-aw/viewform"
+            target="_blank"
+          >
+            {t('contact')}
+          </a>
         </li>
       </ul>
     </footer>
