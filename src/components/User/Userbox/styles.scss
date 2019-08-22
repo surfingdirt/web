@@ -1,0 +1,62 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/font-sizes";
+
+$avatar-size-small: 1.75rem;
+$avatar-margin-right-small: $margin-small-3;
+$username-width-small: 4rem;
+$username-font-size-small: $font-size-small;
+
+$avatar-size-standard: 2.5rem;
+$avatar-margin-right-standard: $margin-small-2;
+$username-width-standard: 7rem;
+$username-font-size-standard: $font-size-medium;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  .avatarWrapper {
+    position: relative;
+    height: 0;
+
+    .avatar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 50%;
+      background-size: cover;
+      z-index: 1;
+    }
+  }
+
+  .username {
+    max-width: $username-width-standard;
+  }
+
+  &.small {
+    .avatarWrapper {
+      width: $avatar-size-small;
+      padding-top: $avatar-size-small;
+      margin-right: $avatar-margin-right-small;
+    }
+
+    .username {
+      font-size: $font-size-small;
+    }
+  }
+
+  &.standard {
+    .avatarWrapper {
+      width: $avatar-size-standard;
+      padding-top: $avatar-size-standard;
+      margin-right: $avatar-margin-right-standard;
+    }
+    .username {
+      font-size: $username-font-size-standard;
+    }
+  }
+
+}

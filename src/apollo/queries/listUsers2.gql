@@ -1,0 +1,21 @@
+query listUsers {
+    listUsers {
+        avatar {
+          size
+          width
+          height
+          type
+          url
+        }
+        bio
+        cover {
+          size
+          width
+          height
+          type
+          url
+        }
+        userId
+        username
+    }
+}

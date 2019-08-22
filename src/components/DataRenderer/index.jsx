@@ -22,8 +22,12 @@ const DataRenderer = ({ query, variables, render }) => {
 
 DataRenderer.propTypes = {
   query: PropTypes.objectOf(PropTypes.any).isRequired,
-  variables: PropTypes.objectOf(PropTypes.any).isRequired,
+  variables: PropTypes.objectOf(PropTypes.any),
   render: PropTypes.func.isRequired,
+};
+
+DataRenderer.defaultProps = {
+  variables: {},
 };
 
 export default DataRenderer;

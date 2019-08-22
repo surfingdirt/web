@@ -3,6 +3,12 @@ export const mediaTypes = {
   VIDEO: 'VIDEO',
 };
 
+export const mediaSizes = {
+  SMALL: 'SMALL',
+  MEDIUM: 'MEDIUM',
+  LARGE: 'LARGE',
+};
+
 export const MEDIA_SUBTYPES_VIDEO = {
   DAILYMOTION: 'dailymotion',
   FACEBOOK: 'facebook',

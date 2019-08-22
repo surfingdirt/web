@@ -1,2 +1,17 @@
-.page {
+@import "../../styles/boxmodel";
+@import "../../styles/media-queries";
+
+.list {
+  display: grid;
+  grid-gap: $margin-medium-1;
+  grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
+  justify-items: center;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.grid {
+  display: grid;
 }
