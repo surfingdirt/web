@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
 import Card, { cardTypes } from 'Components/Card';
+import { Helmet } from 'react-helmet';
 
 import Translate from 'Hocs/Translate';
 
@@ -26,6 +27,11 @@ class RawPage404 extends React.Component {
           }
           return (
             <Card type={STANDARD} title={t('pageNotFound')}>
+              <Helmet>
+                <title>{t('pageNotFound')}</title>
+                <meta name="description" content={t('thePageYouRequested')} />
+                <meta property="og:description" content={t('thePageYouRequested')} />
+              </Helmet>
               <p>{t('thePageYouRequested')}</p>
             </Card>
           );
