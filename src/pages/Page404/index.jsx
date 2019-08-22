@@ -2,31 +2,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
+import Card, { cardTypes } from 'Components/Card';
 
-import Heading, { headingTypes } from 'Components/Heading/index';
-import HeadMetaData from 'Components/HeadMetaData';
-import Paragraph from 'Components/Paragraph/index';
 import Translate from 'Hocs/Translate';
 
 import messages from './messages';
-import styles from './styles.scss';
 
-const { PRIMARY } = headingTypes;
+const { STANDARD } = cardTypes;
 
 class RawPage404 extends React.Component {
   static propTypes = {
-    match: PropTypes.shape({
-      url: PropTypes.string,
-    }).isRequired,
     t: PropTypes.func.isRequired,
   };
 
   render() {
-    const { match, t } = this.props;
-    const DESCRIPTION = t('description');
-    const PICTURE = 'picture';
-    const NAME = t('name');
-    const { url } = match;
+    const { t } = this.props;
 
     return (
       <Route
@@ -35,11 +25,9 @@ class RawPage404 extends React.Component {
             staticContext.status = 404;
           }
           return (
-            <div className={styles.container}>
-              <HeadMetaData description={DESCRIPTION} image={PICTURE} title={NAME} url={url} />
-              <Heading type={PRIMARY}>{t('pageNotFound')}</Heading>
-              <Paragraph>{t('thePageYouRequested')}</Paragraph>
-            </div>
+            <Card type={STANDARD} title={t('pageNotFound')}>
+              <p>{t('thePageYouRequested')}</p>
+            </Card>
           );
         }}
       />
