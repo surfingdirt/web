@@ -25,11 +25,12 @@ const {
   ERROR,
   HOME,
   LOGIN,
-  USER,
   PHOTO,
   PHOTO_NEW,
   PHOTO_NEW_FOR_ALBUM,
   PROFILE,
+  USER,
+  USERS,
   VIDEO,
   VIDEO_NEW,
   VIDEO_NEW_FOR_ALBUM,
@@ -86,6 +87,10 @@ const User = Loadable({
   loader: () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
   loading,
 });
+const Users = Loadable({
+  loader: () => import(/* webpackChunkName: 'Users' */ './pages/Users').then((m) => m.Users),
+  loading,
+});
 const Video = Loadable({
   loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
   loading,
@@ -135,6 +140,7 @@ class App extends React.Component {
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
           <DefaultLayoutRoute path={PROFILE} component={Profile} login={MANDATORY} />
           <DefaultLayoutRoute path={USER} component={User} />
+          <DefaultLayoutRoute path={USERS} component={Users} />
           <DefaultLayoutRoute path={VIDEO} component={Video} exact />
           <DefaultLayoutRoute path={VIDEO_NEW} component={NewVideo} login={MANDATORY} />
           <DefaultLayoutRoute path={VIDEO_NEW_FOR_ALBUM} component={NewVideo} login={MANDATORY} />
