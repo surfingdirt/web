@@ -27,7 +27,13 @@ const AlbumPreview = ({
 
   if (isEmpty) {
     return (
-      <Card type={STANDARD} title={albumTitle} titleLink={albumRoute(albumId)} headingType={SECONDARY}>
+      <Card
+        type={STANDARD}
+        title={albumTitle}
+        titleLink={albumRoute(albumId)}
+        headingType={SECONDARY}
+        className={styles.wrapper}
+      >
         <div className={styles.emptyWrapper}>
           <Empty />
           {actions.add && (
