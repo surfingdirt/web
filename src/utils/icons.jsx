@@ -8,14 +8,13 @@ import Close from 'Images/close.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
 import Next from 'Images/arrow-right.svg';
-import Play from 'Images/video-player-movie.svg';
 import Previous from 'Images/arrow-left.svg';
 import Profile from 'Images/single-neutral-circle-alternate-bold.svg';
 import Search from 'Images/search-alternate-bold.svg';
 import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
 import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
-import Video from 'Images/go-pro-bold.svg';
+import Video from 'Images/video-player-movie.svg';
 // import Close from 'Images/remove-circle-regular.svg';
 
 const ACTIVITY = 'activity';
@@ -24,7 +23,6 @@ const CLOSE = 'close';
 const HOT = 'hot';
 const NEXT = 'next';
 const PHOTO = 'photo';
-const PLAY = 'play';
 const PREVIOUS = 'previous';
 const PROFILE = 'profile';
 const SEARCH = 'search';
@@ -40,7 +38,6 @@ const icons = {
   HOT,
   NEXT,
   PHOTO,
-  PLAY,
   PREVIOUS,
   PROFILE,
   SEARCH,
@@ -80,9 +77,6 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.PHOTO:
       icon = Photo;
-      break;
-    case icons.PLAY:
-      icon = Play;
       break;
     case icons.PREVIOUS:
       icon = Previous;

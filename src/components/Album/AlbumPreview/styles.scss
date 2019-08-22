@@ -104,3 +104,12 @@ $height5: $width5 / $aspect-ratio;
   }
 }
 
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .addButtons {
+    align-self: center;
+  }
+
+}

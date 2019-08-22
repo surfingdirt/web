@@ -3,6 +3,11 @@ query listAlbums {
         id
         title
         description
+        actions {
+            add
+            delete
+            edit
+        }
         media {
             id
             mediaType

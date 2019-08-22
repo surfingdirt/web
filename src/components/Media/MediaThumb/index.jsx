@@ -13,7 +13,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { PHOTO } = mediaTypes;
-const { PLAY } = icons;
+const { VIDEO } = icons;
 
 // TODO: refine this after settling on a design, as this will guide which image size loads.
 const sizes = `(max-width:320px) 90px, (min-width:321px) 100px, (min-width:1024px) 150px`;
@@ -52,7 +52,7 @@ class MediaThumb extends React.PureComponent {
           <div className={styles.videoWrapper}>
             {responsiveImage}
             <div className={styles.videoOverlay}>
-              {getIcon({ type: PLAY, label: null, className: styles.playIcon })}
+              {getIcon({ type: VIDEO, label: null, className: styles.playIcon })}
             </div>
           </div>
         )}

@@ -166,7 +166,7 @@ class VideoUploadForm extends React.Component {
                   <div className={classnames(styles.preview, { [styles.empty]: !preview })}>
                     {preview || (
                       <div className={styles.content}>
-                        {getIcon({ type: icons.PLAY, size: STANDARD })}
+                        {getIcon({ type: icons.VIDEO, size: STANDARD })}
                         <p>{t('pasteBelow')}</p>
                       </div>
                     )}

@@ -1,32 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import ALBUM from 'Apollo/queries/album.gql';
+import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import AlbumGrid from 'Components/Album/AlbumGrid';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
-import { newPhotoForAlbumRoute } from 'Utils/links';
+import DualContainer from 'Components/DualContainer';
+import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
-import routes from '~/routes';
 
-const { PHOTO_NEW } = routes;
+import messages from './messages';
+
 const { STANDARD } = cardTypes;
 
-export class Album extends React.Component {
+class AlbumRaw extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
+    t: PropTypes.func.isRequired,
   };
 
   static contextType = AppContext;
 
   render() {
-    const { match } = this.props;
-    const { galleryAlbumId } = this.context;
+    const { match, t } = this.props;
     const { id: albumId } = match.params;
-
-    const newLink = albumId === galleryAlbumId ? PHOTO_NEW : newPhotoForAlbumRoute(albumId);
 
     return (
       <DataRenderer
@@ -38,8 +37,12 @@ export class Album extends React.Component {
               {title && <meta property="og:title" content={title} />}
               {description && <meta property="og:description" content={description} />}
             </Helmet>
-
-            <Link to={newLink}>Post a new photo yo</Link>
+            <DualContainer>
+              <div />
+              <div>
+                <AlbumAddButtons albumId={albumId} />
+              </div>
+            </DualContainer>
             <AlbumGrid media={media} />
           </Card>
         )}
@@ -47,3 +50,5 @@ export class Album extends React.Component {
     );
   }
 }
+
+export const Album = Translate(messages)(AlbumRaw);

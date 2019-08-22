@@ -36,6 +36,11 @@ query userProfile($userId: ID!) {
         id
         title
         description
+        actions {
+            add
+            delete
+            edit
+        }
         media {
             id
             title
