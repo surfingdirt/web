@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import HOMEPAGE from 'Apollo/queries/home.gql';
+import HOMEPAGE from 'Apollo/queries/home2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Card, { cardTypes } from 'Components/Card';
 import Heading, { headingTypes } from 'Components/Heading';
