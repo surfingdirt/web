@@ -31,7 +31,7 @@ const UserboxRaw = (props) => {
 
   const sizeClassName = styles[sizeMapping[size]];
 
-  const img = avatar.find((a) => a.size === smallMediaSize);
+  const img = avatar && avatar.find((a) => a.size === smallMediaSize);
   const imgStyle = img ? { backgroundImage: `url(${img.url})` } : {};
 
   return (
