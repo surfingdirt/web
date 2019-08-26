@@ -22,6 +22,7 @@ const {
   ALBUM,
   ALBUM_NEW,
   ALBUMS,
+  CONFIRM_EMAIL,
   ERROR,
   HOME,
   LOGIN,
@@ -46,6 +47,10 @@ const Album = Loadable({
 });
 const Albums = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Albums').then((m) => m.Albums),
+  loading,
+});
+const ConfirmEmail = Loadable({
+  loader: () => import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail').then((m) => m.ConfirmEmail),
   loading,
 });
 const Error = Loadable({
@@ -133,6 +138,7 @@ class App extends React.Component {
           <DefaultLayoutRoute path={ALBUM} component={Album} exact />
           <DefaultLayoutRoute path={ALBUM_NEW} component={NewAlbum} exact login={MANDATORY} />
           <DefaultLayoutRoute path={ALBUMS} component={Albums} />
+          <DefaultLayoutRoute path={CONFIRM_EMAIL} component={ConfirmEmail} />
           <DefaultLayoutRoute path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
           <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} login={MANDATORY} />

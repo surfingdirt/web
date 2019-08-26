@@ -4,6 +4,7 @@ const routes = {
   ALBUM_NEW: '/new-album',
   ALBUMS: '/albums',
   CONTACT: '/contact',
+  CONFIRM_EMAIL: '/confirm-email',
   ERROR: '/error/:id/:message',
   HOME: '/',
   LOGIN: '/login',

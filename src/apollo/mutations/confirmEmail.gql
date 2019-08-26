@@ -1,0 +1,12 @@
+mutation ConfirmEmail(
+    $userId: ID!
+    $input: UserConfirmationInput!
+    ) {
+  confirmEmail(
+    userId: $userId
+    input: $input
+  ) {
+    status
+    alreadyDone
+  }
+}
