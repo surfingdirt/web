@@ -1,4 +1,5 @@
 @import '../../styles/boxmodel';
+@import '../../styles/colors';
 @import '../../styles/constants';
 @import "../../styles/media-queries";
 
@@ -35,6 +36,7 @@
   top: 0;
   bottom: 0;
   z-index: 0;
+  background-color: $cover-image-background-color;
 }
 
 .coverMenu {

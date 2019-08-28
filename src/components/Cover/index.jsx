@@ -34,11 +34,9 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
         {hasCover && <ResponsiveImage alt={t('cover')} images={cover} objectFit />}
       </div>
 
-      {hasAvatar && (
-        <div className={styles.avatarPositionner}>
-          <UserProfile images={avatar} type={RESPONSIVE} />
-        </div>
-      )}
+      <div className={styles.avatarPositionner}>
+        <UserProfile images={avatar} type={RESPONSIVE} />
+      </div>
 
       <div className={styles.coverContent}>
         {options.length > 0 && (

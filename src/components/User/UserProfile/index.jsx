@@ -23,7 +23,7 @@ class UserProfile extends React.Component {
         url: PropTypes.string.isRequired,
         width: PropTypes.number.isRequired,
       }),
-    ).isRequired,
+    ),
     label: PropTypes.string,
     type: (props, propName, componentName) => {
       const type = props[propName];
@@ -42,14 +42,19 @@ class UserProfile extends React.Component {
   static defaultProps = {
     className: null,
     label: '',
+    images: [],
   };
 
   render() {
     const { images, className, label, type } = this.props;
-    const src = images[0].url;
-
     const sizeClassName = styles[type];
-    return <img alt={label} src={src} className={classnames(styles.wrapper, sizeClassName, className)} />;
+
+    if (images && images.length > 0) {
+      const src = images[0].url;
+      return <img alt={label} src={src} className={classnames(styles.wrapper, sizeClassName, className)}/>;
+    }
+
+    return <div className={classnames(styles.wrapper, styles.placeholder, sizeClassName, className)}/>;
   }
 }
 
