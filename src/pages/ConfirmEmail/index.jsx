@@ -6,6 +6,7 @@ import queryString from 'query-string';
 import CONFIRM_EMAIL from 'Apollo/mutations/confirmEmail.gql';
 import Button, { buttonTypes } from 'Components/Button';
 import Card, { cardTypes } from 'Components/Card';
+import Heading, { headingTypes } from 'Components/Heading';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import routes from '~/routes';
@@ -13,8 +14,9 @@ import routes from '~/routes';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { STANDARD } = cardTypes;
 const { ACTION } = buttonTypes;
+const { STANDARD } = cardTypes;
+const { SECONDARY } = headingTypes;
 const { LOGIN } = routes;
 
 class ConfirmEmailRaw extends PureComponent {
@@ -80,6 +82,30 @@ class ConfirmEmailRaw extends PureComponent {
         <div className={styles.buttonWrapper}>
           <Button type={ACTION} href={LOGIN} label={t('signIn')} />
         </div>
+
+        <article className={styles.thingsToDo}>
+          <Heading type={SECONDARY}>{t('thingsTodo')}</Heading>
+          <ol>
+            <li>
+              <p>{t('personalizeYourAccount')}</p>
+              <ul>
+                <li>{t('goToYourProfilePage')}</li>
+                <li>{t('clickSettings')}</li>
+                <li>{t('addCoverPhoto')}</li>
+                <li>{t('addProfilePhoto')}</li>
+              </ul>
+            </li>
+            <li>
+              <p>{t('uploadPhotosOrVideos')}</p>
+              <p>{t('weSupport')}</p>
+            </li>
+            <li>
+              <p>{t('addAnAlbum')}</p>
+              {/*<p>{t('privateAlbums')}</p>*/}
+              {/*<p>{t('publicAlbums')}</p>*/}
+            </li>
+          </ol>
+        </article>
       </Card>
     );
   }
