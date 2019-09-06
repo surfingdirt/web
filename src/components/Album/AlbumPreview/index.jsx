@@ -62,7 +62,7 @@ const AlbumPreview = ({
         <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
           {albumTitle}
         </Heading>
-        {showAttribution && <p>TODO: showAttribution</p>}
+        {/*{showAttribution && <p>TODO: showAttribution</p>}*/}
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}
       </div>
     </Card>
