@@ -10,7 +10,7 @@ import Paragraph from 'Components/Paragraph';
 import Slider from 'Components/Slider';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
-import { AlbumAccess } from 'Utils/data';
+import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
 
 import messages from './messages';
@@ -20,11 +20,7 @@ const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { SMALLEST } = userboxSizes;
 
-const renderAttribution = (albumAccess, submitter, t) => {
-  if (albumAccess === AlbumAccess.PUBLIC) {
-    return <span className={styles.public}>{t('public')}</span>;
-  }
-
+const renderAttribution = (albumVisibility, submitter, t) => {
   return (
     <Fragment>
       <span className={styles.by}>{t('by')}</span>
@@ -34,7 +30,15 @@ const renderAttribution = (albumAccess, submitter, t) => {
 };
 
 const AlbumPreview = ({
-  album: { actions, albumAccess, description, id: albumId, media, submitter, title: albumTitle },
+  album: {
+    actions,
+    albumContributions,
+    description,
+    id: albumId,
+    media,
+    submitter,
+    title: albumTitle,
+  },
   showAttribution,
   renderIfEmpty,
   t,
@@ -82,9 +86,12 @@ const AlbumPreview = ({
           <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
             {albumTitle}
           </Heading>
-          {showAttribution && (
-            <div className={styles.attribution}>{renderAttribution(albumAccess, submitter, t)}</div>
-          )}
+          <div className={styles.metadata}>
+            {albumContributions === AlbumContributions.PUBLIC && (
+              <span className={styles.public}>{t('public')}</span>
+            )}
+            {showAttribution && renderAttribution(submitter, t)}
+          </div>
         </div>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}
       </div>

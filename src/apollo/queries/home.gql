@@ -5,7 +5,8 @@ query home($galleryAlbumId: ID!) {
             delete
             edit
         }
-        albumAccess
+        albumContributions
+        albumVisibility
         description
         id
         media {
@@ -28,7 +29,8 @@ query home($galleryAlbumId: ID!) {
             delete
             edit
         }
-        albumAccess
+        albumContributions
+        albumVisibility
         description
         id
         media {

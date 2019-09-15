@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 
-import USER_PROFILE from 'Apollo/queries/user.gql';
+import USER_PROFILE from 'Apollo/queries/user2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover';
 import Card, { cardTypes } from 'Components/Card';

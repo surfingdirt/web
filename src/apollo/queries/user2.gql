@@ -41,7 +41,8 @@ query userProfile($userId: ID!) {
             delete
             edit
         }
-        albumAccess
+        albumContributions
+        albumVisibility
         media {
             id
             title
