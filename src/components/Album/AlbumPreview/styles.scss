@@ -111,6 +111,7 @@ $height5: $width5 / $aspect-ratio;
 
     .metadata {
       display: contents;
+      flex-shrink: 0;
     }
 
     .public {
