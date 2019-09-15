@@ -112,6 +112,7 @@ class Slider extends React.PureComponent {
   }
 
   touchMove(e) {
+    return;
     const touchMoveX = e.touches[0].clientX;
     const {
       state: { targetPosition },
@@ -128,6 +129,7 @@ class Slider extends React.PureComponent {
   }
 
   touchEnd() {
+    return;
     const {
       props: { onSlideChange, children },
       state: { targetIndex, targetPosition },
