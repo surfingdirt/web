@@ -9,8 +9,11 @@
   display: flex;
   width: 100%;
   white-space: nowrap;
-  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+
+  @media (hover: none) {
+    overflow-x: scroll;
+  }
 
   &.withTransitions {
     transition: all .5s;
