@@ -13,6 +13,8 @@ import AppContext from '~/contexts';
 
 import messages from './messages';
 
+const COUNT_ITEMS = 25;
+
 const { STANDARD } = cardTypes;
 
 class AlbumRaw extends React.Component {
@@ -30,7 +32,7 @@ class AlbumRaw extends React.Component {
     return (
       <DataRenderer
         query={ALBUM}
-        variables={{ id: albumId }}
+        variables={{ id: albumId, countItems: COUNT_ITEMS }}
         render={({ album: { description, media, title } }) => (
           <Card type={STANDARD} title={title}>
             <Helmet>
