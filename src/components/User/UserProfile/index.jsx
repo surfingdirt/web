@@ -51,10 +51,18 @@ class UserProfile extends React.Component {
 
     if (images && images.length > 0) {
       const src = images[0].url;
-      return <img alt={label} src={src} className={classnames(styles.wrapper, sizeClassName, className)}/>;
+      return (
+        <img
+          alt={label}
+          src={src}
+          className={classnames(styles.wrapper, sizeClassName, className)}
+        />
+      );
     }
 
-    return <div className={classnames(styles.wrapper, styles.placeholder, sizeClassName, className)}/>;
+    return (
+      <div className={classnames(styles.wrapper, styles.placeholder, sizeClassName, className)} />
+    );
   }
 }
 

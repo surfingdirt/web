@@ -39,7 +39,7 @@
 .responsive {
   width: $profile-size-small;
   height: $profile-size-small;
-  border-width: 2px;
+  border: 2px solid $profile-border-color;
 
   @media (min-width: $desktop-small) {
     width: $profile-size-standard;
