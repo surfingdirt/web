@@ -368,20 +368,21 @@
 
   .logo {
     position: fixed;
+    display: inline-flex;
     left: 5rem;
-    top: $margin-small-3;
+    top: $margin-small-2;
   }
 
   .navigation {
     float: left;
     width: 250px;
-    height: 100vh;
+    bottom: 0;
   }
 
   .actions {
     float: right;
     width: 100px;
-    height: 100vh;
+    bottom: 0;
   }
 
   .positioner {

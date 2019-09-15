@@ -53,10 +53,10 @@ class LinkNavigationRaw extends React.Component {
               </li>
             ))}
           </ul>
+          <Footer className={styles.footer} />
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
             {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
           </button>
-          <Footer className={styles.footer} />
         </div>
       </nav>
     );
