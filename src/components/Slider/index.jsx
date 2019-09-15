@@ -18,16 +18,10 @@ const BACK = 'back';
 const INITIAL_STATE = {
   targetIndex: 0,
   targetPosition: 0,
-  touching: false,
   mounted: false,
   isAtBeginning: true,
   isAtEnd: false,
   overflows: false,
-};
-const INITIAL_QUICK_STATE = {
-  swipeTranslateX: null,
-  touchStartX: null,
-  touchMoveX: null,
 };
 
 const clamp = (min, value, max) => {
@@ -64,12 +58,8 @@ class Slider extends React.PureComponent {
 
     this.stepRefs = [];
     this.state = Object.assign({}, INITIAL_STATE);
-    this.quickState = Object.assign({}, INITIAL_QUICK_STATE);
 
     this.performSlide = this.performSlide.bind(this);
-    this.touchStart = this.touchStart.bind(this);
-    this.touchMove = this.touchMove.bind(this);
-    this.touchEnd = this.touchEnd.bind(this);
   }
 
   componentDidMount() {
@@ -85,84 +75,6 @@ class Slider extends React.PureComponent {
   getTargetPosition(index) {
     const target = this.stepRefs[index];
     return Math.max(0, target.offsetLeft - this.stepRefs[0].offsetLeft);
-  }
-
-  setQuickState(updates) {
-    this.quickState = Object.assign(this.quickState, updates);
-  }
-
-  updateSliderPosition(position) {
-    this.sliderEl.style.transform = `translate(${-position}px)`;
-  }
-
-  touchStart(e) {
-    const {
-      state: { targetPosition },
-    } = this;
-    const { scrollWidth, offsetWidth } = this.sliderEl;
-    const maxSwipe = scrollWidth - offsetWidth;
-    const { clientX } = e.touches[0];
-    this.setQuickState({
-      touchStartX: clientX,
-      touchMoveX: clientX,
-      maxSwipe,
-      currentSwipePosition: targetPosition,
-    });
-    this.setState({ touching: true });
-  }
-
-  touchMove(e) {
-    return;
-    const touchMoveX = e.touches[0].clientX;
-    const {
-      state: { targetPosition },
-      quickState: { touchStartX, maxSwipe },
-    } = this;
-
-    const deltaX = touchStartX - touchMoveX;
-
-    let currentSwipePosition = targetPosition + deltaX;
-    currentSwipePosition = clamp(0, currentSwipePosition, maxSwipe);
-
-    this.setQuickState({ touchMoveX, currentSwipePosition });
-    this.updateSliderPosition(currentSwipePosition);
-  }
-
-  touchEnd() {
-    return;
-    const {
-      props: { onSlideChange, children },
-      state: { targetIndex, targetPosition },
-      quickState: { currentSwipePosition },
-    } = this;
-    // compute new slide index
-    // init search and result
-    let minDist = Number.MAX_SAFE_INTEGER;
-    let newTargetIndex = 0;
-    let nextPos = 0;
-    // search forward or backward from current target
-    const shouldIncrement = targetPosition < currentSwipePosition;
-
-    let idx = targetIndex;
-    while (idx >= 0 && idx <= children.length - 1) {
-      const elementPosition = this.getTargetPosition(idx);
-      const dist = Math.abs(elementPosition - currentSwipePosition);
-      if (minDist < dist) {
-        // we are not improving anymore, break
-        break;
-      }
-      minDist = dist;
-      newTargetIndex = idx;
-      nextPos = elementPosition;
-
-      idx += shouldIncrement ? 1 : -1;
-    }
-    this.updateSliderPosition(nextPos);
-    // reset
-    this.setQuickState({ currentSwipePosition: null, touchStartX: null, touchMoveX: null });
-    this.setState({ targetIndex: newTargetIndex, targetPosition: nextPos, touching: false }, () => {
-      onSlideChange(newTargetIndex);
-    });
   }
 
   async performSlide(slideDir) {
@@ -202,18 +114,13 @@ class Slider extends React.PureComponent {
   render() {
     const {
       props: { children, t, className, nextClassName, prevClassName },
-      state: { targetPosition, touching, mounted, isAtBeginning, isAtEnd, overflows },
-      quickState: { currentSwipePosition },
+      state: { targetPosition, mounted, isAtBeginning, isAtEnd, overflows },
       stepRefs,
     } = this;
     const sliderStyle = {};
 
     if (mounted && children.length > 0) {
-      if (touching) {
-        sliderStyle.transform = `translate(${-currentSwipePosition}px)`;
-      } else {
-        sliderStyle.transform = `translate(${-targetPosition}px)`;
-      }
+      sliderStyle.transform = `translate(${-targetPosition}px)`;
     }
     return (
       <div className={classNames(styles.container, className)}>
@@ -222,11 +129,8 @@ class Slider extends React.PureComponent {
             ref={(ref) => {
               this.sliderEl = ref;
             }}
-            onTouchStart={this.touchStart}
-            onTouchMove={this.touchMove}
-            onTouchEnd={this.touchEnd}
             style={sliderStyle}
-            className={classNames(styles.slideContainer, !touching && styles.withTransitions)}
+            className={classNames(styles.slideContainer, styles.withTransitions)}
           >
             {React.Children.map(children, (child, index) =>
               React.cloneElement(child, { ref: (inst) => (stepRefs[index] = inst) }),
