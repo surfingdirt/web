@@ -9,7 +9,7 @@ import routes from '~/routes';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ABOUT } = routes;
+const { ABOUT, OLD_FORUM } = routes;
 
 const Footer = ({ className, t }) => {
   return (
@@ -25,6 +25,9 @@ const Footer = ({ className, t }) => {
           >
             {t('contact')}
           </a>
+        </li>
+        <li className={styles.link}>
+          <Link to={OLD_FORUM}>{t('forum')}</Link>
         </li>
       </ul>
     </footer>

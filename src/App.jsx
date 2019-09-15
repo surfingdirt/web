@@ -26,6 +26,7 @@ const {
   ERROR,
   HOME,
   LOGIN,
+  OLD_FORUM,
   PHOTO,
   PHOTO_NEW,
   PHOTO_NEW_FOR_ALBUM,
@@ -78,6 +79,11 @@ const NewPhoto = Loadable({
 const NewVideo = Loadable({
   loader: () =>
     import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post').then((m) => m.NewVideo),
+  loading,
+});
+const OldForum = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'OldForum' */ './pages/OldForum').then((m) => m.OldForum),
   loading,
 });
 const Photo = Loadable({
@@ -141,6 +147,7 @@ class App extends React.Component {
           <DefaultLayoutRoute path={CONFIRM_EMAIL} component={ConfirmEmail} />
           <DefaultLayoutRoute path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
+          <DefaultLayoutRoute path={OLD_FORUM} component={OldForum} />
           <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} login={MANDATORY} />
           <DefaultLayoutRoute path={PHOTO_NEW_FOR_ALBUM} component={NewPhoto} login={MANDATORY} />
           <DefaultLayoutRoute path={PHOTO} component={Photo} />

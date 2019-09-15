@@ -8,6 +8,7 @@ const routes = {
   ERROR: '/error/:id/:message',
   HOME: '/',
   LOGIN: '/login',
+  OLD_FORUM: '/old-forum',
   PHOTO: '/photo/:id',
   PHOTO_EDIT: '/edit-photo',
   PHOTO_NEW: '/new-photo',
