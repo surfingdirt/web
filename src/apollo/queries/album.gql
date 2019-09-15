@@ -1,8 +1,12 @@
 query album($id: ID!) {
     album(id: $id) {
-        id
-        title
+        actions {
+            add
+            delete
+            edit
+        }
         description
+        id
         media {
             id
             title
@@ -22,5 +26,17 @@ query album($id: ID!) {
                 width
             }
         }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+        title
     }
 }

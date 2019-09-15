@@ -2,13 +2,14 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
+import Attribution from 'Components/Attribution';
 import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty/index';
 import Heading, { headingTypes } from 'Components/Heading';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Paragraph from 'Components/Paragraph';
 import Slider from 'Components/Slider';
-import Userbox, { userboxSizes } from 'Components/User/Userbox';
+import { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
 import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
@@ -20,20 +21,10 @@ const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { SMALLEST } = userboxSizes;
 
-const renderAttribution = (albumVisibility, submitter, t) => {
-  return (
-    <Fragment>
-      <span className={styles.by}>{t('by')}</span>
-      <Userbox user={submitter} size={SMALLEST} />
-    </Fragment>
-  );
-};
-
 const AlbumPreview = ({
   album: {
     actions,
     albumContributions,
-    albumVisibility,
     description,
     id: albumId,
     media,
@@ -91,7 +82,7 @@ const AlbumPreview = ({
             {albumContributions === AlbumContributions.PUBLIC && (
               <span className={styles.public}>{t('public')}</span>
             )}
-            {showAttribution && renderAttribution(albumVisibility, submitter, t)}
+            {showAttribution && <Attribution submitter={submitter} userboxSize={SMALLEST} />}
           </div>
         </div>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}

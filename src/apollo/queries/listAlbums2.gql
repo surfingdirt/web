@@ -1,13 +1,12 @@
 query listAlbums {
     listAlbums {
-        id
-        title
-        description
         actions {
             add
             delete
             edit
         }
+        description
+        id
         media {
             id
             mediaType
@@ -20,5 +19,17 @@ query listAlbums {
                 width
             }
         }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+        title
     }
 }

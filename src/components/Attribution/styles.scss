@@ -1,0 +1,17 @@
+@import '../../styles/boxmodel';
+@import '../../styles/font-sizes';
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.by {
+  margin: 0 $margin-one-char;
+  font-size: $font-size-small;
+  text-transform: capitalize;
+}
+
+.short {
+  text-transform: initial;
+}
