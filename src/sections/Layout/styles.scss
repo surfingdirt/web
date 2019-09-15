@@ -357,20 +357,37 @@
 @supports (not (display: grid)) {
   .header {
     display: flex;
+    height: 5rem;
   }
+
+  .profile {
+    position: fixed;
+    right: $margin-small-2;
+    top: $margin-small-2;
+  }
+
+  .logo {
+    position: fixed;
+    left: 5rem;
+    top: $margin-small-3;
+  }
+
   .navigation {
     float: left;
     width: 250px;
     height: 100vh;
   }
+
   .actions {
     float: right;
     width: 100px;
     height: 100vh;
   }
+
   .positioner {
     justify-content: initial;
   }
+
   .bottomBar {
     display: block;
     position: fixed;
@@ -379,15 +396,22 @@
     left: 0;
     height: 2rem;
   }
+
+  .bottomBarBackground {
+    background: $bottom-bar-background-color;
+  }
+
   @media (min-width: $desktop-layout-threshold-min) {
     .bottomBar {
       display: none;
     }
   }
+
   .more {
     position: absolute;
     right: 0;
   }
+
   .plusButtonWrapper {
     position: absolute;
     right: 88px;
