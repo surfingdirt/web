@@ -33,6 +33,7 @@ const AlbumPreview = ({
   album: {
     actions,
     albumContributions,
+    albumVisibility,
     description,
     id: albumId,
     media,
@@ -90,7 +91,7 @@ const AlbumPreview = ({
             {albumContributions === AlbumContributions.PUBLIC && (
               <span className={styles.public}>{t('public')}</span>
             )}
-            {showAttribution && renderAttribution(submitter, t)}
+            {showAttribution && renderAttribution(albumVisibility, submitter, t)}
           </div>
         </div>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}
