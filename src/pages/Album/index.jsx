@@ -9,6 +9,7 @@ import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
 import DualContainer from 'Components/DualContainer';
 import Translate from 'Hocs/Translate';
+import { getFirstAlbumImageUrl } from 'Utils/media';
 import AppContext from '~/contexts';
 
 import messages from './messages';
@@ -33,21 +34,25 @@ class AlbumRaw extends React.Component {
       <DataRenderer
         query={ALBUM}
         variables={{ id: albumId, countItems: COUNT_ITEMS }}
-        render={({ album: { description, media, title } }) => (
-          <Card type={STANDARD} title={title}>
-            <Helmet>
-              {title && <meta property="og:title" content={title} />}
-              {description && <meta property="og:description" content={description} />}
-            </Helmet>
-            <DualContainer>
-              <div />
-              <div>
-                <AlbumAddButtons albumId={albumId} />
-              </div>
-            </DualContainer>
-            <AlbumGrid media={media} />
-          </Card>
-        )}
+        render={({ album: { description, media, title } }) => {
+          const image = getFirstAlbumImageUrl(media);
+          return (
+            <Card type={STANDARD} title={title}>
+              <Helmet>
+                {title && <meta property="og:title" content={title} />}
+                {description && <meta property="og:description" content={description} />}
+                {image && <meta property="og:image" content={image} />}
+              </Helmet>
+              <DualContainer>
+                <div />
+                <div>
+                  <AlbumAddButtons albumId={albumId} />
+                </div>
+              </DualContainer>
+              <AlbumGrid media={media} />
+            </Card>
+          );
+        }}
       />
     );
   }

@@ -35,7 +35,7 @@ const Header = ({ headerRef, t, title }) => (
   <header className={styles.header} ref={headerRef}>
     <div className={styles.headerBackground} />
     <Link to={HOME} className={styles.logo}>
-      <Logo title={title} type={HEADER_HORIZONTAL} />
+      <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
     </Link>
     <div className={styles.search}>
       {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}

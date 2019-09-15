@@ -24,7 +24,7 @@ import App from '~/App';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
-import { config, title } from '../config';
+import { config, fbAppId, title } from '../config';
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
@@ -131,6 +131,7 @@ const Main = (rootDir) => {
         favicon: `<link rel="shortcut icon" href=${Favicon}>`,
         favicon16: `<link rel="icon" type="image/png" sizes="16x16" href="${Favicon16}">`,
         favicon32: `<link rel="icon" type="image/png" sizes="32x32" href="${Favicon32}">`,
+        fbAppId,
         html,
         inlineStyle: `<style></style>`,
         js:

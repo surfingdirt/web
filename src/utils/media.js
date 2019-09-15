@@ -16,3 +16,29 @@ export const MEDIA_SUBTYPES_VIDEO = {
   VIMEO: 'vimeo',
   YOUTUBE: 'youtube',
 };
+
+export const getBiggestMediaImageUrl = (media) => {
+  if (!media) {
+    return null;
+  }
+
+  const srcs = media.images || media.thumbs;
+
+  const image = srcs.find((i) => {
+    return i.size === mediaSizes.LARGE;
+  });
+
+  if (!image || !image.url) {
+    return null;
+  }
+
+  return image.url;
+};
+
+export const getFirstAlbumImageUrl = (items) => {
+  if (!items || items.length === 0) {
+    return null;
+  }
+
+  return getBiggestMediaImageUrl(items[0]);
+};

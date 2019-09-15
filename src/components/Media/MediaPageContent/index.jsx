@@ -9,7 +9,7 @@ import ResponsiveImage from 'Components/ResponsiveImage';
 import VideoEmbed from 'Components/Video/Embed';
 import Translate from 'Hocs/Translate/index';
 import { albumRoute, userRoute } from 'Utils/links';
-import { mediaTypes } from 'Utils/media';
+import { getBiggestMediaImageUrl, mediaTypes } from 'Utils/media';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -21,6 +21,7 @@ const getHeroContent = (media, mediaType, t) => {
   let heroContent;
   const { description, title } = media;
 
+  const image = getBiggestMediaImageUrl(media);
   if (mediaType === VIDEO) {
     const { embedUrl, height, width } = media;
     heroContent = (
@@ -29,6 +30,7 @@ const getHeroContent = (media, mediaType, t) => {
           {title && <title>{title}</title>}
           {title && <meta property="og:title" content={title} />}
           {description && <meta property="og:description" content={description} />}
+          {image && <meta property="og:image" content={image} />}
           {description && <meta property="description" content={description} />}
         </Helmet>
         <VideoEmbed url={embedUrl} height={height} width={width} />
@@ -36,16 +38,15 @@ const getHeroContent = (media, mediaType, t) => {
     );
   } else {
     const { images } = media;
-    const largeImage = images.find((i) => {
-      return i.size === 'LARGE';
-    });
+
     heroContent = (
       <Fragment>
         <Helmet>
           {title && <title>{title}</title>}
           {title && <meta property="og:title" content={title} />}
           {description && <meta property="og:description" content={description} />}
-          {largeImage && <meta property="og:image" content={largeImage.url} />}
+          {image && <meta property="og:image" content={image} />}
+          {description && <meta property="description" content={description} />}
         </Helmet>
         <ResponsiveImage alt="" images={images} />
       </Fragment>

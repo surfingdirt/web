@@ -1,6 +1,7 @@
 const env = process.env.NODE_ENV || 'local';
 
 export const title = 'Surfing Dirt';
+export const fbAppId = '1726273124340058';
 export const fragmentTypesFile = './fragmentTypes.json';
 
 export const config = {
