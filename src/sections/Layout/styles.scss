@@ -313,7 +313,7 @@
   grid-area: main;
   margin-top: -$masthead-height;
   margin-bottom: -$bottom-bar-height;
-  padding: $padding-small-2 + $masthead-height 0 $padding-small-2;
+  padding: $padding-small-2 + $masthead-height 0 $padding-very-big;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color-track $scrollbar-color-thumb;

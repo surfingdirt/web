@@ -6,17 +6,14 @@ const messages = (getText, getPlural) => (key) =>
       'OldForum',
     ) /* Paragraph */,
     paragraph2: getText(
-      "We haven\'t managed to merge the forum into the new site, but we\'re thinking it will happen some day.",
+      "We haven't managed to merge the forum into the new site, but we're thinking it will happen some day.",
       'OldForum',
     ) /* Paragraph */,
     paragraph3: getText(
-      "In the meantime, go check it out, it may look different than it used to, but the great content is still there!",
+      'In the meantime, go check it out, it may look different than it used to, but the great content is still there!',
       'OldForum',
     ) /* Paragraph */,
-    go: getText(
-      "Go to the forum!",
-      'OldForum',
-    ) /* Paragraph */,
+    go: getText('Go to the forum!', 'OldForum') /* Paragraph */,
   }[key]);
 
 export default messages;
