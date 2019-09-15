@@ -1,5 +1,6 @@
 @import '../../../styles/boxmodel';
 @import '../../../styles/colors';
+@import '../../../styles/font-sizes';
 @import "../../../styles/layout";
 @import '../../../styles/media-queries';
 
@@ -99,6 +100,34 @@ $height5: $width5 / $aspect-ratio;
   @media (min-width: $desktop-layout-threshold-min) {
     padding: $padding-medium-1;
   }
+
+  .titleAndAttribution {
+    display: flex;
+    align-items: center;
+
+    .title {
+      margin: 0;
+    }
+
+    .by {
+      margin: 0 $margin-one-char;
+      font-size: $font-size-small;
+    }
+
+    .attribution {
+      display: contents;
+    }
+
+    .public {
+      text-transform: uppercase;
+      margin: 0 $margin-small-2;
+      padding: $padding-small-3;
+      font-size: $font-size-tiny;
+      border: 1px solid;
+    }
+  }
+
+
   .description {
     word-break: break-word;
     margin-bottom: 0;

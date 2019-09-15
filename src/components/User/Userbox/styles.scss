@@ -2,6 +2,11 @@
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 
+$avatar-size-smallest: 1rem;
+$avatar-margin-right-smallest: $margin-small-3;
+$username-width-smallest: 4rem;
+$username-font-size-smallest: $font-size-small;
+
 $avatar-size-small: 1.75rem;
 $avatar-margin-right-small: $margin-small-3;
 $username-width-small: 4rem;
@@ -35,6 +40,18 @@ $username-font-size-standard: $font-size-medium;
 
   .username {
     max-width: $username-width-standard;
+  }
+
+  &.smallest {
+    .avatarWrapper {
+      width: $avatar-size-smallest;
+      padding-top: $avatar-size-smallest;
+      margin-right: $avatar-margin-right-smallest;
+    }
+
+    .username {
+      font-size: $font-size-small;
+    }
   }
 
   &.small {

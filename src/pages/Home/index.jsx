@@ -88,7 +88,7 @@ class HomeRaw extends React.Component {
               <AlbumPreview album={galleryAlbum} />
 
               {listAlbums.map((album) => (
-                <AlbumPreview album={album} key={album.id} />
+                <AlbumPreview album={album} key={album.id} showAttribution={true} />
               ))}
             </Fragment>
           );

@@ -4,7 +4,7 @@ query userProfile($userId: ID!) {
         username
         firstName
         bio
-        album{
+        album {
           id
           title
           media {
@@ -41,6 +41,7 @@ query userProfile($userId: ID!) {
             delete
             edit
         }
+        albumAccess
         media {
             id
             title

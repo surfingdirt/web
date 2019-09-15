@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
@@ -8,17 +8,36 @@ import Heading, { headingTypes } from 'Components/Heading';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Paragraph from 'Components/Paragraph';
 import Slider from 'Components/Slider';
+import Userbox, { userboxSizes } from 'Components/User/Userbox';
+import Translate from 'Hocs/Translate';
+import { AlbumAccess } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
 
+import messages from './messages';
 import styles from './styles.scss';
 
 const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
+const { SMALLEST } = userboxSizes;
+
+const renderAttribution = (albumAccess, submitter, t) => {
+  if (albumAccess === AlbumAccess.PUBLIC) {
+    return <span className={styles.public}>{t('public')}</span>;
+  }
+
+  return (
+    <Fragment>
+      <span className={styles.by}>{t('by')}</span>
+      <Userbox user={submitter} size={SMALLEST} />
+    </Fragment>
+  );
+};
 
 const AlbumPreview = ({
-  album: { actions, description, id: albumId, media, title: albumTitle },
+  album: { actions, albumAccess, description, id: albumId, media, submitter, title: albumTitle },
   showAttribution,
   renderIfEmpty,
+  t,
 }) => {
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
@@ -59,10 +78,14 @@ const AlbumPreview = ({
         })}
       </Slider>
       <div className={styles.contentWrapper}>
-        <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
-          {albumTitle}
-        </Heading>
-        {/*{showAttribution && <p>TODO: showAttribution</p>}*/}
+        <div className={styles.titleAndAttribution}>
+          <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
+            {albumTitle}
+          </Heading>
+          {showAttribution && (
+            <div className={styles.attribution}>{renderAttribution(albumAccess, submitter, t)}</div>
+          )}
+        </div>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}
       </div>
     </Card>
@@ -78,6 +101,7 @@ AlbumPreview.propTypes = {
   }).isRequired,
   renderIfEmpty: PropTypes.bool,
   showAttribution: PropTypes.bool,
+  t: PropTypes.func.isRequired,
 };
 
 AlbumPreview.defaultProps = {
@@ -85,4 +109,4 @@ AlbumPreview.defaultProps = {
   showAttribution: false,
 };
 
-export default AlbumPreview;
+export default Translate(messages)(AlbumPreview);

@@ -12,11 +12,13 @@ import styles from './styles.scss';
 
 const { SMALL: smallMediaSize } = mediaSizes;
 
+const SMALLEST = 'smallest';
 const SMALL = 'small';
 const STANDARD = 'standard';
-export const userboxSizes = { SMALL, STANDARD };
+export const userboxSizes = { SMALLEST, SMALL, STANDARD };
 
 const sizeMapping = {
+  [SMALLEST]: ['smallest'],
   [SMALL]: ['small'],
   [STANDARD]: ['standard'],
 };
