@@ -24,7 +24,7 @@ import App from '~/App';
 import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
-import { config, fbAppId, title } from '../config';
+import { analyticsId, config, fbAppId, title } from '../config';
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
@@ -122,6 +122,7 @@ const Main = (rootDir) => {
 
       // Inserts the rendered React HTML and assets into our html
       document = ejs.render(REGULAR_PAGE, {
+        analyticsId,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
         css: ['main.css']
           .concat(styles.map((x) => x.file))

@@ -2,7 +2,7 @@ import Loadable from '@7rulnik/react-loadable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 import ME from 'Apollo/queries/me.gql';
 import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
@@ -28,6 +28,7 @@ const {
   LOGIN,
   OLD_FORUM,
   PHOTO,
+  PHOTO_BATCH_UPLOAD_FOR_ALBUM,
   PHOTO_NEW,
   PHOTO_NEW_FOR_ALBUM,
   PROFILE,
@@ -50,8 +51,18 @@ const Albums = Loadable({
   loader: () => import(/* webpackChunkName: 'Album' */ './pages/Albums').then((m) => m.Albums),
   loading,
 });
+const BatchUpload = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload').then(
+      (m) => m.BatchUpload,
+    ),
+  loading,
+});
 const ConfirmEmail = Loadable({
-  loader: () => import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail').then((m) => m.ConfirmEmail),
+  loader: () =>
+    import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail').then(
+      (m) => m.ConfirmEmail,
+    ),
   loading,
 });
 const Error = Loadable({
@@ -137,6 +148,19 @@ class App extends React.Component {
   renderApp(contextValues) {
     return (
       <AppContext.Provider value={contextValues}>
+        {/* Google Analytics */}
+        <Route
+          path="/"
+          render={({ location }) => {
+            const window = global.window;
+            if (window && typeof window.ga === 'function') {
+              window.ga('set', 'page', location.pathname + location.search);
+              window.ga('send', 'pageview');
+            }
+            return null;
+          }}
+        />
+
         <Switch>
           <DefaultLayoutRoute exact path={HOME} component={Home} />
 
@@ -148,6 +172,11 @@ class App extends React.Component {
           <DefaultLayoutRoute path={ERROR} component={Error} />
           <DefaultLayoutRoute path={LOGIN} component={LogIn} login={FORBIDDEN} />
           <DefaultLayoutRoute path={OLD_FORUM} component={OldForum} />
+          <DefaultLayoutRoute
+            path={PHOTO_BATCH_UPLOAD_FOR_ALBUM}
+            component={BatchUpload}
+            login={MANDATORY}
+          />
           <DefaultLayoutRoute path={PHOTO_NEW} component={NewPhoto} login={MANDATORY} />
           <DefaultLayoutRoute path={PHOTO_NEW_FOR_ALBUM} component={NewPhoto} login={MANDATORY} />
           <DefaultLayoutRoute path={PHOTO} component={Photo} />
