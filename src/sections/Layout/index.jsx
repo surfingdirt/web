@@ -31,6 +31,8 @@ const RESIZE = 'resize';
 const NAVIGATION_ID = 'link-navigation-items';
 const ACTION_ITEMS_ID = 'action-items';
 
+const BLUR_TIMEOUT = 1000 / 60 * 3;
+
 const Header = ({ headerRef, t, title }) => (
   <header className={styles.header} ref={headerRef}>
     <div className={styles.headerBackground} />
@@ -183,9 +185,10 @@ class Layout extends React.Component {
     super(props);
 
     this.state = {
-      bottomBarActionsOpen: false,
-      navigationMenuOpen: false,
       actionButtonOrigin: [0, 0],
+      bottomBarActionsOpen: false,
+      hasActiveForm: false,
+      navigationMenuOpen: false,
     };
 
     this.toggleActionButtons = this.toggleActionButtons.bind(this);
@@ -193,6 +196,8 @@ class Layout extends React.Component {
     this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
     this.closeAll = this.closeAll.bind(this);
     this.onResize = this.onResize.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onFocus = this.onFocus.bind(this);
     this.onNavigation = this.onNavigation.bind(this);
 
     this.actionButtonRef = React.createRef();
@@ -227,6 +232,19 @@ class Layout extends React.Component {
       bottomBarActionsOpen: false,
       navigationMenuOpen: false,
     });
+  }
+
+  onBlur() {
+    setTimeout(() => {
+      if (!document.activeElement.closest('form')) {
+        // Wait a bit before setting hasActiveForm because another focus might take place soon
+        this.setState({ hasActiveForm: false });
+      }
+    }, BLUR_TIMEOUT);
+  }
+
+  onFocus(e) {
+    this.setState({ hasActiveForm: !!e.target.closest('form') });
   }
 
   getOrigin() {
@@ -269,7 +287,12 @@ class Layout extends React.Component {
       t,
     } = this.props;
 
-    const { bottomBarActionsOpen, navigationMenuOpen, actionButtonOrigin } = this.state;
+    const {
+      actionButtonOrigin,
+      bottomBarActionsOpen,
+      hasActiveForm,
+      navigationMenuOpen,
+    } = this.state;
 
     const { title } = this.context;
 
@@ -295,7 +318,13 @@ class Layout extends React.Component {
     };
 
     return (
-      <div className={styles.wrapper}>
+      <div
+        className={classnames(styles.wrapper, {
+          [styles.hasActiveForm]: hasActiveForm,
+        })}
+        onFocusCapture={this.onFocus}
+        onBlurCapture={this.onBlur}
+      >
         <Header headerRef={this.headerRef} t={t} title={title} />
 
         <LinkNavigation

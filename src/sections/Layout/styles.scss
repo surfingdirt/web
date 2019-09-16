@@ -114,7 +114,7 @@
 
 .header {
   display: contents;
-  &>* {
+  & > * {
     position: relative;
     z-index: $z-index-header-items;
   }
@@ -172,6 +172,10 @@
     position: relative;
     z-index: $z-index-bottom-bar-items;
   }
+}
+
+.hasActiveForm .bottomBar {
+  display: none;
 }
 
 @media (min-width: $desktop-layout-threshold-min) {
