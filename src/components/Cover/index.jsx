@@ -35,7 +35,7 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
       </div>
 
       <div className={styles.avatarPositionner}>
-        <UserProfile images={avatar} type={RESPONSIVE} />
+        <UserProfile images={avatar} type={RESPONSIVE} className={styles.avatarImage} />
       </div>
 
       <div className={styles.coverContent}>
