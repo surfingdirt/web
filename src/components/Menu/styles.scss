@@ -2,6 +2,7 @@
 @import '../../styles/colors';
 @import '../../styles/constants';
 @import '../../styles/font-sizes';
+@import '../../styles/z-indices';
 
 $border-width: $widget-border-width;
 
@@ -13,6 +14,7 @@ $border-width: $widget-border-width;
 
 .menuOptions {
   position: absolute;
+  z-index: $z-index-threedot-menu;
   width: max-content;
   overflow: hidden;
   background-color: $menu-option-active-background-color;
