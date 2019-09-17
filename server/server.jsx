@@ -27,6 +27,7 @@ const postActions = [
 postActions.forEach(a => {
   app.post(a, multer({ dest: 'uploads/' }).single('file'), Action);
 });
+app.post('/actions/photo/batch-upload', multer({ dest: 'uploads/' }).array('file'), Action);
 app.post('/actions/*', multer().none(), Action);
 
 if (process.env.NODE_ENV !== 'production') {

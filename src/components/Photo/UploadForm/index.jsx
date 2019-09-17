@@ -10,28 +10,22 @@ import Button, { buttonTypes } from 'Components/Button';
 import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
+import icons, { getIcon, sizes } from 'Utils/icons';
 import { actionRoute, photoRoute } from 'Utils/links';
+import { maxPhotoSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
-import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
-import icons, { getIcon, sizes } from 'Utils/icons';
 
 const { PHOTO_NEW } = actions;
 const { ACTION } = buttonTypes;
 const { STANDARD } = sizes;
 
-const mediaSubType = 'IMG';
-
-// TODO: take this in from the context
-const MAX_TARGET_SIZE = 1920;
-const MAX_WIDTH = MAX_TARGET_SIZE;
-const MAX_HEIGHT = MAX_TARGET_SIZE;
+const MAX_WIDTH = maxPhotoSize;
+const MAX_HEIGHT = maxPhotoSize;
 
 class PhotoUploadForm extends React.Component {
-  static contextType = AppContext;
-
   static propTypes = {
     albumId: PropTypes.string.isRequired,
     t: PropTypes.func.isRequired,
@@ -126,7 +120,7 @@ class PhotoUploadForm extends React.Component {
       >
         {(mutate) => (
           <Form
-            initialValues={{ albumId, mediaSubType }}
+            initialValues={{ albumId, mediaSubType: MEDIA_SUBTYPE_IMG }}
             onSubmit={(values) => {
               return this.onSubmit(mutate, values);
             }}

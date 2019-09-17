@@ -1,3 +1,5 @@
+export const maxPhotoSize = 1920;
+
 export const mediaTypes = {
   PHOTO: 'PHOTO',
   VIDEO: 'VIDEO',
@@ -8,6 +10,8 @@ export const mediaSizes = {
   MEDIUM: 'MEDIUM',
   LARGE: 'LARGE',
 };
+
+export const MEDIA_SUBTYPE_IMG = 'IMG';
 
 export const MEDIA_SUBTYPES_VIDEO = {
   DAILYMOTION: 'dailymotion',

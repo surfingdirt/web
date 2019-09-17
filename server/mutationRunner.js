@@ -12,6 +12,12 @@ export default class MutationRunner {
   }
 
   async run(actionInfo, req) {
+    if (actionInfo.handler) {
+      const response = await actionInfo.handler(req, this);
+      console.log('handler', { req, response });
+      return response;
+    }
+
     const query = actionInfo.mutation.loc.source.body;
     const { hasFileUpload } = actionInfo;
     const reqFile = hasFileUpload ? req.file : null;

@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import actions, { ACTION_PREFIX } from '~/actions';
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
@@ -12,10 +14,21 @@ import Login from '~/Login';
 import { config } from '../config';
 
 import MutationRunner from './mutationRunner';
+import FormData from 'form-data';
+import GraphQLError from 'Error/graphqlError';
 
 const LoginCookie = Login.COOKIE_NAME;
 
-const { ALBUM_NEW, AVATAR_UPDATE, COVER_UPDATE, LOGIN, LOGOUT, PHOTO_NEW, VIDEO_NEW, } = actions;
+const {
+  ALBUM_NEW,
+  AVATAR_UPDATE,
+  COVER_UPDATE,
+  LOGIN,
+  LOGOUT,
+  PHOTO_BATCH_UPLOAD,
+  PHOTO_NEW,
+  VIDEO_NEW,
+} = actions;
 const { ERROR, HOME, PROFILE } = routes;
 
 const actionInfoMap = {
@@ -52,6 +65,43 @@ const actionInfoMap = {
       return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
+  [PHOTO_BATCH_UPLOAD]: {
+    handler: async (req, runner) => {
+      const query = CREATE_PHOTO_MUTATION.loc.source.body;
+      const { files: reqFiles, body: input } = req;
+
+      for (const reqFile of reqFiles) {
+        const body = new FormData();
+        // Gotta have an entry for file
+        const variables = { input, file: null };
+        body.append('operations', JSON.stringify({ query, variables }));
+        const { originalname: filename, mimetype: contentType, size: knownLength } = reqFile;
+        const fileInfo = { filename, contentType, knownLength };
+        const file = fs.readFileSync(reqFile.path);
+        body.append('map', JSON.stringify({ '1': ['variables.file'] }));
+        body.append('1', file, fileInfo);
+        const response = await runner.fetch(body);
+        fs.unlinkSync(reqFile.path);
+        if (!response.ok) {
+          // res.status < 200 || res.status >= 300
+          throw new GraphQLError(response.statusText, 0);
+        }
+      }
+
+      // No need to return anything. Null means ok.
+      return null;
+    },
+    cb: (req, res, data) => {
+      return res.redirect(301, albumRoute(req.body.albumId));
+    },
+    onError: (error, res) => {
+      console.error('Photo batch upload error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
   [PHOTO_NEW]: {
     mutation: CREATE_PHOTO_MUTATION,
     hasFileUpload: true,
@@ -84,7 +134,7 @@ const actionInfoMap = {
     mutation: LOGIN_MUTATION,
     hasFileUpload: false,
     responseKey: 'login',
-    cb: (res, data) => {
+    cb: (req, res, data) => {
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
       res.redirect(301, HOME);
     },
@@ -97,7 +147,7 @@ const actionInfoMap = {
     mutation: LOGOUT_MUTATION,
     hasFileUpload: false,
     responseKey: 'logout',
-    cb: (res) => {
+    cb: (req, res) => {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
@@ -143,7 +193,7 @@ const action = async (req, res, next) => {
       return res.redirect(301, url);
     }
     if (actionInfo.cb) {
-      return actionInfo.cb(res, result);
+      return actionInfo.cb(req, res, result);
     }
   } catch (e) {
     // TODO: look at error handling.
