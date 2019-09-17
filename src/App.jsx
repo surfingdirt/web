@@ -118,6 +118,7 @@ const Video = Loadable({
   loading,
 });
 
+const KEYBOARD_MODE_CLASS = 'keyboard-mode';
 const MOUSE_MODE_CLASS = 'mouse-mode';
 const MOUSE_MOVE_EVENT = 'mousemove';
 
@@ -142,6 +143,7 @@ class App extends React.Component {
 
   mouseMoveListener() {
     document.body.classList.add(MOUSE_MODE_CLASS);
+    document.body.classList.remove(KEYBOARD_MODE_CLASS);
     window.removeEventListener(MOUSE_MOVE_EVENT, this.mouseMoveListener);
   }
 
