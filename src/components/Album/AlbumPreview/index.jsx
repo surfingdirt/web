@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import Attribution from 'Components/Attribution';
@@ -27,6 +29,7 @@ const AlbumPreview = ({
     albumContributions,
     description,
     id: albumId,
+    itemCount,
     media,
     submitter,
     title: albumTitle,
@@ -40,12 +43,14 @@ const AlbumPreview = ({
     return null;
   }
 
+  const albumUrl = albumRoute(albumId);
+
   if (isEmpty) {
     return (
       <Card
         type={STANDARD}
         title={albumTitle}
-        titleLink={albumRoute(albumId)}
+        titleLink={albumUrl}
         headingType={SECONDARY}
         className={styles.wrapper}
       >
@@ -61,21 +66,33 @@ const AlbumPreview = ({
     );
   }
 
+  const sliderChildren = media.map(({ id, mediaType, title, thumbs }) => {
+    const attrs = { id, mediaType, title, thumbs };
+    return (
+      <div key={id} className={styles.item}>
+        <MediaThumb key={id} {...attrs} objectFit />
+      </div>
+    );
+  });
+
+  const remaining = itemCount - media.length;
+  if (remaining > 0) {
+    // TODO: make this a Link. Right now, client-side caching issues are preventing that.
+    sliderChildren.push(
+      <a href={albumUrl} key="more" className={classnames(styles.item, styles.more)}>
+        {`+${remaining}`}
+      </a>,
+    );
+  }
+
   return (
     <Card className={styles.wrapper} type={BARE}>
       <Slider className={styles.items} prevClassName={styles.previous} nextClassName={styles.next}>
-        {media.map(({ id, mediaType, title, thumbs }) => {
-          const attrs = { id, mediaType, title, thumbs };
-          return (
-            <div key={id} className={styles.item}>
-              <MediaThumb key={id} {...attrs} objectFit />
-            </div>
-          );
-        })}
+        {sliderChildren}
       </Slider>
       <div className={styles.contentWrapper}>
         <div className={styles.titleAndAttribution}>
-          <Heading className={styles.title} type={SECONDARY} link={albumRoute(albumId)}>
+          <Heading className={styles.title} type={SECONDARY} link={albumUrl}>
             {albumTitle}
           </Heading>
           <div className={styles.metadata}>

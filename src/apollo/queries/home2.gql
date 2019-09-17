@@ -9,6 +9,7 @@ query home($galleryAlbumId: ID!) {
         albumVisibility
         description
         id
+        itemCount
         media {
             id
             mediaType
@@ -33,6 +34,7 @@ query home($galleryAlbumId: ID!) {
         albumVisibility
         description
         id
+        itemCount
         media {
             id
             mediaType

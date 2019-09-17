@@ -33,9 +33,6 @@ query userProfile($userId: ID!) {
         }
     }
     listAlbums(userId: $userId) {
-        id
-        title
-        description
         actions {
             add
             delete
@@ -43,6 +40,9 @@ query userProfile($userId: ID!) {
         }
         albumContributions
         albumVisibility
+        description
+        id
+        itemCount
         media {
             id
             title
@@ -62,5 +62,6 @@ query userProfile($userId: ID!) {
                 width
             }
         }
+        title
     }
 }

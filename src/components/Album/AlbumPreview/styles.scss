@@ -60,6 +60,14 @@ $height5: $width5 / $aspect-ratio;
     }
   }
 
+  .more {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    color: $slider-more-color;
+    font-size: $font-size-big;
+  }
+
   .previous,
   .next {
     display: none;
