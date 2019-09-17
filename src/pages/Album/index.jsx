@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
-import ALBUM from 'Apollo/queries/album2.gql';
+import ALBUM from 'Apollo/queries/album.gql';
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import AlbumGrid from 'Components/Album/AlbumGrid';
 import Attribution from 'Components/Attribution';

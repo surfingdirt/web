@@ -1,5 +1,5 @@
 query album($id: ID!) {
-    album(id: $id, itemCount: 75) {
+    album(id: $id, countItems: 75) {
         actions {
             add
             delete
