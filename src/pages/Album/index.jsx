@@ -12,6 +12,7 @@ import DataRenderer from 'Components/DataRenderer';
 import DualContainer from 'Components/DualContainer';
 import Menu from 'Components/Menu';
 import menuStyles from 'Components/Menu/styles.scss';
+import Paragraph from 'Components/Paragraph';
 import { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
 import { batchPhotoUploadForAlbumRoute } from 'Utils/links';
@@ -88,6 +89,7 @@ class AlbumRaw extends React.Component {
                   </div>
                 </DualContainer>
               )}
+              {description && <Paragraph>{description}</Paragraph>}
               <AlbumGrid media={media} />
             </Card>
           );
