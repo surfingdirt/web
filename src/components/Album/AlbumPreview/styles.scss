@@ -65,7 +65,8 @@ $height5: $width5 / $aspect-ratio;
     display: inline-flex;
     justify-content: center;
     color: $slider-more-color;
-    font-size: $font-size-big;
+    font-size: $font-size-huge;
+    background: rgba($slider-more-background-color, .5);
   }
 
   .previous,

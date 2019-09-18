@@ -3,6 +3,10 @@
 @import '../../styles/constants';
 @import "../../styles/media-queries";
 
+$border-width-1: 2px;
+$border-width-2: 4px;
+$border-width-3: 8px;
+
 .coverWrapper {
   position: relative;
   margin-bottom: $margin-small-1 + $profile-size-small / 2; // 39px
@@ -14,10 +18,45 @@
     z-index: 1;
   }
 
+  .coverImagePositionner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    background-color: $cover-image-background-color;
+    border-bottom: $border-width-1 solid $profile-cover-border-color;
+  }
+
+  .coverMenu {
+    position: absolute;
+    top: $padding-medium-2;
+    right: $padding-medium-2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .avatarPositionner {
+    position: absolute;
+    bottom: 0;
+    left: $margin-medium-1;
+    transform: translateY(50%);
+
+    .avatarImage {
+      border-width: 0;
+    }
+  }
+
   @media (min-width: $desktop-small) {
     margin-bottom: $margin-small-1 + $profile-size-standard / 2; // 15 px + 3rem = 63px
     .coverContent {
       height: 300px;
+    }
+
+    .coverImagePositionner {
+      border-bottom-width: $border-width-2;
     }
   }
 
@@ -26,36 +65,11 @@
     .coverContent {
       height: 400px;
     }
+
+    .coverImagePositionner {
+      border-bottom-width: $border-width-3;
+    }
   }
 }
 
-.coverImagePositionner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 0;
-  background-color: $cover-image-background-color;
-  border-bottom: 4px solid $profile-cover-border-color;
-}
 
-.coverMenu {
-  position: absolute;
-  top: $padding-medium-2;
-  right: $padding-medium-2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.avatarPositionner {
-  position: absolute;
-  bottom: 0;
-  left: $margin-medium-1;
-  transform: translateY(50%);
-}
-
-.avatarImage {
-  border: 8px solid $profile-border-color;
-}

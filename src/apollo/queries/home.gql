@@ -1,5 +1,5 @@
 query home($galleryAlbumId: ID!) {
-    album(id: $galleryAlbumId) {
+    album(id: $galleryAlbumId, countItems: 5) {
         actions {
             add
             delete

@@ -99,7 +99,9 @@ const AlbumPreview = ({
             {albumContributions === AlbumContributions.PUBLIC && (
               <span className={styles.public}>{t('public')}</span>
             )}
-            {showAttribution && <Attribution submitter={submitter} userboxSize={SMALLEST} />}
+            {showAttribution && submitter && (
+              <Attribution submitter={submitter} userboxSize={SMALLEST} />
+            )}
           </div>
         </div>
         {description && <Paragraph className={styles.description}>{description}</Paragraph>}

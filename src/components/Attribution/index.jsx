@@ -19,8 +19,11 @@ const Attribution = ({ short, submitter, t, userboxSize }) => {
 };
 
 Attribution.propTypes = {
-  short: PropTypes.bool.isRequired,
-  submitter: PropTypes.objectOf({}).isRequired,
+  short: PropTypes.bool,
+  submitter: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
   t: PropTypes.func.isRequired,
   userboxSize: PropTypes.string.isRequired,
 };
