@@ -19,7 +19,7 @@ const { VIDEO } = mediaTypes;
 
 const getHeroContent = (media, mediaType, t) => {
   let heroContent;
-  const { description, title } = media;
+  const { album: {title: albumTitle }, description, title } = media;
 
   const image = getBiggestMediaImageUrl(media);
   if (mediaType === VIDEO) {
@@ -27,11 +27,11 @@ const getHeroContent = (media, mediaType, t) => {
     heroContent = (
       <Fragment>
         <Helmet>
-          {title && <title>{title}</title>}
-          {title && <meta property="og:title" content={title} />}
+          <title>{title || albumTitle}</title>
+          <meta property="og:title" content={title || albumTitle} />
           {description && <meta property="og:description" content={description} />}
-          {image && <meta property="og:image" content={image} />}
           {description && <meta property="description" content={description} />}
+          {image && <meta property="og:image" content={image} />}
         </Helmet>
         <VideoEmbed url={embedUrl} height={height} width={width} />
       </Fragment>
@@ -42,11 +42,11 @@ const getHeroContent = (media, mediaType, t) => {
     heroContent = (
       <Fragment>
         <Helmet>
-          {title && <title>{title}</title>}
-          {title && <meta property="og:title" content={title} />}
+          <title>{title || albumTitle}</title>
+          <meta property="og:title" content={title || albumTitle} />
           {description && <meta property="og:description" content={description} />}
-          {image && <meta property="og:image" content={image} />}
           {description && <meta property="description" content={description} />}
+          {image && <meta property="og:image" content={image} />}
         </Helmet>
         <ResponsiveImage alt="" images={images} />
       </Fragment>
