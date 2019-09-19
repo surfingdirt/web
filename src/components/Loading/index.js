@@ -23,7 +23,7 @@ class Loading extends React.Component {
         return <div className={styles.message}>{t('timeout')}</div>;
       }
       if (pastDelay) {
-        return <Spinner />;
+        return <Spinner negative />;
       }
 
       // We may still load the component before crossing the pastDelay limit: render nothing.

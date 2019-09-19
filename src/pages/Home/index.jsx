@@ -67,7 +67,7 @@ class HomeRaw extends React.Component {
                 <details className={styles.intro}>
                   <summary className={styles.introSummary}>
                     <Paragraph
-                      widthDropCap
+                      withDropCap
                       className={styles.introParagraph}
                       dataContent={t('more')}
                     >

@@ -5,6 +5,7 @@ import React, { Fragment } from 'react';
 import DropCap from 'Components/DropCap';
 
 import styles from './styles.scss';
+import AutoLink from 'Components/AutoLink';
 
 const STANDARD = 'standard';
 export const paragraphTypes = { STANDARD };
@@ -13,20 +14,24 @@ const classMapping = {
   [STANDARD]: null,
 };
 
-const insertDropCap = (children) => {
-  const clones = React.Children.toArray(children);
+const insertDropCap = (initialChildren, ugc, withAutoLink) => {
+  const children = React.Children.toArray(initialChildren);
   // Naive implementation: starting a paragraph with a <span> or any other element will fail:
-  if (typeof clones[0] === 'string') {
-    const [firstWord, ...rest] = clones[0].split(' ');
-    clones[0] = (
+  if (typeof children[0] === 'string') {
+    const [firstWord, ...rest] = children[0].split(' ');
+    const restOfText = rest.join(' ');
+
+    children[0] = (
       <Fragment key={0}>
-        <DropCap word={firstWord} /> {rest.join(' ')}
+        <DropCap word={firstWord} />
+        {withAutoLink ? <AutoLink ugc={ugc}>{restOfText}</AutoLink> : restOfText}
       </Fragment>
     );
-    return clones;
+    return children;
   }
 
-  throw new Error('Cannot insert Dropcap to pargraph because it does not start with text');
+  console.error('Cannot insert Dropcap to paragraph because it does not start with text');
+  return initialChildren;
 };
 
 export default class Paragraph extends React.PureComponent {
@@ -46,18 +51,22 @@ export default class Paragraph extends React.PureComponent {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     dataContent: PropTypes.string,
-    widthDropCap: PropTypes.bool,
+    ugc: PropTypes.bool,
+    withAutoLink: PropTypes.bool,
+    withDropCap: PropTypes.bool,
   };
 
   static defaultProps = {
     className: null,
     dataContent: null,
     type: STANDARD,
-    widthDropCap: false,
+    ugc: false,
+    withAutoLink: false,
+    withDropCap: false,
   };
 
   render() {
-    const { children, className, dataContent, type, widthDropCap } = this.props;
+    const { children, className, dataContent, type, ugc, withAutoLink, withDropCap } = this.props;
 
     const typeClassName = classMapping[type];
     const actualClassName = classnames(styles.default, styles[typeClassName], className);
@@ -66,7 +75,13 @@ export default class Paragraph extends React.PureComponent {
 
     return (
       <p className={actualClassName} {...attrs}>
-        {widthDropCap ? insertDropCap(children) : children}
+        {withDropCap ? (
+          insertDropCap(children, ugc, withAutoLink)
+        ) : withAutoLink ? (
+          <AutoLink ugc={ugc}>{children}</AutoLink>
+        ) : (
+          children
+        )}
       </p>
     );
   }

@@ -97,6 +97,7 @@ class BioUpdateForm extends React.Component {
                   <p className={styles.error}>{errorMessage}</p>
 
                   <Field
+                    className={styles.bio}
                     name="bio"
                     id="bio"
                     component={InputField}

@@ -6,7 +6,7 @@ import React from 'react';
 
 import styles from './styles.scss';
 
-const Spinner = ({ className, negative = true }) => (
+const Spinner = ({ className, negative = false }) => (
   <div className="loadingContainer">
     <div className={classnames(styles.spinner, { [styles.negative]: negative }, className)}>
       <SVG icon={SpinnerSVG} />

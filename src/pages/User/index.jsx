@@ -48,7 +48,12 @@ export const User = ({ match }) => {
                   {username}
                 </Heading>
                 {bio && (
-                  <Paragraph widthDropCap={bio && bio.length > MIN_DROPCAP_LENGTH} className={styles.bio}>
+                  <Paragraph
+                    withDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
+                    withAutoLink
+                    className={styles.bio}
+                    ugc
+                  >
                     {bio}
                   </Paragraph>
                 )}

@@ -39,13 +39,13 @@ class AboutRaw extends React.Component {
             </Heading>
 
             <section className={styles.section1}>
-              <Paragraph widthDropCap>{t('paragraph1')}</Paragraph>
+              <Paragraph withDropCap>{t('paragraph1')}</Paragraph>
               <Paragraph>{t('paragraph2')}</Paragraph>
               <Paragraph>{t('paragraph3')}</Paragraph>
             </section>
 
             <section className={styles.section2}>
-              <Paragraph widthDropCap>{t('paragraph4')}</Paragraph>
+              <Paragraph withDropCap>{t('paragraph4')}</Paragraph>
               <Paragraph>{t('paragraph5')}</Paragraph>
               <Paragraph>{t('paragraph6')}</Paragraph>
             </section>

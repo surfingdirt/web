@@ -63,10 +63,12 @@ class ProfileRaw extends React.Component {
     );
 
     return (
-      <DualContainer nowrap>
+      <DualContainer>
         <Paragraph
+          withDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
+          withAutoLink
           className={classnames(styles.bio, { [styles.emptyBio]: emptyBio })}
-          widthDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
+          ugc
         >
           {text}
         </Paragraph>

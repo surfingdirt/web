@@ -30,7 +30,7 @@ class OldForumRaw extends React.Component {
 
         <Card type={STANDARD} title={t('title')}>
           <div className={styles.content}>
-            <Paragraph widthDropCap>{t('paragraph1')}</Paragraph>
+            <Paragraph withDropCap>{t('paragraph1')}</Paragraph>
             <Paragraph>{t('paragraph2')}</Paragraph>
             <Paragraph>{t('paragraph3')}</Paragraph>
 

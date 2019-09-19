@@ -57,7 +57,7 @@ const Button = ({
   /* Content */
   let content;
   if (loading) {
-    content = <InlineSpinner className={styles.spinner} />;
+    content = <InlineSpinner negative={type === NEGATIVE} className={styles.spinner} />;
   } else {
     const labelMarkup = <span className={styles.label}>{label}</span>;
     if (hasIcon) {

@@ -215,7 +215,7 @@ class App extends React.Component {
             loading: isLoading,
           } = meResponse;
 
-          if (isLoading) return <Spinner negative />;
+          if (isLoading) return <Spinner />;
           if (error) return <ErrorMessage />;
 
           if (me && me.userId) {
