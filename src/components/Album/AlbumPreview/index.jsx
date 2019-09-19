@@ -104,7 +104,7 @@ const AlbumPreview = ({
             )}
           </div>
         </div>
-        {description && <Paragraph className={styles.description}>{description}</Paragraph>}
+        {description && <Paragraph className={styles.description} withAutoLink ugc>{description}</Paragraph>}
       </div>
     </Card>
   );

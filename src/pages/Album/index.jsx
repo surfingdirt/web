@@ -89,7 +89,7 @@ class AlbumRaw extends React.Component {
                   </div>
                 </DualContainer>
               )}
-              {description && <Paragraph>{description}</Paragraph>}
+              {description && <Paragraph withAutoLink ugc>{description}</Paragraph>}
               <AlbumGrid media={media} />
             </Card>
           );
