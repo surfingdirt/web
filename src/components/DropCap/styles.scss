@@ -4,6 +4,10 @@
 @import '../../styles/font-sizes';
 @import '../../styles/media-queries';
 
+.visible::after {
+  content: ' ';
+}
+
 .hidden {
   display: none;
 }

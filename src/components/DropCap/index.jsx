@@ -8,7 +8,7 @@ const DropCap = ({ word }) => {
 
   return (
     <span aria-labelledby="word--first" role="text">
-      <span aria-hidden="true">
+      <span aria-hidden="true" className={styles.visible}>
         <span className={styles.dropcap}>{letter}</span>
         {rest}
       </span>
