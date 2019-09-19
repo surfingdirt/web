@@ -23,7 +23,7 @@ const getHeroContent = (media, mediaType, t) => {
 
   const image = getBiggestMediaImageUrl(media);
   if (mediaType === VIDEO) {
-    const { embedUrl, height, width } = media;
+    const { embedUrl, height, width, mediaSubType } = media;
     heroContent = (
       <Fragment>
         <Helmet>
@@ -33,7 +33,7 @@ const getHeroContent = (media, mediaType, t) => {
           {description && <meta property="description" content={description} />}
           {image && <meta property="og:image" content={image} />}
         </Helmet>
-        <VideoEmbed url={embedUrl} height={height} width={width} />
+        <VideoEmbed url={embedUrl} height={height} mediaSubType={mediaSubType} width={width} />
       </Fragment>
     );
   } else {

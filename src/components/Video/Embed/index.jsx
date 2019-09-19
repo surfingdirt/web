@@ -6,20 +6,30 @@ import Translate from 'Hocs/Translate/index';
 import messages from './messages';
 import styles from './styles.scss';
 
-const VideoEmbed = ({ height, t, url, width }) => {
-  const wrapperStyle = {
-    paddingTop: `${(100 * height) / width}%`,
-  };
+const VideoEmbed = ({ height, mediaSubType, t, url, width }) => {
+  const wrapperStyle = {};
   const videoStyle = {};
+  const attrs = {};
+  let wrapperClassName;
+  let className;
+
+  // if (mediaSubType === 'FACEBOOK') {
+  // } else {
+  // }
+
+  wrapperClassName = styles.videoWrapper;
+  className = styles.video;
+  wrapperStyle.paddingTop = `${(100 * height) / width}%`;
 
   return (
-    <div className={styles.videoWrapper} style={wrapperStyle}>
+    <div className={wrapperClassName} style={wrapperStyle}>
       <iframe
-        className={styles.video}
+        className={className}
         style={videoStyle}
         title={t('videoContent')}
         src={url}
         allowFullScreen
+        {...attrs}
       />
     </div>
   );
@@ -27,6 +37,7 @@ const VideoEmbed = ({ height, t, url, width }) => {
 
 VideoEmbed.propTypes = {
   height: PropTypes.number.isRequired,
+  mediaSubType: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
