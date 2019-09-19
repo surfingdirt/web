@@ -66,7 +66,7 @@ class ProfileRaw extends React.Component {
       <DualContainer nowrap>
         <Paragraph
           className={classnames(styles.bio, { [styles.emptyBio]: emptyBio })}
-          widthDropCap={bio.length > MIN_DROPCAP_LENGTH}
+          widthDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
         >
           {text}
         </Paragraph>
