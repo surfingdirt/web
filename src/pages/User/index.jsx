@@ -15,6 +15,10 @@ import styles from './styles.scss';
 const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;
 
+const MIN_DROPCAP_LENGTH = 200;
+
+// TODO: dedupe code between this and pages/Profile/index.jsx
+
 export const User = ({ match }) => {
   const { id: userId } = match.params;
 
@@ -44,7 +48,7 @@ export const User = ({ match }) => {
                   {username}
                 </Heading>
                 {bio && (
-                  <Paragraph widthDropCap className={styles.bio}>
+                  <Paragraph widthDropCap={bio.length > MIN_DROPCAP_LENGTH} className={styles.bio}>
                     {bio}
                   </Paragraph>
                 )}

@@ -10,19 +10,29 @@ import styles from './styles.scss';
 const ACTION = 'action';
 const BARE = 'bare';
 const DISABLED = 'disabled';
-const LARGE = 'large';
 const MAIN = 'main';
 const NEGATIVE = 'negative';
 
-export const buttonTypes = { ACTION, BARE, DISABLED, LARGE, MAIN, NEGATIVE, };
+export const buttonTypes = { ACTION, BARE, DISABLED, MAIN, NEGATIVE, };
 
 const typeMapping = {
   [ACTION]: 'actionButton',
   [BARE]: 'bareButton',
   [DISABLED]: 'disabledButton',
-  [LARGE]: 'largeButton',
   [MAIN]: 'mainButton',
   [NEGATIVE]: 'negativeButton',
+};
+
+const DEFAULT = 'default';
+const LARGE = 'large';
+const SMALL = 'small';
+
+export const buttonSizes = { DEFAULT, LARGE, SMALL, };
+
+const sizeMapping = {
+  [DEFAULT]: 'defaultSize',
+  [LARGE]: 'largeSize',
+  [SMALL]: 'smallSize',
 };
 
 const Button = ({
@@ -37,6 +47,7 @@ const Button = ({
   buttonType,
   iconLeft,
   iconRight,
+  size,
 }) => {
   const hasIcon = iconLeft || iconRight;
 
@@ -79,10 +90,12 @@ const Button = ({
 
   /* Styles */
   const typeClassName = typeMapping[type];
+  const sizeClassName = sizeMapping[size];
   const actualClassName = classnames(
     styles.button,
     elementClassName,
     styles[typeClassName],
+    styles[sizeClassName],
     disabled ? styles.disabled : null,
     loading ? styles.loading : null,
     className,
@@ -108,6 +121,18 @@ Button.propTypes = {
 
     return undefined;
   },
+  size: (props, propName, componentName) => {
+    const size = props[propName];
+    if (!size) {
+      return new Error(`Empty size set for component '${componentName}'`);
+    }
+
+    if (!Object.keys(sizeMapping).includes(size)) {
+      return new Error(`Invalid size set for component '${componentName}': '${size}'`);
+    }
+
+    return undefined;
+  },
 
   /* <button> props */
   buttonType: PropTypes.string,
@@ -122,7 +147,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type: 'main',
+  type: MAIN,
+  size: DEFAULT,
   onClick: () => {},
   iconLeft: null,
   iconRight: null,

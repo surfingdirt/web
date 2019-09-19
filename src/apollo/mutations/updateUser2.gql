@@ -1,0 +1,35 @@
+mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
+    updateUser(userId: $userId, input: $input) {
+        userId
+        username
+        firstName
+        bio
+        album {
+          id
+          title
+          media {
+            images {
+                size
+                width
+                height
+                type
+                url
+            }
+          }
+        }
+        avatar {
+          size
+          width
+          height
+          type
+          url
+        }
+        cover {
+          size
+          width
+          height
+          type
+          url
+        }
+    }
+}

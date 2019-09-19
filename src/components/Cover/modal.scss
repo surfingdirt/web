@@ -3,7 +3,6 @@
 @import "../../styles/constants";
 @import "../../styles/font-sizes";
 
-$content-max-width: 30rem;
 $canvas-size: 180px;
 $content-height: 200px;
 
@@ -14,7 +13,7 @@ $content-height: 200px;
 
 .fileLabel {
   display: block;
-  max-width: $content-max-width;
+  max-width: $form-max-width;
   margin: $margin-small-3 auto;
   text-align: center;
   cursor: pointer;
@@ -76,7 +75,7 @@ $content-height: 200px;
 }
 
 .buttons {
-  max-width: $content-max-width;
+  max-width: $form-max-width;
   margin: 0 auto;
-  text-align: center;
+  text-align: right;
 }

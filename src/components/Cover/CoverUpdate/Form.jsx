@@ -176,17 +176,17 @@ class CoverUpdateForm extends React.Component {
 
                   <div className={styles.buttons}>
                     <Button
+                      buttonType="reset"
+                      type={NEGATIVE}
+                      label={t('cancel')}
+                      onClick={this.onCancel}
+                    />
+                    <Button
                       buttonType="submit"
                       label={t('upload')}
                       disabled={submitting}
                       loading={submitting}
                       type={ACTION}
-                    />
-                    <Button
-                      buttonType="reset"
-                      type={NEGATIVE}
-                      label={t('cancel')}
-                      onClick={this.onCancel}
                     />
                   </div>
                 </form>

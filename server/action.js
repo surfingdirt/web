@@ -4,10 +4,12 @@ import actions, { ACTION_PREFIX } from '~/actions';
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
-import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
-import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
+import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
+import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
+import USER_UPDATE_MUTATION from 'Apollo/mutations/updateUser2.gql';
+
 import { albumRoute, errorRoute, photoRoute, videoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
@@ -28,6 +30,7 @@ const {
   PHOTO_BATCH_UPLOAD,
   PHOTO_NEW,
   VIDEO_NEW,
+  USER_UPDATE,
 } = actions;
 const { ERROR, HOME, PROFILE } = routes;
 
@@ -62,6 +65,32 @@ const actionInfoMap = {
     redirect: { route: PROFILE },
     onError: (error, res) => {
       console.error('Cover update error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [LOGIN]: {
+    mutation: LOGIN_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'login',
+    cb: (req, res, data) => {
+      res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
+      res.redirect(301, HOME);
+    },
+    onError: (error, res) => {
+      console.error('Login error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [LOGOUT]: {
+    mutation: LOGOUT_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'logout',
+    cb: (req, res) => {
+      res.clearCookie(LoginCookie);
+      res.redirect(301, HOME);
+    },
+    onError: (error, res) => {
+      console.error('Logout error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
@@ -130,29 +159,13 @@ const actionInfoMap = {
       return res.redirect(500, ERROR);
     },
   },
-  [LOGIN]: {
-    mutation: LOGIN_MUTATION,
+  [USER_UPDATE]: {
+    mutation: USER_UPDATE_MUTATION,
     hasFileUpload: false,
-    responseKey: 'login',
-    cb: (req, res, data) => {
-      res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
-      res.redirect(301, HOME);
-    },
+    responseKey: 'updateUser',
+    redirect: { route: PROFILE },
     onError: (error, res) => {
-      console.error('Login error:', error);
-      return res.redirect(301, errorRoute(error.code, error.message));
-    },
-  },
-  [LOGOUT]: {
-    mutation: LOGOUT_MUTATION,
-    hasFileUpload: false,
-    responseKey: 'logout',
-    cb: (req, res) => {
-      res.clearCookie(LoginCookie);
-      res.redirect(301, HOME);
-    },
-    onError: (error, res) => {
-      console.error('Logout error:', error);
+      console.error('User update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
   },

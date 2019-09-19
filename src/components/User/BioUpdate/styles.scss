@@ -1,0 +1,10 @@
+@import "../../../styles/constants";
+
+.form {
+  max-width: $form-max-width;
+  margin: 0 auto;
+}
+
+.buttons {
+  text-align: right;
+}

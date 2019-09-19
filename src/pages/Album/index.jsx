@@ -9,7 +9,7 @@ import AlbumGrid from 'Components/Album/AlbumGrid';
 import Attribution from 'Components/Attribution';
 import Card, { cardTypes } from 'Components/Card';
 import DataRenderer from 'Components/DataRenderer';
-import DualContainer from 'Components/DualContainer';
+import DualContainer from 'Components/DualContainer/index';
 import Menu from 'Components/Menu';
 import menuStyles from 'Components/Menu/styles.scss';
 import Paragraph from 'Components/Paragraph';
