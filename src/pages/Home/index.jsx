@@ -66,22 +66,22 @@ class HomeRaw extends React.Component {
               <Card type={STANDARD}>
                 <details className={styles.intro}>
                   <summary className={styles.introSummary}>
-                    <Paragraph
-                      withDropCap
-                      className={styles.introParagraph}
-                      dataContent={t('more')}
-                    >
-                      {t('paragraph1')}
+                    <Paragraph className={styles.introParagraph} dataContent={t('more')}>
+                      {t('paragraph1a')}
                     </Paragraph>
                   </summary>
+
+                  <Paragraph withDropCap className={styles.columns}>
+                    {t('paragraph1b')}
+                  </Paragraph>
 
                   <Heading type={SECONDARY} className={styles.title2}>
                     {t('title2')}
                   </Heading>
-                  <Paragraph>{t('paragraph2')}</Paragraph>
+                  <Paragraph className={styles.columns}>{t('paragraph2')}</Paragraph>
 
                   <Heading type={SECONDARY}>{t('title3')}</Heading>
-                  <Paragraph>{t('paragraph3')}</Paragraph>
+                  <Paragraph className={styles.columns}>{t('paragraph3')}</Paragraph>
                 </details>
               </Card>
 

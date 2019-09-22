@@ -5,8 +5,12 @@ const messages = (getText, getPlural) => (key) =>
       'Your online mountainboard community',
       'Home',
     ) /* Title on the homepage to welcome users */,
-    paragraph1: getText(
-      `Welcome to the new Surfing Dirt, your new online community! Mountainboarding doesn't have a real home online right now, so we're hoping to be it. 
+    paragraph1a: getText(
+      `Welcome to the new Surfing Dirt, your new online community!`,
+      'Home',
+    ) /*  */,
+    paragraph1b: getText(
+      `Mountainboarding doesn't have a real home online right now, so we're hoping to be it. 
       You may remember Surfing Dirt the forum, but this is different. Think of the new Surfing Dirt more like a social network. Profile pages, galleries, and all kinds of other things.
       A place to showcase all the cool things that are happening in mountainboarding.`,
       'Home',
