@@ -7,6 +7,7 @@
 $border-width: $widget-border-width;
 
 .menu {
+  position: relative;
 }
 
 .menuTrigger {
@@ -21,6 +22,14 @@ $border-width: $widget-border-width;
   border: $border-width $menu-border-color solid;
   border-radius: $widget-border-radius;
   box-shadow: 0 0 3px rgba($widget-border-color, .5);
+}
+
+.menuOptionsHorizontal-left {
+  right: 0;
+}
+
+.menuOptionsHorizontal-right {
+  left: 0;
 }
 
 .menuOptionsHorizontal-left .menuOption .menuEntry {

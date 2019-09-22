@@ -106,28 +106,30 @@ class Menu extends React.Component {
   }
 
   updatePositioning() {
-    const {
-      preferredHorizontal: horizontalPlacement,
-      preferredVertical: verticalPlacement,
-    } = this.props;
+    const { preferredHorizontal, preferredVertical } = this.props;
 
     const triggerRect = this.triggerRef.current.getBoundingClientRect();
     const optionsRect = this.optionsRef.current.getBoundingClientRect();
 
-    const positionState = { horizontalPlacement, verticalPlacement };
+    let horizontalPlacement = preferredHorizontal;
+    let verticalPlacement = preferredVertical;
+
     // Only update preferred placement positions if necessary to keep menu from
     // appearing off-screen.
     if (triggerRect.left + optionsRect.width > window.innerWidth) {
-      positionState.horizontalPlacement = LEFT;
+      horizontalPlacement = LEFT;
     } else if (optionsRect.left < 0) {
-      positionState.horizontalPlacement = RIGHT;
+      horizontalPlacement = RIGHT;
     }
     if (triggerRect.bottom + optionsRect.height > window.innerHeight) {
-      positionState.verticalPlacement = TOP;
+      verticalPlacement = TOP;
     } else if (optionsRect.top < 0) {
-      positionState.verticalPlacement = BOTTOM;
+      verticalPlacement = BOTTOM;
     }
-    this.setState(positionState);
+    this.setState({
+      horizontalPlacement,
+      verticalPlacement,
+    });
   }
 
   handleKeys(e) {

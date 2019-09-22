@@ -12,6 +12,7 @@ import DataRenderer from 'Components/DataRenderer';
 import DualContainer from 'Components/DualContainer/index';
 import Menu from 'Components/Menu';
 import menuStyles from 'Components/Menu/styles.scss';
+import { positions } from 'Components/Menu/constants';
 import Paragraph from 'Components/Paragraph';
 import { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
@@ -19,7 +20,6 @@ import { batchPhotoUploadForAlbumRoute } from 'Utils/links';
 import { getFirstAlbumImageUrl } from 'Utils/media';
 import AppContext from '~/contexts';
 import { ALBUM_MENU } from '~/ids';
-
 import messages from './messages';
 import styles from './styles.scss';
 
@@ -27,6 +27,7 @@ const COUNT_ITEMS = 25;
 
 const { STANDARD } = cardTypes;
 const { SMALL } = userboxSizes;
+const { LEFT } = positions;
 
 class AlbumRaw extends React.Component {
   static propTypes = {
@@ -83,6 +84,7 @@ class AlbumRaw extends React.Component {
                           triggerLabel={t('albumMenuLabel')}
                           className={styles.albumMenu}
                           options={options}
+                          preferredHorizontal={LEFT}
                         />
                       </div>
                     )}
