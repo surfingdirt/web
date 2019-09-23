@@ -36,6 +36,7 @@ const UserboxRaw = (props) => {
   const img = avatar && avatar.find((a) => a.size === smallMediaSize);
   const imgStyle = img ? { backgroundImage: `url(${img.url})` } : {};
 
+  const initials = username.split(' ').reduce((acc, word) => `${acc}${word[0]}`, '').slice(0, 2);
   const color = username.split('').reduce((acc, letter) => acc + letter.charCodeAt(0), 0) % 360;
   const initialsColor = `hsl(${color},60%,70%)`;
   const bgColor = `hsl(${(color + 180) % 360},60%,30%)`;
