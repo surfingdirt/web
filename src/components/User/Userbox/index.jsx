@@ -36,6 +36,11 @@ const UserboxRaw = (props) => {
   const img = avatar && avatar.find((a) => a.size === smallMediaSize);
   const imgStyle = img ? { backgroundImage: `url(${img.url})` } : {};
 
+  const initials = username.split(' ').reduce((acc, word) => `${acc}${word[0]}`, '');
+  const color = username.split('').reduce((acc, letter) => acc + letter.charCodeAt(0), 0) % 360;
+  const initialsColor = `hsl(${color},60%,70%)`;
+  const bgColor = `hsl(${(color + 180) % 360},60%,30%)`;
+
   return (
     <Link
       to={userRoute(userId)}
@@ -43,7 +48,18 @@ const UserboxRaw = (props) => {
       title={username}
     >
       <div className={classnames(styles.avatarWrapper, className)} aria-hidden="true">
-        <div className={styles.avatar} style={imgStyle} />
+        {avatar ? (
+          <div className={styles.avatar} style={imgStyle} />
+        ) : (
+          <div className={styles.initialsWrapper}>
+            <div
+              className={styles.initials}
+              style={{ color: initialsColor, backgroundColor: bgColor }}
+            >
+              {initials}
+            </div>
+          </div>
+        )}
       </div>
       <div className={styles.username}>{username}</div>
     </Link>
