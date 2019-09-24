@@ -20,7 +20,11 @@ config set to use.
 
 This project is licenced under the MIT license
 
-# Acknowledgments
+# Acknowledgements
 
-Thanks to BrowserStack for the Open Source program they run which helps small teams test their
-open source apps (such as this one) across a variety of devices.
+<a href="https://www.browserstack.com" target="_blank">
+    <img src="https://github.com/surfingdirt/web/blob/master/Browserstack-logo@2x.png" alt="Browserstack" width="300" height="65">
+</a>
+
+Thanks to [BrowserStack](https://www.browserstack.com/) for the Open Source program they run which helps small teams
+(such as this one) test their open source apps (such as this one) across a variety of devices!
