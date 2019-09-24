@@ -7,8 +7,10 @@ $border-width-1: 2px;
 $border-width-2: 4px;
 $border-width-3: 8px;
 
-$cover-height: 180px;
-$cover-height-empty: 60px;
+$cover-height: 11.25rem;
+$cover-height-empty-small: $profile-size-small / 2 * 1.25;
+$cover-height-empty-standard: $profile-size-standard / 2 * 1.25;
+$cover-height-empty-large: $profile-size-large / 2 * 1.25;
 
 .coverWrapper {
   position: relative;
@@ -21,7 +23,7 @@ $cover-height-empty: 60px;
     z-index: 1;
 
     &.emptyCover {
-      height: $cover-height-empty;
+      height: $cover-height-empty-small;
     }
   }
 
@@ -57,9 +59,12 @@ $cover-height-empty: 60px;
   }
 
   @media (min-width: $desktop-small) {
-    margin-bottom: $margin-small-1 + $profile-size-standard / 2; // 15 px + 3rem = 63px
+    margin-bottom: $margin-small-1 + $profile-size-standard / 2;
     .coverContent {
-      height: 300px;
+      height: 18.75rem;
+      &.emptyCover {
+        height: $cover-height-empty-standard;
+      }
     }
 
     .coverImagePositionner {
@@ -68,9 +73,12 @@ $cover-height-empty: 60px;
   }
 
   @media (min-width: $desktop-big) {
-    margin-bottom: $margin-medium-2 + $profile-size-large / 2; // 20 px + 3rem = 68px
+    margin-bottom: $margin-medium-2 + $profile-size-large / 2;
     .coverContent {
-      height: 400px;
+      height: 25rem;
+      &.emptyCover {
+        height: $cover-height-empty-large;
+      }
     }
 
     .coverImagePositionner {

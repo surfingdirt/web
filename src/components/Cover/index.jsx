@@ -36,10 +36,15 @@ const Cover = ({ avatar, t, cover, username, withUpdateForms }) => {
       </div>
 
       <div className={styles.avatarPositionner}>
-        <UserProfile images={avatar} type={RESPONSIVE} className={styles.avatarImage} username={username} />
+        <UserProfile
+          images={avatar}
+          type={RESPONSIVE}
+          className={styles.avatarImage}
+          username={username}
+        />
       </div>
 
-      <div className={classnames(styles.coverContent, {[styles.emptyCover]: !hasCover})}>
+      <div className={classnames(styles.coverContent, { [styles.emptyCover]: !hasCover })}>
         {options.length > 0 && (
           <Menu
             menuId={COVER_MENU}
