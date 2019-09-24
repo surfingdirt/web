@@ -23,7 +23,7 @@ This project is licenced under the MIT license
 # Acknowledgements
 
 <a href="https://www.browserstack.com" target="_blank">
-    <img src="https://github.com/surfingdirt/web/blob/master/Browserstack-logo@2x.png" alt="Browserstack" width="300" height="65">
+    <img src="https://raw.githubusercontent.com/surfingdirt/web/master/Browserstack-logo%402x.png" alt="Browserstack" width="300" height="65">
 </a>
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for the Open Source program they run which helps small teams
