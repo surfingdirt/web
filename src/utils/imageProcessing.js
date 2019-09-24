@@ -115,6 +115,9 @@ const getBlob = (file, orientation, canvasEl, maxWidth, maxHeight) => {
         ctx.drawImage(img, 0, 0, width, height);
 
         const dataurl = canvasEl.toDataURL('image/jpeg');
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        canvasEl.width = 0;
+        canvasEl.height = 0;
         const blobBin = atob(dataurl.split(',')[1]);
         const array = [];
         for (let i = 0; i < blobBin.length; i++) {
