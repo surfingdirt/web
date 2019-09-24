@@ -1,3 +1,16 @@
 .workCanvas {
   display: none;
 }
+
+.filePreviews {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    max-width: 30%;
+
+    img {
+      width: 100%;
+    }
+  }
+}

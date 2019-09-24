@@ -1,5 +1,6 @@
 @import "../../../styles/boxmodel";
 @import "../../../styles/colors";
+@import "../../../styles/font-faces";
 @import "../../../styles/font-sizes";
 
 $avatar-size-smallest: 1rem;
@@ -92,6 +93,7 @@ $username-font-size-standard: $font-size-medium;
       justify-content: center;
       text-transform: uppercase;
       border-radius: 50%;
+      font-family: $title-font-families;
     }
   }
 }

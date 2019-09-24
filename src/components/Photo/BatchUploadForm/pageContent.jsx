@@ -17,6 +17,7 @@ import actions from '~/actions';
 
 import messages from './messages';
 import styles from './styles.scss';
+
 import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR } from './steps';
 
 const { PHOTO_BATCH_UPLOAD } = actions;
@@ -57,7 +58,19 @@ class PageContent extends React.Component {
         beforeForm = <p>pick some files yo</p>;
         break;
       case STEP_LIST_SELECTED:
-        beforeForm = <p>you picked files: {previews.length}</p>;
+        beforeForm = (
+          <Fragment>
+            <p>you picked files: {previews.length}</p>
+            <ul className={styles.filePreviews}>
+              {previews.map(({ blob, width, height }, index) => (
+                <li key={index}>
+                  <button>X</button>
+                  <img height={height} width={width} src={URL.createObjectURL(blob)} />
+                </li>
+              ))}
+            </ul>
+          </Fragment>
+        );
         break;
       case STEP_UPLOADING:
         break;

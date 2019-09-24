@@ -7,15 +7,22 @@ $border-width-1: 2px;
 $border-width-2: 4px;
 $border-width-3: 8px;
 
+$cover-height: 180px;
+$cover-height-empty: 60px;
+
 .coverWrapper {
   position: relative;
   margin-bottom: $margin-small-1 + $profile-size-small / 2; // 39px
 
   .coverContent {
-    height: 180px;
+    height: $cover-height;
     padding: $padding-medium-2;
     position: relative;
     z-index: 1;
+
+    &.emptyCover {
+      height: $cover-height-empty;
+    }
   }
 
   .coverImagePositionner {

@@ -106,7 +106,7 @@ class ProfileRaw extends React.Component {
               </Helmet>
 
               <Card type={BARE}>
-                <Cover cover={cover} avatar={avatar} withUpdateForms />
+                <Cover cover={cover} avatar={avatar} username={username} withUpdateForms />
                 <div className={styles.contentWrapper}>
                   <Heading className={styles.username} type={PRIMARY}>
                     {username}

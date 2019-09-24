@@ -44,9 +44,12 @@ class BatchUploadForm extends React.Component {
 
   async onSelect(files) {
     console.log('onSelect', files);
-    const { oldFiles } = this.state;
+    const { files: oldFiles } = this.state;
     // TODO: build thumbs and canvases out of files
-    const allFiles = oldFiles.concat(files);
+    const allFiles = oldFiles;
+    Array.from(files).forEach((file) => {
+      allFiles.push(file);
+    });
     const previews = [];
 
     for (const file of allFiles) {

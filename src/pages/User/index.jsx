@@ -43,7 +43,7 @@ export const User = ({ match }) => {
             </Helmet>
 
             <Card type={BARE}>
-              <Cover cover={cover} avatar={avatar} />
+              <Cover cover={cover} avatar={avatar} username={username} />
               <div className={styles.contentWrapper}>
                 <Heading className={styles.username} type={PRIMARY}>
                   {username}

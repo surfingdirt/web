@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import styles from './styles.scss';
+import { getInitialsData } from 'Components/User/Userbox';
 
 const FILL = 'fill';
 const SMALL = 'small';
@@ -37,6 +38,7 @@ class UserProfile extends React.Component {
 
       return undefined;
     },
+    username: PropTypes.string.required,
   };
 
   static defaultProps = {
@@ -46,7 +48,7 @@ class UserProfile extends React.Component {
   };
 
   render() {
-    const { images, className, label, type } = this.props;
+    const { images, className, label, type, username } = this.props;
     const sizeClassName = styles[type];
 
     if (images && images.length > 0) {
@@ -60,8 +62,12 @@ class UserProfile extends React.Component {
       );
     }
 
+    const { initials } = getInitialsData(username, '#', '');
+
     return (
-      <div className={classnames(styles.wrapper, styles.placeholder, sizeClassName, className)} />
+      <div className={classnames(styles.wrapper, styles.placeholder, sizeClassName, className)}>
+        <div className={styles.initials}>{initials}</div>
+      </div>
     );
   }
 }

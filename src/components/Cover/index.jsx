@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -17,7 +18,7 @@ import messages from './messages';
 
 const { RESPONSIVE } = userProfileTypes;
 
-const Cover = ({ avatar, t, cover, withUpdateForms }) => {
+const Cover = ({ avatar, t, cover, username, withUpdateForms }) => {
   const hasCover = cover && cover.length > 0;
 
   const options = withUpdateForms
@@ -35,10 +36,10 @@ const Cover = ({ avatar, t, cover, withUpdateForms }) => {
       </div>
 
       <div className={styles.avatarPositionner}>
-        <UserProfile images={avatar} type={RESPONSIVE} className={styles.avatarImage} />
+        <UserProfile images={avatar} type={RESPONSIVE} className={styles.avatarImage} username={username} />
       </div>
 
-      <div className={styles.coverContent}>
+      <div className={classnames(styles.coverContent, {[styles.emptyCover]: !hasCover})}>
         {options.length > 0 && (
           <Menu
             menuId={COVER_MENU}
@@ -72,6 +73,7 @@ Cover.propTypes = {
     }),
   ),
   t: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
   withUpdateForms: PropTypes.bool,
 };
 
