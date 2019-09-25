@@ -1,0 +1,134 @@
+@import '../../../styles/animations';
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+@import '../../../styles/icons';
+@import '../../../styles/font-sizes';
+@import '../../../styles/layout';
+@import '../../../styles/media-queries';
+@import '../../../styles/z-indices';
+
+/******************************************************************************
+ * EXTENDS
+ *****************************************************************************/
+
+%navigationItem {
+  position: absolute;
+  z-index: $z-index-bottom-bar-items;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $bottom-bar-text-color;
+  padding: 0 $padding-small-3;
+  background: transparent;
+  border: 0;
+}
+
+/******************************************************************************
+ * GENERAL RULES
+ *****************************************************************************/
+
+.bottomBar {
+  position: fixed;
+  height: $bottom-bar-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-bottom-bar;
+
+  .more {
+    @extend %navigationItem;
+    right: 0;
+    width: $more-width;
+    padding-right: $padding-small-2;
+    margin-right: $margin-small-2;
+    z-index: $z-index-bottom-bar-more-button;
+    font-size: 1rem;
+  }
+
+  .plusButtonWrapper {
+    @extend %navigationItem;
+    right: $more-width;
+    width: $plus-width;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+
+    .plusPlaceholder {
+      width: $standardIconSize;
+      height: $standardIconSize;
+    }
+
+    .plusLabel {
+      font-size: $navigation-item-font-size;
+    }
+
+    .plusButtonOffset {
+      position: absolute;
+      left: 0;
+      border: 0;
+      padding: 0;
+      background: none;
+      margin-left: 50%;
+      transform: translate(-50%, -75%);
+
+      .plusButton {
+        position: relative;
+        z-index: $z-index-bottom-bar-items;
+        box-shadow: 2px 2px 6px $bottom-bar-action-button-shadow-color;
+
+        .closeIcon {
+          display: block;
+          transform: rotateZ(-135deg);
+          transition: all $bottom-bar-action-button-toggle-duration $default-transition-function;
+          &.closeIconActive {
+            transform: rotateZ(0);
+          }
+        }
+      }
+    }
+  }
+
+  .profile {
+    @extend %navigationItem;
+    right: $more-width + $plus-width;
+    width: $profile-width;
+  }
+}
+
+.hasActiveForm .bottomBar {
+  display: none;
+}
+
+@media (min-width: $desktop-layout-threshold-min) {
+  .bottomBar {
+    display: none;
+  }
+}
+
+.bottomBarBackground {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-bottom-bar-background;
+  width: $mobile-layout-threshold-max;
+  height: 100%;
+  overflow: hidden;
+  color: $bottom-bar-background-color;
+  pointer-events: none;
+
+  & > * {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bottomBarActionContainer {
+  pointer-events: none;
+  opacity: 0;
+
+  &.bottomBarActionContainerVisible {
+    pointer-events: initial;
+    opacity: 1;
+  }
+}

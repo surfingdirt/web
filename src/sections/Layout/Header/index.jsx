@@ -1,0 +1,60 @@
+import React from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+import Logo, { logoTypes } from 'Components/Logo/index';
+import NamedNavigationItem from 'Components/NamedNavigationItem/index';
+import Profile from 'Components/NavigationProfile/index';
+import Translate from 'Hocs/Translate/index';
+import icons, { getIcon, sizes } from 'Utils/icons';
+import routes from '~/routes';
+
+import messages from '../messages';
+
+import styles from './styles.scss';
+
+const { HOME } = routes;
+const { STANDARD } = sizes;
+const { HEADER_HORIZONTAL } = logoTypes;
+
+const Header = ({ className, headerRef, t, title }) => (
+  <header className={classnames(styles.header, className)} ref={headerRef}>
+    <div className={styles.desktopHeader}>
+      <Link to={HOME} className={styles.logo}>
+        <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
+      </Link>
+      <div className={styles.search}>
+        {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
+      </div>
+      <div className={styles.activity}>
+        <NamedNavigationItem
+          label={t('activity')}
+          visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
+        />
+      </div>
+      <Profile className={styles.profile} />
+    </div>
+
+    <div className={styles.mobileHeader}>
+      <Link to={HOME} className={styles.logo}>
+        <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
+      </Link>
+    </div>
+  </header>
+);
+
+Header.propTypes = {
+  className: PropTypes.string,
+  headerRef: PropTypes.shape({
+    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
+  }).isRequired,
+  t: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+Header.defaultProps = {
+  className: null,
+}
+
+export default Translate(messages)(Header);

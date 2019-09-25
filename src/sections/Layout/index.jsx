@@ -2,174 +2,26 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 
-import PopupActionButton from 'Components/PopupActionButton';
-import Logo, { logoTypes } from 'Components/Logo';
-import NamedNavigationItem from 'Components/NamedNavigationItem';
-import Profile from 'Components/NavigationProfile/index';
-import SVG from 'Components/SVG';
 import Translate from 'Hocs/Translate';
-import BottomBarBackground from 'Images/bottom-bar.svg';
 import Actions from 'Sections/Actions';
-import BottomBarActions from 'Sections/BottomBarActions';
 import LinkNavigation from 'Sections/LinkNavigation';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons from 'Utils/icons';
 import { focusFirstFocusableItemInside } from 'Utils/misc';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
+import BottomBar from './BottomBar';
+import Header from './Header';
+import { NAVIGATION_ID } from './constants';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ALBUM_NEW, HOME, PHOTO_NEW, VIDEO_NEW } = routes;
-const { STANDARD } = sizes;
-const { HEADER_HORIZONTAL } = logoTypes;
+const { ALBUM_NEW, PHOTO_NEW, VIDEO_NEW } = routes;
 
 const RESIZE = 'resize';
 
-const NAVIGATION_ID = 'link-navigation-items';
-const ACTION_ITEMS_ID = 'action-items';
-
-const BLUR_TIMEOUT = 1000 / 60 * 3;
-
-const Header = ({ headerRef, t, title }) => (
-  <header className={styles.header} ref={headerRef}>
-    <div className={styles.headerBackground} />
-    <Link to={HOME} className={styles.logo}>
-      <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
-    </Link>
-    <div className={styles.search}>
-      {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
-    </div>
-    <div className={styles.activity}>
-      <NamedNavigationItem
-        label={t('activity')}
-        visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
-      />
-    </div>
-    <Profile className={styles.profile} />
-  </header>
-);
-Header.propTypes = {
-  headerRef: PropTypes.shape({
-    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
-  }).isRequired,
-  t: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-const BottomBar = ({
-  actionButtonRef,
-  actionButtonOrigin,
-  actionLinkListRef,
-  actionItems,
-  bottomBarActionsOpen,
-  bottomBarRef,
-  closeAll,
-  navigationMenuOpen,
-  onPlusClick,
-  openNavigationMenu,
-  t,
-}) => (
-  <nav className={styles.bottomBar} aria-label={t('actionNav')} ref={bottomBarRef}>
-    <div
-      aria-hidden="true"
-      className={classnames(styles.overlay, styles.actionButtonOverlay, {
-        [styles.overlayVisible]: bottomBarActionsOpen,
-      })}
-      onClick={closeAll}
-    />
-
-    <button
-      type="button"
-      className={styles.more}
-      aria-haspopup="true"
-      aria-expanded={navigationMenuOpen}
-      aria-controls={NAVIGATION_ID}
-      onClick={openNavigationMenu}
-    >
-      <NamedNavigationItem
-        label={t('more')}
-        visual={getIcon({
-          type: icons.THREEDOTS_HORIZONTAL,
-          presentationOnly: true,
-          size: STANDARD,
-        })}
-      />
-    </button>
-
-    <div className={styles.plusButtonWrapper}>
-      <button
-        type="button"
-        className={styles.plusButtonOffset}
-        onClick={onPlusClick}
-        aria-haspopup="true"
-        aria-expanded={bottomBarActionsOpen}
-        aria-controls={ACTION_ITEMS_ID}
-      >
-        <PopupActionButton
-          ref={actionButtonRef}
-          className={styles.plusButton}
-          active={bottomBarActionsOpen}
-        >
-          {getIcon({
-            type: icons.CLOSE,
-            label: t('actionButton'),
-            className: classnames(styles.closeIcon, {
-              [styles.closeIconActive]: bottomBarActionsOpen,
-            }),
-          })}
-        </PopupActionButton>
-
-        <BottomBarActions
-          className={classnames(styles.bottomBarActionContainer, {
-            [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
-          })}
-          id={ACTION_ITEMS_ID}
-          items={actionItems}
-          open={bottomBarActionsOpen}
-          origin={actionButtonOrigin}
-          ref={actionLinkListRef}
-        />
-      </button>
-      <NamedNavigationItem
-        aria-hidden="true"
-        className={styles.plusLabel}
-        label={t('actionButton')}
-        visual={<div className={styles.plusPlaceholder} />}
-      />
-    </div>
-    <div className={styles.bottomBarBackground}>
-      <SVG icon={BottomBarBackground} hollow presentationOnly />
-    </div>
-  </nav>
-);
-BottomBar.propTypes = {
-  actionButtonRef: PropTypes.shape({
-    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
-  }).isRequired,
-  actionLinkListRef: PropTypes.shape({
-    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
-  }).isRequired,
-  actionButtonOrigin: PropTypes.arrayOf(PropTypes.number).isRequired,
-  actionItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      to: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  bottomBarRef: PropTypes.shape({
-    current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
-  }).isRequired,
-  bottomBarActionsOpen: PropTypes.bool.isRequired,
-  closeAll: PropTypes.func.isRequired,
-  navigationMenuOpen: PropTypes.bool.isRequired,
-  onPlusClick: PropTypes.func.isRequired,
-  openNavigationMenu: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
-};
+const BLUR_TIMEOUT = (1000 / 60) * 3;
 
 class Layout extends React.Component {
   static propTypes = {
@@ -325,7 +177,7 @@ class Layout extends React.Component {
         onFocusCapture={this.onFocus}
         onBlurCapture={this.onBlur}
       >
-        <Header headerRef={this.headerRef} t={t} title={title} />
+        <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
 
         <LinkNavigation
           className={styles.navigation}
@@ -336,11 +188,11 @@ class Layout extends React.Component {
           ref={this.navigationMenuRef}
         />
 
-        <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
-
         <main ref={this.mainRef} className={styles.main}>
           {children}
         </main>
+
+        <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
 
         <BottomBar {...bottomBarProps} />
 

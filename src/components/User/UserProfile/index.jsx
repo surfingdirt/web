@@ -38,7 +38,7 @@ class UserProfile extends React.Component {
 
       return undefined;
     },
-    username: PropTypes.string.required,
+    username: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
