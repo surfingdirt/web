@@ -28,6 +28,10 @@
  * GENERAL RULES
  *****************************************************************************/
 
+.activity {
+  display: none;
+}
+
 .bottomBar {
   position: fixed;
   height: $bottom-bar-height;
@@ -116,10 +120,15 @@
   overflow: hidden;
   color: $bottom-bar-background-color;
   pointer-events: none;
+  background: $bottom-bar-background-color;
 
   & > * {
     width: 100%;
     height: 100%;
+  }
+
+  @supports (display: grid) {
+    background: none;
   }
 }
 
@@ -132,3 +141,4 @@
     opacity: 1;
   }
 }
+
