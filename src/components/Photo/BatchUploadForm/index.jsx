@@ -32,7 +32,7 @@ class BatchUploadForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = initialState;
+    this.state = Object.assign({}, initialState);
 
     this.workCanvasRef = React.createRef();
 
@@ -43,7 +43,7 @@ class BatchUploadForm extends React.Component {
   }
 
   onReset() {
-    this.setState(initialState);
+    this.setState(Object.assign({}, initialState));
   }
 
   async onRemoveItemClick(toBeRemoved) {
@@ -62,7 +62,8 @@ class BatchUploadForm extends React.Component {
 
   async onSelect(files) {
     const { files: oldFiles } = this.state;
-    const allFiles = oldFiles;
+    // Use slice to make sure we don't pollute the old array.
+    const allFiles = oldFiles.slice();
     Array.from(files).forEach((file) => {
       allFiles.push(file);
     });

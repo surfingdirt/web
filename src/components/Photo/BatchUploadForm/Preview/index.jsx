@@ -45,13 +45,13 @@ const Preview = ({ onRemoveItemClick, t, item: { blob, error, name, width, heigh
 Preview.propTypes = {
   onRemoveItemClick: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  item: {
+  item: PropTypes.shape({
     blob: PropTypes.object,
     error: PropTypes.string,
     height: PropTypes.number,
     name: PropTypes.string.isRequired,
     width: PropTypes.number,
-  },
+  }),
 };
 
 Preview.defaultProps = {
