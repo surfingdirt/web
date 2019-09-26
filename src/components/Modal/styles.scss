@@ -16,6 +16,7 @@ $destkop-modal-width: 640px;
   z-index: $z-index-modal-cover;
   transform: translateZ(0);
   background: rgba(#000, .7);
+  backdrop-filter: blur(3px);
 }
 
 .modal {
