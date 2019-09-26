@@ -1,5 +1,6 @@
 @import "../../styles/colors";
 @import "../../styles/constants";
+@import "../../styles/media-queries";
 
 .container {
   display: flex;
@@ -10,9 +11,10 @@
   width: 100%;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
 
-  @media (hover: none) {
-    overflow-x: scroll;
+  @media(min-width: $desktop-layout-threshold-min) {
+    overflow-x: hidden;
   }
 
   &.withTransitions {
