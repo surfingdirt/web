@@ -1,0 +1,53 @@
+@import "../../../../styles/boxmodel";
+@import "../../../../styles/colors";
+@import "../../../../styles/constants";
+@import "../../../../styles/font-sizes";
+
+$button-distance: $padding-small-3;
+
+.wrapper {
+  // Make the box square, and absolute position its contents.
+  height: 0;
+  padding-top: 100%;
+  position: relative;
+  background: $brand-dark1;
+
+
+  .positioner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .removeButton {
+    position: absolute;
+    top: $button-distance;
+    right: $button-distance;
+    background-color: $brand-dark2;
+    color: $brand-bright;
+    border: 0;
+    padding: $padding-small-3;
+    line-height: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .errorItem {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    padding: $padding-small-2;
+    font-size: $font-size-small;
+
+    .filename {
+      word-break: break-all;
+    }
+  }
+}

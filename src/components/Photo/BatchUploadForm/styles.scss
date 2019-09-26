@@ -2,7 +2,6 @@
 @import "../../../styles/constants";
 @import "../../../styles/colors";
 
-$preview-width: 150px;
 $grid-gap: $margin-medium-2;
 $button-distance: $margin-medium-1;
 
@@ -10,37 +9,26 @@ $button-distance: $margin-medium-1;
   display: none;
 }
 
+.filePreviews {
+  list-style: none;
+  padding: 0;
+  margin: $margin-small-1;
+  display: grid;
+  grid-gap: $grid-gap;
+  grid-template-columns: repeat(auto-fill, minmax($batch-upload-grid-cell-size, 1fr));
+}
+
 .form {
   max-width: $form-max-width;
   margin: $margin-medium-1 auto;
 }
 
-.filePreviews {
-  list-style: none;
-  display: grid;
-  grid-gap: $grid-gap;
-  grid-template-columns: repeat(auto-fill, minmax($preview-width, 1fr));
-
-  .previewWrapper {
-    display: inline-block;
-    position: relative;
-
-    .removeButton {
-      position: absolute;
-      top: $button-distance;
-      right: $button-distance;
-    }
-
-    img {
-      width: 100%;
-    }
-  }
-}
 .fileInput {
   display: none;
 }
 
 .fileLabel {
+  margin: $margin-medium-1 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,10 +39,17 @@ $button-distance: $margin-medium-1;
   text-align: center;
 }
 
+.fileLabelMore {
+  display: block;
+  margin: $margin-medium-1 0;
+  text-align: center;
+}
+
 .buttons {
   text-align: right;
 }
 
 .visibleError {}
 .instructions {}
+.instructionsMore {}
 .error {}

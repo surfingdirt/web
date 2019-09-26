@@ -80,8 +80,7 @@ class BatchUploadForm extends React.Component {
       } catch (error) {
         preview = {
           name: file.name,
-          // TODO: replace this with a user-friendly message
-          error: error.message,
+          error: true,
         };
       }
       previews.push(preview);

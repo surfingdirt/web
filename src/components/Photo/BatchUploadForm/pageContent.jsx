@@ -16,6 +16,7 @@ import { maxPhotoSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
 
 import messages from './messages';
+import Preview from './Preview';
 import styles from './styles.scss';
 
 import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR } from './steps';
@@ -26,6 +27,39 @@ const { STANDARD } = sizes;
 
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
+
+const renderLabel = (step, errorMessage, t) => {
+  if (step === STEP_INITIAL) {
+    return (
+      <label htmlFor="fileInput" className={styles.fileLabel}>
+        <p
+          className={classnames(styles.error, {
+            [styles.visibleError]: !!errorMessage,
+          })}
+        >
+          {errorMessage}
+        </p>
+        <span className={styles.instructions}>
+          {getIcon({ type: icons.PHOTO, size: STANDARD })}
+          <p>{t('instructions')}</p>
+        </span>
+      </label>
+    );
+  }
+
+  return (
+    <label htmlFor="fileInput" className={styles.fileLabelMore}>
+      <p
+        className={classnames(styles.error, {
+          [styles.visibleError]: !!errorMessage,
+        })}
+      >
+        {errorMessage}
+      </p>
+      <p className={styles.instructionsMore}>{t('instructionsMore')}</p>
+    </label>
+  );
+};
 
 class PageContent extends React.Component {
   static propTypes = {
@@ -71,27 +105,8 @@ class PageContent extends React.Component {
         beforeForm = (
           <Fragment>
             <ul className={styles.filePreviews}>
-              {previews.map(({ blob, error, name, width, height }) => (
-                <li key={name} className={styles.previewWrapper}>
-                  <button
-                    className={styles.removeButton}
-                    onClick={() => {
-                      onRemoveItemClick(name);
-                    }}
-                  >
-                    X
-                  </button>
-                  {error ? (
-                    `${error}: ${name}`
-                  ) : (
-                    <img
-                      alt={t('previewImage')}
-                      height={height}
-                      width={width}
-                      src={URL.createObjectURL(blob)}
-                    />
-                  )}
-                </li>
+              {previews.map((item) => (
+                <Preview key={item.name} onRemoveItemClick={onRemoveItemClick} item={item} />
               ))}
             </ul>
           </Fragment>
@@ -138,19 +153,7 @@ class PageContent extends React.Component {
                       className={styles.form}
                       onReset={onReset}
                     >
-                      <label htmlFor="fileInput" className={styles.fileLabel}>
-                        <p
-                          className={classnames(styles.error, {
-                            [styles.visibleError]: !!errorMessage,
-                          })}
-                        >
-                          {errorMessage}
-                        </p>
-                        <span className={styles.instructions}>
-                          {getIcon({ type: icons.PHOTO, size: STANDARD })}
-                          <p>{t('instructions')}</p>
-                        </span>
-                      </label>
+                      {renderLabel(step, errorMessage, t)}
                       <Field name="file">
                         {({ input: { onChange } }) => (
                           <input
