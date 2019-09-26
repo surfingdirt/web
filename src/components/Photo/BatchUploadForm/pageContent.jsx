@@ -21,7 +21,7 @@ import styles from './styles.scss';
 import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR } from './steps';
 
 const { PHOTO_BATCH_UPLOAD } = actions;
-const { ACTION } = buttonTypes;
+const { ACTION, NEGATIVE } = buttonTypes;
 const { STANDARD } = sizes;
 
 const MAX_WIDTH = maxPhotoSize;
@@ -30,6 +30,8 @@ const MAX_HEIGHT = maxPhotoSize;
 class PageContent extends React.Component {
   static propTypes = {
     albumId: PropTypes.string.isRequired,
+    onRemoveItemClick: PropTypes.func.isRequired,
+    onReset: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     previews: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
@@ -49,23 +51,46 @@ class PageContent extends React.Component {
   }
 
   render() {
-    const { albumId, onSelect, onSubmit, previews, step, t } = this.props;
+    const {
+      albumId,
+      onRemoveItemClick,
+      onReset,
+      onSelect,
+      onSubmit,
+      previews,
+      step,
+      t,
+    } = this.props;
 
-    let beforeForm;
+    let beforeForm = null;
     let showForm = true;
     switch (step) {
       case STEP_INITIAL:
-        beforeForm = <p>pick some files yo</p>;
         break;
       case STEP_LIST_SELECTED:
         beforeForm = (
           <Fragment>
-            <p>you picked files: {previews.length}</p>
             <ul className={styles.filePreviews}>
-              {previews.map(({ blob, width, height }, index) => (
-                <li key={index}>
-                  <button>X</button>
-                  <img height={height} width={width} src={URL.createObjectURL(blob)} />
+              {previews.map(({ blob, error, name, width, height }) => (
+                <li key={name} className={styles.previewWrapper}>
+                  <button
+                    className={styles.removeButton}
+                    onClick={() => {
+                      onRemoveItemClick(name);
+                    }}
+                  >
+                    X
+                  </button>
+                  {error ? (
+                    `${error}: ${name}`
+                  ) : (
+                    <img
+                      alt={t('previewImage')}
+                      height={height}
+                      width={width}
+                      src={URL.createObjectURL(blob)}
+                    />
+                  )}
                 </li>
               ))}
             </ul>
@@ -78,6 +103,8 @@ class PageContent extends React.Component {
         showForm = false;
         break;
       case STEP_ERROR:
+        break;
+      default:
         break;
     }
 
@@ -98,38 +125,60 @@ class PageContent extends React.Component {
               return onSubmit(mutate, values);
             }}
             validate={this.validate}
-            render={() => (
-              <Fragment>
-                {beforeForm}
-                {showForm && (
-                  <form
-                    action={actionRoute(PHOTO_BATCH_UPLOAD)}
-                    method="POST"
-                    encType="multipart/form-data"
-                  >
-                    <Field name="file">
-                      {({ input: { onChange } }) => (
-                        <input
-                          type="file"
-                          id="fileInput"
-                          name="file"
-                          onChange={async (e) => {
-                            onChange(e);
-                            await onSelect(this.fileRef.current.files);
-                          }}
-                          ref={this.fileRef}
-                          multiple
-                        />
-                      )}
-                    </Field>
+            render={(errors, submitError) => {
+              const errorMessage = errors.file || submitError;
+              return (
+                <Fragment>
+                  {beforeForm}
+                  {showForm && (
+                    <form
+                      action={actionRoute(PHOTO_BATCH_UPLOAD)}
+                      method="POST"
+                      encType="multipart/form-data"
+                      className={styles.form}
+                      onReset={onReset}
+                    >
+                      <label htmlFor="fileInput" className={styles.fileLabel}>
+                        <p
+                          className={classnames(styles.error, {
+                            [styles.visibleError]: !!errorMessage,
+                          })}
+                        >
+                          {errorMessage}
+                        </p>
+                        <span className={styles.instructions}>
+                          {getIcon({ type: icons.PHOTO, size: STANDARD })}
+                          <p>{t('instructions')}</p>
+                        </span>
+                      </label>
+                      <Field name="file">
+                        {({ input: { onChange } }) => (
+                          <input
+                            className={styles.fileInput}
+                            type="file"
+                            id="fileInput"
+                            name="file"
+                            onChange={async (e) => {
+                              onChange(e);
+                              await onSelect(this.fileRef.current.files);
+                            }}
+                            ref={this.fileRef}
+                            multiple
+                          />
+                        )}
+                      </Field>
 
-                    <input type="hidden" name="albumId" value={albumId} />
-                    <input type="hidden" name="mediaSubType" value={MEDIA_SUBTYPE_IMG} />
-                    <Button buttonType="submit" label={t('upload')} type={ACTION} />
-                  </form>
-                )}
-              </Fragment>
-            )}
+                      <input type="hidden" name="albumId" value={albumId} />
+                      <input type="hidden" name="mediaSubType" value={MEDIA_SUBTYPE_IMG} />
+                      <div className={styles.buttons}>
+                        <Button buttonType="reset" label={t('clear')} type={NEGATIVE} />
+                        <Button buttonType="submit" label={t('upload')} type={ACTION} />
+                      </div>
+                    </form>
+                  )}
+                </Fragment>
+              );
+            }}
           />
         )}
       </Mutation>

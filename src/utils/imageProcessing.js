@@ -125,6 +125,7 @@ const getBlob = (file, orientation, canvasEl, maxWidth, maxHeight) => {
         }
 
         const payload = {
+          name: file.name,
           blob: new Blob([new Uint8Array(array)], { type: 'image/jpeg', name: 'photo.jpg' }),
           width,
           height,

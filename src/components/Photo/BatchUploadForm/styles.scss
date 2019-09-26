@@ -1,16 +1,60 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/constants";
+@import "../../../styles/colors";
+
+$preview-width: 150px;
+$grid-gap: $margin-medium-2;
+$button-distance: $margin-medium-1;
+
 .workCanvas {
   display: none;
 }
 
+.form {
+  max-width: $form-max-width;
+  margin: $margin-medium-1 auto;
+}
+
 .filePreviews {
   list-style: none;
+  display: grid;
+  grid-gap: $grid-gap;
+  grid-template-columns: repeat(auto-fill, minmax($preview-width, 1fr));
 
-  li {
+  .previewWrapper {
     display: inline-block;
-    max-width: 30%;
+    position: relative;
+
+    .removeButton {
+      position: absolute;
+      top: $button-distance;
+      right: $button-distance;
+    }
 
     img {
       width: 100%;
     }
   }
 }
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30vh;
+  max-width: $form-max-width;
+  border: $widget-border-width solid $widget-border-color;
+  text-align: center;
+}
+
+.buttons {
+  text-align: right;
+}
+
+.visibleError {}
+.instructions {}
+.error {}

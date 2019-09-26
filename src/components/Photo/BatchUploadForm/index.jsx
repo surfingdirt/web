@@ -14,6 +14,13 @@ import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
 
+const initialState = {
+  currentStep: STEP_INITIAL,
+  files: [],
+  previews: [],
+  uploads: [],
+};
+
 class BatchUploadForm extends React.Component {
   static contextType = AppContext;
 
@@ -25,27 +32,36 @@ class BatchUploadForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentStep: STEP_INITIAL,
-      files: [],
-      previews: [],
-      uploads: [
-        /*
-        { }
-        */
-      ],
-    };
+    this.state = initialState;
 
     this.workCanvasRef = React.createRef();
 
+    this.onRemoveItemClick = this.onRemoveItemClick.bind(this);
+    this.onReset = this.onReset.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSelect = this.onSelect.bind(this);
+  }
+
+  onReset() {
+    this.setState(initialState);
+  }
+
+  async onRemoveItemClick(toBeRemoved) {
+    const { files, previews, currentStep } = this.state;
+
+    const filterFn = (file) => file.name !== toBeRemoved;
+    const newFiles = files.filter(filterFn);
+    const newPreviews = previews.filter(filterFn);
+
+    // Note: this will likely cause issues if there is more state stored in the page
+    // after files are selected:
+    const newStep = newFiles.length > 0 ? currentStep : STEP_INITIAL;
+
+    this.setState({ files: newFiles, previews: newPreviews, currentStep: newStep });
   }
 
   async onSelect(files) {
-    console.log('onSelect', files);
     const { files: oldFiles } = this.state;
-    // TODO: build thumbs and canvases out of files
     const allFiles = oldFiles;
     Array.from(files).forEach((file) => {
       allFiles.push(file);
@@ -53,12 +69,21 @@ class BatchUploadForm extends React.Component {
     const previews = [];
 
     for (const file of allFiles) {
-      const preview = await previewResizeAndOrientFile(
-        file,
-        this.workCanvasRef.current,
-        MAX_WIDTH,
-        MAX_HEIGHT,
-      );
+      let preview;
+      try {
+        preview = await previewResizeAndOrientFile(
+          file,
+          this.workCanvasRef.current,
+          MAX_WIDTH,
+          MAX_HEIGHT,
+        );
+      } catch (error) {
+        preview = {
+          name: file.name,
+          // TODO: replace this with a user-friendly message
+          error: error.message,
+        };
+      }
       previews.push(preview);
     }
 
@@ -80,6 +105,8 @@ class BatchUploadForm extends React.Component {
           step={currentStep}
           previews={previews}
           albumId={albumId}
+          onReset={this.onReset}
+          onRemoveItemClick={this.onRemoveItemClick}
           onSelect={this.onSelect}
           onSubmit={this.onSubmit}
         />
