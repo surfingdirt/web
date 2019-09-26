@@ -18,12 +18,16 @@ const { HOME } = routes;
 const { STANDARD } = sizes;
 const { HEADER_HORIZONTAL } = logoTypes;
 
+const logo = (title) => (
+  <Link to={HOME} className={styles.logo}>
+    <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoTitle} />
+  </Link>
+);
+
 const Header = ({ className, headerRef, t, title }) => (
   <header className={classnames(styles.header, className)} ref={headerRef}>
     <div className={styles.desktopHeader}>
-      <Link to={HOME} className={styles.logo}>
-        <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
-      </Link>
+      {logo(title)}
       <div className={styles.search}>
         {getIcon({ type: icons.SEARCH, label: t('search'), size: STANDARD })}
       </div>
@@ -36,11 +40,7 @@ const Header = ({ className, headerRef, t, title }) => (
       <Profile className={styles.profile} />
     </div>
 
-    <div className={styles.mobileHeader}>
-      <Link to={HOME} className={styles.logo}>
-        <Logo title={title} type={HEADER_HORIZONTAL} className={styles.logoImage} />
-      </Link>
-    </div>
+    <div className={styles.mobileHeader}>{logo(title)}</div>
   </header>
 );
 
@@ -55,6 +55,6 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: null,
-}
+};
 
 export default Translate(messages)(Header);

@@ -16,6 +16,8 @@
   font-size: $font-size-big;
   color: $masthead-title-color;
   line-height: 1rem;
+  width: -webkit-min-content;
+  width: min-content;
 }
 
 .bigLogo {
