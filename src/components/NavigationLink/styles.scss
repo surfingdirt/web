@@ -2,10 +2,11 @@
 @import "../../styles/colors";
 
 .wrapper {
+  display: flex;
   padding: $padding-small-3 $padding-small-1 $padding-small-2;
   border-radius: 3px;
   color: $navigationlink-color;
-  line-height: 2.5rem;
+  line-height: 1rem;
 
   .defaultIcon {
     display: inline-block;

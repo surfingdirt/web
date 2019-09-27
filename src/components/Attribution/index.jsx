@@ -8,10 +8,10 @@ import Translate from 'Hocs/Translate';
 import messages from './messages';
 import styles from './styles.scss';
 
-const Attribution = ({ short, submitter, t, userboxSize }) => {
+const Attribution = ({ className, short, submitter, t, userboxSize }) => {
   const by = short ? t('by') : t('startedBy');
   return (
-    <div className={styles.wrapper}>
+    <div className={classnames(styles.wrapper, className)}>
       <span className={classnames(styles.by, { [styles.short]: short })}>{by}</span>
       <Userbox user={submitter} size={userboxSize} />
     </div>
@@ -19,6 +19,7 @@ const Attribution = ({ short, submitter, t, userboxSize }) => {
 };
 
 Attribution.propTypes = {
+  className: PropTypes.string,
   short: PropTypes.bool,
   submitter: PropTypes.shape({
     id: PropTypes.string,
@@ -29,6 +30,7 @@ Attribution.propTypes = {
 };
 
 Attribution.defaultProps = {
+  className: null,
   short: true,
 };
 

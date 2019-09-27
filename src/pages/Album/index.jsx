@@ -74,7 +74,12 @@ class AlbumRaw extends React.Component {
               </Helmet>
               {userCanAdd && (
                 <DualContainer>
-                  <Attribution submitter={submitter} userboxSize={SMALL} short={false} />
+                  <Attribution
+                    className={styles.attribution}
+                    submitter={submitter}
+                    userboxSize={SMALL}
+                    short={false}
+                  />
                   <div className={styles.actionsContainer}>
                     <AlbumAddButtons albumId={albumId} />
                     {options.length > 0 && (
@@ -91,7 +96,11 @@ class AlbumRaw extends React.Component {
                   </div>
                 </DualContainer>
               )}
-              {description && <Paragraph withAutoLink ugc>{description}</Paragraph>}
+              {description && (
+                <Paragraph withAutoLink ugc>
+                  {description}
+                </Paragraph>
+              )}
               <AlbumGrid media={media} />
             </Card>
           );

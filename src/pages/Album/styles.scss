@@ -1,4 +1,10 @@
+.attribution,
+.actionsContainer {
+  flex-grow: 1;
+}
+
 .actionsContainer {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
 }
