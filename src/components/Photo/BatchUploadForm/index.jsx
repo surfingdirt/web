@@ -10,9 +10,15 @@ import PageContent from './pageContent';
 import messages from './messages';
 import styles from './styles.scss';
 import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR } from './steps';
+import { photoRoute } from 'Utils/links';
 
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
+
+const UPLOAD_STATE_WAITING = 0;
+const UPLOAD_STATE_UPLOADING = 1;
+const UPLOAD_STATE_FINISHED = 2;
+const UPLOAD_STATE_ERROR = 3;
 
 const initialState = {
   currentStep: STEP_INITIAL,
@@ -70,7 +76,7 @@ class BatchUploadForm extends React.Component {
     });
     const previews = [];
 
-    for (const file of allFiles) {
+    for await (const file of allFiles) {
       let preview;
       try {
         preview = await previewResizeAndOrientFile(
@@ -96,10 +102,27 @@ class BatchUploadForm extends React.Component {
   }
 
   async onSubmit(mutate, values) {
-    const { files, previews } = this.state;
+    const { albumId, mediaSubType } = values;
+    const { previews, uploads } = this.state;
+
+    let i = 0;
+    for await (const file of previews) {
+      // TODO: handle showing a photo as uploading
+      // uploads[i].state = UPLOAD_STATE_UPLOADING;
+
+      const input = { albumId, mediaSubType };
+      const response = await mutate({ variables: { file: file.blob, input } });
+      const { id } = response.data.createPhoto;
+      console.log('Finished uploading:', file.name, photoRoute(id));
+      uploads[i] = {
+         link: photoRoute(id),
+       }
+
+      i += 1;
+    }
 
     console.log('onSubmit', mutate, files, previews);
-    this.setState({ currentStep: STEP_UPLOADING });
+    this.setState({ uploads, currentStep: STEP_DONE });
   }
 
   render() {

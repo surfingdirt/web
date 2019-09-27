@@ -6,12 +6,12 @@
 $button-distance: $padding-small-3;
 
 .wrapper {
+  position: relative;
   // Make the box square, and absolute position its contents.
   height: 0;
   padding-top: 100%;
-  position: relative;
+  overflow: hidden;
   background: $brand-dark1;
-
 
   .positioner {
     position: absolute;

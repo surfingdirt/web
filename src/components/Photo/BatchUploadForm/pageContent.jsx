@@ -149,13 +149,13 @@ class PageContent extends React.Component {
       >
         {(mutate) => (
           <Form
+            initialValues={{ albumId, mediaSubType: MEDIA_SUBTYPE_IMG }}
             onSubmit={async (values) => {
               const ret = await onSubmit(mutate, values);
-              console.log('ret', ret);
+              console.log('ret', ret, values);
               return ret;
             }}
-            render={(props) => {
-              const { handleSubmit, submitError, submitting } = props;
+            render={({ handleSubmit, submitError, submitting }) => {
               const errorMessage = !!submitError;
               return (
                 <Fragment>
@@ -186,8 +186,12 @@ class PageContent extends React.Component {
                         )}
                       </Field>
 
-                      <input type="hidden" name="albumId" value={albumId} />
-                      <input type="hidden" name="mediaSubType" value={MEDIA_SUBTYPE_IMG} />
+                      <Field name="albumId">
+                        {(props) => <input {...props.input} type="hidden" />}
+                      </Field>
+                      <Field name="mediaSubType">
+                        {(props) => <input {...props.input} type="hidden" />}
+                      </Field>
 
                       <div className={styles.buttons}>
                         {showButtons ? (
