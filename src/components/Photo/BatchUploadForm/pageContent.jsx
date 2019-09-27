@@ -2,13 +2,14 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
+import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import Button, { buttonTypes } from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
-import { actionRoute } from 'Utils/links';
+import { actionRoute, albumRoute } from 'Utils/links';
 import { MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
 
@@ -78,7 +79,6 @@ class PageContent extends React.Component {
   }
 
   render() {
-    console.log('BatchUploadForm/pageContent render');
     const {
       albumId,
       onRemoveItemClick,
@@ -126,11 +126,17 @@ class PageContent extends React.Component {
       case STEP_DONE:
         showForm = false;
         beforeForm = (
-          <ul className={styles.uploads}>
-            {uploads.map((upload) => (
-              <Preview key={`${upload.name}-${upload.state}`} item={upload} />
-            ))}
-          </ul>
+          <Fragment>
+            <ul className={styles.uploads}>
+              {uploads.map((upload) => (
+                <Preview key={`${upload.name}-${upload.state}`} item={upload} />
+              ))}
+            </ul>
+            <p>{t('uploadFinished')}</p>
+            <p>
+              <Link to={albumRoute(albumId)}>{t('goToAlbum')}</Link>
+            </p>
+          </Fragment>
         );
         break;
       case STEP_ERROR:
@@ -154,14 +160,12 @@ class PageContent extends React.Component {
             initialValues={{ albumId, mediaSubType: MEDIA_SUBTYPE_IMG }}
             onSubmit={async (values) => {
               const ret = await onSubmit(mutate, values);
-              console.log('ret', ret, values);
               return ret;
             }}
             render={({ handleSubmit, submitError, submitting }) => {
               const errorMessage = !!submitError;
               return (
                 <Fragment>
-                  <h1>Step: {step}</h1>
                   {beforeForm}
                   {showForm && (
                     <form

@@ -5,6 +5,8 @@ import SVG from 'Components/SVG';
 import Activity from 'Images/alarm-bell.svg';
 import Album from 'Images/picture-stack-landscape-bold.svg';
 import Close from 'Images/close.svg';
+import Check from 'Images/check.svg';
+import Expand from 'Images/expand-6.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
 import Next from 'Images/arrow-right.svg';
@@ -20,6 +22,8 @@ import Video from 'Images/video-player-movie.svg';
 const ACTIVITY = 'activity';
 const ALBUM = 'album';
 const CLOSE = 'close';
+const CHECK = 'check';
+const EXPAND = 'expand';
 const HOT = 'hot';
 const NEXT = 'next';
 const PHOTO = 'photo';
@@ -35,6 +39,8 @@ const icons = {
   ACTIVITY,
   ALBUM,
   CLOSE,
+  CHECK,
+  EXPAND,
   HOT,
   NEXT,
   PHOTO,
@@ -69,8 +75,15 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
     case icons.CLOSE:
       icon = Close;
       break;
+    case icons.CHECK:
+      icon = Check;
+      break;
     case icons.HOT:
       icon = Hot;
+      break;
+    case icons.EXPAND:
+      hollow = false;
+      icon = Expand;
       break;
     case icons.NEXT:
       icon = Next;
@@ -94,7 +107,6 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       icon = ThreeDotsVertical;
       break;
     case icons.USERS:
-      hollow = false;
       icon = Users;
       break;
     case icons.VIDEO:

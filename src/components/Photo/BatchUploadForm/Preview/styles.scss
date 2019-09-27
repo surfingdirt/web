@@ -38,17 +38,60 @@ $button-distance: $padding-small-3;
 
   img {
     width: 100%;
+    &.doneBackground {
+      opacity: .5;
+    }
   }
 
   .errorItem {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%;
     padding: $padding-small-2;
     font-size: $font-size-small;
+    color: $form-error-color;
 
     .filename {
       word-break: break-all;
+    }
+  }
+
+  .error {
+    color: $form-error-color;
+  }
+
+  .done {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .doneIcon {
+      position: absolute;
+      top: $button-distance;
+      left: $button-distance;
+    }
+
+    .doneIcon,
+    .expandIcon {
+      color: $brand-bright;
+    }
+
+    .expandIcon {
+      margin-left: $margin-one-char;
+    }
+
+    .doneContent {
+      position: absolute;
+      width: 100%;
+      bottom: $button-distance;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: $brand-bright;
     }
   }
 }

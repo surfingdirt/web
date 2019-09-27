@@ -1,7 +1,7 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     batchUpload: getText(
-      'Batch photo upload',
+      'Post multiple photos',
       'Album page',
     ) /* Label for a menu item to add many photos to an album */,
   }[key]);

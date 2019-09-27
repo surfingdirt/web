@@ -10,7 +10,7 @@ const routes = {
   LOGIN: '/login',
   OLD_FORUM: '/old-forum',
   PHOTO: '/photo/:id',
-  PHOTO_BATCH_UPLOAD_FOR_ALBUM: '/album/:id/batch-photo-upload',
+  PHOTO_BATCH_UPLOAD_FOR_ALBUM: '/album/:id/multi-upload',
   PHOTO_EDIT: '/edit-photo',
   PHOTO_NEW: '/new-photo',
   PHOTO_NEW_FOR_ALBUM: '/album/:id/new-photo',

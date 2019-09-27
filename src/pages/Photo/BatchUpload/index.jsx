@@ -34,7 +34,7 @@ class BatchUploadRaw extends React.Component {
         variables={{ id: albumId }}
         render={({ album: { title } }) => (
           <Card title={t('batchPhotoUpload')} type={STANDARD} className={styles.page}>
-            <span className={styles.postingTo}>{t('postingToAlbum')}{':'}</span>
+            <span className={styles.postingTo}>{t('postingToAlbum')}</span>
             <Link to={albumRoute(albumId)}>{title}</Link>
             <PhotoBatchUploadForm albumId={albumId} />
           </Card>
