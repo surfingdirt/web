@@ -9,7 +9,7 @@ import Button, { buttonTypes } from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { actionRoute } from 'Utils/links';
-import { maxPhotoSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
+import { MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
 
 import messages from './messages';
@@ -78,6 +78,7 @@ class PageContent extends React.Component {
   }
 
   render() {
+    console.log('BatchUploadForm/pageContent render');
     const {
       albumId,
       onRemoveItemClick,
@@ -101,29 +102,36 @@ class PageContent extends React.Component {
         break;
       case STEP_LIST_SELECTED:
         beforeForm = (
-          <Fragment>
-            <ul className={styles.uploads}>
-              {uploads.map((upload) => (
-                <Preview key={upload.name} onRemoveItemClick={onRemoveItemClick} item={upload} />
-              ))}
-            </ul>
-          </Fragment>
+          <ul className={styles.uploads}>
+            {uploads.map((upload) => (
+              <Preview
+                key={`${upload.name}-${upload.state}`}
+                onRemoveItemClick={onRemoveItemClick}
+                item={upload}
+              />
+            ))}
+          </ul>
         );
         break;
       case STEP_UPLOADING:
         showButtons = false;
         beforeForm = (
-          <Fragment>
-            <ul className={styles.uploads}>
-              {uploads.map((item) => (
-                <Preview key={item.name} uploading item={item} />
-              ))}
-            </ul>
-          </Fragment>
+          <ul className={styles.uploads}>
+            {uploads.map((upload) => (
+              <Preview key={`${upload.name}-${upload.state}`} item={upload} />
+            ))}
+          </ul>
         );
         break;
       case STEP_DONE:
         showForm = false;
+        beforeForm = (
+          <ul className={styles.uploads}>
+            {uploads.map((upload) => (
+              <Preview key={`${upload.name}-${upload.state}`} item={upload} />
+            ))}
+          </ul>
+        );
         break;
       case STEP_ERROR:
         break;
@@ -153,6 +161,7 @@ class PageContent extends React.Component {
               const errorMessage = !!submitError;
               return (
                 <Fragment>
+                  <h1>Step: {step}</h1>
                   {beforeForm}
                   {showForm && (
                     <form

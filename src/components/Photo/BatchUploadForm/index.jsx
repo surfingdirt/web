@@ -4,21 +4,24 @@ import PropTypes from 'prop-types';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import { maxPhotoSize } from 'Utils/media';
+import { waitAndLog } from 'Utils/debug';
 import AppContext from '~/contexts';
 
 import PageContent from './pageContent';
 import messages from './messages';
 import styles from './styles.scss';
 import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR } from './steps';
+import {
+  UPLOAD_STATE_INITIAL,
+  UPLOAD_STATE_UPLOADING,
+  UPLOAD_STATE_WAITING,
+  UPLOAD_STATE_FINISHED,
+  UPLOAD_STATE_ERROR,
+} from './uploadStates';
 import { photoRoute } from 'Utils/links';
 
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
-
-const UPLOAD_STATE_WAITING = 0;
-const UPLOAD_STATE_UPLOADING = 1;
-const UPLOAD_STATE_FINISHED = 2;
-const UPLOAD_STATE_ERROR = 3;
 
 const initialState = {
   currentStep: STEP_INITIAL,
@@ -91,7 +94,7 @@ class BatchUploadForm extends React.Component {
           error: true,
         };
       }
-      uploads.push(upload);
+      uploads.push(Object.assign({ state: UPLOAD_STATE_INITIAL }, upload));
     }
 
     this.setState({ files: allFiles, uploads, currentStep: STEP_LIST_SELECTED });
@@ -102,59 +105,54 @@ class BatchUploadForm extends React.Component {
   }
 
   async onSubmit(mutate, values) {
+    console.log('onSubmit');
+
     const { albumId, mediaSubType } = values;
     const { uploads } = this.state;
     const input = { albumId, mediaSubType };
 
-    const sleep = (ms) => {
-      return new Promise((res) => {
-        setTimeout(res, ms);
-      });
-    };
+    const newUploads = uploads.map((upload) => {
+      return Object.assign(upload, { state: UPLOAD_STATE_WAITING });
+    });
 
-    const uploadPromise = (upload, index) => {
-      console.log(`Starting: ${upload.name}`);
-      // return mutate({ variables: { file: upload.blob, input } }).then((response) => {
-      //   console.log(`Response for ${upload.name}:`, response);
-      // });
+    this.setState({ currentStep: STEP_UPLOADING, uploads: newUploads }, () => {
+      uploads
+        .reduce(
+          (chain, upload, index) => chain.then(() => this.uploadPromise(index, input, mutate)),
+          Promise.resolve(),
+        )
+        .then(() => {
+          console.log('uploads', uploads);
+          this.setState({ currentStep: STEP_DONE });
+        });
+    });
+  }
 
-      return sleep(1500).then(() => {
-        console.log(`Done: ${upload.name}`);
-        uploads[index].state = 'done!';
-        // this.setState
-      });
-    };
+  uploadPromise(index, input, mutate) {
+    const { uploads } = this.state;
+    const upload = uploads[index];
+    console.log(`Starting: ${upload.name}`);
 
-    uploads
-      .reduce(
-        (chain, upload, index) => chain.then(() => uploadPromise(upload, index)),
-        Promise.resolve(),
-      )
-      .then(() => {
-        console.log('uploads', uploads);
-      });
+    const uploadingUploads = uploads.slice();
+    uploadingUploads[index].state = UPLOAD_STATE_UPLOADING;
+    this.setState({ uploads: uploadingUploads });
 
-    // let i = 0;
-    // for await (const file of uploads) {
-    //   // TODO: handle showing a photo as uploading
-    //   // uploads[i].state = UPLOAD_STATE_UPLOADING;
-    //
-    //   const input = { albumId, mediaSubType };
-    //   const response = await mutate({ variables: { file: file.blob, input } });
-    //   const { id } = response.data.createPhoto;
-    //   console.log('Finished uploading:', file.name, photoRoute(id));
-    //   uploads[i] = {
-    //     link: photoRoute(id),
-    //   };
-    //
-    //   i += 1;
-    // }
-
-    console.log('onSubmit', mutate, uploads);
-    this.setState({ uploads: uploads, currentStep: STEP_DONE });
+    return waitAndLog(upload, index).then((response) => {
+      console.log(`Response for ${upload.name}:`, response);
+      const doneUploads = uploads.slice();
+      doneUploads[index].state = UPLOAD_STATE_FINISHED;
+      this.setState({ uploads: doneUploads });
+    });
+    // return mutate({ variables: { file: upload.blob, input } }).then((response) => {
+    //   console.log(`Response for ${upload.name}:`, response);
+    //   uploads[index].state = UPLOAD_STATE_FINISHED;
+    //   this.setState({ uploads });
+    // });
   }
 
   render() {
+    console.log('BatchUploadForm/index render');
+
     const { albumId } = this.props;
     const { currentStep, uploads } = this.state;
 
