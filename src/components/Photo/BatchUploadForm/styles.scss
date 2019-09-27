@@ -37,12 +37,15 @@ $button-distance: $margin-medium-1;
   max-width: $form-max-width;
   border: $widget-border-width solid $widget-border-color;
   text-align: center;
+  pointer: cursor;
 }
 
 .fileLabelMore {
   display: block;
   margin: $margin-medium-1 0;
   text-align: center;
+  pointer: cursor;
+  text-decoration: underline;
 }
 
 .buttons {

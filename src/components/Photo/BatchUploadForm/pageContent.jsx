@@ -47,18 +47,22 @@ const renderLabel = (step, errorMessage, t) => {
     );
   }
 
-  return (
-    <label htmlFor="fileInput" className={styles.fileLabelMore}>
-      <p
-        className={classnames(styles.error, {
-          [styles.visibleError]: !!errorMessage,
-        })}
-      >
-        {errorMessage}
-      </p>
-      <p className={styles.instructionsMore}>{t('instructionsMore')}</p>
-    </label>
-  );
+  if (step === STEP_LIST_SELECTED) {
+    return (
+      <label htmlFor="fileInput" className={styles.fileLabelMore}>
+        <p
+          className={classnames(styles.error, {
+            [styles.visibleError]: !!errorMessage,
+          })}
+        >
+          {errorMessage}
+        </p>
+        <p className={styles.instructionsMore}>{t('instructionsMore')}</p>
+      </label>
+    );
+  }
+
+  return null;
 };
 
 class PageContent extends React.Component {
@@ -67,6 +71,7 @@ class PageContent extends React.Component {
     onRemoveItemClick: PropTypes.func.isRequired,
     onReset: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
+    onStop: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     previews: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
     step: PropTypes.number.isRequired,
@@ -76,12 +81,6 @@ class PageContent extends React.Component {
   constructor(props) {
     super(props);
     this.fileRef = React.createRef();
-    this.validate = this.validate.bind(this);
-  }
-
-  async validate(values) {
-    const fileEl = this.fileRef.current;
-    console.log('validate', fileEl.files);
   }
 
   render() {
@@ -90,14 +89,19 @@ class PageContent extends React.Component {
       onRemoveItemClick,
       onReset,
       onSelect,
+      onStop,
       onSubmit,
       previews,
       step,
       t,
     } = this.props;
 
+    const noFilesChosen = !previews || previews.length === 0;
+
     let beforeForm = null;
     let showForm = true;
+    let showButtons = true;
+
     switch (step) {
       case STEP_INITIAL:
         break;
@@ -113,6 +117,16 @@ class PageContent extends React.Component {
         );
         break;
       case STEP_UPLOADING:
+        showButtons = false;
+        beforeForm = (
+          <Fragment>
+            <ul className={styles.filePreviews}>
+              {previews.map((item) => (
+                <Preview key={item.name} uploading item={item} />
+              ))}
+            </ul>
+          </Fragment>
+        );
         break;
       case STEP_DONE:
         showForm = false;
@@ -135,13 +149,14 @@ class PageContent extends React.Component {
       >
         {(mutate) => (
           <Form
-            onSubmit={(values) => {
-              // TODO: initiate the upload loop here
-              return onSubmit(mutate, values);
+            onSubmit={async (values) => {
+              const ret = await onSubmit(mutate, values);
+              console.log('ret', ret);
+              return ret;
             }}
-            validate={this.validate}
-            render={(errors, submitError) => {
-              const errorMessage = errors.file || submitError;
+            render={(props) => {
+              const { handleSubmit, submitError, submitting } = props;
+              const errorMessage = !!submitError;
               return (
                 <Fragment>
                   {beforeForm}
@@ -151,7 +166,7 @@ class PageContent extends React.Component {
                       method="POST"
                       encType="multipart/form-data"
                       className={styles.form}
-                      onReset={onReset}
+                      onSubmit={handleSubmit}
                     >
                       {renderLabel(step, errorMessage, t)}
                       <Field name="file">
@@ -173,9 +188,27 @@ class PageContent extends React.Component {
 
                       <input type="hidden" name="albumId" value={albumId} />
                       <input type="hidden" name="mediaSubType" value={MEDIA_SUBTYPE_IMG} />
+
                       <div className={styles.buttons}>
-                        <Button buttonType="reset" label={t('clear')} type={NEGATIVE} />
-                        <Button buttonType="submit" label={t('upload')} type={ACTION} />
+                        {showButtons ? (
+                          <Fragment>
+                            <Button
+                              onClick={onReset}
+                              buttonType="reset"
+                              label={t('clear')}
+                              type={NEGATIVE}
+                            />
+                            <Button
+                              disabled={submitting || noFilesChosen}
+                              loading={submitting}
+                              buttonType="submit"
+                              label={t('upload')}
+                              type={ACTION}
+                            />
+                          </Fragment>
+                        ) : (
+                          <Button onClick={onStop} label={t('stopUploads')} type={NEGATIVE} />
+                        )}
                       </div>
                     </form>
                   )}

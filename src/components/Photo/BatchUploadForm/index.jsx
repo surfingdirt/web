@@ -39,7 +39,8 @@ class BatchUploadForm extends React.Component {
     this.onRemoveItemClick = this.onRemoveItemClick.bind(this);
     this.onReset = this.onReset.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onSelect = this.onSelect.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onStop = this.onStop.bind(this);
   }
 
   onReset() {
@@ -90,8 +91,15 @@ class BatchUploadForm extends React.Component {
     this.setState({ files: allFiles, previews, currentStep: STEP_LIST_SELECTED });
   }
 
+  onStop() {
+    this.setState({ currentStep: STEP_LIST_SELECTED });
+  }
+
   async onSubmit(mutate, values) {
-    console.log('onSubmit', mutate, values);
+    const { files, previews } = this.state;
+
+    console.log('onSubmit', mutate, files, previews);
+    this.setState({ currentStep: STEP_UPLOADING });
   }
 
   render() {
@@ -109,6 +117,7 @@ class BatchUploadForm extends React.Component {
           onRemoveItemClick={this.onRemoveItemClick}
           onSelect={this.onSelect}
           onSubmit={this.onSubmit}
+          onStop={this.onStop}
         />
       </Fragment>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Translate from 'Hocs/Translate';
@@ -7,10 +7,18 @@ import icons, { getIcon, sizes } from 'Utils/icons';
 import messages from './messages';
 import styles from './styles.scss';
 
-const Preview = ({ onRemoveItemClick, t, item: { blob, error, name, width, height } }) => {
-  return (
-    <li className={styles.wrapper}>
-      <div className={styles.positioner}>
+const Preview = ({
+  onRemoveItemClick,
+  t,
+  uploading,
+  item: { blob, error, name, width, height },
+}) => {
+  let content;
+  if (uploading) {
+    content = <p>Uploading...</p>;
+  } else {
+    content = (
+      <Fragment>
         <button
           className={styles.removeButton}
           onClick={() => {
@@ -37,13 +45,19 @@ const Preview = ({ onRemoveItemClick, t, item: { blob, error, name, width, heigh
             src={URL.createObjectURL(blob)}
           />
         )}
-      </div>
+      </Fragment>
+    );
+  }
+
+  return (
+    <li className={styles.wrapper}>
+      <div className={styles.positioner}>{content}</div>
     </li>
   );
 };
 
 Preview.propTypes = {
-  onRemoveItemClick: PropTypes.func.isRequired,
+  onRemoveItemClick: PropTypes.func,
   t: PropTypes.func.isRequired,
   item: PropTypes.shape({
     blob: PropTypes.object,
@@ -52,9 +66,11 @@ Preview.propTypes = {
     name: PropTypes.string.isRequired,
     width: PropTypes.number,
   }),
+  uploading: PropTypes.bool,
 };
 
 Preview.defaultProps = {
+  onRemoveItemClick: null,
   item: {
     blob: null,
     error: null,
@@ -62,6 +78,7 @@ Preview.defaultProps = {
     name: PropTypes.object.isRequired,
     width: null,
   },
+  uploading: false,
 };
 
 export default Translate(messages)(Preview);
