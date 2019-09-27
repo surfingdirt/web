@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
-import { Redirect } from 'react-router';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import Button, { buttonTypes } from 'Components/Button';
-import InputField from 'Components/Form/InputField';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
-import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
-import { actionRoute, photoRoute } from 'Utils/links';
+import { actionRoute } from 'Utils/links';
 import { maxPhotoSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
 
@@ -24,9 +21,6 @@ import { STEP_INITIAL, STEP_LIST_SELECTED, STEP_UPLOADING, STEP_DONE, STEP_ERROR
 const { PHOTO_BATCH_UPLOAD } = actions;
 const { ACTION, NEGATIVE } = buttonTypes;
 const { STANDARD } = sizes;
-
-const MAX_WIDTH = maxPhotoSize;
-const MAX_HEIGHT = maxPhotoSize;
 
 const renderLabel = (step, errorMessage, t) => {
   if (step === STEP_INITIAL) {
@@ -73,7 +67,7 @@ class PageContent extends React.Component {
     onSelect: PropTypes.func.isRequired,
     onStop: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    previews: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+    uploads: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
     step: PropTypes.number.isRequired,
     t: PropTypes.func.isRequired,
   };
@@ -91,12 +85,12 @@ class PageContent extends React.Component {
       onSelect,
       onStop,
       onSubmit,
-      previews,
+      uploads,
       step,
       t,
     } = this.props;
 
-    const noFilesChosen = !previews || previews.length === 0;
+    const noFilesChosen = !uploads || uploads.length === 0;
 
     let beforeForm = null;
     let showForm = true;
@@ -108,9 +102,9 @@ class PageContent extends React.Component {
       case STEP_LIST_SELECTED:
         beforeForm = (
           <Fragment>
-            <ul className={styles.filePreviews}>
-              {previews.map((item) => (
-                <Preview key={item.name} onRemoveItemClick={onRemoveItemClick} item={item} />
+            <ul className={styles.uploads}>
+              {uploads.map((upload) => (
+                <Preview key={upload.name} onRemoveItemClick={onRemoveItemClick} item={upload} />
               ))}
             </ul>
           </Fragment>
@@ -120,8 +114,8 @@ class PageContent extends React.Component {
         showButtons = false;
         beforeForm = (
           <Fragment>
-            <ul className={styles.filePreviews}>
-              {previews.map((item) => (
+            <ul className={styles.uploads}>
+              {uploads.map((item) => (
                 <Preview key={item.name} uploading item={item} />
               ))}
             </ul>
