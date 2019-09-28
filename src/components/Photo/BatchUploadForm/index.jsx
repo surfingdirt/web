@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import { maxPhotoSize } from 'Utils/media';
-// import { waitAndLog } from 'Utils/debug';
+import { photoRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import PageContent from './pageContent';
@@ -18,7 +18,6 @@ import {
   UPLOAD_STATE_FINISHED,
   UPLOAD_STATE_ERROR,
 } from './uploadStates';
-import { photoRoute } from 'Utils/links';
 
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
@@ -109,9 +108,12 @@ class BatchUploadForm extends React.Component {
     const { uploads } = this.state;
     const input = { albumId, mediaSubType };
 
-    const newUploads = uploads.map((upload) =>
-      Object.assign(upload, { state: UPLOAD_STATE_WAITING }),
-    );
+    const newUploads = uploads
+      .map((upload) => Object.assign(upload, { state: UPLOAD_STATE_WAITING }))
+      .filter((upload) => {
+        // Skip error files entirely
+        return !upload.error;
+      });
 
     this.setState({ currentStep: STEP_UPLOADING, uploads: newUploads }, () => {
       uploads
@@ -133,10 +135,24 @@ class BatchUploadForm extends React.Component {
     this.setState({ uploads: uploadingUploads });
 
     return mutate({ variables: { file: upload.blob, input } })
-      .then(({ id }) => {
+      .then((response) => {
+        let state = UPLOAD_STATE_FINISHED;
+        let link;
+        try {
+          const {
+            data: {
+              createPhoto: { id },
+            },
+          } = response;
+          link = photoRoute(id);
+        } catch(err) {
+          console.error('Upload error', response);
+          state = UPLOAD_STATE_ERROR;
+          link = null;
+        }
         const doneUploads = uploads.slice();
-        doneUploads[index].state = UPLOAD_STATE_FINISHED;
-        doneUploads[index].link = photoRoute(id);
+        doneUploads[index].state = state;
+        doneUploads[index].link = link;
         this.setState({ uploads: doneUploads });
       })
       .catch((err) => {

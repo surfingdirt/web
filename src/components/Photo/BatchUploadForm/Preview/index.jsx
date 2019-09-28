@@ -28,16 +28,18 @@ const errorContent = (t, name) => {
   );
 };
 
-const imageContent = (blob, height, name, width, className = null) => (
-  <img
-    className={className}
-    title={name}
-    alt={name}
-    height={height}
-    width={width}
-    src={URL.createObjectURL(blob)}
-  />
-);
+const imageContent = (blob, height, name, width, className = null) => {
+  return (
+    <img
+      className={className}
+      title={name}
+      alt={name}
+      height={height}
+      width={width}
+      src={URL.createObjectURL(blob)}
+    />
+  );
+};
 
 const buttonContent = (name, onRemoveItemClick, t) => (
   <button
@@ -69,22 +71,25 @@ const Preview = ({
       );
       break;
     case UPLOAD_STATE_WAITING:
-      content = <p>{t('waiting')}</p>;
+      content = (
+        <Fragment>
+          {imageContent(blob, height, name, width, styles.imgAsBackground)}
+          <p className={styles.status}>{t('waiting')}</p>
+        </Fragment>
+      );
       break;
     case UPLOAD_STATE_UPLOADING:
-      content = <Spinner />;
+      content = <Spinner className={styles.spinner} />;
       break;
     case UPLOAD_STATE_FINISHED:
       content = (
         <Fragment>
-          <div className={styles.done}>
-            {imageContent(blob, height, name, width, styles.doneBackground)}
-            {getIcon({ type: icons.CHECK, size: sizes.STANDARD, className: styles.doneIcon })}
-            <Link to={link} className={styles.doneContent}>
-              {t('open')}
-              {getIcon({ type: icons.EXPAND, size: sizes.SMALL, className: styles.expandIcon })}
-            </Link>
-          </div>
+          {imageContent(blob, height, name, width, styles.imgAsBackground)}
+          {getIcon({ type: icons.CHECK, size: sizes.STANDARD, className: styles.doneIcon })}
+          <Link to={link} className={styles.doneContent}>
+            {t('open')}
+            {getIcon({ type: icons.EXPAND, size: sizes.SMALL, className: styles.expandIcon })}
+          </Link>
         </Fragment>
       );
       break;

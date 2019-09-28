@@ -11,6 +11,14 @@ $border-width: $widget-border-width;
 }
 
 .menuTrigger {
+  line-height: 0;
+  border-radius: $widget-border-radius;
+  padding: $padding-small-4;
+
+  &:hover {
+    color: $menu-trigger-active-text-color;
+    background-color: $menu-trigger-active-background-color;
+  }
 }
 
 .menuOptions {

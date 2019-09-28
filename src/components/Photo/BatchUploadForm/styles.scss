@@ -52,6 +52,13 @@ $button-distance: $margin-medium-1;
   text-align: right;
 }
 
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .visibleError {}
 .instructions {}
 .instructionsMore {}

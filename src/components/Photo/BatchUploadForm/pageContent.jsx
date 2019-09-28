@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
-import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
+import NavigationLink from 'Components/NavigationLink';
 import Button, { buttonTypes } from 'Components/Button';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
@@ -132,10 +132,16 @@ class PageContent extends React.Component {
                 <Preview key={`${upload.name}-${upload.state}`} item={upload} />
               ))}
             </ul>
-            <p>{t('uploadFinished')}</p>
-            <p>
-              <Link to={albumRoute(albumId)}>{t('goToAlbum')}</Link>
-            </p>
+            <div className={styles.success}>
+              <p>{t('uploadFinished')}</p>
+              <p>
+                <NavigationLink
+                  to={albumRoute(albumId)}
+                  label={t('goToAlbum')}
+                  icon={icons.ALBUM}
+                />
+              </p>
+            </div>
           </Fragment>
         );
         break;

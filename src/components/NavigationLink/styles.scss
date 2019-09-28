@@ -3,7 +3,7 @@
 
 .wrapper {
   display: flex;
-  padding: $padding-small-3 $padding-small-1 $padding-small-2;
+  padding: $padding-small-2 $padding-small-1;
   border-radius: 3px;
   color: $navigationlink-color;
   line-height: 1rem;
@@ -22,7 +22,8 @@
     }
   }
 
-  &.active {
+  &.active,
+  &:hover {
     color: $navigationlink-color-active;
     background-color: $navigationlink-background-color-active;
     .defaultIcon {
@@ -41,6 +42,7 @@
 
   .label {
     color: $navigationlink-text-color;
+    line-height: 1.3rem;
   }
 
 }

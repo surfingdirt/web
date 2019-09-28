@@ -12,6 +12,7 @@ $button-distance: $padding-small-3;
   padding-top: 100%;
   overflow: hidden;
   background: $brand-dark1;
+  border-radius: $widget-border-radius;
 
   .positioner {
     position: absolute;
@@ -38,7 +39,8 @@ $button-distance: $padding-small-3;
 
   img {
     width: 100%;
-    &.doneBackground {
+    &.imgAsBackground {
+      position: absolute;
       opacity: .5;
     }
   }
@@ -60,38 +62,41 @@ $button-distance: $padding-small-3;
     }
   }
 
+  .spinner {
+    color: $brand-bright;
+  }
+
   .error {
     color: $form-error-color;
   }
 
-  .done {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .status {
+    position: relative;
+    z-index: 1;
+  }
 
-    .doneIcon {
-      position: absolute;
-      top: $button-distance;
-      left: $button-distance;
-    }
+  .doneIcon {
+    position: absolute;
+    top: $button-distance;
+    left: $button-distance;
+  }
 
-    .doneIcon,
-    .expandIcon {
-      color: $brand-bright;
-    }
+  .doneIcon,
+  .expandIcon {
+    color: $brand-bright;
+  }
 
-    .expandIcon {
-      margin-left: $margin-one-char;
-    }
+  .expandIcon {
+    margin-left: $margin-one-char;
+  }
 
-    .doneContent {
-      position: absolute;
-      width: 100%;
-      bottom: $button-distance;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: $brand-bright;
-    }
+  .doneContent {
+    position: absolute;
+    width: 100%;
+    bottom: $button-distance;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $brand-bright;
   }
 }
