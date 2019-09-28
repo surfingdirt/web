@@ -1,5 +1,5 @@
 const getOrientation = (file) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.addEventListener('load', (event) => {
       const view = new DataView(event.target.result);
@@ -39,6 +39,12 @@ const getOrientation = (file) => {
       }
       resolve(-1);
     });
+
+    reader.addEventListener('error', (err) => {
+      console.error('Image error', err);
+      reject(new Error('Invalid image'));
+    });
+
     reader.readAsArrayBuffer(file.slice(0, 64 * 1024));
   });
 };
@@ -116,8 +122,8 @@ const getBlob = (file, orientation, canvasEl, maxWidth, maxHeight) => {
 
         const dataurl = canvasEl.toDataURL('image/jpeg');
         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-        canvasEl.width = 0;
-        canvasEl.height = 0;
+        // canvasEl.width = 0;
+        // canvasEl.height = 0;
         const blobBin = atob(dataurl.split(',')[1]);
         const array = [];
         for (let i = 0; i < blobBin.length; i++) {
