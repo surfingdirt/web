@@ -7,9 +7,12 @@ import MediaThumb from 'Components/Media/MediaThumb/index';
 import styles from './styles.scss';
 
 const breakpointColumnsObj = {
-  360: 1,
-  960: 2,
-  default: 3,
+  default: 5,
+  1280: 4,
+  960: 3,
+  800: 2,
+  640: 3,
+  320: 2,
 };
 
 export default class AlbumGrid extends React.PureComponent {
