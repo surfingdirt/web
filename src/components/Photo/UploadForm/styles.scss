@@ -19,6 +19,10 @@ $description-line-count: 3;
   }
 }
 
+.workCanvas {
+  display: none;
+}
+
 .fileLabel {
   display: block;
   max-width: $content-max-width;

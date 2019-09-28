@@ -36,6 +36,7 @@ class PhotoUploadForm extends React.Component {
 
     this.state = {
       fileData: null,
+      previewUrl: null,
       displayError: null,
       uploadWidth: null,
       uploadHeight: null,
@@ -89,7 +90,13 @@ class PhotoUploadForm extends React.Component {
           MAX_HEIGHT,
         );
 
-        this.setState({ fileData, displayError: null, uploadWidth: width, uploadHeight: height });
+        this.setState({
+          fileData,
+          previewUrl: URL.createObjectURL(fileData),
+          displayError: null,
+          uploadWidth: width,
+          uploadHeight: height,
+        });
         return resolve(errors);
       } catch (e) {
         console.error('Error while manipulating image file:', e.message);
@@ -101,7 +108,7 @@ class PhotoUploadForm extends React.Component {
 
   render() {
     const { albumId, t } = this.props;
-    const { redirectTo } = this.state;
+    const { previewUrl, redirectTo } = this.state;
 
     if (redirectTo) {
       return <Redirect to={redirectTo} />;
@@ -146,24 +153,28 @@ class PhotoUploadForm extends React.Component {
                   encType="multipart/form-data"
                   ref={this.formRef}
                 >
+                  <canvas ref={this.previewRef} className={styles.workCanvas} />
                   <label htmlFor="fileInput" className={styles.fileLabel}>
                     <div
                       className={classnames(styles.dynamicContent, { [styles.empty]: empty })}
                       ref={this.dynamicContentRef}
                     >
-                      <p
-                        className={classnames(styles.error, {
-                          [styles.visibleError]: !!errorMessage,
-                        })}
-                      >
-                        {errorMessage}
-                      </p>
+                      {errorMessage && (
+                        <p
+                          className={classnames(styles.error, {
+                            [styles.visibleError]: !!errorMessage,
+                          })}
+                        >
+                          {errorMessage}
+                        </p>
+                      )}
                       <span className={styles.instructions}>
                         {getIcon({ type: icons.PHOTO, size: STANDARD })}
                         <p>{t('instructions')}</p>
                       </span>
-                      <canvas
-                        ref={this.previewRef}
+                      <img
+                        src={previewUrl}
+                        alt=""
                         className={styles.preview}
                         style={previewStyle}
                       />
