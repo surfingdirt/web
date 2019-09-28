@@ -86,7 +86,7 @@ const Preview = ({
         <Fragment>
           {imageContent(blob, height, name, width, styles.imgAsBackground)}
           {getIcon({ type: icons.CHECK, size: sizes.STANDARD, className: styles.doneIcon })}
-          <Link to={link} className={styles.doneContent}>
+          <Link to={link} className={styles.doneContent} target="_blank">
             {t('open')}
             {getIcon({ type: icons.EXPAND, size: sizes.SMALL, className: styles.expandIcon })}
           </Link>
