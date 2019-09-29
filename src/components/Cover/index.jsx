@@ -32,7 +32,7 @@ const Cover = ({ avatar, t, cover, username, withUpdateForms }) => {
   return (
     <div className={styles.coverWrapper}>
       <div className={styles.coverImagePositionner}>
-        {hasCover && <ResponsiveImage alt={t('cover')} images={cover} objectFit />}
+        {hasCover && <ResponsiveImage alt={t('cover')} images={cover} objectFit maxHeight="initial" />}
       </div>
 
       <div className={styles.avatarPositionner}>

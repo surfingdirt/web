@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
+const INITIAL = 'initial';
+
 const MEDIUM = 'MEDIUM';
 const JPG = 'JPG';
 const WEBP = 'WEBP';
@@ -47,8 +49,9 @@ const ResponsiveImage = ({ alt, className, images, maxHeight, objectFit, sizes,}
   });
 
   // Enforce height by setting a max-width / aspectRatio
-  const style = {
-    maxWidth: `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`,
+  const style = {};
+  if (maxHeight != INITIAL) {
+    styles.maxWidth = `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`;
   }
 
   const imgAttrs = {
@@ -84,7 +87,7 @@ ResponsiveImage.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ).isRequired,
-  maxHeight: PropTypes.number,
+  maxHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
   objectFit: PropTypes.bool,
   sizes: PropTypes.string,
 };
