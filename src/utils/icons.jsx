@@ -7,6 +7,7 @@ import Album from 'Images/picture-stack-landscape-bold.svg';
 import Close from 'Images/close.svg';
 import Check from 'Images/check.svg';
 import Expand from 'Images/expand-6.svg';
+import Home from 'Images/home.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
 import Next from 'Images/arrow-right.svg';
@@ -24,6 +25,7 @@ const ALBUM = 'album';
 const CLOSE = 'close';
 const CHECK = 'check';
 const EXPAND = 'expand';
+const HOME = 'home';
 const HOT = 'hot';
 const NEXT = 'next';
 const PHOTO = 'photo';
@@ -41,6 +43,7 @@ const icons = {
   CLOSE,
   CHECK,
   EXPAND,
+  HOME,
   HOT,
   NEXT,
   PHOTO,
@@ -77,6 +80,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.CHECK:
       icon = Check;
+      break;
+    case icons.HOME:
+      icon = Home;
       break;
     case icons.HOT:
       icon = Hot;

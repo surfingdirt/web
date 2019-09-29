@@ -19,10 +19,7 @@ const Footer = ({ className, t }) => {
           <Link to={ABOUT}>{t('about')}</Link>
         </li>
         <li className={styles.link}>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd-T8XLnoGn1ujbXK4bZg7cCL1v-2JlhCrkPyAZfUXRpVj-aw/viewform"
-            target="_blank"
-          >
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-T8XLnoGn1ujbXK4bZg7cCL1v-2JlhCrkPyAZfUXRpVj-aw/viewform">
             {t('contact')}
           </a>
         </li>

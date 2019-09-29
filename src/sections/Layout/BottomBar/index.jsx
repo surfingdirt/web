@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import PopupActionButton from 'Components/PopupActionButton/index';
 import NamedNavigationItem from 'Components/NamedNavigationItem/index';
@@ -10,6 +11,7 @@ import BottomBarBackground from 'Images/bottom-bar.svg';
 import BottomBarActions from 'Sections/BottomBarActions/index';
 import Translate from 'Hocs/Translate/index';
 import icons, { getIcon, sizes } from 'Utils/icons';
+import routes from '~/routes';
 
 import { NAVIGATION_ID } from '../constants';
 import messages from '../messages';
@@ -18,6 +20,7 @@ import styles from './styles.scss';
 
 const ACTION_ITEMS_ID = 'action-items';
 const { STANDARD } = sizes;
+const { HOME } = routes;
 
 const Index = ({
   actionButtonRef,
@@ -102,6 +105,14 @@ const Index = ({
         visual={<div className={styles.plusPlaceholder} />}
       />
     </div>
+
+    {/* HOME button */}
+    <Link to={HOME} className={styles.home}>
+      <NamedNavigationItem
+        label={t('home')}
+        visual={getIcon({ type: icons.HOME, size: STANDARD, presentationOnly: true })}
+      />
+    </Link>
 
     {/* PROFILE button */}
     <Profile className={styles.profile} />

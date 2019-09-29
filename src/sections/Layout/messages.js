@@ -16,6 +16,10 @@ const messages = (getText, getPlural) => (key) =>
       'Add an album',
       'Actions',
     ) /* Label of a link to a page where a user could create a new album. Please keep this translation as short as possible */,
+    home: getText(
+      'Home',
+      'Page Layout',
+    ) /* Label for a link to the homepage */,
     more: getText(
       'More',
       'Page Layout',
