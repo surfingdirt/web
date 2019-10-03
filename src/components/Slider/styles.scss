@@ -14,7 +14,7 @@
   overflow-x: scroll;
 
   @media(min-width: $desktop-layout-threshold-min) {
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 
   &.withTransitions {
