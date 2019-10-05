@@ -4,8 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import Handlebars from 'handlebars';
 import Helmet from 'react-helmet';
-import ejs from 'ejs';
 import { getBundles } from '@7rulnik/react-loadable/webpack';
 import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
@@ -14,9 +14,6 @@ import Loadable from '@7rulnik/react-loadable';
 import slugify from 'slugify';
 import useragent from 'useragent';
 
-import Favicon from 'Images/favicon.ico';
-import Favicon16 from 'Images/favicon-16x16.png';
-import Favicon32 from 'Images/favicon-32x32.png';
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import App from '~/App';
@@ -34,9 +31,11 @@ const Main = (rootDir) => {
   const ERROR_500_PAGES = {
     en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
   };
-  let error500Page = ERROR_500_PAGES['en'];
+  let error500Page = ERROR_500_PAGES.en;
 
-  const REGULAR_PAGE = fs.readFileSync(`${rootDir}/dist/template.html`, 'utf8');
+  const regularPageTemplate = Handlebars.compile(
+    fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
+  );
 
   return async (req, res, next) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
@@ -121,26 +120,17 @@ const Main = (rootDir) => {
           : '<meta name="robots" content="noindex, nofollow">';
 
       // Inserts the rendered React HTML and assets into our html
-      document = ejs.render(REGULAR_PAGE, {
+      document = regularPageTemplate({
         analyticsId,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
-        css: ['main.css']
-          .concat(styles.map((x) => x.file))
-          .map((file) => `<link href="/${file}" rel="stylesheet" type="text/css"/>`)
+        css: styles
+          .map(({ file }) => `<link href="/${file}" rel="stylesheet" type="text/css" />`)
           .join('\n'),
         dir,
-        favicon: `<link rel="shortcut icon" href=${Favicon}>`,
-        favicon16: `<link rel="icon" type="image/png" sizes="16x16" href="${Favicon16}">`,
-        favicon32: `<link rel="icon" type="image/png" sizes="32x32" href="${Favicon32}">`,
         fbAppId,
         html,
         inlineStyle: `<style></style>`,
-        js:
-          // null &&
-          ['main.bundle.js']
-            .concat(scripts.map((x) => x.file))
-            .map((file) => `<script src="/${file}"></script>`)
-            .join('\n'),
+        js: scripts.map(({ file }) => `<script src="/${file}"></script>`).join('\n'),
         lang: language,
         meta: meta || '',
         agentBodyClass,

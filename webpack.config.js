@@ -1,8 +1,9 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
 
 const buildConfig = require('./build.config.js');
@@ -16,9 +17,9 @@ module.exports = {
   entry: './client/index.jsx',
   output: {
     path: path.join(__dirname, buildConfig.outDirectory),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash:3].bundle.js',
     publicPath: '/',
-    chunkFilename: '[name].chunk.js',
+    chunkFilename: '[name].[hash:3].chunk.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -63,15 +64,16 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|ico)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: '[name].[hash:3].[ext]',
           outputPath: 'images/',
+          publicPath: 'images',
         },
       },
       {
         test: /\.(otf|ttf|woff|eot)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: '[name].[hash:3].[ext]',
           outputPath: 'fonts/',
         },
       },
@@ -144,18 +146,18 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyPlugin([{ from: './src/static', to: '.' }]),
     new HtmlWebPackPlugin({
-      template: './src/template.html',
-      filename: './template.html',
+      template: './src/template.ejs',
+      filename: './template.hbs',
       inject: false,
+      favicon: './src/images/favicon.ico',
     }),
     new ReactLoadablePlugin({
       filename: path.resolve(__dirname, buildConfig.outDirectory, 'react-loadable.json'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].[hash:3].css',
+      chunkFilename: '[id].[hash:3].css',
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
@@ -163,6 +165,22 @@ module.exports = {
       test: /\.(js|css)$/,
       threshold: 0,
       minRatio: 1,
+    }),
+    new CopyPlugin([{ from: './src/static', to: '[path]/[name].[hash:3].[ext]' }]),
+    // Order matters, manifest plugin should be registered after copy plugin
+    new ManifestPlugin({
+      fileName: path.resolve(__dirname, 'static/manifest.json'),
+      // filter: (file) => file.name.startsWith('images/'),
+      filter: (file) => file.name.indexOf('images') !== -1,
+      map: (file) => {
+        const ret = Object.assign({}, file);
+        console.log('Map', JSON.stringify(file, null, 2));
+        if (process.env.NODE_ENV === 'production') {
+          // Remove hash:3 in manifest key
+          ret.name = file.name.replace(/(\.[a-f0-9]{32})(\..*)$/, '$2');
+        }
+        return ret;
+      },
     }),
   ],
   // required for some obscure reason (build will fail without this)

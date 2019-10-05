@@ -27,35 +27,35 @@ assetHook({
   extensions: ['png'],
   mimetype: 'image/png',
   publicPath: '/images/',
-  name: '[name].[ext]',
+  name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['jpg'],
   mimetype: 'image/jpeg',
   publicPath: '/images/',
-  name: '[name].[ext]',
+  name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['jpeg'],
   mimetype: 'image/jpeg',
   publicPath: '/images/',
-  name: '[name].[ext]',
+  name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['gif'],
   mimetype: 'image/gif',
   publicPath: '/images/',
-  name: '[name].[ext]',
+  name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['ico'],
   mimetype: 'image/ico',
   publicPath: '/images/',
-  name: '[name].[ext]',
+  name: '[name].[hash:3].[ext]',
 });
 
 rawHook({

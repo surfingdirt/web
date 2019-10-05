@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- Build Date: <%= new Date().toISOString() %> -->
+<html lang="{{{ lang }}}" dir="{{{ dir }}}">
+<head>
+
+
+<!-- TODO:
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+-->
+    <link rel=”manifest” href=”manifest.json”>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {{{ robotsMeta }}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="fb:app_id" content="{{{ fbAppId }}}">
+
+    {{{ title }}}
+    <%= htmlWebpackPlugin.files.css.map(file => `<link href="${file}" rel="stylesheet" type="text/css" />`).join('') %>
+    {{{ css }}}
+
+    {{{ meta }}}
+
+    {{{ script }}}
+
+    {{{ inlineStyle }}}
+</head>
+<body class="keyboard-mode {{{ agentBodyClass }}}">
+<div id="app_root">{{{ html }}}</div>
+{{{ js }}}
+<%= htmlWebpackPlugin.files.js.map(file => `<script src="${file}"></script>`).join('') %>
+<script>
+  window.staticAppContextValues = {{{ staticAppContextValues }}};
+  window.__APOLLO_STATE__ = {{{ apolloState }}}
+  window.main && window.main();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{{ analyticsId }}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{{ analyticsId }}}');
+</script>
+
+</body>
+</html>
