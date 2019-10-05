@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
 
 const buildConfig = require('./build.config.js');
@@ -143,6 +144,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyPlugin([{ from: './src/static', to: '.' }]),
     new HtmlWebPackPlugin({
       template: './src/template.html',
       filename: './template.html',
