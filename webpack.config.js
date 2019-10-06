@@ -1,12 +1,15 @@
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
 
-const pwaConfig = require('./config/pwaConfig');
+const { manifest, sw } = require('./config/pwaConfig');
 const buildConfig = require('./build.config.js');
+
+const { baseUrl: PUBLIC_PATH } = sw;
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const devtool = mode === 'production' ? '' : 'eval-source-map';
@@ -167,7 +170,7 @@ module.exports = {
       minRatio: 1,
     }),
     new WebpackPwaManifest(
-      Object.assign({}, pwaConfig, {
+      Object.assign({}, manifest, {
         // Note: instead of using existing icon files, the plugin can generate them on the fly.
         icons: [72, 96, 128, 144, 152, 192, 384, 512].map((size) => ({
           src: path.resolve(`src/images/icons/icon-${size}x${size}.png`),
@@ -175,6 +178,14 @@ module.exports = {
         })),
       }),
     ),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'my-domain-cache-id',
+      dontCacheBustUrlsMatching: /\.\w{8}\./,
+      filename: 'sw.js',
+      // minify: true,
+      navigateFallback: `${PUBLIC_PATH}offline.html`,
+      // staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+    }),
   ],
   // required for some obscure reason (build will fail without this)
   // https://github.com/webpack-contrib/css-loader/issues/447

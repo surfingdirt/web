@@ -1,5 +1,3 @@
-const path = require('path');
-
 const env = process.env.NODE_ENV || 'local';
 
 export const title = 'Surfing Dirt';
@@ -7,24 +5,10 @@ export const fbAppId = '1726273124340058';
 export const fragmentTypesFile = './fragmentTypes.json';
 export const analyticsId = 'UA-84394442-2';
 
-export const pwaConfig = {
-  title,
-  shortTitle: 'SD',
-  description: 'Your online mountainboard community',
-  backgroundColor: '#201f1b',
-  display: 'browser',
-  scope: '/',
-  start_url: '/',
-  icons: [72, 96, 128, 144, 152, 192, 384, 512].map((size) => ({
-    src: path.resolve(`./src/images/icons/icon-${size}x${size}.png`),
-    size: `${size}x${size}`,
-  })),
-};
-
 export const config = {
   local: {
     port: 3033,
-    baseUrl: `http://localhost:3033`,
+    baseUrl: `http://localhost:3033/`,
     graphql: 'http://localhost:4000',
     galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: true,
