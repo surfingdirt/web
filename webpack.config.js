@@ -1,11 +1,11 @@
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
 
+const pwaConfig = require('./config/pwaConfig');
 const buildConfig = require('./build.config.js');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -166,22 +166,15 @@ module.exports = {
       threshold: 0,
       minRatio: 1,
     }),
-    new CopyPlugin([{ from: './src/static', to: '[path]/[name].[hash:3].[ext]' }]),
-    // Order matters, manifest plugin should be registered after copy plugin
-    new ManifestPlugin({
-      fileName: path.resolve(__dirname, 'static/manifest.json'),
-      // filter: (file) => file.name.startsWith('images/'),
-      filter: (file) => file.name.indexOf('images') !== -1,
-      map: (file) => {
-        const ret = Object.assign({}, file);
-        console.log('Map', JSON.stringify(file, null, 2));
-        if (process.env.NODE_ENV === 'production') {
-          // Remove hash:3 in manifest key
-          ret.name = file.name.replace(/(\.[a-f0-9]{32})(\..*)$/, '$2');
-        }
-        return ret;
-      },
-    }),
+    new WebpackPwaManifest(
+      Object.assign({}, pwaConfig, {
+        // Note: instead of using existing icon files, the plugin can generate them on the fly.
+        icons: [72, 96, 128, 144, 152, 192, 384, 512].map((size) => ({
+          src: path.resolve(`src/images/icons/icon-${size}x${size}.png`),
+          size: `${size}x${size}`,
+        })),
+      }),
+    ),
   ],
   // required for some obscure reason (build will fail without this)
   // https://github.com/webpack-contrib/css-loader/issues/447

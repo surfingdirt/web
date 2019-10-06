@@ -114,11 +114,6 @@ const Main = (rootDir) => {
       const regex = /\/>/g;
       const meta = helmet.meta.toString().replace(regex, '/>\n');
 
-      const robotsMeta =
-        process.env.NODE_ENV === 'production'
-          ? ''
-          : '<meta name="robots" content="noindex, nofollow">';
-
       // Inserts the rendered React HTML and assets into our html
       document = regularPageTemplate({
         analyticsId,
@@ -134,7 +129,6 @@ const Main = (rootDir) => {
         lang: language,
         meta: meta || '',
         agentBodyClass,
-        robotsMeta,
         script: (helmet && helmet.script && helmet.script.toString()) || '',
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
         title: (helmet && helmet.title && helmet.title.toString()) || '',
