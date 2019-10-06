@@ -1,5 +1,6 @@
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
@@ -169,6 +170,7 @@ module.exports = {
       threshold: 0,
       minRatio: 1,
     }),
+    new CopyPlugin([{ from: './src/static', to: '[name].[ext]' }]),
     new WebpackPwaManifest(
       Object.assign({}, manifest, {
         // Note: instead of using existing icon files, the plugin can generate them on the fly.
