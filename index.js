@@ -26,28 +26,28 @@ csshook({
 assetHook({
   extensions: ['png'],
   mimetype: 'image/png',
-  publicPath: '/images/',
+  publicPath: 'images/',
   name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['jpg'],
   mimetype: 'image/jpeg',
-  publicPath: '/images/',
+  publicPath: 'images/',
   name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['jpeg'],
   mimetype: 'image/jpeg',
-  publicPath: '/images/',
+  publicPath: 'images/',
   name: '[name].[hash:3].[ext]',
 });
 
 assetHook({
   extensions: ['gif'],
   mimetype: 'image/gif',
-  publicPath: '/images/',
+  publicPath: 'images/',
   name: '[name].[hash:3].[ext]',
 });
 
