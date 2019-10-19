@@ -1,4 +1,4 @@
-query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!) {
+query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [String]) {
     album(id: $galleryAlbumId, countItems: $countItems) {
         actions {
             add
@@ -24,7 +24,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!) {
         }
         title
     }
-    listAlbums(count: $count, countItems: $countItems) {
+    listAlbums(count: $count, countItems: $countItems, skipAlbums: $skipAlbums) {
         actions {
             add
             delete

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import HOMEPAGE from 'Apollo/queries/home.gql';
+import HOMEPAGE from 'Apollo/queries/home3.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import MoreAlbums from 'Components/Album/MoreAlbums';
 import Card, { cardTypes } from 'Components/Card';
@@ -47,7 +47,12 @@ class HomeRaw extends React.Component {
     return (
       <DataRenderer
         query={HOMEPAGE}
-        variables={{ galleryAlbumId, count: ALBUM_COUNT_ON_HOMEPAGE, countItems: ALBUM_ITEM_COUNT }}
+        variables={{
+          galleryAlbumId,
+          count: ALBUM_COUNT_ON_HOMEPAGE,
+          countItems: ALBUM_ITEM_COUNT,
+          skipAlbums: [galleryAlbumId],
+        }}
         render={(data) => {
           const { album: galleryAlbum, listAlbums } = data;
           return (

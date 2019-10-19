@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import PropTypes from 'prop-types';
 
@@ -9,6 +9,7 @@ import Empty from 'Components/Empty';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -20,9 +21,14 @@ const ALBUM_ITEM_COUNT = 5;
 const AlbumsRaw = ({ t }) => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(false);
+  const { galleryAlbumId } = useContext(AppContext);
 
   const { data, error, fetchMore, loading } = useQuery(ALBUMS, {
-    variables: { count: ALBUM_COUNT_ON_ALBUMS_PAGE, countItems: ALBUM_ITEM_COUNT },
+    variables: {
+      count: ALBUM_COUNT_ON_ALBUMS_PAGE,
+      countItems: ALBUM_ITEM_COUNT,
+      skipAlbums: [galleryAlbumId],
+    },
   });
 
   if (loading) return <Spinner />;
