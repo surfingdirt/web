@@ -1,0 +1,15 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+
+.wrapper {
+  margin-bottom: $margin-small-2;
+}
+
+.moreAlbumsWrapper {
+  display: flex;
+  justify-content: center;
+}
+.endReached {
+  color: $text-color-inverted;
+  max-width: 40rem;
+}
