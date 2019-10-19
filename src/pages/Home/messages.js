@@ -24,13 +24,17 @@ const messages = (getText, getPlural) => (key) =>
       But really, the main reason is that we hope to bring you a cool place for everyone to come together!`,
       'Home',
     ) /*  */,
-    title3: getText('Here\'s the plan', 'Home') /* Title of a paragraph */,
+    title3: getText("Here's the plan", 'Home') /* Title of a paragraph */,
     paragraph3: getText(
       `It's a lot of work to create a site like this, so we're going to start small and grow slowly.
       To begin, we're going to focus on user profiles, photos, videos and albums, but soon after, we'll add things like comments, spots, events, etc.
       So take a look around, sign up, post photos and we'll see you around!`,
       'Home',
     ) /*  */,
+    moreAlbums: getText(
+      'More Albums',
+      'Home',
+    ) /* Label for a link to a page containing more albums */,
   }[key]);
 
 export default messages;

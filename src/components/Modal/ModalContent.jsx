@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import ReactFocusTrap from 'focus-trap-react';
 
 import Button from 'Components/Button';
-import Heading, {headingTypes} from 'Components/Heading/index';
+import Heading, { headingTypes } from 'Components/Heading/index';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 
@@ -27,7 +27,7 @@ const ModalContent = ({
   onClose,
   t,
 }) => {
-  return ReactDOM.createPortal(
+  return createPortal(
     <ReactFocusTrap
       focusTrapOptions={{
         initialFocus: modalTitle ? '#modal-title' : '#modal-content',
@@ -49,7 +49,9 @@ const ModalContent = ({
         <div className={styles.modal} ref={modalRef}>
           <div className={styles.header}>
             <div className={styles.title} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
-              <Heading type={MODAL} className={styles.heading}>{modalTitle}</Heading>
+              <Heading type={MODAL} className={styles.heading}>
+                {modalTitle}
+              </Heading>
             </div>
             <button className={styles.close} onClick={onClose} ref={buttonRef} type="button">
               {getIcon({ type: CLOSE, label: t('labelClose'), size: STANDARD })}

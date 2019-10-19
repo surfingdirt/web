@@ -22,6 +22,10 @@
     }
   }
 
+  .label {
+    color: $navigationlink-color;
+  }
+
   &.active,
   &:hover {
     color: $navigationlink-color-active;
@@ -45,5 +49,33 @@
     line-height: 1.3rem;
   }
 
+  &.negative {
+    color: $navigationlink-negative-color;
+
+    .defaultIcon {
+      color: $navigationlink-negative-color;
+      background-color: $navigationlink-negative-background-color;
+    }
+
+    .label {
+      color: $navigationlink-negative-color;
+    }
+
+    &.active,
+    &:hover {
+      color: $navigationlink-negative-color-active;
+      background-color: $navigationlink-negative-background-color-active;
+
+      .defaultIcon {
+        color: $navigationlink-negative-color-active;
+      }
+
+      .label {
+        color: $navigationlink-negative-color-active;
+      }
+    }
+  }
 }
+
+
 

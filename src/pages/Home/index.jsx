@@ -1,15 +1,16 @@
 /* eslint-disable import/prefer-default-export */
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import HOMEPAGE from 'Apollo/queries/home.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
+import MoreAlbums from 'Components/Album/MoreAlbums';
 import Card, { cardTypes } from 'Components/Card';
+import DataRenderer from 'Components/DataRenderer';
 import Heading, { headingTypes } from 'Components/Heading';
 import Logo, { logoTypes } from 'Components/Logo';
 import Paragraph from 'Components/Paragraph';
-import DataRenderer from 'Components/DataRenderer';
 import Translate from 'Hocs/Translate';
 import coverImage from 'Images/home-cover-s.jpg';
 import AppContext from '~/contexts';
@@ -20,6 +21,10 @@ import styles from './styles.scss';
 const { STANDARD } = cardTypes;
 const { PRIMARY, SECONDARY } = headingTypes;
 const { NO_TEXT } = logoTypes;
+
+// The main gallery is filtered out manually in the GQL server.
+const ALBUM_COUNT_ON_HOMEPAGE = 5;
+const ALBUM_ITEM_COUNT = 5;
 
 class HomeRaw extends React.Component {
   static contextType = AppContext;
@@ -39,16 +44,14 @@ class HomeRaw extends React.Component {
       },
     } = this.context;
 
-    const loggedIn = !!userId;
-
     return (
       <DataRenderer
         query={HOMEPAGE}
-        variables={{ galleryAlbumId }}
+        variables={{ galleryAlbumId, count: ALBUM_COUNT_ON_HOMEPAGE, countItems: ALBUM_ITEM_COUNT }}
         render={(data) => {
           const { album: galleryAlbum, listAlbums } = data;
           return (
-            <Fragment>
+            <div className={styles.wrapper}>
               <Helmet>
                 <title>Surfing Dirt</title>
               </Helmet>
@@ -88,9 +91,13 @@ class HomeRaw extends React.Component {
               <AlbumPreview album={galleryAlbum} />
 
               {listAlbums.map((album) => (
-                <AlbumPreview album={album} key={album.id} showAttribution={true} />
+                <AlbumPreview album={album} key={album.id} showAttribution />
               ))}
-            </Fragment>
+
+              <div className={styles.albumsButtonWrapper}>
+                <MoreAlbums />
+              </div>
+            </div>
           );
         }}
       />

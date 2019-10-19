@@ -7,6 +7,10 @@ $cover-card-height: 30vh;
 $cover-card-content-distance: $margin-medium-2;
 $cover-card-content-distance-desktop: $margin-very-big;
 
+.wrapper {
+  margin-bottom: $margin-small-2;
+}
+
 .coverCard {
   height: $cover-card-height;
   position: relative;
@@ -88,4 +92,9 @@ $cover-card-content-distance-desktop: $margin-very-big;
 
 .title2 {
   margin-top: $margin-medium-2;
+}
+
+.albumsButtonWrapper {
+  display: flex;
+  justify-content: center;
 }

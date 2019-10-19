@@ -1,5 +1,5 @@
-query listAlbums {
-    listAlbums {
+query listAlbums($count: Int!, $countItems: Int!) {
+    listAlbums(count: $count, countItems: $countItems) {
         actions {
             add
             delete
