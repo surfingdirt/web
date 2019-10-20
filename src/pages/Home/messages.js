@@ -32,7 +32,7 @@ const messages = (getText, getPlural) => (key) =>
       'Home',
     ) /*  */,
     moreAlbums: getText(
-      'More Albums',
+      'More on the Albums page',
       'Home',
     ) /* Label for a link to a page containing more albums */,
   }[key]);

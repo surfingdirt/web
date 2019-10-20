@@ -8,3 +8,16 @@ export const AlbumVisibility = {
   UNLISTED: 'UNLISTED',
   VISIBLE: 'VISIBLE',
 };
+
+const homeAlbumCount = 5;
+export const AlbumConstants = {
+  HOME: {
+    ALBUM_COUNT: homeAlbumCount,
+    ITEM_COUNT: 5,
+  },
+  ALBUMS: {
+    INITIAL_ALBUM_COUNT: homeAlbumCount + 3,
+    SUBSEQUENT_ALBUM_COUNT: 5,
+    ITEM_COUNT: 5,
+  },
+};

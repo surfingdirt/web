@@ -14,6 +14,7 @@ import Paragraph from 'Components/Paragraph';
 import Translate from 'Hocs/Translate';
 import coverImage from 'Images/home-cover-s.jpg';
 import AppContext from '~/contexts';
+import { AlbumConstants } from 'Utils/data';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -22,9 +23,7 @@ const { STANDARD } = cardTypes;
 const { PRIMARY, SECONDARY } = headingTypes;
 const { NO_TEXT } = logoTypes;
 
-// The main gallery is filtered out manually in the GQL server.
-const ALBUM_COUNT_ON_HOMEPAGE = 5;
-const ALBUM_ITEM_COUNT = 5;
+const { ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.HOME;
 
 class HomeRaw extends React.Component {
   static contextType = AppContext;
@@ -35,22 +34,15 @@ class HomeRaw extends React.Component {
 
   render() {
     const { t } = this.props;
-    const {
-      galleryAlbumId,
-      login: {
-        data: {
-          me: { userId },
-        },
-      },
-    } = this.context;
+    const { galleryAlbumId } = this.context;
 
     return (
       <DataRenderer
         query={HOMEPAGE}
         variables={{
           galleryAlbumId,
-          count: ALBUM_COUNT_ON_HOMEPAGE,
-          countItems: ALBUM_ITEM_COUNT,
+          count: ALBUM_COUNT,
+          countItems: ITEM_COUNT,
           skipAlbums: [galleryAlbumId],
         }}
         render={(data) => {
@@ -100,7 +92,7 @@ class HomeRaw extends React.Component {
               ))}
 
               <div className={styles.albumsButtonWrapper}>
-                <MoreAlbums />
+                <MoreAlbums label={t('moreAlbums')} />
               </div>
             </div>
           );

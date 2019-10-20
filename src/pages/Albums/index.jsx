@@ -10,13 +10,12 @@ import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
+import { AlbumConstants } from 'Utils/data';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const ALBUM_COUNT_ON_ALBUMS_PAGE = 5;
-const ALBUM_PAGINATION_SIZE = 5;
-const ALBUM_ITEM_COUNT = 5;
+const { INITIAL_ALBUM_COUNT, SUBSEQUENT_ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.ALBUMS;
 
 const AlbumsRaw = ({ t }) => {
   const [loadingMore, setLoadingMore] = useState(false);
@@ -25,8 +24,8 @@ const AlbumsRaw = ({ t }) => {
 
   const { data, error, fetchMore, loading } = useQuery(ALBUMS, {
     variables: {
-      count: ALBUM_COUNT_ON_ALBUMS_PAGE,
-      countItems: ALBUM_ITEM_COUNT,
+      count: INITIAL_ALBUM_COUNT,
+      countItems: ITEM_COUNT,
       skipAlbums: [galleryAlbumId],
     },
   });
@@ -50,13 +49,14 @@ const AlbumsRaw = ({ t }) => {
           <p className={styles.endReached}>{t('endReached')}</p>
         ) : (
           <MoreAlbums
+            label={t('moreAlbums')}
             loading={loadingMore}
             onClick={() => {
               setLoadingMore(true);
               fetchMore({
                 variables: {
                   start: albums.length,
-                  count: ALBUM_PAGINATION_SIZE,
+                  count: SUBSEQUENT_ALBUM_COUNT,
                 },
                 updateQuery: (prev, { fetchMoreResult }) => {
                   setLoadingMore(false);

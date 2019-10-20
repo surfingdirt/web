@@ -1,31 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NavigationLink from 'Components/NavigationLink';
-import { InlineSpinner } from 'Components/Spinner';
-import Translate from 'Hocs/Translate';
+import Button, { buttonTypes } from 'Components/Button';
 import icons from 'Utils/icons';
 import routes from '~/routes';
 
-import messages from './messages';
 import styles from './styles.scss';
 
-const { ALBUM } = icons;
 const { ALBUMS } = routes;
+const { ACTION } = buttonTypes;
 
-const MoreAlbums = ({ loading, onClick, t }) => {
-  if (loading) {
-    return <InlineSpinner negative={false} className={styles.spinner}/>;
-  }
-
-  const attrs = onClick ? { onClick } : { to: ALBUMS };
-  return <NavigationLink label={t('moreAlbums')} icon={ALBUM} negative {...attrs} />;
+const MoreAlbums = ({ label, loading, onClick }) => {
+  const attrs = onClick ? { onClick } : { href: ALBUMS };
+  return (
+    <Button type={ACTION} label={label} loading={loading} {...attrs} className={styles.button} />
+  );
 };
 
 MoreAlbums.propTypes = {
+  label: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
-  t: PropTypes.func.isRequired,
 };
 
 MoreAlbums.defaultProps = {
@@ -33,4 +28,4 @@ MoreAlbums.defaultProps = {
   onClick: null,
 };
 
-export default Translate(messages)(MoreAlbums);
+export default MoreAlbums;
