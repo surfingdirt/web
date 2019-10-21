@@ -209,14 +209,12 @@ class App extends React.Component {
     return (
       <Query query={ME}>
         {(meResponse) => {
-          const {
-            error,
-            data: { me },
-            loading: isLoading,
-          } = meResponse;
+          const { error, data, loading: isLoading } = meResponse;
 
           if (isLoading) return <Spinner />;
           if (error) return <ErrorMessage />;
+
+          const { me } = data;
 
           if (me && me.userId) {
             appContextValueObject.setUser(me);
