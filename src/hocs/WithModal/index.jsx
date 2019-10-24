@@ -20,7 +20,7 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     }
 
     clickListener(event) {
-      console.log('WithModal clickListener');
+      event.preventDefault();
       const { showModal } = this.state;
 
       if (typeof shouldShowModal === 'function' ? shouldShowModal() : true) {
