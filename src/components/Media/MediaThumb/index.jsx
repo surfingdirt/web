@@ -41,9 +41,9 @@ class MediaThumb extends React.PureComponent {
     const alt = title || t('thumbAlt');
     const responsiveImage = <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit />;
     return (
-      <Link
+      <div
         className={classnames(className, { [styles.objectFit]: objectFit })}
-        to={to}
+        data-to={to}
         title={title}
       >
         {mediaType === PHOTO ? (
@@ -56,7 +56,7 @@ class MediaThumb extends React.PureComponent {
             </div>
           </div>
         )}
-      </Link>
+      </div>
     );
   }
 }

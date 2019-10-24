@@ -20,6 +20,7 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     }
 
     clickListener(event) {
+      console.log('WithModal clickListener');
       const { showModal } = this.state;
 
       if (typeof shouldShowModal === 'function' ? shouldShowModal() : true) {
@@ -31,7 +32,9 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
     render() {
       const { showModal } = this.state;
 
-      const attrs = { onClickCapture: this.clickListener };
+      const attrs = {
+        onClickCapture: this.clickListener,
+      };
       const clonedBaseComponent =
         typeof BaseComponent === 'string' ? (
           <div {...attrs}>{BaseComponent}</div>
@@ -39,14 +42,16 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
           React.cloneElement(BaseComponent, attrs)
         );
 
-      const clonedContent = React.cloneElement(modalContent, { closeModal: this.onModalClose });
+      const clonedModalContent = React.cloneElement(modalContent, {
+        closeModal: this.onModalClose,
+      });
 
       return (
         <Fragment>
           {clonedBaseComponent}
           {showModal && (
             <Modal modalTitle={modalTitle} ariaLabel={ariaLabel} onClose={this.onModalClose}>
-              {clonedContent}
+              {clonedModalContent}
             </Modal>
           )}
         </Fragment>

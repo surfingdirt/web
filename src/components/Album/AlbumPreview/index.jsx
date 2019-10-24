@@ -1,18 +1,19 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
 
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import Attribution from 'Components/Attribution';
 import Card, { cardTypes } from 'Components/Card';
 import Empty from 'Components/Empty/index';
 import Heading, { headingTypes } from 'Components/Heading';
+import MediaOverlay from 'Components/Media/MediaOverlay';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Paragraph from 'Components/Paragraph';
 import Slider from 'Components/Slider';
 import { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
+import WithModal from 'Hocs/WithModal';
 import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
 
@@ -24,20 +25,20 @@ const { SECONDARY } = headingTypes;
 const { SMALLEST } = userboxSizes;
 
 const AlbumPreview = ({
-  album: {
-    actions,
-    albumContributions,
-    description,
-    id: albumId,
-    itemCount,
-    media,
-    submitter,
-    title: albumTitle,
-  },
-  showAttribution,
-  renderIfEmpty,
-  t,
-}) => {
+                        album: {
+                          actions,
+                          albumContributions,
+                          description,
+                          id: albumId,
+                          itemCount,
+                          media,
+                          submitter,
+                          title: albumTitle,
+                        },
+                        showAttribution,
+                        renderIfEmpty,
+                        t,
+                      }) => {
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
     return null;
@@ -66,11 +67,19 @@ const AlbumPreview = ({
     );
   }
 
-  const sliderChildren = media.map(({ id, mediaType, title, thumbs }) => {
+  const sliderChildren = media.map((mediaItem) => {
+    const { id, mediaType, title, thumbs } = mediaItem;
     const attrs = { id, mediaType, title, thumbs };
+
+    const Content = WithModal({
+      modalContent: <MediaOverlay media={mediaItem} />,
+      modalTitle: 'This be the media overlay',
+      ariaLabel: 'TODO',
+    })(<MediaThumb key={id} {...attrs} objectFit />);
+
     return (
       <div key={id} className={styles.item}>
-        <MediaThumb key={id} {...attrs} objectFit />
+        <Content />
       </div>
     );
   });
@@ -104,7 +113,11 @@ const AlbumPreview = ({
             )}
           </div>
         </div>
-        {description && <Paragraph className={styles.description} withAutoLink ugc>{description}</Paragraph>}
+        {description && (
+          <Paragraph className={styles.description} withAutoLink ugc>
+            {description}
+          </Paragraph>
+        )}
       </div>
     </Card>
   );
