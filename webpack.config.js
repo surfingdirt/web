@@ -5,7 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const { ReactLoadablePlugin } = require('@7rulnik/react-loadable/webpack');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const { manifest, sw } = require('./config/pwaConfig');
 const buildConfig = require('./build.config.js');
@@ -42,7 +42,7 @@ module.exports = {
             plugins: [
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-syntax-dynamic-import',
-              '@7rulnik/react-loadable/babel',
+              '@loadable/babel-plugin',
             ],
             presets: [
               [
@@ -156,9 +156,7 @@ module.exports = {
       inject: false,
       favicon: './src/images/favicon.ico',
     }),
-    new ReactLoadablePlugin({
-      filename: path.resolve(__dirname, buildConfig.outDirectory, 'react-loadable.json'),
-    }),
+    new LoadablePlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].[hash:3].css',
       chunkFilename: '[id].[hash:3].css',

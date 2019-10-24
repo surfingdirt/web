@@ -1,3 +1,4 @@
+import loadable from '@loadable/component';
 import Loadable from '@7rulnik/react-loadable';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -39,84 +40,84 @@ const {
   VIDEO_NEW_FOR_ALBUM,
 } = routes;
 
-const About = Loadable({
-  loader: () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
-  loading,
-});
-const Album = Loadable({
-  loader: () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
-  loading,
-});
-const Albums = Loadable({
-  loader: () => import(/* webpackChunkName: 'Album' */ './pages/Albums').then((m) => m.Albums),
-  loading,
-});
-const BatchUpload = Loadable({
-  loader: () =>
+const Test = loadable(
+  () => import(/* webpackChunkName: 'Test' */ './pages/Test').then((m) => m.Test),
+  { fallback: loading },
+);
+const About = loadable(
+  () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
+  { fallback: loading },
+);
+const Album = loadable(
+  () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
+  { fallback: loading },
+);
+const Albums = loadable(
+  () => import(/* webpackChunkName: 'Albums' */ './pages/Albums').then((m) => m.Albums),
+  { fallback: loading },
+);
+const BatchUpload = loadable(
+  () =>
     import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload').then(
       (m) => m.BatchUpload,
     ),
-  loading,
-});
-const ConfirmEmail = Loadable({
-  loader: () =>
+  { fallback: loading },
+);
+const ConfirmEmail = loadable(
+  () =>
     import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail').then(
       (m) => m.ConfirmEmail,
     ),
-  loading,
-});
-const Error = Loadable({
-  loader: () => import(/* webpackChunkName: 'Error' */ './pages/Error').then((m) => m.Error),
-  loading,
-});
-const Home = Loadable({
-  loader: () => import(/* webpackChunkName: 'Home' */ './pages/Home').then((m) => m.Home),
-  loading,
-});
-const LogIn = Loadable({
-  loader: () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
-  loading,
-});
-const NewAlbum = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post').then((m) => m.NewAlbum),
-  loading,
-});
-const NewPhoto = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
-  loading,
-});
-const NewVideo = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post').then((m) => m.NewVideo),
-  loading,
-});
-const OldForum = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'OldForum' */ './pages/OldForum').then((m) => m.OldForum),
-  loading,
-});
-const Photo = Loadable({
-  loader: () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
-  loading,
-});
-const Profile = Loadable({
-  loader: () => import(/* webpackChunkName: 'Profile' */ './pages/Profile').then((m) => m.Profile),
-  loading,
-});
-const User = Loadable({
-  loader: () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
-  loading,
-});
-const Users = Loadable({
-  loader: () => import(/* webpackChunkName: 'Users' */ './pages/Users').then((m) => m.Users),
-  loading,
-});
-const Video = Loadable({
-  loader: () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
-  loading,
-});
+  { fallback: loading },
+);
+const Error = loadable(
+  () => import(/* webpackChunkName: 'Error' */ './pages/Error').then((m) => m.Error),
+  { fallback: loading },
+);
+const Home = loadable(
+  () => import(/* webpackChunkName: 'Home' */ './pages/Home').then((m) => m.Home),
+  { fallback: loading },
+);
+const LogIn = loadable(
+  () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
+  { fallback: loading },
+);
+const NewAlbum = loadable(
+  () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post').then((m) => m.NewAlbum),
+  { fallback: loading },
+);
+const NewPhoto = loadable(
+  () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
+  { fallback: loading },
+);
+const NewVideo = loadable(
+  () => import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post').then((m) => m.NewVideo),
+  { fallback: loading },
+);
+const OldForum = loadable(
+  () => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum').then((m) => m.OldForum),
+  { fallback: loading },
+);
+const Photo = loadable(
+  () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
+  { fallback: loading },
+);
+const Profile = loadable(
+  () => import(/* webpackChunkName: 'Profile' */ './pages/Profile').then((m) => m.Profile),
+  { fallback: loading },
+);
+const User = loadable(
+  () => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User),
+  { fallback: loading },
+);
+const Users = loadable(
+  () => import(/* webpackChunkName: 'Users' */ './pages/Users').then((m) => m.Users),
+  { fallback: loading },
+);
+const Video = loadable(
+  () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
+  { fallback: loading },
+);
 
 const KEYBOARD_MODE_CLASS = 'keyboard-mode';
 const MOUSE_MODE_CLASS = 'mouse-mode';
@@ -164,6 +165,8 @@ class App extends React.Component {
         />
 
         <Switch>
+          <DefaultLayoutRoute path="/test" component={Test} exact />
+
           <DefaultLayoutRoute exact path={HOME} component={Home} />
 
           <DefaultLayoutRoute path={ABOUT} component={About} />

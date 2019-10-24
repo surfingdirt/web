@@ -12,14 +12,12 @@
 {{{ title }}}
 {{{ script }}}
 
-<%= htmlWebpackPlugin.files.css.map(file => `<link href="${file}" rel="stylesheet" type="text/css" />`).join('') %>
 {{{ css }}}
 {{{ inlineStyle }}}
 </head>
 <body class="keyboard-mode {{{ agentBodyClass }}}">
 <div id="app_root">{{{ html }}}</div>
 {{{ js }}}
-<%= htmlWebpackPlugin.files.js.map(file => `<script src="${file}"></script>`).join('') %>
 <script>
   window.staticAppContextValues = {{{ staticAppContextValues }}};
   window.__APOLLO_STATE__ = {{{ apolloState }}}

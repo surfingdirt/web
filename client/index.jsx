@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 
-import Loadable from '@7rulnik/react-loadable';
+import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
-import ReactDOM from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Router } from 'react-router-dom';
 
 import apolloClient from '../src/apollo';
@@ -18,7 +18,7 @@ history.listen(() => {
 });
 
 window.main = () => {
-  Loadable.preloadReady().then(() => {
+  loadableReady(() => {
     const {
       graphql,
       language,
@@ -29,7 +29,7 @@ window.main = () => {
 
     const apolloClientInstance = apolloClient(graphql, language, false, accessToken);
 
-    ReactDOM.hydrate(
+    hydrate(
       <ApolloProvider client={apolloClientInstance}>
         <Router history={history}>
           <App

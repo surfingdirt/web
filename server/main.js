@@ -1,16 +1,15 @@
 // Use gzipped assets for JS, CSS & HTML
 // noinspection JSUnresolvedFunction
+import { ChunkExtractor } from '@loadable/server';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Handlebars from 'handlebars';
 import Helmet from 'react-helmet';
-import { getBundles } from '@7rulnik/react-loadable/webpack';
 import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
-import Loadable from '@7rulnik/react-loadable';
 import slugify from 'slugify';
 import useragent from 'useragent';
 
@@ -18,10 +17,12 @@ import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import App from '~/App';
 
-import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
 import { analyticsId, config, fbAppId, title } from '../config';
+
+const statsFile = path.resolve('./dist/loadable-stats.json');
+const extractor = new ChunkExtractor({ statsFile });
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
@@ -87,28 +88,20 @@ const Main = (rootDir) => {
       const apolloClientInstance = apolloClient(graphql, language, true, accessToken);
 
       // noinspection JSUnresolvedFunction
-      const WrappedApp = (
-        <Loadable.Capture
-          report={(moduleName) => {
-            modules.add(moduleName);
-          }}
-        >
-          <ApolloProvider client={apolloClientInstance}>
-            <StaticRouter location={req.url} context={context}>
-              <App appContextValueObject={appContextValueObject} />
-            </StaticRouter>
-          </ApolloProvider>
-        </Loadable.Capture>
+      const WrappedApp = extractor.collectChunks(
+        <ApolloProvider client={apolloClientInstance}>
+          <StaticRouter location={req.url} context={context}>
+            <App appContextValueObject={appContextValueObject} />
+          </StaticRouter>
+        </ApolloProvider>,
       );
 
       const html = await getMarkupFromTree({
         tree: WrappedApp,
         renderFunction: renderToString,
       });
-
-      const bundles = getBundles(stats, Array.from(modules));
-      const styles = bundles.filter((bundle) => bundle.file.endsWith('.css'));
-      const scripts = bundles.filter((bundle) => bundle.file.endsWith('.js'));
+      const css = extractor.getStyleTags();
+      const js = extractor.getScriptTags();
 
       // noinspection JSUnresolvedFunction
       const helmet = Helmet.renderStatic();
@@ -121,14 +114,12 @@ const Main = (rootDir) => {
         analyticsId,
         appleHtml,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
-        css: styles
-          .map(({ file }) => `<link href="/${file}" rel="stylesheet" type="text/css" />`)
-          .join('\n'),
+        css,
         dir,
         fbAppId,
         html,
         inlineStyle: `<style></style>`,
-        js: scripts.map(({ file }) => `<script src="/${file}"></script>`).join('\n'),
+        js,
         lang: language,
         meta: meta || '',
         agentBodyClass,
@@ -153,7 +144,7 @@ const Main = (rootDir) => {
     }
 
     // Sends the response back to the client
-    res.status(context.status || 200).end(document);
+    return res.status(context.status || 200).end(document);
   };
 };
 

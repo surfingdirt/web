@@ -10,7 +10,7 @@ const config = {
     ],
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
-    '@7rulnik/react-loadable/babel',
+    '@loadable/babel-plugin',
     'dynamic-import-node',
     'import-graphql',
   ],

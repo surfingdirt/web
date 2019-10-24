@@ -24,6 +24,7 @@
     "Safari > 10"
   ],
   "devDependencies": {
+    "@loadable/babel-plugin": "5.10.3",
     "copy-webpack-plugin": "5.0.4",
     "core-js": "2.6.9",
     "eslint-import-resolver-babel-module": "^5.0.1",
@@ -43,6 +44,9 @@
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.0.0",
+    "@loadable/component": "5.10.3",
+    "@loadable/server": "5.10.3",
+    "@loadable/webpack-plugin": "5.7.1",
     "@storybook/addon-a11y": "^5.0.5",
     "@storybook/addon-knobs": "^5.0.5",
     "@storybook/addon-storyshots": "^5.0.5",
@@ -151,7 +155,7 @@
     "sw-precache-webpack-plugin": "0.11.5",
     "useragent": "2.3.0",
     "wait-on": "^3.1.0",
-    "webpack": "4.6.0",
+    "webpack": "4.41.2",
     "webpack-cli": "2.0.14"
   }
 }
