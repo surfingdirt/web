@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 
 import ResponsiveImage from 'Components/ResponsiveImage';
 import VideoEmbed from 'Components/Video/Embed';
-import Translate from 'Hocs/Translate/index';
 import { mediaTypes } from 'Utils/media';
-
-import messages from './messages';
 
 const { VIDEO } = mediaTypes;
 
@@ -29,4 +26,4 @@ const HeroContent = ({ media }) => {
 
 HeroContent.propTypes = {};
 
-export default Translate(messages)(HeroContent);
+export default HeroContent;
