@@ -13,6 +13,10 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         media {
             id
             mediaType
+            mediaSubType
+            embedUrl
+            height
+            width
             title
             thumbs {
                 type
@@ -45,6 +49,10 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         media {
             id
             mediaType
+            mediaSubType
+            embedUrl
+            height
+            width
             title
             thumbs {
                 type

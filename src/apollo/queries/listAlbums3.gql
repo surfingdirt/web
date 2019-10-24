@@ -11,6 +11,10 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
         media {
             id
             mediaType
+            mediaSubType
+            embedUrl
+            height
+            width
             title
             thumbs {
                 type
