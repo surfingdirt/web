@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import PropTypes from 'prop-types';
 
-import ALBUMS from 'Apollo/queries/listAlbums3.gql';
+import ALBUMS from 'Apollo/queries/listAlbums.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import MoreAlbums from 'Components/Album/MoreAlbums';
 import Empty from 'Components/Empty';

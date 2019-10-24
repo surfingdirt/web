@@ -87,7 +87,7 @@ ResponsiveImage.propTypes = {
       width: PropTypes.number.isRequired,
     }),
   ).isRequired,
-  maxHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+  maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   objectFit: PropTypes.bool,
   sizes: PropTypes.string,
 };

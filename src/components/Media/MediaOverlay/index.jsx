@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import HeroContent from 'Components/Media/HeroContent';
+
 const MediaOverlay = ({ media }) => {
   // TODO: display the initial media, fetch paginated lists of media
-  console.log('MediaOverlay - rendering', { media });
-  return <div>This is the media overlay</div>;
+  return <HeroContent media={media} />;
 };
 
 MediaOverlay.propTypes = {

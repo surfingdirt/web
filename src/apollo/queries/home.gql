@@ -21,6 +21,13 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 height
                 width
             }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
         }
         title
     }
@@ -40,6 +47,13 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             mediaType
             title
             thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            images {
                 type
                 size
                 url

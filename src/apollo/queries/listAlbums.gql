@@ -19,6 +19,13 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
                 height
                 width
             }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
         }
         submitter {
             userId

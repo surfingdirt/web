@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import Card, { cardTypes } from 'Components/Card';
+import HeroContent from 'Components/Media/HeroContent';
 import Paragraph from 'Components/Paragraph/index';
 import ResponsiveImage from 'Components/ResponsiveImage';
 import VideoEmbed from 'Components/Video/Embed';
@@ -17,74 +18,47 @@ import styles from './styles.scss';
 const { HERO } = cardTypes;
 const { VIDEO } = mediaTypes;
 
-const getHeroContent = (media, mediaType, t) => {
-  let heroContent;
-  const { album: {title: albumTitle }, description, title } = media;
-
-  const image = getBiggestMediaImageUrl(media);
-  if (mediaType === VIDEO) {
-    const { embedUrl, height, width, mediaSubType } = media;
-    heroContent = (
-      <Fragment>
-        <Helmet>
-          <title>{title || albumTitle}</title>
-          <meta property="og:title" content={title || albumTitle} />
-          {description && <meta property="og:description" content={description} />}
-          {description && <meta property="description" content={description} />}
-          {image && <meta property="og:image" content={image} />}
-        </Helmet>
-        <VideoEmbed url={embedUrl} height={height} mediaSubType={mediaSubType} width={width} />
-      </Fragment>
-    );
-  } else {
-    const { images } = media;
-
-    heroContent = (
-      <Fragment>
-        <Helmet>
-          <title>{title || albumTitle}</title>
-          <meta property="og:title" content={title || albumTitle} />
-          {description && <meta property="og:description" content={description} />}
-          {description && <meta property="description" content={description} />}
-          {image && <meta property="og:image" content={image} />}
-        </Helmet>
-        <ResponsiveImage alt="" images={images} />
-      </Fragment>
-    );
-  }
-
-  return heroContent;
-};
-
 const MediaPageContent = (props) => {
-  const { media, mediaType, t } = props;
+  const { media, t } = props;
   const {
     album: { id: albumId, title: albumTitle },
     description,
     submitter: { userId, username },
     title,
   } = media;
+  const image = getBiggestMediaImageUrl(media);
 
-  const heroContent = getHeroContent(media, mediaType, t);
+  const heroContent = <HeroContent media={media} />;
 
   return (
-    <Card title={title} type={HERO} heroContent={heroContent}>
-      <div>
-        {description && <Paragraph>{description}</Paragraph>}
-        <div className={styles.metadataItem}>
-          <span className={styles.metadataItemName}>{t('postedBy')}</span>
-          <Link to={userRoute(userId)}>{username}</Link>
-        </div>
+    <Fragment>
+      <Helmet>
+        <title>{title || albumTitle}</title>
+        {description && <meta property="og:description" content={description} />}
+        {description && <meta property="description" content={description} />}
+        {image && <meta property="og:image" content={image} />}
+      </Helmet>
+      <Card title={title} type={HERO} heroContent={heroContent}>
+        <div>
+          {description && <Paragraph>{description}</Paragraph>}
+          <div className={styles.metadataItem}>
+            <span className={styles.metadataItemName}>{t('postedBy')}</span>
+            <Link to={userRoute(userId)}>{username}</Link>
+          </div>
 
-        <div className={styles.metadataItem}>
-          <span className={styles.metadataItemName}>{t('inAlbum')}</span>
-          <Link to={albumRoute(albumId)}>{albumTitle}</Link>
+          <div className={styles.metadataItem}>
+            <span className={styles.metadataItemName}>{t('inAlbum')}</span>
+            <Link to={albumRoute(albumId)}>{albumTitle}</Link>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </Fragment>
   );
 };
 
-MediaPageContent.propTypes = {};
+MediaPageContent.propTypes = {
+  media: PropTypes.shape().isRequired,
+  t: PropTypes.func.isRequired,
+};
 
 export default Translate(messages)(MediaPageContent);
