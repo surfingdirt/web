@@ -6,6 +6,19 @@ import React, { Component, Fragment } from 'react';
 import ModalContent from './ModalContent';
 import styles from './styles.scss';
 
+const HERO = 'hero';
+const STANDARD = 'standard';
+
+export const modalTypes = {
+  HERO,
+  STANDARD,
+};
+
+const typeMapping = {
+  [HERO]: 'heroModal',
+  [STANDARD]: 'standardModal',
+};
+
 const addPageClass = () => {
   document.querySelector('html').classList.add(styles.scrolling);
 };
@@ -21,6 +34,18 @@ class Modal extends Component {
     children: PropTypes.object.isRequired,
     modalTitle: PropTypes.string,
     onClose: PropTypes.func,
+    type: (props, propName, componentName) => {
+      const type = props[propName];
+      if (!type) {
+        return new Error(`Empty type set for component '${componentName}'`);
+      }
+
+      if (!Object.keys(typeMapping).includes(type)) {
+        return new Error(`Invalid type set for component '${componentName}': '${type}'`);
+      }
+
+      return undefined;
+    },
   };
 
   static defaultProps = {
@@ -64,7 +89,8 @@ class Modal extends Component {
 
   render() {
     const { isOpen } = this.state;
-    const { ariaLabel, cancel, children, modalTitle } = this.props;
+    const { ariaLabel, cancel, children, modalTitle, type } = this.props;
+    const typeClassName = typeMapping[type];
 
     return (
       <Fragment>
@@ -73,6 +99,7 @@ class Modal extends Component {
             ariaLabel={ariaLabel}
             onClickAway={this.onClickAway}
             buttonRef={this.buttonRef}
+            className={styles[typeClassName]}
             modalRef={this.modalRef}
             modalTitle={modalTitle}
             content={children}

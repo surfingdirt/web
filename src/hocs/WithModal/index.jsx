@@ -1,8 +1,9 @@
 import React, { Fragment, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import Modal from 'Components/Modal';
 
-const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel }) => (
+const withModal = ({ ariaLabel, modalContent, modalTitle, shouldShowModal, type }) => (
   BaseComponent,
 ) => {
   class WithModal extends PureComponent {
@@ -50,7 +51,12 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
         <Fragment>
           {clonedBaseComponent}
           {showModal && (
-            <Modal modalTitle={modalTitle} ariaLabel={ariaLabel} onClose={this.onModalClose}>
+            <Modal
+              modalTitle={modalTitle}
+              ariaLabel={ariaLabel}
+              onClose={this.onModalClose}
+              type={type}
+            >
               {clonedModalContent}
             </Modal>
           )}
@@ -60,6 +66,18 @@ const withModal = ({ modalContent, shouldShowModal = null, modalTitle, ariaLabel
   }
 
   return WithModal;
+};
+
+withModal.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  modalContent: PropTypes.node.isRequired,
+  modalTitle: PropTypes.string.isRequired,
+  shouldShowModal: PropTypes.bool,
+  type: PropTypes.string.isRequired,
+};
+
+withModal.defaultProps = {
+  shouldShowModal: null,
 };
 
 export default withModal;

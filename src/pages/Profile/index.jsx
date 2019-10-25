@@ -13,6 +13,7 @@ import Card, { cardTypes } from 'Components/Card';
 import DualContainer from 'Components/DualContainer/index';
 import ErrorMessage from 'Components/ErrorMessage';
 import Heading, { headingTypes } from 'Components/Heading/index';
+import { modalTypes } from 'Components/Modal';
 import Paragraph from 'Components/Paragraph';
 import Spinner from 'Components/Spinner';
 import BioUpdateForm from 'Components/User/BioUpdate/Form';
@@ -27,6 +28,7 @@ const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;
 const { SMALL } = buttonSizes;
 const { NEGATIVE } = buttonTypes;
+const { STANDARD } = modalTypes;
 
 const MIN_DROPCAP_LENGTH = 200;
 
@@ -53,9 +55,10 @@ class ProfileRaw extends React.Component {
     const text = emptyBio ? t('emptyBio') : bio;
 
     const ModalButton = WithModal({
+      ariaLabel: t('updateUserBioDialogLabel'),
       modalContent: <BioUpdateForm userId={userId} bio={bio} />,
       modalTitle: t('updateUserBio'),
-      ariaLabel: t('updateUserBioDialogLabel'),
+      type: STANDARD,
     })(
       <div>
         <Button label={bio ? t('update') : t('add')} size={SMALL} type={NEGATIVE} />

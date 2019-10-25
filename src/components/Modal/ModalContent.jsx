@@ -3,6 +3,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import ReactFocusTrap from 'focus-trap-react';
+import classnames from 'classnames';
 
 import Button from 'Components/Button';
 import Heading, { headingTypes } from 'Components/Heading/index';
@@ -20,6 +21,7 @@ const ModalContent = ({
   ariaLabel,
   buttonRef,
   cancel,
+  className,
   content,
   modalRef,
   modalTitle,
@@ -46,10 +48,10 @@ const ModalContent = ({
         }}
         role="dialog"
       >
-        <div className={styles.modal} ref={modalRef}>
+        <div className={classnames(styles.modal, className)} ref={modalRef}>
           <div className={styles.header}>
-            <div className={styles.title} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
-              <Heading type={MODAL} className={styles.heading}>
+            <div className={styles.titleWrapper} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
+              <Heading type={MODAL} className={styles.title}>
                 {modalTitle}
               </Heading>
             </div>

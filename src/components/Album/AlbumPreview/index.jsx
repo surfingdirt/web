@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import Attribution from 'Components/Attribution';
 import Card, { cardTypes } from 'Components/Card';
+import { modalTypes } from 'Components/Modal';
 import Empty from 'Components/Empty/index';
 import Heading, { headingTypes } from 'Components/Heading';
 import MediaOverlay from 'Components/Media/MediaOverlay';
@@ -22,23 +23,24 @@ import styles from './styles.scss';
 
 const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
+const { HERO } = modalTypes;
 const { SMALLEST } = userboxSizes;
 
 const AlbumPreview = ({
-                        album: {
-                          actions,
-                          albumContributions,
-                          description,
-                          id: albumId,
-                          itemCount,
-                          media,
-                          submitter,
-                          title: albumTitle,
-                        },
-                        showAttribution,
-                        renderIfEmpty,
-                        t,
-                      }) => {
+  album: {
+    actions,
+    albumContributions,
+    description,
+    id: albumId,
+    itemCount,
+    media,
+    submitter,
+    title: albumTitle,
+  },
+  showAttribution,
+  renderIfEmpty,
+  t,
+}) => {
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
     return null;
@@ -71,15 +73,16 @@ const AlbumPreview = ({
     const { id, mediaType, title, thumbs } = mediaItem;
     const attrs = { id, mediaType, title, thumbs };
 
-    const Content = WithModal({
+    const ThumbWithModal = WithModal({
       modalContent: <MediaOverlay media={mediaItem} />,
-      modalTitle: 'This be the media overlay',
-      ariaLabel: 'TODO',
-    })(<MediaThumb key={id} {...attrs} objectFit />);
+      modalTitle: title || albumTitle,
+      ariaLabel: t('mediaPreviewModal'),
+      type: HERO,
+    })(<MediaThumb {...attrs} objectFit />);
 
     return (
       <div key={id} className={styles.item}>
-        <Content />
+        <ThumbWithModal />
       </div>
     );
   });

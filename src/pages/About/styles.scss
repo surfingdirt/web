@@ -28,7 +28,7 @@ section p:last-child {
   margin: 0 $margin-small-2;
 }
 
-.title {
+.titleWrapper {
   order: 3;
   margin: $margin-medium-2 0;
 }
@@ -60,7 +60,7 @@ section p:last-child {
       display: contents;
     }
 
-    .title {
+    .titleWrapper {
       grid-area: 1/4/5/4;
       writing-mode: sideways-lr;
       font-size: 5vh;

@@ -1,6 +1,10 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     by: getText('by', 'Album') /* Indicates who created an album */,
+    mediaPreviewModal: getText(
+      'Media preview',
+      'Album',
+    ) /* Label for a window containing a quick preview of a media page */,
     public: getText(
       'Public',
       'Album',

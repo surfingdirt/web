@@ -5,7 +5,9 @@
 @import "../../styles/z-indices";
 
 $header-content-distance: $margin-small-2;
-$destkop-modal-width: 640px;
+$desktop-modal-width: 640px;
+$title-line-height: 1.3rem;
+$title-line-count: 2;
 
 .cover {
   position: fixed;
@@ -21,26 +23,47 @@ $destkop-modal-width: 640px;
 
 .modal {
   position: fixed;
-  top: $padding-small-1;
-  left: $padding-small-1;
-  right: $padding-small-1;
-  bottom: $padding-small-1;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border: $widget-border-width $widget-border-color solid;
-  border-radius: $widget-border-radius;
   background-color: $background-color-default;
 
-  @media screen and (min-width: $desktop-min) {
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
-    width: $destkop-modal-width;
+  .content {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &.standardModal {
+    border: $widget-border-width $widget-border-color solid;
+    border-radius: $widget-border-radius;
+    top: $padding-small-1;
+    left: $padding-small-1;
+    right: $padding-small-1;
+    bottom: $padding-small-1;
+    @media screen and (min-width: $desktop-min) {
+      left: 50%;
+      top: 50%;
+      bottom: auto;
+      right: auto;
+      transform: translate(-50%, -50%);
+      width: $desktop-modal-width;
+    }
+    .content {
+      padding: $padding-small-2;
+    }
+  }
+
+  &.heroModal {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @media screen and (min-width: $desktop-min) {
+    }
+    .content {
+      border-top: $widget-border-width $widget-border-color-negative solid;
+    }
   }
 }
 
@@ -66,23 +89,20 @@ $destkop-modal-width: 640px;
   background: $modal-header-background-color;
 }
 
-.title {
+.titleWrapper {
   padding: $header-content-distance;
 }
 
-.heading {
+.title {
+  max-height: $title-line-count * $title-line-height;
+  line-height: $title-line-height;
+  margin-bottom: 0;
+  overflow: hidden;
   color: $modal-header-text-color;
 }
 
-:global(.mouse-mode) .title:focus {
+:global(.mouse-mode) .titleWrapper:focus {
   outline: none;
-}
-
-.content {
-  flex-grow: 1;
-  padding: $padding-small-2;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .actions {
