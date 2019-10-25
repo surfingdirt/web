@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -20,6 +20,7 @@ import { albumRoute } from 'Utils/links';
 
 import messages from './messages';
 import styles from './styles.scss';
+import MediaMetadata from 'Components/Media/MediaMetadata';
 
 const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
@@ -72,9 +73,10 @@ const AlbumPreview = ({
   const sliderChildren = media.map((mediaItem) => {
     const { id, mediaType, title, thumbs } = mediaItem;
     const attrs = { id, mediaType, title, thumbs };
+    const fullItem = Object.assign({}, mediaItem, { album: { id: albumId, title: albumTitle } });
 
     const ThumbWithModal = WithModal({
-      modalContent: <MediaOverlay media={mediaItem} />,
+      modalContent: <MediaOverlay media={fullItem} />,
       modalTitle: title || albumTitle,
       ariaLabel: t('mediaPreviewModal'),
       type: HERO,

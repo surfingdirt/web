@@ -1,0 +1,19 @@
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.hero {
+  flex-grow: 0;
+  margin-bottom: $margin-small-2;
+  box-shadow: 0 3px 3px rgba($widget-border-color-negative, .5);
+}
+
+.metadata {
+  flex-grow: 1;
+  overflow-y: auto;
+}

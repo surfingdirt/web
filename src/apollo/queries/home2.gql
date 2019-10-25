@@ -32,6 +32,17 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 height
                 width
             }
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
+            }
         }
         title
     }
@@ -67,6 +78,17 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 url
                 height
                 width
+            }
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
             }
         }
         submitter {

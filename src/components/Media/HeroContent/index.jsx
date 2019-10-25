@@ -7,23 +7,29 @@ import { mediaTypes } from 'Utils/media';
 
 const { VIDEO } = mediaTypes;
 
-const HeroContent = ({ media }) => {
+const HeroContent = ({ className, media }) => {
   let heroContent;
 
   if (media.mediaType === VIDEO) {
     const { embedUrl, height, width, mediaSubType } = media;
     heroContent = (
-      <VideoEmbed url={embedUrl} height={height} mediaSubType={mediaSubType} width={width} />
+      <VideoEmbed url={embedUrl} height={height} mediaSubType={mediaSubType} width={width} className={className} />
     );
   } else {
     const { images } = media;
 
-    heroContent = <ResponsiveImage alt="" images={images} />;
+    heroContent = <ResponsiveImage alt="" images={images} className={className} />;
   }
 
   return heroContent;
 };
 
-HeroContent.propTypes = {};
+HeroContent.propTypes = {
+  className: PropTypes.string,
+};
+
+HeroContent.defaultProps = {
+  className: null,
+};
 
 export default HeroContent;

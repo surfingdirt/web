@@ -114,7 +114,7 @@ $height5: $width5 / $aspect-ratio;
     display: flex;
     align-items: center;
 
-    .titleWrapper {
+    .title {
       margin: 0;
     }
 
@@ -146,5 +146,9 @@ $height5: $width5 / $aspect-ratio;
   .addButtons {
     align-self: center;
   }
+
+}
+
+.itemMetadata {
 
 }

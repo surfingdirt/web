@@ -33,23 +33,13 @@ const withModal = ({ ariaLabel, modalContent, modalTitle, shouldShowModal, type 
     render() {
       const { showModal } = this.state;
 
-      const attrs = {
-        onClickCapture: this.clickListener,
-      };
-      const clonedBaseComponent =
-        typeof BaseComponent === 'string' ? (
-          <div {...attrs}>{BaseComponent}</div>
-        ) : (
-          React.cloneElement(BaseComponent, attrs)
-        );
-
       const clonedModalContent = React.cloneElement(modalContent, {
         closeModal: this.onModalClose,
       });
 
       return (
         <Fragment>
-          {clonedBaseComponent}
+          <div onClickCapture={this.clickListener}>{BaseComponent}</div>
           {showModal && (
             <Modal
               modalTitle={modalTitle}
