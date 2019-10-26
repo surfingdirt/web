@@ -25,7 +25,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
 
   useEffect(() => {
     setItem(items[index]);
-    onTitleChange(items[index].title);
+    onTitleChange(items[index].title || album.title);
   }, [index]);
 
   const lastIndex = items.length - 1;
@@ -46,7 +46,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
             setIndex(index - 1 >= 0 ? index - 1 : 0);
           }}
         >
-          {getIcon({ type: PREVIOUS })}
+          <div className={styles.buttonIcon}>{getIcon({ type: PREVIOUS })}</div>
         </button>
         <button
           className={classnames('rtlTransform', styles.navButton, styles.next, {
@@ -58,7 +58,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
             setIndex(index < lastIndex ? index + 1 : lastIndex);
           }}
         >
-          {getIcon({ type: NEXT })}
+          <div className={styles.buttonIcon}>{getIcon({ type: NEXT })}</div>
         </button>
       </div>
 

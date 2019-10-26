@@ -23,30 +23,38 @@ $icon-margin-vertical: 2px;
 
   .navButton {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: $media-overlay-nav-button-background-color;
-    color: $media-overlay-nav-button-text-color;
-    opacity: $media-overlay-nav-button-opacity;
-    padding: 5px;
-    box-sizing: content-box;
+    top: $margin-very-big;
+    bottom: $margin-very-big;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .buttonIcon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: $media-overlay-nav-button-background-color;
+      color: $media-overlay-nav-button-text-color;
+      opacity: $media-overlay-nav-button-opacity;
+      padding: 5px;
+      box-sizing: content-box;
+    }
 
     svg {
       margin-top: $icon-margin-vertical;
     }
 
     &.next {
-      right: $margin-medium-2;
+      padding-right: $padding-medium-2;
+      right: 0;
       svg {
         margin-left: $icon-margin-horizontal;
       }
     }
 
     &.prev {
-      prev: $margin-medium-2;
+      padding-left: $padding-medium-2;
+      left: 0;
       svg {
         margin-right: $icon-margin-horizontal;
       }
