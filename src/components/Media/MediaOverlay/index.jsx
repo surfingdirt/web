@@ -14,18 +14,18 @@ import messages from './messages';
 const { STANDARD } = cardTypes;
 const { NEXT, PREVIOUS } = icons;
 
-const MediaOverlay = ({ album, index: initialIndex, t }) => {
+const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   // TODO: display the initial media, fetch paginated lists of media
 
   const [items, setItems] = useState(album.media);
   const [item, setItem] = useState(album.media[initialIndex]);
   const [index, setIndex] = useState(initialIndex);
 
-  useEffect(() => {
-  }, [items]);
+  useEffect(() => {}, [items]);
 
   useEffect(() => {
     setItem(items[index]);
+    onTitleChange(items[index].title);
   }, [index]);
 
   const lastIndex = items.length - 1;
@@ -43,9 +43,7 @@ const MediaOverlay = ({ album, index: initialIndex, t }) => {
           type="button"
           aria-label={t('previous')}
           onClick={() => {
-            const newIndex = index - 1 >= 0 ? index - 1 : 0;
-            setIndex(newIndex);
-            console.log('back', newIndex);
+            setIndex(index - 1 >= 0 ? index - 1 : 0);
           }}
         >
           {getIcon({ type: PREVIOUS })}
@@ -57,9 +55,7 @@ const MediaOverlay = ({ album, index: initialIndex, t }) => {
           type="button"
           aria-label={t('next')}
           onClick={() => {
-            const newIndex = index < lastIndex ? index + 1 : lastIndex;
-            setIndex(newIndex);
-            console.log('next', newIndex);
+            setIndex(index < lastIndex ? index + 1 : lastIndex);
           }}
         >
           {getIcon({ type: NEXT })}
@@ -74,10 +70,11 @@ const MediaOverlay = ({ album, index: initialIndex, t }) => {
 };
 
 MediaOverlay.propTypes = {
-  index: PropTypes.number.isRequired,
   album: PropTypes.shape({
     // album: PropTypes.number.isRequired,
   }).isRequired,
+  index: PropTypes.number.isRequired,
+  onTitleChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 

@@ -27,8 +27,11 @@ const ModalContent = ({
   modalTitle,
   onClickAway,
   onClose,
+  onTitleChange,
   t,
 }) => {
+  const clonedContent = React.cloneElement(content, { onTitleChange });
+
   return createPortal(
     <ReactFocusTrap
       focusTrapOptions={{
@@ -65,7 +68,7 @@ const ModalContent = ({
             id="modal-content"
             tabIndex={modalTitle ? '' : '0'}
           >
-            {content}
+            {clonedContent}
           </div>
           {cancel && (
             <div className={styles.actions}>

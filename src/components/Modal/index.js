@@ -56,8 +56,8 @@ class Modal extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = { isOpen: true };
+    const { modalTitle } = this.props;
+    this.state = { isOpen: true, modalTitle };
 
     this.buttonRef = React.createRef();
     this.modalRef = React.createRef();
@@ -89,7 +89,8 @@ class Modal extends Component {
 
   render() {
     const { isOpen } = this.state;
-    const { ariaLabel, cancel, children, modalTitle, type } = this.props;
+    const { ariaLabel, cancel, children, type } = this.props;
+    const { modalTitle } = this.state;
     const typeClassName = typeMapping[type];
 
     return (
@@ -105,6 +106,9 @@ class Modal extends Component {
             content={children}
             onClose={this.closeModal}
             cancel={cancel}
+            onTitleChange={(newTitle) => {
+              this.setState({ modalTitle: newTitle });
+            }}
           />
         )}
       </Fragment>
