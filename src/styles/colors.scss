@@ -119,6 +119,11 @@ $form-error-secondColor: $brand-dark2;
 $masthead-background-color: $brand-bright;
 $masthead-title-color: $brand-dark2;
 
+// Media Overlay
+$media-overlay-nav-button-background-color: $brand-dark2;
+$media-overlay-nav-button-text-color: rgba($brand-bright, .8);
+$media-overlay-nav-button-opacity: .8;
+
 // Media thumb
 $play-icon-fill-color: $brand-highlight2;
 
@@ -133,7 +138,7 @@ $menu-icon: $brand-bright;
 $menu-trigger-active-text-color: $brand-dark2;
 $menu-trigger-active-background-color: $brand-bright;
 
-  // Modal
+// Modal
 $modal-header-background-color: $brand-bright;
 $modal-header-text-color: $brand-dark2;
 $modal-close-button-color: $brand-dark2;

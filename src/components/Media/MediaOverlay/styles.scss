@@ -1,6 +1,9 @@
 @import '../../../styles/boxmodel';
 @import '../../../styles/colors';
 
+$icon-margin-horizontal: 4px;
+$icon-margin-vertical: 2px;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -8,12 +11,54 @@
 }
 
 .hero {
+  position: relative;
   flex-grow: 0;
   margin-bottom: $margin-small-2;
   box-shadow: 0 3px 3px rgba($widget-border-color-negative, .5);
+
+  .heroContent {
+    max-height: 60vh;
+    object-fit: contain;
+  }
+
+  .navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: $media-overlay-nav-button-background-color;
+    color: $media-overlay-nav-button-text-color;
+    opacity: $media-overlay-nav-button-opacity;
+    padding: 5px;
+    box-sizing: content-box;
+
+    svg {
+      margin-top: $icon-margin-vertical;
+    }
+
+    &.next {
+      right: $margin-medium-2;
+      svg {
+        margin-left: $icon-margin-horizontal;
+      }
+    }
+
+    &.prev {
+      prev: $margin-medium-2;
+      svg {
+        margin-right: $icon-margin-horizontal;
+      }
+    }
+  }
 }
 
 .metadata {
   flex-grow: 1;
   overflow-y: auto;
+}
+
+.hidden {
+  display: none;
 }

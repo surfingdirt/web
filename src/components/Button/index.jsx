@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import { InlineSpinner } from 'Components/Spinner';
-import SVG from 'Components/SVG';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -45,12 +44,8 @@ const Button = ({
   href,
   targetBlank,
   buttonType,
-  iconLeft,
-  iconRight,
   size,
 }) => {
-  const hasIcon = iconLeft || iconRight;
-
   let actualElement;
   let elementClassName;
 
@@ -59,20 +54,7 @@ const Button = ({
   if (loading) {
     content = <InlineSpinner negative={type === NEGATIVE} className={styles.spinner} />;
   } else {
-    const labelMarkup = <span className={styles.label}>{label}</span>;
-    if (hasIcon) {
-      content = (
-        <div className={styles.contentWrapper}>
-          {iconLeft && <SVG icon={iconLeft} className={classnames(styles.icon, styles.iconLeft)} />}
-          {labelMarkup}
-          {iconRight && (
-            <SVG icon={iconRight} className={classnames(styles.icon, styles.iconRight)} />
-          )}
-        </div>
-      );
-    } else {
-      content = labelMarkup;
-    }
+    content = <span className={styles.label}>{label}</span>;
   }
 
   /* Containing element */

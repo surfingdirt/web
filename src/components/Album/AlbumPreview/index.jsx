@@ -20,15 +20,14 @@ import { albumRoute } from 'Utils/links';
 
 import messages from './messages';
 import styles from './styles.scss';
-import MediaMetadata from 'Components/Media/MediaMetadata';
 
 const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { HERO } = modalTypes;
 const { SMALLEST } = userboxSizes;
 
-const AlbumPreview = ({
-  album: {
+const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
+  const {
     actions,
     albumContributions,
     description,
@@ -37,11 +36,7 @@ const AlbumPreview = ({
     media,
     submitter,
     title: albumTitle,
-  },
-  showAttribution,
-  renderIfEmpty,
-  t,
-}) => {
+  } = album;
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
     return null;
@@ -70,15 +65,14 @@ const AlbumPreview = ({
     );
   }
 
-  const sliderChildren = media.map((mediaItem) => {
+  const sliderChildren = media.map((mediaItem, index) => {
     const { id, mediaType, title, thumbs } = mediaItem;
     const attrs = { id, mediaType, title, thumbs };
-    const fullItem = Object.assign({}, mediaItem, { album: { id: albumId, title: albumTitle } });
 
     const ThumbWithModal = WithModal({
-      modalContent: <MediaOverlay media={fullItem} />,
-      modalTitle: title || albumTitle,
       ariaLabel: t('mediaPreviewModal'),
+      modalContent: <MediaOverlay album={album} index={index} />,
+      modalTitle: title || albumTitle,
       type: HERO,
     })(<MediaThumb {...attrs} objectFit />);
 

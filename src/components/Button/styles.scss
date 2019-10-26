@@ -38,18 +38,6 @@ $small-horizontal-padding: $padding-small-3;
   }
 }
 
-.iconRight {
-  margin-left: $margin-small-2;
-}
-
-.iconLeft {
-  margin-right: $margin-small-2;
-}
-
-[dir=rtl] .icon {
-  transform: scaleX(-1);
-}
-
 /* Specific styles for buttons or links */
 .linkElement {
   display: inline-block;

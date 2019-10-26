@@ -10,9 +10,13 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const MediaMetadata = (props) => {
-  const { className, media, t } = props;
   const {
     album: { id: albumId, title: albumTitle },
+    className,
+    media,
+    t,
+  } = props;
+  const {
     description,
     submitter: { userId, username },
   } = media;
@@ -36,6 +40,7 @@ const MediaMetadata = (props) => {
 };
 
 MediaMetadata.propTypes = {
+  album: PropTypes.shape().isRequired,
   className: PropTypes.string,
   media: PropTypes.shape().isRequired,
   t: PropTypes.func.isRequired,

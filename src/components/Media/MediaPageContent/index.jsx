@@ -29,7 +29,7 @@ const MediaPageContent = (props) => {
         {image && <meta property="og:image" content={image} />}
       </Helmet>
       <Card title={title} type={HERO} heroContent={heroContent}>
-        <MediaMetadata media={media} />
+        <MediaMetadata album={media.album} media={media} />
       </Card>
     </Fragment>
   );
