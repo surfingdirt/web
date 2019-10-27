@@ -40,7 +40,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   const hidePrev = index === 0;
   const hideNext = index === lastIndex;
 
-  const { error, fetchMore } = useQuery(LIST_MEDIA, {
+  const { data, error, fetchMore } = useQuery(LIST_MEDIA, {
     variables: {
       albumId: album.id,
       startItem: 0,
@@ -51,6 +51,14 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   if (error) {
     console.error('Error while loading initial item list', error);
   }
+
+  useEffect(() => {
+    if (data) {
+      const newItems = [...data.listMedia];
+      console.log('Replacing items with new list', { items, newItems });
+      setItems(newItems);
+    }
+  }, [data]);
 
   return (
     <div className={styles.wrapper}>
