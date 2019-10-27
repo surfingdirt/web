@@ -1,5 +1,5 @@
-query album($id: ID!) {
-    album(id: $id, countItems: 75) {
+query album($id: ID!, $countItems: Int, $startItem: Int) {
+    album(id: $id, countItems: $countItems, startItem: $startItem) {
         actions {
             add
             delete
@@ -9,8 +9,12 @@ query album($id: ID!) {
         id
         media {
             id
-            title
             mediaType
+            mediaSubType
+            embedUrl
+            height
+            width
+            title
             thumbs {
                 type
                 size
@@ -24,6 +28,17 @@ query album($id: ID!) {
                 url
                 height
                 width
+            }
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
             }
         }
         submitter {

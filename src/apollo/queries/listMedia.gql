@@ -1,0 +1,36 @@
+query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
+    listMedia(albumId: $albumId, countItems: $countItems, startItem: $startItem) {
+        id
+        mediaType
+        mediaSubType
+        embedUrl
+        height
+        width
+        title
+        thumbs {
+            type
+            size
+            url
+            height
+            width
+        }
+        images {
+            type
+            size
+            url
+            height
+            width
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+}
