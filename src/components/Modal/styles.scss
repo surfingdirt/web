@@ -60,6 +60,36 @@ $title-line-count: 2;
     right: 0;
     bottom: 0;
     @media screen and (min-width: $desktop-min) {
+      $distance-h: 10vh;
+      $distance-v: 3rem;
+      top: $distance-v;
+      left: $distance-h;
+      right: $distance-h;
+      bottom: $distance-v;
+    }
+    @media screen and (min-width: $desktop-small) {
+      $distance-h: 15vh;
+      $distance-v: 6rem;
+      top: $distance-v;
+      left: $distance-h;
+      right: $distance-h;
+      bottom: $distance-v;
+    }
+    @media screen and (min-width: $desktop-big) {
+      $distance-h: 20vh;
+      $distance-v: 9rem;
+      top: $distance-v;
+      left: $distance-h;
+      right: $distance-h;
+      bottom: $distance-v;
+    }
+    @media screen and (min-width: $desktop-max) {
+      $distance-h: 30vh;
+      $distance-v: 9rem;
+      top: $distance-v;
+      left: $distance-h;
+      right: $distance-h;
+      bottom: $distance-v;
     }
     .content {
       border-top: $widget-border-width $widget-border-color-negative solid;

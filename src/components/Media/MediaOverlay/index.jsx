@@ -61,7 +61,11 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.hero}>
-        <HeroContent media={item} className={styles.heroContent} />
+        <HeroContent
+          media={item}
+          className={styles.heroContent}
+          fixedHeightClassName={styles.fixedHeight}
+        />
         <button
           className={classnames('rtlTransform', styles.navButton, styles.prev, {
             [styles.hidden]: hidePrev,

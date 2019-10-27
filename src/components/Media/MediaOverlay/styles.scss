@@ -1,5 +1,6 @@
 @import '../../../styles/boxmodel';
 @import '../../../styles/colors';
+@import "../../../styles/media-queries";
 
 $icon-margin-horizontal: 4px;
 $icon-margin-vertical: 4px;
@@ -13,12 +14,17 @@ $icon-margin-vertical: 4px;
 .hero {
   position: relative;
   flex-grow: 0;
-  margin-bottom: $margin-small-2;
-  box-shadow: 0 3px 3px rgba($widget-border-color-negative, .5);
 
   .heroContent {
     max-height: 60vh;
     object-fit: contain;
+
+    &.fixedHeight {
+      height: 60vh;
+      @media screen and (min-width: $desktop-min) {
+        height: 50vh;
+      }
+    }
   }
 
   .navButton {

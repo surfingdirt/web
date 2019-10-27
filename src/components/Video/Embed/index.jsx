@@ -7,15 +7,21 @@ import Translate from 'Hocs/Translate/index';
 import messages from './messages';
 import styles from './styles.scss';
 
-const VideoEmbed = ({ className, height, mediaSubType, t, url, width }) => {
+const VideoEmbed = ({ className, fixedHeightClassName, height, mediaSubType, t, url, width }) => {
   const wrapperStyle = {};
   const videoStyle = {};
   const attrs = {};
+  let classNames;
 
-  wrapperStyle.paddingTop = `${(100 * height) / width}%`;
+  if (fixedHeightClassName) {
+    classNames = classnames(styles.videoWrapper, className, fixedHeightClassName);
+  } else {
+    classNames = classnames(styles.videoWrapper, className);
+    wrapperStyle.paddingTop = `${(100 * height) / width}%`;
+  }
 
   return (
-    <div className={classnames(styles.videoWrapper, className)} style={wrapperStyle}>
+    <div className={classNames} style={wrapperStyle}>
       <iframe
         className={styles.video}
         style={videoStyle}
@@ -30,6 +36,7 @@ const VideoEmbed = ({ className, height, mediaSubType, t, url, width }) => {
 
 VideoEmbed.propTypes = {
   className: PropTypes.string,
+  fixedHeightClassName: PropTypes.string,
   height: PropTypes.number.isRequired,
   mediaSubType: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
