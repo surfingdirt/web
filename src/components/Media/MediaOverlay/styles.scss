@@ -29,6 +29,10 @@ $icon-margin-vertical: 4px;
     justify-content: center;
     align-items: center;
 
+    &.hidden {
+      display: none;
+    }
+
     .buttonIcon {
       width: 2rem;
       height: 2rem;
@@ -67,6 +71,3 @@ $icon-margin-vertical: 4px;
   overflow-y: auto;
 }
 
-.hidden {
-  display: none;
-}

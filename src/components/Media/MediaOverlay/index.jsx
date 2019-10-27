@@ -17,7 +17,7 @@ const { STANDARD } = cardTypes;
 const { NEXT, PREVIOUS } = icons;
 
 const PRELOAD_WHEN_REMAINING_FEWER_THAN = 2;
-const PAGINATION_ITEM_COUNT = 5;
+const PAGINATION_ITEM_COUNT = 10;
 
 const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   // TODO: display the initial media, fetch paginated lists of media
@@ -28,7 +28,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
   const [reachedEnd, setReachedEnd] = useState(false);
 
   useEffect(() => {
-    console.log('Detected change in items', items);
+    // console.log('Detected change in items', items);
   }, [items]);
 
   useEffect(() => {
@@ -77,15 +77,12 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
           onClick={() => {
             const newIndex = index < lastIndex ? index + 1 : lastIndex;
             setIndex(newIndex);
-            console.log({ newIndex });
-
-            if (reachedEnd) {
-              console.log('Would load more but end was reached');
-              return;
-            }
 
             if (index >= lastIndex - PRELOAD_WHEN_REMAINING_FEWER_THAN) {
-              console.log('Loading more');
+              if (reachedEnd) {
+                return;
+              }
+
               fetchMore({
                 variables: {
                   albumId: album.id,
@@ -97,16 +94,10 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
                     return prev;
                   }
                   if (fetchMoreResult.listMedia.length === 0) {
-                    console.log('No more items to load');
                     setReachedEnd(true);
                     return prev;
                   }
-                  console.log({
-                    oldList: items,
-                    additionalList: fetchMoreResult.listMedia,
-                  });
                   const newItems = [...items, ...fetchMoreResult.listMedia];
-                  console.log({ newItems });
                   setItems(newItems);
 
                   return newItems;
