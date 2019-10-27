@@ -54,9 +54,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
 
   useEffect(() => {
     if (data) {
-      const newItems = [...data.listMedia];
-      console.log('Replacing items with new list', { items, newItems });
-      setItems(newItems);
+      setItems([...data.listMedia]);
     }
   }, [data]);
 
