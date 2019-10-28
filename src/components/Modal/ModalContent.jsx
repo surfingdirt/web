@@ -9,6 +9,7 @@ import Button from 'Components/Button';
 import Heading, { headingTypes } from 'Components/Heading/index';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
+import { ESC } from 'Utils/keycodes';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -16,6 +17,11 @@ import styles from './styles.scss';
 const { MODAL } = headingTypes;
 const { CLOSE } = icons;
 const { STANDARD } = sizes;
+
+const DIR = {
+  LTR: 'ltr',
+  RTL: 'rtl',
+};
 
 const ModalContent = ({
   ariaLabel,
@@ -36,7 +42,7 @@ const ModalContent = ({
     <ReactFocusTrap
       focusTrapOptions={{
         initialFocus: modalTitle ? '#modal-title' : '#modal-content',
-        onDeactivate: onClose,
+        escapeDeactivates: false,
       }}
     >
       <div
@@ -51,7 +57,21 @@ const ModalContent = ({
         }}
         role="dialog"
       >
-        <div className={classnames(styles.modal, className)} ref={modalRef}>
+        <div
+          className={classnames(styles.modal, className)}
+          ref={modalRef}
+          onKeyDown={(e) => {
+            switch (e.keyCode) {
+              case ESC:
+                onClose();
+                break;
+              default:
+                return;
+            }
+
+            e.preventDefault();
+          }}
+        >
           <div className={styles.header}>
             <div className={styles.titleWrapper} id="modal-title" tabIndex={modalTitle ? '0' : ''}>
               <Heading type={MODAL} className={styles.title}>

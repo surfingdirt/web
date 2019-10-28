@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
+import { RIGHT, LEFT } from 'Utils/keycodes';
 
 import styles from './styles.scss';
 import messages from './messages';
@@ -16,16 +17,21 @@ import messages from './messages';
 const { STANDARD } = cardTypes;
 const { NEXT, PREVIOUS } = icons;
 
+const LTR = 'ltr';
+
 const PRELOAD_WHEN_REMAINING_FEWER_THAN = 2;
 const PAGINATION_ITEM_COUNT = 10;
 
 const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
-  // TODO: display the initial media, fetch paginated lists of media
-
   const [items, setItems] = useState(album.media);
   const [item, setItem] = useState(album.media[initialIndex]);
   const [index, setIndex] = useState(initialIndex);
   const [reachedEnd, setReachedEnd] = useState(false);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    wrapperRef.current.focus();
+  }, [initialIndex]);
 
   useEffect(() => {
     // console.log('Detected change in items', items);
@@ -58,8 +64,60 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
     }
   }, [data]);
 
+  const goNext = () => {
+    const newIndex = index < lastIndex ? index + 1 : lastIndex;
+    setIndex(newIndex);
+
+    if (index >= lastIndex - PRELOAD_WHEN_REMAINING_FEWER_THAN) {
+      if (reachedEnd) {
+        return;
+      }
+
+      fetchMore({
+        variables: {
+          albumId: album.id,
+          startItem: lastIndex + 1,
+          countItems: PAGINATION_ITEM_COUNT,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult) {
+            return prev;
+          }
+          if (fetchMoreResult.listMedia.length === 0) {
+            setReachedEnd(true);
+            return prev;
+          }
+          const newItems = [...items, ...fetchMoreResult.listMedia];
+          setItems(newItems);
+
+          return newItems;
+        },
+      });
+    }
+  };
+  const goPrev = () => {
+    setIndex(index - 1 >= 0 ? index - 1 : 0);
+  };
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      ref={wrapperRef}
+      tabIndex="-1"
+      className={styles.wrapper}
+      onKeyDown={(e) => {
+        switch (e.keyCode) {
+          case RIGHT:
+            (document.dir === LTR ? goNext : goPrev)();
+            break;
+          case LEFT:
+            (document.dir === LTR ? goPrev : goNext)();
+            break;
+          default:
+            return;
+        }
+        e.preventDefault();
+      }}
+    >
       <div className={styles.hero}>
         <HeroContent
           media={item}
@@ -72,9 +130,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
           })}
           type="button"
           aria-label={t('previous')}
-          onClick={() => {
-            setIndex(index - 1 >= 0 ? index - 1 : 0);
-          }}
+          onClick={goPrev}
         >
           <div className={styles.buttonIcon}>{getIcon({ type: PREVIOUS })}</div>
         </button>
@@ -84,37 +140,7 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
           })}
           type="button"
           aria-label={t('next')}
-          onClick={() => {
-            const newIndex = index < lastIndex ? index + 1 : lastIndex;
-            setIndex(newIndex);
-
-            if (index >= lastIndex - PRELOAD_WHEN_REMAINING_FEWER_THAN) {
-              if (reachedEnd) {
-                return;
-              }
-
-              fetchMore({
-                variables: {
-                  albumId: album.id,
-                  startItem: lastIndex + 1,
-                  countItems: PAGINATION_ITEM_COUNT,
-                },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                  if (!fetchMoreResult) {
-                    return prev;
-                  }
-                  if (fetchMoreResult.listMedia.length === 0) {
-                    setReachedEnd(true);
-                    return prev;
-                  }
-                  const newItems = [...items, ...fetchMoreResult.listMedia];
-                  setItems(newItems);
-
-                  return newItems;
-                },
-              });
-            }
-          }}
+          onClick={goNext}
         >
           <div className={styles.buttonIcon}>{getIcon({ type: NEXT })}</div>
         </button>
