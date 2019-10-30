@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Masonry from 'react-masonry-css';
 
 import MediaThumb from 'Components/Media/MediaThumb/index';
 
@@ -24,17 +23,13 @@ export default class AlbumGrid extends React.PureComponent {
     const { media } = this.props;
 
     return (
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className={styles.masonry}
-        columnClassName={styles.column}
-      >
+      <div className={styles.grid}>
         {media.map((item) => {
           const { id, mediaType, title, thumbs } = item;
           const attrs = { className: styles.link, id, mediaType, title, thumbs };
           return <MediaThumb key={id} {...attrs} />;
         })}
-      </Masonry>
+      </div>
     );
   }
 }
