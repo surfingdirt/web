@@ -116,7 +116,7 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
           {description}
         </Paragraph>
       )}
-      <AlbumGrid media={media} />
+      <AlbumGrid album={album} media={media} />
       {!reachedEnd && (
         <div className={styles.loadMoreWrapper}>
           <Button type={ACTION} loading={isLoadingMore} label={t('loadMore')} onClick={getNext} />

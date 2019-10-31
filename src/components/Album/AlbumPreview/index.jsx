@@ -71,7 +71,7 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
 
     const ThumbWithModal = WithModal({
       ariaLabel: t('mediaPreviewModal'),
-      modalContent: <MediaOverlay album={album} index={index} />,
+      modalContent: <MediaOverlay album={album} media={album.media} index={index} />,
       modalTitle: title || albumTitle,
       type: HERO,
     })(<MediaThumb {...attrs} objectFit />);

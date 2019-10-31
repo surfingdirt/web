@@ -1,35 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import MediaOverlay from 'Components/Media/MediaOverlay';
 import MediaThumb from 'Components/Media/MediaThumb/index';
+import { modalTypes } from 'Components/Modal';
 
+import WithModal from 'Hocs/WithModal';
+import Translate from 'Hocs/Translate';
+
+import messages from './messages';
 import styles from './styles.scss';
 
-const breakpointColumnsObj = {
-  default: 5,
-  1280: 4,
-  960: 3,
-  800: 2,
-  640: 3,
-  320: 2,
+const { HERO } = modalTypes;
+
+const AlbumGrid = ({ album, media, t }) => {
+  return (
+    <div className={styles.grid}>
+      {media.map((item, index) => {
+        const { title: albumTitle } = album;
+        const { id, mediaType, title, thumbs } = item;
+        const attrs = { className: styles.link, id, mediaType, title, thumbs };
+
+        const ThumbWithModal = WithModal({
+          ariaLabel: t('mediaPreviewModal'),
+          modalContent: <MediaOverlay album={album} media={media} index={index} />,
+          modalTitle: title || albumTitle,
+          type: HERO,
+        })(<MediaThumb {...attrs} objectFit />);
+
+        return (
+          <div key={id} className={styles.item}>
+            <ThumbWithModal />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
-export default class AlbumGrid extends React.PureComponent {
-  static propTypes = {
-    media: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  };
+AlbumGrid.propTypes = {
+  album: PropTypes.objectOf(PropTypes.any).isRequired,
+  media: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  t: PropTypes.func.isRequired,
+};
 
-  render() {
-    const { media } = this.props;
-
-    return (
-      <div className={styles.grid}>
-        {media.map((item) => {
-          const { id, mediaType, title, thumbs } = item;
-          const attrs = { className: styles.link, id, mediaType, title, thumbs };
-          return <MediaThumb key={id} {...attrs} />;
-        })}
-      </div>
-    );
-  }
-}
+export default Translate(messages)(AlbumGrid);

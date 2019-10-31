@@ -20,21 +20,21 @@ const { NEXT, PREVIOUS } = icons;
 const LTR = 'ltr';
 
 const PRELOAD_WHEN_REMAINING_FEWER_THAN = 2;
-const PAGINATION_ITEM_COUNT = 10;
+const PAGINATION_ITEM_COUNT = 30;
 
-const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
-  const [items, setItems] = useState(album.media);
-  const [item, setItem] = useState(album.media[initialIndex]);
+const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, t }) => {
+  const [items, setItems] = useState(media);
+  const [lastIndex, setlastIndex] = useState(items.length - 1);
+  const [item, setItem] = useState(media[initialIndex]);
   const [index, setIndex] = useState(initialIndex);
   const [reachedEnd, setReachedEnd] = useState(false);
   const wrapperRef = useRef(null);
-
   useEffect(() => {
     wrapperRef.current.focus();
   }, [initialIndex]);
 
   useEffect(() => {
-    // console.log('Detected change in items', items);
+    setlastIndex(items.length - 1);
   }, [items]);
 
   useEffect(() => {
@@ -42,7 +42,6 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
     onTitleChange(items[index].title || album.title);
   }, [index]);
 
-  const lastIndex = items.length - 1;
   const hidePrev = index === 0;
   const hideNext = index === lastIndex;
 
@@ -154,10 +153,9 @@ const MediaOverlay = ({ album, index: initialIndex, onTitleChange, t }) => {
 };
 
 MediaOverlay.propTypes = {
-  album: PropTypes.shape({
-    // album: PropTypes.number.isRequired,
-  }).isRequired,
+  album: PropTypes.shape({}).isRequired,
   index: PropTypes.number.isRequired,
+  media: PropTypes.shape({}).isRequired,
   onTitleChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
