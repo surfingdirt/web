@@ -104,4 +104,4 @@ export const buildEmbedUrl = (mediaSubType, vendorKey) => {
       throw new Error('Unsupported video url');
   }
   return url;
-}
+};

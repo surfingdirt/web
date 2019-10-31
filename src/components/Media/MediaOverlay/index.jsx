@@ -20,9 +20,8 @@ const { NEXT, PREVIOUS } = icons;
 const LTR = 'ltr';
 
 const PRELOAD_WHEN_REMAINING_FEWER_THAN = 2;
-const PAGINATION_ITEM_COUNT = 30;
 
-const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, t }) => {
+const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countItems, t }) => {
   const [items, setItems] = useState(media);
   const [lastIndex, setlastIndex] = useState(items.length - 1);
   const [item, setItem] = useState(media[initialIndex]);
@@ -49,7 +48,7 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, t }) =
     variables: {
       albumId: album.id,
       startItem: 0,
-      countItems: PAGINATION_ITEM_COUNT,
+      countItems,
     },
   });
 
@@ -76,7 +75,7 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, t }) =
         variables: {
           albumId: album.id,
           startItem: lastIndex + 1,
-          countItems: PAGINATION_ITEM_COUNT,
+          countItems,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult) {
@@ -154,6 +153,7 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, t }) =
 
 MediaOverlay.propTypes = {
   album: PropTypes.shape({}).isRequired,
+  countItems: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   media: PropTypes.shape({}).isRequired,
   onTitleChange: PropTypes.func.isRequired,

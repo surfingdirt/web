@@ -17,6 +17,7 @@ import Translate from 'Hocs/Translate';
 import WithModal from 'Hocs/WithModal';
 import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
+import { mediaPageSize } from 'Utils/media';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -25,6 +26,7 @@ const { BARE, STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { HERO } = modalTypes;
 const { SMALLEST } = userboxSizes;
+const countItems = mediaPageSize;
 
 const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
   const {
@@ -71,7 +73,9 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
 
     const ThumbWithModal = WithModal({
       ariaLabel: t('mediaPreviewModal'),
-      modalContent: <MediaOverlay album={album} media={album.media} index={index} />,
+      modalContent: (
+        <MediaOverlay album={album} media={album.media} countItems={countItems} index={index} />
+      ),
       modalTitle: title || albumTitle,
       type: HERO,
     })(<MediaThumb {...attrs} objectFit />);

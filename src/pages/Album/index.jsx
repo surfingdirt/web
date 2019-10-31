@@ -7,10 +7,11 @@ import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
 import ErrorMessage from 'Components/ErrorMessage';
 import Spinner from 'Components/Spinner';
 import { getFirstAlbumImageUrl } from 'Utils/media';
+import { mediaPageSize } from 'Utils/media';
 
 import AlbumView from './view';
 
-const PAGINATION_ITEM_COUNT = 30;
+const countItems = mediaPageSize;
 
 export const Album = ({ match }) => {
   const { id } = match.params;
@@ -19,7 +20,7 @@ export const Album = ({ match }) => {
     variables: {
       id,
       startItem: 0,
-      countItems: PAGINATION_ITEM_COUNT,
+      countItems,
     },
   });
 
@@ -41,7 +42,7 @@ export const Album = ({ match }) => {
       </Helmet>
       <AlbumView
         album={album}
-        countItems={PAGINATION_ITEM_COUNT}
+        countItems={countItems}
         fetchMore={fetchMore}
         listMedia={listMedia}
       />

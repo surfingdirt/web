@@ -7,11 +7,13 @@ import { modalTypes } from 'Components/Modal';
 
 import WithModal from 'Hocs/WithModal';
 import Translate from 'Hocs/Translate';
+import { mediaPageSize } from 'Utils/media';
 
 import messages from './messages';
 import styles from './styles.scss';
 
 const { HERO } = modalTypes;
+const countItems = mediaPageSize;
 
 const AlbumGrid = ({ album, media, t }) => {
   return (
@@ -23,7 +25,9 @@ const AlbumGrid = ({ album, media, t }) => {
 
         const ThumbWithModal = WithModal({
           ariaLabel: t('mediaPreviewModal'),
-          modalContent: <MediaOverlay album={album} media={media} index={index} />,
+          modalContent: (
+            <MediaOverlay album={album} media={media} countItems={countItems} index={index} />
+          ),
           modalTitle: title || albumTitle,
           type: HERO,
         })(<MediaThumb {...attrs} objectFit />);

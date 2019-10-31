@@ -1,5 +1,7 @@
 export const maxPhotoSize = 1920;
 
+export const mediaPageSize = 30;
+
 export const mediaTypes = {
   PHOTO: 'PHOTO',
   VIDEO: 'VIDEO',
