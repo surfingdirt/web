@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PHOTO from 'Apollo/queries/photo.gql';
+import PHOTO from 'Apollo/queries/photo2.gql';
 import DataRenderer from 'Components/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
@@ -15,7 +15,9 @@ export const Photo = ({ match }) => {
     <DataRenderer
       query={PHOTO}
       variables={{ id }}
-      render={({ photo }) => <MediaPageContent mediaType={PHOTO_TYPE} media={photo} />}
+      render={({ listComments, photo }) => (
+        <MediaPageContent mediaType={PHOTO_TYPE} media={photo} comments={listComments} />
+      )}
     />
   );
 };

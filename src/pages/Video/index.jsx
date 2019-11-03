@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import VIDEO from 'Apollo/queries/video.gql';
+import VIDEO from 'Apollo/queries/video2.gql';
 import DataRenderer from 'Components/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
@@ -15,7 +15,9 @@ export const Video = ({ match }) => {
     <DataRenderer
       query={VIDEO}
       variables={{ id }}
-      render={({ video }) => <MediaPageContent mediaType={VIDEO_TYPE} media={video} />}
+      render={({ listComments, video }) => (
+        <MediaPageContent mediaType={VIDEO_TYPE} media={video} comments={listComments} />
+      )}
     />
   );
 };

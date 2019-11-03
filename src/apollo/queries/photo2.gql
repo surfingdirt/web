@@ -24,4 +24,21 @@ query photo($id: ID!) {
             username
         }
     }
+    listComments(parentType: "photo", parentId: $id) {
+        id
+        content
+        date
+        submitter {
+            userId
+            username
+            avatar {
+                size
+                width
+                height
+                type
+                url
+            }
+        }
+        tone
+    }
 }

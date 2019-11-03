@@ -16,6 +16,7 @@ const MediaMetadata = (props) => {
   const {
     album: { id: albumId, title: albumTitle },
     className,
+    directLink,
     media,
     t,
   } = props;
@@ -42,7 +43,7 @@ const MediaMetadata = (props) => {
           <Link to={albumRoute(albumId)}>{albumTitle}</Link>
         </div>
         <div className={styles.metadataItem}>
-          <Link to={url}>{t('directLink')}</Link>
+          {directLink && <Link to={url}>{t('directLink')}</Link>}
         </div>
       </div>
     </Fragment>
@@ -52,12 +53,14 @@ const MediaMetadata = (props) => {
 MediaMetadata.propTypes = {
   album: PropTypes.shape().isRequired,
   className: PropTypes.string,
+  directLink: PropTypes.bool,
   media: PropTypes.shape().isRequired,
   t: PropTypes.func.isRequired,
 };
 
 MediaMetadata.defaultProps = {
   className: null,
+  directLink: true,
 };
 
 export default Translate(messages)(MediaMetadata);
