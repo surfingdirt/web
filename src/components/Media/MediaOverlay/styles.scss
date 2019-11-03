@@ -5,14 +5,29 @@
 $icon-margin-horizontal: 4px;
 $icon-margin-vertical: 4px;
 
-.wrapper {
-  display: grid;
-  height: 100%;
-  grid-template-areas:
-          "hero metadata"
-          "hero comments";
-  grid-template-columns: 1fr .4fr;
-  grid-template-rows: min-content 1fr;
+@media screen and (min-width: $desktop-min) {
+  .wrapper {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+            "hero metadata"
+            "hero comments";
+    grid-template-columns: 1fr .4fr;
+    grid-template-rows: min-content 1fr;
+  }
+  .metadata,
+  .comments {
+    margin-left: $margin-medium-2;
+  }
+
+  .metadata {
+    grid-area: metadata;
+  }
+
+  .comments {
+    grid-area: comments;
+    overflow-y: auto;
+  }
 }
 
 .heroWrapper {
@@ -76,18 +91,3 @@ $icon-margin-vertical: 4px;
     }
   }
 }
-
-.metadata,
-.comments {
-  margin-left: $margin-medium-2;
-}
-
-.metadata {
-  grid-area: metadata;
-}
-
-.comments {
-  grid-area: comments;
-  overflow-y: auto;
-}
-
