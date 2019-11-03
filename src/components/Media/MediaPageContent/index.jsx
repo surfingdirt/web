@@ -2,13 +2,16 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
+import AutoLink from 'Components/AutoLink';
 import Card, { cardTypes } from 'Components/Card';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import { getBiggestMediaImageUrl } from 'Utils/media';
 import { CommentType } from 'Utils/types';
 
-const { HERO, STANDARD } = cardTypes;
+import styles from './styles.scss';
+
+const { HERO } = cardTypes;
 
 const MediaPageContent = (props) => {
   const { comments, media } = props;
@@ -31,11 +34,11 @@ const MediaPageContent = (props) => {
       </Helmet>
       <Card title={title} type={HERO} heroContent={heroContent}>
         <MediaMetadata album={media.album} media={media} directLink={false} />
-      </Card>
-      <Card type={STANDARD}>
-        <ul>
+        <ul className={styles.comments}>
           {comments.map(({ content, id: commentId }) => (
-            <div key={commentId}>{content}</div>
+            <li key={commentId}>
+              <AutoLink ugc>{content}</AutoLink>
+            </li>
           ))}
         </ul>
       </Card>

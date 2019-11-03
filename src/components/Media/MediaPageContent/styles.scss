@@ -11,3 +11,13 @@
   display: inline-block;
   margin-right: $margin-one-char;
 }
+
+.comments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &> li {
+    margin: $margin-small-2 0;
+  }
+}
