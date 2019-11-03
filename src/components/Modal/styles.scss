@@ -92,7 +92,8 @@ $title-line-count: 2;
 }
 
 .header {
-  min-height: 2rem;
+  min-height: 1.3rem;
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
