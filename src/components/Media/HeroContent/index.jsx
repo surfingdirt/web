@@ -7,7 +7,7 @@ import { mediaTypes } from 'Utils/media';
 
 const { VIDEO } = mediaTypes;
 
-const HeroContent = ({ className, fixedHeightClassName, media }) => {
+const HeroContent = ({ className, media }) => {
   let heroContent;
 
   if (media.mediaType === VIDEO) {
@@ -19,20 +19,12 @@ const HeroContent = ({ className, fixedHeightClassName, media }) => {
         mediaSubType={mediaSubType}
         width={width}
         className={className}
-        fixedHeightClassName={fixedHeightClassName}
       />
     );
   } else {
     const { images } = media;
 
-    heroContent = (
-      <ResponsiveImage
-        alt=""
-        images={images}
-        className={className}
-        fixedHeightClassName={fixedHeightClassName}
-      />
-    );
+    heroContent = <ResponsiveImage alt="" images={images} className={className} />;
   }
 
   return heroContent;
@@ -40,12 +32,10 @@ const HeroContent = ({ className, fixedHeightClassName, media }) => {
 
 HeroContent.propTypes = {
   className: PropTypes.string,
-  fixedHeightClassName: PropTypes.string,
 };
 
 HeroContent.defaultProps = {
   className: null,
-  fixedHeightClassName: null,
 };
 
 export default HeroContent;

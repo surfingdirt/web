@@ -20,6 +20,7 @@ const MediaPageContent = (props) => {
     description,
     title,
   } = media;
+
   const image = getBiggestMediaImageUrl(media);
 
   const heroContent = <HeroContent media={media} />;

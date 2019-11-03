@@ -15,9 +15,10 @@ export const Video = ({ match }) => {
     <DataRenderer
       query={VIDEO}
       variables={{ id }}
-      render={({ listComments, video }) => (
-        <MediaPageContent mediaType={VIDEO_TYPE} media={video} comments={listComments} />
-      )}
+      render={({ listComments, video }) => {
+        const media = Object.assign({}, video, { mediaType: VIDEO_TYPE });
+        return <MediaPageContent media={media} comments={listComments} />;
+      }}
     />
   );
 };

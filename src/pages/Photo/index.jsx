@@ -15,9 +15,10 @@ export const Photo = ({ match }) => {
     <DataRenderer
       query={PHOTO}
       variables={{ id }}
-      render={({ listComments, photo }) => (
-        <MediaPageContent mediaType={PHOTO_TYPE} media={photo} comments={listComments} />
-      )}
+      render={({ listComments, photo }) => {
+        const media = Object.assign({}, photo, { mediaType: PHOTO_TYPE });
+        return <MediaPageContent media={media} comments={listComments} />;
+      }}
     />
   );
 };

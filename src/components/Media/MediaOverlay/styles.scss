@@ -16,15 +16,7 @@ $icon-margin-vertical: 4px;
   flex-grow: 0;
 
   .heroContent {
-    max-height: 60vh;
     object-fit: contain;
-
-    &.fixedHeight {
-      height: 60vh;
-      @media screen and (min-width: $desktop-min) {
-        height: 50vh;
-      }
-    }
   }
 
   .navButton {
