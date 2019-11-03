@@ -11,7 +11,7 @@ const strStartsWith = (str, prefix) => {
 const AutoLink = ({ children: text, attrs = {}, ugc = false }) => {
   if (!text) return [];
 
-  return text.split(DELIMITER).map((word) => {
+  return text.split(DELIMITER).map((word, index) => {
     const match = word.match(DELIMITER);
     if (match) {
       const url = match[0];
@@ -31,11 +31,13 @@ const AutoLink = ({ children: text, attrs = {}, ugc = false }) => {
         href = `http://${url}`;
       }
 
+      const thisAttrs = Object.assign({}, attrs, { key: index });
+
       if (ugc) {
-        attrs.rel = 'ugc';
+        thisAttrs.rel = 'ugc';
       }
 
-      return React.createElement('a', Object.assign({ href }, attrs), url);
+      return React.createElement('a', Object.assign({ href }, thisAttrs), url);
     } else {
       return word;
     }
