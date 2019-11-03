@@ -60,13 +60,15 @@ $title-line-count: 2;
     right: 0;
     bottom: 0;
     @media screen and (min-width: $desktop-min) {
-      $size: 90vmin;
+      $ratio: 1.6;
+      $width: 80vw;
+      $height: $width / $ratio;
       top: 50%;
       left: 50%;
       right: auto;
       bottom: auto;
-      width: $size;
-      height: $size;
+      width: $width;
+      height: $height;
       transform: translate(-50%, -50%);
     }
     .content {

@@ -6,66 +6,86 @@ $icon-margin-horizontal: 4px;
 $icon-margin-vertical: 4px;
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   height: 100%;
+  grid-template-areas:
+          "hero metadata"
+          "hero comments";
+  grid-template-columns: 1fr .4fr;
+  grid-template-rows: min-content 1fr;
 }
 
-.hero {
-  position: relative;
-  flex-grow: 0;
+.heroWrapper {
+  grid-area: hero;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: $media-overlay-hero-background-color;
 
-  .heroContent {
-    object-fit: contain;
-  }
+  .hero {
+    position: relative;
 
-  .navButton {
-    position: absolute;
-    top: $margin-very-big;
-    bottom: $margin-very-big;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &.hidden {
-      display: none;
+    .heroContent {
+      object-fit: contain;
     }
 
-    .buttonIcon {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background: $media-overlay-nav-button-background-color;
-      color: $media-overlay-nav-button-text-color;
-      opacity: $media-overlay-nav-button-opacity;
-      padding: 5px;
-      box-sizing: content-box;
-    }
+    .navButton {
+      position: absolute;
+      top: $margin-very-big;
+      bottom: $margin-very-big;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    svg {
-      margin-top: $icon-margin-vertical;
-    }
+      &.hidden {
+        display: none;
+      }
 
-    &.next {
-      padding-right: $padding-medium-2;
-      right: 0;
+      .buttonIcon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: $media-overlay-nav-button-background-color;
+        color: $media-overlay-nav-button-text-color;
+        opacity: $media-overlay-nav-button-opacity;
+        padding: 5px;
+        box-sizing: content-box;
+      }
+
       svg {
-        margin-left: $icon-margin-horizontal;
+        margin-top: $icon-margin-vertical;
+      }
+
+      &.next {
+        padding-right: $padding-medium-2;
+        right: 0;
+        svg {
+          margin-left: $icon-margin-horizontal;
+        }
+      }
+
+      &.prev {
+        padding-left: $padding-medium-2;
+        left: 0;
+        svg {
+          margin-right: $icon-margin-horizontal;
+        }
       }
     }
-
-    &.prev {
-      padding-left: $padding-medium-2;
-      left: 0;
-      svg {
-        margin-right: $icon-margin-horizontal;
-      }
-    }
   }
+}
+
+.metadata,
+.comments {
+  margin-left: $margin-medium-2;
 }
 
 .metadata {
-  flex-grow: 1;
+  grid-area: metadata;
+}
+
+.comments {
+  grid-area: comments;
   overflow-y: auto;
 }
 

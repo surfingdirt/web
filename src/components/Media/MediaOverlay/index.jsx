@@ -116,32 +116,38 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countI
         e.preventDefault();
       }}
     >
-      <div className={styles.hero}>
-        <HeroContent media={item} className={styles.heroContent} />
-        <button
-          className={classnames('rtlTransform', styles.navButton, styles.prev, {
-            [styles.hidden]: hidePrev,
-          })}
-          type="button"
-          aria-label={t('previous')}
-          onClick={goPrev}
-        >
-          <div className={styles.buttonIcon}>{getIcon({ type: PREVIOUS })}</div>
-        </button>
-        <button
-          className={classnames('rtlTransform', styles.navButton, styles.next, {
-            [styles.hidden]: hideNext,
-          })}
-          type="button"
-          aria-label={t('next')}
-          onClick={goNext}
-        >
-          <div className={styles.buttonIcon}>{getIcon({ type: NEXT })}</div>
-        </button>
+      <div className={styles.heroWrapper}>
+        <div className={styles.hero}>
+          <HeroContent media={item} className={styles.heroContent} />
+          <button
+            className={classnames('rtlTransform', styles.navButton, styles.prev, {
+              [styles.hidden]: hidePrev,
+            })}
+            type="button"
+            aria-label={t('previous')}
+            onClick={goPrev}
+          >
+            <div className={styles.buttonIcon}>{getIcon({ type: PREVIOUS })}</div>
+          </button>
+          <button
+            className={classnames('rtlTransform', styles.navButton, styles.next, {
+              [styles.hidden]: hideNext,
+            })}
+            type="button"
+            aria-label={t('next')}
+            onClick={goNext}
+          >
+            <div className={styles.buttonIcon}>{getIcon({ type: NEXT })}</div>
+          </button>
+        </div>
       </div>
 
       <Card type={STANDARD} className={styles.metadata}>
         <MediaMetadata album={album} media={item} />
+      </Card>
+
+      <Card type={STANDARD} className={styles.comments}>
+        <p>Insert comments here</p>
       </Card>
     </div>
   );
