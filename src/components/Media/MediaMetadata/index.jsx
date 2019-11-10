@@ -28,7 +28,6 @@ const MediaMetadata = (props) => {
     locale,
   } = props;
 
-console.log({locale});
   const { id, date, description, submitter, mediaType } = media;
   const { username, userId } = submitter;
 
@@ -66,7 +65,7 @@ console.log({locale});
         <span className={styles.metadataItemName}>{t('inAlbum')}</span>
         <Link to={albumRoute(albumId)}>{albumTitle}</Link>
         <span aria-hidden className="separator" />
-        <span className={styles.date}>{renderDate(date)}</span>
+        <span className={styles.date}>{renderDate(date, locale)}</span>
       </div>
 
       {description && <Paragraph>{description}</Paragraph>}
@@ -78,6 +77,7 @@ MediaMetadata.propTypes = {
   album: PropTypes.shape().isRequired,
   className: PropTypes.string,
   directLink: PropTypes.bool,
+  locale: PropTypes.string.isRequired,
   media: PropTypes.shape().isRequired,
   t: PropTypes.func.isRequired,
 };
