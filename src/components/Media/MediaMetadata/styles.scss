@@ -1,4 +1,5 @@
 @import '../../../styles/boxmodel';
+@import '../../../styles/colors';
 @import '../../../styles/font-sizes';
 
 .topRow {
@@ -22,10 +23,6 @@
       overflow: hidden;
     }
   }
-
-  .menu {
-
-  }
 }
 
 .secondRow {
@@ -39,4 +36,10 @@
   .date {
 
   }
+}
+
+.description {
+  margin-top: $margin-small-2;
+  padding: $padding-small-2;
+  background: $media-metadata-description-background-color;
 }

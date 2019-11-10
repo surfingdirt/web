@@ -5,33 +5,6 @@
 $icon-margin-horizontal: 4px;
 $icon-margin-vertical: 4px;
 
-@media screen and (min-width: $desktop-min) {
-  .wrapper {
-    display: grid;
-    height: 100%;
-    grid-template-areas:
-            "hero metadata"
-            "hero comments";
-    grid-template-columns: 1fr .4fr;
-    grid-template-rows: min-content 1fr;
-  }
-
-  .metadata,
-  .comments {
-    background: $brand-dark2;
-    padding: $padding-small-2;
-  }
-
-  .metadata {
-    grid-area: metadata;
-  }
-
-  .comments {
-    grid-area: comments;
-    overflow-y: auto;
-  }
-}
-
 .heroWrapper {
   grid-area: hero;
   display: flex;
@@ -91,5 +64,34 @@ $icon-margin-vertical: 4px;
         }
       }
     }
+  }
+}
+
+.metadata,
+.comments {
+  background: $brand-dark2;
+  padding: $padding-small-2;
+}
+
+
+
+@media screen and (min-width: $desktop-min) {
+  .wrapper {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+            "hero metadata"
+            "hero comments";
+    grid-template-columns: 1fr .4fr;
+    grid-template-rows: min-content 1fr;
+  }
+
+  .metadata {
+    grid-area: metadata;
+  }
+
+  .comments {
+    grid-area: comments;
+    overflow-y: auto;
   }
 }

@@ -12,6 +12,7 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
         media {
             id
             date
+            description
             mediaType
             mediaSubType
             embedUrl

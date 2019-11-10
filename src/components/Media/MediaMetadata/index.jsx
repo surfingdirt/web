@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import AutoLink from 'Components/AutoLink';
 import Menu from 'Components/Menu';
 import menuStyles from 'Components/Menu/styles.scss';
-import Paragraph from 'Components/Paragraph';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate/index';
 import { albumRoute, photoRoute, userRoute, videoRoute } from 'Utils/links';
@@ -67,8 +67,11 @@ const MediaMetadata = (props) => {
         <span aria-hidden className="separator" />
         <span className={styles.date}>{renderDate(date, locale)}</span>
       </div>
-
-      {description && <Paragraph>{description}</Paragraph>}
+      {description && (
+        <div className={styles.description}>
+          <AutoLink ugc>{description}</AutoLink>
+        </div>
+      )}
     </div>
   );
 };

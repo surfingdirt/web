@@ -29,8 +29,14 @@ export const renderDate = (date, locale) => {
 
   const d = new Date(`${res[1]}T${res[2]}`);
 
-  return d.toLocaleDateString(locale, {
-    hour: 'numeric',
-    minute: 'numeric',
-  });
+  if (Date.now() - d > 12 * 3600 * 1000) {
+    // More than 12h ago, display the full date and time
+    return d.toLocaleDateString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+  }
+
+  // Less than 12h ago, only display the time
+  return d.toLocaleTimeString(locale);
 };
