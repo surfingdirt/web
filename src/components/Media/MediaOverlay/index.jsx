@@ -159,7 +159,7 @@ MediaOverlay.propTypes = {
   album: PropTypes.shape({}).isRequired,
   countItems: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
-  media: PropTypes.shape({}).isRequired,
+  media: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   onTitleChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };

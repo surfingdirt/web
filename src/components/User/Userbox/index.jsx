@@ -88,10 +88,10 @@ UserboxRaw.propTypes = {
   size: PropTypes.string,
   t: PropTypes.func.isRequired,
   user: PropTypes.shape({
-    avatar: PropTypes.shape(),
+    avatar: PropTypes.arrayOf(PropTypes.shape()),
     username: PropTypes.string,
     userId: PropTypes.string,
-    thumbs: PropTypes.arrayOf(),
+    thumbs: PropTypes.arrayOf(PropTypes.shape()),
   }).isRequired,
 };
 
