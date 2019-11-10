@@ -1,0 +1,35 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/constants";
+@import "../../../styles/font-sizes";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+
+  .user {
+    margin: $margin-small-3 0;
+  }
+
+  .content {
+    flex-grow: 1;
+    margin: $margin-small-3;
+
+    .comment {
+      padding: $padding-small-2 $padding-small-3;
+      flex-grow: 1;
+      background-color: $comment-background-color;
+      color: $comment-text-color;
+      border-bottom-right-radius: $widget-border-radius;
+      font-size: $font-size-small;
+    }
+
+    .metadata {
+      margin: $margin-small-3 0 0;
+      font-size: $font-size-tiny;
+      color: $comment-text-color;
+    }
+  }
+}

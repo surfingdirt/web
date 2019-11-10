@@ -43,6 +43,7 @@ export const getInitialsData = (username) => {
 const UserboxRaw = (props) => {
   const {
     className,
+    renderName,
     size,
     t,
     user: { username, userId, avatar },
@@ -54,13 +55,14 @@ const UserboxRaw = (props) => {
   const imgStyle = img ? { backgroundImage: `url(${img.url})` } : {};
 
   const { initials, initialsColor, bgColor } = getInitialsData(username);
+
   return (
     <Link
       to={userRoute(userId)}
-      className={classnames(styles.wrapper, sizeClassName)}
+      className={classnames(styles.wrapper, sizeClassName, className)}
       title={username}
     >
-      <div className={classnames(styles.avatarWrapper, className)} aria-hidden="true">
+      <div className={classnames(styles.avatarWrapper)} aria-hidden="true">
         {avatar ? (
           <div className={styles.avatar} style={imgStyle} />
         ) : (
@@ -74,13 +76,14 @@ const UserboxRaw = (props) => {
           </div>
         )}
       </div>
-      <div className={styles.username}>{username}</div>
+      {renderName && <div className={styles.username}>{username}</div>}
     </Link>
   );
 };
 
 UserboxRaw.propTypes = {
   className: PropTypes.string,
+  renderName: PropTypes.bool,
   size: PropTypes.string,
   t: PropTypes.func.isRequired,
   user: PropTypes.shape({
@@ -92,6 +95,7 @@ UserboxRaw.propTypes = {
 
 UserboxRaw.defaultProps = {
   className: null,
+  renderName: true,
   size: STANDARD,
 };
 

@@ -9,6 +9,8 @@ export const CommentType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  lastEditionDate: PropTypes.string,
+  lastEditor: UserType,
   submitter: UserType.isRequired,
   tone: PropTypes.string,
 });

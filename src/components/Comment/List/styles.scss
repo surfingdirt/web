@@ -1,0 +1,19 @@
+@import "../../../styles/boxmodel";
+
+.wrapper {
+  margin: 0;
+  padding: $padding-small-3;
+  list-style: none;
+}
+
+.item {
+  margin: $margin-small-3 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

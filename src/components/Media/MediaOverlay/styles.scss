@@ -15,9 +15,11 @@ $icon-margin-vertical: 4px;
     grid-template-columns: 1fr .4fr;
     grid-template-rows: min-content 1fr;
   }
+
   .metadata,
   .comments {
-    margin-left: $margin-medium-2;
+    background: $brand-dark2;
+    padding: $padding-small-2;
   }
 
   .metadata {

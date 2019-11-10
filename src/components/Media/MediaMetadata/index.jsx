@@ -30,23 +30,21 @@ const MediaMetadata = (props) => {
   const url = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
 
   return (
-    <Fragment>
-      <div className={className}>
-        {description && <Paragraph>{description}</Paragraph>}
-        <div className={styles.metadataItem}>
-          <span className={styles.metadataItemName}>{t('postedBy')}</span>
-          <Link to={userRoute(userId)}>{username}</Link>
-        </div>
-
-        <div className={styles.metadataItem}>
-          <span className={styles.metadataItemName}>{t('inAlbum')}</span>
-          <Link to={albumRoute(albumId)}>{albumTitle}</Link>
-        </div>
-        <div className={styles.metadataItem}>
-          {directLink && <Link to={url}>{t('directLink')}</Link>}
-        </div>
+    <div className={className}>
+      {description && <Paragraph>{description}</Paragraph>}
+      <div className={styles.metadataItem}>
+        <span className={styles.metadataItemName}>{t('postedBy')}</span>
+        <Link to={userRoute(userId)}>{username}</Link>
       </div>
-    </Fragment>
+
+      <div className={styles.metadataItem}>
+        <span className={styles.metadataItemName}>{t('inAlbum')}</span>
+        <Link to={albumRoute(albumId)}>{albumTitle}</Link>
+      </div>
+      <div className={styles.metadataItem}>
+        {directLink && <Link to={url}>{t('directLink')}</Link>}
+      </div>
+    </div>
   );
 };
 

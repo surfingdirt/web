@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 
 import LIST_MEDIA from 'Apollo/queries/listMedia.gql';
 import Card, { cardTypes } from 'Components/Card';
+import CommentListFetcher from 'Components/Comment/ListFetcher';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
+import Spinner from 'Components/Spinner';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import { RIGHT, LEFT } from 'Utils/keycodes';
@@ -142,13 +144,13 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countI
         </div>
       </div>
 
-      <Card type={STANDARD} className={styles.metadata}>
-        <MediaMetadata album={album} media={item} />
-      </Card>
+      <MediaMetadata album={album} media={item} className={styles.metadata} />
 
-      <Card type={STANDARD} className={styles.comments}>
-        <p>Insert comments here</p>
-      </Card>
+      <CommentListFetcher
+        className={styles.comments}
+        itemId={item.id}
+        itemType={item.mediaType.toLowerCase()}
+      />
     </div>
   );
 };
