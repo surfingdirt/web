@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Translate from 'Hocs/Translate/index';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
+import Translate from 'Hocs/Translate/index';
 import { CommentType } from 'Utils/types';
 
 import messages from './messages';

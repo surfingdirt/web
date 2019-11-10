@@ -22,11 +22,11 @@ const TranslateHOC = (messages) => (BaseComponent) => {
     }
 
     setup() {
-      const { language, translations } = this.context;
+      const { locale, translations } = this.context;
       // Set debug to false in order to filter out "No translation was found for x" console warnings
       this.gt = new Gettext({ debug: false });
-      this.gt.addTranslations(language, LC_MESSAGE, translations);
-      this.gt.setLocale(language);
+      this.gt.addTranslations(locale, LC_MESSAGE, translations);
+      this.gt.setLocale(locale);
       this.ready = true;
     }
 
@@ -52,7 +52,7 @@ const TranslateHOC = (messages) => (BaseComponent) => {
         t: (key) => messages(getText, getPlural)(key),
         getText,
         getPlural,
-        language: context.language,
+        locale: context.locale,
       };
       return <BaseComponent {...componentProps} />;
     }

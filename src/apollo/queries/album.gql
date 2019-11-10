@@ -5,6 +5,7 @@ query album($id: ID!) {
             delete
             edit
         }
+        date
         description
         id
         submitter {

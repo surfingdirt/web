@@ -43,6 +43,7 @@ export const getInitialsData = (username) => {
 const UserboxRaw = (props) => {
   const {
     className,
+    metadata,
     renderName,
     size,
     t,
@@ -87,6 +88,7 @@ UserboxRaw.propTypes = {
   size: PropTypes.string,
   t: PropTypes.func.isRequired,
   user: PropTypes.shape({
+    avatar: PropTypes.shape(),
     username: PropTypes.string,
     userId: PropTypes.string,
     thumbs: PropTypes.arrayOf(),

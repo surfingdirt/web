@@ -1,13 +1,42 @@
 @import '../../../styles/boxmodel';
+@import '../../../styles/font-sizes';
 
-.page {
+.topRow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $margin-small-3;
+
+  .submitterWrapper {
+    display: flex;
+    align-items: center;
+
+    .user {
+      flex-shrink: 0;
+    }
+
+    .nameWrapper {
+      line-height: 1.3rem;
+      max-height: 2.6rem;
+      overflow: hidden;
+    }
+  }
+
+  .menu {
+
+  }
 }
 
-.metadataItem {
+.secondRow {
+  font-size: $font-size-small;
 
-}
+  .metadataItemName {
+    display: inline-block;
+    margin-right: $margin-one-char;
+  }
 
-.metadataItemName {
-  display: inline-block;
-  margin-right: $margin-one-char;
+  .date {
+
+  }
 }

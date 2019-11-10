@@ -12,7 +12,7 @@ export class AppContextValueObject {
     this.values = {
       SSR: false,
       accountKey: '',
-      availableLanguages: [],
+      availableLocales: [],
       baseUrl: '',
       dir: 'ltr',
       facebookAppId: '',
@@ -20,7 +20,7 @@ export class AppContextValueObject {
       googleClientId: '',
       twitterUsername: '',
       graphql: '',
-      language: '',
+      locale: '',
       login: {
         data: {
           accessToken: null,

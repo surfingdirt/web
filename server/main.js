@@ -50,32 +50,32 @@ const Main = (rootDir) => {
     const agentBodyClass = slugify(family, { lower: true });
 
     try {
-      const { availableLanguages, language, dir } = utils.getLanguagesAndDirFromRequest(req);
+      const { availableLocales, locale, dir } = utils.getLocalesAndDirFromRequest(req);
 
       let translations;
       try {
         const translationsContent = fs.readFileSync(
-          path.resolve(rootDir, `./src/translations/${language}.po`),
+          path.resolve(rootDir, `./src/translations/${locale}.po`),
           'utf8',
         );
         if (!translationsContent) {
-          throw new Error(`Could not find translation file for language '${language}'.`);
+          throw new Error(`Could not find translation file for locale '${locale}'.`);
         }
         translations = po.parse(translationsContent);
       } catch (err) {
         translations = {};
       }
 
-      error500Page = ERROR_500_PAGES[language];
+      error500Page = ERROR_500_PAGES[locale];
 
       const staticAppContextValues = {
         SSR,
-        availableLanguages,
+        availableLocales,
         baseUrl,
         dir,
         galleryAlbumId,
         graphql,
-        language,
+        locale,
         screenWidth,
         translations,
         title,
@@ -84,7 +84,7 @@ const Main = (rootDir) => {
       const accessToken = req.cookies.accessToken || '';
       appContextValueObject.setAccessToken(accessToken);
 
-      const apolloClientInstance = apolloClient(graphql, language, true, accessToken);
+      const apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
 
       // noinspection JSUnresolvedFunction
       const WrappedApp = (
@@ -129,7 +129,7 @@ const Main = (rootDir) => {
         html,
         inlineStyle: `<style></style>`,
         js: scripts.map(({ file }) => `<script src="/${file}"></script>`).join('\n'),
-        lang: language,
+        locale,
         meta: meta || '',
         agentBodyClass,
         script: (helmet && helmet.script && helmet.script.toString()) || '',

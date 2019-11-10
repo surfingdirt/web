@@ -1,6 +1,8 @@
 query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
     listMedia(albumId: $albumId, countItems: $countItems, startItem: $startItem) {
         id
+        date
+        description
         mediaType
         mediaSubType
         embedUrl

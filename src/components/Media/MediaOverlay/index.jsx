@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import LIST_MEDIA from 'Apollo/queries/listMedia.gql';
+import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
 import Card, { cardTypes } from 'Components/Card';
 import CommentListFetcher from 'Components/Comment/ListFetcher';
 import HeroContent from 'Components/Media/HeroContent';

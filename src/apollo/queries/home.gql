@@ -7,11 +7,13 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         }
         albumContributions
         albumVisibility
+        date
         description
         id
         itemCount
         media {
             id
+            date
             mediaType
             mediaSubType
             embedUrl
@@ -54,11 +56,13 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         }
         albumContributions
         albumVisibility
+        date
         description
         id
         itemCount
         media {
             id
+            date
             mediaType
             mediaSubType
             embedUrl

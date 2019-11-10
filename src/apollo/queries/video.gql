@@ -1,19 +1,20 @@
-query photo($id: ID!) {
-    photo(id: $id) {
-        id
-        title
+query video($id: ID!) {
+    video(id: $id) {
+        date
         description
-        images {
+        embedUrl
+        height
+        id
+        mediaSubType
+        title
+        vendorUrl
+        width
+        thumbs {
           type
           size
           url
           height
           width
-        }
-        thumbs {
-          type
-          size
-          url
         }
         album {
             id
@@ -24,7 +25,7 @@ query photo($id: ID!) {
             username
         }
     }
-    listComments(parentType: "photo", parentId: $id) {
+    listComments(parentType: "video", parentId: $id) {
         id
         content
         date
@@ -41,4 +42,5 @@ query photo($id: ID!) {
         }
         tone
     }
+
 }

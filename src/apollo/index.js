@@ -12,7 +12,7 @@ import fragmentTypes from '../../fragmentTypes.json';
 // Options
 import typeDefs from './options';
 
-const apolloClient = (url, language, ssrMode, accessToken) => {
+const apolloClient = (url, locale, ssrMode, accessToken) => {
   let cache;
 
   if (!fragmentTypes) {
@@ -35,7 +35,7 @@ const apolloClient = (url, language, ssrMode, accessToken) => {
     typeDefs,
   });
 
-  const headers = { 'accept-language': language };
+  const headers = { 'accept-language': locale };
   if (accessToken) {
     headers.authorization = `Bearer ${accessToken}`;
   }
