@@ -128,7 +128,8 @@ class AvatarUpdateForm extends React.Component {
               const hasError = !!errorMessage;
 
               const previewWidth = PREVIEW_SIZE;
-              const previewHeight = (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
+              const previewHeight =
+                (this.state.uploadHeight * PREVIEW_SIZE) / this.state.uploadWidth;
               const previewStyle = { width: `${previewWidth}px`, height: `${previewHeight}px` };
 
               return (

@@ -12,7 +12,7 @@ const DISABLED = 'disabled';
 const MAIN = 'main';
 const NEGATIVE = 'negative';
 
-export const buttonTypes = { ACTION, BARE, DISABLED, MAIN, NEGATIVE, };
+export const buttonTypes = { ACTION, BARE, DISABLED, MAIN, NEGATIVE };
 
 const typeMapping = {
   [ACTION]: 'actionButton',
@@ -26,7 +26,7 @@ const DEFAULT = 'default';
 const LARGE = 'large';
 const SMALL = 'small';
 
-export const buttonSizes = { DEFAULT, LARGE, SMALL, };
+export const buttonSizes = { DEFAULT, LARGE, SMALL };
 
 const sizeMapping = {
   [DEFAULT]: 'defaultSize',
