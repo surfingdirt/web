@@ -120,6 +120,7 @@ const Main = (rootDir) => {
       document = regularPageTemplate({
         analyticsId,
         appleHtml,
+        // The replace call is a protection against XSS vulnerabilities in data evaled in the initial page load.
         apolloState: JSON.stringify(apolloClientInstance.extract()).replace(/</g, '\\u003c'),
         css: styles
           .map(({ file }) => `<link href="/${file}" rel="stylesheet" type="text/css" />`)

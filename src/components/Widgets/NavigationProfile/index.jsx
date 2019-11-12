@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import UserProfile, { userProfileTypes } from 'Components/User/UserProfile';
 import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
@@ -11,7 +12,6 @@ import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
-import UserProfile, { userProfileTypes } from 'Components/User/UserProfile';
 
 const { PROFILE } = icons;
 const { LOGIN, PROFILE: PROFILE_PAGE } = routes;
