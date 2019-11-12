@@ -120,7 +120,7 @@ const Main = (rootDir) => {
       document = regularPageTemplate({
         analyticsId,
         appleHtml,
-        apolloState: JSON.stringify(apolloClientInstance.extract()),
+        apolloState: JSON.stringify(apolloClientInstance.extract()).replace(/</g, '\\u003c'),
         css: styles
           .map(({ file }) => `<link href="/${file}" rel="stylesheet" type="text/css" />`)
           .join('\n'),
