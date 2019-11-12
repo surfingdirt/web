@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import AutoLink from 'Components/Widgets/AutoLink';
-import Card, { cardTypes } from 'Components/Widgets/Card';
+import CommentList from 'Components/Comment/List';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import Separator from 'Components/Widgets/Separator';
 import { getBiggestMediaImageUrl } from 'Utils/media';
 import { CommentType } from 'Utils/types';
 
@@ -34,14 +36,14 @@ const MediaPageContent = (props) => {
         {image && <meta property="og:image" content={image} />}
       </Helmet>
       <Card title={title} type={HERO} heroContent={heroContent}>
-        <MediaMetadata album={media.album} media={media} directLink={false} />
-        <ul className={styles.comments}>
-          {comments.map(({ content, id: commentId }) => (
-            <li key={commentId}>
-              <AutoLink ugc>{content}</AutoLink>
-            </li>
-          ))}
-        </ul>
+        <MediaMetadata
+          album={media.album}
+          media={media}
+          className={styles.metadata}
+          directLink={false}
+        />
+        <Separator />
+        <CommentList className={classnames(styles.comments)} comments={comments} />
       </Card>
     </Fragment>
   );

@@ -22,12 +22,13 @@ const ErrorMessage = ({ t, code, message }) => {
 
 ErrorMessage.propTypes = {
   t: PropTypes.func.isRequired,
-  code: PropTypes.string.isRequired,
+  code: PropTypes.string,
   message: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
   message: '',
+  code: '',
 };
 
 export default Translate(translations)(ErrorMessage);

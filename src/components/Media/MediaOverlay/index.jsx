@@ -4,11 +4,10 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
-import Card, { cardTypes } from 'Components/Widgets/Card';
 import CommentListFetcher from 'Components/Comment/ListFetcher';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
-import Spinner from 'Components/Widgets/Spinner';
+import Separator from 'Components/Widgets/Separator';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import { RIGHT, LEFT } from 'Utils/keycodes';
@@ -16,7 +15,6 @@ import { RIGHT, LEFT } from 'Utils/keycodes';
 import styles from './styles.scss';
 import messages from './messages';
 
-const { STANDARD } = cardTypes;
 const { NEXT, PREVIOUS } = icons;
 
 const LTR = 'ltr';
@@ -144,8 +142,10 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countI
         </div>
       </div>
 
-      <MediaMetadata album={album} media={item} className={styles.metadata} />
-
+      <div className={styles.metadata}>
+        <MediaMetadata album={album} media={item} />
+        <Separator />
+      </div>
       <CommentListFetcher
         className={styles.comments}
         itemId={item.id}

@@ -1,23 +1,8 @@
 @import '../../../styles/boxmodel';
 
-.page {
-}
-
-.metadataItem {
-
-}
-
-.metadataItemName {
-  display: inline-block;
-  margin-right: $margin-one-char;
+.metadata {
+  margin-bottom: $margin-medium-2;
 }
 
 .comments {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  &> li {
-    margin: $margin-small-2 0;
-  }
 }
