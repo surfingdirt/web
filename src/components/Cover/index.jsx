@@ -2,10 +2,10 @@ import classnames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Menu from 'Components/Menu';
-import ResponsiveImage from 'Components/ResponsiveImage';
+import Menu from 'Components/Widgets/Menu';
+import ResponsiveImage from 'Components/Widgets/ResponsiveImage';
 import LogoutForm from 'Components/User/LogoutForm';
-import menuStyles from 'Components/Menu/styles.scss';
+import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import UserProfile, { userProfileTypes } from 'Components/User/UserProfile';
 import Translate from 'Hocs/Translate';
 import { COVER_MENU } from '~/ids';

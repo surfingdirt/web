@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ResponsiveImage from 'Components/ResponsiveImage/index';
+import ResponsiveImage from 'Components/Widgets/ResponsiveImage/index';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import { photoRoute, videoRoute } from 'Utils/links';

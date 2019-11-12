@@ -5,14 +5,14 @@ import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
 import UPDATE_USER from 'Apollo/mutations/updateUser2.gql';
-import Button, { buttonTypes } from 'Components/Button';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 
 import messages from './messages';
 import styles from './styles.scss';
-import InputField from 'Components/Form/InputField';
+import InputField from 'Components/Widgets/Form/InputField';
 
 const { USER_UPDATE } = actions;
 const { ACTION, NEGATIVE } = buttonTypes;

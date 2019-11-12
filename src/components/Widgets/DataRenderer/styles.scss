@@ -1,0 +1,6 @@
+@import '../../../styles/constants';
+
+.spinner svg {
+  width: $spinner-size;
+  height: $spinner-size;
+}

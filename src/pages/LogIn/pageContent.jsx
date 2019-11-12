@@ -1,5 +1,5 @@
-import Button, { buttonTypes } from 'Components/Button/index';
-import InputField from 'Components/Form/InputField';
+import Button, { buttonTypes } from 'Components/Widgets/Button/index';
+import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';

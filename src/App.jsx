@@ -5,11 +5,11 @@ import { Query } from 'react-apollo';
 import { Route, Switch } from 'react-router';
 
 import ME from 'Apollo/queries/me.gql';
-import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
-import ErrorMessage from 'Components/ErrorMessage';
-import loading from 'Components/Loading';
-import { DefaultLayoutRoute } from 'Components/Route';
-import Spinner from 'Components/Spinner';
+import { FORBIDDEN, MANDATORY } from 'Components/Widgets/EnforceLogin';
+import ErrorMessage from 'Components/Widgets/ErrorMessage';
+import loading from 'Components/Widgets/Loading';
+import { DefaultLayoutRoute } from 'Components/Widgets/Route';
+import Spinner from 'Components/Widgets/Spinner';
 import { Page404 } from 'Pages/Page404';
 
 import AppContext, { AppContextValueObject } from '~/contexts';

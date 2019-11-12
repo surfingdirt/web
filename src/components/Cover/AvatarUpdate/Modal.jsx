@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from 'Components/Menu/styles.scss';
-import { modalTypes } from 'Components/Modal';
+import styles from 'Components/Widgets/Menu/styles.scss';
+import { modalTypes } from 'Components/Widgets/Modal';
 import Translate from 'Hocs/Translate';
 import WithModal from 'Hocs/WithModal';
 

@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Modal from 'Components/Modal';
+import Modal from 'Components/Widgets/Modal';
 
 const withModal = ({ ariaLabel, modalContent, modalTitle, shouldShowModal, type }) => (
   BaseComponent,

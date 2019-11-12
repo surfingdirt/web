@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import Card, { cardTypes } from 'Components/Card';
-import Paragraph from 'Components/Paragraph';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import Paragraph from 'Components/Widgets/Paragraph';
 import Translate from 'Hocs/Translate';
 
 import messages from './messages';

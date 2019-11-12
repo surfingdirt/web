@@ -5,7 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
 import UPDATE_COVER from 'Apollo/mutations/updateCover2.gql';
-import Button, { buttonTypes } from 'Components/Button';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import { actionRoute } from 'Utils/links';

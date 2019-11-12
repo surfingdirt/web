@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import MediaOverlay from 'Components/Media/MediaOverlay';
 import MediaThumb from 'Components/Media/MediaThumb/index';
-import { modalTypes } from 'Components/Modal';
+import { modalTypes } from 'Components/Widgets/Modal';
 
 import WithModal from 'Hocs/WithModal';
 import Translate from 'Hocs/Translate';

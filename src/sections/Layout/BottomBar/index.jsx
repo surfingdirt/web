@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import PopupActionButton from 'Components/PopupActionButton/index';
-import NamedNavigationItem from 'Components/NamedNavigationItem/index';
-import Profile from 'Components/NavigationProfile/index';
-import SVG from 'Components/SVG/index';
+import PopupActionButton from 'Components/Widgets/PopupActionButton/index';
+import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem/index';
+import Profile from 'Components/Widgets/NavigationProfile/index';
+import SVG from 'Components/Widgets/SVG/index';
 import BottomBarBackground from 'Images/bottom-bar.svg';
 import BottomBarActions from 'Sections/BottomBarActions/index';
 import Translate from 'Hocs/Translate/index';

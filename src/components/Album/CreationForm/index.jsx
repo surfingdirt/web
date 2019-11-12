@@ -5,8 +5,8 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
-import Button, { buttonTypes } from 'Components/Button';
-import InputField from 'Components/Form/InputField';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
+import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
 import { actionRoute, albumRoute } from 'Utils/links';
 import actions from '~/actions';

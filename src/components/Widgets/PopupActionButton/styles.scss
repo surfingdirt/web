@@ -1,0 +1,22 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import '../../../styles/media-queries';
+
+.wrapper {
+  display: inline-block;
+  color: $bottom-bar-action-button-color;
+  line-height: 0;
+  font-size: 1rem;
+  width: 1.25em;
+  border-radius: 50%;
+  border: 2px solid $bottom-bar-action-button-color;
+  background-color: $bottom-bar-action-button-background-color;
+  padding: .5rem;
+  box-sizing: content-box;
+  box-shadow: 6px 6px 6px $bottom-bar-action-button-shadow-color;
+
+  &.active {
+    color: $bottom-bar-action-button-color-active;
+    background-color: $bottom-bar-action-button-background-color-active;
+  }
+}

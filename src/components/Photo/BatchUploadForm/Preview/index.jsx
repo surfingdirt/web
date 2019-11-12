@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Spinner from 'Components/Spinner';
+import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 

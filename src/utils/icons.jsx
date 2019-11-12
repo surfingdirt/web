@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SVG from 'Components/SVG';
+import SVG from 'Components/Widgets/SVG';
 import Activity from 'Images/alarm-bell.svg';
 import Album from 'Images/picture-stack-landscape-bold.svg';
 import Close from 'Images/close.svg';

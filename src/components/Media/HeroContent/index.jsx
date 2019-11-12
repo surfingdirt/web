@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ResponsiveImage from 'Components/ResponsiveImage';
+import ResponsiveImage from 'Components/Widgets/ResponsiveImage';
 import VideoEmbed from 'Components/Video/Embed';
 import { mediaTypes } from 'Utils/media';
 

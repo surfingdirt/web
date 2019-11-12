@@ -6,8 +6,8 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
-import Button, { buttonTypes } from 'Components/Button';
-import InputField from 'Components/Form/InputField';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
+import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import icons, { getIcon, sizes } from 'Utils/icons';

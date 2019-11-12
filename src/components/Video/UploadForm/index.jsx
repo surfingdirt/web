@@ -7,8 +7,8 @@ import { Redirect } from 'react-router';
 import createDecorator from 'final-form-calculate';
 
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
-import Button, { buttonTypes } from 'Components/Button';
-import InputField from 'Components/Form/InputField';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
+import InputField from 'Components/Widgets/Form/InputField';
 import VideoEmbed from 'Components/Video/Embed';
 import Translate from 'Hocs/Translate';
 import { actionRoute, videoRoute } from 'Utils/links';

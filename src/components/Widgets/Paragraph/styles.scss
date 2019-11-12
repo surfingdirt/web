@@ -1,0 +1,10 @@
+@import "../../../styles/font-faces";
+@import "../../../styles/font-sizes";
+@import "../../../styles/colors";
+
+.default {
+  font-family: $paragraph-font-families;
+  max-width: 50rem;
+}
+
+

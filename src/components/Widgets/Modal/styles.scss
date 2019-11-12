@@ -1,0 +1,123 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/constants";
+@import "../../../styles/media-queries";
+@import "../../../styles/z-indices";
+
+$header-content-distance: $margin-small-2;
+$desktop-modal-width: 640px;
+$title-line-height: 1.3rem;
+$title-line-count: 2;
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-modal-cover;
+  transform: translateZ(0);
+  background: rgba(#000, .7);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $background-color-default;
+
+  .content {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &.standardModal {
+    border: $widget-border-width $widget-border-color solid;
+    border-radius: $widget-border-radius;
+    top: $padding-small-1;
+    left: $padding-small-1;
+    right: $padding-small-1;
+    bottom: $padding-small-1;
+    @media screen and (min-width: $desktop-min) {
+      left: 50%;
+      top: 50%;
+      bottom: auto;
+      right: auto;
+      transform: translate(-50%, -50%);
+      width: $desktop-modal-width;
+    }
+    .content {
+      padding: $padding-small-2;
+    }
+  }
+
+  &.heroModal {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @media screen and (min-width: $desktop-min) {
+      $ratio: 1.6;
+      $width: 80vw;
+      $height: $width / $ratio;
+      top: 50%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      width: $width;
+      height: $height;
+      transform: translate(-50%, -50%);
+    }
+    .content {
+      border-top: $widget-border-width $widget-border-color-negative solid;
+    }
+  }
+}
+
+.close {
+  border: 0;
+  padding: 0;
+  margin: $header-content-distance;
+  align-self: start;
+  cursor: pointer;
+  background: transparent;
+  color: $modal-close-button-color;
+}
+
+.scrolling {
+  overflow: hidden;
+}
+
+.header {
+  min-height: 1.3rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $modal-header-background-color;
+}
+
+.titleWrapper {
+  padding: $header-content-distance;
+}
+
+.title {
+  max-height: $title-line-count * $title-line-height;
+  line-height: $title-line-height;
+  margin-bottom: 0;
+  overflow: hidden;
+  color: $modal-header-text-color;
+}
+
+:global(.mouse-mode) .titleWrapper:focus {
+  outline: none;
+}
+
+.actions {
+  height: 10%;
+  padding: $padding-medium-2 0 0;
+  text-align: right;
+}

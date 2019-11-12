@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import AutoLink from 'Components/AutoLink';
-import Menu from 'Components/Menu';
-import menuStyles from 'Components/Menu/styles.scss';
+import AutoLink from 'Components/Widgets/AutoLink';
+import Menu from 'Components/Widgets/Menu';
+import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate/index';
 import { albumRoute, photoRoute, userRoute, videoRoute } from 'Utils/links';

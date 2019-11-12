@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card, { cardTypes } from 'Components/Card';
-import Heading, { headingTypes } from 'Components/Heading/index';
-import Logo, { logoTypes } from 'Components/Logo';
-import Paragraph from 'Components/Paragraph';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import Heading, { headingTypes } from 'Components/Widgets/Heading/index';
+import Logo, { logoTypes } from 'Components/Widgets/Logo';
+import Paragraph from 'Components/Widgets/Paragraph';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 

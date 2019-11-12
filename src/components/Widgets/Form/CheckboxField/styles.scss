@@ -1,0 +1,13 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font-sizes";
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.displayErrorLabel {
+  font-size: $font-size-medium;
+  
+  color: $form-error-color;
+}

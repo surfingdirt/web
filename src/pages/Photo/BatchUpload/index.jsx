@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import ALBUM from 'Apollo/queries/album.gql';
-import Card, { cardTypes } from 'Components/Card';
-import DataRenderer from 'Components/DataRenderer';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoBatchUploadForm from 'Components/Photo/BatchUploadForm';
 import Translate from 'Hocs/Translate';
 import { albumRoute } from 'Utils/links';

@@ -1,0 +1,34 @@
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+@import '../../../styles/constants';
+@import '../../../styles/font-faces';
+@import '../../../styles/font-sizes';
+
+.logoImage {
+  display: inline-block;
+  width: $logo-size;
+  margin-right: $margin-small-2;
+  line-height: 0;
+}
+
+.title {
+  font-family: $title-font-families;
+  font-size: $font-size-big;
+  color: $masthead-title-color;
+  line-height: 1rem;
+  width: -webkit-min-content;
+  width: min-content;
+}
+
+.bigLogo {
+  width: 12rem;
+}
+
+.bigTitle {
+  font-size: 3rem;
+  line-height: 1em;
+}
+
+.titleHidden {
+  display: none;
+}

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import NavigationLink from 'Components/NavigationLink';
+import NavigationLink from 'Components/Widgets/NavigationLink';
 import Translate from 'Hocs/Translate';
 import icons from 'Utils/icons';
 import { newPhotoForAlbumRoute, newVideoForAlbumRoute } from 'Utils/links';

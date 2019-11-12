@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
-import NavigationLink from 'Components/NavigationLink';
+import NavigationLink from 'Components/Widgets/NavigationLink';
 import Footer from 'Sections/Footer';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { albumRoute } from 'Utils/links';

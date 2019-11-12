@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-import ActionLink from 'Components/ActionLink';
+import ActionLink from 'Components/Widgets/ActionLink';
 
 import styles from './styles.scss';
 

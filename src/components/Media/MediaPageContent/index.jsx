@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import AutoLink from 'Components/AutoLink';
-import Card, { cardTypes } from 'Components/Card';
+import AutoLink from 'Components/Widgets/AutoLink';
+import Card, { cardTypes } from 'Components/Widgets/Card';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import { getBiggestMediaImageUrl } from 'Utils/media';

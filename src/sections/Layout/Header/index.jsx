@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Logo, { logoTypes } from 'Components/Logo/index';
-import NamedNavigationItem from 'Components/NamedNavigationItem/index';
-import Profile from 'Components/NavigationProfile/index';
+import Logo, { logoTypes } from 'Components/Widgets/Logo/index';
+import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem/index';
+import Profile from 'Components/Widgets/NavigationProfile/index';
 import Translate from 'Hocs/Translate/index';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import routes from '~/routes';

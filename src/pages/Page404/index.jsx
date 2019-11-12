@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
-import Card, { cardTypes } from 'Components/Card';
+import Card, { cardTypes } from 'Components/Widgets/Card';
 import { Helmet } from 'react-helmet';
 
 import Translate from 'Hocs/Translate';

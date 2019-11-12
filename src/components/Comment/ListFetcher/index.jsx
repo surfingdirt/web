@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import CommentList from 'Components/Comment/List';
-import ErrorMessage from 'Components/ErrorMessage';
-import Spinner from 'Components/Spinner';
+import ErrorMessage from 'Components/Widgets/ErrorMessage';
+import Spinner from 'Components/Widgets/Spinner';
 
 import Translate from 'Hocs/Translate/index';
 import messages from './messages';

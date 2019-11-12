@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button, { buttonTypes } from 'Components/Button';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
 import icons from 'Utils/icons';
 import routes from '~/routes';
 

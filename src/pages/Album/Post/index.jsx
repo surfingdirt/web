@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card, { cardTypes } from 'Components/Card';
+import Card, { cardTypes } from 'Components/Widgets/Card';
 import AlbumCreationForm from 'Components/Album/CreationForm';
 import Translate from 'Hocs/Translate';
 

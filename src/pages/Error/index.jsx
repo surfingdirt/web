@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
-import ErrorMessage from 'Components/ErrorMessage';
+import ErrorMessage from 'Components/Widgets/ErrorMessage';
 
 export const Error = ({ match }) => {
   const { id, message } = match.params;

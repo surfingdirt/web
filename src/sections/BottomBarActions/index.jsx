@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-import PopupActionButton from 'Components/PopupActionButton';
+import PopupActionButton from 'Components/Widgets/PopupActionButton';
 import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';

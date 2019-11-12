@@ -5,8 +5,8 @@ import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
-import NavigationLink from 'Components/NavigationLink';
-import Button, { buttonTypes } from 'Components/Button';
+import NavigationLink from 'Components/Widgets/NavigationLink';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { actionRoute, albumRoute } from 'Utils/links';

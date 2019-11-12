@@ -1,0 +1,31 @@
+@import "../../../../styles/boxmodel";
+@import "../../../../styles/colors";
+@import "../../../../styles/font-sizes";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto $margin-medium-2;
+}
+
+.error {
+  color: $form-error-color;
+}
+
+.inputAndError {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: $margin-small-2;
+}
+
+.input {
+  border: 0;
+  padding: $padding-small-3;
+  font-size: $font-size-medium;
+  background: $input-background-color;
+}

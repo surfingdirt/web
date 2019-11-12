@@ -6,10 +6,10 @@ import { Form, Field } from 'react-final-form';
 import USER from 'Apollo/queries/user.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover/index';
-import Card, { cardTypes } from 'Components/Card';
-import DataRenderer from 'Components/DataRenderer';
-import Heading, { headingTypes } from 'Components/Heading/index';
-import Paragraph from 'Components/Paragraph';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import DataRenderer from 'Components/Widgets/DataRenderer';
+import Heading, { headingTypes } from 'Components/Widgets/Heading/index';
+import Paragraph from 'Components/Widgets/Paragraph';
 
 import styles from './styles.scss';
 

@@ -4,10 +4,10 @@ import { Mutation } from 'react-apollo';
 import queryString from 'query-string';
 
 import CONFIRM_EMAIL from 'Apollo/mutations/confirmEmail.gql';
-import Button, { buttonTypes } from 'Components/Button';
-import Card, { cardTypes } from 'Components/Card';
-import Heading, { headingTypes } from 'Components/Heading';
-import Spinner from 'Components/Spinner';
+import Button, { buttonTypes } from 'Components/Widgets/Button';
+import Card, { cardTypes } from 'Components/Widgets/Card';
+import Heading, { headingTypes } from 'Components/Widgets/Heading';
+import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import routes from '~/routes';
 

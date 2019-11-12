@@ -4,11 +4,11 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
-import Card, { cardTypes } from 'Components/Card';
+import Card, { cardTypes } from 'Components/Widgets/Card';
 import CommentListFetcher from 'Components/Comment/ListFetcher';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
-import Spinner from 'Components/Spinner';
+import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import { RIGHT, LEFT } from 'Utils/keycodes';
