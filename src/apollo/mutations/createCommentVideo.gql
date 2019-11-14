@@ -1,0 +1,7 @@
+mutation createVideoComment($input: CommentCreationInput!) {
+    createVideoComment(input: $input) {
+        id
+        parentId
+        parentType
+    }
+}

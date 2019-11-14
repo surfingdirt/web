@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import CommentList from 'Components/Comment/List';
+import { commentTypes } from 'Components/Comment/Form';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import Card, { cardTypes } from 'Components/Widgets/Card';
@@ -14,15 +15,22 @@ import { CommentType } from 'Utils/types';
 import styles from './styles.scss';
 
 const { HERO } = cardTypes;
+const { PHOTO: PHOTO_COMMENT, VIDEO: VIDEO_COMMENT } = commentTypes;
 
 const MediaPageContent = (props) => {
   const { comments, media } = props;
   const {
     album: { title: albumTitle },
     description,
+    id,
+    mediaType,
     title,
   } = media;
 
+  const commentType = mediaType.toLowerCase();
+  if (![PHOTO_COMMENT, VIDEO_COMMENT].includes(commentType)) {
+    throw new Error(`Unsupported media type '${mediaType}'`);
+  }
   const image = getBiggestMediaImageUrl(media);
 
   const heroContent = <HeroContent media={media} />;
@@ -43,7 +51,12 @@ const MediaPageContent = (props) => {
           directLink={false}
         />
         <Separator />
-        <CommentList className={classnames(styles.comments)} comments={comments} />
+        <CommentList
+          className={classnames(styles.comments)}
+          comments={comments}
+          type={commentType}
+          id={id}
+        />
       </Card>
     </Fragment>
   );

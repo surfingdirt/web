@@ -2,11 +2,16 @@ import fs from 'fs';
 
 import actions, { ACTION_PREFIX } from '~/actions';
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum.gql';
+import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto.gql';
+import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo.gql';
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
+import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
+import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
 import USER_UPDATE_MUTATION from 'Apollo/mutations/updateUser2.gql';
 
@@ -24,6 +29,11 @@ const LoginCookie = Login.COOKIE_NAME;
 const {
   ALBUM_NEW,
   AVATAR_UPDATE,
+  COMMENT_DELETE,
+  COMMENT_NEW_ALBUM,
+  COMMENT_NEW_PHOTO,
+  COMMENT_NEW_VIDEO,
+  COMMENT_UPDATE,
   COVER_UPDATE,
   LOGIN,
   LOGOUT,
@@ -56,6 +66,73 @@ const actionInfoMap = {
     onError: (error, res) => {
       console.error('Avatar update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [COMMENT_DELETE]: {
+    mutation: DELETE_COMMENT_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'comment',
+    redirect: () => {},
+    onError: (error, res) => {
+      console.error('Album creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+  [COMMENT_NEW_ALBUM]: {
+    mutation: CREATE_COMMENT_ALBUM_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'createAlbumComment',
+    redirect: { route: albumRoute, selector: 'parentId' },
+    onError: (error, res) => {
+      console.error('Album comment creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+  [COMMENT_NEW_PHOTO]: {
+    mutation: CREATE_COMMENT_PHOTO_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'createPhotoComment',
+    redirect: { route: photoRoute, selector: 'parentId' },
+    onError: (error, res) => {
+      console.error('Photo comment creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+  [COMMENT_NEW_VIDEO]: {
+    mutation: CREATE_COMMENT_VIDEO_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'createVideoComment',
+    redirect: { route: videoRoute, selector: 'parentId' },
+    onError: (error, res) => {
+      console.error('Video comment creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+  [COMMENT_UPDATE]: {
+    mutation: UPDATE_COMMENT_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'comment',
+    redirect: () => {
+      // redirect to parent => response must contain parent id and type
+    },
+    onError: (error, res) => {
+      console.error('Album creation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
     },
   },
   [COVER_UPDATE]: {

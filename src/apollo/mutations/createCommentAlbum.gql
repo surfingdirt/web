@@ -1,0 +1,7 @@
+mutation createAlbumComment($input: CommentCreationInput!) {
+    createAlbumComment(input: $input) {
+        id
+        parentId
+        parentType
+    }
+}

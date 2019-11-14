@@ -1,0 +1,7 @@
+mutation createPhotoComment($input: CommentCreationInput!) {
+    createPhotoComment(input: $input) {
+        id
+        parentId
+        parentType
+    }
+}

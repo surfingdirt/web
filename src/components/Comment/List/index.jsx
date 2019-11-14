@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Translate from 'Hocs/Translate/index';
+import CommentForm from 'Components/Comment/Form';
 import Comment from 'Components/Comment/Item';
 import { CommentType } from 'Utils/types';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const CommentListRaw = ({ className, comments }) => {
+const CommentListRaw = ({ className, comments, id, type }) => {
   if (comments.length === 0) {
     return null;
   }
 
   return (
-    <ul className={classnames(styles.wrapper, className)}>
-      {comments.map((c) => (
-        <Comment comment={c} className={styles.item} key={c.id} />
-      ))}
-    </ul>
+    <Fragment>
+      <ul className={classnames(styles.wrapper, className)}>
+        {comments.map((c) => (
+          <Comment comment={c} className={styles.item} key={c.id} />
+        ))}
+      </ul>
+      <CommentForm type={type} id={id} />
+    </Fragment>
   );
 };
 
 CommentListRaw.propTypes = {
   className: PropTypes.string,
   comments: PropTypes.arrayOf(CommentType).isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 CommentListRaw.defaultProps = {
