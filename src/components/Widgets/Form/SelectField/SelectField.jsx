@@ -5,20 +5,13 @@ import React from 'react';
 
 import styles from './styles.scss';
 
-const SelectField = ({ children, input, label, required, requiredLabel }) => {
-  const { inputContainer, labelContainer, requiredElement, selectContainer, arrow } = styles;
-
+const SelectField = ({ children, input, label }) => {
   return (
-    <div className={inputContainer}>
-      <div className={labelContainer}>
+    <div className={styles.wrapper}>
+      <div className={styles.labelContainer}>
         <label htmlFor={input.name}>{label}</label>
-        {required && (
-          <span className={requiredElement} aria-label={requiredLabel}>
-            *
-          </span>
-        )}
       </div>
-      <div className={selectContainer}>
+      <div className={styles.selectContainer}>
         <select {...input} id={input.name} name={input.name}>
           {children}
         </select>
@@ -28,12 +21,12 @@ const SelectField = ({ children, input, label, required, requiredLabel }) => {
 };
 
 SelectField.propTypes = {
+  children: PropTypes.node.isRequired,
   input: PropTypes.shape({
     name: PropTypes.string,
   }),
   label: PropTypes.string,
   required: PropTypes.bool,
-  requiredLabel: PropTypes.string,
 };
 
 SelectField.defaultProps = {
@@ -42,7 +35,6 @@ SelectField.defaultProps = {
   }),
   label: PropTypes.string,
   required: true,
-  requiredLabel: '',
 };
 
 export default SelectField;

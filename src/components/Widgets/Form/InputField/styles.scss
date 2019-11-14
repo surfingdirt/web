@@ -1,11 +1,11 @@
 @import "../../../../styles/boxmodel";
 @import "../../../../styles/colors";
 @import "../../../../styles/font-sizes";
+@import "../styles";
 
 .wrapper {
-  display: flex;
+  @extend %formInputWrapper;
   flex-direction: row;
-  margin: 0 auto $margin-medium-2;
 }
 
 .error {
@@ -20,7 +20,7 @@
 
 .label {
   display: inline-block;
-  margin-bottom: $margin-small-2;
+  margin-bottom: $margin-small-3;
 }
 
 .input {

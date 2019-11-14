@@ -112,36 +112,30 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
               method="POST"
               encType="multipart/form-data"
             >
-              <div className={styles.inputsContainer}>
-                <div className={styles.toneField}>
-                  <Field
-                    name="tone"
-                    id="tone"
-                    component={SelectField}
-                    type="tone"
-                    label={t('tone')}
-                    placeholder={t('inputPlaceholder')}
-                    required={false}
-                  >
-                    {Object.values(tones).map((tone) => (
-                      <option key={tone} value={tone}>
-                        {t(tone)}
-                      </option>
-                    ))}
-                  </Field>
-                </div>
-                <div className={styles.contentField}>
-                  <Field
-                    name="content"
-                    id="content"
-                    component={InputField}
-                    type="textarea"
-                    label={t('content')}
-                    placeholder={t('inputPlaceholder')}
-                    required={false}
-                  />
-                </div>
-              </div>
+              <Field
+                name="tone"
+                id="tone"
+                component={SelectField}
+                type="tone"
+                label={t('tone')}
+                placeholder={t('inputPlaceholder')}
+                required={false}
+              >
+                {Object.values(tones).map((tone) => (
+                  <option key={tone} value={tone}>
+                    {t(tone)}
+                  </option>
+                ))}
+              </Field>
+              <Field
+                name="content"
+                id="content"
+                component={InputField}
+                type="textarea"
+                label={t('content')}
+                placeholder={t('inputPlaceholder')}
+                required={false}
+              />
               <Field name="parentId">
                 {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
               </Field>

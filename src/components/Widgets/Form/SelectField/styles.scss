@@ -3,23 +3,22 @@
 @import "../../../../styles/font-sizes";
 @import "../styles";
 
-.inputContainer {
-  @extend %formInputContainer;
+.wrapper {
+  @extend %formInputWrapper;
+  height: $inputHeight;
+  padding: $padding-small-2;
+  background: $input-background-color;
 }
-:global(.mouse-mode) .inputContainer:focus {
+:global(.mouse-mode) .wrapper:focus {
   outline: none;
 }
 
 .labelContainer {
   @extend %formLabelContainer;
-}
 
-label {
-  @extend %formLabel;
-}
-
-.requiredElement {
-  @extend %formRequired;
+  label {
+    @extend %formLabel;
+  }
 }
 
 .selectContainer {
@@ -29,17 +28,15 @@ label {
   display: flex;
   align-items: center;
   position: relative;
+
+  select {
+    font-size: $font-size-small;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
 }
 
-select {
-  width: 100%;
-  border: none;
-  box-shadow: none;
-  background: transparent none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.arrow {
-  width: 8px;
-}
