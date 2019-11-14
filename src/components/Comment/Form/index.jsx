@@ -40,6 +40,8 @@ const ACTIONS = {
   [VIDEO]: COMMENT_NEW_VIDEO,
 };
 
+const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
 const CommentForm = ({ className, id: parentId, t, type }) => {
   const action = ACTIONS[type];
   const mutation = MUTATIONS[type];
@@ -123,7 +125,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
               >
                 {Object.values(tones).map((tone) => (
                   <option key={tone} value={tone}>
-                    {t(tone)}
+                    {capitalizeFirstLetter(t(tone))}
                   </option>
                 ))}
               </Field>
