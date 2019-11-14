@@ -10,19 +10,21 @@ import { CommentType } from 'Utils/types';
 import messages from './messages';
 import styles from './styles.scss';
 
-const CommentListRaw = ({ className, comments, id, type }) => {
+const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
   if (comments.length === 0) {
     return null;
   }
 
+  const twoColumns = !singleColumn;
+
   return (
-    <div className={styles.wrapper}>
+    <div className={classnames(styles.wrapper, { [styles.twoColumns]: twoColumns })}>
       <ul className={classnames(styles.list, className)}>
         {comments.map((c) => (
           <Comment comment={c} className={styles.item} key={c.id} />
         ))}
       </ul>
-      <CommentForm type={type} id={id} className={styles.postForm} />
+      <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />
     </div>
   );
 };
@@ -31,11 +33,13 @@ CommentListRaw.propTypes = {
   className: PropTypes.string,
   comments: PropTypes.arrayOf(CommentType).isRequired,
   id: PropTypes.string.isRequired,
+  singleColumn: PropTypes.bool,
   type: PropTypes.string.isRequired,
 };
 
 CommentListRaw.defaultProps = {
   className: null,
+  singleColumn: false,
 };
 
 export default Translate(messages)(CommentListRaw);

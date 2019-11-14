@@ -3,8 +3,7 @@
 @import "../../../styles/media-queries";
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  overflow-y: auto;
 
   .list {
     margin: 0;
@@ -23,14 +22,11 @@
       }
     }
   }
-
-  .postForm {
-
-  }
 }
 
 @media (min-width: $desktop-min) {
-  .wrapper {
+  .wrapper.twoColumns {
+    display: flex;
     flex-direction: row;
 
     .list {

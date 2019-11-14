@@ -12,7 +12,7 @@ import Translate from 'Hocs/Translate/index';
 import messages from './messages';
 import styles from './styles.scss';
 
-const CommentListFetcherRaw = ({ className, itemId, itemType }) => {
+const CommentListFetcherRaw = ({ className, itemId, itemType, singleColumn }) => {
   const { data, error, loading } = useQuery(LIST_COMMENTS, {
     variables: {
       parentType: itemType,
@@ -28,7 +28,11 @@ const CommentListFetcherRaw = ({ className, itemId, itemType }) => {
   }
 
   return (
-    <CommentList className={classnames(styles.wrapper, className)} comments={data.listComments} />
+    <CommentList
+      className={classnames(styles.wrapper, className)}
+      comments={data.listComments}
+      singleColumn={singleColumn}
+    />
   );
 };
 
@@ -36,10 +40,12 @@ CommentListFetcherRaw.propTypes = {
   className: PropTypes.string,
   itemId: PropTypes.string.isRequired,
   itemType: PropTypes.string.isRequired,
+  singleColumn: PropTypes.bool,
 };
 
 CommentListFetcherRaw.defaultProps = {
   className: null,
+  singleColumn: false,
 };
 
 export default Translate(messages)(CommentListFetcherRaw);

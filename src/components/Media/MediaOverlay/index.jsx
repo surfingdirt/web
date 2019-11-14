@@ -150,6 +150,7 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countI
         className={styles.comments}
         itemId={item.id}
         itemType={item.mediaType.toLowerCase()}
+        singleColumn
       />
     </div>
   );
