@@ -1,0 +1,21 @@
+mutation createVideoComment($input: CommentCreationInput!) {
+    createVideoComment(input: $input) {
+        id
+        parentId
+        parentType
+        content
+        date
+        submitter {
+            userId
+            username
+            avatar {
+                size
+                width
+                height
+                type
+                url
+            }
+        }
+        tone
+    }
+}

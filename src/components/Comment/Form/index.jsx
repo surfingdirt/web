@@ -4,9 +4,10 @@ import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { useMutation } from '@apollo/react-hooks';
 
-import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum.gql';
-import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto.gql';
-import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo.gql';
+import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum2.gql';
+import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto2.gql';
+import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo2.gql';
+import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
@@ -43,8 +44,24 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
   const mutation = MUTATIONS[type];
 
   const [addComment] = useMutation(mutation, {
-    updateCache: (cache, resultObj) => {
-      console.log('update 1', { cache, resultObj });
+    update: (cache, resultObj) => {
+      const newItem = Object.values(resultObj.data)[0];
+
+      const { listComments } = cache.readQuery({
+        query: LIST_COMMENTS,
+        variables: {
+          parentId,
+          parentType: type,
+        },
+      });
+      cache.writeQuery({
+        query: LIST_COMMENTS,
+        variables: {
+          parentId,
+          parentType: type,
+        },
+        data: { listComments: listComments.concat([newItem]) },
+      });
     },
   });
 
@@ -67,9 +84,6 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
     try {
       await addComment({
         variables: { input: values },
-        updateCache: (cache, resultObj) => {
-          console.log('update 2', { cache, resultObj });
-        },
       });
     } catch (e) {
       errors = { content: 'some error' };
