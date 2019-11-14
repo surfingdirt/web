@@ -1,19 +1,47 @@
 @import "../../../styles/boxmodel";
+@import "../../../styles/layout";
+@import "../../../styles/media-queries";
 
 .wrapper {
-  margin: 0;
-  padding: $padding-small-3;
-  list-style: none;
-}
+  display: flex;
+  flex-direction: column;
 
-.item {
-  margin: $margin-small-3 0;
+  .list {
+    margin: 0;
+    padding: $padding-small-3;
+    list-style: none;
 
-  &:first-child {
-    margin-top: 0;
+    .item {
+      margin: $margin-small-3 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
-  &:last-child {
-    margin-bottom: 0;
+  .postForm {
+
+  }
+}
+
+@media (min-width: $desktop-min) {
+  .wrapper {
+    flex-direction: row;
+
+    .list {
+      flex-grow: 1;
+    }
+
+    .postForm {
+      flex-grow: 1;
+      position: sticky;
+      top: $masthead-height + $margin-small-2;
+      height: min-content;
+    }
   }
 }

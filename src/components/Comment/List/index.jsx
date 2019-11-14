@@ -16,14 +16,14 @@ const CommentListRaw = ({ className, comments, id, type }) => {
   }
 
   return (
-    <Fragment>
-      <ul className={classnames(styles.wrapper, className)}>
+    <div className={styles.wrapper}>
+      <ul className={classnames(styles.list, className)}>
         {comments.map((c) => (
           <Comment comment={c} className={styles.item} key={c.id} />
         ))}
       </ul>
-      <CommentForm type={type} id={id} />
-    </Fragment>
+      <CommentForm type={type} id={id} className={styles.postForm} />
+    </div>
   );
 };
 

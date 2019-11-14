@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
@@ -40,9 +41,14 @@ class CommentForm extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
+    className: PropTypes.string,
     id: PropTypes.string.isRequired,
     t: PropTypes.func.isRequired,
     type: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    className: null,
   };
 
   constructor(props) {
@@ -73,29 +79,35 @@ class CommentForm extends React.Component {
   }
 
   render() {
-    const { t, type, id } = this.props;
+    const { className, t, type, id } = this.props;
 
     return (
-      <form
-        className={styles.form}
-        action={actionRoute(ACTIONS[type])}
-        method="POST"
-        encType="multipart/form-data"
-        ref={this.formRef}
-      >
-        <div>
-          <label htmlFor="tone">Tone</label>
-          <input type="text" id="tone" name="tone" />
-        </div>
-        <div>
-          <label htmlFor="content">Content</label>
-          <textarea id="content" name="content" />
-        </div>
-        <input type="hidden" name="parentId" value={id} />
-        <div className={styles.buttons}>
-          <Button buttonType="submit" label="Post" type={ACTION} />
-        </div>
-      </form>
+      <div className={classnames(styles.wrapper, className)}>
+        <form
+          className={styles.form}
+          action={actionRoute(ACTIONS[type])}
+          method="POST"
+          encType="multipart/form-data"
+          ref={this.formRef}
+        >
+          <div>
+            <div>
+              <label htmlFor="tone">Tone</label>
+            </div>
+            <input type="text" id="tone" name="tone" />
+          </div>
+          <div>
+            <div>
+              <label htmlFor="content">Content</label>
+            </div>
+            <textarea id="content" name="content" />
+          </div>
+          <input type="hidden" name="parentId" value={id} />
+          <div className={styles.buttons}>
+            <Button buttonType="submit" label="Post" type={ACTION} />
+          </div>
+        </form>
+      </div>
     );
   }
 }

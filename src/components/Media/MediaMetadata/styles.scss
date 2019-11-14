@@ -39,6 +39,7 @@
 }
 
 .description {
+  display: inline-block;
   margin-top: $margin-small-2;
   padding: $padding-small-2;
   background: $media-metadata-description-background-color;
