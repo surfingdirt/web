@@ -26,6 +26,7 @@
 
 @media (min-width: $desktop-min) {
   .wrapper.twoColumns {
+    overflow-y: initial;
     display: flex;
     flex-direction: row;
 

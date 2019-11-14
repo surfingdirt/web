@@ -50,7 +50,6 @@ class CoverUpdateForm extends React.Component {
   async onSubmit(mutate) {
     const { fileData } = this.state;
     const { closeModal, t } = this.props;
-    const { files } = this.fileRef.current;
     if (!fileData) {
       this.setState({ displayError: t('pleasePickAFile') });
       return;

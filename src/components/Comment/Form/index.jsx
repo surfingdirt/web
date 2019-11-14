@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
-import { Mutation } from 'react-apollo';
+import { useMutation } from '@apollo/react-hooks';
 
 import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum.gql';
 import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto.gql';
 import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
+import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
+import { tones } from 'Utils/comments';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
-import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -37,79 +38,116 @@ const ACTIONS = {
   [VIDEO]: COMMENT_NEW_VIDEO,
 };
 
-class CommentForm extends React.Component {
-  static contextType = AppContext;
+const CommentForm = ({ className, id: parentId, t, type }) => {
+  const action = ACTIONS[type];
+  const mutation = MUTATIONS[type];
 
-  static propTypes = {
-    className: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    t: PropTypes.func.isRequired,
-    type: PropTypes.string.isRequired,
+  const [addComment] = useMutation(mutation, {
+    updateCache: (cache, resultObj) => {
+      console.log('update 1', { cache, resultObj });
+    },
+  });
+
+  const validate = ({ content, tone }) => {
+    const errors = {};
+
+    if (!content) {
+      errors.content = t('required');
+    }
+
+    if (tone && !Object.values(tones).includes(tone)) {
+      errors.tone = t('invalid');
+    }
+
+    return errors;
   };
 
-  static defaultProps = {
-    className: null,
+  const onSubmit = async (values) => {
+    let errors;
+    try {
+      await addComment({
+        variables: { input: values },
+        updateCache: (cache, resultObj) => {
+          console.log('update 2', { cache, resultObj });
+        },
+      });
+    } catch (e) {
+      errors = { content: 'some error' };
+    }
+    return errors;
   };
 
-  constructor(props) {
-    super(props);
+  return (
+    <Form
+      initialValues={{ parentId }}
+      onSubmit={onSubmit}
+      validate={validate}
+      render={(formProps) => {
+        const { form, handleSubmit, invalid, submitting } = formProps;
 
-    this.state = { displayError: null };
-
-    this.formRef = React.createRef();
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.validate = this.validate.bind(this);
-    this.onCancel = this.onCancel.bind(this);
-  }
-
-  async onSubmit(mutate) {
-    const { t } = this.props;
-
-    const response = await mutate({ variables: {} });
-    const { cover } = response.data.updateCover;
-    this.context.updateCover(cover);
-  }
-
-  onCancel() {}
-
-  async validate() {
-    const { t } = this.props;
-    return null;
-  }
-
-  render() {
-    const { className, t, type, id } = this.props;
-
-    return (
-      <div className={classnames(styles.wrapper, className)}>
-        <form
-          className={styles.form}
-          action={actionRoute(ACTIONS[type])}
-          method="POST"
-          encType="multipart/form-data"
-          ref={this.formRef}
-        >
-          <div>
-            <div>
-              <label htmlFor="tone">Tone</label>
-            </div>
-            <input type="text" id="tone" name="tone" />
+        return (
+          <div className={classnames(styles.wrapper, className)}>
+            <form
+              className={styles.form}
+              onSubmit={async (e) => {
+                await handleSubmit(e);
+                form.reset();
+              }}
+              action={actionRoute(action)}
+              method="POST"
+              encType="multipart/form-data"
+            >
+              <div className={styles.inputsContainer}>
+                <div className={styles.toneField}>
+                  <Field
+                    name="tone"
+                    id="tone"
+                    component={InputField}
+                    type="tone"
+                    label={t('tone')}
+                    placeholder={t('inputPlaceholder')}
+                  />
+                </div>
+                <div className={styles.contentField}>
+                  <Field
+                    name="content"
+                    id="content"
+                    component={InputField}
+                    type="textarea"
+                    label={t('content')}
+                    placeholder={t('inputPlaceholder')}
+                  />
+                </div>
+              </div>
+              <Field name="parentId">
+                {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+              </Field>
+              <div className={styles.buttons}>
+                <Button
+                  buttonType="submit"
+                  label={t('reply')}
+                  type={ACTION}
+                  disabled={submitting || invalid}
+                  loading={submitting}
+                />
+              </div>
+            </form>
           </div>
-          <div>
-            <div>
-              <label htmlFor="content">Content</label>
-            </div>
-            <textarea id="content" name="content" />
-          </div>
-          <input type="hidden" name="parentId" value={id} />
-          <div className={styles.buttons}>
-            <Button buttonType="submit" label="Post" type={ACTION} />
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+        );
+      }}
+    />
+  );
+};
+
+CommentForm.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+CommentForm.defaultProps = {
+  className: null,
+};
 
 export default Translate(messages)(CommentForm);

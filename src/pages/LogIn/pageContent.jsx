@@ -78,8 +78,8 @@ class SignInPageContent extends PureComponent {
                     type={ACTION}
                     buttonType="submit"
                     className={styles.signInButton}
-                    disabled={submitting || invalid}
                     label={t('signIn')}
+                    disabled={submitting || invalid}
                     loading={submitting}
                   />
                 </div>
