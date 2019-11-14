@@ -10,6 +10,7 @@ import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo2.gql';
 import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
+import SelectField from 'Components/Widgets/Form/SelectField';
 import Translate from 'Hocs/Translate';
 import { tones } from 'Utils/comments';
 import { actionRoute } from 'Utils/links';
@@ -116,11 +117,18 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
                   <Field
                     name="tone"
                     id="tone"
-                    component={InputField}
+                    component={SelectField}
                     type="tone"
                     label={t('tone')}
                     placeholder={t('inputPlaceholder')}
-                  />
+                    required={false}
+                  >
+                    {Object.values(tones).map((tone) => (
+                      <option key={tone} value={tone}>
+                        {t(tone)}
+                      </option>
+                    ))}
+                  </Field>
                 </div>
                 <div className={styles.contentField}>
                   <Field
@@ -130,6 +138,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
                     type="textarea"
                     label={t('content')}
                     placeholder={t('inputPlaceholder')}
+                    required={false}
                   />
                 </div>
               </div>

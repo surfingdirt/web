@@ -1,8 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import SVG from 'Components/Widgets/SVG';
-
-import ArrowDown from 'Images/_old/arrowDown.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -25,7 +22,6 @@ const SelectField = ({ children, input, label, required, requiredLabel }) => {
         <select {...input} id={input.name} name={input.name}>
           {children}
         </select>
-        <SVG className={arrow} icon={ArrowDown} presentationOnly />
       </div>
     </div>
   );
