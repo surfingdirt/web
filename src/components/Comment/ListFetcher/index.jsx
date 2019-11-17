@@ -31,7 +31,9 @@ const CommentListFetcherRaw = ({ className, itemId, itemType, singleColumn }) =>
     <CommentList
       className={classnames(styles.wrapper, className)}
       comments={data.listComments}
+      id={itemId}
       singleColumn={singleColumn}
+      type={itemType}
     />
   );
 };
