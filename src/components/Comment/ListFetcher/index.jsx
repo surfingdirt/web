@@ -21,7 +21,7 @@ const CommentListFetcherRaw = ({ className, itemId, itemType, singleColumn }) =>
   });
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner negative />;
   }
   if (error) {
     return <ErrorMessage message={error} />;

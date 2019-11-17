@@ -5,6 +5,10 @@
 $icon-margin-horizontal: 4px;
 $icon-margin-vertical: 4px;
 
+.wrapper {
+  background: $media-overlay-background-color;
+}
+
 .heroWrapper {
   grid-area: hero;
   display: flex;
