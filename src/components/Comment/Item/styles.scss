@@ -28,12 +28,20 @@
     }
 
     .metadata {
+      display: flex;
       margin: 0 0 $margin-small-3;
-      font-size: $font-size-tiny;
-      color: $comment-text-color;
 
-      .tone {
-        text-transform: capitalize;
+      .metadataText {
+        color: $comment-text-color;
+        font-size: $font-size-tiny;
+
+        .tone {
+          text-transform: capitalize;
+        }
+      }
+
+      .menu {
+        margin-left: $margin-small-3;
       }
     }
   }

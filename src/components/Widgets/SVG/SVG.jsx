@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import SVGInline from 'react-svg-inline';
 
 import { sizes } from 'Utils/icons';
-const { SMALL, STANDARD } = sizes;
+const { SMALL, STANDARD, TINY } = sizes;
 
 export default class SVG extends PureComponent {
   static propTypes = {
@@ -56,6 +56,7 @@ export default class SVG extends PureComponent {
       active,
       standardIcon: size === STANDARD,
       smallIcon: size === SMALL,
+      tinyIcon: size === TINY,
     });
 
     const attributes = { svg: icon, className: actualClassName };

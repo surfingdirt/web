@@ -3,36 +3,49 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
+import Menu from 'Components/Widgets/Menu';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
+import icons, { getIcon, sizes } from 'Utils/icons';
 import { CommentType } from 'Utils/types';
+import { COMMENT_MENU } from '~/ids';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { SMALL } = userboxSizes;
 const { NEUTRAL } = tones;
+const { SMALL } = userboxSizes;
 
 const CommentRaw = ({ className, comment, locale, t, tag }) => {
   const { content, date, submitter, tone } = comment;
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
 
+  const options = [() => <span>This is option 1</span>, () => <span>This is option 2</span>];
+  const trigger = getIcon({
+    label: t('menuLabel'),
+    type: icons.ARROW_DOWN,
+    size: sizes.TINY,
+  });
+
   return (
     <Tag className={classnames(styles.wrapper, className)}>
       <Userbox size={SMALL} className={styles.user} user={submitter} renderName={false} />
       <div className={styles.content}>
         <div className={styles.metadata}>
-          {shouldRenderTone && (
-            <Fragment>
-              <span className={styles.tone}>{t(tone)}</span>
-              <span aria-hidden className={styles.separator}>
-                &bull;
-              </span>
-            </Fragment>
-          )}
-          {renderDate(date, locale)}
+          <div className={styles.metadataText}>
+            {shouldRenderTone && (
+              <Fragment>
+                <span className={styles.tone}>{t(tone)}</span>
+                <span aria-hidden className={styles.separator}>
+                  &bull;
+                </span>
+              </Fragment>
+            )}
+            {renderDate(date, locale)}
+          </div>
+          <Menu menuId={COMMENT_MENU} trigger={trigger} className={styles.menu} options={options} />
         </div>
         <div className={styles.comment}>{content}</div>
       </div>

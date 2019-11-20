@@ -19,12 +19,8 @@ app.use(cookieParser());
 app.get(assetsRoute, Assets(rootDir));
 app.use(express.static(`${rootDir}/dist`));
 
-const postActions = [
-  '/actions/avatar/post',
-  '/actions/cover/post',
-  '/actions/photo/post',
-];
-postActions.forEach(a => {
+const uploadActions = ['/actions/avatar/post', '/actions/cover/post', '/actions/photo/post'];
+uploadActions.forEach((a) => {
   app.post(a, multer({ dest: 'uploads/' }).single('file'), Action);
 });
 app.post('/actions/photo/batch-upload', multer({ dest: 'uploads/' }).array('file'), Action);

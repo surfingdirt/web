@@ -1,5 +1,6 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    albumMenuLabel: getText('Options') /* Label for a menu */,
     batchUpload: getText(
       'Post multiple photos',
       'Album page',

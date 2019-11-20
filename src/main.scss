@@ -16,7 +16,6 @@
     height: 100vh;
   }
 
-
   body, input, textarea, select, button {
     font-family: $default-font-families;
   }
@@ -96,6 +95,12 @@
     display: inline-block;
     width: $standardIconSize;
     height: $standardIconSize;
+  }
+
+  .tinyIcon {
+    display: inline-block;
+    width: $tinyIconSize;
+    height: $tinyIconSize;
   }
 
   svg.smallIcon-svg,

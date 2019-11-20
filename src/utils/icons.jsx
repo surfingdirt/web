@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SVG from 'Components/Widgets/SVG';
 import Activity from 'Images/alarm-bell.svg';
 import Album from 'Images/picture-stack-landscape-bold.svg';
+import ArrowDown from 'Images/arrow-down.svg';
 import Close from 'Images/close.svg';
 import Check from 'Images/check.svg';
 import Expand from 'Images/expand-6.svg';
@@ -22,6 +23,7 @@ import Video from 'Images/video-player-movie.svg';
 
 const ACTIVITY = 'activity';
 const ALBUM = 'album';
+const ARROW_DOWN = 'arrow-down';
 const CLOSE = 'close';
 const CHECK = 'check';
 const EXPAND = 'expand';
@@ -40,6 +42,7 @@ const VIDEO = 'video';
 const icons = {
   ACTIVITY,
   ALBUM,
+  ARROW_DOWN,
   CLOSE,
   CHECK,
   EXPAND,
@@ -59,9 +62,11 @@ export default icons;
 
 const SMALL = 'small';
 const STANDARD = 'standard';
+const TINY = 'tiny';
 export const sizes = {
   SMALL,
   STANDARD,
+  TINY,
 };
 
 export const getIcon = ({ type, label, className, size, presentationOnly }) => {
@@ -74,6 +79,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.ALBUM:
       icon = Album;
+      break;
+    case icons.ARROW_DOWN:
+      icon = ArrowDown;
       break;
     case icons.CLOSE:
       icon = Close;

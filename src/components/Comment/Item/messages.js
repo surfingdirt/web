@@ -1,5 +1,6 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    menuLabel: getText('Options') /* Label for a menu */,
     neutral: getText('neutral', 'Comments') /* Indicates a message was written in a neutral tone */,
     joking: getText('joking', 'Comments') /* Indicates a message was written in a joking tone */,
     angry: getText('angry', 'Comments') /* Indicates a message was written in an angry tone */,
