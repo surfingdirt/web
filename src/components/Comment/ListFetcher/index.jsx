@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
+import LIST_COMMENTS from 'Apollo/queries/listComments3.gql';
 import CommentList from 'Components/Comment/List';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';

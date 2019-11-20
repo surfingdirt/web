@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import VIDEO from 'Apollo/queries/video2.gql';
+import VIDEO from 'Apollo/queries/video3.gql';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';

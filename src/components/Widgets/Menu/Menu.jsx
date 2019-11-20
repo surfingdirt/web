@@ -138,11 +138,9 @@ class Menu extends React.Component {
 
     switch (e.key) {
       case ESCAPE:
-        e.preventDefault();
         this.closeMenu(this.focusTrigger);
         break;
       case ENTER:
-        e.preventDefault();
         {
           const currentOption = options[activeOptionIndex];
           if (currentOption.onSelect) {
@@ -153,7 +151,6 @@ class Menu extends React.Component {
         break;
       case DOWN:
       case UP:
-        e.preventDefault();
         activeOptionIndex += e.key === DOWN ? 1 : -1;
         if (activeOptionIndex > options.length - 1) {
           activeOptionIndex = 0;

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Menu from 'Components/Widgets/Menu';
+import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
@@ -18,11 +19,19 @@ const { NEUTRAL } = tones;
 const { SMALL } = userboxSizes;
 
 const CommentRaw = ({ className, comment, locale, t, tag }) => {
-  const { content, date, submitter, tone } = comment;
+  const { actions, content, date, submitter, tone } = comment;
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
 
-  const options = [() => <span>This is option 1</span>, () => <span>This is option 2</span>];
+  const options = [];
+  if (actions.delete) {
+    options.push(() => <span className={menuStyles.menuEntry}>{t('deleteAction')}</span>);
+  }
+  if (actions.edit) {
+    options.push(() => <span className={menuStyles.menuEntry}>{t('editAction')}</span>);
+  }
+  const showMenu = options.length > 0;
+
   const trigger = getIcon({
     label: t('menuLabel'),
     type: icons.ARROW_DOWN,
@@ -45,7 +54,14 @@ const CommentRaw = ({ className, comment, locale, t, tag }) => {
             )}
             {renderDate(date, locale)}
           </div>
-          <Menu menuId={COMMENT_MENU} trigger={trigger} className={styles.menu} options={options} />
+          {showMenu && (
+            <Menu
+              menuId={COMMENT_MENU}
+              trigger={trigger}
+              className={styles.menu}
+              options={options}
+            />
+          )}
         </div>
         <div className={styles.comment}>{content}</div>
       </div>

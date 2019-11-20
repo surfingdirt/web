@@ -1,5 +1,9 @@
 query listComments($parentType: String!, $parentId: ID!) {
     listComments(parentType: $parentType, parentId: $parentId) {
+        actions {
+            delete
+            edit
+        }
         id
         content
         date
