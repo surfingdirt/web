@@ -77,6 +77,16 @@ $small-horizontal-padding: $padding-small-3;
   border: 2px solid $button-text-color-negative;
 }
 
+.destructiveButton {
+  background: transparent;
+  color: $button-text-background-color-destructive;
+  border: 2px solid $button-text-background-color-destructive;
+
+  &:hover {
+    background: $button-text-background-color-destructive;
+    color: $button-text-color-destructive;
+  }
+}
 
 /* Known button izes */
 .largeSize {

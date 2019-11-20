@@ -7,15 +7,18 @@ import ModalContent from './ModalContent';
 import styles from './styles.scss';
 
 const HERO = 'hero';
+const MINIMAL = 'minimal';
 const STANDARD = 'standard';
 
 export const modalTypes = {
   HERO,
+  MINIMAL,
   STANDARD,
 };
 
 const typeMapping = {
   [HERO]: 'heroModal',
+  [MINIMAL]: 'minimalModal',
   [STANDARD]: 'standardModal',
 };
 

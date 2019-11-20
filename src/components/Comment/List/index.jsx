@@ -21,7 +21,7 @@ const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
     <div className={classnames(styles.wrapper, { [styles.twoColumns]: twoColumns })}>
       <ul className={classnames(styles.list, className)}>
         {comments.map((c) => (
-          <Comment comment={c} className={styles.item} key={c.id} />
+          <Comment comment={c} className={styles.item} key={c.id} parentType={type} parentId={id} />
         ))}
       </ul>
       <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />

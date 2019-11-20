@@ -2,8 +2,11 @@ import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import LIST_COMMENTS from 'Apollo/queries/listComments3.gql';
+import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Menu from 'Components/Widgets/Menu';
+import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
@@ -18,14 +21,44 @@ import styles from './styles.scss';
 const { NEUTRAL } = tones;
 const { SMALL } = userboxSizes;
 
-const CommentRaw = ({ className, comment, locale, t, tag }) => {
-  const { actions, content, date, submitter, tone } = comment;
+const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }) => {
+  const { actions, content, date, id, submitter, tone } = comment;
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
 
   const options = [];
   if (actions.delete) {
-    options.push(() => <span className={menuStyles.menuEntry}>{t('deleteAction')}</span>);
+    const variables = { id };
+    const update = (cache, resultObj) => {
+      const success = !!Object.values(resultObj.data);
+      if (!success) {
+        console.warn('Received false for comment delete', { id });
+        return;
+      }
+      const updateVariables = {
+        parentId,
+        parentType,
+      };
+
+      const { listComments } = cache.readQuery({
+        query: LIST_COMMENTS,
+        variables: updateVariables,
+      });
+      cache.writeQuery({
+        query: LIST_COMMENTS,
+        variables: updateVariables,
+        data: { listComments: listComments.filter((c) => c.id !== id) },
+      });
+    };
+
+    options.push(() => (
+      <DeleteItemModal
+        mutation={DELETE_COMMENT}
+        variables={variables}
+        title={content}
+        update={update}
+      />
+    ));
   }
   if (actions.edit) {
     options.push(() => <span className={menuStyles.menuEntry}>{t('editAction')}</span>);
@@ -75,6 +108,8 @@ CommentRaw.propTypes = {
   locale: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
   tag: PropTypes.string,
+  parentId: PropTypes.string.isRequired,
+  parentType: PropTypes.string.isRequired,
 };
 
 CommentRaw.defaultProps = {

@@ -8,15 +8,20 @@ import styles from './styles.scss';
 
 const ACTION = 'action';
 const BARE = 'bare';
-const DISABLED = 'disabled';
 const MAIN = 'main';
+
+const DISABLED = 'disabled';
+
 const NEGATIVE = 'negative';
 
-export const buttonTypes = { ACTION, BARE, DISABLED, MAIN, NEGATIVE };
+const DESTRUCTIVE = 'destructive';
+
+export const buttonTypes = { ACTION, BARE, DISABLED, DESTRUCTIVE, MAIN, NEGATIVE };
 
 const typeMapping = {
   [ACTION]: 'actionButton',
   [BARE]: 'bareButton',
+  [DESTRUCTIVE]: 'destructiveButton',
   [DISABLED]: 'disabledButton',
   [MAIN]: 'mainButton',
   [NEGATIVE]: 'negativeButton',

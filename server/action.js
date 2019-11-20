@@ -7,7 +7,7 @@ import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto2.
 import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo2.gql';
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
-import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment.gql';
+import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment2.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';

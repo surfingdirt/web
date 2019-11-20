@@ -40,3 +40,13 @@ export const renderDate = (date, locale) => {
   // Less than 12h ago, only display the time
   return d.toLocaleTimeString(locale);
 };
+
+const MAX_TITLE_LENGTH = 30;
+export const truncateItemTitleForConfirmation = (title) => {
+  let clamped = title;
+  if (clamped.length > MAX_TITLE_LENGTH) {
+    clamped = `${clamped.substr(0, MAX_TITLE_LENGTH)}…`;
+  }
+
+  return clamped;
+};

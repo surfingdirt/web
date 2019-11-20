@@ -34,6 +34,20 @@ $title-line-count: 2;
     overflow-x: hidden;
   }
 
+  &.minimalModal {
+    border: $widget-border-width $widget-border-color solid;
+    border-radius: $widget-border-radius;
+    left: 50%;
+    top: 50%;
+    height: min-content;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: min-content;
+    .content {
+      padding: $padding-small-2;
+    }
+  }
+
   &.standardModal {
     border: $widget-border-width $widget-border-color solid;
     border-radius: $widget-border-radius;
