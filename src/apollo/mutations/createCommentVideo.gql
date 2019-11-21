@@ -1,5 +1,9 @@
-mutation createAlbumComment($input: CommentCreationInput!) {
-    createAlbumComment(input: $input) {
+mutation createVideoComment($input: CommentCreationInput!) {
+    createVideoComment(input: $input) {
+        actions {
+            delete
+            edit
+        }
         id
         parentId
         parentType

@@ -4,9 +4,9 @@ import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { useMutation } from '@apollo/react-hooks';
 
-import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum2.gql';
-import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto2.gql';
-import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo2.gql';
+import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum.gql';
+import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto.gql';
+import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo.gql';
 import LIST_COMMENTS from 'Apollo/queries/listComments3.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
