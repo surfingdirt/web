@@ -1,0 +1,37 @@
+mutation createPhoto(
+    $input: PhotoCreationInput!
+    $file: Upload!) {
+    createPhoto(input: $input, file: $file) {
+        id
+        title
+        date
+        description
+        images {
+          type
+          size
+          url
+          height
+          width
+        }
+        thumbs {
+          type
+          size
+          url
+        }
+        album {
+            id
+            title
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+}

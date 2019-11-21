@@ -1,12 +1,12 @@
 import fs from 'fs';
 
 import actions, { ACTION_PREFIX } from '~/actions';
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum.gql';
 import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum.gql';
 import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto.gql';
 import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo.gql';
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
-import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto.gql';
+import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
 import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment2.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';

@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 import createDecorator from 'final-form-calculate';
 
-import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo2.gql';
+import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import VideoEmbed from 'Components/Video/Embed';

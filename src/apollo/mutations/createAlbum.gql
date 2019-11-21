@@ -1,0 +1,24 @@
+mutation createAlbum($input: AlbumCreationInput!) {
+    createAlbum(input: $input) {
+        actions {
+            add
+            delete
+            edit
+        }
+        date
+        description
+        id
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+        title
+    }
+}

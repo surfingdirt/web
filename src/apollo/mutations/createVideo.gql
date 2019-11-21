@@ -1,0 +1,38 @@
+mutation createVideo($input: VideoCreationInput!) {
+    createVideo(input: $input) {
+        id
+        date
+        description
+        mediaType
+        mediaSubType
+        embedUrl
+        height
+        width
+        title
+        thumbs {
+            type
+            size
+            url
+            height
+            width
+        }
+        images {
+            type
+            size
+            url
+            height
+            width
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+}
