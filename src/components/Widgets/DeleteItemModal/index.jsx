@@ -18,14 +18,6 @@ const { DESTRUCTIVE, MAIN } = buttonTypes;
 const Modal = ({ mutation, t, title, update, variables }) => {
   const [deleteItem] = useMutation(mutation);
 
-  const doDeleteItem = async () => {
-    try {
-      await deleteItem({ update, variables });
-    } catch (e) {
-      console.error('Could not delete item', { mutation, variables });
-    }
-  };
-
   const menuEntryLabel = t('deleteItemMenuEntryLabel');
   const modalTitle = t('deleteItemModalTitle');
   const ariaLabel = t('deleteItemDialogLabel');
@@ -41,7 +33,11 @@ const Modal = ({ mutation, t, title, update, variables }) => {
           label={t('confirmDelete')}
           type={DESTRUCTIVE}
           onClick={() => {
-            doDeleteItem().then(closeModal);
+            // Note: no need to close the modal since it's attached to an element that will be deleted
+            deleteItem({ update, variables }).catch(() => {
+              console.error('Could not delete item', { mutation, variables });
+              closeModal();
+            });
           }}
         />
       </div>
@@ -49,7 +45,11 @@ const Modal = ({ mutation, t, title, update, variables }) => {
   );
 
   Content.propTypes = {
-    closeModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func,
+  };
+
+  Content.defaultProps = {
+    closeModal: null,
   };
 
   const DeleteItemModal = WithModal({

@@ -3,24 +3,29 @@ import PropTypes from 'prop-types';
 
 import Modal from 'Components/Widgets/Modal';
 
-const withModal = ({ ariaLabel, modalContent, modalTitle, shouldShowModal, type }) => (
-  BaseComponent,
-) => {
+const withModal = ({
+  ariaLabel,
+  modalContent,
+  modalTitle,
+  onModalClosed,
+  shouldShowModal,
+  type,
+}) => (BaseComponent) => {
   class WithModal extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = { showModal: false };
 
-      this.clickListener = this.clickListener.bind(this);
-      this.onModalClose = this.onModalClose.bind(this);
+      this.outsideClickListener = this.outsideClickListener.bind(this);
+      this.closeModal = this.closeModal.bind(this);
     }
 
-    onModalClose() {
+    closeModal() {
       this.setState({ showModal: false });
     }
 
-    clickListener(event) {
+    outsideClickListener(event) {
       event.preventDefault();
       const { showModal } = this.state;
 
@@ -34,17 +39,17 @@ const withModal = ({ ariaLabel, modalContent, modalTitle, shouldShowModal, type 
       const { showModal } = this.state;
 
       const clonedModalContent = React.cloneElement(modalContent, {
-        closeModal: this.onModalClose,
+        closeModal: this.closeModal,
       });
 
       return (
         <Fragment>
-          <div onClickCapture={this.clickListener}>{BaseComponent}</div>
+          <div onClickCapture={this.outsideClickListener}>{BaseComponent}</div>
           {showModal && (
             <Modal
               modalTitle={modalTitle}
               ariaLabel={ariaLabel}
-              onClose={this.onModalClose}
+              onClose={onModalClosed}
               type={type}
             >
               {clonedModalContent}
@@ -62,11 +67,13 @@ withModal.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   modalContent: PropTypes.node.isRequired,
   modalTitle: PropTypes.string.isRequired,
+  onModalClosed: PropTypes.func,
   shouldShowModal: PropTypes.bool,
   type: PropTypes.string.isRequired,
 };
 
 withModal.defaultProps = {
+  onModalClosed: null,
   shouldShowModal: null,
 };
 
