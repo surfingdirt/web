@@ -61,7 +61,8 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
     ));
   }
   if (actions.edit) {
-    options.push(() => <span className={menuStyles.menuEntry}>{t('editAction')}</span>);
+    // TODO: add comment edition modal
+    // options.push(() => <span className={menuStyles.menuEntry}>{t('editAction')}</span>);
   }
   const showMenu = options.length > 0;
 
