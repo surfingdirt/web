@@ -1,9 +1,10 @@
-query photo($id: ID!) {
-    photo(id: $id) {
-        id
-        title
+query media($id: ID!, $mediaType: String!) {
+    media(id: $id) {
         date
         description
+        embedUrl
+        height
+        id
         images {
           type
           size
@@ -11,10 +12,17 @@ query photo($id: ID!) {
           height
           width
         }
+        mediaType
+        mediaSubType
+        title
+        vendorUrl
+        width
         thumbs {
           type
           size
           url
+          height
+          width
         }
         album {
             id
@@ -32,7 +40,7 @@ query photo($id: ID!) {
             }
         }
     }
-    listComments(parentType: "photo", parentId: $id) {
+    listComments(parentType: $mediaType, parentId: $id) {
         actions {
             delete
             edit
@@ -53,4 +61,5 @@ query photo($id: ID!) {
         }
         tone
     }
+
 }

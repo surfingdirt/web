@@ -7,16 +7,16 @@ query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
         mediaSubType
         embedUrl
         height
-        width
-        title
-        thumbs {
+        images {
             type
             size
             url
             height
             width
         }
-        images {
+        width
+        title
+        thumbs {
             type
             size
             url
