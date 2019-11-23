@@ -11,10 +11,6 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
-  if (comments.length === 0) {
-    return null;
-  }
-
   const twoColumns = !singleColumn;
 
   return (

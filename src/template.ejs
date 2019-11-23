@@ -21,8 +21,11 @@
 {{{ js }}}
 <%= htmlWebpackPlugin.files.js.map(file => `<script src="${file}"></script>`).join('') %>
 <script>
+  <!-- TODO: apply the technique from https://www.youtube.com/watch?v=ff4fgQxPaO0 -->
   window.staticAppContextValues = {{{ staticAppContextValues }}};
+
   window.__APOLLO_STATE__ = {{{ apolloState }}}
+
   window.main && window.main();
 </script>
 

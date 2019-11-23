@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
@@ -6,14 +6,18 @@ import { useMutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
+import HOME from 'Apollo/queries/home.gql';
+import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
+import { AlbumConstants } from 'Utils/data';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { actionRoute, photoRoute } from 'Utils/links';
-import { maxPhotoSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
+import { maxPhotoSize, mediaPageSize, MEDIA_SUBTYPE_IMG } from 'Utils/media';
 import actions from '~/actions';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -21,12 +25,13 @@ import styles from './styles.scss';
 const { PHOTO_NEW } = actions;
 const { ACTION } = buttonTypes;
 const { STANDARD } = sizes;
+const { ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.HOME;
 
 const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
 
 const PhotoUploadForm = ({ albumId, t }) => {
-  console.log('PhotoUploadForm render');
+  const { galleryAlbumId } = useContext(AppContext);
 
   const formRef = useRef();
   const dynamicContentRef = useRef();
@@ -43,10 +48,80 @@ const PhotoUploadForm = ({ albumId, t }) => {
 
   const [addPhoto] = useMutation(CREATE_PHOTO_MUTATION, {});
 
+  const updateHomeQuery = (cache, newItem) => {
+    const queryOptions = {
+      query: HOME,
+      variables: {
+        galleryAlbumId,
+        count: ALBUM_COUNT,
+        countItems: ITEM_COUNT,
+        skipAlbums: [galleryAlbumId],
+      },
+    };
+    const { album, listAlbums } = cache.readQuery(queryOptions);
+    if (album.id === albumId) {
+      // TODO: itemCount
+      const newAlbum = Object.assign({}, album, {
+        media: [newItem].concat(album.media),
+        itemCount: album.itemCount + 1,
+      });
+      cache.writeQuery(
+        Object.assign({}, queryOptions, {
+          data: { listAlbums, album: newAlbum },
+        }),
+      );
+    } else {
+      let index = null;
+      listAlbums.forEach(({ id }, i) => {
+        if (id === albumId) {
+          index = i;
+        }
+      });
+      if (index) {
+        const albumToUpdate = listAlbums[index];
+        const newListAlbums = Object.assign({}, listAlbums);
+        newListAlbums[index] = Object.assign({}, albumToUpdate, {
+          media: [newItem].concat(albumToUpdate.media),
+          itemCount: albumToUpdate.itemCount + 1,
+        });
+        cache.writeQuery(
+          Object.assign({}, queryOptions, {
+            data: { listAlbums: newListAlbums, album },
+          }),
+        );
+      }
+    }
+  };
+  const updateAlbumQuery = (cache, newItem) => {
+    const queryOptions = {
+      query: LIST_MEDIA,
+      variables: {
+        albumId,
+        countItems: mediaPageSize,
+        startItem: 0,
+      },
+    };
+    const { listMedia } = cache.readQuery(queryOptions);
+    cache.writeQuery(
+      Object.assign({}, queryOptions, {
+        data: { listMedia: [newItem].concat(listMedia) },
+      }),
+    );
+  };
+
   const onSubmit = async (values) => {
     const { file: unused, ...input } = values;
-    // TODO: insert new photo at the beginning of its parent album
-    const response = await addPhoto({ variables: { file: fileData, input } });
+    const response = await addPhoto({
+      update: (cache, resultObj) => {
+        const newItem = Object.values(resultObj.data)[0];
+
+        // This update is for the case where a user visits the homepage and then posts a photo.
+        updateHomeQuery(cache, newItem);
+        // This update is for the case where a user visits an album page and then posts a photo.
+        updateAlbumQuery(cache, newItem);
+      },
+      variables: { file: fileData, input },
+    });
     const { id } = response.data.createPhoto;
     setRedirectTo(photoRoute(id));
   };

@@ -50,21 +50,17 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
     update: (cache, resultObj) => {
       const newItem = Object.values(resultObj.data)[0];
 
-      const { listComments } = cache.readQuery({
+      const queryOptions = {
         query: LIST_COMMENTS,
         variables: {
           parentId,
           parentType: type,
         },
-      });
-      cache.writeQuery({
-        query: LIST_COMMENTS,
-        variables: {
-          parentId,
-          parentType: type,
-        },
-        data: { listComments: listComments.concat([newItem]) },
-      });
+      };
+      const { listComments } = cache.readQuery(queryOptions);
+      cache.writeQuery(
+        Object.assign({}, queryOptions, { data: { listComments: listComments.concat([newItem]) } }),
+      );
     },
   });
 

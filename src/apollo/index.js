@@ -1,6 +1,10 @@
 /* eslint-disable no-underscore-dangle, no-console */
 
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import {
+  InMemoryCache,
+  IntrospectionFragmentMatcher,
+  defaultDataIdFromObject,
+} from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { createUploadLink } from 'apollo-upload-client';
@@ -13,19 +17,22 @@ import fragmentTypes from '../../fragmentTypes.json';
 import typeDefs from './options';
 
 const apolloClient = (url, locale, ssrMode, accessToken) => {
-  let cache;
-
+  const cacheOptions = {
+    dataIdFromObject: (o) => {
+      const { id, __typename } = o;
+      const val = id ? `${__typename}-${id}` : defaultDataIdFromObject(o);
+      return val;
+    },
+  };
   if (!fragmentTypes) {
     console.log('Found no fragment type definitions, continuing without fragmentMatcher');
-    cache = new InMemoryCache();
   } else {
-    cache = new InMemoryCache({
-      fragmentMatcher: new IntrospectionFragmentMatcher({
-        introspectionQueryResultData: fragmentTypes,
-      }),
+    cacheOptions.fragmentMatcher = new IntrospectionFragmentMatcher({
+      introspectionQueryResultData: fragmentTypes,
     });
   }
 
+  let cache = new InMemoryCache(cacheOptions);
   if (!ssrMode) {
     cache = cache.restore(window.__APOLLO_STATE__);
   }
