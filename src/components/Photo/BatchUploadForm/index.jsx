@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 import Translate from 'Hocs/Translate';
 import { previewResizeAndOrientFile } from 'Utils/imageProcessing';
-import { maxPhotoSize } from 'Utils/media';
+import {
+  maxPhotoSize,
+  updateAlbumQueryAfterMediaUpload,
+  updateHomeQueryAfterMediaUpload,
+} from 'Utils/media';
 import { photoRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
@@ -128,13 +132,24 @@ class BatchUploadForm extends React.Component {
   }
 
   uploadPromise(index, input, mutate) {
+    const { albumId } = input;
+    const { galleryAlbumId } = this.context;
     const { uploads } = this.state;
     const upload = uploads[index];
     const uploadingUploads = uploads.slice();
     uploadingUploads[index].state = UPLOAD_STATE_UPLOADING;
     this.setState({ uploads: uploadingUploads });
 
-    return mutate({ variables: { file: upload.blob, input } })
+    return mutate({
+      update: (cache, resultObj) => {
+        const newItem = Object.values(resultObj.data)[0];
+
+        updateHomeQueryAfterMediaUpload(cache, newItem, albumId, galleryAlbumId);
+
+        updateAlbumQueryAfterMediaUpload(cache, newItem, albumId);
+      },
+      variables: { file: upload.blob, input },
+    })
       .then((response) => {
         let state = UPLOAD_STATE_FINISHED;
         let link;
@@ -145,7 +160,7 @@ class BatchUploadForm extends React.Component {
             },
           } = response;
           link = photoRoute(id);
-        } catch(err) {
+        } catch (err) {
           console.error('Upload error', response);
           state = UPLOAD_STATE_ERROR;
           link = null;
