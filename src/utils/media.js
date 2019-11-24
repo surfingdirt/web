@@ -1,3 +1,9 @@
+import HOME from 'Apollo/queries/home.gql';
+import { AlbumConstants } from 'Utils/data';
+import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
+
+const { ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.HOME;
+
 export const maxPhotoSize = 1920;
 
 export const mediaPageSize = 30;
@@ -47,4 +53,75 @@ export const getFirstAlbumImageUrl = (items) => {
   }
 
   return getBiggestMediaImageUrl(items[0]);
+};
+
+// This update is for the case where a user visits the homepage and then posts a photo.
+export const updateHomeQueryAfterMediaUpload = (cache, newItem, albumId, galleryAlbumId) => {
+  const queryOptions = {
+    query: HOME,
+    variables: {
+      galleryAlbumId,
+      count: ALBUM_COUNT,
+      countItems: ITEM_COUNT,
+      skipAlbums: [galleryAlbumId],
+    },
+  };
+  const data = cache.readQuery(queryOptions);
+  if (!data) {
+    return;
+  }
+  const { album, listAlbums } = data;
+  if (album.id === albumId) {
+    const newAlbum = Object.assign({}, album, {
+      media: [newItem].concat(album.media).slice(0, ITEM_COUNT),
+      itemCount: album.itemCount + 1,
+    });
+    cache.writeQuery(
+      Object.assign({}, queryOptions, {
+        data: { listAlbums, album: newAlbum },
+      }),
+    );
+  } else {
+    let index = null;
+    listAlbums.forEach(({ id }, i) => {
+      if (id === albumId) {
+        index = i;
+      }
+    });
+    if (index !== null) {
+      const albumToUpdate = listAlbums[index];
+      const newListAlbums = Object.assign({}, listAlbums);
+      newListAlbums[index] = Object.assign({}, albumToUpdate, {
+        media: [newItem].concat(albumToUpdate.media).slice(0, ITEM_COUNT),
+        itemCount: albumToUpdate.itemCount + 1,
+      });
+      cache.writeQuery(
+        Object.assign({}, queryOptions, {
+          data: { listAlbums: newListAlbums, album },
+        }),
+      );
+    }
+  }
+};
+
+// This update is for the case where a user visits an album page and then posts a photo.
+export const updateAlbumQueryAfterMediaUpload = (cache, newItem, albumId) => {
+  const queryOptions = {
+    query: LIST_MEDIA,
+    variables: {
+      albumId,
+      countItems: mediaPageSize,
+      startItem: 0,
+    },
+  };
+  const data = cache.readQuery(queryOptions);
+  if (!data) {
+    return;
+  }
+  const { listMedia } = data;
+  cache.writeQuery(
+    Object.assign({}, queryOptions, {
+      data: { listMedia: [newItem].concat(listMedia).slice(0, mediaPageSize) },
+    }),
+  );
 };
