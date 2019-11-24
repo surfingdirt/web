@@ -8,6 +8,7 @@ import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoUploadForm from 'Components/Photo/UploadForm';
 import Translate from 'Hocs/Translate';
 import { albumRoute } from 'Utils/links';
+import { mediaPageSize } from 'Utils/media';
 import AppContext from '~/contexts';
 
 import messages from './messages';
@@ -31,7 +32,11 @@ class NewPhotoRaw extends React.Component {
     return (
       <DataRenderer
         query={ALBUM_WITH_MEDIA}
-        variables={{ id: albumId }}
+        variables={{
+          id: albumId,
+          countItems: mediaPageSize,
+          startItem: 0,
+        }}
         render={({ album: { title } }) => (
           <Card title={t('photoPostPage')} type={STANDARD} className={styles.page}>
             <span className={styles.postingTo}>

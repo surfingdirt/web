@@ -58,7 +58,11 @@ const PhotoUploadForm = ({ albumId, t }) => {
         skipAlbums: [galleryAlbumId],
       },
     };
-    const { album, listAlbums } = cache.readQuery(queryOptions);
+    const data = cache.readQuery(queryOptions);
+    if (!data) {
+      return;
+    }
+    const { album, listAlbums } = data;
     if (album.id === albumId) {
       const newAlbum = Object.assign({}, album, {
         media: [newItem].concat(album.media.slice(0, ITEM_COUNT - 1)),
@@ -76,7 +80,7 @@ const PhotoUploadForm = ({ albumId, t }) => {
           index = i;
         }
       });
-      if (index) {
+      if (index !== null) {
         const albumToUpdate = listAlbums[index];
         const newListAlbums = Object.assign({}, listAlbums);
         newListAlbums[index] = Object.assign({}, albumToUpdate, {
@@ -100,7 +104,11 @@ const PhotoUploadForm = ({ albumId, t }) => {
         startItem: 0,
       },
     };
-    const { listMedia } = cache.readQuery(queryOptions);
+    const data = cache.readQuery(queryOptions);
+    if (!data) {
+      return;
+    }
+    const { listMedia } = data;
     cache.writeQuery(
       Object.assign({}, queryOptions, {
         data: { listMedia: [newItem].concat(listMedia) },
