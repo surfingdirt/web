@@ -60,9 +60,8 @@ const PhotoUploadForm = ({ albumId, t }) => {
     };
     const { album, listAlbums } = cache.readQuery(queryOptions);
     if (album.id === albumId) {
-      // TODO: itemCount
       const newAlbum = Object.assign({}, album, {
-        media: [newItem].concat(album.media),
+        media: [newItem].concat(album.media.slice(0, ITEM_COUNT - 1)),
         itemCount: album.itemCount + 1,
       });
       cache.writeQuery(
@@ -81,7 +80,7 @@ const PhotoUploadForm = ({ albumId, t }) => {
         const albumToUpdate = listAlbums[index];
         const newListAlbums = Object.assign({}, listAlbums);
         newListAlbums[index] = Object.assign({}, albumToUpdate, {
-          media: [newItem].concat(albumToUpdate.media),
+          media: [newItem].concat(albumToUpdate.media.slice(0, ITEM_COUNT - 1)),
           itemCount: albumToUpdate.itemCount + 1,
         });
         cache.writeQuery(
