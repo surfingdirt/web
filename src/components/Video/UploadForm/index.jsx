@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
-import { useMutation } from 'react-apollo';
+import { useMutation, useLazyQuery } from '@apollo/react-hooks';
 import { Redirect } from 'react-router';
-import createDecorator from 'final-form-calculate';
 
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
+import GET_VIDEO_INFO from 'Apollo/queries/getVideoInfo.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import VideoEmbed from 'Components/Video/Embed';
@@ -28,50 +28,15 @@ const { STANDARD } = sizes;
 const VIDEO_PREVIEW_WIDTH = 16;
 const VIDEO_PREVIEW_HEIGHT = 9;
 
-const urlParser = createDecorator({
-  field: 'url',
-  updates: {
-    mediaSubType: (url) => {
-      const { mediaSubType } = extractKeyAndSubType(url);
-      return mediaSubType;
-    },
-    // TODO: implement this through a call to graphQL. Otherwise the same-domain restriction means this is a no-go:
-    // title: (url) =>
-    //   new Promise((resolve, reject) => {
-    //     const { mediaSubType } = extractKeyAndSubType(url);
-    //     if (!mediaSubType) {
-    //       return reject();
-    //     }
-    //     const options = {};
-    //     fetch(url, options)
-    //       .then((response) => response.text())
-    //       .then((page) => {
-    //         console.log('Fetched:', page);
-    //         const regex = /<title>(.*)<\/title>/;
-    //         const match = page.match(regex);
-    //         console.log(match);
-    //         if (match.length >= 1) {
-    //           return resolve(match[1]);
-    //         } else {
-    //           return reject();
-    //         }
-    //       }).catch((e) => {
-    //         console.error('Error while fetching title', e);
-    //       });
-    //   }),
-    vendorKey: (url) => {
-      const { vendorKey } = extractKeyAndSubType(url);
-      return vendorKey;
-    },
-  },
-});
-
 const VideoUploadForm = ({ albumId, t }) => {
   const { galleryAlbumId } = useContext(AppContext);
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
 
   const [addVideo] = useMutation(CREATE_VIDEO_MUTATION, {});
+  const [getVideoInfo, { data, loading }] = useLazyQuery(GET_VIDEO_INFO);
+
+  console.log('videoInfo', { data, loading });
 
   const onSubmit = async ({ url, mediaSubType, ...rest }) => {
     const input = Object.assign({}, rest, { mediaSubType: mediaSubType.toUpperCase() });
@@ -112,30 +77,55 @@ const VideoUploadForm = ({ albumId, t }) => {
     return errors;
   };
 
-  const renderPreview = (mediaSubType, vendorKey) => {
-    if (!mediaSubType || !vendorKey) {
+  const renderPreview = (iframeUrl) => {
+    if (!iframeUrl) {
       return null;
     }
 
-    const url = buildEmbedUrl(mediaSubType, vendorKey);
-    return <VideoEmbed url={url} height={VIDEO_PREVIEW_HEIGHT} width={VIDEO_PREVIEW_WIDTH} />;
+    return <VideoEmbed url={iframeUrl} height={VIDEO_PREVIEW_HEIGHT} width={VIDEO_PREVIEW_WIDTH} />;
   };
 
   if (redirectTo) {
     return <Redirect to={redirectTo} />;
   }
 
+  let initialValues = { albumId };
+  let iframeUrl = null;
+  if (data) {
+    const {
+      description,
+      height,
+      mediaSubType,
+      thumbUrl,
+      title,
+      url,
+      vendorKey,
+      width,
+    } = data.getVideoInfo;
+    // eslint-disable-next-line prefer-destructuring
+    iframeUrl = data.getVideoInfo.iframeUrl;
+    initialValues = Object.assign({}, initialValues, {
+      description,
+      height,
+      mediaSubType,
+      thumbUrl,
+      title,
+      url,
+      vendorKey,
+      width,
+    });
+  }
+
   return (
     <Form
-      initialValues={{ albumId }}
+      initialValues={initialValues}
       onSubmit={onSubmit}
-      decorators={[urlParser]}
       validate={validate}
       render={({ handleSubmit, invalid, submitting, submitError, values }) => {
-        const { mediaSubType, vendorKey } = values;
         const errorMessage = submitError || displayError;
 
-        const preview = renderPreview(mediaSubType, vendorKey);
+        // TODO: replace this with a spinner if loading is true. Also disable the form.
+        const preview = renderPreview(iframeUrl);
 
         return (
           <form
@@ -164,6 +154,10 @@ const VideoUploadForm = ({ albumId, t }) => {
               type="text"
               label={t('url')}
               placeholder={t('urlPlaceholder')}
+              onChange={(e) => {
+                console.log('url onChange', e);
+                getVideoInfo({ variables: { url: e.target.value } });
+              }}
             />
 
             <Field
@@ -187,6 +181,15 @@ const VideoUploadForm = ({ albumId, t }) => {
             />
 
             <Field name="albumId">
+              {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+            </Field>
+            <Field name="thumbUrl">
+              {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+            </Field>
+            <Field name="width">
+              {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+            </Field>
+            <Field name="height">
               {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
             </Field>
             <Field name="mediaSubType">

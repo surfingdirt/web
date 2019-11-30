@@ -1,0 +1,13 @@
+query($url: String!) {
+  getVideoInfo(url: $url){
+    description
+    height
+    iframeUrl
+    mediaSubType
+    thumbUrl
+    title
+    url
+    vendorKey
+    width
+  }
+}
