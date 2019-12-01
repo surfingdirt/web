@@ -8,7 +8,7 @@ import Translate from 'Hocs/Translate';
 import messages from './messages';
 import styles from './styles.scss';
 
-const VideoEmbed = ({ className, height, loading, mediaSubType, t, url, width }) => {
+const VideoEmbed = ({ className, height, loading, t, url, width }) => {
   const attrs = {};
 
   if (loading) {
@@ -38,7 +38,6 @@ VideoEmbed.propTypes = {
   className: PropTypes.string,
   height: PropTypes.number.isRequired,
   loading: PropTypes.bool,
-  mediaSubType: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,

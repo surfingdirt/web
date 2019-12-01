@@ -1,6 +1,7 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     backendError: getText('An error occurred. Please try again.') /* Generic error message */,
+    continue: getText('Continue') /* Label for a button to continue adding a video */,
     description: getText('Description') /* Label for a form field to enter a description */,
     descriptionPlaceholder: getText(
       'Enter a description',
@@ -8,8 +9,8 @@ const messages = (getText, getPlural) => (key) =>
     notUnderstood: getText(
       'Could not understand this address',
     ) /* Error message showed when a user entered a video address that could not be understood */,
-    pasteBelow: getText(
-      'Paste a video address below',
+    pasteAbove: getText(
+      'Paste a video address above',
     ) /* Help text instructing what to do to upload a video */,
     required: getText(
       'Required',
