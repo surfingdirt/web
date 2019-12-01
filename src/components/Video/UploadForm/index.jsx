@@ -14,7 +14,6 @@ import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import { actionRoute, videoRoute } from 'Utils/links';
 import { updateHomeQueryAfterMediaUpload, updateAlbumQueryAfterMediaUpload } from 'Utils/media';
-import { buildEmbedUrl, extractKeyAndSubType } from 'Utils/video';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
@@ -28,15 +27,43 @@ const { STANDARD } = sizes;
 const VIDEO_PREVIEW_WIDTH = 16;
 const VIDEO_PREVIEW_HEIGHT = 9;
 
+const DEBOUNCE_DURATION_MS = 500;
+const URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
+
+let timeout = null;
+
+const isValidUrl = (url) => {
+  const matches = url.match(URL_REGEX);
+  const isValid = matches && matches.length > 0;
+  return isValid;
+};
+
 const VideoUploadForm = ({ albumId, t }) => {
   const { galleryAlbumId } = useContext(AppContext);
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
+  // videoUrl is the manually entered url
+  const [videoUrl, setVideoUrl] = useState('');
 
   const [addVideo] = useMutation(CREATE_VIDEO_MUTATION, {});
-  const [getVideoInfo, { data, loading }] = useLazyQuery(GET_VIDEO_INFO);
+  const [getVideoInfo, { data, error: videoInfoErrorFlag, loading }] = useLazyQuery(GET_VIDEO_INFO);
+  const videoInfoError = videoInfoErrorFlag ? t('videoInfoError') : null;
 
-  console.log('videoInfo', { data, loading });
+  const onUrlChange = (e) => {
+    const url = e.target.value;
+    setVideoUrl(url);
+
+    if (!isValidUrl(url)) {
+      return;
+    }
+
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      getVideoInfo({ variables: { url } });
+    }, DEBOUNCE_DURATION_MS);
+  };
 
   const onSubmit = async ({ url, mediaSubType, ...rest }) => {
     const input = Object.assign({}, rest, { mediaSubType: mediaSubType.toUpperCase() });
@@ -67,22 +94,24 @@ const VideoUploadForm = ({ albumId, t }) => {
 
     if (!values.url) {
       errors.url = t('required');
-    } else {
-      const { mediaSubType, vendorKey } = extractKeyAndSubType(values.url);
-      if (!mediaSubType || !vendorKey) {
-        errors.url = t('notUnderstood');
-      }
     }
 
     return errors;
   };
 
-  const renderPreview = (iframeUrl) => {
-    if (!iframeUrl) {
+  const renderPreview = (iframeUrl, isLoading) => {
+    if (!iframeUrl && !isLoading) {
       return null;
     }
 
-    return <VideoEmbed url={iframeUrl} height={VIDEO_PREVIEW_HEIGHT} width={VIDEO_PREVIEW_WIDTH} />;
+    return (
+      <VideoEmbed
+        loading={loading}
+        url={iframeUrl}
+        height={VIDEO_PREVIEW_HEIGHT}
+        width={VIDEO_PREVIEW_WIDTH}
+      />
+    );
   };
 
   if (redirectTo) {
@@ -114,6 +143,8 @@ const VideoUploadForm = ({ albumId, t }) => {
       vendorKey,
       width,
     });
+  } else {
+    initialValues.url = videoUrl;
   }
 
   return (
@@ -122,10 +153,10 @@ const VideoUploadForm = ({ albumId, t }) => {
       onSubmit={onSubmit}
       validate={validate}
       render={({ handleSubmit, invalid, submitting, submitError, values }) => {
-        const errorMessage = submitError || displayError;
+        const errorMessage = submitError || displayError || videoInfoError;
+        const preview = renderPreview(iframeUrl, loading);
 
-        // TODO: replace this with a spinner if loading is true. Also disable the form.
-        const preview = renderPreview(iframeUrl);
+        const empty = !preview || loading;
 
         return (
           <form
@@ -135,7 +166,7 @@ const VideoUploadForm = ({ albumId, t }) => {
             method="POST"
             encType="multipart/form-data"
           >
-            <div className={classnames(styles.preview, { [styles.empty]: !preview })}>
+            <div className={classnames(styles.preview, { [styles.empty]: empty })}>
               {preview || (
                 <div className={styles.content}>
                   {getIcon({ type: icons.VIDEO, size: STANDARD })}
@@ -154,10 +185,7 @@ const VideoUploadForm = ({ albumId, t }) => {
               type="text"
               label={t('url')}
               placeholder={t('urlPlaceholder')}
-              onChange={(e) => {
-                console.log('url onChange', e);
-                getVideoInfo({ variables: { url: e.target.value } });
-              }}
+              onChange={onUrlChange}
             />
 
             <Field

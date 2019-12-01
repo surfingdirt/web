@@ -19,6 +19,9 @@ const messages = (getText, getPlural) => (key) =>
     url: getText('Video address') /* Label for a form field to enter a video address */,
     urlPlaceholder: getText('Paste the address here') /* Help text to tell the user what to type */,
     upload: getText('Upload') /* Label for a button to upload a picture */,
+    videoInfoError: getText(
+      'Video not supported',
+    ) /* Error message displayed when the user is trying to post a video but the system does not understand the video address */,
   }[key]);
 
 export default messages;

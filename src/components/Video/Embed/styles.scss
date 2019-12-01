@@ -3,6 +3,10 @@
   height: 0;
   width: 100%;
   padding-top: 50vmin;
+
+  &.loading {
+    position: initial;
+  }
 }
 
 .video {
@@ -12,4 +16,14 @@
   top: 0;
   left: 0;
   border: 0;
+}
+
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loader {
+    width: 5rem;
+  }
 }
