@@ -10,7 +10,7 @@ import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
-class NewAlbumRaw extends React.Component {
+class NewAlbum extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
   };
@@ -25,4 +25,4 @@ class NewAlbumRaw extends React.Component {
   }
 }
 
-export const NewAlbum = Translate(messages)(NewAlbumRaw);
+export default Translate(messages)(NewAlbum);

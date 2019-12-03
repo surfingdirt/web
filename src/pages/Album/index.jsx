@@ -29,7 +29,7 @@ const { STANDARD } = cardTypes;
 const { SMALL } = userboxSizes;
 const { LEFT } = positions;
 
-class AlbumRaw extends React.Component {
+class Album extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
     t: PropTypes.func.isRequired,
@@ -110,4 +110,4 @@ class AlbumRaw extends React.Component {
   }
 }
 
-export const Album = Translate(messages)(AlbumRaw);
+export default Translate(messages)(Album);

@@ -13,7 +13,7 @@ import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
-const UsersRaw = ({ t }) => (
+const Users = ({ t }) => (
   <DataRenderer
     query={USERS}
     render={({ listUsers }) => (
@@ -35,4 +35,4 @@ UsersRaw.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export const Users = Translate(messages)(UsersRaw);
+export default Translate(messages)(Users);

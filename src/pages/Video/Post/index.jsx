@@ -15,7 +15,7 @@ import messages from './messages';
 
 const { STANDARD } = cardTypes;
 
-export class NewVideoRaw extends React.Component {
+class NewVideo extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
   };
@@ -46,4 +46,4 @@ export class NewVideoRaw extends React.Component {
   }
 }
 
-export const NewVideo = Translate(messages)(NewVideoRaw);
+export default Translate(messages)(NewVideo);

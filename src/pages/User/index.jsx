@@ -20,7 +20,7 @@ const MIN_DROPCAP_LENGTH = 200;
 
 // TODO: dedupe code between this and pages/Profile/index.jsx
 
-export const User = ({ match }) => {
+const User = ({ match }) => {
   const { id: userId } = match.params;
 
   return (
@@ -74,3 +74,5 @@ export const User = ({ match }) => {
 User.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
+export default User;

@@ -2,12 +2,6 @@ import loadable from '@loadable/component';
 import loading from 'Components/Loading';
 
 const pages = {
-  Test: loadable(() => import(/* webpackChunkName: 'Test' */ './pages/Test'), {
-    fallback: loading,
-  }),
-  // Test: () => ,
-  //   return <p>This is static</p>;
-  // },
   About: loadable(
     () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
     { fallback: loading },

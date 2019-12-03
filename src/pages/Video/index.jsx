@@ -8,7 +8,7 @@ import { mediaTypes } from 'Utils/media';
 
 const { VIDEO: VIDEO_TYPE } = mediaTypes;
 
-export const Video = ({ match }) => {
+const Video = ({ match }) => {
   const { id } = match.params;
 
   return (
@@ -23,3 +23,5 @@ export const Video = ({ match }) => {
 Video.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
+export default Video;

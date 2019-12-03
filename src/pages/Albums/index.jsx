@@ -17,7 +17,7 @@ import styles from './styles.scss';
 
 const { INITIAL_ALBUM_COUNT, SUBSEQUENT_ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.ALBUMS;
 
-const AlbumsRaw = ({ t }) => {
+const Albums = ({ t }) => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(false);
   const { galleryAlbumId } = useContext(AppContext);
@@ -83,8 +83,8 @@ const AlbumsRaw = ({ t }) => {
   );
 };
 
-AlbumsRaw.propTypes = {
+Albums.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export const Albums = Translate(messages)(AlbumsRaw);
+export default Translate(messages)(Albums);

@@ -15,7 +15,7 @@ import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
-class NewPhotoRaw extends React.Component {
+class NewPhoto extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
     t: PropTypes.func.isRequired,
@@ -47,4 +47,4 @@ class NewPhotoRaw extends React.Component {
   }
 }
 
-export const NewPhoto = Translate(messages)(NewPhotoRaw);
+export default Translate(messages)(NewPhoto);

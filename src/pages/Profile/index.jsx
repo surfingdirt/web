@@ -32,7 +32,7 @@ const MIN_DROPCAP_LENGTH = 200;
 
 // TODO: dedupe code between this and pages/User/index.jsx
 
-class ProfileRaw extends React.Component {
+class Profile extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -127,4 +127,4 @@ class ProfileRaw extends React.Component {
   }
 }
 
-export const Profile = Translate(messages)(ProfileRaw);
+export default Translate(messages)(Profile);

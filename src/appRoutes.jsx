@@ -3,11 +3,9 @@ import { Route, Switch } from 'react-router';
 
 import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
 import { DefaultLayoutRoute } from 'Components/Route';
-import { Page404 } from 'Pages/Page404';
+import Page404 from 'Pages/Page404';
 import pages from '~/pages';
 import routes from '~/routes';
-
-// const appRoutes = <Route component={pages.Test} />;
 
 const appRoutes = (
   <Fragment>
@@ -25,8 +23,6 @@ const appRoutes = (
     />
 
     <Switch>
-      <DefaultLayoutRoute exact path="/test" component={pages.Test} />
-
       <DefaultLayoutRoute exact path={routes.HOME} component={pages.Home} />
 
       <DefaultLayoutRoute path={routes.ABOUT} component={pages.About} />

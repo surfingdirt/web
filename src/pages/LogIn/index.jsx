@@ -17,7 +17,7 @@ import PageContent from './pageContent';
 const { HOME } = routes;
 const { STANDARD } = cardTypes;
 
-class LogInPage extends Component {
+class LogIn extends Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -103,4 +103,4 @@ class LogInPage extends Component {
   }
 }
 
-export const LogIn = Translate(messages)(LogInPage);
+export default Translate(messages)(LogIn);

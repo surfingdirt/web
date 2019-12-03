@@ -8,10 +8,11 @@ import { Helmet } from 'react-helmet';
 import Translate from 'Hocs/Translate';
 
 import messages from './messages';
+import { OldForum } from 'Pages/OldForum';
 
 const { STANDARD } = cardTypes;
 
-class RawPage404 extends React.Component {
+class Page404 extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
   };
@@ -41,4 +42,4 @@ class RawPage404 extends React.Component {
   }
 }
 
-export const Page404 = Translate(messages)(RawPage404);
+export default Translate(messages)(Page404);
