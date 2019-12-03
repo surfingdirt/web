@@ -15,10 +15,7 @@ const facebookUrls = [
   'www.facebook.com/kody.stewart.739/videos/10162168992300290/',
   'www.facebook.com/freshfishfilms/videos/733411660429890/?t=2',
 ];
-const instagramUrls = [
-  'www.instagram.com/p/B1ZRr4flweF/',
-  'www.instagram.com/p/B1ZRr4flweF/embed',
-];
+const instagramUrls = ['www.instagram.com/p/B1ZRr4flweF/', 'www.instagram.com/p/B1ZRr4flweF/embed'];
 const vimeoUrls = ['//vimeo.com/97276391', '//player.vimeo.com/video/97276391'];
 const youtubeUrls = [
   'www.youtube.com/watch?v=HRb7B9fPhfA',

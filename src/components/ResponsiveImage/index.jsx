@@ -36,7 +36,7 @@ const buildListsByType = (list) =>
     return acc;
   }, {});
 
-const ResponsiveImage = ({ alt, className, images, maxHeight, objectFit, sizes,}) => {
+const ResponsiveImage = ({ alt, className, images, maxHeight, objectFit, sizes }) => {
   const { url: src, width: aspectRatioWidth, height: aspectRatioHeight } = findDefaultImage(images);
 
   const imagesByType = buildListsByType(images);

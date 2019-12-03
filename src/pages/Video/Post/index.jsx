@@ -33,7 +33,10 @@ export class NewVideoRaw extends React.Component {
         variables={{ id: albumId }}
         render={({ album: { title } }) => (
           <Card title={t('videoPostPage')} type={STANDARD} className={styles.page}>
-            <span className={styles.postingTo}>{t('postingToAlbum')}{':'}</span>
+            <span className={styles.postingTo}>
+              {t('postingToAlbum')}
+              {':'}
+            </span>
             <Link to={albumRoute(albumId)}>{title}</Link>
             <VideoUploadForm albumId={albumId} />
           </Card>

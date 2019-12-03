@@ -34,7 +34,9 @@ class OldForumRaw extends React.Component {
             <Paragraph>{t('paragraph2')}</Paragraph>
             <Paragraph>{t('paragraph3')}</Paragraph>
 
-            <a href={FORUM_URL} target="_blank">{t('go')}</a>
+            <a href={FORUM_URL} target="_blank">
+              {t('go')}
+            </a>
           </div>
         </Card>
       </Fragment>

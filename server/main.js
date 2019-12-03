@@ -44,7 +44,6 @@ const Main = (rootDir) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 
     const context = {}; // required
-    const modules = new Set();
     let document;
 
     const { family } = useragent.parse(req.headers['user-agent']);

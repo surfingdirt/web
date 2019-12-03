@@ -145,7 +145,7 @@ class BatchUploadForm extends React.Component {
             },
           } = response;
           link = photoRoute(id);
-        } catch(err) {
+        } catch (err) {
           console.error('Upload error', response);
           state = UPLOAD_STATE_ERROR;
           link = null;

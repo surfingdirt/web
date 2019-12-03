@@ -19,7 +19,11 @@ const { VIDEO } = mediaTypes;
 
 const getHeroContent = (media, mediaType, t) => {
   let heroContent;
-  const { album: {title: albumTitle }, description, title } = media;
+  const {
+    album: { title: albumTitle },
+    description,
+    title,
+  } = media;
 
   const image = getBiggestMediaImageUrl(media);
   if (mediaType === VIDEO) {

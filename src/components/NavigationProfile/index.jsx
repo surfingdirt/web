@@ -45,7 +45,7 @@ class NavigationProfile extends React.Component {
 
     const title = loggedIn ? username : t('login');
     const to = loggedIn ? PROFILE_PAGE : LOGIN;
-    const hasAvatar = avatar && avatar.length > 0
+    const hasAvatar = avatar && avatar.length > 0;
     const visual =
       loggedIn && hasAvatar ? (
         <UserProfile username={username} images={avatar} type={userProfileTypes.FILL} />

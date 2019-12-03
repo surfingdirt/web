@@ -20,6 +20,6 @@ const DropCap = ({ word }) => {
 };
 DropCap.propTypes = {
   word: PropTypes.string.isRequired,
-}
+};
 
 export default DropCap;

@@ -24,14 +24,8 @@ postActions.forEach((a) => {
 app.post('/actions/photo/batch-upload', multer({ dest: 'uploads/' }).array('file'), Action);
 app.post('/actions/*', multer().none(), Action);
 
-if (process.env.NODE_ENV !== 'production') {
-  app.use('/storybook', express.static(`${rootDir}/storybook-static`));
-}
-
 app.use(Main(rootDir));
 
-// Loadable.preloadAll()
-//   .then(() => {
 // Launch frontend server:
 app.listen(config.port, (err) => {
   if (err) {
@@ -42,8 +36,3 @@ app.listen(config.port, (err) => {
   // eslint-disable-next-line no-console
   console.log(`Frontend server is listening on port ${config.port}`);
 });
-//})
-// .catch((err) => {
-//   // eslint-disable-next-line no-console
-//   console.log('An error occurred during Loadable.preloadAll callback:', err);
-// });

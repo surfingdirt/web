@@ -25,7 +25,7 @@ const { NO_TEXT } = logoTypes;
 
 const { ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.HOME;
 
-class HomeRaw extends React.Component {
+class Home extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -102,4 +102,4 @@ class HomeRaw extends React.Component {
   }
 }
 
-export const Home = Translate(messages)(HomeRaw);
+export default Translate(messages)(Home);
