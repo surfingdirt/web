@@ -1,16 +1,16 @@
 // Use gzipped assets for JS, CSS & HTML
 // noinspection JSUnresolvedFunction
+import { ChunkExtractor } from '@loadable/server';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Handlebars from 'handlebars';
-import Helmet from 'react-helmet';
-import { getBundles } from '@7rulnik/react-loadable/webpack';
+import { HelmetProvider } from 'react-helmet-async';
+
 import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
-import Loadable from '@7rulnik/react-loadable';
 import slugify from 'slugify';
 import useragent from 'useragent';
 
@@ -18,10 +18,12 @@ import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import App from '~/App';
 
-import stats from '../dist/react-loadable.json';
 import Logger from './logger';
 import utils from './utils';
 import { analyticsId, config, fbAppId, title } from '../config';
+
+const statsFile = path.resolve('./dist/loadable-stats.json');
+const extractor = new ChunkExtractor({ statsFile });
 
 const Main = (rootDir) => {
   const screenWidth = undefined;
@@ -37,13 +39,10 @@ const Main = (rootDir) => {
     fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
   );
 
-  const appleHtml = fs.readFileSync(`${rootDir}/src/apple-meta.html`, 'utf8');
-
   return async (req, res, next) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 
     const context = {}; // required
-    const modules = new Set();
     let document;
 
     const { family } = useragent.parse(req.headers['user-agent']);
@@ -85,57 +84,42 @@ const Main = (rootDir) => {
       appContextValueObject.setAccessToken(accessToken);
 
       const apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
+      const helmetContext = {};
 
       // noinspection JSUnresolvedFunction
-      const WrappedApp = (
-        <Loadable.Capture
-          report={(moduleName) => {
-            modules.add(moduleName);
-          }}
-        >
+      const WrappedApp = extractor.collectChunks(
+        <HelmetProvider context={helmetContext}>
           <ApolloProvider client={apolloClientInstance}>
             <StaticRouter location={req.url} context={context}>
               <App appContextValueObject={appContextValueObject} />
             </StaticRouter>
           </ApolloProvider>
-        </Loadable.Capture>
+        </HelmetProvider>,
       );
 
       const html = await getMarkupFromTree({
         tree: WrappedApp,
         renderFunction: renderToString,
       });
-
-      const bundles = getBundles(stats, Array.from(modules));
-      const styles = bundles.filter((bundle) => bundle.file.endsWith('.css'));
-      const scripts = bundles.filter((bundle) => bundle.file.endsWith('.js'));
-
-      // noinspection JSUnresolvedFunction
-      const helmet = Helmet.renderStatic();
-
-      const regex = /\/>/g;
-      const meta = helmet.meta.toString().replace(regex, '/>\n');
+      const css = extractor.getStyleTags();
+      const js = extractor.getScriptTags();
+      const { helmet } = helmetContext;
 
       // Inserts the rendered React HTML and assets into our html
       document = regularPageTemplate({
+        agentBodyClass,
         analyticsId,
-        appleHtml,
-        // The replace call is a protection against XSS vulnerabilities in data evaled in the initial page load.
-        apolloState: JSON.stringify(apolloClientInstance.extract()).replace(/</g, '\\u003c'),
-        css: styles
-          .map(({ file }) => `<link href="/${file}" rel="stylesheet" type="text/css" />`)
-          .join('\n'),
+        apolloState: JSON.stringify(apolloClientInstance.extract()),
+        css,
         dir,
         fbAppId,
         html,
         inlineStyle: `<style></style>`,
-        js: scripts.map(({ file }) => `<script src="/${file}"></script>`).join('\n'),
-        locale,
-        meta: meta || '',
-        agentBodyClass,
-        script: (helmet && helmet.script && helmet.script.toString()) || '',
+        js,
+        lang: llocaleanguage,
+        meta: helmet.meta,
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
-        title: (helmet && helmet.title && helmet.title.toString()) || '',
+        title: helmet.title,
       });
     } catch (err) {
       Logger.log(err);
@@ -154,7 +138,7 @@ const Main = (rootDir) => {
     }
 
     // Sends the response back to the client
-    res.status(context.status || 200).end(document);
+    return res.status(context.status || 200).end(document);
   };
 };
 

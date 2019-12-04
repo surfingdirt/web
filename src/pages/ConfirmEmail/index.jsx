@@ -19,7 +19,7 @@ const { STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { LOGIN } = routes;
 
-class ConfirmEmailRaw extends PureComponent {
+class ConfirmEmail extends PureComponent {
   static propTypes = {
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     t: PropTypes.func.isRequired,
@@ -111,4 +111,4 @@ class ConfirmEmailRaw extends PureComponent {
   }
 }
 
-export const ConfirmEmail = Translate(messages)(ConfirmEmailRaw);
+export default Translate(messages)(ConfirmEmail);

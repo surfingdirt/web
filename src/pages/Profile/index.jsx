@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import classnames from 'classnames';
 
 import USER_PROFILE from 'Apollo/queries/user.gql';
@@ -34,7 +34,7 @@ const MIN_DROPCAP_LENGTH = 200;
 
 // TODO: dedupe code between this and pages/User/index.jsx
 
-class ProfileRaw extends React.Component {
+class Profile extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -130,4 +130,4 @@ class ProfileRaw extends React.Component {
   }
 }
 
-export const Profile = Translate(messages)(ProfileRaw);
+export default Translate(messages)(Profile);

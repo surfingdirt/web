@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
 import Card, { cardTypes } from 'Components/Widgets/Card';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Translate from 'Hocs/Translate';
 
@@ -11,7 +11,7 @@ import messages from './messages';
 
 const { STANDARD } = cardTypes;
 
-class RawPage404 extends React.Component {
+class Page404 extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
   };
@@ -41,4 +41,4 @@ class RawPage404 extends React.Component {
   }
 }
 
-export const Page404 = Translate(messages)(RawPage404);
+export default Translate(messages)(Page404);

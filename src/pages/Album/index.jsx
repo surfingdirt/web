@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';

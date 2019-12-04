@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Form, Field } from 'react-final-form';
 
 import USER from 'Apollo/queries/user.gql';
@@ -20,7 +20,7 @@ const MIN_DROPCAP_LENGTH = 200;
 
 // TODO: dedupe code between this and pages/Profile/index.jsx
 
-export const User = ({ match }) => {
+const User = ({ match }) => {
   const { id: userId } = match.params;
 
   return (
@@ -74,3 +74,5 @@ export const User = ({ match }) => {
 User.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
+export default User;

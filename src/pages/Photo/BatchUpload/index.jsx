@@ -15,7 +15,7 @@ import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
-class BatchUploadRaw extends React.Component {
+class BatchUpload extends React.Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
     t: PropTypes.func.isRequired,
@@ -44,4 +44,4 @@ class BatchUploadRaw extends React.Component {
   }
 }
 
-export const BatchUpload = Translate(messages)(BatchUploadRaw);
+export default Translate(messages)(BatchUpload);

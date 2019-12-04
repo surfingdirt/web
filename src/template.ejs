@@ -10,9 +10,24 @@
 {{{ appleHtml }}}
 
 {{{ title }}}
-{{{ script }}}
 
-<%= htmlWebpackPlugin.files.css.map(file => `<link href="${file}" rel="stylesheet" type="text/css" />`).join('') %>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{{ baseUrl }}}/apple-icon-180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="{{{ baseUrl }}}/apple-icon-167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{{ baseUrl }}}/apple-icon-152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{{ baseUrl }}}/apple-icon-120.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image"
+          href="{{{ baseUrl }}}/apple-splash-2048-2732.png"
+          media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image"
+          href="{{{ baseUrl }}}/apple-splash-2732-2048.png"
+          media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image"
+          href="{{{ baseUrl }}}/apple-splash-1668-2388.png"
+
+
+        <%= htmlWebpackPlugin.files.css.map(file => `<link href="${file}" rel="stylesheet" type="text/css" />`).join('') %>
 {{{ css }}}
 {{{ inlineStyle }}}
 </head>
@@ -40,7 +55,7 @@
   (function() {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
-        .register('/sw.js', { scope: '/' })
+        .register('{{{ baseUrl }}}/sw.js', { scope: '/' })
         .then(() => console.log('Service Worker registered successfully.'))
         .catch((error) => console.log('Service Worker registration failed:', error));
     }

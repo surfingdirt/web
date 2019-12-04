@@ -15,7 +15,7 @@ const { PRIMARY } = headingTypes;
 const { BIG_VERTICAL } = logoTypes;
 const { BARE } = cardTypes;
 
-class AboutRaw extends React.Component {
+class About extends React.Component {
   static contextType = AppContext;
 
   static propTypes = {
@@ -56,4 +56,4 @@ class AboutRaw extends React.Component {
   }
 }
 
-export const About = Translate(messages)(AboutRaw);
+export default Translate(messages)(About);

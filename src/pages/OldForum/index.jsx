@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Paragraph from 'Components/Widgets/Paragraph';
@@ -9,12 +9,13 @@ import Translate from 'Hocs/Translate';
 
 import messages from './messages';
 import styles from './styles.scss';
+import { LogIn } from 'Pages/LogIn';
 
 const { STANDARD } = cardTypes;
 
 const FORUM_URL = 'https://www.surfingdirt.com/forum';
 
-class OldForumRaw extends React.Component {
+class OldForum extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
   };
@@ -44,4 +45,4 @@ class OldForumRaw extends React.Component {
   }
 }
 
-export const OldForum = Translate(messages)(OldForumRaw);
+export default Translate(messages)(OldForum);

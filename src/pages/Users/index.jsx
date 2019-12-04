@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
 
 import USERS from 'Apollo/queries/listUsers2.gql';
@@ -13,7 +13,7 @@ import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
-const UsersRaw = ({ t }) => (
+const Users = ({ t }) => (
   <DataRenderer
     query={USERS}
     render={({ listUsers }) => (
@@ -35,4 +35,4 @@ UsersRaw.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export const Users = Translate(messages)(UsersRaw);
+export default Translate(messages)(Users);

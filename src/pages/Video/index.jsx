@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MEDIA from 'Apollo/queries/media2.gql';
+import VIDEO from 'Apollo/queries/video.gql';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
 
 const { VIDEO } = mediaTypes;
 
-export const Video = ({ match }) => {
+const Video = ({ match }) => {
   const { id } = match.params;
 
   return (
@@ -25,3 +25,5 @@ export const Video = ({ match }) => {
 Video.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
+export default Video;
