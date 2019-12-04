@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Card, { cardTypes } from 'Components/Card';
 import Paragraph from 'Components/Paragraph';

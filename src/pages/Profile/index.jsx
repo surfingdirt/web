@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import classnames from 'classnames';
 
 import USER_PROFILE from 'Apollo/queries/user.gql';

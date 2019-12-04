@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import Translate from 'Hocs/Translate';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import AppContext from '~/contexts';
 
 import messages from './messages';

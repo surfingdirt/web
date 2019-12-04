@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route } from 'react-router';
 import Card, { cardTypes } from 'Components/Card';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Translate from 'Hocs/Translate';
 

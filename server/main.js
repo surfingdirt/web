@@ -6,7 +6,8 @@ import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Handlebars from 'handlebars';
-import Helmet from 'react-helmet';
+import { HelmetProvider } from 'react-helmet-async';
+
 import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
@@ -83,14 +84,17 @@ const Main = (rootDir) => {
       appContextValueObject.setAccessToken(accessToken);
 
       const apolloClientInstance = apolloClient(graphql, language, true, accessToken);
+      const helmetContext = {};
 
       // noinspection JSUnresolvedFunction
       const WrappedApp = extractor.collectChunks(
-        <ApolloProvider client={apolloClientInstance}>
-          <StaticRouter location={req.url} context={context}>
-            <App appContextValueObject={appContextValueObject} />
-          </StaticRouter>
-        </ApolloProvider>,
+        <HelmetProvider context={helmetContext}>
+          <ApolloProvider client={apolloClientInstance}>
+            <StaticRouter location={req.url} context={context}>
+              <App appContextValueObject={appContextValueObject} />
+            </StaticRouter>
+          </ApolloProvider>
+        </HelmetProvider>,
       );
 
       const html = await getMarkupFromTree({
@@ -99,15 +103,11 @@ const Main = (rootDir) => {
       });
       const css = extractor.getStyleTags();
       const js = extractor.getScriptTags();
-
-      // noinspection JSUnresolvedFunction
-      const helmet = Helmet.renderStatic();
-
-      const regex = /\/>/g;
-      const meta = helmet.meta.toString().replace(regex, '/>\n');
+      const { helmet } = helmetContext;
 
       // Inserts the rendered React HTML and assets into our html
       document = regularPageTemplate({
+        agentBodyClass,
         analyticsId,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
         css,
@@ -117,11 +117,9 @@ const Main = (rootDir) => {
         inlineStyle: `<style></style>`,
         js,
         lang: language,
-        meta: meta || '',
-        agentBodyClass,
-        script: (helmet && helmet.script && helmet.script.toString()) || '',
+        meta: helmet.meta,
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
-        title: (helmet && helmet.title && helmet.title.toString()) || '',
+        title: helmet.title,
       });
     } catch (err) {
       Logger.log(err);
