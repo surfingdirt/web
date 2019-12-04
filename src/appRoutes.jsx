@@ -49,11 +49,11 @@ const appRoutes = (
         component={pages.NewPhoto}
         login={MANDATORY}
       />
-      <DefaultLayoutRoute path={routes.PHOTO} component={pages.Photo} />
+      <DefaultLayoutRoute path={routes.PHOTO} component={pages.Media} exact />
       <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
       <DefaultLayoutRoute path={routes.USER} component={pages.User} />
       <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
-      <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />
+      <DefaultLayoutRoute path={routes.VIDEO} component={pages.Media} exact />
       <DefaultLayoutRoute path={routes.VIDEO_NEW} component={pages.NewVideo} login={MANDATORY} />
       <DefaultLayoutRoute
         path={routes.VIDEO_NEW_FOR_ALBUM}

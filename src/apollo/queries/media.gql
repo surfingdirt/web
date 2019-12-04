@@ -1,0 +1,40 @@
+query media($id: ID!) {
+    media(id: $id) {
+        album {
+            id
+            title
+        }
+        actions {
+            add
+            delete
+            edit
+        }
+        date
+        description
+        embedUrl
+        height
+        id
+        images {
+          type
+          size
+          url
+          height
+          width
+        }
+        mediaSubType
+        mediaType
+        status
+        submitter {
+            userId
+            username
+        }
+        thumbs {
+          type
+          size
+          url
+        }
+        title
+        vendorUrl
+        width
+    }
+}

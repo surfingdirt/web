@@ -5,20 +5,20 @@ import MEDIA from 'Apollo/queries/media.gql';
 import DataRenderer from 'Components/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 
-const Photo = ({ match }) => {
+const Media = ({ match }) => {
   const { id } = match.params;
 
   return (
     <DataRenderer
       query={MEDIA}
       variables={{ id }}
-      render={({ photo }) => <MediaPageContent media={photo} />}
+      render={({ media }) => <MediaPageContent media={media} />}
     />
   );
 };
 
-Photo.propTypes = {
+Media.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default Photo;
+export default Media;

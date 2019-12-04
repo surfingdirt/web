@@ -61,10 +61,11 @@ const getHeroContent = (media, mediaType, t) => {
 };
 
 const MediaPageContent = (props) => {
-  const { media, mediaType, t } = props;
+  const { media, t } = props;
   const {
     album: { id: albumId, title: albumTitle },
     description,
+    mediaType,
     submitter: { userId, username },
     title,
   } = media;

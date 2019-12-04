@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import VIDEO from 'Apollo/queries/video.gql';
+import MEDIA from 'Apollo/queries/media.gql';
 import DataRenderer from 'Components/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
-import { mediaTypes } from 'Utils/media';
-
-const { VIDEO: VIDEO_TYPE } = mediaTypes;
 
 const Video = ({ match }) => {
   const { id } = match.params;
 
   return (
     <DataRenderer
-      query={VIDEO}
+      query={MEDIA}
       variables={{ id }}
-      render={({ video }) => <MediaPageContent mediaType={VIDEO_TYPE} media={video} />}
+      render={({ video }) => <MediaPageContent media={video} />}
     />
   );
 };

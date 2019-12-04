@@ -1,79 +1,43 @@
 import loadable from '@loadable/component';
 import loading from 'Components/Loading';
 
+const options = { fallback: loading };
+
 const pages = {
-  About: loadable(
-    () => import(/* webpackChunkName: 'About' */ './pages/About').then((m) => m.About),
-    { fallback: loading },
-  ),
-  Album: loadable(
-    () => import(/* webpackChunkName: 'Album' */ './pages/Album').then((m) => m.Album),
-    { fallback: loading },
-  ),
-  Albums: loadable(
-    () => import(/* webpackChunkName: 'Albums' */ './pages/Albums').then((m) => m.Albums),
-    { fallback: loading },
-  ),
+  About: loadable(() => import(/* webpackChunkName: 'About' */ './pages/About'), options),
+  Album: loadable(() => import(/* webpackChunkName: 'Album' */ './pages/Album'), options),
+  Albums: loadable(() => import(/* webpackChunkName: 'Albums' */ './pages/Albums'), options),
   BatchUpload: loadable(
-    () =>
-      import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload').then(
-        (m) => m.BatchUpload,
-      ),
-    { fallback: loading },
+    () => import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload'),
+    options,
   ),
   ConfirmEmail: loadable(
-    () =>
-      import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail').then(
-        (m) => m.ConfirmEmail,
-      ),
-    { fallback: loading },
+    () => import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail'),
+    options,
   ),
-  Error: loadable(
-    () => import(/* webpackChunkName: 'Error' */ './pages/Error').then((m) => m.Error),
-    { fallback: loading },
-  ),
+  Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
   Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), {
     fallback: loading,
   }),
-  LogIn: loadable(
-    () => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn').then((m) => m.LogIn),
-    { fallback: loading },
-  ),
+  LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),
   NewAlbum: loadable(
-    () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post').then((m) => m.NewAlbum),
-    { fallback: loading },
+    () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post'),
+    options,
   ),
   NewPhoto: loadable(
-    () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post').then((m) => m.NewPhoto),
-    { fallback: loading },
+    () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post'),
+    options,
   ),
   NewVideo: loadable(
-    () => import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post').then((m) => m.NewVideo),
-    { fallback: loading },
+    () => import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post'),
+    options,
   ),
-  OldForum: loadable(
-    () => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum').then((m) => m.OldForum),
-    { fallback: loading },
-  ),
-  Photo: loadable(
-    () => import(/* webpackChunkName: 'Photo' */ './pages/Photo').then((m) => m.Photo),
-    { fallback: loading },
-  ),
-  Profile: loadable(
-    () => import(/* webpackChunkName: 'Profile' */ './pages/Profile').then((m) => m.Profile),
-    { fallback: loading },
-  ),
-  User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User').then((m) => m.User), {
-    fallback: loading,
-  }),
-  Users: loadable(
-    () => import(/* webpackChunkName: 'Users' */ './pages/Users').then((m) => m.Users),
-    { fallback: loading },
-  ),
-  Video: loadable(
-    () => import(/* webpackChunkName: 'Video' */ './pages/Video').then((m) => m.Video),
-    { fallback: loading },
-  ),
+  OldForum: loadable(() => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum'), options),
+  Media: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Media'), options),
+  Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
+  User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
+  Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
+  Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),
 };
 
 export default pages;

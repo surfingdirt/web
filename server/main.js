@@ -38,8 +38,6 @@ const Main = (rootDir) => {
     fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
   );
 
-  const appleHtml = fs.readFileSync(`${rootDir}/src/apple-meta.html`, 'utf8');
-
   return async (req, res, next) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 
@@ -111,7 +109,6 @@ const Main = (rootDir) => {
       // Inserts the rendered React HTML and assets into our html
       document = regularPageTemplate({
         analyticsId,
-        appleHtml,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
         css,
         dir,
