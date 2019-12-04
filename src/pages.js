@@ -1,5 +1,5 @@
 import loadable from '@loadable/component';
-import loading from 'Components/Loading';
+import loading from 'Components/Widgets/Loading';
 
 const options = { fallback: loading };
 
@@ -33,7 +33,7 @@ const pages = {
     options,
   ),
   OldForum: loadable(() => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum'), options),
-  Media: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Media'), options),
+  Photo: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Photo'), options),
   Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),

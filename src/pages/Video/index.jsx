@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import VIDEO from 'Apollo/queries/video.gql';
+import MEDIA from 'Apollo/queries/media.gql';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import MediaPageContent from 'Components/Media/MediaPageContent';
 import { mediaTypes } from 'Utils/media';
@@ -15,9 +15,9 @@ const Video = ({ match }) => {
     <DataRenderer
       query={MEDIA}
       variables={{ id, mediaType: VIDEO.toLowerCase() }}
-      render={({ listComments, media }) => {
-        return <MediaPageContent media={media} comments={listComments} />;
-      }}
+      render={({ listComments, media }) => (
+        <MediaPageContent media={media} comments={listComments} />
+      )}
     />
   );
 };

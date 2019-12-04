@@ -6,6 +6,7 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { hydrate } from 'react-dom';
 import { Router } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import apolloClient from '../src/apollo';
 import App from '../src/App';
@@ -27,22 +28,25 @@ window.main = () => {
       },
     } = staticAppContextValues;
 
+    const helmetContext = {};
     const apolloClientInstance = apolloClient(graphql, language, false, accessToken);
 
     hydrate(
-      <ApolloProvider client={apolloClientInstance}>
-        <Router history={history}>
-          <App
-            appContextValueObject={
-              new AppContextValueObject({
-                ...staticAppContextValues,
-                SSR: false,
-                screenWidth: window.innerWidth,
-              })
-            }
-          />
-        </Router>
-      </ApolloProvider>,
+      <HelmetProvider context={helmetContext}>
+        <ApolloProvider client={apolloClientInstance}>
+          <Router history={history}>
+            <App
+              appContextValueObject={
+                new AppContextValueObject({
+                  ...staticAppContextValues,
+                  SSR: false,
+                  screenWidth: window.innerWidth,
+                })
+              }
+            />
+          </Router>
+        </ApolloProvider>
+      </HelmetProvider>,
       document.getElementById('app_root'),
     );
   });

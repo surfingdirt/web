@@ -15,7 +15,9 @@ const Photo = ({ match }) => {
     <DataRenderer
       query={MEDIA}
       variables={{ id, mediaType: PHOTO.toLowerCase() }}
-      render={({ listComments, photo }) => <MediaPageContent media={photo} comments={listComments} />}
+      render={({ listComments, media }) => (
+        <MediaPageContent media={media} comments={listComments} />
+      )}
     />
   );
 };

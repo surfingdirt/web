@@ -1,14 +1,5 @@
-query media($id: ID!) {
+query media($id: ID!, $mediaType: String!) {
     media(id: $id) {
-        album {
-            id
-            title
-        }
-        actions {
-            add
-            delete
-            edit
-        }
         date
         description
         embedUrl
@@ -21,20 +12,53 @@ query media($id: ID!) {
           height
           width
         }
-        mediaSubType
         mediaType
-        status
-        submitter {
-            userId
-            username
-        }
+        mediaSubType
+        title
+        vendorUrl
+        width
         thumbs {
           type
           size
           url
+          height
+          width
         }
-        title
-        vendorUrl
-        width
+        album {
+            id
+            title
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+    listComments(parentType: $mediaType, parentId: $id) {
+        actions {
+            delete
+            edit
+        }
+        id
+        content
+        date
+        submitter {
+            userId
+            username
+            avatar {
+                size
+                width
+                height
+                type
+                url
+            }
+        }
+        tone
     }
 }

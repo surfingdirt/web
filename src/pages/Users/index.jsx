@@ -31,7 +31,7 @@ const Users = ({ t }) => (
   />
 );
 
-UsersRaw.propTypes = {
+Users.propTypes = {
   t: PropTypes.func.isRequired,
 };
 

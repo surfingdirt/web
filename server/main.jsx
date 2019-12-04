@@ -116,10 +116,10 @@ const Main = (rootDir) => {
         html,
         inlineStyle: `<style></style>`,
         js,
-        lang: llocaleanguage,
-        meta: helmet.meta,
+        lang: locale,
+        meta: helmet.meta.toString(),
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
-        title: helmet.title,
+        title: helmet.title.toString(),
       });
     } catch (err) {
       Logger.log(err);

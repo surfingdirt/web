@@ -3,8 +3,8 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import ME from 'Apollo/queries/me.gql';
-import ErrorMessage from 'Components/ErrorMessage';
-import Spinner from 'Components/Spinner';
+import ErrorMessage from 'Components/Widgets/ErrorMessage';
+import Spinner from 'Components/Widgets/Spinner';
 
 import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';

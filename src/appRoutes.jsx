@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router';
 
-import { FORBIDDEN, MANDATORY } from 'Components/EnforceLogin';
-import { DefaultLayoutRoute } from 'Components/Route';
+import { FORBIDDEN, MANDATORY } from 'Components/Widgets/EnforceLogin';
+import { DefaultLayoutRoute } from 'Components/Widgets/Route';
 import Page404 from 'Pages/Page404';
 import pages from '~/pages';
 import routes from '~/routes';
@@ -49,11 +49,11 @@ const appRoutes = (
         component={pages.NewPhoto}
         login={MANDATORY}
       />
-      <DefaultLayoutRoute path={routes.PHOTO} component={pages.Media} exact />
+      <DefaultLayoutRoute path={routes.PHOTO} component={pages.Photo} exact />
       <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
       <DefaultLayoutRoute path={routes.USER} component={pages.User} />
       <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
-      <DefaultLayoutRoute path={routes.VIDEO} component={pages.Media} exact />
+      <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />
       <DefaultLayoutRoute path={routes.VIDEO_NEW} component={pages.NewVideo} login={MANDATORY} />
       <DefaultLayoutRoute
         path={routes.VIDEO_NEW_FOR_ALBUM}
