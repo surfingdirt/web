@@ -15,32 +15,26 @@ import styles from './styles.scss';
 const { HERO } = modalTypes;
 const countItems = mediaPageSize;
 
-const AlbumGrid = ({ album, media, t }) => {
-  return (
-    <div className={styles.grid}>
-      {media.map((item, index) => {
-        const { title: albumTitle } = album;
-        const { id, mediaType, title, thumbs } = item;
-        const attrs = { className: styles.link, id, mediaType, title, thumbs };
+const AlbumGrid = ({ album, media, t }) => (
+  <div className={styles.grid}>
+    {media.map((item, index) => {
+      const { title: albumTitle } = album;
+      const { id, mediaType, title, thumbs } = item;
+      const attrs = { className: styles.link, id, mediaType, title, thumbs };
 
-        const ThumbWithModal = WithModal({
-          ariaLabel: t('mediaPreviewModal'),
-          modalContent: (
-            <MediaOverlay album={album} media={media} countItems={countItems} index={index} />
-          ),
-          modalTitle: title || albumTitle,
-          type: HERO,
-        })(<MediaThumb {...attrs} objectFit />);
+      const ThumbWithModal = WithModal({
+        ariaLabel: t('mediaPreviewModal'),
+        modalContent: (
+          <MediaOverlay album={album} media={media} countItems={countItems} index={index} />
+        ),
+        modalTitle: title || albumTitle,
+        type: HERO,
+      })(<MediaThumb {...attrs} objectFit />);
 
-        return (
-          <div key={id} className={styles.item}>
-            <ThumbWithModal />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+      return <ThumbWithModal key={id} />;
+    })}
+  </div>
+);
 
 AlbumGrid.propTypes = {
   album: PropTypes.objectOf(PropTypes.any).isRequired,

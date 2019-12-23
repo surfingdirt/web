@@ -5,6 +5,7 @@ import Modal from 'Components/Widgets/Modal';
 
 const withModal = ({
   ariaLabel,
+  className,
   modalContent,
   modalTitle,
   onModalClosed,
@@ -44,7 +45,9 @@ const withModal = ({
 
       return (
         <Fragment>
-          <div onClickCapture={this.outsideClickListener}>{BaseComponent}</div>
+          <div onClickCapture={this.outsideClickListener} className={className}>
+            {BaseComponent}
+          </div>
           {showModal && (
             <Modal
               modalTitle={modalTitle}
@@ -65,6 +68,7 @@ const withModal = ({
 
 withModal.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
+  className: PropTypes.string,
   modalContent: PropTypes.node.isRequired,
   modalTitle: PropTypes.string.isRequired,
   onModalClosed: PropTypes.func,
@@ -73,6 +77,7 @@ withModal.propTypes = {
 };
 
 withModal.defaultProps = {
+  className: null,
   onModalClosed: null,
   shouldShowModal: null,
 };

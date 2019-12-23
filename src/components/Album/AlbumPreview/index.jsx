@@ -73,6 +73,7 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
 
     const ThumbWithModal = WithModal({
       ariaLabel: t('mediaPreviewModal'),
+      className: styles.modalWrapper,
       modalContent: (
         <MediaOverlay album={album} media={album.media} countItems={countItems} index={index} />
       ),
