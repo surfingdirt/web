@@ -6,14 +6,13 @@ import { Helmet } from 'react-helmet-async';
 import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
-import { getFirstAlbumImageUrl } from 'Utils/media';
-import { mediaPageSize } from 'Utils/media';
+import { getFirstAlbumImageUrl, mediaPageSize } from 'Utils/media';
 
 import AlbumView from './view';
 
 const countItems = mediaPageSize;
 
-export const Album = ({ match }) => {
+const Album = ({ match }) => {
   const { id } = match.params;
 
   const { data, error, fetchMore, loading } = useQuery(ALBUM_WITH_MEDIA, {
@@ -53,3 +52,5 @@ export const Album = ({ match }) => {
 Album.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
+export default Album;

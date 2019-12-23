@@ -1,4 +1,5 @@
 import loadable from '@loadable/component';
+
 import loading from 'Components/Widgets/Loading';
 
 const options = { fallback: loading };
@@ -16,9 +17,7 @@ const pages = {
     options,
   ),
   Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
-  Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), {
-    fallback: loading,
-  }),
+  Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), options),
   LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),
   NewAlbum: loadable(
     () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post'),
