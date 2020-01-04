@@ -9,6 +9,7 @@ const actions = {
   COMMENT_NEW_VIDEO: '/comment/post/video',
   COMMENT_UPDATE: '/comment/update',
   COVER_UPDATE: '/cover/post',
+  FORGOT_PASSWORD: '/forgot-password',
   LOGIN: '/login',
   LOGOUT: '/logout',
   PHOTO_BATCH_UPLOAD: '/photo/batch-upload',

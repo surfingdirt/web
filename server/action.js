@@ -8,6 +8,7 @@ import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo.g
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
 import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment2.gql';
+import FORGOT_PASSWORD_MUTATION from 'Apollo/mutations/forgotPassword.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
@@ -35,6 +36,7 @@ const {
   COMMENT_NEW_VIDEO,
   COMMENT_UPDATE,
   COVER_UPDATE,
+  FORGOT_PASSWORD,
   LOGIN,
   LOGOUT,
   PHOTO_BATCH_UPLOAD,
@@ -125,7 +127,7 @@ const actionInfoMap = {
     hasFileUpload: false,
     responseKey: 'comment',
     redirect: () => {
-      // redirect to parent => response must contain parent id and type
+      // TODO: redirect to parent => response must contain parent id and type
     },
     onError: (error, res) => {
       console.error('Album creation error:', error);
@@ -142,6 +144,18 @@ const actionInfoMap = {
     redirect: { route: PROFILE },
     onError: (error, res) => {
       console.error('Cover update error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [FORGOT_PASSWORD]: {
+    mutation: FORGOT_PASSWORD_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'forgotPassword',
+    cb: (req, res) => {
+      res.redirect(301, `${FORGOT_PASSWORD}/?done=1`);
+    },
+    onError: (error, res) => {
+      console.error('Forgot password error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
@@ -197,7 +211,7 @@ const actionInfoMap = {
       // No need to return anything. Null means ok.
       return null;
     },
-    cb: (req, res, data) => {
+    cb: (req, res) => {
       return res.redirect(301, albumRoute(req.body.albumId));
     },
     onError: (error, res) => {

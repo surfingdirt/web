@@ -19,6 +19,10 @@ const pages = {
   Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
   Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), options),
   LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),
+  LostPassword: loadable(
+    () => import(/* webpackChunkName: 'LostPassword' */ './pages/LostPassword'),
+    options,
+  ),
   NewAlbum: loadable(
     () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post'),
     options,

@@ -37,6 +37,11 @@ const appRoutes = (
       <DefaultLayoutRoute path={routes.CONFIRM_EMAIL} component={pages.ConfirmEmail} />
       <DefaultLayoutRoute path={routes.ERROR} component={pages.Error} />
       <DefaultLayoutRoute path={routes.LOGIN} component={pages.LogIn} login={FORBIDDEN} />
+      <DefaultLayoutRoute
+        path={routes.LOST_PASSWORD}
+        component={pages.LostPassword}
+        login={FORBIDDEN}
+      />
       <DefaultLayoutRoute path={routes.OLD_FORUM} component={pages.OldForum} />
       <DefaultLayoutRoute
         path={routes.PHOTO_BATCH_UPLOAD_FOR_ALBUM}

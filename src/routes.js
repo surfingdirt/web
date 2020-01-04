@@ -6,6 +6,7 @@ const routes = {
   CONTACT: '/contact',
   CONFIRM_EMAIL: '/confirm-email',
   ERROR: '/error/:id/:message',
+  LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/login',
   OLD_FORUM: '/old-forum',
