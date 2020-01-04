@@ -1,6 +1,7 @@
 export const ACTION_PREFIX = '/actions';
 
 const actions = {
+  ACTIVATE_NEW_PASSWORD: '/activate-new-password',
   ALBUM_NEW: '/album/post',
   AVATAR_UPDATE: '/avatar/post',
   COMMENT_DELETE: '/comment/delete',

@@ -27,6 +27,10 @@ const pages = {
     () => import(/* webpackChunkName: 'NewAlbum' */ './pages/Album/Post'),
     options,
   ),
+  NewPasswordActivated: loadable(
+    () => import(/* webpackChunkName: 'NewPasswordActivated' */ './pages/NewPasswordActivated'),
+    options,
+  ),
   NewPhoto: loadable(
     () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post'),
     options,

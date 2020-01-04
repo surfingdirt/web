@@ -1,17 +1,21 @@
-import Button, { buttonTypes } from 'Components/Widgets/Button/index';
-import InputField from 'Components/Widgets/Form/InputField';
-import Translate from 'Hocs/Translate';
 import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';
 import { Field, Form } from 'react-final-form';
-import actions from '~/actions';
+import { Link } from 'react-router-dom';
+
+import Button, { buttonTypes } from 'Components/Widgets/Button/index';
+import InputField from 'Components/Widgets/Form/InputField';
+import Translate from 'Hocs/Translate';
 import Validation from 'Utils/fieldLevelValidation';
 import { actionRoute } from 'Utils/links';
+import actions from '~/actions';
+import routes from '~/routes';
 
 import translations from './messages';
 import styles from './styles.scss';
 
 const { LOGIN } = actions;
+const { LOST_PASSWORD } = routes;
 const { ACTION } = buttonTypes;
 
 class SignInPageContent extends PureComponent {
@@ -84,6 +88,8 @@ class SignInPageContent extends PureComponent {
                   />
                 </div>
               </form>
+
+              <Link to={LOST_PASSWORD}>{t('forgotYourPassword')}</Link>
             </Fragment>
           );
         }}

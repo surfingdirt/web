@@ -4,7 +4,7 @@ import path from 'path';
 import multer from 'multer';
 
 import { config } from '../config';
-import Action from './action';
+import { getAction, postAction } from './action';
 import Assets, { assetsRoute } from './assets';
 import Main from './main';
 
@@ -19,10 +19,11 @@ app.use(express.static(`${rootDir}/dist`));
 
 const uploadActions = ['/actions/avatar/post', '/actions/cover/post', '/actions/photo/post'];
 uploadActions.forEach((a) => {
-  app.post(a, multer({ dest: 'uploads/' }).single('file'), Action);
+  app.post(a, multer({ dest: 'uploads/' }).single('file'), postAction);
 });
-app.post('/actions/photo/batch-upload', multer({ dest: 'uploads/' }).array('file'), Action);
-app.post('/actions/*', multer().none(), Action);
+app.post('/actions/photo/batch-upload', multer({ dest: 'uploads/' }).array('file'), postAction);
+app.get('/actions/*', multer().none(), getAction);
+app.post('/actions/*', multer().none(), postAction);
 
 app.use(Main(rootDir));
 

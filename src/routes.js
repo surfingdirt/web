@@ -9,6 +9,7 @@ const routes = {
   LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/login',
+  NEW_PASSWORD_ACTIVATED: '/new-password-activated',
   OLD_FORUM: '/old-forum',
   PHOTO: '/photo/:id',
   PHOTO_BATCH_UPLOAD_FOR_ALBUM: '/album/:id/multi-upload',

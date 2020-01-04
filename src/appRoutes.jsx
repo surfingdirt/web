@@ -42,6 +42,11 @@ const appRoutes = (
         component={pages.LostPassword}
         login={FORBIDDEN}
       />
+      <DefaultLayoutRoute
+        path={routes.NEW_PASSWORD_ACTIVATED}
+        component={pages.NewPasswordActivated}
+        login={FORBIDDEN}
+      />
       <DefaultLayoutRoute path={routes.OLD_FORUM} component={pages.OldForum} />
       <DefaultLayoutRoute
         path={routes.PHOTO_BATCH_UPLOAD_FOR_ALBUM}
@@ -56,7 +61,7 @@ const appRoutes = (
       />
       <DefaultLayoutRoute path={routes.PHOTO} component={pages.Photo} exact />
       <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
-      <DefaultLayoutRoute path={routes.USER} component={pages.User} />
+      <DefaultLayoutRoute path={routes.USER} component={pages.User} exact />
       <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
       <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />
       <DefaultLayoutRoute path={routes.VIDEO_NEW} component={pages.NewVideo} login={MANDATORY} />

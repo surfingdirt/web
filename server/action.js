@@ -1,6 +1,8 @@
 import fs from 'fs';
+import { parse } from 'url';
 
 import actions, { ACTION_PREFIX } from '~/actions';
+import ACTIVATE_NEW_PASSWORD_MUTATION from 'Apollo/mutations/activateNewPassword.gql';
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum.gql';
 import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum.gql';
 import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto.gql';
@@ -28,6 +30,7 @@ import GraphQLError from 'Error/graphqlError';
 const LoginCookie = Login.COOKIE_NAME;
 
 const {
+  ACTIVATE_NEW_PASSWORD,
   ALBUM_NEW,
   AVATAR_UPDATE,
   COMMENT_DELETE,
@@ -44,9 +47,43 @@ const {
   VIDEO_NEW,
   USER_UPDATE,
 } = actions;
-const { ERROR, HOME, PROFILE } = routes;
+const { ERROR, HOME, NEW_PASSWORD_ACTIVATED, PROFILE } = routes;
 
-const actionInfoMap = {
+const getActionInfoMap = {
+  [ACTIVATE_NEW_PASSWORD]: {
+    redirect: { route: NEW_PASSWORD_ACTIVATED },
+    handler: async (req, runner) => {
+      const { userId, aK: activationKey } = req.query;
+      const variables = {
+        userId,
+        input: { activationKey },
+      };
+
+      const body = new FormData();
+      const query = ACTIVATE_NEW_PASSWORD_MUTATION.loc.source.body;
+      body.append('operations', JSON.stringify({ query, variables }));
+      body.append('map', '{}');
+      const response = await runner.fetch(body);
+      if (!response.ok) {
+        // res.status < 200 || res.status >= 300
+        throw new GraphQLError(response.statusText, 0);
+      }
+      return null;
+    },
+    cb: (req, res) => {
+      return res.redirect(301, NEW_PASSWORD_ACTIVATION);
+    },
+    onError: (error, res) => {
+      console.error('New password activation error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+};
+
+const postActionInfoMap = {
   [ALBUM_NEW]: {
     mutation: CREATE_ALBUM_MUTATION,
     hasFileUpload: false,
@@ -262,9 +299,10 @@ const actionInfoMap = {
   },
 };
 
-const action = async (req, res, next) => {
-  const actionName = req.url.replace(ACTION_PREFIX, '');
-  const actionInfo = actionInfoMap[actionName];
+const action = async (map, req, res, next) => {
+  const path = parse(req.url).pathname;
+  const actionName = path.replace(ACTION_PREFIX, '');
+  const actionInfo = map[actionName];
   if (!actionInfo) {
     throw new Error(`No info found for action '${actionName}'`);
   }
@@ -307,4 +345,6 @@ const action = async (req, res, next) => {
   return next('Unhandled post-action hook');
 };
 
-export default action;
+export const postAction = (req, res, next) => action(postActionInfoMap, req, res, next);
+
+export const getAction = (req, res, next) => action(getActionInfoMap, req, res, next);
