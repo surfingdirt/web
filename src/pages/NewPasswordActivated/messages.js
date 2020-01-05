@@ -10,7 +10,7 @@ const messages = (getText, getPlural) => (key) =>
     ) /* Title of a page */,
     signIn: getText('Sign in', 'SignIn') /* Header */,
     useNewPassword: getText(
-      'User the new password we emailed you to sign in!',
+      'Enter the new password we emailed you to sign in!',
       'New password activation',
     ) /* Indicates how to sign in after a new password was activated */,
   }[key]);

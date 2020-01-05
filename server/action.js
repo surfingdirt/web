@@ -51,7 +51,6 @@ const { ERROR, HOME, NEW_PASSWORD_ACTIVATED, PROFILE } = routes;
 
 const getActionInfoMap = {
   [ACTIVATE_NEW_PASSWORD]: {
-    redirect: { route: NEW_PASSWORD_ACTIVATED },
     handler: async (req, runner) => {
       const { userId, aK: activationKey } = req.query;
       const variables = {
@@ -65,14 +64,19 @@ const getActionInfoMap = {
       body.append('map', '{}');
       const response = await runner.fetch(body);
       if (!response.ok) {
-        // res.status < 200 || res.status >= 300
         throw new GraphQLError(response.statusText, 0);
       }
-      return null;
+      const json = await response.json();
+      if (!json.data) {
+        throw new Error('Bad response', 0);
+      }
+      const { data } = json;
+      if (!data.activateNewPassword) {
+        throw new Error('Activation failed', 0);
+      }
+      return data;
     },
-    cb: (req, res) => {
-      return res.redirect(301, NEW_PASSWORD_ACTIVATION);
-    },
+    redirect: { route: NEW_PASSWORD_ACTIVATED },
     onError: (error, res) => {
       console.error('New password activation error:', error);
       if (error.code) {
