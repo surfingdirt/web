@@ -61,6 +61,11 @@ const appRoutes = (
       />
       <DefaultLayoutRoute path={routes.PHOTO} component={pages.Photo} exact />
       <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
+      <DefaultLayoutRoute
+        path={routes.REGISTRATION}
+        component={pages.Registration}
+        login={FORBIDDEN}
+      />
       <DefaultLayoutRoute path={routes.USER} component={pages.User} exact />
       <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
       <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />

@@ -1,0 +1,13 @@
+@import "../../../../styles/boxmodel";
+@import "../../../../styles/colors";
+@import "../../../../styles/font-sizes";
+
+.select {
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+

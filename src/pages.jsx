@@ -42,6 +42,10 @@ const pages = {
   OldForum: loadable(() => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum'), options),
   Photo: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Photo'), options),
   Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
+  Registration: loadable(
+    () => import(/* webpackChunkName: 'Registration' */ './pages/Registration'),
+    options,
+  ),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
   Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),

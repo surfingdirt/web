@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import DualContainer from 'Components/Widgets/DualContainer';
+import LocaleField from 'Components/Widgets/Form/LocaleField';
+import TimezoneField from 'Components/Widgets/Form/TimezoneField';
 
 import styles from './styles.scss';
 
@@ -25,6 +27,55 @@ const InputField = (props) => {
     displayError = error;
   }
 
+  let content;
+  switch (type) {
+    case 'locale':
+      content = (
+        <LocaleField
+          unsetLabel=""
+          className={classnames(styles.input, className)}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
+    case 'timezone':
+      content = (
+        <TimezoneField
+          unsetLabel=""
+          className={classnames(styles.input, className)}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
+    case 'textarea':
+      content = (
+        <textarea
+          className={classnames(styles.input, className)}
+          id={id}
+          placeholder={placeholder}
+          required={required}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
+    default:
+      content = (
+        <input
+          className={classnames(styles.input, className)}
+          id={id}
+          placeholder={placeholder}
+          required={required}
+          type={type}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.inputAndError}>
@@ -38,26 +89,7 @@ const InputField = (props) => {
             </label>
           )}
         </DualContainer>
-        {type === 'textarea' ? (
-          <textarea
-            className={classnames(styles.input, className)}
-            id={id}
-            placeholder={placeholder}
-            required={required}
-            onChange={onChange}
-            {...inputAttrs}
-          />
-        ) : (
-          <input
-            className={classnames(styles.input, className)}
-            id={id}
-            placeholder={placeholder}
-            required={required}
-            type={type}
-            onChange={onChange}
-            {...inputAttrs}
-          />
-        )}
+        {content}
       </div>
     </div>
   );
