@@ -42,31 +42,29 @@ export default class MutationRunner {
       body.append('map', JSON.stringify({}));
       response = await this.fetch(body);
     }
-
-    this.checkStatus(response);
     const responseBody = await response.json();
     if (responseBody.errors) {
-      const error = responseBody.errors[0];
-      throw new GraphQLError(error.message, error.extensions.code);
+      const { message, extensions } = responseBody.errors[0];
+      let errors = {};
+      if (extensions.exception && extensions.exception.errors) {
+        errors = extensions.exception.errors;
+      }
+      throw new GraphQLError(message, extensions.code, errors);
     }
     return responseBody.data[actionInfo.responseKey];
   }
 
   async fetch(body) {
+    const headers = {
+      Accept: 'application/json',
+    };
+    if (this.accessToken) {
+      headers['Authorization'] = `Bearer ${this.accessToken}`;
+    }
     return fetch(this.graphqlUrl, {
       method: 'POST',
       body,
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${this.accessToken}`,
-      },
+      headers,
     });
-  }
-
-  checkStatus(res) {
-    if (!res.ok) {
-      // res.status < 200 || res.status >= 300
-      throw new GraphQLError(res.statusText, 0);
-    }
   }
 }

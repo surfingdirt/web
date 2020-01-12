@@ -3,22 +3,26 @@ import { parse } from 'url';
 
 import actions, { ACTION_PREFIX } from '~/actions';
 import ACTIVATE_NEW_PASSWORD_MUTATION from 'Apollo/mutations/activateNewPassword.gql';
+
 import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum.gql';
 import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum.gql';
 import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto.gql';
 import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo.gql';
 import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
+import CREATE_USER_MUTATION from 'Apollo/mutations/createUser.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
+
 import DELETE_COMMENT_MUTATION from 'Apollo/mutations/deleteComment2.gql';
 import FORGOT_PASSWORD_MUTATION from 'Apollo/mutations/forgotPassword.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
+
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
 import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
-import USER_UPDATE_MUTATION from 'Apollo/mutations/updateUser2.gql';
+import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser2.gql';
 
-import { albumRoute, errorRoute, photoRoute, videoRoute } from 'Utils/links';
+import { albumRoute, errorRoute, photoRoute, registrationRoute, videoRoute } from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
 import { config } from '../config';
@@ -45,6 +49,7 @@ const {
   PHOTO_BATCH_UPLOAD,
   PHOTO_NEW,
   VIDEO_NEW,
+  USER_NEW,
   USER_UPDATE,
 } = actions;
 const { ERROR, HOME, NEW_PASSWORD_ACTIVATED, PROFILE } = routes;
@@ -77,7 +82,7 @@ const getActionInfoMap = {
       return data;
     },
     redirect: { route: NEW_PASSWORD_ACTIVATED },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('New password activation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -93,7 +98,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'createAlbum',
     redirect: { route: albumRoute, selector: 'id' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Album creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -106,7 +111,7 @@ const postActionInfoMap = {
     hasFileUpload: true,
     responseKey: 'updateAvatar',
     redirect: { route: PROFILE },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Avatar update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -116,7 +121,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'comment',
     redirect: () => {},
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Album creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -129,7 +134,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'createAlbumComment',
     redirect: { route: albumRoute, selector: 'parentId' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Album comment creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -142,7 +147,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'createPhotoComment',
     redirect: { route: photoRoute, selector: 'parentId' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Photo comment creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -155,7 +160,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'createVideoComment',
     redirect: { route: videoRoute, selector: 'parentId' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Video comment creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -170,7 +175,7 @@ const postActionInfoMap = {
     redirect: () => {
       // TODO: redirect to parent => response must contain parent id and type
     },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Album creation error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -183,7 +188,7 @@ const postActionInfoMap = {
     hasFileUpload: true,
     responseKey: 'updateCover',
     redirect: { route: PROFILE },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Cover update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -195,7 +200,7 @@ const postActionInfoMap = {
     cb: (req, res) => {
       res.redirect(301, `${FORGOT_PASSWORD}/?done=1`);
     },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Forgot password error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -208,7 +213,7 @@ const postActionInfoMap = {
       res.cookie(LoginCookie, data.accessToken, { expires: new Date(data.expiresIn * 1000) });
       res.redirect(301, HOME);
     },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Login error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -221,7 +226,7 @@ const postActionInfoMap = {
       res.clearCookie(LoginCookie);
       res.redirect(301, HOME);
     },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Logout error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -255,7 +260,7 @@ const postActionInfoMap = {
     cb: (req, res) => {
       return res.redirect(301, albumRoute(req.body.albumId));
     },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Photo batch upload error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -268,7 +273,7 @@ const postActionInfoMap = {
     hasFileUpload: true,
     responseKey: 'createPhoto',
     redirect: { route: photoRoute, selector: 'id' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Photo upload error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -283,7 +288,7 @@ const postActionInfoMap = {
     hasFileUpload: false,
     responseKey: 'createVideo',
     redirect: { route: videoRoute, selector: 'id' },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('Video upload error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
@@ -291,12 +296,25 @@ const postActionInfoMap = {
       return res.redirect(500, ERROR);
     },
   },
+  [USER_NEW]: {
+    mutation: CREATE_USER_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'createUser',
+    redirect: { route: PROFILE },
+    onError: (error, req, res) => {
+      console.error('User creation error:', error);
+      if (error.code) {
+        return res.redirect(301, registrationRoute(error.errors, req.body));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
   [USER_UPDATE]: {
-    mutation: USER_UPDATE_MUTATION,
+    mutation: UPDATE_USER_MUTATION,
     hasFileUpload: false,
     responseKey: 'updateUser',
     redirect: { route: PROFILE },
-    onError: (error, res) => {
+    onError: (error, req, res) => {
       console.error('User update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
     },
@@ -319,7 +337,7 @@ const action = async (map, req, res, next) => {
     result = await runner.run(actionInfo, req);
   } catch (error) {
     if (actionInfo.onError) {
-      return actionInfo.onError(error, res, next);
+      return actionInfo.onError(error, req, res, next);
     }
     return res.redirect(301, errorRoute(error.code, error.message));
   }

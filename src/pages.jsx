@@ -43,7 +43,7 @@ const pages = {
   Photo: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Photo'), options),
   Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
   Registration: loadable(
-    () => import(/* webpackChunkName: 'Registration' */ './pages/Registration'),
+    () => import(/* webpackChunkName: 'UserRegistration' */ './pages/User/Registration'),
     options,
   ),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),

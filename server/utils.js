@@ -7,6 +7,8 @@ const FRENCH_FRANCE = 'fr-FR';
 const HEBREW = 'he';
 
 const DEFAULT_LOCALE = ENGLISH_US;
+
+// Note: make sure to edit src/Components/Widgets/Form/LocaleField/translatedLocales.js when adding locales
 const SUPPORTED_LOCALES = [ENGLISH_US, FRENCH_FRANCE];
 const RTL_LANGUAGES = [ARABIC, HEBREW];
 

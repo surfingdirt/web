@@ -3,6 +3,7 @@ import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 
 import Button, { buttonTypes } from 'Components/Widgets/Button/index';
+import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
 import Validation from 'Utils/fieldLevelValidation';
@@ -12,28 +13,48 @@ import actions from '~/actions';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { LOGIN } = actions;
+const { USER_NEW } = actions;
 const { ACTION } = buttonTypes;
 
-const FormContent = ({ errorMessage, onSubmit, t }) => {
+const FormContent = ({ initialErrors, initialValues, onSubmit, t }) => {
   const requiredValidator = Validation.required(t('required'));
+  console.log({ initialErrors, initialValues });
+
+  const validate = (values) => {
+    const errors = {};
+    return errors;
+  };
+
+  const combineAndTranslateErrors = (name) => {
+    const errors = initialErrors[name];
+    if (!errors) {
+      return null;
+    }
+
+    return (
+      <>
+        {errors.map((label, index) => (
+          <FormAPIMessage key={index} message={label} className={styles.apiMessage} />
+        ))}
+      </>
+    );
+  };
 
   return (
     <Form
+      initialValues={initialValues}
       onSubmit={onSubmit}
+      validate={validate}
       render={(formProps) => {
         const { handleSubmit, invalid, submitting } = formProps;
         return (
           <Fragment>
-            <p className={styles.errorMessage} hidden={!errorMessage}>
-              {errorMessage}
-            </p>
             <form
               className={styles.form}
               onSubmit={handleSubmit}
               method="POST"
+              action={actionRoute(USER_NEW)}
               encType="multipart/form-data"
-              action={actionRoute(LOGIN)}
             >
               <div className={styles.inputsContainer}>
                 <div className={styles.field}>
@@ -44,6 +65,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('username')}
                     placeholder={t('inputPlaceholder')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('username')}
                   />
                 </div>
                 <div className={styles.field}>
@@ -54,6 +76,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('email')}
                     placeholder={t('inputPlaceholder')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('email')}
                   />
                 </div>
                 <div className={styles.field}>
@@ -65,6 +88,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('password')}
                     placeholder={t('inputPlaceholder')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('userP')}
                   />
                 </div>
                 <div className={styles.field}>
@@ -76,6 +100,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('passwordConfirmation')}
                     placeholder={t('inputPlaceholder')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('userPC')}
                   />
                 </div>
                 <div className={styles.field}>
@@ -87,8 +112,9 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('timezone')}
                     unsetLabel={t('pickATimeZone')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('timezone')}
                   />
-                </div>{' '}
+                </div>
                 <div className={styles.field}>
                   <Field
                     name="locale"
@@ -98,6 +124,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
                     label={t('locale')}
                     unsetLabel={t('pickALocale')}
                     validate={requiredValidator}
+                    initialError={combineAndTranslateErrors('locale')}
                   />
                 </div>
               </div>
@@ -120,13 +147,12 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
 };
 
 FormContent.propTypes = {
-  errorMessage: PropTypes.string,
+  initialValues: PropTypes.arrayOf(PropTypes.string).isRequired,
+  initialErrors: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSubmit: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 
-FormContent.defaultProps = {
-  errorMessage: null,
-};
+FormContent.defaultProps = {};
 
 export default Translate(messages)(FormContent);

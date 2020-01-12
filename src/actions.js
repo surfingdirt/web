@@ -16,6 +16,7 @@ const actions = {
   PHOTO_BATCH_UPLOAD: '/photo/batch-upload',
   PHOTO_NEW: '/photo/post',
   VIDEO_NEW: '/video/post',
+  USER_NEW: '/user/post',
   USER_UPDATE: '/user/update',
 };
 

@@ -1,7 +1,7 @@
-@import "../../styles/boxmodel";
-@import "../../styles/colors";
-@import "../../styles/constants";
-@import "../../styles/font-sizes";
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/constants";
+@import "../../../styles/font-sizes";
 
 .form {
   max-width: $form-max-width;
@@ -24,4 +24,9 @@
 
 .bottomContainer {
   text-align: right;
+}
+
+.apiMessage {
+  display: inline-block;
+  margin-left: $margin-small-3;
 }

@@ -18,23 +18,28 @@ const InputField = (props) => {
 
   const { touched, error, submitError } = meta;
 
-  const { className, id, label, placeholder, required, type } = rest;
+  const { className, id, initialError, label, placeholder, required, type } = rest;
 
   let displayError = null;
   if (submitError) {
     displayError = submitError;
   } else if (error && touched) {
     displayError = error;
+  } else if (initialError && !touched) {
+    displayError = initialError;
   }
+
+  console.log({ name: input.name, initialError, touched, displayError });
 
   let content;
   switch (type) {
     case 'locale':
       content = (
         <LocaleField
-          unsetLabel=""
+          id={id}
           className={classnames(styles.input, className)}
           onChange={onChange}
+          unsetLabel=""
           {...inputAttrs}
         />
       );
@@ -42,9 +47,10 @@ const InputField = (props) => {
     case 'timezone':
       content = (
         <TimezoneField
-          unsetLabel=""
+          id={id}
           className={classnames(styles.input, className)}
           onChange={onChange}
+          unsetLabel=""
           {...inputAttrs}
         />
       );
@@ -54,9 +60,9 @@ const InputField = (props) => {
         <textarea
           className={classnames(styles.input, className)}
           id={id}
+          onChange={onChange}
           placeholder={placeholder}
           required={required}
-          onChange={onChange}
           {...inputAttrs}
         />
       );
@@ -66,10 +72,10 @@ const InputField = (props) => {
         <input
           className={classnames(styles.input, className)}
           id={id}
+          onChange={onChange}
           placeholder={placeholder}
           required={required}
           type={type}
-          onChange={onChange}
           {...inputAttrs}
         />
       );
