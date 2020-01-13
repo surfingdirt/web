@@ -29,8 +29,6 @@ const InputField = (props) => {
     displayError = initialError;
   }
 
-  console.log({ name: input.name, initialError, touched, displayError });
-
   let content;
   switch (type) {
     case 'locale':

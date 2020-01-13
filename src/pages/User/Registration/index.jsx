@@ -4,6 +4,7 @@ import { useMutation } from 'react-apollo';
 import qs from 'qs';
 
 import CREATE_USER from 'Apollo/mutations/createUser.gql';
+import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Translate from 'Hocs/Translate';
 
@@ -21,17 +22,21 @@ const Registration = (props) => {
 
   const [createUserMutation, { data, error, loading }] = useMutation(CREATE_USER);
 
-  const handleSubmit = (input) => {
-    createUserMutation({ variables: { input } });
+  const onSubmit = async (input) => {
+    const errors = {};
+    try {
+      const result = await createUserMutation({ variables: { input } });
+      console.log({ result });
+    } catch (e) {
+      const rawErrors = e.graphQLErrors[0].extensions.exception.errors;
+      Object.entries(rawErrors).forEach(([name, errorList]) => {
+        errors[name] = errorList.map((label, index) => (
+          <FormAPIMessage key={index} message={label} />
+        ));
+      });
+    }
+    return errors;
   };
-
-  if (loading) {
-    return <p>Loading</p>;
-  }
-
-  if (error) {
-    return <p>Error</p>;
-  }
 
   if (data && data.createUser.userId) {
     return <p>Done!</p>;
@@ -44,11 +49,9 @@ const Registration = (props) => {
   return (
     <Card title={t('registration')} type={STANDARD}>
       <Paragraph>{t('explanations')}</Paragraph>
-      <Form
-        initialValues={initialValues}
-        initialErrors={initialErrors}
-        onSubmit={(input) => handleSubmit(input)}
-      />
+      {error && <p>Error</p>}
+      {loading && <p>Loading</p>}
+      <Form initialValues={initialValues} initialErrors={initialErrors} onSubmit={onSubmit} />
     </Card>
   );
 };
