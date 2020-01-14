@@ -21,7 +21,7 @@ const messages = (getText, getPlural) => (key) =>
       'Password',
     ) /* Error message displayed when something went wrong */,
     send: getText('Send', 'Password') /* Label for a button to submit a form */,
-    username: getText('Username', 'Password') /* Label for a form input to type a username */,
+    username: getText('Username', 'Password') /* Label for a form field to type a username */,
   }[key]);
 
 export default messages;

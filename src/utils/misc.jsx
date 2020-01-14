@@ -1,3 +1,7 @@
+import React from 'react';
+
+import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
+
 export const focusFirstFocusableItemInside = (parentEl) => {
   // Find the first focusable item. Stick to links for now.
   const links = parentEl.getElementsByTagName('a');
@@ -49,4 +53,28 @@ export const truncateItemTitleForConfirmation = (title) => {
   }
 
   return clamped;
+};
+
+export const handleMutationSubmit = (mutation) => {
+  return async (input) => {
+    const errors = {};
+    try {
+      await mutation({ variables: { input } });
+    } catch (e) {
+      const rawErrors =
+        e.graphQLErrors &&
+        e.graphQLErrors[0] &&
+        e.graphQLErrors[0].extensions &&
+        e.graphQLErrors[0].extensions.exception
+          ? e.graphQLErrors[0].extensions.exception.errors
+          : {};
+
+      Object.entries(rawErrors).forEach(([name, errorList]) => {
+        errors[name] = errorList.map((label, index) => (
+          <FormAPIMessage key={index} message={label} />
+        ));
+      });
+    }
+    return errors;
+  };
 };

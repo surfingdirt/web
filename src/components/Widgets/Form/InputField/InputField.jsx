@@ -37,7 +37,7 @@ const InputField = (props) => {
           id={id}
           className={classnames(styles.input, className)}
           onChange={onChange}
-          unsetLabel=""
+          unsetLabel={rest.unsetLabel}
           {...inputAttrs}
         />
       );
@@ -48,7 +48,7 @@ const InputField = (props) => {
           id={id}
           className={classnames(styles.input, className)}
           onChange={onChange}
-          unsetLabel=""
+          unsetLabel={rest.unsetLabel}
           {...inputAttrs}
         />
       );

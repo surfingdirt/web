@@ -1,5 +1,9 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    emailInvalid: getText(
+      'Email is invalid',
+      'Form errors',
+    ) /* Error message displayed when a bad email address was entered */,
     exists: getText(
       'Already taken!',
       'Form errors',
@@ -8,10 +12,10 @@ const messages = (getText, getPlural) => (key) =>
       'Not identical',
       'Form errors',
     ) /* Error message displayed when a text field is different from another (example: two password fields) */,
-    emailInvalid: getText(
-      'Email is invalid',
+    required: getText(
+      'Required',
       'Form errors',
-    ) /* Error message displayed when a bad email address was entered */,
+    ) /* Error message displayed when the user left a required field empty */,
     tooShort: getText(
       'Too short',
       'Form errors',

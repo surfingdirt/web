@@ -7,7 +7,7 @@ import Next from 'Images/_old/arrow-next.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
-import Validation from 'Utils/fieldLevelValidation';
+import Validation from 'Utils/validators';
 
 import messages from './messages';
 import styles from './styles.scss';
