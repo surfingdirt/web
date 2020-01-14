@@ -92,7 +92,7 @@ class Home extends React.Component {
               ))}
 
               <div className={styles.albumsButtonWrapper}>
-                <MoreAlbums label={t('moreAlbums')} />
+                <MoreAlbums label={t('moreAlbums')} buttonLabel={t('goToAlbums')} />
               </div>
             </div>
           );

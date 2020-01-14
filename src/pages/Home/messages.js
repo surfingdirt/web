@@ -32,9 +32,10 @@ const messages = (getText, getPlural) => (key) =>
       'Home',
     ) /*  */,
     moreAlbums: getText(
-      'More on the Albums page',
+      'See more photos and videos on the Albums page',
       'Home',
-    ) /* Label for a link to a page containing more albums */,
+    ) /* Message before a link to go to a page containing more albums */,
+    goToAlbums: getText('Go', 'Home') /* Label for a link to navigate */,
   }[key]);
 
 export default messages;

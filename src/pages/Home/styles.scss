@@ -96,5 +96,7 @@ $cover-card-content-distance-desktop: $margin-very-big;
 
 .albumsButtonWrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
