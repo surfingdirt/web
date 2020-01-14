@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-apollo';
+import { ApolloConsumer } from '@apollo/react-hooks';
 import qs from 'qs';
 
 import CREATE_USER from 'Apollo/mutations/createUser.gql';
@@ -23,7 +24,6 @@ const Registration = (props) => {
     location: { search },
   } = props;
 
-  // TODO: move this into a dedicated function
   const [createUserMutation, { data, loading }] = useMutation(CREATE_USER);
   const onSubmit = handleMutationSubmit(createUserMutation);
 
@@ -49,7 +49,16 @@ const Registration = (props) => {
     content = (
       <>
         <Paragraph>{t('explanations')}</Paragraph>
-        <Form initialValues={initialValues} initialErrors={initialErrors} onSubmit={onSubmit} />
+        <ApolloConsumer>
+          {(client) => (
+            <Form
+              runQuery={client.query}
+              initialValues={initialValues}
+              initialErrors={initialErrors}
+              onSubmit={onSubmit}
+            />
+          )}
+        </ApolloConsumer>
       </>
     );
   }
