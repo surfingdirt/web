@@ -17,8 +17,9 @@ query {
     }
     email
     firstName
-    lang
+    locale
     status
+    timezone
     userId
     username
   }
