@@ -249,8 +249,8 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
 };
 
 FormContent.propTypes = {
-  initialValues: PropTypes.arrayOf(PropTypes.string).isRequired,
-  initialErrors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  initialValues: PropTypes.object.isRequired,
+  initialErrors: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   runQuery: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
