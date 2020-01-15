@@ -56,10 +56,10 @@ export const truncateItemTitleForConfirmation = (title) => {
 };
 
 export const handleMutationSubmit = (mutation) => {
-  return async (input) => {
+  return async (variables) => {
     const errors = {};
     try {
-      await mutation({ variables: { input } });
+      await mutation({ variables });
     } catch (e) {
       const rawErrors =
         e.graphQLErrors &&

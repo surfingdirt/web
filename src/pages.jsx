@@ -46,6 +46,10 @@ const pages = {
     () => import(/* webpackChunkName: 'UserRegistration' */ './pages/User/Registration'),
     options,
   ),
+  Settings: loadable(
+    () => import(/* webpackChunkName: 'UserSettings' */ './pages/User/Settings'),
+    options,
+  ),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
   Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),

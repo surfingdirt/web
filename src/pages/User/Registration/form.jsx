@@ -147,7 +147,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
   return (
     <Form
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={(input) => onSubmit({ input })}
       validate={validate}
       render={(formProps) => {
         const { handleSubmit, invalid, submitting } = formProps;

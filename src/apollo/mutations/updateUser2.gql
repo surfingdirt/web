@@ -1,9 +1,5 @@
 mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
     updateUser(userId: $userId, input: $input) {
-        userId
-        username
-        firstName
-        bio
         album {
           id
           title
@@ -24,6 +20,7 @@ mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
           type
           url
         }
+        bio
         cover {
           size
           width
@@ -31,5 +28,10 @@ mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
           type
           url
         }
+        firstName
+        locale
+        timezone
+        userId
+        username
     }
 }

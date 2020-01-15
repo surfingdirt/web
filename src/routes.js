@@ -18,6 +18,7 @@ const routes = {
   PHOTO_NEW_FOR_ALBUM: '/album/:id/new-photo',
   PROFILE: '/profile',
   REGISTRATION: '/registration',
+  SETTINGS: '/settings',
   VIDEO: '/video/:id',
   VIDEO_EDIT: '/edit-video',
   VIDEO_NEW: '/new-video',
