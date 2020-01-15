@@ -14,11 +14,12 @@ const InputField = (props) => {
   const { input, meta, ...rest } = props;
 
   const { onChange: inputOnChange, ...inputAttrs } = input;
+  const { type } = inputAttrs;
   const onChange = rest.onChange || inputOnChange;
 
   const { touched, error, submitError } = meta;
 
-  const { className, id, initialError, label, placeholder, required, type } = rest;
+  const { className, id, initialError, label, placeholder, required } = rest;
 
   let displayError = null;
   if (submitError) {
