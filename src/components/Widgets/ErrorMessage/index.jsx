@@ -14,8 +14,8 @@ const ErrorMessage = ({ t, code, message }) => {
   const messageName = message || errorCodes[code] || DEFAULT_MESSAGE;
 
   return (
-    <Card type={STANDARD} title={t(messageName)}>
-      <p>{code}</p>
+    <Card type={STANDARD} title={code}>
+      <p>{messageName}</p>
     </Card>
   );
 };

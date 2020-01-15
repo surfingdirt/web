@@ -16,7 +16,7 @@ import routes from '~/routes';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { USER_NEW } = actions;
+const { SETTINGS } = actions;
 const { ACTION } = buttonTypes;
 const { PROFILE } = routes;
 
@@ -115,7 +115,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
     <>
       <Form
         initialValues={initialValues}
-        onSubmit={(input) => onSubmit({ input, userId })}
+        onSubmit={(values) => onSubmit({ input: values })}
         validate={validate}
         render={(formProps) => {
           const { handleSubmit, invalid, submitting } = formProps;
@@ -124,7 +124,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
               className={styles.form}
               onSubmit={handleSubmit}
               method="POST"
-              action={actionRoute(USER_NEW)}
+              action={actionRoute(SETTINGS)}
               encType="multipart/form-data"
             >
               <div className={styles.inputsContainer}>
@@ -211,6 +211,9 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
                 </details>
               </div>
               <div className={styles.bottomContainer}>
+                <Field name="userId">
+                  {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+                </Field>
                 <Button
                   type={ACTION}
                   buttonType="submit"
@@ -236,7 +239,6 @@ FormContent.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   runQuery: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  userId: PropTypes.string.isRequired,
 };
 
 export default Translate(messages)(FormContent);

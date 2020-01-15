@@ -4,7 +4,7 @@ import { useMutation } from 'react-apollo';
 import { ApolloConsumer } from '@apollo/react-hooks';
 import qs from 'qs';
 
-import UPDATE_USER from 'Apollo/mutations/updateUser2.gql';
+import UPDATE_SETTINGS from 'Apollo/mutations/updateSettings.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Paragraph from 'Components/Widgets/Paragraph';
 import Spinner from 'Components/Widgets/Spinner';
@@ -32,13 +32,13 @@ const Settings = (props) => {
       },
     },
   } = context;
-  const [updateUserMutation, { data, loading }] = useMutation(UPDATE_USER);
+  const [updateUserMutation, { data, loading }] = useMutation(UPDATE_SETTINGS);
   const onSubmit = handleMutationSubmit(updateUserMutation);
 
   const queryArgs = qs.parse(search.substr(1));
   const success = !!queryArgs.success;
   const initialErrors = queryArgs.errors || {};
-  const initialValues = Object.assign({ email, locale, timezone }, queryArgs.values);
+  const initialValues = Object.assign({ email, locale, timezone, userId }, queryArgs.values);
 
   let content;
   if (success) {
@@ -61,7 +61,6 @@ const Settings = (props) => {
             initialValues={initialValues}
             initialErrors={initialErrors}
             onSubmit={onSubmit}
-            userId={userId}
           />
         )}
       </ApolloConsumer>

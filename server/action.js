@@ -20,9 +20,17 @@ import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
 import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
+import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings.gql';
 import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser2.gql';
 
-import { albumRoute, errorRoute, photoRoute, registrationRoute, videoRoute } from 'Utils/links';
+import {
+  albumRoute,
+  errorRoute,
+  photoRoute,
+  registrationRoute,
+  settingsSaveSucessRoute,
+  videoRoute,
+} from 'Utils/links';
 import routes from '~/routes';
 import Login from '~/Login';
 import { config } from '../config';
@@ -48,6 +56,7 @@ const {
   LOGOUT,
   PHOTO_BATCH_UPLOAD,
   PHOTO_NEW,
+  SETTINGS,
   VIDEO_NEW,
   USER_NEW,
   USER_UPDATE,
@@ -279,6 +288,16 @@ const postActionInfoMap = {
         return res.redirect(301, errorRoute(error.code, error.message));
       }
       return res.redirect(500, ERROR);
+    },
+  },
+  [SETTINGS]: {
+    mutation: UPDATE_SETTINGS_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'updateUser',
+    redirect: { route: settingsSaveSucessRoute() },
+    onError: (error, req, res) => {
+      console.error('Settings update error:', error);
+      return res.redirect(301, errorRoute(error.code, error.message));
     },
   },
   [VIDEO_NEW]: {

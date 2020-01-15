@@ -1,0 +1,37 @@
+mutation UpdateSettings($input: SettingsUpdateInput!) {
+    updateSettings(input: $input) {
+        album {
+          id
+          title
+          media {
+            images {
+                size
+                width
+                height
+                type
+                url
+            }
+          }
+        }
+        avatar {
+          size
+          width
+          height
+          type
+          url
+        }
+        bio
+        cover {
+          size
+          width
+          height
+          type
+          url
+        }
+        firstName
+        locale
+        timezone
+        userId
+        username
+    }
+}
