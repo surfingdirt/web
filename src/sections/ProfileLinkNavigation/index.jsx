@@ -4,20 +4,20 @@ import classnames from 'classnames';
 import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
+import LogoutForm from 'Components/User/LogoutForm';
+import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import NavigationLink from 'Components/Widgets/NavigationLink';
-import Footer from 'Sections/Footer';
 import icons, { getIcon, sizes } from 'Utils/icons';
-import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import styles from './styles.scss';
 import messages from './messages';
 
-const { ALBUMS, USERS } = routes;
+const { LOGIN, PROFILE, REGISTRATION, SETTINGS } = routes;
 const { STANDARD } = sizes;
 
-class LinkNavigationRaw extends React.Component {
+class ProfileLinkNavigationRaw extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
@@ -25,7 +25,9 @@ class LinkNavigationRaw extends React.Component {
     innerRef: PropTypes.shape({
       current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
     }).isRequired,
+    loggedIn: PropTypes.bool.isRequired,
     onCloseClick: PropTypes.func.isRequired,
+    openClassName: PropTypes.string.isRequired,
     openOnMobile: PropTypes.bool.isRequired,
     currentUrl: PropTypes.string.isRequired,
   };
@@ -33,27 +35,37 @@ class LinkNavigationRaw extends React.Component {
   static contextType = AppContext;
 
   render() {
-    const { className, currentUrl, id, innerRef, onCloseClick, openOnMobile, t } = this.props;
-    const { galleryAlbumId } = this.context;
-    const items = [
-      { to: albumRoute(galleryAlbumId), icon: icons.HOT, label: t('gallery') },
-      { to: ALBUMS, icon: icons.ALBUM, label: t('albums') },
-      { to: USERS, icon: icons.USERS, label: t('riders') },
-    ];
+    const {
+      className,
+      currentUrl,
+      id,
+      innerRef,
+      loggedIn,
+      onCloseClick,
+      openClassName,
+      openOnMobile,
+      t,
+    } = this.props;
+
+    const items = loggedIn
+      ? [{ to: PROFILE, label: t('profile') }, { to: SETTINGS, label: t('settings') }]
+      : [{ to: REGISTRATION, label: t('register') }, { to: LOGIN, label: t('login') }];
     return (
       <nav
-        className={classnames(styles.wrapper, className, { [styles.openOnMobile]: openOnMobile })}
+        className={classnames(styles.wrapper, className, { [openClassName]: openOnMobile })}
         aria-label={t('linkNav')}
       >
         <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
           <ul className={styles.linkList}>
+            <li>
+              <LogoutForm buttonClassName={menuStyles.menuEntry} />
+            </li>
             {items.map((props) => (
               <li key={props.to}>
                 <NavigationLink {...props} active={props.to === currentUrl} />
               </li>
             ))}
           </ul>
-          <Footer className={styles.footer} />
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
             {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
           </button>
@@ -62,9 +74,9 @@ class LinkNavigationRaw extends React.Component {
     );
   }
 }
-const TranslatedLinkNavigation = Translate(messages)(withRouter(LinkNavigationRaw));
-const LinkNavigation = React.forwardRef((props, ref) => (
-  <TranslatedLinkNavigation innerRef={ref} {...props} />
+const TranslatedProfileLinkNavigation = Translate(messages)(withRouter(ProfileLinkNavigationRaw));
+const ProfileLinkNavigation = React.forwardRef((props, ref) => (
+  <TranslatedProfileLinkNavigation innerRef={ref} {...props} />
 ));
-LinkNavigation.displayName = 'LinkNavigation';
-export default LinkNavigation;
+ProfileLinkNavigation.displayName = 'LinkNavigation';
+export default ProfileLinkNavigation;

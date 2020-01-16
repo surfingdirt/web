@@ -5,7 +5,8 @@ import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
 import Actions from 'Sections/Actions';
-import LinkNavigation from 'Sections/LinkNavigation';
+import MoreLinkNavigation from 'Sections/MoreLinkNavigation';
+import ProfileLinkNavigation from 'Sections/ProfileLinkNavigation';
 import icons from 'Utils/icons';
 import { focusFirstFocusableItemInside } from 'Utils/misc';
 import AppContext from '~/contexts';
@@ -13,7 +14,7 @@ import routes from '~/routes';
 
 import BottomBar from './BottomBar';
 import Header from './Header';
-import { NAVIGATION_ID } from './constants';
+import { MORE_NAVIGATION_ID, PROFILE_NAVIGATION_ID } from './constants';
 import messages from './messages';
 import styles from './styles.scss';
 
@@ -40,12 +41,15 @@ class Layout extends React.Component {
       actionButtonOrigin: [0, 0],
       bottomBarActionsOpen: false,
       hasActiveForm: false,
-      navigationMenuOpen: false,
+      moreNavigationMenuOpen: false,
+      profileNavigationMenuOpen: false,
     };
 
     this.toggleActionButtons = this.toggleActionButtons.bind(this);
-    this.openNavigationMenu = this.openNavigationMenu.bind(this);
-    this.closeNavigationMenu = this.closeNavigationMenu.bind(this);
+    this.openMoreNavigationMenu = this.openMoreNavigationMenu.bind(this);
+    this.openProfileNavigationMenu = this.openProfileNavigationMenu.bind(this);
+    this.closeMoreNavigationMenu = this.closeMoreNavigationMenu.bind(this);
+    this.closeProfileNavigationMenu = this.closeProfileNavigationMenu.bind(this);
     this.closeAll = this.closeAll.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -56,7 +60,8 @@ class Layout extends React.Component {
     this.bottomBarRef = React.createRef();
     this.headerRef = React.createRef();
     this.mainRef = React.createRef();
-    this.navigationMenuRef = React.createRef();
+    this.moreNavigationMenuRef = React.createRef();
+    this.profileNavigationMenuRef = React.createRef();
     this.actionLinkListRef = React.createRef();
   }
 
@@ -82,7 +87,8 @@ class Layout extends React.Component {
     this.setState({
       actionButtonOrigin: this.getOrigin(),
       bottomBarActionsOpen: false,
-      navigationMenuOpen: false,
+      moreNavigationMenuOpen: false,
+      profileNavigationMenuOpen: false,
     });
   }
 
@@ -117,19 +123,34 @@ class Layout extends React.Component {
     }
   }
 
-  openNavigationMenu() {
-    this.setState({ navigationMenuOpen: true }, () => {
+  openMoreNavigationMenu() {
+    this.setState({ moreNavigationMenuOpen: true }, () => {
       // TODO: use a focus trap in the mobile navigation.
-      focusFirstFocusableItemInside(this.navigationMenuRef.current);
+      focusFirstFocusableItemInside(this.moreNavigationMenuRef.current);
     });
   }
 
-  closeNavigationMenu() {
-    this.setState({ navigationMenuOpen: false });
+  openProfileNavigationMenu() {
+    this.setState({ profileNavigationMenuOpen: true }, () => {
+      // TODO: use a focus trap in the mobile navigation.
+      focusFirstFocusableItemInside(this.profileNavigationMenuRef.current);
+    });
+  }
+
+  closeMoreNavigationMenu() {
+    this.setState({ moreNavigationMenuOpen: false });
+  }
+
+  closeProfileNavigationMenu() {
+    this.setState({ profileNavigationMenuOpen: false });
   }
 
   closeAll() {
-    this.setState({ bottomBarActionsOpen: false, navigationMenuOpen: false });
+    this.setState({
+      bottomBarActionsOpen: false,
+      moreNavigationMenuOpen: false,
+      profileNavigationMenuOpen: false,
+    });
   }
 
   render() {
@@ -143,10 +164,20 @@ class Layout extends React.Component {
       actionButtonOrigin,
       bottomBarActionsOpen,
       hasActiveForm,
-      navigationMenuOpen,
+      moreNavigationMenuOpen,
+      profileNavigationMenuOpen,
     } = this.state;
 
-    const { title } = this.context;
+    const {
+      login: {
+        data: {
+          me: { username },
+        },
+      },
+      title,
+    } = this.context;
+
+    const loggedIn = !!username;
 
     const actionItems = [
       { to: ALBUM_NEW, icon: icons.ALBUM, label: t('addAnAlbum') },
@@ -162,9 +193,11 @@ class Layout extends React.Component {
       closeAll: this.closeAll,
       bottomBarActionsOpen,
       bottomBarRef: this.bottomBarRef,
-      navigationMenuOpen,
+      moreNavigationMenuOpen,
+      profileNavigationMenuOpen,
       onPlusClick: this.toggleActionButtons,
-      openNavigationMenu: this.openNavigationMenu,
+      openMoreNavigationMenu: this.openMoreNavigationMenu,
+      openProfileNavigationMenu: this.openProfileNavigationMenu,
       t,
       toggleActionButtons: this.toggleActionButtons,
     };
@@ -179,13 +212,25 @@ class Layout extends React.Component {
       >
         <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
 
-        <LinkNavigation
-          className={styles.navigation}
-          id={NAVIGATION_ID}
+        <MoreLinkNavigation
+          className={classnames(styles.navigation, styles.navigationRight)}
+          id={MORE_NAVIGATION_ID}
           currentUrl={url}
-          onCloseClick={this.closeNavigationMenu}
-          openOnMobile={navigationMenuOpen}
-          ref={this.navigationMenuRef}
+          onCloseClick={this.closeMoreNavigationMenu}
+          openClassName={styles.navigationOpen}
+          openOnMobile={moreNavigationMenuOpen}
+          ref={this.moreNavigationMenuRef}
+        />
+
+        <ProfileLinkNavigation
+          className={classnames(styles.navigation, styles.navigationLeft, styles.profileNavigation)}
+          id={PROFILE_NAVIGATION_ID}
+          currentUrl={url}
+          onCloseClick={this.closeProfileNavigationMenu}
+          openClassName={styles.navigationOpen}
+          openOnMobile={profileNavigationMenuOpen}
+          loggedIn={loggedIn}
+          ref={this.profileNavigationMenuRef}
         />
 
         <main ref={this.mainRef} className={styles.main}>
@@ -199,7 +244,7 @@ class Layout extends React.Component {
         <div
           aria-hidden="true"
           className={classnames(styles.overlay, styles.navigationMenuOverlay, {
-            [styles.overlayVisible]: navigationMenuOpen,
+            [styles.overlayVisible]: moreNavigationMenuOpen || profileNavigationMenuOpen,
           })}
           onClick={this.closeAll}
         />

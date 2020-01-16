@@ -1,9 +1,10 @@
 const messages = (getText, getPlural) => (key) =>
   ({
-    account: getText(
-      'Account',
-      'NavigationProfile',
-    ) /* Label for a menu to manage the user's account */,
+    close: getText('Close', 'Navigation') /* Label for a button to close the navigation menu */,
+    linkNav: getText(
+      'Links',
+      'Navigation',
+    ) /* Label for a section containing links to pages on the site */,
     login: getText('Sign in', 'NavigationProfile') /* Label for a link to the login page */,
     profile: getText('Profile', 'Page Layout') /* Label for a link to the user's profile page */,
     register: getText('Register', 'LoggedOut') /* Label of a link to the registration page */,

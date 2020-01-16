@@ -26,6 +26,7 @@ class NavigationProfile extends React.Component {
   static propTypes = {
     /* Common props */
     className: PropTypes.string,
+    renderAsDropdown: PropTypes.bool.isRequired,
     t: PropTypes.func.isRequired,
   };
 
@@ -34,7 +35,7 @@ class NavigationProfile extends React.Component {
   };
 
   render() {
-    const { className, t } = this.props;
+    const { className, renderAsDropdown, t } = this.props;
 
     const {
       login: {
@@ -46,8 +47,7 @@ class NavigationProfile extends React.Component {
 
     const loggedIn = !!username;
 
-    const title = loggedIn ? username : t('login');
-    const to = loggedIn ? PROFILE_PAGE : LOGIN;
+    const title = loggedIn ? username : t('account');
     const hasAvatar = avatar && avatar.length > 0;
 
     const visual =
@@ -87,16 +87,20 @@ class NavigationProfile extends React.Component {
       ];
     }
 
-    const trigger = (
+    const profileItem = <NamedNavigationItem label={title} visual={visual} />;
+
+    const trigger = renderAsDropdown ? (
       <div className={styles.menuTrigger}>
+        {profileItem}
         {getIcon({
           className: styles.arrow,
           presentationOnly: true,
           size: sizes.TINY,
           type: icons.ARROW_DOWN,
         })}
-        <NamedNavigationItem label={title} visual={visual} />
       </div>
+    ) : (
+      profileItem
     );
 
     return (

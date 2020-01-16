@@ -9,12 +9,6 @@ $footer-height: 2.5rem;
   background-color: $container-background-color-default;
   color: $container-text-color-default;
   text-align: center;
-
-  &.openOnMobile {
-    transform: translateX(0);
-    pointer-events: initial;
-    opacity: .9;
-  }
 }
 
 .positioner {

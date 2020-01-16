@@ -90,6 +90,7 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       icon = Check;
       break;
     case icons.HOME:
+      hollow = false;
       icon = Home;
       break;
     case icons.HOT:

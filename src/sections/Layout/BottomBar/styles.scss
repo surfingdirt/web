@@ -95,13 +95,13 @@
 
   .home {
     @extend %navigationItem;
-    right: $profile-width + $more-width + $plus-width;
+    right: $more-width + $plus-width;
     width: $home-width;
   }
 
   .profile {
     @extend %navigationItem;
-    right: $more-width + $plus-width;
+    right: $home-width + $more-width + $plus-width;
     width: $profile-width;
   }
 }

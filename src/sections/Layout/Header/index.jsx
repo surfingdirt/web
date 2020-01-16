@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Logo, { logoTypes } from 'Components/Widgets/Logo/index';
-import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem/index';
-import Profile from 'Components/Widgets/NavigationProfile/index';
-import Translate from 'Hocs/Translate/index';
+import Logo, { logoTypes } from 'Components/Widgets/Logo';
+import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem';
+import NavigationProfile from 'Components/Widgets/NavigationProfile';
+import Translate from 'Hocs/Translate';
 import icons, { getIcon, sizes } from 'Utils/icons';
 import routes from '~/routes';
 
@@ -37,7 +37,7 @@ const Header = ({ className, headerRef, t, title }) => (
           visual={getIcon({ type: icons.ACTIVITY, size: STANDARD, presentationOnly: true })}
         />
       </div>
-      <Profile className={styles.profile} />
+      <NavigationProfile className={styles.profile} renderAsDropdown />
     </div>
 
     <div className={styles.mobileHeader}>{logo(title)}</div>

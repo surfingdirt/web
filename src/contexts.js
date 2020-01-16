@@ -7,6 +7,16 @@ const { HOME } = routes;
 const LoginCookie = Login.COOKIE_NAME;
 const signupDestinationKey = 'signUpDestination';
 
+const defaultUser = {
+  avatar: null,
+  cover: null,
+  email: '',
+  locale: '',
+  userId: null,
+  username: '',
+  timezone: '',
+};
+
 export class AppContextValueObject {
   constructor(values) {
     this.values = {
@@ -24,15 +34,7 @@ export class AppContextValueObject {
       login: {
         data: {
           accessToken: null,
-          me: {
-            avatar: null,
-            cover: null,
-            email: '',
-            locale: '',
-            userId: null,
-            username: '',
-            timezone: '',
-          },
+          me: { ...defaultUser },
         },
       },
       nowValue: null,
@@ -59,12 +61,7 @@ export class AppContextValueObject {
     };
 
     this.values.login.onFailure = () => {
-      this.values.login.data = {
-        id: null,
-        accessToken: null,
-        expires: null,
-        tokenType: null,
-      };
+      this.resetUser();
     };
 
     this.values.login.logout = () => {
@@ -125,16 +122,7 @@ export class AppContextValueObject {
   }
 
   resetUser() {
-    this.setUser({
-      avatar: '',
-      cover: '',
-      email: '',
-      locale: '',
-      status: '',
-      timezone: '',
-      userId: null,
-      username: '',
-    });
+    this.setUser({ ...defaultUser });
   }
 
   getValues() {

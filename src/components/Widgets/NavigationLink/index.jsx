@@ -18,7 +18,7 @@ const NavigationLink = ({ active, className, icon, label, negative, onClick, to 
 
   return (
     <Tag className={classNames} {...attrs}>
-      <span className={styles.defaultIcon}>{getIcon({ type: icon })}</span>
+      {icon && <span className={styles.defaultIcon}>{getIcon({ type: icon })}</span>}
       <span className={styles.label}>{label}</span>
     </Tag>
   );
