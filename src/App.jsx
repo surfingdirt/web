@@ -6,9 +6,9 @@ import ME from 'Apollo/queries/me2.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
 
+import AppRoutes from '~/AppRoutes';
 import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
-import appRoutes from '~/./appRoutes';
 
 const KEYBOARD_MODE_CLASS = 'keyboard-mode';
 const MOUSE_MODE_CLASS = 'mouse-mode';
@@ -16,7 +16,9 @@ const MOUSE_MOVE_EVENT = 'mousemove';
 const WITH_JS_CLASS = 'with-js';
 
 const renderApp = (contextValues) => (
-  <AppContext.Provider value={contextValues}>{appRoutes}</AppContext.Provider>
+  <AppContext.Provider value={contextValues}>
+    <AppRoutes />
+  </AppContext.Provider>
 );
 
 class App extends React.Component {

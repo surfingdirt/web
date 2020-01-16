@@ -26,6 +26,7 @@ export class AppContextValueObject {
       baseUrl: '',
       dir: 'ltr',
       facebookAppId: '',
+      features: {},
       galleryAlbumId: '',
       googleClientId: '',
       twitterUsername: '',

@@ -38,6 +38,7 @@ class NavigationProfile extends React.Component {
     const { className, renderAsDropdown, t } = this.props;
 
     const {
+      features,
       login: {
         data: {
           me: { avatar, username },
@@ -79,12 +80,14 @@ class NavigationProfile extends React.Component {
             {t('login')}
           </Link>
         ),
-        () => (
+      ];
+      if (features.registration) {
+        options.push(() => (
           <Link to={REGISTRATION} className={menuStyles.menuEntry}>
             {t('register')}
           </Link>
-        ),
-      ];
+        ));
+      }
     }
 
     const profileItem = <NamedNavigationItem label={title} visual={visual} />;

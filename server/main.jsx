@@ -7,7 +7,6 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Handlebars from 'handlebars';
 import { HelmetProvider } from 'react-helmet-async';
-
 import { po } from 'gettext-parser';
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
@@ -16,6 +15,7 @@ import useragent from 'useragent';
 
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
+import features from '~/features';
 import App from '~/App';
 
 import Logger from './logger';
@@ -72,6 +72,7 @@ const Main = (rootDir) => {
         availableLocales,
         baseUrl,
         dir,
+        features,
         galleryAlbumId,
         graphql,
         locale,
