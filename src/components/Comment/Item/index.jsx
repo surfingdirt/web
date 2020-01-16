@@ -7,7 +7,6 @@ import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Menu from 'Components/Widgets/Menu';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
-import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';

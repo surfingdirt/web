@@ -5,3 +5,12 @@
 .wrapper {
   font-size: $navigation-item-font-size;
 }
+
+.menuTrigger {
+  display: flex;
+  align-items: center;
+
+  .arrow {
+    margin-bottom: 1rem;
+  }
+}
