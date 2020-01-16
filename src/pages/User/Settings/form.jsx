@@ -17,7 +17,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { SETTINGS } = actions;
-const { ACTION } = buttonTypes;
+const { ACTION, NEGATIVE } = buttonTypes;
 const { PROFILE } = routes;
 
 const DEBOUNCE_TIMEOUT = 300;
@@ -228,7 +228,8 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
         }}
       />
       <Paragraph>{t('lookingForHowTo')}</Paragraph>
-      <Button href={PROFILE} label={t('profilePage')} />
+      <Paragraph>{t('goToProfile')}</Paragraph>
+      <Button href={PROFILE} label={t('profilePage')} type={NEGATIVE} />
     </>
   );
 };

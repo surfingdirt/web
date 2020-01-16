@@ -1,8 +1,9 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     email: getText('Email', 'Registration') /* Label for a form field to type an email */,
+    goToProfile: getText('Go to your profile page instead!', 'Settings') /* Help text for users */,
     lookingForHowTo: getText(
-      'Looking for how to update your profile picture or cover photo? Go to your profile page instead!',
+      'Looking for how to update your profile picture or cover photo?',
       'Settings',
     ) /* Help text for users */,
     locale: getText(
