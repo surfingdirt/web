@@ -12,7 +12,6 @@ import Heading, { headingTypes } from 'Components/Widgets/Heading';
 import Logo, { logoTypes } from 'Components/Widgets/Logo';
 import Paragraph from 'Components/Widgets/Paragraph';
 import Translate from 'Hocs/Translate';
-import coverImage from 'Images/home-cover-s.jpg';
 import AppContext from '~/contexts';
 import { AlbumConstants } from 'Utils/data';
 
@@ -58,10 +57,7 @@ class Home extends React.Component {
                   {t('title')}
                 </Heading>
                 <Logo type={NO_TEXT} className={styles.splashLogo} title="" />
-                <div
-                  style={{ backgroundImage: `url(${coverImage})` }}
-                  className={styles.coverImage}
-                />
+                <div className={styles.coverImage} />
               </div>
               <Card type={STANDARD}>
                 <details className={styles.intro}>

@@ -68,8 +68,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[hash:3].[ext]',
-          outputPath: 'images/',
-          publicPath: 'images',
+          outputPath: '/images',
+          publicPath: `${contentBaseUrl}/images`,
         },
       },
       {
