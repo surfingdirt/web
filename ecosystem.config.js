@@ -18,13 +18,13 @@ const commonConfig = {
 module.exports = {
   apps: [
     Object.assign({}, commonConfig, {
-      name: 'Surfing Dirt - web server - beta',
+      name: 'SurfingDirtWebBeta',
       env: {
         NODE_ENV: 'beta',
       },
     }),
     Object.assign({}, commonConfig, {
-      name: 'Surfing Dirt - web server - production',
+      name: 'SurfingDirtWebProduction',
       env: {
         NODE_ENV: 'production',
       },
