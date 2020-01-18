@@ -14,7 +14,6 @@ import actions from '~/actions';
 
 import messages from './messages';
 import styles from './styles.scss';
-import { InlineSpinner } from 'Components/Widgets/Spinner';
 
 const { USER_NEW } = actions;
 const { ACTION } = buttonTypes;
@@ -38,30 +37,30 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
       } else if (!Object.keys(checkedUsernames).includes(username)) {
         promises.push(
           new Promise((resolveUsername, reject) => {
-            clearTimeout(usernameTimeout);
-            usernameTimeout = setTimeout(() => {
-              runQuery({
-                query: USERNAME_EXISTS,
-                variables: { username },
-                fetchPolicy: 'network-only',
+            // clearTimeout(usernameTimeout);
+            // usernameTimeout = setTimeout(() => {
+            runQuery({
+              query: USERNAME_EXISTS,
+              variables: { username },
+              fetchPolicy: 'network-only',
+            })
+              .then(({ data }) => {
+                const exists = !!data.usernameExists;
+                checkedUsernames[username] = exists;
+                if (exists) {
+                  errors.username = (
+                    <FormAPIMessage message="exists" className={styles.apiMessage} />
+                  );
+                }
+                resolveUsername(exists);
               })
-                .then(({ data }) => {
-                  const exists = !!data.usernameExists;
-                  checkedUsernames[username] = exists;
-                  if (exists) {
-                    errors.username = (
-                      <FormAPIMessage message="exists" className={styles.apiMessage} />
-                    );
-                  }
-                  resolveUsername(exists);
-                })
-                .catch((error) => {
-                  reject(error);
-                });
-            }, DEBOUNCE_TIMEOUT);
+              .catch((error) => {
+                console.error('resolveUsername error', error);
+                reject(error);
+              });
+            // }, DEBOUNCE_TIMEOUT);
           }),
         );
-        // }, DEBOUNCE_TIMEOUT);
       } else if (checkedUsernames[username]) {
         errors.username = <FormAPIMessage message="exists" className={styles.apiMessage} />;
       }
@@ -73,27 +72,26 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
       } else if (!Object.keys(checkedEmails).includes(email)) {
         promises.push(
           new Promise((resolveEmail, reject) => {
-            clearTimeout(emailTimeout);
-            emailTimeout = setTimeout(() => {
-              runQuery({
-                query: EMAIL_EXISTS,
-                variables: { email },
-                fetchPolicy: 'network-only',
+            // clearTimeout(emailTimeout);
+            // emailTimeout = setTimeout(() => {
+            runQuery({
+              query: EMAIL_EXISTS,
+              variables: { email },
+              fetchPolicy: 'network-only',
+            })
+              .then(({ data }) => {
+                const exists = !!data.emailExists;
+                checkedEmails[email] = exists;
+                if (exists) {
+                  errors.email = <FormAPIMessage message="exists" className={styles.apiMessage} />;
+                }
+                resolveEmail(exists);
               })
-                .then(({ data }) => {
-                  const exists = !!data.emailExists;
-                  checkedEmails[email] = exists;
-                  if (exists) {
-                    errors.email = (
-                      <FormAPIMessage message="exists" className={styles.apiMessage} />
-                    );
-                  }
-                  resolveEmail(exists);
-                })
-                .catch((error) => {
-                  reject(error);
-                });
-            }, DEBOUNCE_TIMEOUT);
+              .catch((error) => {
+                console.error('resolveEmail error', error);
+                reject(error);
+              });
+            // }, DEBOUNCE_TIMEOUT);
           }),
         );
       } else if (checkedEmails[email]) {
