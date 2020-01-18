@@ -1,7 +1,7 @@
 const contentBaseUrls = {
-  beta: 'https://apibetasurfingdirt.b-cdn.net',
+  beta: 'https://betasurfingdirt.b-cdn.net',
   local: 'http://localhost:3033',
-  production: 'https://apisurfingdirt.b-cdn.net',
+  production: 'https://surfingdirt.b-cdn.net',
 };
 
 const contentBaseUrl = contentBaseUrls[process.env.NODE_ENV];
