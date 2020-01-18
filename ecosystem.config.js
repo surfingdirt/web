@@ -22,6 +22,9 @@ module.exports = {
       env_beta: {
         NODE_ENV: 'beta',
       },
+      env_production: {
+        NODE_ENV: 'production',
+      },
     },
   ],
 };
