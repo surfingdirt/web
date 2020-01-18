@@ -7,10 +7,9 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 
-const { manifest, sw } = require('./config/pwaConfig');
+const contentBaseUrl = require('./config/contentBaseUrl');
+const { manifest } = require('./config/pwaConfig');
 const buildConfig = require('./build.config.js');
-
-const { baseUrl: PUBLIC_PATH } = sw;
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const devtool = mode === 'production' ? '' : 'eval-source-map';
@@ -22,7 +21,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, buildConfig.outDirectory),
     filename: '[name].[hash:3].bundle.js',
-    publicPath: '/',
+    publicPath: contentBaseUrl,
     chunkFilename: '[name].[hash:3].chunk.js',
   },
   resolve: {
@@ -183,7 +182,7 @@ module.exports = {
       dontCacheBustUrlsMatching: /\.\w{8}\./,
       filename: 'sw.js',
       // minify: true,
-      navigateFallback: `${PUBLIC_PATH}offline.html`,
+      navigateFallback: `${contentBaseUrl}offline.html`,
       // staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
     }),
   ],

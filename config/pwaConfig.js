@@ -1,4 +1,7 @@
 // See https://www.npmjs.com/package/webpack-pwa-manifest for documentation
+
+const baseUrl = require('./baseUrl');
+
 module.exports = {
   manifest: {
     name: 'Surfing Dirt',
@@ -12,6 +15,6 @@ module.exports = {
     ios: true,
   },
   sw: {
-    baseUrl: 'http://localhost:3033/',
+    baseUrl,
   },
 };

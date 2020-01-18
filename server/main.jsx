@@ -21,6 +21,7 @@ import App from '~/App';
 import Logger from './logger';
 import utils from './utils';
 import { analyticsId, config, fbAppId, title } from '../config';
+import contentBaseUrl from '../config/contentBaseUrl';
 
 const statsFile = path.resolve('./dist/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
@@ -111,6 +112,7 @@ const Main = (rootDir) => {
         agentBodyClass,
         analyticsId,
         apolloState: JSON.stringify(apolloClientInstance.extract()),
+        baseUrl: contentBaseUrl,
         css,
         dir,
         fbAppId,
