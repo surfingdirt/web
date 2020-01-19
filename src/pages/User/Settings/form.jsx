@@ -39,27 +39,25 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
       } else if (!Object.keys(checkedEmails).includes(email)) {
         promises.push(
           new Promise((resolveEmail, reject) => {
-            clearTimeout(emailTimeout);
-            emailTimeout = setTimeout(() => {
-              runQuery({
-                query: EMAIL_EXISTS,
-                variables: { email },
-                fetchPolicy: 'network-only',
+            // clearTimeout(emailTimeout);
+            // emailTimeout = setTimeout(() => {
+            runQuery({
+              query: EMAIL_EXISTS,
+              variables: { email },
+              fetchPolicy: 'network-only',
+            })
+              .then(({ data }) => {
+                const exists = !!data.emailExists;
+                checkedEmails[email] = exists;
+                if (exists) {
+                  errors.email = <FormAPIMessage message="exists" className={styles.apiMessage} />;
+                }
+                resolveEmail(exists);
               })
-                .then(({ data }) => {
-                  const exists = !!data.emailExists;
-                  checkedEmails[email] = exists;
-                  if (exists) {
-                    errors.email = (
-                      <FormAPIMessage message="exists" className={styles.apiMessage} />
-                    );
-                  }
-                  resolveEmail(exists);
-                })
-                .catch((error) => {
-                  reject(error);
-                });
-            }, DEBOUNCE_TIMEOUT);
+              .catch((error) => {
+                reject(error);
+              });
+            // }, DEBOUNCE_TIMEOUT);
           }),
         );
       } else if (checkedEmails[email]) {
@@ -181,6 +179,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
                         placeholder={t('inputPlaceholder')}
                         initialError={combineAndTranslateErrors('userP')}
                         required={false}
+                        autocomplete="off"
                       />
                     </div>
                     <div className={styles.field}>
@@ -193,6 +192,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
                         placeholder={t('inputPlaceholder')}
                         initialError={combineAndTranslateErrors('userPC')}
                         required={false}
+                        autocomplete="off"
                       />
                     </div>
                     <div className={styles.field}>
@@ -205,6 +205,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
                         placeholder={t('inputPlaceholder')}
                         initialError={combineAndTranslateErrors('userPO')}
                         required={false}
+                        autocomplete="off"
                       />
                     </div>
                   </div>

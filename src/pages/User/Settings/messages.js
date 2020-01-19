@@ -26,6 +26,14 @@ const messages = (getText, getPlural) => (key) =>
       'Update your password',
       'Settings',
     ) /* Title of a section where the user can enter a new password */,
+    pickATimeZone: getText(
+      'Please choose one',
+      'Registration',
+    ) /* Help message telling the user they need to choose a timezone */,
+    pickALocale: getText(
+      'Please choose one',
+      'Registration',
+    ) /* Help message telling the user they need to choose a language */,
     profilePage: getText(
       'Profile page',
       'Settings',
