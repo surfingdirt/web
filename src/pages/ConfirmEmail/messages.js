@@ -1,11 +1,15 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     confirmation: getText(
-      'Email confirmation',
+      'Account validation',
       'Email',
     ) /* Title for the page where a user confirms their email is valid */,
+    couldNotConfirm: getText(
+      'An error occurred and you account could not be finalized',
+      'Email',
+    ) /* Error message displayed when something did not work */,
     congratulations: getText(
-      'Congratulations, your email is confirmed!',
+      'Congratulations, your account is now fully activated!',
       'Email',
     ) /* Message displayed once the user has confirmed their email address */,
     nowWhat: getText(
@@ -22,7 +26,7 @@ const messages = (getText, getPlural) => (key) =>
     addProfilePhoto: getText('Add a profile photo') /* Instruction for a user */,
     uploadPhotosOrVideos: getText('Upload photos or videos') /* Instruction for a user */,
     weSupport: getText(
-      'We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Videmo and DailyMotion videos',
+      'We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo and DailyMotion videos',
     ) /* Instruction for a user */,
     addAnAlbum: getText('Add an album') /* Instruction for a user */,
     privateAlbums: getText(

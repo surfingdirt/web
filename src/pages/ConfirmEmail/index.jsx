@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { Mutation } from 'react-apollo';
+import React from 'react';
 import queryString from 'query-string';
+import { useMutation } from '@apollo/react-hooks';
 
 import CONFIRM_EMAIL from 'Apollo/mutations/confirmEmail.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
@@ -19,64 +18,20 @@ const { STANDARD } = cardTypes;
 const { SECONDARY } = headingTypes;
 const { LOGIN } = routes;
 
-class ConfirmEmail extends PureComponent {
-  static propTypes = {
-    location: PropTypes.objectOf(PropTypes.any).isRequired,
-    t: PropTypes.func.isRequired,
-  };
+const ConfirmEmail = ({ location, t }) => {
+  const { id: userId, key: aK } = queryString.parse(location.search);
+  const [confirm, { data, error, loading }] = useMutation(CONFIRM_EMAIL, {
+    variables: { userId, input: { aK } },
+  });
 
-  static defaultProps = {};
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      done: false,
-      error: false,
-      result: { status: null, alreadyDone: null },
-    };
+  let content = null;
+  if (error) {
+    content = <p>{t('couldNotConfirm')}</p>;
   }
 
-  render() {
-    const {
-      props: { location, t },
-      state: {
-        done,
-        error,
-        result: { status, alreadyDone },
-      },
-    } = this;
-
-    const { id: userId, key: aK } = queryString.parse(location.search);
-
-    if (!done) {
-      return (
-        <Mutation mutation={CONFIRM_EMAIL}>
-          {(mutate) => {
-            mutate({
-              variables: { userId, input: { aK } },
-            })
-              .then(({ data }) => {
-                const { confirmEmail: result } = data;
-                this.setState({ done: true, result });
-                console.log({ status, alreadyDone });
-              })
-              .catch((e) => {
-                this.setState({ done: true, error: true });
-                console.log({ e });
-              });
-            return <Spinner />;
-          }}
-        </Mutation>
-      );
-    }
-
-    if (error) {
-      return <p>Error</p>;
-    }
-
-    return (
-      <Card title={t('confirmation')} type={STANDARD}>
+  if (data) {
+    content = (
+      <>
         <p>{t('congratulations')}</p>
         <p>{t('nowWhat')}</p>
         <div className={styles.buttonWrapper}>
@@ -106,9 +61,24 @@ class ConfirmEmail extends PureComponent {
             </li>
           </ol>
         </article>
+      </>
+    );
+  }
+
+  if (loading) {
+    content = <Spinner />;
+  }
+
+  if (content) {
+    return (
+      <Card title={t('confirmation')} type={STANDARD}>
+        {content}
       </Card>
     );
   }
-}
+
+  confirm();
+  return null;
+};
 
 export default Translate(messages)(ConfirmEmail);
