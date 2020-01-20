@@ -18,36 +18,33 @@ history.listen(() => {
   window.scrollTo(0, 0);
 });
 
-window.main = () => {
-  loadableReady(() => {
-    const {
-      graphql,
-      language,
-      login: {
-        data: { accessToken },
-      },
-    } = staticAppContextValues;
-
-    const helmetContext = {};
-    const apolloClientInstance = apolloClient(graphql, language, false, accessToken);
-
-    hydrate(
-      <HelmetProvider context={helmetContext}>
-        <ApolloProvider client={apolloClientInstance}>
-          <Router history={history}>
-            <App
-              appContextValueObject={
-                new AppContextValueObject({
-                  ...staticAppContextValues,
-                  SSR: false,
-                  screenWidth: window.innerWidth,
-                })
-              }
-            />
-          </Router>
-        </ApolloProvider>
-      </HelmetProvider>,
-      document.getElementById('app_root'),
-    );
-  });
-};
+loadableReady(() => {
+  console.log('loadableReady!');
+  const {
+    graphql,
+    locale,
+    login: {
+      data: { accessToken },
+    },
+  } = window.staticAppContextValues;
+  const helmetContext = {};
+  const apolloClientInstance = apolloClient(graphql, locale, false, accessToken);
+  hydrate(
+    <HelmetProvider context={helmetContext}>
+      <ApolloProvider client={apolloClientInstance}>
+        <Router history={history}>
+          <App
+            appContextValueObject={
+              new AppContextValueObject({
+                ...staticAppContextValues,
+                SSR: false,
+                screenWidth: window.innerWidth,
+              })
+            }
+          />
+        </Router>
+      </ApolloProvider>
+    </HelmetProvider>,
+    document.getElementById('app_root'),
+  );
+});
