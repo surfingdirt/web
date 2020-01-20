@@ -45,7 +45,6 @@ const ConfirmEmail = ({ location, t }) => {
               <p>{t('personalizeYourAccount')}</p>
               <ul>
                 <li>{t('goToYourProfilePage')}</li>
-                <li>{t('clickSettings')}</li>
                 <li>{t('addCoverPhoto')}</li>
                 <li>{t('addProfilePhoto')}</li>
               </ul>

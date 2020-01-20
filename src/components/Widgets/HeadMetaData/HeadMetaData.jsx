@@ -33,7 +33,7 @@ class HeadMetaData extends PureComponent {
   render() {
     const {
       props: { description, image, t, title, type, url, videoHeight, videoURL, videoWidth },
-      context: { baseUrl, facebookAppId, twitterUsername },
+      context: { baseUrl, facebookAppId, twitterUsername, title: siteTitle },
     } = this;
     let newBaseUrl = '';
 
@@ -42,7 +42,7 @@ class HeadMetaData extends PureComponent {
     }
 
     return (
-      <Helmet titleTemplate={`%s | ${t('titleTemplate')}`}>
+      <Helmet titleTemplate={`%s | ${siteTitle}`}>
         <title>{title}</title>
         <meta name="description" content={description} />
 

@@ -16,17 +16,13 @@ const RIGHT_TO_LEFT = 'rtl';
 const LEFT_TO_RIGHT = 'ltr';
 
 const getLocalesAndDirFromRequest = (req) => {
-  let locale = '';
-
-  let currentLocale = parser.pick(SUPPORTED_LOCALES, req.headers['accept-language'] || '');
-  if (!currentLocale) {
-    currentLocale = DEFAULT_LOCALE;
+  let locale = parser.pick(SUPPORTED_LOCALES, req.headers['accept-language'] || '');
+  if (!locale) {
+    locale = DEFAULT_LOCALE;
   }
 
-  if (req.query.lang && SUPPORTED_LOCALES.includes(req.query.lang)) {
-    locale = req.query.lang;
-  } else {
-    locale = currentLocale;
+  if (req.query.locale && SUPPORTED_LOCALES.includes(req.query.locale)) {
+    locale = req.query.locale;
   }
 
   const dir = RTL_LANGUAGES.includes(locale.split('-')[0]) ? RIGHT_TO_LEFT : LEFT_TO_RIGHT;

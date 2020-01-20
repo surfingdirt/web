@@ -5,7 +5,9 @@ const messages = (getText, getPlural) => (key) =>
       'Links',
       'Navigation',
     ) /* Label for a section containing links to pages on the site */,
-    login: getText('Sign in', 'NavigationProfile') /* Label for a link to the login page */,
+    login: getText(
+      'Sign in',
+    ) /* Label for a link to the signIn page, or label for a button to actually signIn */,
     profile: getText('Profile', 'Page Layout') /* Label for a link to the user's profile page */,
     register: getText('Register', 'LoggedOut') /* Label of a link to the registration page */,
     settings: getText('Settings', 'Page Layout') /* Label for a link to the user's settings page */,

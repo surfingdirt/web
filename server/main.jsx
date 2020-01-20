@@ -40,6 +40,8 @@ const Main = (rootDir) => {
     fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
   );
 
+  // TODO: read, parse and save all lang files
+
   return async (req, res, next) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 

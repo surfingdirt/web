@@ -1,6 +1,3 @@
-const messages = (getText) => (key) =>
-  ({
-    titleTemplate: getText('Title of the site', 'HeadMetaData') /* Title template */,
-  }[key]);
+const messages = (getText) => (key) => ({}[key]);
 
 export default messages;

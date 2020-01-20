@@ -27,7 +27,7 @@ const messages = (getText, getPlural) => (key) =>
     title3: getText("Here's the plan", 'Home') /* Title of a paragraph */,
     paragraph3: getText(
       `It's a lot of work to create a site like this, so we're going to start small and grow slowly.
-      To begin, we're going to focus on user profiles, photos, videos and albums, but soon after, we'll add things like comments, spots, events, etc.
+      To begin, we're going to focus on user profiles, photos, videos and albums, but soon after, we'll add things like spots, events, etc.
       So take a look around, sign up, post photos and we'll see you around!`,
       'Home',
     ) /*  */,

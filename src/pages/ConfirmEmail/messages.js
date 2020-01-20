@@ -16,12 +16,11 @@ const messages = (getText, getPlural) => (key) =>
       'You can now go ahead and sign in with your email and password:',
       'Email',
     ) /* Message displayed once the user has confirmed their email address */,
-    signIn: getText('Sign in', 'Email') /* Button label */,
+    signIn: getText(
+      'Sign in',
+    ) /* Label for a link to the signIn page, or label for a button to actually signIn */,
     personalizeYourAccount: getText('Personalize your account') /* Instruction for a user */,
     goToYourProfilePage: getText('Go to your profile page') /* Instruction for a user */,
-    clickSettings: getText(
-      'Open the settings menu by pressing the three-dot button',
-    ) /* Instruction for a user */,
     addCoverPhoto: getText('Add a cover photo') /* Instruction for a user */,
     addProfilePhoto: getText('Add a profile photo') /* Instruction for a user */,
     uploadPhotosOrVideos: getText('Upload photos or videos') /* Instruction for a user */,

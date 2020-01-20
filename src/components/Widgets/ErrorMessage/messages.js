@@ -7,7 +7,7 @@ const messages = (getText, getPlural) => (key) =>
     failedToLogin: getText(
       'Login failed',
       'Error',
-    ) /* Error message displayed when a user tried to login */,
+    ) /* Error message displayed when a user tried to signIn */,
   }[key]);
 
 export default messages;

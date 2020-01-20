@@ -8,7 +8,9 @@ const messages = (getText, getPlural) => (key) =>
       'Password Activation',
       'New password activation',
     ) /* Title of a page */,
-    signIn: getText('Sign in', 'SignIn') /* Header */,
+    signIn: getText(
+      'Sign in',
+    ) /* Label for a link to the signIn page, or label for a button to actually signIn */,
     useNewPassword: getText(
       'Enter the new password we emailed you to sign in!',
       'New password activation',

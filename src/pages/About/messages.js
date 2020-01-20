@@ -18,7 +18,7 @@ const messages = (getText, getPlural) => (key) =>
       'About',
     ) /* Paragraph */,
     paragraph5: getText(
-      'Looks like we’re a little late! Well, to tell you the truth, we aren’t quite ready to launch yet, but we’re definitely launching this year! We’ll start small and build up until mountainboarders across the world have an online home again.',
+      'Looks like we’re a little late! Well, to tell you the truth, we aren’t quite ready to launch yet, but we’re definitely launching early 2020! We’ll start small and build up until mountainboarders across the world have an online home again.',
       'About',
     ) /* Paragraph */,
     paragraph6: getText(

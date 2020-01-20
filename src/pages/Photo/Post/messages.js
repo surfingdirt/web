@@ -1,9 +1,6 @@
 const messages = (getText, getPlural) => (key) =>
   ({
-    postingToAlbum: getText(
-      'Posting to album',
-      'Photo post page',
-    ) /* Names the album the user is posting to */,
+    postingToAlbum: getText('Posting to album') /* Names the album the user is posting to */,
     photoPostPage: getText(
       'Post a new photo',
       'Photo post page',

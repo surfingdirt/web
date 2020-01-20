@@ -11,7 +11,7 @@ const actions = {
   COMMENT_UPDATE: '/comment/update',
   COVER_UPDATE: '/cover/post',
   FORGOT_PASSWORD: '/forgot-password',
-  LOGIN: '/login',
+  LOGIN: '/signIn',
   LOGOUT: '/logout',
   PHOTO_BATCH_UPLOAD: '/photo/batch-upload',
   PHOTO_NEW: '/photo/post',
