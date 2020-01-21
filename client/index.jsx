@@ -22,15 +22,13 @@ window.main = () => {
   loadableReady(() => {
     const {
       graphql,
-      language,
+      locale,
       login: {
         data: { accessToken },
       },
-    } = staticAppContextValues;
-
+    } = window.staticAppContextValues;
     const helmetContext = {};
-    const apolloClientInstance = apolloClient(graphql, language, false, accessToken);
-
+    const apolloClientInstance = apolloClient(graphql, locale, false, accessToken);
     hydrate(
       <HelmetProvider context={helmetContext}>
         <ApolloProvider client={apolloClientInstance}>

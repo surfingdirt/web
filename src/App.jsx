@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
+import { Helmet } from 'react-helmet-async';
 
 import ME from 'Apollo/queries/me2.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
 
+import { getLocaleAndDirFromUser } from 'Utils/lang';
 import AppRoutes from '~/AppRoutes';
 import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
@@ -15,11 +17,17 @@ const MOUSE_MODE_CLASS = 'mouse-mode';
 const MOUSE_MOVE_EVENT = 'mousemove';
 const WITH_JS_CLASS = 'with-js';
 
-const renderApp = (contextValues) => (
-  <AppContext.Provider value={contextValues}>
-    <AppRoutes />
-  </AppContext.Provider>
-);
+const renderApp = (contextValues) => {
+  const { dir, locale } = contextValues;
+  return (
+    <AppContext.Provider value={contextValues}>
+      <Helmet>
+        <html dir={dir} lang={locale} />
+      </Helmet>
+      <AppRoutes />
+    </AppContext.Provider>
+  );
+};
 
 class App extends React.Component {
   static propTypes = {
@@ -70,6 +78,13 @@ class App extends React.Component {
 
           if (me && me.userId) {
             appContextValueObject.setUser(me);
+            const { locale, dir } = getLocaleAndDirFromUser(
+              me,
+              appContextValueObject.values.locale,
+              appContextValueObject.values.dir,
+            );
+            appContextValueObject.values.locale = locale;
+            appContextValueObject.values.dir = dir;
           } else {
             appContextValueObject.resetUser();
           }

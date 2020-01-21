@@ -19,8 +19,8 @@ import features from '~/features';
 import App from '~/App';
 
 import Logger from './logger';
-import utils from './utils';
-import { analyticsId, config, fbAppId, title } from '../config';
+import { SUPPORTED_LOCALES, getLocaleAndDirFromRequest } from './utils';
+import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
 import contentBaseUrl from '../config/contentBaseUrl';
 
 const statsFile = path.resolve('./dist/loadable-stats.json');
@@ -40,8 +40,6 @@ const Main = (rootDir) => {
     fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
   );
 
-  // TODO: read, parse and save all lang files
-
   return async (req, res, next) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 
@@ -52,7 +50,8 @@ const Main = (rootDir) => {
     const agentBodyClass = slugify(family, { lower: true });
 
     try {
-      const { availableLocales, locale, dir } = utils.getLocalesAndDirFromRequest(req);
+      const { locale: requestLocale, dir: requestDir } = getLocaleAndDirFromRequest(req);
+      error500Page = ERROR_500_PAGES[requestLocale];
 
       let translations;
       try {
@@ -68,26 +67,27 @@ const Main = (rootDir) => {
         translations = {};
       }
 
-      error500Page = ERROR_500_PAGES[locale];
+      error500Page = ERROR_500_PAGES[requestLocale];
 
       const staticAppContextValues = {
         SSR,
-        availableLocales,
+        availableLocales: SUPPORTED_LOCALES,
         baseUrl,
-        dir,
+        dir: requestDir,
         features,
         galleryAlbumId,
         graphql,
-        locale,
+        locale: requestLocale,
         screenWidth,
+        title: siteTitle,
         translations,
-        title,
       };
+
       const appContextValueObject = new AppContextValueObject(staticAppContextValues);
       const accessToken = req.cookies.accessToken || '';
       appContextValueObject.setAccessToken(accessToken);
 
-      const apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
+      const apolloClientInstance = apolloClient(graphql, requestLocale, true, accessToken);
       const helmetContext = {};
 
       // noinspection JSUnresolvedFunction
@@ -107,7 +107,9 @@ const Main = (rootDir) => {
       });
       const css = extractor.getStyleTags();
       const js = extractor.getScriptTags();
-      const { helmet } = helmetContext;
+      const {
+        helmet: { htmlAttributes, meta, title },
+      } = helmetContext;
 
       // Inserts the rendered React HTML and assets into our html
       document = regularPageTemplate({
@@ -116,15 +118,14 @@ const Main = (rootDir) => {
         apolloState: JSON.stringify(apolloClientInstance.extract()),
         baseUrl: contentBaseUrl,
         css,
-        dir,
         fbAppId,
         html,
+        htmlAttributes: htmlAttributes.toString(),
         inlineStyle: `<style></style>`,
         js,
-        lang: locale,
-        meta: helmet.meta.toString(),
+        meta: meta.toString(),
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
-        title: helmet.title.toString(),
+        title: title.toString(),
       });
     } catch (err) {
       Logger.log(err);
