@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Build Date: <%= new Date().toISOString() %> -->
-<html {{{ htmlAttributes }}}>
+<html lang="{{{ locale }}}" dir="{{{ dir }}}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,17 +85,18 @@
 </head>
 <body class="keyboard-mode {{{ agentBodyClass }}}">
 <div id="app_root">{{{ html }}}</div>
-{{{ js }}}
+
 <script>
   <!-- TODO: apply the technique from https://www.youtube.com/watch?v=ff4fgQxPaO0 -->
   window.staticAppContextValues = {{{ staticAppContextValues }}};
 
   window.__APOLLO_STATE__ = {{{ apolloState }}}
-
-  window.main && window.main();
 </script>
 
+{{{ js }}}
+
 <script async src="https://www.googletagmanager.com/gtag/js?id={{{ analyticsId }}}"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
