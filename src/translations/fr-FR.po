@@ -434,8 +434,8 @@ msgid ""
 "Also, that logo’s gone now! Thanks to High Mountain Creative, we’ll be using "
 "the shiny new logo you can see above, what a treat!"
 msgstr ""
-"Ah oui, et ce logo là n’existe plus! Grâce à High Mountain Creative, le "
-"nouveau logo sera celui ci-dessus, un délice!"
+"Ah oui, et le logo des stickers de 2017 n’existe plus! Grâce à High Mountain "
+"Creative, le nouveau logo sera celui ci-dessus, un délice!"
 
 #. Paragraph
 #: src/pages/About/messages.js:16
