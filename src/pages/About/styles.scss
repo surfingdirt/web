@@ -30,6 +30,7 @@ section p:last-child {
 
 .title {
   order: 3;
+  width: 100%;
   margin: $margin-medium-2 0;
 }
 
@@ -73,6 +74,8 @@ section p:last-child {
       display: initial;
       grid-area: 1/5/1/8;
       text-align: center;
+      max-width: 300px;
+      margin: 0 auto;
     }
 
     .section1 {
