@@ -56,11 +56,11 @@ const Main = (rootDir) => {
       let translations;
       try {
         const translationsContent = fs.readFileSync(
-          path.resolve(rootDir, `./src/translations/${locale}.po`),
+          path.resolve(rootDir, `./src/translations/${requestLocale}.po`),
           'utf8',
         );
         if (!translationsContent) {
-          throw new Error(`Could not find translation file for locale '${locale}'.`);
+          throw new Error(`Could not find translation file for locale '${requestLocale}'.`);
         }
         translations = po.parse(translationsContent);
       } catch (err) {
@@ -122,6 +122,7 @@ const Main = (rootDir) => {
         html,
         htmlAttributes: htmlAttributes.toString(),
         inlineStyle: `<style></style>`,
+        locale: requestLocale,
         js,
         meta: meta.toString(),
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
