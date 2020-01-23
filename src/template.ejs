@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Build Date: <%= new Date().toISOString() %> -->
-<html lang="{{{ locale }}}" dir="{{{ dir }}}">
+<html {{{ htmlAttributes }}}>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,12 +84,12 @@
 {{{ inlineStyle }}}
 </head>
 <body class="keyboard-mode {{{ agentBodyClass }}}">
+
 <div id="app_root">{{{ html }}}</div>
 
 <script>
   <!-- TODO: apply the technique from https://www.youtube.com/watch?v=ff4fgQxPaO0 -->
   window.staticAppContextValues = {{{ staticAppContextValues }}};
-
   window.__APOLLO_STATE__ = {{{ apolloState }}}
 </script>
 

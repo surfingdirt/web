@@ -121,7 +121,7 @@ const Main = (rootDir) => {
         fbAppId,
         html,
         htmlAttributes: htmlAttributes.toString(),
-        inlineStyle: `<style></style>`,
+        inlineStyle: '',
         locale: requestLocale,
         js,
         meta: meta.toString(),
