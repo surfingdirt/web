@@ -659,7 +659,7 @@ window.translations = {
         msgctxt: 'About',
         comments: { extracted: 'Paragraph', reference: 'src/pages/About/messages.js:24' },
         msgstr: [
-          'Ah oui, et ce logo là n’existe plus! Grâce à High Mountain Creative, le nouveau logo sera celui ci-dessus, un délice!',
+          'Ah oui, et le logo des stickers de 2017 n’existe plus! Grâce à High Mountain Creative, le nouveau logo sera celui ci-dessus, un délice!',
         ],
       },
       'For those of you who attended the 2017 World Champs in Compiègne, you may remember stickers that were passed around announcing our comeback in… 2018.': {
@@ -668,7 +668,7 @@ window.translations = {
         msgctxt: 'About',
         comments: { extracted: 'Paragraph', reference: 'src/pages/About/messages.js:16' },
         msgstr: [
-          'Pour ceux qui étaient là pour les Championnats du Monde 2017 à Compiègne, vous vous souvenez peut-être des tickets qui ont circulé et annonçaient un retour en… 2018.',
+          'Pour ceux qui étaient là auxChampionnats du Monde 2017 à Compiègne, vous vous souvenez peut-être des tickets qui ont circulé et annonçaient un retour en… 2018.',
         ],
       },
       'Looks like we’re a little late! Well, to tell you the truth, we aren’t quite ready to launch yet, but we’re definitely launching early 2020! We’ll start small and build up until mountainboarders across the world have an online home again.': {
@@ -686,7 +686,7 @@ window.translations = {
         msgctxt: 'About',
         comments: { extracted: 'Paragraph', reference: 'src/pages/About/messages.js:4' },
         msgstr: [
-          'Tu te souvient avant Facebook? Il y avait tellement de choses autour du mountainboard en ligne. Des forums, des sites, des galeries photos… Où sont-ils maintenant? La réponse c’est qu’il ont presque tous disparu. Facebook a tellement simplifié l’envoi de photos et de vidéos que petit à petit, les riders ont arrêté d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux forum Surfing Dirt!',
+          'Tu te souviens avant Facebook? Il y avait tellement de trucs sur le mountainboard sur internet. Des forums, des sites, des galeries photos… Où sont-ils maintenant? Ils ont presque tous disparu. Facebook a tellement simplifié l’envoi de photos et de vidéos que petit à petit, les riders ont arrêté d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux forum Surfing Dirt!',
         ],
       },
       'Surfing Dirt hopes to solve that problem. We intend to be the social network for mountainboarders. The place where you’ll share photos and videos from your last session. Where you’ll learn about riders and spots near you. Where you’ll discuss trucks and jumps. And where people can see what mountainboarding is about.': {
@@ -695,7 +695,7 @@ window.translations = {
         msgctxt: 'About',
         comments: { extracted: 'Paragraph', reference: 'src/pages/About/messages.js:12' },
         msgstr: [
-          'Surfing Dirt espère bien résoudre ce problème. Notre ambition est de devenir le réseau social des mountainboarders. L’endroit où partager photos et vidéos de ta dernière session. Où tu découvriras des riders et des spots près de chez toi. Où tu parleras de trucks, de kicks. Et où tout le monde peut venir découvrir le mountainboard.',
+          'Surfing Dirt espère bien résoudre ce problème. L’idée c’est de devenir LE réseau social des mountainboarders. L’endroit où partager photos et vidéos de ta dernière session. Où tu découvriras des riders et des spots près de chez toi. Où tu parleras de trucks, de kicks. Et où tout le monde pourra venir découvrir le mountainboard.',
         ],
       },
       'Surfing Dirt is back!': {

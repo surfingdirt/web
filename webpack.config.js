@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -14,10 +15,23 @@ const buildConfig = require('./build.config.js');
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const devtool = mode === 'production' ? '' : 'eval-source-map';
 
+const entries = { main: './client/index.jsx' };
+
+const translationFolder = './src/translations';
+const translationFiles = fs.readdirSync(translationFolder);
+translationFiles.forEach((translationFile) => {
+  const extension = translationFile.substr(-3, 3);
+  if (extension !== '.js') {
+    return;
+  }
+  const locale = translationFile.substr(0, translationFile.length - 3);
+  entries[locale] = `${translationFolder}/${translationFile}`;
+});
+
 module.exports = {
   mode,
   devtool,
-  entry: './client/index.jsx',
+  entry: entries,
   output: {
     path: path.join(__dirname, buildConfig.outDirectory),
     filename: '[name].[hash:3].bundle.js',
