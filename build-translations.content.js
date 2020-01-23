@@ -16,13 +16,15 @@ files.forEach((file) => {
     );
     const fileContent = `
 /* ${locale} translations */    
-const translations = ${translations};
+window.translations = ${translations};
+
 export default translations;
 `;
 
-    fs.writeFileSync(`${translationFolder}/${locale}.po.js`, fileContent);
+    fs.writeFileSync(`${translationFolder}/translations-${locale}.po.js`, fileContent);
   } catch (e) {
     console.error('Error', e);
   }
 });
+
 console.log('Done building translations files.');

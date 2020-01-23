@@ -1,4 +1,9 @@
+const fs = require('fs');
 const { GettextExtractor, JsExtractors } = require('gettext-extractor');
+
+const OUTPUT_FOLDER = './src/translations';
+const TEMPLATE_FILE = `${OUTPUT_FOLDER}/template.pot`;
+const EN_US_FILE = `${OUTPUT_FOLDER}/en-US.po`;
 
 const extractor = new GettextExtractor();
 
@@ -22,4 +27,5 @@ extractor
   ])
   .parseFilesGlob('./src/**/*.@(js|jsx)');
 
-extractor.savePotFile('./src/translations/template.pot');
+extractor.savePotFile(TEMPLATE_FILE);
+fs.copyFileSync(TEMPLATE_FILE, EN_US_FILE);

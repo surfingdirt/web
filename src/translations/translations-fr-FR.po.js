@@ -1,6 +1,6 @@
 /* fr-FR translations */
 
-const translations = {
+window.translations = {
   charset: 'utf-8',
   headers: {
     'project-id-version': '',
@@ -1924,4 +1924,5 @@ const translations = {
     },
   },
 };
+
 export default translations;
