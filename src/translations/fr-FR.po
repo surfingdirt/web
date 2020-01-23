@@ -444,9 +444,9 @@ msgid ""
 "For those of you who attended the 2017 World Champs in Compiègne, you may "
 "remember stickers that were passed around announcing our comeback in… 2018."
 msgstr ""
-"Pour ceux qui étaient là auxChampionnats du Monde 2017 à Compiègne, vous "
-"vous souvenez peut-être des tickets qui ont circulé et annonçaient un retour "
-"en… 2018."
+"Pour ceux qui étaient là aux Championnats du Monde 2017 à Compiègne, vous "
+"vous souvenez peut-être des stickers qui ont circulé et annonçaient un "
+"retour en… 2018."
 
 #. Paragraph
 #: src/pages/About/messages.js:20

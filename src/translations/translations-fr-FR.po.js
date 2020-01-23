@@ -668,7 +668,7 @@ window.translations = {
         msgctxt: 'About',
         comments: { extracted: 'Paragraph', reference: 'src/pages/About/messages.js:16' },
         msgstr: [
-          'Pour ceux qui étaient là auxChampionnats du Monde 2017 à Compiègne, vous vous souvenez peut-être des tickets qui ont circulé et annonçaient un retour en… 2018.',
+          'Pour ceux qui étaient là aux Championnats du Monde 2017 à Compiègne, vous vous souvenez peut-être des stickers qui ont circulé et annonçaient un retour en… 2018.',
         ],
       },
       'Looks like we’re a little late! Well, to tell you the truth, we aren’t quite ready to launch yet, but we’re definitely launching early 2020! We’ll start small and build up until mountainboarders across the world have an online home again.': {
