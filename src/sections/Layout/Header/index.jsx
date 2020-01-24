@@ -7,7 +7,8 @@ import Logo, { logoTypes } from 'Components/Widgets/Logo';
 import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem';
 import NavigationProfile from 'Components/Widgets/NavigationProfile';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import routes from '~/routes';
 
 import messages from '../messages';

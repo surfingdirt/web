@@ -7,7 +7,8 @@ import Translate from 'Hocs/Translate';
 import LogoutForm from 'Components/User/LogoutForm';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import NavigationLink from 'Components/Widgets/NavigationLink';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 

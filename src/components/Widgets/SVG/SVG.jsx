@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import SVGInline from 'react-svg-inline';
 
-import { sizes } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 const { SMALL, STANDARD, TINY } = sizes;
 
 export default class SVG extends PureComponent {

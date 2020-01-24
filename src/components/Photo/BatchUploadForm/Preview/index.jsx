@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 
 import {
   UPLOAD_STATE_INITIAL,

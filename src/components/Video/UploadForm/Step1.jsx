@@ -7,7 +7,8 @@ import VideoEmbed from 'Components/Video/Embed';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import { buildEmbedUrl, extractKeyAndSubType } from 'Utils/video';
 
 import messages from './messages';

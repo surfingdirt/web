@@ -8,9 +8,10 @@ import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import NamedNavigationItem from 'Components/Widgets/NamedNavigationItem';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
-import {NAVIGATION_PROFILE_MENU} from '~/ids';
+import { NAVIGATION_PROFILE_MENU } from '~/ids';
 import routes from '~/routes';
 
 import messages from './messages';
@@ -108,7 +109,12 @@ class NavigationProfile extends React.Component {
     );
 
     return (
-      <Menu menuId={NAVIGATION_PROFILE_MENU} trigger={trigger} className={classnames(className, styles.wrapper)} options={options} />
+      <Menu
+        menuId={NAVIGATION_PROFILE_MENU}
+        trigger={trigger}
+        className={classnames(className, styles.wrapper)}
+        options={options}
+      />
     );
   }
 }

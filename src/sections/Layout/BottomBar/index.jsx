@@ -10,7 +10,8 @@ import SVG from 'Components/Widgets/SVG/index';
 import BottomBarBackground from 'Images/bottom-bar.svg';
 import BottomBarActions from 'Sections/BottomBarActions';
 import Translate from 'Hocs/Translate/index';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 

@@ -20,6 +20,7 @@ import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
 import Video from 'Images/video-player-movie.svg';
 // import Close from 'Images/remove-circle-regular.svg';
+import iconSizes from 'Utils/iconSizes';
 
 const ACTIVITY = 'activity';
 const ALBUM = 'album';
@@ -60,14 +61,7 @@ const icons = {
 };
 export default icons;
 
-const SMALL = 'small';
-const STANDARD = 'standard';
-const TINY = 'tiny';
-export const sizes = {
-  SMALL,
-  STANDARD,
-  TINY,
-};
+const { SMALL, STANDARD, TINY } = iconSizes;
 
 export const getIcon = ({ type, label, className, size, presentationOnly }) => {
   let hollow = true;

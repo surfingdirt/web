@@ -8,7 +8,8 @@ import classnames from 'classnames';
 import Button from 'Components/Widgets/Button';
 import Heading, { headingTypes } from 'Components/Widgets/Heading';
 import Translate from 'Hocs/Translate';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import { ESC } from 'Utils/keycodes';
 
 import messages from './messages';

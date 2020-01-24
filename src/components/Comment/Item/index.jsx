@@ -10,7 +10,8 @@ import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
-import icons, { getIcon, sizes } from 'Utils/icons';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 import { CommentType } from 'Utils/types';
 import { COMMENT_MENU } from '~/ids';
 
