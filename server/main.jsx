@@ -27,6 +27,15 @@ import contentBaseUrl from '../config/contentBaseUrl';
 const statsFile = path.resolve('./dist/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
 
+const translationFolder = './src/translations';
+const localeTranslations = {};
+fs.readdirSync(translationFolder)
+  .filter((file) => file.substr(-3, 3) === '.po')
+  .forEach((file) => {
+    const locale = file.substr(0, file.length - 3);
+    localeTranslations[locale] = po.parse(fs.readFileSync(`${translationFolder}/${file}`, 'utf8'));
+  });
+
 const Main = (rootDir) => {
   const screenWidth = undefined;
   const SSR = true;
@@ -67,20 +76,7 @@ const Main = (rootDir) => {
         apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
       }
 
-      let translations;
-      try {
-        const translationsContent = fs.readFileSync(
-          path.resolve(rootDir, `./src/translations/${locale}.po`),
-          'utf8',
-        );
-        if (!translationsContent) {
-          throw new Error(`Could not find translation file for locale '${locale}'.`);
-        }
-        translations = po.parse(translationsContent);
-      } catch (err) {
-        translations = {};
-      }
-
+      const translations = localeTranslations[locale];
       const staticAppContextValues = {
         SSR,
         availableLocales: SUPPORTED_LOCALES,
