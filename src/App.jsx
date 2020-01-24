@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet-async';
 
-import ME from 'Apollo/queries/me2.gql';
-import ErrorMessage from 'Components/Widgets/ErrorMessage';
-import Spinner from 'Components/Widgets/Spinner';
-
-import { getLocaleAndDirFromUser } from 'Utils/lang';
 import AppRoutes from '~/AppRoutes';
 import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
@@ -57,43 +51,8 @@ class App extends React.Component {
 
   render() {
     const { appContextValueObject } = this.props;
-    const loggedIn = !!appContextValueObject.values.login.data.accessToken;
-
-    if (!loggedIn) {
-      // Do not request ME if the user is logged-out as the backend reports an error.
-      appContextValueObject.resetUser();
-      const contextValues = appContextValueObject.getValues();
-      return renderApp(contextValues);
-    }
-
-    return (
-      <Query query={ME}>
-        {(meResponse) => {
-          const { error, data, loading: isLoading } = meResponse;
-
-          if (isLoading) return <Spinner />;
-          if (error) return <ErrorMessage />;
-
-          const { me } = data;
-
-          if (me && me.userId) {
-            appContextValueObject.setUser(me);
-            const { locale, dir } = getLocaleAndDirFromUser(
-              me,
-              appContextValueObject.values.locale,
-              appContextValueObject.values.dir,
-            );
-            appContextValueObject.values.locale = locale;
-            appContextValueObject.values.dir = dir;
-          } else {
-            appContextValueObject.resetUser();
-          }
-
-          const contextValues = appContextValueObject.getValues();
-          return renderApp(contextValues);
-        }}
-      </Query>
-    );
+    const contextValues = appContextValueObject.getValues();
+    return renderApp(contextValues);
   }
 }
 

@@ -13,13 +13,14 @@ import { StaticRouter } from 'react-router';
 import slugify from 'slugify';
 import useragent from 'useragent';
 
+import ME from 'Apollo/queries/me2.gql';
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import features from '~/features';
 import App from '~/App';
 
 import Logger from './logger';
-import { SUPPORTED_LOCALES, getLocaleAndDirFromRequest } from './utils';
+import { SUPPORTED_LOCALES, getLocaleAndDirFromRequest, getLocaleAndDirFromUser } from './utils';
 import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
 import contentBaseUrl from '../config/contentBaseUrl';
 
@@ -45,49 +46,60 @@ const Main = (rootDir) => {
 
     const context = {}; // required
     let document;
+    const accessToken = req.cookies.accessToken || '';
 
     const { family } = useragent.parse(req.headers['user-agent']);
     const agentBodyClass = slugify(family, { lower: true });
 
     try {
-      const { locale: requestLocale, dir: requestDir } = getLocaleAndDirFromRequest(req);
-      error500Page = ERROR_500_PAGES[requestLocale];
+      let { locale, dir } = getLocaleAndDirFromRequest(req);
+      error500Page = ERROR_500_PAGES[locale];
+      let apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
+      const {
+        data: { me: user },
+      } = await apolloClientInstance.query({ query: ME });
+
+      if (user.locale && user.locale !== locale) {
+        // Logged-in user has a locale and it's different from the request locale: take that into account
+        const userLocaleAndDir = getLocaleAndDirFromUser(user, locale, dir);
+        locale = userLocaleAndDir.locale;
+        dir = userLocaleAndDir.dir;
+        apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
+      }
 
       let translations;
       try {
         const translationsContent = fs.readFileSync(
-          path.resolve(rootDir, `./src/translations/${requestLocale}.po`),
+          path.resolve(rootDir, `./src/translations/${locale}.po`),
           'utf8',
         );
         if (!translationsContent) {
-          throw new Error(`Could not find translation file for locale '${requestLocale}'.`);
+          throw new Error(`Could not find translation file for locale '${locale}'.`);
         }
         translations = po.parse(translationsContent);
       } catch (err) {
         translations = {};
       }
 
-      error500Page = ERROR_500_PAGES[requestLocale];
-
       const staticAppContextValues = {
         SSR,
         availableLocales: SUPPORTED_LOCALES,
         baseUrl,
-        dir: requestDir,
+        dir,
         features,
         galleryAlbumId,
         graphql,
-        locale: requestLocale,
+        locale,
         screenWidth,
         title: siteTitle,
         translations,
       };
 
       const appContextValueObject = new AppContextValueObject(staticAppContextValues);
-      const accessToken = req.cookies.accessToken || '';
       appContextValueObject.setAccessToken(accessToken);
-
-      const apolloClientInstance = apolloClient(graphql, requestLocale, true, accessToken);
+      if (user) {
+        appContextValueObject.setUser(user);
+      }
       const helmetContext = {};
 
       // noinspection JSUnresolvedFunction
@@ -122,7 +134,7 @@ const Main = (rootDir) => {
         html,
         htmlAttributes: htmlAttributes.toString(),
         inlineStyle: '',
-        locale: requestLocale,
+        locale,
         js,
         meta: meta.toString(),
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
