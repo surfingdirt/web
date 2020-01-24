@@ -87,33 +87,13 @@
 
 <div id="app_root">{{{ html }}}</div>
 
+{{{ js }}}
+
 <script>
   <!-- TODO: apply the technique from https://www.youtube.com/watch?v=ff4fgQxPaO0 -->
   window.staticAppContextValues = {{{ staticAppContextValues }}};
   window.__APOLLO_STATE__ = {{{ apolloState }}};
-  (function() {
-      const translationFiles = [
-<%=
-htmlWebpackPlugin.files.js
-    .filter(file => file.indexOf(`translations-`) !== -1)
-    .map(file => `        '${file}'`)
-    .join(',\n')
-%>
-      ];
-      const file = translationFiles.find((file) => {
-        const matches = file.match(/[\S*]translations-(.*).po.(.*).js/);
-        if (matches.length !== 3) {
-            return false;
-          }
-        return matches[1] === '{{{ locale }}}';
-      });
-      const s = document.createElement('script');
-      s.src = file;
-      document.body.prepend(s);
-  })();
 </script>
-
-{{{ js }}}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id={{{ analyticsId }}}"></script>
 
