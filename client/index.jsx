@@ -40,7 +40,6 @@ loadableReady(() => {
               new AppContextValueObject({
                 ...staticAppContextValues,
                 SSR: false,
-                screenWidth: window.innerWidth,
               })
             }
           />
