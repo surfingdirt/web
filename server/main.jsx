@@ -64,7 +64,6 @@ const Main = (rootDir) => {
     let span;
     if (tracing.traceAllRequests) {
       span = tracer.startSpan(`Node response to ${req.url}`);
-      // console.log('traceId', span.id.traceId);
     }
     const tracingHeaders = getTracingHeaders(tracing, span ? span.id.traceId : null);
 

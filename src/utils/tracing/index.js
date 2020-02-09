@@ -3,6 +3,7 @@ import ZipkinJavascriptOpentracing from 'zipkin-javascript-opentracing';
 import { HttpLogger } from 'zipkin-transport-http';
 
 const TRACING_HEADER_FIELDS = 'x-b3-custom-tracefields';
+const TRACING_HEADER_SPANID = 'x-b3-spanid';
 const TRACING_HEADER_PARENTSPANID = 'x-b3-parentspanid';
 const TRACING_HEADER_SAMPLED = 'x-b3-sampled';
 const TRACING_HEADER_TRACEID = 'x-b3-traceid';
@@ -24,6 +25,7 @@ export const getTracingHeaders = ({ traceAllRequests, traceFields }, traceId) =>
     headers[TRACING_HEADER_SAMPLED] = '1';
 
     headers[TRACING_HEADER_PARENTSPANID] = traceId;
+    headers[TRACING_HEADER_SPANID] = traceId;
     headers[TRACING_HEADER_TRACEID] = traceId;
   }
   if (traceFields) {
