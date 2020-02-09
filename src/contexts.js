@@ -28,8 +28,6 @@ export class AppContextValueObject {
       facebookAppId: '',
       features: {},
       galleryAlbumId: '',
-      googleClientId: '',
-      twitterUsername: '',
       graphql: '',
       locale: '',
       login: {
@@ -38,11 +36,9 @@ export class AppContextValueObject {
           me: { ...defaultUser },
         },
       },
-      nowValue: null,
-      screenWidth: undefined,
-      sportPlayer: { iframe: '', src: '' },
-      translations: {},
       title: '',
+      translations: {},
+      twitterUsername: '',
     };
 
     Object.keys(values).forEach((key) => {
