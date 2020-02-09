@@ -16,6 +16,8 @@ export const config = {
       alwaysDisabled: false,
       traceAllRequests: false,
       traceFields: false,
+      endpoint: 'http://localhost:9411/api/v2/spans',
+      serviceName: 'node-dev',
     },
   },
   beta: {
@@ -24,6 +26,13 @@ export const config = {
     graphql: 'https://beta-graphql.surfingdirt.com/',
     galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: false,
+    tracing: {
+      alwaysDisabled: false,
+      traceAllRequests: false,
+      traceFields: false,
+      endpoint: 'http://localhost:9411/api/v2/spans',
+      serviceName: 'node-beta',
+    },
   },
   production: {
     port: 8001,
@@ -31,5 +40,12 @@ export const config = {
     graphql: 'https://graphql.surfingdirt.com/',
     galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: false,
+    tracing: {
+      alwaysDisabled: false,
+      traceAllRequests: false,
+      traceFields: false,
+      endpoint: 'http://localhost:9411/api/v2/spans',
+      serviceName: 'node-prod',
+    },
   },
 }[env];

@@ -12,6 +12,7 @@ import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router';
 import slugify from 'slugify';
 import useragent from 'useragent';
+import ZipkinJavascriptOpentracing from 'zipkin-javascript-opentracing';
 
 import ME from 'Apollo/queries/me2.gql';
 import apolloClient from '~/apollo';
@@ -20,7 +21,7 @@ import features from '~/features';
 import App from '~/App';
 
 import contentBaseUrl from '../config/contentBaseUrl';
-import { getTracingHeaders } from '../src/utils/tracing';
+import { buildTracer, getTracingHeaders } from '../src/utils/tracing';
 import Logger from './logger';
 import {
   SUPPORTED_LOCALES,
@@ -44,7 +45,7 @@ fs.readdirSync(translationFolder)
 
 const Main = (rootDir) => {
   const SSR = true;
-  const { galleryAlbumId, graphql, showErrors, baseUrl } = config;
+  const { baseUrl, galleryAlbumId, graphql, showErrors, tracing: tracingConfig } = config;
   // Default error page is in English
   const ERROR_500_PAGES = {
     en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
@@ -55,7 +56,18 @@ const Main = (rootDir) => {
     fs.readFileSync(`${rootDir}/dist/template.hbs`, 'utf8'),
   );
 
+  const tracer = buildTracer(tracingConfig);
+
   return async (req, res, next) => {
+    const tracing = getTracingContext(req, tracingConfig);
+
+    let span;
+    if (tracing.traceAllRequests) {
+      span = tracer.startSpan(`Node response to ${req.url}`);
+      // console.log('traceId', span.id.traceId);
+    }
+    const tracingHeaders = getTracingHeaders(tracing, span ? span.id.traceId : null);
+
     res.set('Content-Type', 'text/html; charset=utf-8');
 
     const context = {}; // required
@@ -66,8 +78,6 @@ const Main = (rootDir) => {
     const agentBodyClass = slugify(family, { lower: true });
 
     try {
-      const tracing = getTracingContext(req, config.tracing);
-      const tracingHeaders = getTracingHeaders(tracing);
       let { locale, dir } = getLocaleAndDirFromRequest(req);
       error500Page = ERROR_500_PAGES[locale];
 
@@ -158,6 +168,10 @@ const Main = (rootDir) => {
     const { action, url: redirectUrl } = context;
     if (action === 'REPLACE' && redirectUrl) {
       return res.redirect(301, redirectUrl);
+    }
+
+    if (tracing.traceAllRequests) {
+      span.finish();
     }
 
     // Sends the response back to the client
