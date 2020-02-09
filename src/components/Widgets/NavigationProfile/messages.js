@@ -4,7 +4,7 @@ const messages = (getText, getPlural) => (key) =>
       'Account',
       'NavigationProfile',
     ) /* Label for a menu to manage the user's account */,
-    signIn: getText(
+    login: getText(
       'Sign in',
     ) /* Label for a link to the signIn page, or label for a button to actually signIn */,
     profile: getText('Profile') /* Label for a link to the user's profile page */,
