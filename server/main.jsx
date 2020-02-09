@@ -20,7 +20,12 @@ import features from '~/features';
 import App from '~/App';
 
 import Logger from './logger';
-import { SUPPORTED_LOCALES, getLocaleAndDirFromRequest, getLocaleAndDirFromUser } from './utils';
+import {
+  SUPPORTED_LOCALES,
+  getLocaleAndDirFromRequest,
+  getLocaleAndDirFromUser,
+  getTracingContext,
+} from './utils';
 import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
 import contentBaseUrl from '../config/contentBaseUrl';
 
@@ -37,7 +42,6 @@ fs.readdirSync(translationFolder)
   });
 
 const Main = (rootDir) => {
-  const screenWidth = undefined;
   const SSR = true;
   const { galleryAlbumId, graphql, showErrors, baseUrl } = config;
   // Default error page is in English
@@ -76,6 +80,8 @@ const Main = (rootDir) => {
         apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
       }
 
+      const tracing = getTracingContext(req, config.tracing);
+
       const translations = localeTranslations[locale];
       const staticAppContextValues = {
         SSR,
@@ -86,8 +92,8 @@ const Main = (rootDir) => {
         galleryAlbumId,
         graphql,
         locale,
-        screenWidth,
         title: siteTitle,
+        tracing,
         translations,
       };
 

@@ -37,6 +37,10 @@ export class AppContextValueObject {
         },
       },
       title: '',
+      tracing: {
+        traceAllRequests: false,
+        traceFields: false,
+      },
       translations: {},
       twitterUsername: '',
     };

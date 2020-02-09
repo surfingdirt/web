@@ -12,6 +12,11 @@ export const config = {
     graphql: 'http://localhost:4000',
     galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: true,
+    tracing: {
+      alwaysDisabled: false,
+      traceAllRequests: false,
+      traceFields: false,
+    },
   },
   beta: {
     port: 8002,

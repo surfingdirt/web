@@ -15,14 +15,18 @@ export const RTL_LANGUAGES = [ARABIC, HEBREW];
 export const RIGHT_TO_LEFT = 'rtl';
 export const LEFT_TO_RIGHT = 'ltr';
 
+const LOCALE_QUERY_ARG = 'locale';
+const TRACING_REQUESTS_QUERY_ARG = 'tracing';
+const TRACING_FIELDS_QUERY_ARG = 'traceFields';
+
 export const getLocaleAndDirFromRequest = (req) => {
   let locale = parser.pick(SUPPORTED_LOCALES, req.headers['accept-language'] || '');
   if (!locale) {
     locale = DEFAULT_LOCALE;
   }
 
-  if (req.query.locale && SUPPORTED_LOCALES.includes(req.query.locale)) {
-    locale = req.query.locale;
+  if (req.query[LOCALE_QUERY_ARG] && SUPPORTED_LOCALES.includes(req.query[LOCALE_QUERY_ARG])) {
+    locale = req.query[LOCALE_QUERY_ARG];
   }
 
   const dir = RTL_LANGUAGES.includes(locale.split('-')[0]) ? RIGHT_TO_LEFT : LEFT_TO_RIGHT;
@@ -45,4 +49,24 @@ export const getLocaleAndDirFromUser = (user, requestLocale, requestDir) => {
     locale,
     dir,
   };
+};
+
+export const getTracingContext = (req, tracingConfig) => {
+  // Disabling takes precedence
+  if (tracingConfig.alwaysDisabled) {
+    return { traceAllRequests: false, traceFields: false };
+  }
+
+  // Then honor configuration...
+  let { traceAllRequests, traceFields } = tracingConfig;
+
+  // Unless query params say otherwise.
+  if (req.query[TRACING_REQUESTS_QUERY_ARG]) {
+    traceAllRequests = !!parseInt(req.query[TRACING_REQUESTS_QUERY_ARG], 10);
+  }
+  if (req.query[TRACING_FIELDS_QUERY_ARG]) {
+    traceFields = !!parseInt(req.query[TRACING_FIELDS_QUERY_ARG], 10);
+  }
+
+  return { traceAllRequests, traceFields };
 };
