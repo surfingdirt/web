@@ -16,7 +16,7 @@ import fragmentTypes from '../../fragmentTypes.json';
 // Options
 import typeDefs from './options';
 
-const apolloClient = (url, locale, ssrMode, accessToken) => {
+const apolloClient = (url, locale, ssrMode, accessToken, tracingHeaders) => {
   const cacheOptions = {
     dataIdFromObject: (o) => {
       const { id, __typename } = o;
@@ -42,7 +42,7 @@ const apolloClient = (url, locale, ssrMode, accessToken) => {
     typeDefs,
   });
 
-  const headers = { 'accept-language': locale };
+  const headers = Object.assign({}, tracingHeaders, { 'accept-language': locale });
   if (accessToken) {
     headers.authorization = `Bearer ${accessToken}`;
   }

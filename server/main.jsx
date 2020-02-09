@@ -19,6 +19,8 @@ import { AppContextValueObject } from '~/contexts';
 import features from '~/features';
 import App from '~/App';
 
+import contentBaseUrl from '../config/contentBaseUrl';
+import { getTracingHeaders } from '../src/utils/tracing';
 import Logger from './logger';
 import {
   SUPPORTED_LOCALES,
@@ -27,7 +29,6 @@ import {
   getTracingContext,
 } from './utils';
 import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
-import contentBaseUrl from '../config/contentBaseUrl';
 
 const statsFile = path.resolve('./dist/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
@@ -65,9 +66,12 @@ const Main = (rootDir) => {
     const agentBodyClass = slugify(family, { lower: true });
 
     try {
+      const tracing = getTracingContext(req, config.tracing);
+      const tracingHeaders = getTracingHeaders(tracing);
       let { locale, dir } = getLocaleAndDirFromRequest(req);
       error500Page = ERROR_500_PAGES[locale];
-      let apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
+
+      let apolloClientInstance = apolloClient(graphql, locale, true, accessToken, tracingHeaders);
       const {
         data: { me: user },
       } = await apolloClientInstance.query({ query: ME });
@@ -79,8 +83,6 @@ const Main = (rootDir) => {
         dir = userLocaleAndDir.dir;
         apolloClientInstance = apolloClient(graphql, locale, true, accessToken);
       }
-
-      const tracing = getTracingContext(req, config.tracing);
 
       const translations = localeTranslations[locale];
       const staticAppContextValues = {

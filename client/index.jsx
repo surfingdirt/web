@@ -11,6 +11,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import apolloClient from '../src/apollo';
 import App from '../src/App';
 import { AppContextValueObject } from '../src/contexts';
+import { getTracingHeaders } from '../src/utils/tracing';
 
 const history = createBrowserHistory();
 
@@ -25,9 +26,11 @@ loadableReady(() => {
     login: {
       data: { accessToken },
     },
+    tracing,
   } = window.staticAppContextValues;
   const helmetContext = {};
-  const apolloClientInstance = apolloClient(graphql, locale, false, accessToken);
+  const tracingHeaders = getTracingHeaders(tracing);
+  const apolloClientInstance = apolloClient(graphql, locale, false, accessToken, tracingHeaders);
   hydrate(
     <HelmetProvider context={helmetContext}>
       <ApolloProvider client={apolloClientInstance}>
