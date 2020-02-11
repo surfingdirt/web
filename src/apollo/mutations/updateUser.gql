@@ -20,7 +20,10 @@ mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
           type
           url
         }
-        bio
+        bio {
+            locale
+            text
+        }
         cover {
           size
           width

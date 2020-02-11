@@ -1,6 +1,6 @@
-import HOME from 'Apollo/queries/home.gql';
+import HOME from 'Apollo/queries/home2.gql';
 import { AlbumConstants } from 'Utils/data';
-import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
+import LIST_MEDIA from 'Apollo/queries/listMedia.gql';
 
 const { ALBUM_COUNT, ITEM_COUNT } = AlbumConstants.HOME;
 

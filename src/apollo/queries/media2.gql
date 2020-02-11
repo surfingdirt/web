@@ -1,7 +1,10 @@
 query media($id: ID!, $mediaType: String!) {
     media(id: $id) {
         date
-        description
+        description {
+            locale
+            text
+        }
         embedUrl
         height
         id
@@ -14,7 +17,10 @@ query media($id: ID!, $mediaType: String!) {
         }
         mediaType
         mediaSubType
-        title
+        title {
+            locale
+            text
+        }
         vendorUrl
         width
         thumbs {
@@ -26,7 +32,10 @@ query media($id: ID!, $mediaType: String!) {
         }
         album {
             id
-            title
+            title {
+                locale
+                text
+            }
         }
         submitter {
             userId
@@ -46,7 +55,10 @@ query media($id: ID!, $mediaType: String!) {
             edit
         }
         id
-        content
+        content {
+            locale
+            text
+        }
         date
         submitter {
             userId

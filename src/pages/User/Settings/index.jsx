@@ -4,7 +4,7 @@ import { useMutation } from 'react-apollo';
 import { ApolloConsumer } from '@apollo/react-hooks';
 import qs from 'qs';
 
-import UPDATE_SETTINGS from 'Apollo/mutations/updateSettings.gql';
+import UPDATE_SETTINGS from 'Apollo/mutations/updateSettings2.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Paragraph from 'Components/Widgets/Paragraph';
 import Spinner from 'Components/Widgets/Spinner';

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import LIST_COMMENTS from 'Apollo/queries/listComments3.gql';
+import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Menu from 'Components/Widgets/Menu';
@@ -22,7 +22,14 @@ const { NEUTRAL } = tones;
 const { SMALL } = userboxSizes;
 
 const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }) => {
-  const { actions, content, date, id, submitter, tone } = comment;
+  const {
+    actions,
+    content: { text: content },
+    date,
+    id,
+    submitter,
+    tone,
+  } = comment;
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
 

@@ -18,6 +18,7 @@ import WithModal from 'Hocs/WithModal';
 import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
 import { mediaPageSize } from 'Utils/media';
+import { TranslatedTextType } from 'Utils/types';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -32,12 +33,12 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
   const {
     actions,
     albumContributions,
-    description,
+    description: { text: description },
     id: albumId,
     itemCount,
     media,
     submitter,
-    title: albumTitle,
+    title: { text: albumTitle },
   } = album;
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
@@ -68,7 +69,12 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
   }
 
   const sliderChildren = media.map((mediaItem, index) => {
-    const { id, mediaType, title, thumbs } = mediaItem;
+    const {
+      id,
+      mediaType,
+      title: { text: title },
+      thumbs,
+    } = mediaItem;
     const attrs = { id, mediaType, title, thumbs };
 
     const ThumbWithModal = WithModal({
@@ -129,10 +135,10 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
 
 AlbumPreview.propTypes = {
   album: PropTypes.shape({
-    description: PropTypes.string,
+    description: TranslatedTextType,
     id: PropTypes.string.isRequired,
     media: PropTypes.any,
-    title: PropTypes.string.isRequired,
+    title: TranslatedTextType.isRequired,
   }).isRequired,
   renderIfEmpty: PropTypes.bool,
   showAttribution: PropTypes.bool,

@@ -3,10 +3,16 @@ query userProfile($userId: ID!) {
         userId
         username
         firstName
-        bio
+        bio {
+            locale
+            text
+        }
         album {
           id
-          title
+          title {
+            locale
+            text
+          }
           media {
             images {
                 size
@@ -40,12 +46,18 @@ query userProfile($userId: ID!) {
         }
         albumContributions
         albumVisibility
-        description
+        description {
+            locale
+            text
+        }
         id
         itemCount
         media {
             id
-            title
+            title {
+                locale
+                text
+            }
             mediaType
             thumbs {
                 type
@@ -62,6 +74,9 @@ query userProfile($userId: ID!) {
                 width
             }
         }
-        title
+        title {
+            locale
+            text
+        }
     }
 }

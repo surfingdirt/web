@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import { Form, Field } from 'react-final-form';
 
-import USER from 'Apollo/queries/user.gql';
+import USER from 'Apollo/queries/user2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Widgets/Card';
@@ -29,7 +29,12 @@ const User = ({ match }) => {
       variables={{ userId }}
       render={(data) => {
         const {
-          user: { avatar, bio, cover, username },
+          user: {
+            avatar,
+            bio: { text: bio },
+            cover,
+            username,
+          },
           listAlbums,
         } = data;
 

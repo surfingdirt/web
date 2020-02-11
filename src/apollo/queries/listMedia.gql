@@ -2,7 +2,10 @@ query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
     listMedia(albumId: $albumId, countItems: $countItems, startItem: $startItem) {
         id
         date
-        description
+        description {
+            locale
+            text
+        }
         mediaType
         mediaSubType
         embedUrl
@@ -15,7 +18,10 @@ query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
             width
         }
         width
-        title
+        title {
+            locale
+            text
+        }
         thumbs {
             type
             size

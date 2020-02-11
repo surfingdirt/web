@@ -8,19 +8,28 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         albumContributions
         albumVisibility
         date
-        description
+        description {
+            locale
+            text
+        }
         id
         itemCount
         media {
             id
             date
-            description
+            description {
+                locale
+                text
+            }
             mediaType
             mediaSubType
             embedUrl
             height
             width
-            title
+            title {
+                locale
+                text
+            }
             thumbs {
                 type
                 size
@@ -47,7 +56,10 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 }
             }
         }
-        title
+        title {
+            locale
+            text
+        }
     }
     listAlbums(count: $count, countItems: $countItems, skipAlbums: $skipAlbums) {
         actions {
@@ -58,19 +70,28 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         albumContributions
         albumVisibility
         date
-        description
+        description {
+            locale
+            text
+        }
         id
         itemCount
         media {
             id
             date
-            description
+            description {
+                locale
+                text
+            }
             mediaType
             mediaSubType
             embedUrl
             height
             width
-            title
+            title {
+                locale
+                text
+            }
             thumbs {
                 type
                 size
@@ -108,6 +129,9 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
               url
             }
         }
-        title
+        title {
+            locale
+            text
+        }
     }
 }

@@ -20,7 +20,10 @@ const { STANDARD } = userboxSizes;
 
 const MediaMetadata = (props) => {
   const {
-    album: { id: albumId, title: albumTitle },
+    album: {
+      id: albumId,
+      title: { text: albumTitle },
+    },
     className,
     directLink,
     media,
@@ -28,7 +31,13 @@ const MediaMetadata = (props) => {
     locale,
   } = props;
 
-  const { id, date, description, submitter, mediaType } = media;
+  const {
+    id,
+    date,
+    description: { text: description },
+    submitter,
+    mediaType,
+  } = media;
   const { username, userId } = submitter;
 
   const url = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);

@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import LIST_MEDIA from 'Apollo/queries/listMedia2.gql';
+import LIST_MEDIA from 'Apollo/queries/listMedia.gql';
 import CommentListFetcher from 'Components/Comment/ListFetcher';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
@@ -38,7 +38,7 @@ const MediaOverlay = ({ album, media, index: initialIndex, onTitleChange, countI
 
   useEffect(() => {
     setItem(items[index]);
-    onTitleChange(items[index].title || album.title);
+    onTitleChange(items[index].title.text || album.title.text);
   }, [index]);
 
   const hidePrev = index === 0;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
 
-import USERS from 'Apollo/queries/listUsers2.gql';
+import USERS from 'Apollo/queries/listUsers.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import Userbox from 'Components/User/Userbox';

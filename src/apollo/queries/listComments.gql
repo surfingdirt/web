@@ -5,7 +5,10 @@ query listComments($parentType: String!, $parentId: ID!) {
             edit
         }
         id
-        content
+        content {
+            locale
+            text
+        }
         date
         submitter {
             userId

@@ -6,19 +6,28 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
             edit
         }
         date
-        description
+        description {
+            locale
+            text
+        }
         id
         itemCount
         media {
             id
             date
-            description
+            description {
+                locale
+                text
+            }
             mediaType
             mediaSubType
             embedUrl
             height
             width
-            title
+            title {
+                locale
+                text
+            }
             thumbs {
                 type
                 size
@@ -56,6 +65,9 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
               url
             }
         }
-        title
+        title {
+            locale
+            text
+        }
     }
 }

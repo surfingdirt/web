@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
-import HOMEPAGE from 'Apollo/queries/home.gql';
+import HOMEPAGE from 'Apollo/queries/home2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import MoreAlbums from 'Components/Album/MoreAlbums';
 import Card, { cardTypes } from 'Components/Widgets/Card';

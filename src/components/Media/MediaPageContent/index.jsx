@@ -20,11 +20,13 @@ const { PHOTO: PHOTO_COMMENT, VIDEO: VIDEO_COMMENT } = commentTypes;
 const MediaPageContent = (props) => {
   const { comments, media } = props;
   const {
-    album: { title: albumTitle },
-    description,
+    album: {
+      title: { text: albumTitle },
+    },
+    description: { text: description },
     id,
     mediaType,
-    title,
+    title: { text: title },
   } = media;
 
   const commentType = mediaType.toLowerCase();

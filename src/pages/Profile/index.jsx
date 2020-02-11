@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet-async';
 import classnames from 'classnames';
 
-import USER_PROFILE from 'Apollo/queries/user.gql';
+import USER_PROFILE from 'Apollo/queries/user2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Button, { buttonSizes, buttonTypes } from 'Components/Widgets/Button';
 import Cover from 'Components/Cover';
@@ -51,8 +51,8 @@ class Profile extends React.Component {
       },
     } = this.context;
 
-    const emptyBio = !bio;
-    const text = emptyBio ? t('emptyBio') : bio;
+    const emptyBio = !bio.text;
+    const text = emptyBio ? t('emptyBio') : bio.text;
 
     const ModalButton = WithModal({
       ariaLabel: t('updateUserBioDialogLabel'),
@@ -61,14 +61,14 @@ class Profile extends React.Component {
       type: STANDARD,
     })(
       <div>
-        <Button label={bio ? t('update') : t('add')} size={SMALL} type={NEGATIVE} />
+        <Button label={bio.text ? t('update') : t('add')} size={SMALL} type={NEGATIVE} />
       </div>,
     );
 
     return (
       <DualContainer>
         <Paragraph
-          withDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
+          withDropCap={bio && biotext && bio.text.length > MIN_DROPCAP_LENGTH}
           withAutoLink
           className={classnames(styles.bio, { [styles.emptyBio]: emptyBio })}
           ugc

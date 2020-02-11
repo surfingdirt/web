@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet-async';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
+import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
 import { getFirstAlbumImageUrl, mediaPageSize } from 'Utils/media';
@@ -28,7 +28,10 @@ const Album = ({ match }) => {
 
   const { album, listMedia } = data;
 
-  const { description, title } = album;
+  const {
+    description: { text: description },
+    title: { text: title },
+  } = album;
   const image = getFirstAlbumImageUrl(listMedia);
 
   return (

@@ -18,8 +18,15 @@ const countItems = mediaPageSize;
 const AlbumGrid = ({ album, media, t }) => (
   <div className={styles.grid}>
     {media.map((item, index) => {
-      const { title: albumTitle } = album;
-      const { id, mediaType, title, thumbs } = item;
+      const {
+        title: { text: albumTitle },
+      } = album;
+      const {
+        id,
+        mediaType,
+        title: { text: title },
+        thumbs,
+      } = item;
       const attrs = { className: styles.link, id, mediaType, title, thumbs };
 
       const ThumbWithModal = WithModal({

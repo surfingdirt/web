@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 
-import UPDATE_USER from 'Apollo/mutations/updateUser2.gql';
+import UPDATE_USER from 'Apollo/mutations/updateUser.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
@@ -26,7 +26,7 @@ class BioUpdateForm extends React.Component {
   };
 
   static defaultProps = {
-    bio: '',
+    bio: {},
   };
 
   constructor(props) {
@@ -81,7 +81,7 @@ class BioUpdateForm extends React.Component {
             onSubmit={(values) => {
               return this.onSubmit(mutate, values);
             }}
-            initialValues={{ bio }}
+            initialValues={{ bio: bio.text }}
             validate={this.validate}
             render={({ handleSubmit, submitting, submitError, errors }) => {
               const errorMessage = errors.bio || submitError || this.state.displayError;

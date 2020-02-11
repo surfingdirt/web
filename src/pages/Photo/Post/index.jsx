@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
+import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoUploadForm from 'Components/Photo/UploadForm';
@@ -37,7 +37,11 @@ class NewPhoto extends React.Component {
           countItems: mediaPageSize,
           startItem: 0,
         }}
-        render={({ album: { title } }) => (
+        render={({
+          album: {
+            title: { text: title },
+          },
+        }) => (
           <Card title={t('photoPostPage')} type={STANDARD} className={styles.page}>
             <span className={styles.postingTo}>
               {t('postingToAlbum')}

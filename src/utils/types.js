@@ -14,3 +14,8 @@ export const CommentType = PropTypes.shape({
   submitter: UserType.isRequired,
   tone: PropTypes.string,
 });
+
+export const TranslatedTextType = PropTypes.shape({
+  locale: PropTypes.string,
+  text: PropTypes.string,
+});

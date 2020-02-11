@@ -33,10 +33,10 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
 
   const {
     actions: { add: userCanAdd },
-    description,
+    description: { text: description },
     id: albumId,
     submitter,
-    title,
+    title: { text: title },
   } = album;
 
   const lastIndex = media.length - 1;
