@@ -42,6 +42,23 @@ fs.readdirSync(translationFolder)
     localeTranslations[locale] = po.parse(fs.readFileSync(`${translationFolder}/${file}`, 'utf8'));
   });
 
+const loggedOutME = {
+  data: {
+    me: {
+      avatar: null,
+      bio: null,
+      cover: null,
+      email: null,
+      firstName: null,
+      locale: null,
+      status: 'guest',
+      timezone: null,
+      userId: null,
+      username: null,
+    },
+  },
+};
+
 const Main = (rootDir) => {
   const SSR = true;
   const { baseUrl, galleryAlbumId, graphql, showErrors, tracing: tracingConfig } = config;
@@ -80,9 +97,10 @@ const Main = (rootDir) => {
       error500Page = ERROR_500_PAGES[locale];
 
       let apolloClientInstance = apolloClient(graphql, locale, true, accessToken, tracingHeaders);
+      const meData = accessToken ? await apolloClientInstance.query({ query: ME }) : loggedOutME;
       const {
         data: { me: user },
-      } = await apolloClientInstance.query({ query: ME });
+      } = meData;
 
       if (user.locale && user.locale !== locale) {
         // Logged-in user has a locale and it's different from the request locale: take that into account
