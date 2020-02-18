@@ -137,6 +137,7 @@ const Main = (rootDir) => {
         <HelmetProvider context={helmetContext}>
           <ApolloProvider client={apolloClientInstance}>
             <StaticRouter location={req.url} context={context}>
+              {/* TODO: create a new component and do the ME query in a non-blocking way */}
               <App appContextValueObject={appContextValueObject} />
             </StaticRouter>
           </ApolloProvider>
