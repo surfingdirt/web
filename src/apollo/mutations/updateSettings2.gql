@@ -2,7 +2,10 @@ mutation UpdateSettings($input: SettingsUpdateInput!) {
     updateSettings(input: $input) {
         album {
           id
-          title
+          title {
+              locale
+              text
+          }
           media {
             images {
                 size

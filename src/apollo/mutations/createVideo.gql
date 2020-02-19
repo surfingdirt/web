@@ -2,13 +2,19 @@ mutation createVideo($input: VideoCreationInput!) {
     createVideo(input: $input) {
         id
         date
-        description
+        description {
+            locale
+            text
+        }
         mediaType
         mediaSubType
         embedUrl
         height
         width
-        title
+        title {
+            locale
+            text
+        }
         thumbs {
             type
             size

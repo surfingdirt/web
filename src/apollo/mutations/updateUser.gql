@@ -2,7 +2,10 @@ mutation UpdateUser($userId: ID!, $input: UserUpdateInput!) {
     updateUser(userId: $userId, input: $input) {
         album {
           id
-          title
+          title {
+            locale
+            text
+          }
           media {
             images {
                 size

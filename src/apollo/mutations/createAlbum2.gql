@@ -6,7 +6,10 @@ mutation createAlbum($input: AlbumCreationInput!) {
             edit
         }
         date
-        description
+        description {
+            locale
+            text
+        }
         id
         submitter {
             userId
@@ -19,6 +22,9 @@ mutation createAlbum($input: AlbumCreationInput!) {
               url
             }
         }
-        title
+        title {
+            locale
+            text
+        }
     }
 }

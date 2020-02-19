@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { useMutation } from 'react-apollo';
 
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import NavigationLink from 'Components/Widgets/NavigationLink';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';

@@ -4,11 +4,11 @@ import { parse } from 'url';
 import actions, { ACTION_PREFIX } from '~/actions';
 import ACTIVATE_NEW_PASSWORD_MUTATION from 'Apollo/mutations/activateNewPassword.gql';
 
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum.gql';
-import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum.gql';
-import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto.gql';
-import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo.gql';
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum2.gql';
+import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto2.gql';
+import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo2.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import CREATE_USER_MUTATION from 'Apollo/mutations/createUser.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
 
@@ -20,8 +20,8 @@ import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
 import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
-import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings.gql';
-import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser2.gql';
+import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings2.gql';
+import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser.gql';
 
 import {
   albumRoute,

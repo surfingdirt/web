@@ -3,9 +3,15 @@ mutation createPhoto(
     $file: Upload!) {
     createPhoto(input: $input, file: $file) {
         id
-        title
+        title {
+            locale
+            text
+        }
         date
-        description
+        description {
+            locale
+            text
+        }
         images {
           type
           size

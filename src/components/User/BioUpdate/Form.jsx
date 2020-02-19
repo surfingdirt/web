@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';

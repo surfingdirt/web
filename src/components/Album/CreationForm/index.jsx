@@ -4,7 +4,7 @@ import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';

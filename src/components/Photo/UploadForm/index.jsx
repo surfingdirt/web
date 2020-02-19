@@ -5,7 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { useMutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto2.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';

@@ -1,5 +1,5 @@
-mutation createPhotoComment($input: CommentCreationInput!) {
-    createPhotoComment(input: $input) {
+mutation createVideoComment($input: CommentCreationInput!) {
+    createVideoComment(input: $input) {
         actions {
             delete
             edit
@@ -7,7 +7,10 @@ mutation createPhotoComment($input: CommentCreationInput!) {
         id
         parentId
         parentType
-        content
+        content {
+            locale
+            text
+        }
         date
         submitter {
             userId

@@ -53,6 +53,7 @@ class Profile extends React.Component {
 
     const emptyBio = !bio.text;
     const text = emptyBio ? t('emptyBio') : bio.text;
+    const withDropCap = !emptyBio && bio.text.length > MIN_DROPCAP_LENGTH;
 
     const ModalButton = WithModal({
       ariaLabel: t('updateUserBioDialogLabel'),
@@ -68,7 +69,7 @@ class Profile extends React.Component {
     return (
       <DualContainer>
         <Paragraph
-          withDropCap={bio && biotext && bio.text.length > MIN_DROPCAP_LENGTH}
+          withDropCap={withDropCap}
           withAutoLink
           className={classnames(styles.bio, { [styles.emptyBio]: emptyBio })}
           ugc
