@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,7 @@ import Translate from 'Hocs/Translate';
 import { isValidEmail, isPasswordLongEnough } from 'Utils/validators';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -26,6 +27,8 @@ const checkedEmails = {};
 let emailTimeout = null;
 
 const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) => {
+  const { locale: currentLocale } = useContext(AppContext);
+
   const validate = ({ username, email, userP, userPC, timezone, locale }) => {
     return new Promise((resolveValidation) => {
       const required = <FormAPIMessage message="required" className={styles.apiMessage} />;
@@ -145,7 +148,13 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
   return (
     <Form
       initialValues={initialValues}
-      onSubmit={(input) => onSubmit({ input })}
+      onSubmit={(rawInput) => {
+        const input = Object.assign({}, rawInput, {
+          bio: { text: rawInput.bio, locale: currentLocale },
+        });
+
+        return onSubmit({ input });
+      }}
       validate={validate}
       render={(formProps) => {
         const { handleSubmit, invalid, submitting } = formProps;

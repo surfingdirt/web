@@ -12,7 +12,7 @@ const DataRenderer = ({ query, variables, render }) => {
     <Query query={query} variables={variables}>
       {({ loading, error, data }) => {
         if (loading) return <Spinner className={styles.spinner} />;
-        if (error) return <ErrorMessage />;
+        if (error) return <ErrorMessage message={error} />;
 
         return render(data);
       }}

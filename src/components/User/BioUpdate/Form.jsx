@@ -8,6 +8,7 @@ import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Translate from 'Hocs/Translate';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -17,6 +18,8 @@ const { USER_UPDATE } = actions;
 const { ACTION, NEGATIVE } = buttonTypes;
 
 class BioUpdateForm extends React.Component {
+  static contextType = AppContext;
+
   static propTypes = {
     bio: PropTypes.string,
     closeModal: PropTypes.func.isRequired,
@@ -63,6 +66,7 @@ class BioUpdateForm extends React.Component {
 
   render() {
     const { bio, t } = this.props;
+    const { locale } = this.context;
 
     return (
       <Mutation
@@ -77,8 +81,11 @@ class BioUpdateForm extends React.Component {
       >
         {(mutate) => (
           <Form
-            onSubmit={(values) => {
-              return this.onSubmit(mutate, values);
+            onSubmit={(rawInput) => {
+              const input = Object.assign({}, rawInput, {
+                bio: { text: rawInput.bio, locale },
+              });
+              return this.onSubmit(mutate, input);
             }}
             initialValues={{ bio: bio.text }}
             validate={this.validate}

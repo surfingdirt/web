@@ -8,7 +8,7 @@ import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
 import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum2.gql';
 import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto2.gql';
 import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo2.gql';
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto.gql';
 import CREATE_USER_MUTATION from 'Apollo/mutations/createUser.gql';
 import CREATE_VIDEO_MUTATION from 'Apollo/mutations/createVideo.gql';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-apollo';
 import { ApolloConsumer } from '@apollo/react-hooks';

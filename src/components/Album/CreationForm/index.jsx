@@ -40,7 +40,13 @@ class AlbumCreationForm extends React.Component {
     this.validate = this.validate.bind(this);
   }
 
-  async onSubmit(mutate, input) {
+  async onSubmit(mutate, rawInput) {
+    const { locale } = this.context;
+
+    const input = Object.assign({}, rawInput, {
+      description: { text: rawInput.description, locale },
+      title: { text: rawInput.title, locale },
+    });
     const response = await mutate({ variables: { input } });
     const { id } = response.data.createAlbum;
 

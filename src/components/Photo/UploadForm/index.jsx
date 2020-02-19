@@ -5,7 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { useMutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto3.gql';
+import CREATE_PHOTO_MUTATION from 'Apollo/mutations/createPhoto.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
@@ -33,7 +33,7 @@ const MAX_WIDTH = maxPhotoSize;
 const MAX_HEIGHT = maxPhotoSize;
 
 const PhotoUploadForm = ({ albumId, t }) => {
-  const { galleryAlbumId } = useContext(AppContext);
+  const { galleryAlbumId, locale } = useContext(AppContext);
 
   const formRef = useRef();
   const dynamicContentRef = useRef();
@@ -51,7 +51,11 @@ const PhotoUploadForm = ({ albumId, t }) => {
   const [addPhoto] = useMutation(CREATE_PHOTO_MUTATION, {});
 
   const onSubmit = async (values) => {
-    const { file: unused, ...input } = values;
+    const { file: unused, ...rawInput } = values;
+    const input = Object.assign({}, rawInput, {
+      description: { text: rawInput.description, locale },
+      title: { text: rawInput.title, locale },
+    });
     try {
       const response = await addPhoto({
         update: (cache, resultObj) => {

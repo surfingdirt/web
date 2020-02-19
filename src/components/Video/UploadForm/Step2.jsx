@@ -25,7 +25,7 @@ const { ACTION } = buttonTypes;
 const Step2 = ({ albumId, t, url }) => {
   console.log('Step2', { albumId, t, url });
 
-  const { galleryAlbumId } = useContext(AppContext);
+  const { galleryAlbumId, locale } = useContext(AppContext);
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
 
@@ -52,8 +52,12 @@ const Step2 = ({ albumId, t, url }) => {
     );
   }
 
-  const onSubmit = async ({ url: _, mediaSubType, ...rest }) => {
-    const input = Object.assign({}, rest, { mediaSubType: mediaSubType.toUpperCase() });
+  const onSubmit = async ({ url: _, mediaSubType, ...rawInput }) => {
+    const input = Object.assign({}, rawInput, {
+      description: { text: rawInput.description, locale },
+      mediaSubType: mediaSubType.toUpperCase(),
+      title: { text: rawInput.title, locale },
+    });
     try {
       const response = await addVideo({
         update: (cache, resultObj) => {
