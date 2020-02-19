@@ -15,6 +15,7 @@ import Translate from 'Hocs/Translate';
 import { tones } from 'Utils/comments';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -45,6 +46,8 @@ const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + strin
 const CommentForm = ({ className, id: parentId, t, type }) => {
   const action = ACTIONS[type];
   const mutation = MUTATIONS[type];
+
+  const { locale } = useContext(AppContext);
 
   const [addComment] = useMutation(mutation, {
     update: (cache, resultObj) => {
@@ -81,9 +84,10 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
   const onSubmit = async (values) => {
     let errors;
     try {
-      await addComment({
-        variables: { input: values },
+      const input = Object.assign({}, values, {
+        content: { text: values.content, locale },
       });
+      await addComment({ variables: { input } });
     } catch (e) {
       errors = { content: 'some error' };
     }
