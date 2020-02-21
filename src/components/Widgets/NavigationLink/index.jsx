@@ -7,14 +7,14 @@ import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
 
-const NavigationLink = ({ active, className, icon, label, negative, onClick, to }) => {
+const NavigationLink = ({ active, className, icon, label, negative, onClick, tag, to, type }) => {
   const classNames = classnames(className, styles.wrapper, {
     [styles.active]: active,
     [styles.negative]: negative,
   });
 
-  const Tag = onClick ? 'button' : Link;
-  const attrs = onClick ? { onClick, type: 'button' } : { to };
+  const Tag = tag || Link;
+  const attrs = { onClick, type, to };
 
   return (
     <Tag className={classNames} {...attrs}>
@@ -31,7 +31,9 @@ NavigationLink.propTypes = {
   label: PropTypes.string.isRequired,
   negative: PropTypes.bool,
   onClick: PropTypes.func,
+  tag: PropTypes.string,
   to: PropTypes.string,
+  type: PropTypes.string,
 };
 
 NavigationLink.defaultProps = {
@@ -40,7 +42,9 @@ NavigationLink.defaultProps = {
   icon: null,
   negative: false,
   onClick: null,
+  tag: null,
   to: null,
+  type: null,
 };
 
 export default NavigationLink;

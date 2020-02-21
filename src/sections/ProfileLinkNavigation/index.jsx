@@ -67,14 +67,16 @@ class ProfileLinkNavigationRaw extends React.Component {
       >
         <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
           <ul className={styles.linkList}>
-            <li>
-              <LogoutForm buttonClassName={menuStyles.menuEntry} />
-            </li>
             {items.map((props) => (
               <li key={props.to}>
                 <NavigationLink {...props} active={props.to === currentUrl} />
               </li>
             ))}
+            {loggedIn && (
+              <li>
+                <LogoutForm buttonClassName={menuStyles.menuEntry} />
+              </li>
+            )}
           </ul>
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
             {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
