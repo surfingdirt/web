@@ -74,7 +74,7 @@ class ProfileLinkNavigationRaw extends React.Component {
             ))}
             {loggedIn && (
               <li>
-                <LogoutForm buttonClassName={menuStyles.menuEntry} />
+                <LogoutForm buttonClassName={menuStyles.menuEntry} renderAsNavigationLink />
               </li>
             )}
           </ul>
