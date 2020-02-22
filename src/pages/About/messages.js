@@ -14,15 +14,7 @@ const messages = (getText, getPlural) => (key) =>
       'About',
     ) /* Paragraph */,
     paragraph4: getText(
-      'For those of you who attended the 2017 World Champs in Compiègne, you may remember stickers that were passed around announcing our comeback in… 2018.',
-      'About',
-    ) /* Paragraph */,
-    paragraph5: getText(
-      'Looks like we’re a little late! Well, to tell you the truth, we aren’t quite ready to launch yet, but we’re definitely launching early 2020! We’ll start small and build up until mountainboarders across the world have an online home again.',
-      'About',
-    ) /* Paragraph */,
-    paragraph6: getText(
-      'Also, that logo’s gone now! Thanks to High Mountain Creative, we’ll be using the shiny new logo you can see above, what a treat!',
+      "We hoped to launch a long time ago, but we're here now, so ejoy the new Surfing Dirt!",
       'About',
     ) /* Paragraph */,
   }[key]);
