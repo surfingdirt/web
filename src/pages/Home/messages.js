@@ -2,7 +2,7 @@ const messages = (getText, getPlural) => (key) =>
   ({
     more: getText('More...', 'Home') /* Label for a button to display a longer text */,
     title: getText(
-      'Your online mountainboard community',
+      'Your mountainboard community',
       'Home',
     ) /* Title on the homepage to welcome users */,
     paragraph1a: getText(`Surfing Dirt, your mountainboard community`, 'Home') /*  */,

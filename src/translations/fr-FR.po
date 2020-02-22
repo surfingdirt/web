@@ -34,7 +34,7 @@ msgstr "Ajouter un album"
 #: src/components/User/BioUpdate/messages.js:3
 #: src/components/Video/UploadForm/messages.js:3
 msgid "An error occurred. Please try again."
-msgstr "Une erreur est arrivée. Merci de réessayer."
+msgstr "Une erreur est survenue. Merci de réessayer."
 
 #. Label for a button the user can click to stop deleting an item
 #: src/components/Widgets/DeleteItemModal/messages.js:3
@@ -428,41 +428,6 @@ msgid "Yes, delete it"
 msgstr "Oui, supprimer"
 
 #. Paragraph
-#: src/pages/About/messages.js:24
-msgctxt "About"
-msgid ""
-"Also, that logo’s gone now! Thanks to High Mountain Creative, we’ll be using "
-"the shiny new logo you can see above, what a treat!"
-msgstr ""
-"Ah oui, et le logo des stickers de 2017 n’existe plus! Grâce à High Mountain "
-"Creative, le nouveau logo sera celui ci-dessus, un délice!"
-
-#. Paragraph
-#: src/pages/About/messages.js:16
-msgctxt "About"
-msgid ""
-"For those of you who attended the 2017 World Champs in Compiègne, you may "
-"remember stickers that were passed around announcing our comeback in… 2018."
-msgstr ""
-"Pour ceux qui étaient là aux Championnats du Monde 2017 à Compiègne, vous "
-"vous souvenez peut-être des stickers qui ont circulé et annonçaient un "
-"retour en… 2018."
-
-#. Paragraph
-#: src/pages/About/messages.js:20
-msgctxt "About"
-msgid ""
-"Looks like we’re a little late! Well, to tell you the truth, we aren’t quite "
-"ready to launch yet, but we’re definitely launching early 2020! We’ll start "
-"small and build up until mountainboarders across the world have an online "
-"home again."
-msgstr ""
-"On est un poil en retard! Mais bon, on est pas vraiment prêts à se lancer, "
-"mais c’est sûr, c’est pour début 2020! On va commencer doucement, et "
-"continuer à construire pour que les mountainboarders du monde entier aient "
-"un chez eux en ligne."
-
-#. Paragraph
 #: src/pages/About/messages.js:4
 msgctxt "About"
 msgid ""
@@ -500,6 +465,16 @@ msgstr ""
 msgctxt "About"
 msgid "Surfing Dirt is back!"
 msgstr "Surfing Dirt est de retour!"
+
+#. Paragraph
+#: src/pages/About/messages.js:16
+msgctxt "About"
+msgid ""
+"We hoped to launch a long time ago, but we're here now, so ejoy the new "
+"Surfing Dirt!"
+msgstr ""
+"On espérait lancer plus tôt, mais nous voilà, alors profitez bien du nouveau "
+"Surfing Dirt!"
 
 #. Paragraph
 #: src/pages/About/messages.js:8
@@ -754,33 +729,27 @@ msgid "Too short"
 msgstr "Trop court"
 
 #. Label for a link to navigate
-#: src/pages/Home/messages.js:38
+#: src/pages/Home/messages.js:35
 msgctxt "Home"
 msgid "Go"
 msgstr "Go"
 
-#. Title of a paragraph
-#: src/pages/Home/messages.js:27
-msgctxt "Home"
-msgid "Here's the plan"
-msgstr "Voilà le plan"
-
-#: src/pages/Home/messages.js:28
+#: src/pages/Home/messages.js:25
 msgctxt "Home"
 msgid ""
-"It's a lot of work to create a site like this, so we're going to start small "
-"and grow slowly.\n"
-"      To begin, we're going to focus on user profiles, photos, videos and "
-"albums, but soon after, we'll add things like spots, events, etc.\n"
-"      So take a look around, sign up, post photos and we'll see you around!"
+"It's a lot of work to create a site like this, so we're starting small and "
+"will grow slowly.\n"
+"      We're now focusing on user profiles, photos, videos, and albums. Soon "
+"after, we'll add things like spots, events, etc.\n"
+"      So take a look around, sign up, post photos and be part of Surfing "
+"Dirt!"
 msgstr ""
-"Monter un site comme celui-ci, c’est beaucoup de boulot, on va donc y "
-"commencer petit et grossir ensuite.\n"
-"      Au début, on va se concentrer sur les pages de profil, les photos, "
-"vidéos et albums, mais rapidement on rajoutera des spots, des évènements, "
-"etc.\n"
-"       Alors, fouille partout, enregistre-toi, poste des photos et on se "
-"voit sur le site!"
+"Monter un site comme celui-ci, c’est beaucoup de travail, on va donc "
+"commencer petit et grossir tranquillement.\n"
+"      On commence avec les pages de profil, les photos, vidéos et albums, "
+"mais rapidement on rajoutera des spots, des évènements, etc.\n"
+"       Alors, fouille partout, créé-toi un compte, poste des photos et prend "
+"part à Surfing Dirt!"
 
 #. Label for a link to a page containing more albums
 #: src/pages/Albums/messages.js:7
@@ -794,36 +763,41 @@ msgctxt "Home"
 msgid "More..."
 msgstr "Suite…"
 
-#: src/pages/Home/messages.js:12
+#: src/pages/Home/messages.js:9
 msgctxt "Home"
 msgid ""
 "Mountainboarding doesn't have a real home online right now, so we're hoping "
 "to be it. \n"
-"      You may remember Surfing Dirt the forum, but this is different. Think "
-"of the new Surfing Dirt more like a social network. Profile pages, "
-"galleries, and all kinds of other things.\n"
+"      Unlike the old Surfing Dirt forum, this is more like a social network: "
+"profile pages, galleries, and all kinds of other things.\n"
 "      A place to showcase all the cool things that are happening in "
 "mountainboarding."
 msgstr ""
-"Le mountainboard n’a pas vraiment de maison sur Internet, et on espère bien "
-"y remédier!.\n"
-"    Tu te souviens peut-être de Surfing Dirt le forum, mais la nouvelle "
-"version va être différente, ça sera plus un réseau social. Des pages de "
-"profil, des galeries, et plein d’autres trucs, un endroit pour montrer tous "
-"les trucs cool autour du mountainboard."
+"Le mountainboard n’a pas vraiment de foyer sur Internet, et on espère le "
+"devenir.\n"
+"      Alors que l’ancien Surfing Dirt était un forum, le nouveau sera plus "
+"un réseau social: pages de profil, galeries, et plein d’autres choses.\n"
+"      Un endroit pour montrer tous les trucs cool qui se passent dans le "
+"monde du mountainboard."
 
 #. Message before a link to go to a page containing more albums
-#: src/pages/Home/messages.js:34
+#: src/pages/Home/messages.js:31
 msgctxt "Home"
 msgid "See more photos and videos on the Albums page"
 msgstr "Plus de photos et de vidéos sur la page des Albums"
 
 #: src/pages/Home/messages.js:8
 msgctxt "Home"
-msgid "Welcome to the new Surfing Dirt, your new online community!"
-msgstr "Bienvenue sur le nouveau Surfing Dirt, ta nouvelle communauté!"
+msgid "Surfing Dirt, your mountainboard community"
+msgstr "Surfing Dirt, ta communauté mountainboard"
 
-#: src/pages/Home/messages.js:20
+#. Title of a paragraph
+#: src/pages/Home/messages.js:24
+msgctxt "Home"
+msgid "The future"
+msgstr "L’avenir"
+
+#: src/pages/Home/messages.js:17
 msgctxt "Home"
 msgid ""
 "Well, for one, because the mountainboard community is special and deserves "
@@ -845,16 +819,16 @@ msgstr ""
 "rassembler tout le monde!"
 
 #. Title of a paragraph
-#: src/pages/Home/messages.js:19
+#: src/pages/Home/messages.js:16
 msgctxt "Home"
-msgid "Why do we need that, you ask?"
-msgstr "Pourquoi on a besoin de ça?"
+msgid "Why we need that"
+msgstr "Pourquoi on a besoin de ça"
 
 #. Title on the homepage to welcome users
 #: src/pages/Home/messages.js:4
 msgctxt "Home"
-msgid "Your online mountainboard community"
-msgstr "Ta communauté mountainboard en ligne"
+msgid "Your mountainboard community"
+msgstr "Ta communauté mountainboard"
 
 #. An error message
 #: src/components/Widgets/Card/messages.js:3
@@ -1356,6 +1330,44 @@ msgstr "Liste des riders"
 msgctxt "Video post page"
 msgid "Post a new video"
 msgstr "Poster une nouvelle vidéo"
+
+#~ msgctxt "About"
+#~ msgid ""
+#~ "Also, that logo’s gone now! Thanks to High Mountain Creative, we’ll be "
+#~ "using the shiny new logo you can see above, what a treat!"
+#~ msgstr ""
+#~ "Ah oui, et le logo des stickers de 2017 n’existe plus! Grâce à High "
+#~ "Mountain Creative, le nouveau logo sera celui ci-dessus, un délice!"
+
+#~ msgctxt "About"
+#~ msgid ""
+#~ "For those of you who attended the 2017 World Champs in Compiègne, you may "
+#~ "remember stickers that were passed around announcing our comeback in… "
+#~ "2018."
+#~ msgstr ""
+#~ "Pour ceux qui étaient là aux Championnats du Monde 2017 à Compiègne, vous "
+#~ "vous souvenez peut-être des stickers qui ont circulé et annonçaient un "
+#~ "retour en… 2018."
+
+#~ msgctxt "About"
+#~ msgid ""
+#~ "Looks like we’re a little late! Well, to tell you the truth, we aren’t "
+#~ "quite ready to launch yet, but we’re definitely launching early 2020! "
+#~ "We’ll start small and build up until mountainboarders across the world "
+#~ "have an online home again."
+#~ msgstr ""
+#~ "On est un poil en retard! Mais bon, on est pas vraiment prêts à se "
+#~ "lancer, mais c’est sûr, c’est pour début 2020! On va commencer doucement, "
+#~ "et continuer à construire pour que les mountainboarders du monde entier "
+#~ "aient un chez eux en ligne."
+
+#~ msgctxt "Home"
+#~ msgid "Here's the plan"
+#~ msgstr "Voilà le plan"
+
+#~ msgctxt "Home"
+#~ msgid "Welcome to the new Surfing Dirt, your new online community!"
+#~ msgstr "Bienvenue sur le nouveau Surfing Dirt, ta nouvelle communauté!"
 
 #~ msgctxt "Photo post page"
 #~ msgid "Posting to album"

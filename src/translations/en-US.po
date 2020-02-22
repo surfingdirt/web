@@ -752,7 +752,7 @@ msgstr ""
 #. Title on the homepage to welcome users
 #: src/pages/Home/messages.js:4
 msgctxt "Home"
-msgid "Your online mountainboard community"
+msgid "Your mountainboard community"
 msgstr ""
 
 #. An error message
