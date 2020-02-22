@@ -80,7 +80,7 @@ msgstr "Clique ici pour ajouter un fichier"
 #. Help message
 #: src/components/Photo/BatchUploadForm/messages.js:5
 msgid "Click here to choose photos"
-msgstr "Clique ici pour choisit des photos"
+msgstr "Clique ici pour choisir des photos"
 
 #. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
