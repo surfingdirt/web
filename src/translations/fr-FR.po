@@ -470,11 +470,11 @@ msgstr "Surfing Dirt est de retour!"
 #: src/pages/About/messages.js:16
 msgctxt "About"
 msgid ""
-"We hoped to launch a long time ago, but we're here now, so ejoy the new "
+"We hoped to launch a long time ago, but we're here now, so enjoy the new "
 "Surfing Dirt!"
 msgstr ""
-"On espérait lancer plus tôt, mais nous voilà, alors profitez bien du nouveau "
-"Surfing Dirt!"
+"On espérait lancer plus tôt, mais on est là maintenant, alors profitez bien "
+"du nouveau Surfing Dirt!"
 
 #. Paragraph
 #: src/pages/About/messages.js:8
@@ -494,20 +494,20 @@ msgstr ""
 
 #. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 #: src/components/Album/AlbumAddButtons/messages.js:3
-#: src/sections/Layout/messages.js:28
+#: src/sections/Layout/messages.js:30
 msgctxt "Actions"
 msgid "Add a photo"
 msgstr "Ajouter une photo"
 
 #. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 #: src/components/Album/AlbumAddButtons/messages.js:7
-#: src/sections/Layout/messages.js:32
+#: src/sections/Layout/messages.js:34
 msgctxt "Actions"
 msgid "Add a video"
 msgstr "Ajouter une vidéo"
 
 #. Label of a link to a page where a user could create a new album. Please keep this translation as short as possible
-#: src/sections/Layout/messages.js:19
+#: src/sections/Layout/messages.js:21
 msgctxt "Actions"
 msgid "Add an album"
 msgstr "Créer un album"
@@ -904,7 +904,7 @@ msgstr "Riders"
 
 #. Label for a menu to manage the user's account
 #: src/components/Widgets/NavigationProfile/messages.js:3
-#: src/sections/Layout/messages.js:3
+#: src/sections/Layout/messages.js:5
 msgctxt "NavigationProfile"
 msgid "Account"
 msgstr "Compte"
@@ -971,44 +971,54 @@ msgstr ""
 "ça sera fait un jour."
 
 #. Label for a navigation section containing links to add new items
-#: src/sections/Layout/messages.js:7
+#: src/sections/Layout/messages.js:9
 msgctxt "Page Layout"
 msgid "Actions"
 msgstr "Actions"
 
 #. Label for a link to a page where the user can see the activity on the site
-#: src/sections/Layout/messages.js:15
+#: src/sections/Layout/messages.js:17
 msgctxt "Page Layout"
 msgid "Activity"
 msgstr "Activité"
 
 #. Label for a button which opens a list of links to add new items
-#: src/sections/Layout/messages.js:11
+#: src/sections/Layout/messages.js:13
 msgctxt "Page Layout"
 msgid "Add"
 msgstr "Ajouter"
 
 #. Label for a link to the homepage
-#: src/sections/Layout/messages.js:23
+#: src/sections/Layout/messages.js:25
 msgctxt "Page Layout"
 msgid "Home"
 msgstr "Accueil"
 
+#: src/sections/Layout/messages.js:4
+msgctxt "Page Layout"
+msgid "Main content"
+msgstr "Contenu principal"
+
+#: src/sections/Layout/messages.js:3
+msgctxt "Page Layout"
+msgid "Main header"
+msgstr "Header principal"
+
 #. Label for a button which opens a list of additional navigation items
-#: src/sections/Layout/messages.js:24
+#: src/sections/Layout/messages.js:26
 msgctxt "Page Layout"
 msgid "More"
 msgstr "Plus"
 
 #. Label for a link to the user's profile page
-#: src/sections/Layout/messages.js:36
+#: src/sections/Layout/messages.js:38
 #: src/sections/ProfileLinkNavigation/messages.js:11
 msgctxt "Page Layout"
 msgid "Profile"
 msgstr "Profil"
 
 #. Label for a button which opens up the search bar
-#: src/sections/Layout/messages.js:37
+#: src/sections/Layout/messages.js:39
 msgctxt "Page Layout"
 msgid "Search"
 msgstr "Rechercher"
