@@ -233,7 +233,7 @@ class Layout extends React.Component {
           ref={this.profileNavigationMenuRef}
         />
 
-        <main ref={this.mainRef} className={styles.main}>
+        <main ref={this.mainRef} className={styles.main} aria-label={t('mainAriaLabel')}>
           {children}
         </main>
 

@@ -1,5 +1,7 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    headerAriaLabel: getText('Main header', 'Page Layout') /* */,
+    mainAriaLabel: getText('Main content', 'Page Layout') /* */,
     account: getText(
       'Account',
       'NavigationProfile',

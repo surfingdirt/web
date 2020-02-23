@@ -9,7 +9,11 @@ import styles from './styles.scss';
 
 const ActionLink = ({ className, icon, iconClassName, label, to }) => (
   <Link to={to} className={classnames(className, styles.wrapper)} title={label}>
-    {getIcon({ type: icon, label, className: classnames(styles.defaultIcon, iconClassName) })}
+    {getIcon({
+      type: icon,
+      className: classnames(styles.defaultIcon, iconClassName),
+      presentationOnly: true,
+    })}
     <span className={styles.label} aria-hidden="true">
       {label}
     </span>

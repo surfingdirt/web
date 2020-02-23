@@ -26,7 +26,11 @@ const logo = (title) => (
 );
 
 const Header = ({ className, headerRef, t, title }) => (
-  <header className={classnames(styles.header, className)} ref={headerRef}>
+  <header
+    className={classnames(styles.header, className)}
+    ref={headerRef}
+    aria-label={t('headerAriaLabel')}
+  >
     <div className={styles.desktopHeader}>
       {logo(title)}
       <div className={styles.search}>

@@ -6,13 +6,14 @@ import classnames from 'classnames';
 import styles from './styles.scss';
 
 const BottomBarActionButton = React.forwardRef(function BottomBarActionButton(
-  { active, className, children, to },
+  { active, className, children, label, to },
   ref,
 ) {
   const Tag = to ? Link : 'span';
 
   return (
     <Tag
+      aria-label={label}
       ref={ref}
       type="button"
       to={to}

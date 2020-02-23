@@ -18,6 +18,7 @@ import routes from '~/routes';
 import { MORE_NAVIGATION_ID, PROFILE_NAVIGATION_ID } from '../constants';
 import messages from '../messages';
 import styles from './styles.scss';
+import layoutStyles from '../styles.scss';
 
 const ACTION_ITEMS_ID = 'action-items';
 const { PROFILE } = icons;
@@ -80,11 +81,16 @@ const Index = ({
       </button>
 
       {/* PLUS button */}
-      <div className={styles.plusButtonWrapper}>
+      <div
+        className={classnames(styles.plusButtonWrapper, {
+          [styles.plusButtonWrapperOpen]: bottomBarActionsOpen,
+        })}
+      >
         <button
           type="button"
           className={styles.plusButtonOffset}
           onClick={onPlusClick}
+          aria-label={t('actionButton')}
           aria-haspopup="true"
           aria-expanded={bottomBarActionsOpen}
           aria-controls={ACTION_ITEMS_ID}
@@ -96,7 +102,7 @@ const Index = ({
           >
             {getIcon({
               type: icons.CLOSE,
-              label: t('actionButton'),
+              presentationOnly: true,
               className: classnames(styles.closeIcon, {
                 [styles.closeIconActive]: bottomBarActionsOpen,
               }),
@@ -121,6 +127,15 @@ const Index = ({
           visual={<div className={styles.plusPlaceholder} />}
         />
       </div>
+
+      {/* Overlay for action buttons */}
+      <div
+        aria-hidden="true"
+        className={classnames(layoutStyles.overlay, layoutStyles.navigationMenuOverlay, {
+          [layoutStyles.overlayVisible]: bottomBarActionsOpen,
+        })}
+        onClick={onPlusClick}
+      />
 
       {/* HOME button */}
       <Link to={HOME} className={styles.home}>
