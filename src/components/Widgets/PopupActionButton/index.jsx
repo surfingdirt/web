@@ -6,16 +6,15 @@ import classnames from 'classnames';
 import styles from './styles.scss';
 
 const BottomBarActionButton = React.forwardRef(function BottomBarActionButton(
-  { active, className, children, label, to },
+  { active, className, children, style, to },
   ref,
 ) {
   const Tag = to ? Link : 'span';
 
   return (
     <Tag
-      aria-label={label}
       ref={ref}
-      type="button"
+      style={style}
       to={to}
       className={classnames(styles.wrapper, className, { [styles.active]: active })}
     >
@@ -28,12 +27,14 @@ BottomBarActionButton.propTypes = {
   active: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
+  style: PropTypes.string,
   to: PropTypes.string,
 };
 
 BottomBarActionButton.defaultProps = {
   active: false,
   className: null,
+  style: null,
   to: null,
 };
 

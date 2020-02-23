@@ -25,3 +25,12 @@ $z-index-action-buttons: 1;
     color: $text-color-default;
   }
 }
+
+.label {
+  position: absolute;
+  line-height: initial;
+  width: min-content;
+  bottom: 0;
+  right: 0;
+  text-shadow: rgba(0, 0, 0, 1);
+}
