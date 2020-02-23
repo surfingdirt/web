@@ -27,7 +27,7 @@ BottomBarActionButton.propTypes = {
   active: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
-  style: PropTypes.string,
+  style: PropTypes.object,
   to: PropTypes.string,
 };
 
