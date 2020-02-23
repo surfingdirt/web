@@ -29,6 +29,7 @@
     "core-js": "2.6.9",
     "eslint-import-resolver-babel-module": "^5.0.1",
     "eslint-plugin-import": "2.18.2",
+    "jsdom": "13.2.0",
     "webpack-bundle-analyzer": "3.6.0",
     "webpack-pwa-manifest": "4.0.0"
   },
@@ -108,10 +109,10 @@
     "jest-mock-axios": "^2.1.11",
     "jest-transform-graphql": "^2.1.0",
     "js-cookie": "2.2.1",
-    "jsdom": "^13.2.0",
     "lodash": "^4.17.13",
     "lodash.template": "4.5.0",
     "lodash.templatesettings": "4.2.0",
+    "machine-gettext": "0.0.1",
     "mini-css-extract-plugin": "0.4.0",
     "multer": "1.4.1",
     "node-fetch": "2.5.0",
@@ -151,6 +152,7 @@
     "useragent": "2.3.0",
     "webpack": "4.41.2",
     "webpack-cli": "2.0.14",
+    "yargs": "15.1.0",
     "zipkin": "0.19.2",
     "zipkin-javascript-opentracing": "2.1.0",
     "zipkin-transport-http": "0.19.2"

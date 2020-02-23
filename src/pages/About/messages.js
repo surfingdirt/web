@@ -14,7 +14,7 @@ const messages = (getText, getPlural) => (key) =>
       'About',
     ) /* Paragraph */,
     paragraph4: getText(
-      "We hoped to launch a long time ago, but we're here now, so ejoy the new Surfing Dirt!",
+      "We hoped to launch a long time ago, but we're here now, so enjoy the new Surfing Dirt!",
       'About',
     ) /* Paragraph */,
   }[key]);

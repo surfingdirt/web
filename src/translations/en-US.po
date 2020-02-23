@@ -438,7 +438,7 @@ msgstr ""
 #. Paragraph
 #: src/pages/About/messages.js:16
 msgctxt "About"
-msgid "We hoped to launch a long time ago, but we're here now, so ejoy the new Surfing Dirt!"
+msgid "We hoped to launch a long time ago, but we're here now, so enjoy the new Surfing Dirt!"
 msgstr ""
 
 #. Paragraph

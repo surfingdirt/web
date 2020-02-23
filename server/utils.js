@@ -4,12 +4,13 @@ import parser from 'accept-language-parser';
 export const ARABIC = 'ar';
 export const ENGLISH_US = 'en-US';
 export const FRENCH_FRANCE = 'fr-FR';
+export const SPANISH_SPAIN = 'es-ES';
 export const HEBREW = 'he';
 
 export const DEFAULT_LOCALE = ENGLISH_US;
 
 // Note: make sure to edit src/Components/Widgets/Form/LocaleField/translatedLocales.js when adding locales
-export const SUPPORTED_LOCALES = [ENGLISH_US, FRENCH_FRANCE];
+export const SUPPORTED_LOCALES = [ENGLISH_US, FRENCH_FRANCE, SPANISH_SPAIN];
 export const RTL_LANGUAGES = [ARABIC, HEBREW];
 
 export const RIGHT_TO_LEFT = 'rtl';

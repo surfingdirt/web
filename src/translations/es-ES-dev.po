@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+
+#: src/components/Widgets/DeleteItemModal/messages.js:9
+#. Label for a button the user can click to confirm they want to delete an item
+#msgid "Yes, delete it"
+#msgstr ""
+
+#: src/pages/About/messages.js:4
+#. Paragraph
+#msgctxt "About"
+#msgid ""
+#"Bla mountainboarding bla mountainboard bla mountainboarders bla mountainboarder."
+#msgstr ""
+
+#: src/pages/About/messages.js:16
+#. Paragraph
+msgctxt "About"
+msgid ""
+"We hoped to launch a long time ago, but we're here now, so ejoy the new "
+"Surfing Dirt!"
+msgstr ""
+
+#: src/pages/About/messages.js:12
+#. Paragraph
+#msgctxt "About"
+#msgid ""
+#"Surfing Dirt hopes to solve that problem. We intend to be the social "
+#"network for mountainboarders. The place where you’ll share photos and "
+#"videos from your last session. Where you’ll learn about riders and spots "
+#"near you. Where you’ll discuss trucks and jumps. And where people can see "
+#"what mountainboarding is about."
+#msgstr ""
+
+#: src/pages/About/messages.js:3
+#. Title of the About page
+#msgctxt "About"
+#msgid "Surfing Dirt is back!"
+#msgstr ""
