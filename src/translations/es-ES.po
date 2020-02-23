@@ -789,7 +789,7 @@ msgstr "Ver más fotos y videos en la página de Álbumes"
 #: src/pages/Home/messages.js:8
 msgctxt "Home"
 msgid "Surfing Dirt, your mountainboard community"
-msgstr "Surfing Dirt tu comunidad de montañeros.."
+msgstr "Surfing Dirt tu comunidad de mountainboard"
 
 #: src/pages/Home/messages.js:24
 #. Title of a paragraph
