@@ -2,15 +2,30 @@ import parser from 'accept-language-parser';
 
 // Language list taken from http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 export const ARABIC = 'ar';
-export const ENGLISH_US = 'en-US';
-export const FRENCH_FRANCE = 'fr-FR';
-export const SPANISH_SPAIN = 'es-ES';
 export const HEBREW = 'he';
+
+export const GERMAN_GERMANY = 'de-DE';
+export const ENGLISH_US = 'en-US';
+export const SPANISH_SPAIN = 'es-ES';
+export const FRENCH_FRANCE = 'fr-FR';
+export const ITALIAN_ITALY = 'it-IT';
+export const POLISH_POLAND = 'pl-PL';
+export const PORTUGUESE_PORTUGAL = 'pt-PT';
+export const RUSSIAN_RUSSIA = 'ru-RU';
 
 export const DEFAULT_LOCALE = ENGLISH_US;
 
 // Note: make sure to edit src/Components/Widgets/Form/LocaleField/translatedLocales.js when adding locales
-export const SUPPORTED_LOCALES = [ENGLISH_US, FRENCH_FRANCE, SPANISH_SPAIN];
+export const SUPPORTED_LOCALES = [
+  ENGLISH_US,
+  FRENCH_FRANCE,
+  GERMAN_GERMANY,
+  ITALIAN_ITALY,
+  POLISH_POLAND,
+  PORTUGUESE_PORTUGAL,
+  RUSSIAN_RUSSIA,
+  SPANISH_SPAIN,
+];
 export const RTL_LANGUAGES = [ARABIC, HEBREW];
 
 export const RIGHT_TO_LEFT = 'rtl';
