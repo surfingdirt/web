@@ -29,7 +29,6 @@
     "core-js": "2.6.9",
     "eslint-import-resolver-babel-module": "^5.0.1",
     "eslint-plugin-import": "2.18.2",
-    "jsdom": "13.2.0",
     "webpack-bundle-analyzer": "3.6.0",
     "webpack-pwa-manifest": "4.0.0"
   },
