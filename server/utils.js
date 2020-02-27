@@ -10,6 +10,7 @@ export const SPANISH_SPAIN = 'es-ES';
 export const FRENCH_FRANCE = 'fr-FR';
 export const ITALIAN_ITALY = 'it-IT';
 export const POLISH_POLAND = 'pl-PL';
+export const PORTUGUESE_BRAZIL = 'pt-BR';
 export const PORTUGUESE_PORTUGAL = 'pt-PT';
 export const RUSSIAN_RUSSIA = 'ru-RU';
 

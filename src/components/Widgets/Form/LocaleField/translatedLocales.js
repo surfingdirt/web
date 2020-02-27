@@ -5,6 +5,7 @@ const translatedLocales = {
   'fr-FR': 'Français / France',
   'it-IT': 'Italiano / Italia',
   'pl-PL': 'Polskie / Polska',
+  'pt-BR': 'Português / Brasil',
   'pt-PT': 'Português / Portugal',
   'ru-RU': 'Русский / Россия',
 };
