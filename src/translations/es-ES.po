@@ -659,7 +659,7 @@ msgstr "Se produjo un error y no se pudo finalizar su cuenta"
 #: src/pages/ConfirmEmail/messages.js:11
 msgctxt "Email"
 msgid "Congratulations, your account is now fully activated!"
-msgstr "Felicitaciones, su cuenta está ahora completamente activada!"
+msgstr "Felicitaciones, tu cuenta está completamente activada!"
 
 #. Message displayed once the user has confirmed their email address
 #: src/pages/ConfirmEmail/messages.js:15
@@ -691,7 +691,7 @@ msgstr "Acerca de"
 #: src/sections/Footer/messages.js:7
 msgctxt "Footer"
 msgid "Contact"
-msgstr "Contáctenos"
+msgstr "Contáctanos"
 
 #. Name of the forum section of the old site
 #: src/sections/Footer/messages.js:11
@@ -1157,7 +1157,7 @@ msgctxt "Registration"
 msgid ""
 "If you'd like to join us, enter your details below to create an account!"
 msgstr ""
-"Si desea unirse a nosotros, introduzca sus datos a continuación para crear "
+"Si desea unirte, ingrea tus datos a continuación para crear "
 "una cuenta!"
 
 #. Label for a list of countries and languages the user can choose from
@@ -1187,7 +1187,7 @@ msgstr "Confirmación de la contraseña"
 #: src/pages/User/Settings/messages.js:33
 msgctxt "Registration"
 msgid "Please choose one"
-msgstr "Por favor, elija uno"
+msgstr "Por favor, elige uno"
 
 #. Label for a button to submit the registration form
 #: src/pages/User/Registration/messages.js:33
@@ -1227,14 +1227,14 @@ msgid ""
 "We just sent you an email, please open it and click the link in order to "
 "confirm your account! Until then, you will not be able to log in."
 msgstr ""
-"Acabamos de enviarle un correo electrónico, por favor ábralo y haga clic en "
-"el enlace para confirmar su cuenta! Hasta entonces, no podrá iniciar sesión."
+"Acabamos de enviarle un correo electrónico. Por favor ábrelo y haz clic en "
+"el enlace para confirmar tu cuenta! Hasta entonces, no podrás iniciar sesión."
 
 #. Welcoming message, includes a new user's username
 #: src/pages/User/Registration/messages.js:46
 msgctxt "Registration"
 msgid "Welcome, %s!"
-msgstr "¡Bienvenidos, %s!"
+msgstr "¡Bienvenido, %s!"
 
 #. Label for a form field to type the user's current password
 #: src/pages/User/Settings/messages.js:21
