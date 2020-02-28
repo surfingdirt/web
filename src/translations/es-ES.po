@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Instruction for a user
@@ -20,12 +20,12 @@ msgstr "Añade una foto de la portada"
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:25
 msgid "Add a profile photo"
-msgstr "Añadir una foto de perfil"
+msgstr "Añade una foto de perfil"
 
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:30
 msgid "Add an album"
-msgstr "Añadir un álbum"
+msgstr "Añade un álbum"
 
 #. Generic error message
 #: src/components/Album/CreationForm/messages.js:3
@@ -34,7 +34,7 @@ msgstr "Añadir un álbum"
 #: src/components/User/BioUpdate/messages.js:3
 #: src/components/Video/UploadForm/messages.js:3
 msgid "An error occurred. Please try again."
-msgstr "Ha ocurrido un error. Por favor, inténtelo de nuevo."
+msgstr "Ha ocurrido un error. Por favor, inténtalo de nuevo."
 
 #. Label for a button the user can click to stop deleting an item
 #: src/components/Widgets/DeleteItemModal/messages.js:3
@@ -59,38 +59,38 @@ msgstr "Elige una foto para tu página de perfil."
 #. Label for a form field to choose a profile picture (part 1)
 #: src/components/Cover/messages.js:3
 msgid "Choose a picture to represent yourself on the site."
-msgstr "Elija una imagen para representarse en el sitio."
+msgstr "Elige una imagen para representarse en el sitio."
 
 #. Label for a button to clear a list of photos
 #: src/components/Photo/BatchUploadForm/messages.js:3
 msgid "Clear"
-msgstr "Despejado"
+msgstr "Limpiar"
 
 #. Help message
 #: src/components/Photo/BatchUploadForm/messages.js:6
 msgid "Click here to add more photos"
-msgstr "Haga clic aquí para añadir más fotos"
+msgstr "Clic aquí para añadir más fotos"
 
 #. Help message
 #: src/components/Cover/messages.js:22
 #: src/components/Photo/UploadForm/messages.js:8
 msgid "Click here to choose a file"
-msgstr "Haga clic aquí para elegir un archivo"
+msgstr "Clic aquí para elegir un archivo"
 
 #. Help message
 #: src/components/Photo/BatchUploadForm/messages.js:5
 msgid "Click here to choose photos"
-msgstr "Haga clic aquí para elegir las fotos"
+msgstr "Clic aquí para elegir las fotos"
 
 #. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
 msgid "Continue"
-msgstr "Continúa"
+msgstr "Continuar"
 
 #. Error message showed when a user entered a video address that could not be understood
 #: src/components/Video/UploadForm/messages.js:9
 msgid "Could not understand this address"
-msgstr "No podía entender esta dirección"
+msgstr "No se entiende esta dirección"
 
 #. Label for a dialog window to change the user's cover picture
 #: src/components/Cover/messages.js:45
@@ -124,7 +124,7 @@ msgstr "Descripción"
 #. Label for a button to edit a comment
 #: src/components/Comment/Item/messages.js:3
 msgid "Edit"
-msgstr "Edita"
+msgstr "Editar"
 
 #. Label of a form field for the user's email
 #: src/pages/LogIn/messages.js:8
@@ -136,19 +136,19 @@ msgstr "Correo electrónico"
 #: src/components/Photo/UploadForm/messages.js:5
 #: src/components/Video/UploadForm/messages.js:6
 msgid "Enter a description"
-msgstr "Introduzca una descripción"
+msgstr "Ingresa una descripción"
 
 #. Help text to tell the user what to type
 #: src/components/Album/CreationForm/messages.js:13
 #: src/components/Photo/UploadForm/messages.js:19
 #: src/components/Video/UploadForm/messages.js:19
 msgid "Enter a title"
-msgstr "Introduce un título"
+msgstr "Ingresa un título"
 
 #. Text appearing inside a form field before the user entered anything
 #: src/pages/LogIn/messages.js:4
 msgid "Enter something"
-msgstr "Introduzca algo.."
+msgstr "Ingresa un valor"
 
 #. Label for a file name
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:4
@@ -168,7 +168,7 @@ msgstr "Ir al álbum"
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:23
 msgid "Go to your profile page"
-msgstr "Ve a tu página de perfil"
+msgstr "Ir a tu página de perfil"
 
 #. Label for a form field where a user can introduce themselves.
 #: src/components/User/BioUpdate/messages.js:4
@@ -202,7 +202,7 @@ msgstr "Siguiente"
 #. Label for a button the user can click to stop deleting an item
 #: src/components/Widgets/DeleteItemModal/messages.js:6
 msgid "No, cancel"
-msgstr "No, cancela"
+msgstr "No, cancelar"
 
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:31
@@ -224,7 +224,7 @@ msgstr "Opciones"
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:34
 msgid "Other people can post to your public albums"
-msgstr "Otras personas pueden publicar en sus álbumes públicos"
+msgstr "Otras personas pueden publicar en tus álbumes públicos"
 
 #. Label of a form field for the user's password
 #: src/pages/LogIn/messages.js:9
@@ -234,12 +234,12 @@ msgstr "Contraseña"
 #. Help text instructing what to do to upload a video
 #: src/components/Video/UploadForm/messages.js:12
 msgid "Paste a video address above"
-msgstr "Pegue una dirección de video arriba"
+msgstr "Pega una dirección de video arriba"
 
 #. Help text to tell the user what to type
 #: src/components/Video/UploadForm/messages.js:21
 msgid "Paste the address here"
-msgstr "Pegue la dirección aquí"
+msgstr "Pega la dirección aquí"
 
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:22
@@ -250,7 +250,7 @@ msgstr "Personaliza tu cuenta"
 #: src/components/Cover/messages.js:27
 #: src/components/Photo/UploadForm/messages.js:12
 msgid "Please choose a file first"
-msgstr "Por favor, elija un archivo primero"
+msgstr "Por favor, elige un archivo primero"
 
 #. Indicates which album a given item belongs to
 #: src/components/Media/MediaMetadata/messages.js:5
@@ -282,12 +282,12 @@ msgstr "Perfil"
 #. Label for a dialog window to change the user's introduction
 #: src/pages/Profile/messages.js:13
 msgid "Profile introduction update dialog"
-msgstr "Diálogo de actualización de la introducción del perfil"
+msgstr "Actualización de perfil"
 
 #. Label for a dialog window to change the user's profile picture
 #: src/components/Cover/messages.js:36
 msgid "Profile picture update dialog"
-msgstr "Diálogo de actualización de la imagen del perfil"
+msgstr "Actualización de imagen del perfil"
 
 #. Label for a link to the registration page, or label for a button to actually register
 #: src/components/Widgets/NavigationProfile/messages.js:11
@@ -314,12 +314,12 @@ msgstr "Ajustes"
 #: src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
 msgid "Sign in"
-msgstr "Firme en el registro"
+msgstr "Ingresar"
 
 #. Label for a button to stop the uploading process
 #: src/components/Photo/BatchUploadForm/messages.js:8
 msgid "Stop"
-msgstr "Deténgase"
+msgstr "Detenerse"
 
 #. Explains what to enter in the introduction field
 #: src/components/User/BioUpdate/messages.js:7
@@ -472,8 +472,8 @@ msgid ""
 "We hoped to launch a long time ago, but we're here now, so enjoy the new "
 "Surfing Dirt!"
 msgstr ""
-"Esperábamos lanzarnos hace mucho tiempo, pero ya estamos aquí, así que "
-"disfruten de lo nuevo Surfing Dirt"
+"Esperábamos estar al aire desde hace mucho tiempo, ¡Ya estamos aquí! "
+"Disfruta de lo nuevo Surfing Dirt"
 
 #. Paragraph
 #: src/pages/About/messages.js:8
@@ -691,7 +691,7 @@ msgstr "Acerca de"
 #: src/sections/Footer/messages.js:7
 msgctxt "Footer"
 msgid "Contact"
-msgstr "Contacte con"
+msgstr "Contáctenos"
 
 #. Name of the forum section of the old site
 #: src/sections/Footer/messages.js:11
@@ -733,7 +733,7 @@ msgstr "Demasiado corto"
 #: src/pages/Home/messages.js:35
 msgctxt "Home"
 msgid "Go"
-msgstr "Vamos"
+msgstr "Ir"
 
 #: src/pages/Home/messages.js:25
 msgctxt "Home"
@@ -745,11 +745,11 @@ msgid ""
 "      So take a look around, sign up, post photos and be part of Surfing "
 "Dirt!"
 msgstr ""
-"Es mucho trabajo crear un sitio como este, así que estamos empezando poco a "
-"poco y creceremos poco a poco. Ahora nos centramos en los perfiles de "
-"usuario, fotos, vídeos y álbumes. Pronto añadiremos cosas como anuncios, "
-"eventos, etc. Así que echa un vistazo, regístrate, publica fotos y forma "
-"parte de Surfing Dirt !"
+"Cuesta mucho trabajo crear un sitio como este, así que estamos que "
+"empezáremos de a poco e iremos creciendo paso a paso. Inicialmente nos "
+"centramos en perfiles de usuario, fotos, vídeos y álbumes. Pronto añadiremos "
+"cosas como anuncios, eventos, etc. Así que... echa un vistazo, regístrate, "
+"publica fotos y forma parte de Surfing Dirt."
 
 #. Label for a link to a page containing more albums
 #: src/pages/Albums/messages.js:7
@@ -773,22 +773,22 @@ msgid ""
 "      A place to showcase all the cool things that are happening in "
 "mountainboarding."
 msgstr ""
-"Mountainboard no tiene un verdadero hogar en línea en este momento, así que "
-"esperamos serlo. A diferencia del antiguo Surfing Dirt foro, esto es más "
-"como una red social: páginas de perfil, galerías, y todo tipo de otras "
-"cosas. Un lugar para mostrar todas las cosas geniales que están sucediendo "
-"en mountainboard ."
+"El mountainboard no tiene un verdadero hogar en línea por ahora - así que, "
+"esperamos poder serlo. A diferencia del antiguo Surfing Dirt, esto es más "
+"como una red social: páginas de perfil, galerías y todo tipo de otras cosas. "
+"Un lugar para mostrar todas las cosas geniales que están sucediendo en el "
+"mountainboard ."
 
 #. Message before a link to go to a page containing more albums
 #: src/pages/Home/messages.js:31
 msgctxt "Home"
 msgid "See more photos and videos on the Albums page"
-msgstr "Ver más fotos y videos en la página de Álbumes"
+msgstr "Ver más fotos y videos en la página de álbumes"
 
 #: src/pages/Home/messages.js:8
 msgctxt "Home"
 msgid "Surfing Dirt, your mountainboard community"
-msgstr "Surfing Dirt tu comunidad de mountainboard"
+msgstr "¡Surfing Dirt! Tu comunidad de mountainboard"
 
 #. Title of a paragraph
 #: src/pages/Home/messages.js:24
@@ -808,19 +808,19 @@ msgid ""
 "      But really, the main reason is that we hope to bring you a cool place "
 "for everyone to come together!"
 msgstr ""
-"Bueno, por un lado, porque la comunidad de mountainboard es especial y "
-"merece un espacio online que se le asemeje. Los eventos de mountainboard son "
-"conocidos por ser abiertos, inclusivos y positivos. Surfing Dirt pretende "
-"ofrecer lo mismo online! También, ya que lo preguntaste, porque Facebook "
-"apesta! En general, causa mucho daño, y sería en el mejor interés de todos "
-"usarlo menos. Pero en realidad, la razón principal es que esperamos "
-"ofrecerte un lugar genial para que todo el mundo se reúna!"
+"Bueno, primero que todo porque la comunidad de mountainboard es súper "
+"especial y merece un espacio en línea que se le represente. Los eventos de "
+"mountainboard son conocidos por ser abiertos, inclusivos y positivos. "
+"Surfing Dirt, pretende ofrecer lo mismo en la web! También, y porque lo "
+"preguntaste, ¡Facebook apesta! En general causa mucho daño y sería mejor "
+"para todos usarlo menos. Pero en realidad, y la razón principal, es que "
+"esperamos ofrecer un lugar genial para que todo el mundo se reúna."
 
 #. Title of a paragraph
 #: src/pages/Home/messages.js:16
 msgctxt "Home"
 msgid "Why we need that"
-msgstr "Por qué necesitamos eso"
+msgstr "¿Por qué lo necesitamos?"
 
 #. Title on the homepage to welcome users
 #: src/pages/Home/messages.js:4
@@ -897,7 +897,7 @@ msgstr "Enlaces"
 #: src/sections/MoreLinkNavigation/messages.js:10
 msgctxt "Navigation"
 msgid "Riders"
-msgstr "Jinetes"
+msgstr "Riders"
 
 #. Label for a menu to manage the user's account
 #: src/components/Widgets/NavigationProfile/messages.js:3
@@ -1132,7 +1132,7 @@ msgstr "Ajustes"
 #: src/pages/Profile/messages.js:9
 msgctxt "Profile"
 msgid "Update intro"
-msgstr "Introducir la actualización.."
+msgstr "Introducir la actualización."
 
 #. Placeholder text displayed when the user introduction is still empty
 #: src/pages/Profile/messages.js:4
