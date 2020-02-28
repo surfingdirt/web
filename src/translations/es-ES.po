@@ -509,7 +509,7 @@ msgstr "Añade un vídeo"
 #: src/sections/Layout/messages.js:21
 msgctxt "Actions"
 msgid "Add an album"
-msgstr "Añadir un álbum"
+msgstr "Añade un álbum"
 
 #. Indicates who created an album
 #. Indicates who created an album (short version)
