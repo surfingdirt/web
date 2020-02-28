@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');

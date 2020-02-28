@@ -32,19 +32,3 @@ msgid ""
 "Surfing Dirt!"
 msgstr ""
 
-#: src/pages/About/messages.js:12
-#. Paragraph
-#msgctxt "About"
-#msgid ""
-#"Surfing Dirt hopes to solve that problem. We intend to be the social "
-#"network for mountainboarders. The place where you’ll share photos and "
-#"videos from your last session. Where you’ll learn about riders and spots "
-#"near you. Where you’ll discuss trucks and jumps. And where people can see "
-#"what mountainboarding is about."
-#msgstr ""
-
-#: src/pages/About/messages.js:3
-#. Title of the About page
-#msgctxt "About"
-#msgid "Surfing Dirt is back!"
-#msgstr ""
