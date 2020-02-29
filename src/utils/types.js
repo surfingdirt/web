@@ -5,6 +5,12 @@ export const UserType = PropTypes.shape({
   username: PropTypes.string.isRequired,
 });
 
+export const ActionType = PropTypes.shape({
+  add: PropTypes.bool,
+  delete: PropTypes.bool,
+  edit: PropTypes.bool,
+});
+
 export const CommentType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
@@ -18,4 +24,8 @@ export const CommentType = PropTypes.shape({
 export const TranslatedTextType = PropTypes.shape({
   locale: PropTypes.string,
   text: PropTypes.string,
+});
+
+export const MediaType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
 });

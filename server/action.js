@@ -20,6 +20,7 @@ import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
 import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
+import UPDATE_PHOTO_MUTATION from 'Apollo/mutations/updatePhoto2.gql';
 import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings2.gql';
 import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser.gql';
 
@@ -55,8 +56,10 @@ const {
   LOGIN,
   LOGOUT,
   PHOTO_BATCH_UPLOAD,
+  PHOTO_EDIT,
   PHOTO_NEW,
   SETTINGS,
+  VIDEO_EDIT,
   VIDEO_NEW,
   USER_NEW,
   USER_UPDATE,
@@ -284,6 +287,19 @@ const postActionInfoMap = {
     redirect: { route: photoRoute, selector: 'id' },
     onError: (error, req, res) => {
       console.error('Photo upload error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
+  [PHOTO_EDIT]: {
+    mutation: UPDATE_PHOTO_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'updatePhoto',
+    redirect: { route: photoRoute, selector: 'id' },
+    onError: (error, req, res) => {
+      console.error('Photo update error:', error);
       if (error.code) {
         return res.redirect(301, errorRoute(error.code, error.message));
       }

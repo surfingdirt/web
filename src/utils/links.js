@@ -10,11 +10,13 @@ const {
   USER,
   PHOTO,
   PHOTO_BATCH_UPLOAD_FOR_ALBUM,
+  PHOTO_EDIT,
   PHOTO_NEW_FOR_ALBUM,
   REGISTRATION,
   SETTINGS,
   VIDEO_NEW_FOR_ALBUM,
   VIDEO,
+  VIDEO_EDIT,
 } = routes;
 
 const ID_REGEXP = new RegExp(':id');
@@ -39,6 +41,7 @@ export const newPhotoForAlbumRoute = (id) => PHOTO_NEW_FOR_ALBUM.replace(ID_REGE
 
 export const newVideoForAlbumRoute = (id) => VIDEO_NEW_FOR_ALBUM.replace(ID_REGEXP, id);
 
+export const editPhotoRoute = (id) => PHOTO_EDIT.replace(ID_REGEXP, id);
 export const photoRoute = (id) => PHOTO.replace(ID_REGEXP, id);
 
 export const registrationRoute = (errors, values) =>
@@ -46,6 +49,7 @@ export const registrationRoute = (errors, values) =>
 
 export const settingsSaveSucessRoute = () => `${SETTINGS}?success=1`;
 
+export const editVideoRoute = (id) => VIDEO_EDIT.replace(ID_REGEXP, id);
 export const videoRoute = (id) => VIDEO.replace(ID_REGEXP, id);
 
 export const userRoute = (id) => USER.replace(ID_REGEXP, id);

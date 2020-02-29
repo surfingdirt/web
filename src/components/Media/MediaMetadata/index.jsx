@@ -7,9 +7,17 @@ import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate/index';
-import { albumRoute, photoRoute, userRoute, videoRoute } from 'Utils/links';
+import {
+  albumRoute,
+  editPhotoRoute,
+  editVideoRoute,
+  photoRoute,
+  userRoute,
+  videoRoute,
+} from 'Utils/links';
 import { mediaTypes } from 'Utils/media';
 import { renderDate } from 'Utils/misc';
+import { ActionType } from 'Utils/types';
 import { MEDIA_OVERLAY_MENU } from '~/ids';
 
 import messages from './messages';
@@ -31,14 +39,9 @@ const MediaMetadata = (props) => {
     locale,
   } = props;
 
-  const {
-    id,
-    date,
-    description: { text: description },
-    submitter,
-    mediaType,
-  } = media;
+  const { actions, id, date, description, submitter, mediaType } = media;
   const { username, userId } = submitter;
+  const hasDescription = description && description.text && description.text.length > 0;
 
   const url = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
 
@@ -47,6 +50,15 @@ const MediaMetadata = (props) => {
     options.push(() => (
       <Link to={url} className={menuStyles.menuEntry}>
         {t('directLink')}
+      </Link>
+    ));
+  }
+
+  if (actions.edit) {
+    const editUrl = mediaType === PHOTO ? editPhotoRoute(id) : editVideoRoute(id);
+    options.push(() => (
+      <Link to={editUrl} className={menuStyles.menuEntry}>
+        {t('edit')}
       </Link>
     ));
   }
@@ -76,9 +88,9 @@ const MediaMetadata = (props) => {
         <span aria-hidden className="separator" />
         <span className={styles.date}>{renderDate(date, locale)}</span>
       </div>
-      {description && (
+      {hasDescription && (
         <div className={styles.description}>
-          <AutoLink ugc>{description}</AutoLink>
+          <AutoLink ugc>{description.text}</AutoLink>
         </div>
       )}
     </div>
@@ -86,6 +98,7 @@ const MediaMetadata = (props) => {
 };
 
 MediaMetadata.propTypes = {
+  actions: ActionType.isRequired,
   album: PropTypes.shape().isRequired,
   className: PropTypes.string,
   directLink: PropTypes.bool,

@@ -63,6 +63,11 @@ const AppRoutes = () => {
           login={MANDATORY}
         />
         <DefaultLayoutRoute path={routes.PHOTO} component={pages.Photo} exact />
+        <DefaultLayoutRoute
+          path={routes.PHOTO_EDIT}
+          component={pages.PhotoEdit}
+          login={MANDATORY}
+        />
         <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
         <DefaultLayoutRoute
           path={routes.REGISTRATION}
@@ -73,6 +78,11 @@ const AppRoutes = () => {
         <DefaultLayoutRoute path={routes.USER} component={pages.User} exact />
         <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
         <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />
+        <DefaultLayoutRoute
+          path={routes.VIDEO_EDIT}
+          component={pages.VideoEdit}
+          login={MANDATORY}
+        />
         <DefaultLayoutRoute path={routes.VIDEO_NEW} component={pages.NewVideo} login={MANDATORY} />
         <DefaultLayoutRoute
           path={routes.VIDEO_NEW_FOR_ALBUM}

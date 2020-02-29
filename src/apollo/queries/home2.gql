@@ -15,6 +15,10 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         id
         itemCount
         media {
+            actions {
+                delete
+                edit
+            }
             id
             date
             description {
@@ -77,6 +81,10 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         id
         itemCount
         media {
+            actions {
+                delete
+                edit
+            }
             id
             date
             description {

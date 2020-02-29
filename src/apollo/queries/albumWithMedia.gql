@@ -28,6 +28,10 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         }
     }
     listMedia(albumId: $id, countItems: $countItems, startItem: $startItem) {
+        actions {
+            delete
+            edit
+        }
         id
         date
         description {

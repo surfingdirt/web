@@ -1,5 +1,9 @@
 query media($id: ID!, $mediaType: String!) {
     media(id: $id) {
+        actions {
+            delete
+            edit
+        }
         date
         description {
             locale

@@ -37,7 +37,13 @@ export default class MutationRunner {
       response = await this.fetch(body);
       fs.unlinkSync(reqFile.path);
     } else {
-      const variables = { input };
+      let variables;
+      if (input.id) {
+        const { id, ...actualInput } = input;
+        variables = { id, input: actualInput };
+      } else {
+        variables = { input };
+      }
       body.append('operations', JSON.stringify({ query, variables }));
       body.append('map', JSON.stringify({}));
       response = await this.fetch(body);

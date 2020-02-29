@@ -1,0 +1,44 @@
+mutation UpdatePhoto($id: ID!, $input: PhotoUpdateInput!) {
+    updatePhoto(id: $id, input: $input) {
+        id
+        title {
+            locale
+            text
+        }
+        date
+        description {
+            locale
+            text
+        }
+        images {
+          type
+          size
+          url
+          height
+          width
+        }
+        thumbs {
+          type
+          size
+          url
+        }
+        album {
+            id
+            title {
+                text
+                locale
+            }
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+}

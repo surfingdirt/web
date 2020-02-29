@@ -14,6 +14,10 @@ query userProfile($userId: ID!) {
             text
           }
           media {
+            actions {
+                delete
+                edit
+            }
             images {
                 size
                 width
@@ -53,12 +57,23 @@ query userProfile($userId: ID!) {
         id
         itemCount
         media {
-            id
-            title {
+            actions {
+                delete
+                edit
+            }
+            date
+            description {
                 locale
                 text
             }
-            mediaType
+            id
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
             thumbs {
                 type
                 size
@@ -66,12 +81,21 @@ query userProfile($userId: ID!) {
                 height
                 width
             }
-            images {
-                type
-                size
-                url
-                height
-                width
+            title {
+                locale
+                text
+            }
+            mediaType
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
             }
         }
         title {

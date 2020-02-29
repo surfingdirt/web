@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
-import { Form, Field } from 'react-final-form';
 
-import USER from 'Apollo/queries/user2.gql';
+import USER from 'Apollo/queries/user.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Cover from 'Components/Cover/index';
 import Card, { cardTypes } from 'Components/Widgets/Card';

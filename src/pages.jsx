@@ -40,7 +40,11 @@ const pages = {
     options,
   ),
   OldForum: loadable(() => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum'), options),
-  Photo: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Photo'), options),
+  Photo: loadable(() => import(/* webpackChunkName: 'Photo' */ './pages/Photo'), options),
+  PhotoEdit: loadable(
+    () => import(/* webpackChunkName: 'PhotoEdit' */ './pages/Photo/Edit'),
+    options,
+  ),
   Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
   Registration: loadable(
     () => import(/* webpackChunkName: 'UserRegistration' */ './pages/User/Registration'),
@@ -53,6 +57,10 @@ const pages = {
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
   Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),
+  VideoEdit: loadable(
+    () => import(/* webpackChunkName: 'VideoEdit' */ './pages/Video/Edit'),
+    options,
+  ),
 };
 
 export default pages;

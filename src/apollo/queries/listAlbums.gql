@@ -13,6 +13,10 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
         id
         itemCount
         media {
+            actions {
+                delete
+                edit
+            }
             id
             date
             description {
