@@ -1,6 +1,7 @@
 const routes = {
   ABOUT: '/about',
   ALBUM: '/album/:id',
+  ALBUM_EDIT: '/edit-album/:id',
   ALBUM_NEW: '/new-album',
   ALBUMS: '/albums',
   CONTACT: '/contact',

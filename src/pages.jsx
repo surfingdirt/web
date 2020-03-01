@@ -7,6 +7,10 @@ const options = { fallback: loading };
 const pages = {
   About: loadable(() => import(/* webpackChunkName: 'About' */ './pages/About'), options),
   Album: loadable(() => import(/* webpackChunkName: 'Album' */ './pages/Album'), options),
+  AlbumEdit: loadable(
+    () => import(/* webpackChunkName: 'AlbumEdit' */ './pages/Album/Edit'),
+    options,
+  ),
   Albums: loadable(() => import(/* webpackChunkName: 'Albums' */ './pages/Albums'), options),
   BatchUpload: loadable(
     () => import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload'),

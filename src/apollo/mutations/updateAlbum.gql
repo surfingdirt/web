@@ -1,0 +1,13 @@
+mutation UpdateAlbum($id: ID!, $input: AlbumUpdateInput!) {
+    updateAlbum(id: $id, input: $input) {
+        id
+        title {
+            locale
+            text
+        }
+        description {
+            locale
+            text
+        }
+    }
+}

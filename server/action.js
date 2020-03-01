@@ -17,6 +17,7 @@ import FORGOT_PASSWORD_MUTATION from 'Apollo/mutations/forgotPassword.gql';
 import LOGIN_MUTATION from 'Apollo/mutations/login.gql';
 import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 
+import UPDATE_ALBUM_MUTATION from 'Apollo/mutations/updateAlbum.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
 import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
@@ -45,6 +46,7 @@ const LoginCookie = Login.COOKIE_NAME;
 
 const {
   ACTIVATE_NEW_PASSWORD,
+  ALBUM_EDIT,
   ALBUM_NEW,
   AVATAR_UPDATE,
   COMMENT_DELETE,
@@ -106,6 +108,19 @@ const getActionInfoMap = {
 };
 
 const postActionInfoMap = {
+  [ALBUM_EDIT]: {
+    mutation: UPDATE_ALBUM_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'updateAlbum',
+    redirect: { route: albumRoute, selector: 'id' },
+    onError: (error, req, res) => {
+      console.error('Album update error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
+    },
+  },
   [ALBUM_NEW]: {
     mutation: CREATE_ALBUM_MUTATION,
     hasFileUpload: false,

@@ -11,15 +11,12 @@ const PUBLIC = 'PUBLIC';
 const PRIVATE = 'PRIVATE';
 
 const AlbumContributions = ({ className, onChange, t, ...inputAttrs }) => {
-  const newAttrs = { ...inputAttrs };
-  delete newAttrs.value;
-
   return (
     <select
       defaultValue={PUBLIC}
       className={classnames(styles.select, className)}
       onChange={onChange}
-      {...newAttrs}
+      {...inputAttrs}
     >
       <option key="public" value={PUBLIC}>
         {t('public')}
@@ -34,6 +31,7 @@ const AlbumContributions = ({ className, onChange, t, ...inputAttrs }) => {
 AlbumContributions.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
+  t: PropTypes.func.isRequired,
 };
 
 AlbumContributions.defaultProps = {

@@ -6,6 +6,7 @@ import { ACTION_PREFIX } from '~/actions';
 
 const {
   ALBUM,
+  ALBUM_EDIT,
   ERROR,
   USER,
   PHOTO,
@@ -25,6 +26,7 @@ const MESSAGE_REGEXP = new RegExp(':message');
 export const actionRoute = (name) => `${ACTION_PREFIX}${name}`;
 
 export const albumRoute = (id) => ALBUM.replace(ID_REGEXP, id);
+export const editAlbumRoute = (id) => ALBUM_EDIT.replace(ID_REGEXP, id);
 
 export const batchPhotoUploadForAlbumRoute = (id) =>
   PHOTO_BATCH_UPLOAD_FOR_ALBUM.replace(ID_REGEXP, id);

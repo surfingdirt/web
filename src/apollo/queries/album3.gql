@@ -5,6 +5,7 @@ query album($id: ID!) {
             delete
             edit
         }
+        albumContributions
         date
         description {
             locale

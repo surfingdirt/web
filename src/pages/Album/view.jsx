@@ -14,7 +14,7 @@ import { positions } from 'Components/Widgets/Menu/constants';
 import Paragraph from 'Components/Widgets/Paragraph';
 import { userboxSizes } from 'Components/User/Userbox';
 import Translate from 'Hocs/Translate';
-import { batchPhotoUploadForAlbumRoute } from 'Utils/links';
+import { batchPhotoUploadForAlbumRoute, editAlbumRoute } from 'Utils/links';
 import { ALBUM_MENU } from '~/ids';
 
 import messages from './messages';
@@ -32,7 +32,7 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const {
-    actions: { add: userCanAdd },
+    actions: { add: userCanAdd, edit: userCanEdit },
     description: { text: description },
     id: albumId,
     submitter,
@@ -79,6 +79,13 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
     options.push(() => (
       <div className={menuStyles.menuEntry}>
         <Link to={batchUploadUrl}>{t('batchUpload')}</Link>
+      </div>
+    ));
+  }
+  if (userCanEdit) {
+    options.push(() => (
+      <div className={menuStyles.menuEntry}>
+        <Link to={editAlbumRoute(albumId)}>{t('edit')}</Link>
       </div>
     ));
   }

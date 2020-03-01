@@ -31,6 +31,12 @@ const AppRoutes = () => {
         <DefaultLayoutRoute path={routes.ABOUT} component={pages.About} />
         <DefaultLayoutRoute path={routes.ALBUM} component={pages.Album} exact />
         <DefaultLayoutRoute
+          path={routes.ALBUM_EDIT}
+          component={pages.AlbumEdit}
+          exact
+          login={MANDATORY}
+        />
+        <DefaultLayoutRoute
           path={routes.ALBUM_NEW}
           component={pages.NewAlbum}
           exact

@@ -29,3 +29,7 @@ export const TranslatedTextType = PropTypes.shape({
 export const MediaType = PropTypes.shape({
   id: PropTypes.string.isRequired,
 });
+
+export const AlbumType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+});
