@@ -23,6 +23,7 @@ import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
 import UPDATE_PHOTO_MUTATION from 'Apollo/mutations/updatePhoto2.gql';
 import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings2.gql';
 import UPDATE_USER_MUTATION from 'Apollo/mutations/updateUser.gql';
+import UPDATE_VIDEO_MUTATION from 'Apollo/mutations/updateVideo.gql';
 
 import {
   albumRoute,
@@ -314,6 +315,19 @@ const postActionInfoMap = {
     onError: (error, req, res) => {
       console.error('Settings update error:', error);
       return res.redirect(301, errorRoute(error.code, error.message));
+    },
+  },
+  [VIDEO_EDIT]: {
+    mutation: UPDATE_VIDEO_MUTATION,
+    hasFileUpload: false,
+    responseKey: 'updateVideo',
+    redirect: { route: videoRoute, selector: 'id' },
+    onError: (error, req, res) => {
+      console.error('Video update error:', error);
+      if (error.code) {
+        return res.redirect(301, errorRoute(error.code, error.message));
+      }
+      return res.redirect(500, ERROR);
     },
   },
   [VIDEO_NEW]: {

@@ -5,11 +5,11 @@ import { Form, Field } from 'react-final-form';
 import { useMutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import UPDATE_PHOTO_MUTATION from 'Apollo/mutations/updatePhoto2.gql';
+import UPDATE_VIDEO_MUTATION from 'Apollo/mutations/updateVideo.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
-import { actionRoute, photoRoute } from 'Utils/links';
+import { actionRoute, videoRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
 import actions from '~/actions';
 import AppContext from '~/contexts';
@@ -17,16 +17,16 @@ import AppContext from '~/contexts';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { PHOTO_EDIT } = actions;
+const { VIDEO_EDIT } = actions;
 const { ACTION } = buttonTypes;
 
-const PhotoEditForm = ({ media, t }) => {
+const VideoPhotoEditForm = ({ media, t }) => {
   const { locale } = useContext(AppContext);
 
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
 
-  const [editPhoto] = useMutation(UPDATE_PHOTO_MUTATION, {});
+  const [editVideo] = useMutation(UPDATE_VIDEO_MUTATION, {});
 
   const onSubmit = async ({ description, id, title }) => {
     // Modifying an item like this means we're going to wipe out all translations, and only
@@ -37,9 +37,9 @@ const PhotoEditForm = ({ media, t }) => {
     };
     const variables = { id, input };
     try {
-      await editPhoto({ variables });
+      await editVideo({ variables });
       setDisplayError(null);
-      setRedirectTo(photoRoute(id));
+      setRedirectTo(videoRoute(id));
     } catch (e) {
       setDisplayError(t('backendError'));
     }
@@ -75,7 +75,7 @@ const PhotoEditForm = ({ media, t }) => {
           <form
             className={styles.form}
             onSubmit={handleSubmit}
-            action={actionRoute(PHOTO_EDIT)}
+            action={actionRoute(VIDEO_EDIT)}
             method="POST"
             encType="multipart/form-data"
           >
@@ -133,9 +133,9 @@ const PhotoEditForm = ({ media, t }) => {
   );
 };
 
-PhotoEditForm.propTypes = {
+VideoPhotoEditForm.propTypes = {
   media: MediaType.isRequired,
   t: PropTypes.func.isRequired,
 };
 
-export default Translate(messages)(PhotoEditForm);
+export default Translate(messages)(VideoPhotoEditForm);
