@@ -126,6 +126,16 @@ class AlbumCreationForm extends React.Component {
                     placeholder={t('descriptionPlaceholder')}
                     required={false}
                   />
+                  <Field
+                    name="albumContributions"
+                    id="albumContributions"
+                    component={InputField}
+                    type="albumContributions"
+                    label={t('albumContributions')}
+                    required
+                  />
+
+                  <p>{t('albumContributionsNote')}</p>
 
                   <div className={styles.buttons}>
                     <Button

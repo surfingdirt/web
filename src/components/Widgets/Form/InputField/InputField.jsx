@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import DualContainer from 'Components/Widgets/DualContainer';
+import AlbumContributions from 'Components/Widgets/Form/AlbumContributions';
 import LocaleField from 'Components/Widgets/Form/LocaleField';
 import TimezoneField from 'Components/Widgets/Form/TimezoneField';
 
@@ -32,6 +33,16 @@ const InputField = (props) => {
 
   let content;
   switch (type) {
+    case 'albumContributions':
+      content = (
+        <AlbumContributions
+          id={id}
+          className={classnames(styles.input, className)}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
     case 'locale':
       content = (
         <LocaleField
