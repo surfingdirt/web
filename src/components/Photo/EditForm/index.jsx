@@ -11,7 +11,6 @@ import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
 import { actionRoute, photoRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
-import { updateHomeQueryAfterMediaUpload, updateAlbumQueryAfterMediaUpload } from 'Utils/media';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
@@ -22,35 +21,24 @@ const { PHOTO_EDIT } = actions;
 const { ACTION } = buttonTypes;
 
 const PhotoEditForm = ({ media, t }) => {
-  const {
-    album: { id: albumId },
-  } = media;
-  const { galleryAlbumId, locale } = useContext(AppContext);
+  const { locale } = useContext(AppContext);
 
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
 
   const [editPhoto] = useMutation(UPDATE_PHOTO_MUTATION, {});
 
-  const onSubmit = async (rawInput) => {
+  const onSubmit = async ({ description, id, title }) => {
+    // Modifying an item like this means we're going to wipe out all translations, and only
+    // keep the current one. Hence locale comes from the context, not from the media item.
     const input = {
-      id: rawInput.id,
-      description: { text: rawInput.description, locale },
-      title: { text: rawInput.title, locale },
+      description: { text: description.text, locale },
+      title: { text: title.text, locale },
     };
+    const variables = { id, input };
     try {
-      const response = await editPhoto({
-        update: (cache, resultObj) => {
-          const newItem = Object.values(resultObj.data)[0];
-
-          updateHomeQueryAfterMediaUpload(cache, newItem, albumId, galleryAlbumId);
-
-          updateAlbumQueryAfterMediaUpload(cache, newItem, albumId);
-        },
-        variables: { input },
-      });
+      await editPhoto({ variables });
       setDisplayError(null);
-      const { id } = response.data.createPhoto;
       setRedirectTo(photoRoute(id));
     } catch (e) {
       setDisplayError(t('backendError'));
@@ -108,9 +96,6 @@ const PhotoEditForm = ({ media, t }) => {
               label={t('title')}
               placeholder={t('titlePlaceholder')}
             />
-            <Field name="title[locale]">
-              {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
-            </Field>
 
             <Field
               className={styles.description}
@@ -122,9 +107,6 @@ const PhotoEditForm = ({ media, t }) => {
               placeholder={t('descriptionPlaceholder')}
               required={false}
             />
-            <Field name="description[locale]">
-              {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
-            </Field>
 
             <Field name="id">{(fieldProps) => <input {...fieldProps.input} type="hidden" />}</Field>
             <div className={styles.buttons}>
