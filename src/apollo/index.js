@@ -13,8 +13,6 @@ import { withClientState } from 'apollo-link-state';
 import fetch from 'isomorphic-fetch';
 
 import fragmentTypes from '../../fragmentTypes.json';
-// Options
-import typeDefs from './options';
 
 const apolloClient = (url, locale, ssrMode, accessToken, tracingHeaders) => {
   const cacheOptions = {
@@ -39,7 +37,6 @@ const apolloClient = (url, locale, ssrMode, accessToken, tracingHeaders) => {
 
   const stateLink = withClientState({
     cache,
-    typeDefs,
   });
 
   const headers = Object.assign({}, tracingHeaders, { 'accept-language': locale });
