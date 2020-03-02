@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import DELETE_ALBUM from 'Apollo/mutations/deleteAlbum.gql';
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
@@ -19,6 +20,7 @@ import { ALBUM_NOT_EMPTY } from 'Error/errorCodes';
 import Translate from 'Hocs/Translate';
 import { batchPhotoUploadForAlbumRoute, editAlbumRoute } from 'Utils/links';
 import { ALBUM_MENU } from '~/ids';
+import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -27,6 +29,7 @@ const { ACTION } = buttonTypes;
 const { STANDARD } = cardTypes;
 const { SMALL } = userboxSizes;
 const { LEFT } = positions;
+const { PROFILE } = routes;
 
 const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
   const [deleteError, setDeleteError] = useState(null);
@@ -34,6 +37,7 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
   // reachedEnd is set to true if we already have fewer items than in a whole pagination:
   const [reachedEnd, setReachedEnd] = useState(media.length < countItems);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [redirectTo, setRedirectTo] = useState(null);
 
   const {
     actions: { add: userCanAdd, delete: userCanDelete, edit: userCanEdit },
@@ -94,29 +98,16 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
     ));
   }
 
-  if (userCanDelete || true) {
+  if (userCanDelete) {
     const variables = { id: albumId };
     const update = (cache, resultObj) => {
       const success = !!Object.values(resultObj.data);
       if (!success) {
         console.warn('Received false for album delete', { id });
-        return;
       }
-      debugger;
-      // const updateVariables = {
-      //   parentId,
-      //   parentType,
-      // };
-      //
-      // const { listComments } = cache.readQuery({
-      //   query: LIST_COMMENTS,
-      //   variables: updateVariables,
-      // });
-      // cache.writeQuery({
-      //   query: LIST_COMMENTS,
-      //   variables: updateVariables,
-      //   data: { listComments: listComments.filter((c) => c.id !== id) },
-      // });
+      // We might need to update the cache
+      // Redirect to the profile page? Home? Albums?
+      setRedirectTo(PROFILE);
     };
 
     const onDeleteError = (code) => {
@@ -136,6 +127,10 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
         onError={onDeleteError}
       />
     ));
+  }
+
+  if (redirectTo) {
+    return <Redirect to={redirectTo} />;
   }
 
   return (
