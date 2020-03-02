@@ -106,7 +106,6 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
         console.warn('Received false for album delete', { id });
       }
       // We might need to update the cache
-      // Redirect to the profile page? Home? Albums?
       setRedirectTo(PROFILE);
     };
 
