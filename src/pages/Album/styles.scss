@@ -1,4 +1,5 @@
 @import "../../styles/boxmodel";
+@import "../../styles/colors";
 
 .attribution,
 .actionsContainer {
@@ -14,4 +15,8 @@
 .loadMoreWrapper {
   margin-top: $margin-medium-1;
   text-align: center;
+}
+
+.error {
+  color: $form-error-color;
 }

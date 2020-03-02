@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/react-hooks';
 
+import { extractErrorCode } from 'Apollo/exceptionParser';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import { modalTypes } from 'Components/Widgets/Modal';
@@ -15,7 +16,7 @@ import styles from './styles.scss';
 const { MINIMAL } = modalTypes;
 const { DESTRUCTIVE, MAIN } = buttonTypes;
 
-const Modal = ({ mutation, t, title, update, variables }) => {
+const DeleteItemModal = ({ mutation, onError, t, title, update, variables }) => {
   const [deleteItem] = useMutation(mutation);
 
   const menuEntryLabel = t('deleteItemMenuEntryLabel');
@@ -34,9 +35,10 @@ const Modal = ({ mutation, t, title, update, variables }) => {
           type={DESTRUCTIVE}
           onClick={() => {
             // Note: no need to close the modal since it's attached to an element that will be deleted
-            deleteItem({ update, variables }).catch(() => {
-              console.error('Could not delete item', { mutation, variables });
+            deleteItem({ update, variables }).catch((e) => {
+              console.error('Could not delete item', { e, mutation, variables });
               closeModal();
+              onError(extractErrorCode(e));
             });
           }}
         />
@@ -52,17 +54,18 @@ const Modal = ({ mutation, t, title, update, variables }) => {
     closeModal: null,
   };
 
-  const DeleteItemModal = WithModal({
+  const InnerModal = WithModal({
     ariaLabel,
     modalContent: <Content />,
     modalTitle,
     type: MINIMAL,
   })(<div className={menuStyles.menuEntry}>{menuEntryLabel}</div>);
 
-  return <DeleteItemModal />;
+  return <InnerModal />;
 };
 
-Modal.propTypes = {
+DeleteItemModal.propTypes = {
+  onError: PropTypes.func,
   mutation: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
@@ -70,8 +73,9 @@ Modal.propTypes = {
   variables: PropTypes.shape({}).isRequired,
 };
 
-Modal.defaultProps = {
+DeleteItemModal.defaultProps = {
+  onError: null,
   update: null,
 };
 
-export default Translate(messages)(Modal);
+export default Translate(messages)(DeleteItemModal);

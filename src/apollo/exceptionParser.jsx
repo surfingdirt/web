@@ -39,3 +39,21 @@ export const translateParsedErrors = (e, formErrorMessage, t) => {
   });
   return renderTranslatedErrors(errors, formErrorMessage, t);
 };
+
+export const extractErrorCode = (e) => {
+  let errors = [];
+  if (
+    e.graphQLErrors &&
+    e.graphQLErrors.length > 0 &&
+    e.graphQLErrors[0].extensions &&
+    e.graphQLErrors[0].extensions.response.body &&
+    e.graphQLErrors[0].extensions.response.body.errors
+  ) {
+    errors = Object.values(e.graphQLErrors[0].extensions.response.body.errors);
+  }
+  if (errors.length === 0) {
+    return null;
+  }
+
+  return errors[0].code;
+};
