@@ -11,3 +11,13 @@ export const tones = {
   HAPPY,
   SAD,
 };
+
+const ALBUM = 'album';
+const PHOTO = 'photo';
+const VIDEO = 'video';
+
+export const parentTypes = {
+  ALBUM,
+  PHOTO,
+  VIDEO,
+};

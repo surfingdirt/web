@@ -1,5 +1,5 @@
-mutation UpdateComment($id: ID!, $input: CommentUpdateInput!) {
-    updateComment(id: $id, input: $input) {
+query comment($id: ID!) {
+    comment(id: $id) {
         actions {
             delete
             edit
@@ -10,6 +10,8 @@ mutation UpdateComment($id: ID!, $input: CommentUpdateInput!) {
             text
         }
         date
+        parentId
+        parentType
         submitter {
             userId
             username

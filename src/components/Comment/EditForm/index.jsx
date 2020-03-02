@@ -1,64 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Form, Field } from 'react-final-form';
 import { useMutation } from '@apollo/react-hooks';
+import { Redirect } from 'react-router';
 
-import CREATE_COMMENT_ALBUM from 'Apollo/mutations/createCommentAlbum2.gql';
-import CREATE_COMMENT_PHOTO from 'Apollo/mutations/createCommentPhoto2.gql';
-import CREATE_COMMENT_VIDEO from 'Apollo/mutations/createCommentVideo2.gql';
-import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
+import UPDATE_COMMENT from 'Apollo/mutations/updateComment.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import SelectField from 'Components/Widgets/Form/SelectField';
 import Translate from 'Hocs/Translate';
 import { parentTypes, tones } from 'Utils/comments';
-import { actionRoute } from 'Utils/links';
+import { actionRoute, albumRoute, photoRoute, videoRoute } from 'Utils/links';
+import { CommentType } from 'Utils/types';
 import actions from '~/actions';
 import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { COMMENT_NEW_ALBUM, COMMENT_NEW_PHOTO, COMMENT_NEW_VIDEO } = actions;
+const { COMMENT_EDIT } = actions;
 const { ACTION } = buttonTypes;
 const { ALBUM, PHOTO, VIDEO } = parentTypes;
 
-const MUTATIONS = {
-  [ALBUM]: CREATE_COMMENT_ALBUM,
-  [PHOTO]: CREATE_COMMENT_PHOTO,
-  [VIDEO]: CREATE_COMMENT_VIDEO,
-};
-
-const ACTIONS = {
-  [ALBUM]: COMMENT_NEW_ALBUM,
-  [PHOTO]: COMMENT_NEW_PHOTO,
-  [VIDEO]: COMMENT_NEW_VIDEO,
-};
-
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-const CommentForm = ({ className, id: parentId, t, type }) => {
-  const action = ACTIONS[type];
-  const mutation = MUTATIONS[type];
+const CommentEditForm = ({ className, comment, t }) => {
+  const { id, parentId, parentType } = comment;
+
+  const [redirectTo, setRedirectTo] = useState(null);
 
   const { locale } = useContext(AppContext);
-
-  const [addComment] = useMutation(mutation, {
-    update: (cache, resultObj) => {
-      const newItem = Object.values(resultObj.data)[0];
-
-      const queryOptions = {
-        query: LIST_COMMENTS,
-        variables: {
-          parentId,
-          parentType: type,
-        },
-      };
-      const { listComments } = cache.readQuery(queryOptions);
-      cache.writeQuery(
-        Object.assign({}, queryOptions, { data: { listComments: listComments.concat([newItem]) } }),
-      );
+  const [updateComment] = useMutation(UPDATE_COMMENT, {
+    update: () => {
+      let redirect;
+      switch (parentType) {
+        case ALBUM:
+          redirect = albumRoute(parentId);
+          break;
+        case PHOTO:
+          redirect = photoRoute(parentId);
+          break;
+        case VIDEO:
+          redirect = videoRoute(parentId);
+          break;
+        default:
+          throw new Error(`Comment update redirect not handled for parent type '${parentType}'`);
+      }
+      setRedirectTo(redirect);
     },
   });
 
@@ -79,19 +68,30 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
   const onSubmit = async (values) => {
     let errors;
     try {
-      const input = Object.assign({}, values, {
-        content: { text: values.content, locale },
-      });
-      await addComment({ variables: { input } });
+      const input = {
+        tone: values.tone,
+        content: { text: values.content.text, locale },
+      };
+      await updateComment({ variables: { id, input } });
     } catch (e) {
       errors = { content: 'some error' };
     }
     return errors;
   };
 
+  const initialValues = {
+    content: comment.content,
+    id: comment.id,
+    tone: comment.tone,
+  };
+
+  if (redirectTo) {
+    return <Redirect to={redirectTo} />;
+  }
+
   return (
     <Form
-      initialValues={{ parentId }}
+      initialValues={initialValues}
       onSubmit={onSubmit}
       validate={validate}
       render={(formProps) => {
@@ -105,7 +105,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
                 await handleSubmit(e);
                 form.reset();
               }}
-              action={actionRoute(action)}
+              action={actionRoute(COMMENT_EDIT)}
               method="POST"
               encType="multipart/form-data"
             >
@@ -125,7 +125,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
                 ))}
               </Field>
               <Field
-                name="content"
+                name="content[text]"
                 id="content"
                 component={InputField}
                 type="textarea"
@@ -133,9 +133,15 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
                 placeholder={t('inputPlaceholder')}
                 required={false}
               />
-              <Field name="parentId">
+
+              {/* These hidden fields are here for JS-less only */}
+              <Field name="id">
                 {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
               </Field>
+              <Field name="content[locale]">
+                {(fieldProps) => <input {...fieldProps.input} type="hidden" />}
+              </Field>
+
               <div className={styles.buttons}>
                 <Button
                   buttonType="submit"
@@ -153,15 +159,14 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
   );
 };
 
-CommentForm.propTypes = {
+CommentEditForm.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  comment: CommentType.isRequired,
   t: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
 };
 
-CommentForm.defaultProps = {
+CommentEditForm.defaultProps = {
   className: null,
 };
 
-export default Translate(messages)(CommentForm);
+export default Translate(messages)(CommentEditForm);

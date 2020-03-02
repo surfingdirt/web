@@ -43,6 +43,11 @@ const AppRoutes = () => {
           login={MANDATORY}
         />
         <DefaultLayoutRoute path={routes.ALBUMS} component={pages.Albums} />
+        <DefaultLayoutRoute
+          path={routes.COMMENT_EDIT}
+          component={pages.CommentEdit}
+          login={MANDATORY}
+        />
         <DefaultLayoutRoute path={routes.CONFIRM_EMAIL} component={pages.ConfirmEmail} />
         <DefaultLayoutRoute path={routes.ERROR} component={pages.Error} />
         <DefaultLayoutRoute path={routes.LOGIN} component={pages.LogIn} login={FORBIDDEN} />

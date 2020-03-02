@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
 import CommentList from 'Components/Comment/List';
-import { commentTypes } from 'Components/Comment/Form';
+import { parentTypes } from 'Utils/comments';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import Card, { cardTypes } from 'Components/Widgets/Card';
@@ -15,7 +15,7 @@ import { CommentType } from 'Utils/types';
 import styles from './styles.scss';
 
 const { HERO } = cardTypes;
-const { PHOTO: PHOTO_COMMENT, VIDEO: VIDEO_COMMENT } = commentTypes;
+const { PHOTO: PHOTO_COMMENT, VIDEO: VIDEO_COMMENT } = parentTypes;
 
 const MediaPageContent = (props) => {
   const { comments, media } = props;

@@ -16,6 +16,10 @@ const pages = {
     () => import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload'),
     options,
   ),
+  CommentEdit: loadable(
+    () => import(/* webpackChunkName: 'CommentEdit' */ './pages/Comment/Edit'),
+    options,
+  ),
   ConfirmEmail: loadable(
     () => import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail'),
     options,

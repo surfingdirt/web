@@ -1,17 +1,20 @@
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Menu from 'Components/Widgets/Menu';
+import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
+import { editCommentRoute } from 'Utils/links';
 import { CommentType } from 'Utils/types';
 import { COMMENT_MENU } from '~/ids';
 
@@ -34,6 +37,13 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
   const shouldRenderTone = tone && tone !== NEUTRAL;
 
   const options = [];
+  if (actions.edit) {
+    options.push(() => (
+      <Link to={editCommentRoute(id)} className={menuStyles.menuEntry}>
+        {t('edit')}
+      </Link>
+    ));
+  }
   if (actions.delete) {
     const variables = { id };
     const update = (cache, resultObj) => {
