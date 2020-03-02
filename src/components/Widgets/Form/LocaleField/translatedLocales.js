@@ -6,7 +6,7 @@ const translatedLocales = {
   'it-IT': 'Italiano / Italia',
   'pl-PL': 'Polskie / Polska',
   'pt-BR': 'Português / Brasil',
-  'pt-PT': 'Português / Portugal',
+  // 'pt-PT': 'Português / Portugal',
   'ru-RU': 'Русский / Россия',
 };
 export default translatedLocales;
