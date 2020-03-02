@@ -50,7 +50,7 @@ const MediaPageContent = (props) => {
           album={media.album}
           media={media}
           className={styles.metadata}
-          directLink={false}
+          isOverlay={false}
         />
         <Separator />
         <CommentList

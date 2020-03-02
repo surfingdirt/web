@@ -17,39 +17,42 @@ const { MINIMAL } = modalTypes;
 const { DESTRUCTIVE, MAIN } = buttonTypes;
 
 const DeleteItemModal = ({ mutation, onError, t, title, update, variables }) => {
-  const [deleteItem] = useMutation(mutation);
+  console.log('DeleteItemModal - render');
 
+  const [deleteItem] = useMutation(mutation);
   const menuEntryLabel = t('deleteItemMenuEntryLabel');
   const modalTitle = t('deleteItemModalTitle');
   const ariaLabel = t('deleteItemDialogLabel');
-
   const message = t('quote').replace('%s', truncateItemTitleForConfirmation(title));
 
-  const Content = ({ closeModal }) => (
-    <Fragment>
-      <p className={styles.message}>{message}</p>
-      <div className={styles.buttons}>
-        <Button label={t('cancelDelete')} type={MAIN} onClick={closeModal} />
-        <Button
-          label={t('confirmDelete')}
-          type={DESTRUCTIVE}
-          onClick={() => {
-            // Note: no need to close the modal since it's attached to an element that will be deleted
-            deleteItem({ update, variables }).catch((e) => {
-              console.error('Could not delete item', { e, mutation, variables });
-              closeModal();
-              onError(extractErrorCode(e));
-            });
-          }}
-        />
-      </div>
-    </Fragment>
-  );
-
+  const Content = ({ closeModal }) => {
+    console.log('Content - render');
+    return (
+      <Fragment>
+        <p className={styles.message}>{message}</p>
+        <div className={styles.buttons}>
+          <Button label={t('cancelDelete')} type={MAIN} onClick={closeModal} />
+          <Button
+            label={t('confirmDelete')}
+            type={DESTRUCTIVE}
+            onClick={() => {
+              // Note: no need to close the modal since it's attached to an element that will be deleted
+              deleteItem({ update, variables }).catch((e) => {
+                console.error('Could not delete item', { e, mutation, variables });
+                closeModal();
+                if (onError) {
+                  onError(extractErrorCode(e));
+                }
+              });
+            }}
+          />
+        </div>
+      </Fragment>
+    );
+  };
   Content.propTypes = {
     closeModal: PropTypes.func,
   };
-
   Content.defaultProps = {
     closeModal: null,
   };
