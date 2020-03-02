@@ -17,8 +17,6 @@ const { MINIMAL } = modalTypes;
 const { DESTRUCTIVE, MAIN } = buttonTypes;
 
 const DeleteItemModal = ({ mutation, onError, t, title, update, variables }) => {
-  console.log('DeleteItemModal - render');
-
   const [deleteItem] = useMutation(mutation);
   const menuEntryLabel = t('deleteItemMenuEntryLabel');
   const modalTitle = t('deleteItemModalTitle');
@@ -26,7 +24,6 @@ const DeleteItemModal = ({ mutation, onError, t, title, update, variables }) => 
   const message = t('quote').replace('%s', truncateItemTitleForConfirmation(title));
 
   const Content = ({ closeModal }) => {
-    console.log('Content - render');
     return (
       <Fragment>
         <p className={styles.message}>{message}</p>
