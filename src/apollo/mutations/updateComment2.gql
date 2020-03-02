@@ -10,6 +10,8 @@ mutation UpdateComment($id: ID!, $input: CommentUpdateInput!) {
             text
         }
         date
+        parentId
+        parentType
         submitter {
             userId
             username

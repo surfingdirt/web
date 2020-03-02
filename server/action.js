@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { parse } from 'url';
 
+import { getParentRoute } from 'Utils/comments';
 import actions, { ACTION_PREFIX } from '~/actions';
 import ACTIVATE_NEW_PASSWORD_MUTATION from 'Apollo/mutations/activateNewPassword.gql';
 
@@ -19,7 +20,7 @@ import LOGOUT_MUTATION from 'Apollo/mutations/logout.gql';
 
 import UPDATE_ALBUM_MUTATION from 'Apollo/mutations/updateAlbum.gql';
 import UPDATE_AVATAR_MUTATION from 'Apollo/mutations/updateAvatar.gql';
-import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment.gql';
+import UPDATE_COMMENT_MUTATION from 'Apollo/mutations/updateComment2.gql';
 import UPDATE_COVER_MUTATION from 'Apollo/mutations/updateCover2.gql';
 import UPDATE_PHOTO_MUTATION from 'Apollo/mutations/updatePhoto2.gql';
 import UPDATE_SETTINGS_MUTATION from 'Apollo/mutations/updateSettings2.gql';
@@ -199,9 +200,9 @@ const postActionInfoMap = {
   [COMMENT_UPDATE]: {
     mutation: UPDATE_COMMENT_MUTATION,
     hasFileUpload: false,
-    responseKey: 'comment',
-    redirect: () => {
-      // TODO: redirect to parent => response must contain parent id and type
+    responseKey: 'updateComment',
+    cb: (req, res, data) => {
+      res.redirect(301, getParentRoute(data.parentType, data.parentId));
     },
     onError: (error, req, res) => {
       console.error('Album creation error:', error);

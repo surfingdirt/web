@@ -5,13 +5,13 @@ import { Form, Field } from 'react-final-form';
 import { useMutation } from '@apollo/react-hooks';
 import { Redirect } from 'react-router';
 
-import UPDATE_COMMENT from 'Apollo/mutations/updateComment.gql';
+import UPDATE_COMMENT from 'Apollo/mutations/updateComment2.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import SelectField from 'Components/Widgets/Form/SelectField';
 import Translate from 'Hocs/Translate';
-import { parentTypes, tones } from 'Utils/comments';
-import { actionRoute, albumRoute, photoRoute, videoRoute } from 'Utils/links';
+import { getParentRoute, tones } from 'Utils/comments';
+import { actionRoute } from 'Utils/links';
 import { CommentType } from 'Utils/types';
 import actions from '~/actions';
 import AppContext from '~/contexts';
@@ -19,9 +19,8 @@ import AppContext from '~/contexts';
 import messages from './messages';
 import styles from './styles.scss';
 
-const { COMMENT_EDIT } = actions;
+const { COMMENT_UPDATE } = actions;
 const { ACTION } = buttonTypes;
-const { ALBUM, PHOTO, VIDEO } = parentTypes;
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -31,25 +30,7 @@ const CommentEditForm = ({ className, comment, t }) => {
   const [redirectTo, setRedirectTo] = useState(null);
 
   const { locale } = useContext(AppContext);
-  const [updateComment] = useMutation(UPDATE_COMMENT, {
-    update: () => {
-      let redirect;
-      switch (parentType) {
-        case ALBUM:
-          redirect = albumRoute(parentId);
-          break;
-        case PHOTO:
-          redirect = photoRoute(parentId);
-          break;
-        case VIDEO:
-          redirect = videoRoute(parentId);
-          break;
-        default:
-          throw new Error(`Comment update redirect not handled for parent type '${parentType}'`);
-      }
-      setRedirectTo(redirect);
-    },
-  });
+  const [updateComment] = useMutation(UPDATE_COMMENT);
 
   const validate = ({ content, tone }) => {
     const errors = {};
@@ -73,6 +54,7 @@ const CommentEditForm = ({ className, comment, t }) => {
         content: { text: values.content.text, locale },
       };
       await updateComment({ variables: { id, input } });
+      setRedirectTo(getParentRoute(parentType, parentId));
     } catch (e) {
       errors = { content: 'some error' };
     }
@@ -105,7 +87,7 @@ const CommentEditForm = ({ className, comment, t }) => {
                 await handleSubmit(e);
                 form.reset();
               }}
-              action={actionRoute(COMMENT_EDIT)}
+              action={actionRoute(COMMENT_UPDATE)}
               method="POST"
               encType="multipart/form-data"
             >
