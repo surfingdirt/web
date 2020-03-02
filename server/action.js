@@ -5,7 +5,7 @@ import { getParentRoute } from 'Utils/comments';
 import actions, { ACTION_PREFIX } from '~/actions';
 import ACTIVATE_NEW_PASSWORD_MUTATION from 'Apollo/mutations/activateNewPassword.gql';
 
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum3.gql';
 import CREATE_COMMENT_ALBUM_MUTATION from 'Apollo/mutations/createCommentAlbum2.gql';
 import CREATE_COMMENT_PHOTO_MUTATION from 'Apollo/mutations/createCommentPhoto2.gql';
 import CREATE_COMMENT_VIDEO_MUTATION from 'Apollo/mutations/createCommentVideo2.gql';

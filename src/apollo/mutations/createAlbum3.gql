@@ -5,6 +5,8 @@ mutation createAlbum($input: AlbumCreationInput!) {
             delete
             edit
         }
+        albumContributions
+        albumVisibility
         date
         description {
             locale

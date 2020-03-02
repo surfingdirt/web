@@ -5,6 +5,8 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
             delete
             edit
         }
+        albumContributions
+        albumVisibility
         date
         description {
             locale

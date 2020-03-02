@@ -6,6 +6,7 @@ import React from 'react';
 
 import DualContainer from 'Components/Widgets/DualContainer';
 import AlbumContributions from 'Components/Widgets/Form/AlbumContributions';
+import AlbumVisibility from 'Components/Widgets/Form/AlbumVisibility';
 import LocaleField from 'Components/Widgets/Form/LocaleField';
 import TimezoneField from 'Components/Widgets/Form/TimezoneField';
 
@@ -36,6 +37,16 @@ const InputField = (props) => {
     case 'albumContributions':
       content = (
         <AlbumContributions
+          id={id}
+          className={classnames(styles.input, className)}
+          onChange={onChange}
+          {...inputAttrs}
+        />
+      );
+      break;
+    case 'albumVisibility':
+      content = (
+        <AlbumVisibility
           id={id}
           className={classnames(styles.input, className)}
           onChange={onChange}

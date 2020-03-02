@@ -28,11 +28,12 @@ const AlbumEditForm = ({ album, t }) => {
 
   const [editAlbum] = useMutation(UPDATE_ALBUM_MUTATION, {});
 
-  const onSubmit = async ({ albumContributions, description, id, title }) => {
+  const onSubmit = async ({ albumContributions, albumVisibility, description, id, title }) => {
     // Modifying an item like this means we're going to wipe out all translations, and only
     // keep the current one. Hence locale comes from the context, not from the media item.
     const input = {
       albumContributions,
+      albumVisibility,
       description: { text: description.text, locale },
       title: { text: title.text, locale },
     };
@@ -61,6 +62,7 @@ const AlbumEditForm = ({ album, t }) => {
 
   const initialValues = {
     albumContributions: album.albumContributions,
+    albumVisibility: album.albumVisibility,
     id: album.id,
     title: album.title,
     description: album.description,
@@ -110,14 +112,34 @@ const AlbumEditForm = ({ album, t }) => {
               required={false}
             />
 
-            <Field
-              name="albumContributions"
-              id="albumContributions"
-              component={InputField}
-              type="albumContributions"
-              label={t('albumContributions')}
-              required
-            />
+            <details className={styles.advancedWrapper}>
+              <summary className={styles.advancedSummary}>{t('advanced')}</summary>
+              <div>
+                <Field
+                  name="albumVisibility"
+                  id="albumVisibility"
+                  component={InputField}
+                  type="albumVisibility"
+                  label={t('albumVisibility')}
+                  required
+                />
+                <p>{t('albumVisibilityNote')}</p>
+                <ul>
+                  <li>{t('albumVisibilityNote1')}</li>
+                  <li>{t('albumVisibilityNote2')}</li>
+                  <li>{t('albumVisibilityNote3')}</li>
+                </ul>
+                <Field
+                  name="albumContributions"
+                  id="albumContributions"
+                  component={InputField}
+                  type="albumContributions"
+                  label={t('albumContributions')}
+                  required
+                />
+                <p>{t('albumContributionsNote')}</p>
+              </div>
+            </details>
 
             {/* These hidden fields are here for JS-less only */}
             <Field name="id">{(fieldProps) => <input {...fieldProps.input} type="hidden" />}</Field>

@@ -4,7 +4,7 @@ import { Form, Field } from 'react-final-form';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 
-import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum2.gql';
+import CREATE_ALBUM_MUTATION from 'Apollo/mutations/createAlbum3.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
@@ -44,8 +44,10 @@ class AlbumCreationForm extends React.Component {
     const { locale } = this.context;
 
     const input = Object.assign({}, rawInput, {
-      description: { text: rawInput.description, locale },
-      title: { text: rawInput.title, locale },
+      albumContributions: rawInput.albumContributions,
+      albumVisibility: rawInput.albumVisibility,
+      description: { text: rawInput.description.text, locale },
+      title: { text: rawInput.title.text, locale },
     });
     const response = await mutate({ variables: { input } });
     const { id } = response.data.createAlbum;
@@ -109,7 +111,7 @@ class AlbumCreationForm extends React.Component {
                     {errorMessage}
                   </p>
                   <Field
-                    name="title"
+                    name="title[text]"
                     id="title"
                     component={InputField}
                     type="text"
@@ -118,7 +120,7 @@ class AlbumCreationForm extends React.Component {
                   />
                   <Field
                     className={styles.description}
-                    name="description"
+                    name="description[text]"
                     id="description"
                     component={InputField}
                     type="textarea"
@@ -126,16 +128,35 @@ class AlbumCreationForm extends React.Component {
                     placeholder={t('descriptionPlaceholder')}
                     required={false}
                   />
-                  <Field
-                    name="albumContributions"
-                    id="albumContributions"
-                    component={InputField}
-                    type="albumContributions"
-                    label={t('albumContributions')}
-                    required
-                  />
 
-                  <p>{t('albumContributionsNote')}</p>
+                  <details className={styles.advancedWrapper}>
+                    <summary className={styles.advancedSummary}>{t('advanced')}</summary>
+                    <div>
+                      <Field
+                        name="albumVisibility"
+                        id="albumVisibility"
+                        component={InputField}
+                        type="albumVisibility"
+                        label={t('albumVisibility')}
+                        required
+                      />
+                      <p>{t('albumVisibilityNote')}</p>
+                      <ul>
+                        <li>{t('albumVisibilityNote1')}</li>
+                        <li>{t('albumVisibilityNote2')}</li>
+                        <li>{t('albumVisibilityNote3')}</li>
+                      </ul>
+                      <Field
+                        name="albumContributions"
+                        id="albumContributions"
+                        component={InputField}
+                        type="albumContributions"
+                        label={t('albumContributions')}
+                        required
+                      />
+                      <p>{t('albumContributionsNote')}</p>
+                    </div>
+                  </details>
 
                   <div className={styles.buttons}>
                     <Button

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ALBUM from 'Apollo/queries/album3.gql';
+import ALBUM from 'Apollo/queries/album.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import AlbumEditForm from 'Components/Album/EditForm';

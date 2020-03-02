@@ -5,6 +5,8 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
             delete
             edit
         }
+        albumContributions
+        albumVisibility
         date
         description {
             locale
