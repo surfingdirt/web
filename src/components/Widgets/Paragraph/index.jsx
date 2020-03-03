@@ -69,7 +69,9 @@ export default class Paragraph extends React.PureComponent {
     const { children, className, dataContent, type, ugc, withAutoLink, withDropCap } = this.props;
 
     const typeClassName = classMapping[type];
-    const actualClassName = classnames(styles.default, styles[typeClassName], className);
+    const actualClassName = classnames(styles.default, styles[typeClassName], className, {
+      [styles.ugc]: ugc,
+    });
 
     const attrs = dataContent ? { 'data-content': dataContent } : {};
 
