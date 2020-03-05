@@ -9,6 +9,7 @@ export const ENGLISH_US = 'en-US';
 export const SPANISH_SPAIN = 'es-ES';
 export const FRENCH_FRANCE = 'fr-FR';
 export const ITALIAN_ITALY = 'it-IT';
+export const JAPANESE_JAPAN = 'ja-JA';
 export const POLISH_POLAND = 'pl-PL';
 export const PORTUGUESE_BRAZIL = 'pt-BR';
 export const PORTUGUESE_PORTUGAL = 'pt-PT';
@@ -22,6 +23,7 @@ export const SUPPORTED_LOCALES = [
   FRENCH_FRANCE,
   GERMAN_GERMANY,
   ITALIAN_ITALY,
+  JAPANESE_JAPAN,
   POLISH_POLAND,
   PORTUGUESE_BRAZIL,
   // PORTUGUESE_PORTUGAL,
