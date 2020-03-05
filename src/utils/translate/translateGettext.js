@@ -1,18 +1,25 @@
 const fileSystem = require('fs');
 const parser = require('gettext-parser');
 
-const deeplTranslate = require('./deeplTranslate');
+// const deeplTranslate = require('./deeplTranslate');
+const googleTranslate = require('./googleTranslate');
+
+const translator = googleTranslate;
 
 module.exports = (apiKey, input, markAsFuzzy, overwrite, callback, output) => {
   const poFile = parser.po.parse(fileSystem.readFileSync(input));
   let language;
-  try {
-    language = poFile.headers.language.split('_')[1].toUpperCase();
-  } catch (e) {
+  const parts = poFile.headers.language.split('_');
+  if (!Array.isArray(parts) || parts.length === 0) {
     console.log(
       `${input} does not contain any language definition in its header. To perform the translation, you need to specify a language.`,
     );
     return;
+  }
+  if (parts.length === 2) {
+    language = parts[1];
+  } else {
+    language = parts[0];
   }
 
   const contextKeys = Object.keys(poFile.translations);
@@ -35,11 +42,11 @@ module.exports = (apiKey, input, markAsFuzzy, overwrite, callback, output) => {
   function translate(translationObjects) {
     const { translationKey, context } = translationObjects;
     return new Promise((resolve, reject) => {
-      deeplTranslate(apiKey, translationKey, 'EN', language, (err, res) => {
+      translator(apiKey, translationKey, 'EN', language, (err, res) => {
         if (err) {
           if (translationKey)
             console.log(
-              `Deepl can not translate: ${translationKey}. We'll put an empty string at it's place.`,
+              `Could not translate: ${translationKey}. We'll put an empty string at it's place.`,
             );
           resolve({
             translatedKey: '',

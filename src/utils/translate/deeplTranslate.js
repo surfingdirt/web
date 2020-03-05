@@ -1,7 +1,4 @@
 const fetch = require('node-fetch');
-const jsdom = require('jsdom');
-
-const { JSDOM } = jsdom;
 const API_URL = 'https://api.deepl.com/v2/translate';
 
 const EXCLUDE_PREFIX = '<x>';
@@ -35,7 +32,7 @@ const translate = (apiKey, translationKey, sourceLanguage, destinationLanguage) 
   const params = new URLSearchParams();
   params.append('text', translationKey);
   params.append('source_lang', sourceLanguage);
-  params.append('target_lang', destinationLanguage);
+  params.append('target_lang', destinationLanguage.toUpperCase());
   params.append('split_sentences', '0');
   params.append('preserve_formatting', '1');
   params.append('tag_handling', 'xml');
@@ -70,8 +67,6 @@ module.exports = (apiKey, messageRaw, sourceLanguage, destinationLanguage, callb
       const clean = replaceAll(replaceAll(translated, EXCLUDE_PREFIX, ' '), EXCLUDE_SUFFIX, ' ')
         .replace(/  +/g, ' ')
         .trim();
-      // const dom = new JSDOM(translated);
-      // const clean = dom.window.document.body.textContent;
       console.log({ clean });
       callback(null, clean);
     })
