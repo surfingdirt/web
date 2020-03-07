@@ -66,7 +66,12 @@ export const updateHomeQueryAfterMediaUpload = (cache, newItem, albumId, gallery
       skipAlbums: [galleryAlbumId],
     },
   };
-  const data = cache.readQuery(queryOptions);
+  let data;
+  try {
+    data = cache.readQuery(queryOptions);
+  } catch {
+    return;
+  }
   if (!data) {
     return;
   }
