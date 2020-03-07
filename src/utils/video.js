@@ -31,7 +31,7 @@ export const extractKeyAndSubType = (url) => {
     },
 
     {
-      regex: /www\.instagram\.com\/p\/([0-9a-zA-Z]+)/,
+      regex: /www\.instagram\.com\/p\/([0-9a-zA-Z-]+)/,
       mediaSubType: INSTAGRAM,
       vendorKeyIndex: 1,
     },

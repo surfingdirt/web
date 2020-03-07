@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import classnames from 'classnames';
@@ -20,26 +20,25 @@ const { STANDARD } = sizes;
 const VIDEO_PREVIEW_WIDTH = 16;
 const VIDEO_PREVIEW_HEIGHT = 9;
 
-let mediaSubType = null;
-let vendorKey = null;
-
 const Step1 = ({ t, onSubmit }) => {
+  const [url, setUrl] = useState('');
+
   const validate = async (values) => {
     const errors = {};
     if (!values.url) {
       errors.url = t('required');
     } else {
-      const { url } = values;
-      const info = extractKeyAndSubType(url);
-      mediaSubType = info.mediaSubType;
-      vendorKey = info.vendorKey;
-      if (!info.mediaSubType || !info.vendorKey) {
+      const { url: newUrl } = values;
+      setUrl(newUrl);
+      const { mediaSubType, vendorKey } = extractKeyAndSubType(newUrl);
+      if (!mediaSubType || !vendorKey) {
         errors.url = t('notUnderstood');
       }
     }
     return errors;
   };
 
+  const { mediaSubType, vendorKey } = extractKeyAndSubType(url);
   return (
     <Form
       onSubmit={onSubmit}

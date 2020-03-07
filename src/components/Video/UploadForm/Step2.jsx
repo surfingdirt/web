@@ -23,8 +23,6 @@ const { VIDEO_NEW } = actions;
 const { ACTION } = buttonTypes;
 
 const Step2 = ({ albumId, t, url }) => {
-  console.log('Step2', { albumId, t, url });
-
   const { galleryAlbumId, locale } = useContext(AppContext);
   const [displayError, setDisplayError] = useState(null);
   const [redirectTo, setRedirectTo] = useState(null);
