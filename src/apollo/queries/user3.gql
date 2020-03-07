@@ -66,6 +66,7 @@ query userProfile($userId: ID!) {
                 locale
                 text
             }
+            embedUrl
             id
             images {
                 type
@@ -86,6 +87,7 @@ query userProfile($userId: ID!) {
                 text
             }
             mediaType
+            mediaSubType
             submitter {
                 userId
                 username
