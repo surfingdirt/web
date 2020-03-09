@@ -1,7 +1,7 @@
 const PRODUCTION = 'production';
 
 const features = {
-  registration: process.env.NODE_ENV !== PRODUCTION,
+  registration: true,
 };
 
 export default features;
