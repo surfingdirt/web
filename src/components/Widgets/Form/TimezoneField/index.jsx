@@ -20,7 +20,7 @@ const TimezoneField = ({ unsetLabel, className, onChange, ...inputAttrs }) => {
 
   return (
     <select
-      defaultValue={currentZone}
+      defaultValue={null}
       className={classnames(styles.select, className)}
       onChange={onChange}
       {...newAttrs}

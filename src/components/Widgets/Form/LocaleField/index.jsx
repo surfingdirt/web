@@ -28,7 +28,7 @@ const LocaleField = ({ unsetLabel, className, onChange, ...inputAttrs }) => {
 
   return (
     <select
-      defaultValue={currentLocale}
+      defaultValue={null}
       className={classnames(styles.select, className)}
       onChange={onChange}
       {...newAttrs}
