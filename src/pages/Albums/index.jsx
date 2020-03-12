@@ -49,7 +49,7 @@ const Albums = ({ t }) => {
           <p className={styles.endReached}>{t('endReached')}</p>
         ) : (
           <MoreAlbums
-            label={t('moreAlbums')}
+            buttonLabel={t('moreAlbums')}
             loading={loadingMore}
             onClick={() => {
               setLoadingMore(true);
