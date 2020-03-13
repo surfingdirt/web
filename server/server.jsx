@@ -10,6 +10,15 @@ import Main from './main';
 
 const rootDir = path.resolve(__dirname, '..');
 
+const errorHandler = (err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  // TODO: respond with a proper error page:
+  res.status(500).send('An error occurred');
+  return null;
+};
+
 const app = express();
 app.disable('x-powered-by');
 app.use(cookieParser());
@@ -26,6 +35,7 @@ app.get('/actions/*', multer().none(), getAction);
 app.post('/actions/*', multer().none(), postAction);
 
 app.use(Main(rootDir));
+app.use(errorHandler);
 
 // Launch frontend server:
 app.listen(config.port, (err) => {

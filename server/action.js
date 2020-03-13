@@ -391,7 +391,8 @@ const action = async (map, req, res, next) => {
   const actionName = path.replace(ACTION_PREFIX, '');
   const actionInfo = map[actionName];
   if (!actionInfo) {
-    throw new Error(`No info found for action '${actionName}'`);
+    const e = new Error(`Unhandled action '${actionName}'`);
+    return next(e);
   }
 
   const { graphql } = config;
