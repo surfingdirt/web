@@ -192,6 +192,7 @@ const Main = (rootDir) => {
     }
 
     // Sends the response back to the client
+    res.set('X-Frame-Options', 'DENY');
     return res.status(context.status || 200).end(document);
   };
 };
