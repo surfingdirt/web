@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
-import { getFirstAlbumImageUrl, mediaPageSize } from 'Utils/media';
+import { getFirstAlbumImageUrls, mediaPageSize } from 'Utils/media';
 
 import AlbumView from './view';
 
@@ -32,7 +32,7 @@ const Album = ({ match }) => {
     description: { text: description },
     title: { text: title },
   } = album;
-  const image = getFirstAlbumImageUrl(listMedia);
+  const images = getFirstAlbumImageUrls(listMedia);
 
   return (
     <Fragment>
@@ -40,7 +40,7 @@ const Album = ({ match }) => {
         {title && <title>{title}</title>}
         {title && <meta property="og:title" content={title} />}
         {description && <meta property="og:description" content={description} />}
-        {image && <meta property="og:image" content={image} />}
+        {images && images.map((i) => <meta key={i} property="og:image" content={i} />)}
       </Helmet>
       <AlbumView
         album={album}

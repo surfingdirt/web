@@ -29,6 +29,8 @@ export const MEDIA_SUBTYPES_VIDEO = {
   YOUTUBE: 'youtube',
 };
 
+export const MAX_MEDIA_PREVIEW_COUNT = 5;
+
 export const getBiggestMediaImageUrl = (media) => {
   if (!media) {
     return null;
@@ -47,12 +49,12 @@ export const getBiggestMediaImageUrl = (media) => {
   return image.url;
 };
 
-export const getFirstAlbumImageUrl = (items) => {
+export const getFirstAlbumImageUrls = (items) => {
   if (!items || items.length === 0) {
     return null;
   }
 
-  return getBiggestMediaImageUrl(items[0]);
+  return items.slice(0, MAX_MEDIA_PREVIEW_COUNT).map((i) => getBiggestMediaImageUrl(i));
 };
 
 // This update is for the case where a user visits the homepage and then posts a photo.
