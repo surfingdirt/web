@@ -30,6 +30,7 @@ class Menu extends React.Component {
     preferredHorizontal: PropTypes.oneOf([LEFT, RIGHT]),
     preferredVertical: PropTypes.oneOf([TOP, BOTTOM]),
     trigger: PropTypes.node,
+    triggerClassName: PropTypes.string,
     triggerLabel: PropTypes.string,
   };
 
@@ -38,6 +39,7 @@ class Menu extends React.Component {
     preferredHorizontal: LEFT,
     preferredVertical: BOTTOM,
     trigger: null,
+    triggerClassName: null,
     triggerLabel: null,
   };
 
@@ -168,10 +170,11 @@ class Menu extends React.Component {
   }
 
   renderTrigger() {
-    const { menuId, trigger, triggerLabel } = this.props;
+    const { menuId, trigger, triggerLabel, triggerClassName } = this.props;
     const { active: menuActive } = this.state;
 
     const attrs = {
+      className: triggerClassName,
       menuActive,
       menuId,
       onToggleActive: this.handleTriggerToggle,

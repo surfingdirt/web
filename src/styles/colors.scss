@@ -99,8 +99,10 @@ $card-text-color-negative: $brand-dark2;
 $card-background-color-negative: $brand-bright;
 
 // Comments
-$comment-background-color: $brand-dark1;
-$comment-text-color: $brand-bright;
+$comment-username-color: $brand-highlight1-darkened;
+$comment-background-color: $brand-bright;
+$comment-text-color: $brand-dark1;
+$comment-metadata-text-color: $readable-brand-bright;
 
 // Cover
 $cover-image-background-color: $brand-dark1;
@@ -127,7 +129,7 @@ $masthead-background-color: $brand-bright;
 $masthead-title-color: $brand-dark2;
 
 // Media Metadata
-$media-metadata-description-background-color: $brand-dark1;
+$media-metadata-description-background-color: transparent;
 
 // Media Overlay
 $media-overlay-background-color: $brand-dark2;

@@ -13,8 +13,12 @@
     margin: $margin-small-3 0;
   }
 
+  .username {
+    color: $brand-highlight1-darkened;
+  }
+
   .content {
-    margin: $margin-small-3;
+    margin: 0 $margin-small-3;
 
     .comment {
       box-sizing: border-box;
@@ -33,7 +37,7 @@
       margin: 0 0 $margin-small-3;
 
       .metadataText {
-        color: $comment-text-color;
+        color: $comment-metadata-text-color;
         font-size: $font-size-tiny;
 
         .tone {
@@ -43,6 +47,10 @@
 
       .menu {
         margin-left: $margin-small-3;
+      }
+
+      .menuTrigger {
+        padding: 0 $padding-small-4 $padding-small-4;
       }
     }
   }

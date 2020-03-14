@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
+import Username from 'Components/User/Username';
 import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
@@ -93,6 +94,11 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
     <Tag className={classnames(styles.wrapper, className)}>
       <Userbox size={SMALL} className={styles.user} user={submitter} renderName={false} />
       <div className={styles.content}>
+        <div className={styles.comment}>
+          <Username user={submitter} className={styles.username} hidden />
+          &nbsp;
+          {content}
+        </div>
         <div className={styles.metadata}>
           <div className={styles.metadataText}>
             {shouldRenderTone && (
@@ -109,12 +115,12 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
             <Menu
               menuId={COMMENT_MENU}
               trigger={trigger}
+              triggerClassName={styles.menuTrigger}
               className={styles.menu}
               options={options}
             />
           )}
         </div>
-        <div className={styles.comment}>{content}</div>
       </div>
     </Tag>
   );

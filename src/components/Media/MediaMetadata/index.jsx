@@ -121,17 +121,17 @@ const MediaMetadata = (props) => {
           />
         )}
       </div>
+      {hasDescription && (
+        <div className={styles.description}>
+          <AutoLink ugc>{description.text}</AutoLink>
+        </div>
+      )}
       <div className={styles.secondRow}>
         <span className={styles.metadataItemName}>{t('inAlbum')}</span>
         <Link to={albumRoute(albumId)}>{albumTitle}</Link>
         <span aria-hidden className="separator" />
         <span className={styles.date}>{renderDate(date, locale)}</span>
       </div>
-      {hasDescription && (
-        <div className={styles.description}>
-          <AutoLink ugc>{description.text}</AutoLink>
-        </div>
-      )}
     </div>
   );
 };
