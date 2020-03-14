@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 
 import { InlineSpinner } from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
+import { MEDIA_SUBTYPES_VIDEO } from 'Utils/media';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const VideoEmbed = ({ className, height, loading, t, url, width }) => {
+const { INSTAGRAM } = MEDIA_SUBTYPES_VIDEO;
+
+const VideoEmbed = ({ className, height, loading, mediaSubType, t, url, width }) => {
   const attrs = {};
 
   if (loading) {
@@ -20,9 +23,11 @@ const VideoEmbed = ({ className, height, loading, t, url, width }) => {
       </div>
     );
   }
-
+  const classNames = classnames(styles.videoWrapper, className, {
+    [styles.instagram]: mediaSubType.toLowerCase() === INSTAGRAM,
+  });
   return (
-    <div className={classnames(styles.videoWrapper, className)}>
+    <div className={classNames}>
       <iframe
         className={styles.video}
         title={t('videoContent')}
