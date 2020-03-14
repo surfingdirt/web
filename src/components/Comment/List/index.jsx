@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -6,11 +6,15 @@ import Translate from 'Hocs/Translate/index';
 import CommentForm from 'Components/Comment/Form';
 import Comment from 'Components/Comment/Item';
 import { CommentType } from 'Utils/types';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
 const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
+  const { login } = useContext(AppContext);
+  const accessToken = !!login.data.accessToken;
+
   const twoColumns = !singleColumn;
 
   return (
@@ -20,7 +24,9 @@ const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
           <Comment comment={c} className={styles.item} key={c.id} parentType={type} parentId={id} />
         ))}
       </ul>
-      <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />
+      {accessToken && (
+        <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />
+      )}
     </div>
   );
 };
