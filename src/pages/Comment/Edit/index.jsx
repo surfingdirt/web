@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import COMMENT from 'Apollo/queries/comment2.gql';
+import COMMENT from 'Apollo/queries/comment.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import CommentEditForm from 'Components/Comment/EditForm';

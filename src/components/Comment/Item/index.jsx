@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import LIST_COMMENTS from 'Apollo/queries/listComments.gql';
+import LIST_COMMENTS from 'Apollo/queries/listComments2.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Username from 'Components/User/Username';

@@ -1,5 +1,5 @@
-query listComments($parentType: String!, $parentId: ID!) {
-    listComments(parentType: $parentType, parentId: $parentId) {
+query comment($id: ID!) {
+    comment(id: $id) {
         actions {
             delete
             edit
@@ -7,9 +7,12 @@ query listComments($parentType: String!, $parentId: ID!) {
         id
         content {
             locale
+            original
             text
         }
         date
+        parentId
+        parentType
         submitter {
             userId
             username

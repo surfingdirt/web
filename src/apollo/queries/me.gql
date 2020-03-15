@@ -9,6 +9,7 @@ query {
     }
     bio {
         locale
+        original
         text
     }
     cover {

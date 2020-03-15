@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet-async';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
+import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
 import { getFirstAlbumImageUrls, mediaPageSize } from 'Utils/media';

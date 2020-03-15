@@ -13,7 +13,7 @@ import { StaticRouter } from 'react-router';
 import slugify from 'slugify';
 import useragent from 'useragent';
 
-import ME from 'Apollo/queries/me3.gql';
+import ME from 'Apollo/queries/me.gql';
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
 import features from '~/features';

@@ -10,6 +10,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         date
         description {
             locale
+            original
             text
         }
         id
@@ -23,6 +24,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             date
             description {
                 locale
+                original
                 text
             }
             mediaType
@@ -32,6 +34,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             width
             title {
                 locale
+                original
                 text
             }
             thumbs {
@@ -62,6 +65,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         }
         title {
             locale
+            original
             text
         }
     }
@@ -76,6 +80,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         date
         description {
             locale
+            original
             text
         }
         id
@@ -89,6 +94,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             date
             description {
                 locale
+                original
                 text
             }
             mediaType
@@ -98,6 +104,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             width
             title {
                 locale
+                original
                 text
             }
             thumbs {
@@ -139,6 +146,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
         }
         title {
             locale
+            original
             text
         }
     }

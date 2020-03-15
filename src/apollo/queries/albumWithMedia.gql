@@ -10,6 +10,7 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         date
         description {
             locale
+            original
             text
         }
         id
@@ -26,6 +27,7 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         }
         title {
             locale
+            original
             text
         }
     }
@@ -38,6 +40,7 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         date
         description {
             locale
+            original
             text
         }
         mediaType
@@ -47,6 +50,7 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         width
         title {
             locale
+            original
             text
         }
         thumbs {

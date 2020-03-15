@@ -1,48 +1,5 @@
-query userProfile($userId: ID!) {
-    user(userId: $userId) {
-        userId
-        username
-        firstName
-        bio {
-            locale
-            text
-        }
-        album {
-          id
-          title {
-            locale
-            text
-          }
-          media {
-            actions {
-                delete
-                edit
-            }
-            images {
-                size
-                width
-                height
-                type
-                url
-            }
-          }
-        }
-        avatar {
-          size
-          width
-          height
-          type
-          url
-        }
-        cover {
-          size
-          width
-          height
-          type
-          url
-        }
-    }
-    listAlbums(userId: $userId) {
+query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [String]) {
+    listAlbums(count: $count, start: $start, countItems: $countItems, skipAlbums: $skipAlbums) {
         actions {
             add
             delete
@@ -50,8 +7,10 @@ query userProfile($userId: ID!) {
         }
         albumContributions
         albumVisibility
+        date
         description {
             locale
+            original
             text
         }
         id
@@ -61,19 +20,22 @@ query userProfile($userId: ID!) {
                 delete
                 edit
             }
+            id
             date
             description {
                 locale
+                original
                 text
             }
+            mediaType
+            mediaSubType
             embedUrl
-            id
-            images {
-                type
-                size
-                url
-                height
-                width
+            height
+            width
+            title {
+                locale
+                original
+                text
             }
             thumbs {
                 type
@@ -82,12 +44,13 @@ query userProfile($userId: ID!) {
                 height
                 width
             }
-            title {
-                locale
-                text
+            images {
+                type
+                size
+                url
+                height
+                width
             }
-            mediaType
-            mediaSubType
             submitter {
                 userId
                 username
@@ -100,8 +63,20 @@ query userProfile($userId: ID!) {
                 }
             }
         }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
         title {
             locale
+            original
             text
         }
     }

@@ -9,6 +9,7 @@ query listUsers {
         }
         bio {
             locale
+            original
             text
         }
         cover {
