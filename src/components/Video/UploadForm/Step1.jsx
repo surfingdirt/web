@@ -48,7 +48,12 @@ const Step1 = ({ t, onSubmit }) => {
         if (mediaSubType && vendorKey) {
           const iframeUrl = buildEmbedUrl(mediaSubType, vendorKey);
           preview = (
-            <VideoEmbed url={iframeUrl} height={VIDEO_PREVIEW_HEIGHT} width={VIDEO_PREVIEW_WIDTH} />
+            <VideoEmbed
+              mediaSubType={mediaSubType}
+              url={iframeUrl}
+              height={VIDEO_PREVIEW_HEIGHT}
+              width={VIDEO_PREVIEW_WIDTH}
+            />
           );
         }
 
