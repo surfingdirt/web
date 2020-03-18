@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,7 @@ import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import { editCommentRoute } from 'Utils/links';
 import { CommentType } from 'Utils/types';
+import AppContext from '~/contexts';
 import { COMMENT_MENU } from '~/ids';
 
 import messages from './messages';
@@ -28,6 +29,8 @@ const { COMMENT } = translateButtonTypes;
 const { SMALL } = userboxSizes;
 
 const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }) => {
+  const { features } = useContext(AppContext);
+
   const {
     actions,
     content: { text: content, locale: textLocale, original },
@@ -39,7 +42,7 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
   // Show the button if the text is in its original form and the locale is not that of the user
-  const showTranslateButton = original && textLocale !== locale;
+  const showTranslateButton = features.translation && original && textLocale !== locale;
 
   const options = [];
   if (actions.edit) {
