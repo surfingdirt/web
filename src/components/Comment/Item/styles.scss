@@ -34,7 +34,7 @@
     .metadata {
       display: flex;
       align-items: center;
-      margin: 0 0 $margin-small-3;
+      margin: $margin-small-4 0 $margin-small-3;
 
       .metadataText {
         color: $comment-metadata-text-color;

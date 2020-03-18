@@ -10,6 +10,7 @@ import Username from 'Components/User/Username';
 import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
+import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 import Translate from 'Hocs/Translate/index';
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
@@ -23,12 +24,13 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const { NEUTRAL } = tones;
+const { COMMENT } = translateButtonTypes;
 const { SMALL } = userboxSizes;
 
 const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }) => {
   const {
     actions,
-    content: { text: content },
+    content: { text: content, locale: textLocale, original },
     date,
     id,
     submitter,
@@ -36,6 +38,8 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
   } = comment;
   const Tag = tag;
   const shouldRenderTone = tone && tone !== NEUTRAL;
+  // Show the button if the text is in its original form and the locale is not that of the user
+  const showTranslateButton = original && textLocale !== locale;
 
   const options = [];
   if (actions.edit) {
@@ -101,6 +105,19 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
         </div>
         <div className={styles.metadata}>
           <div className={styles.metadataText}>
+            {showTranslateButton && (
+              <Fragment>
+                <TranslateButton
+                  className={styles.metadataText}
+                  type={COMMENT}
+                  id={id}
+                  targetLocale={locale}
+                />
+                <span aria-hidden className={styles.separator}>
+                  &bull;
+                </span>
+              </Fragment>
+            )}
             {shouldRenderTone && (
               <Fragment>
                 <span className={styles.tone}>{t(tone)}</span>

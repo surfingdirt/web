@@ -1,17 +1,18 @@
-mutation createPhotoComment($input: CommentCreationInput!) {
-    createPhotoComment(input: $input) {
+mutation translateComment($input: TranslationChangeInput!) {
+    translateComment(input: $input) {
         actions {
             delete
             edit
         }
         id
-        parentId
-        parentType
         content {
             locale
+            original
             text
         }
         date
+        parentId
+        parentType
         submitter {
             userId
             username

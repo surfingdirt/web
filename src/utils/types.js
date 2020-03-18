@@ -11,9 +11,15 @@ export const ActionType = PropTypes.shape({
   edit: PropTypes.bool,
 });
 
+export const TranslatedTextType = PropTypes.shape({
+  locale: PropTypes.string,
+  original: PropTypes.bool,
+  text: PropTypes.string,
+});
+
 export const CommentType = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: TranslatedTextType.isRequired,
   date: PropTypes.string.isRequired,
   lastEditionDate: PropTypes.string,
   lastEditor: UserType,
@@ -21,11 +27,6 @@ export const CommentType = PropTypes.shape({
   parentType: PropTypes.string.isRequired,
   submitter: UserType.isRequired,
   tone: PropTypes.string,
-});
-
-export const TranslatedTextType = PropTypes.shape({
-  locale: PropTypes.string,
-  text: PropTypes.string,
 });
 
 export const MediaType = PropTypes.shape({

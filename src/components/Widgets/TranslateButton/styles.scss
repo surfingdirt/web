@@ -1,0 +1,15 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+
+.wrapper {
+  display: inline-block;
+  padding: 0;
+}
+
+.translating {
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+  top: $margin-small-4;
+  margin: 0;
+}
