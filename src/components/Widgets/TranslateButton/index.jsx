@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/react-hooks';
 
+import TRANSLATE_ALBUM_MUTATION from 'Apollo/mutations/translateAlbum.gql';
 import TRANSLATE_COMMENT_MUTATION from 'Apollo/mutations/translateComment.gql';
 import { InlineSpinner } from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
@@ -18,7 +19,7 @@ export const translateButtonTypes = {
 };
 
 const translationMutations = {
-  [translateButtonTypes.ALBUM]: null,
+  [translateButtonTypes.ALBUM]: TRANSLATE_ALBUM_MUTATION,
   [translateButtonTypes.COMMENT]: TRANSLATE_COMMENT_MUTATION,
   [translateButtonTypes.MEDIA]: null,
   [translateButtonTypes.USER]: null,

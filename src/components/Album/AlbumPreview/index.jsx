@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -8,6 +8,7 @@ import Card, { cardTypes } from 'Components/Widgets/Card';
 import { modalTypes } from 'Components/Widgets/Modal';
 import Empty from 'Components/Widgets/Empty/index';
 import Heading, { headingTypes } from 'Components/Widgets/Heading';
+import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 import MediaOverlay from 'Components/Media/MediaOverlay';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Paragraph from 'Components/Widgets/Paragraph';
@@ -19,6 +20,7 @@ import { AlbumContributions } from 'Utils/data';
 import { albumRoute } from 'Utils/links';
 import { mediaPageSize } from 'Utils/media';
 import { TranslatedTextType } from 'Utils/types';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -28,8 +30,11 @@ const { SECONDARY } = headingTypes;
 const { HERO } = modalTypes;
 const { SMALLEST } = userboxSizes;
 const countItems = mediaPageSize;
+const { ALBUM } = translateButtonTypes;
 
-const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
+const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, t }) => {
+  const { features } = useContext(AppContext);
+
   const {
     actions,
     albumContributions,
@@ -38,7 +43,7 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
     itemCount,
     media,
     submitter,
-    title: { text: albumTitle },
+    title: { locale: textLocale, original, text: albumTitle },
   } = album;
   const isEmpty = !media || media.length === 0;
   if (isEmpty && !renderIfEmpty) {
@@ -104,6 +109,9 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
     );
   }
 
+  // Show the button if the text is in its original form and the locale is not that of the user
+  const showTranslateButton = features.translation && original && textLocale !== locale;
+
   return (
     <Card className={styles.wrapper} type={BARE}>
       <Slider className={styles.items} prevClassName={styles.previous} nextClassName={styles.next}>
@@ -120,6 +128,19 @@ const AlbumPreview = ({ album, showAttribution, renderIfEmpty, t }) => {
             )}
             {showAttribution && submitter && (
               <Attribution submitter={submitter} userboxSize={SMALLEST} />
+            )}
+            {showTranslateButton && (
+              <Fragment>
+                <span aria-hidden className={styles.separator}>
+                  &bull;
+                </span>
+                <TranslateButton
+                  className={styles.translateButton}
+                  type={ALBUM}
+                  id={albumId}
+                  targetLocale={locale}
+                />
+              </Fragment>
             )}
           </div>
         </div>

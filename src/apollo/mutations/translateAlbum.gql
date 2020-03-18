@@ -1,0 +1,34 @@
+mutation translateAlbum($input: TranslationChangeInput!) {
+    translateAlbum(input: $input) {
+        actions {
+            add
+            delete
+            edit
+        }
+        albumContributions
+        albumVisibility
+        date
+        description {
+            locale
+            original
+            text
+        }
+        id
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+        title {
+            locale
+            original
+            text
+        }
+    }
+}

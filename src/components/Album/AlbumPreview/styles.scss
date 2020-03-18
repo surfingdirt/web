@@ -31,6 +31,16 @@ $height5: $width5 / $aspect-ratio;
   margin: $margin-medium-1 0;
 }
 
+.separator {
+  display: inline-block;
+  margin: 0 $margin-small-3;
+}
+
+.translateButton {
+  font-size: $font-size-small;
+  color: $link-color-default;
+}
+
 .items {
   position: relative;
   margin: 0;
