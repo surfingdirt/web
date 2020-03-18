@@ -1,5 +1,6 @@
 @import "../../styles/boxmodel";
 @import "../../styles/colors";
+@import '../../styles/font-sizes';
 
 .attribution,
 .actionsContainer {
@@ -19,4 +20,14 @@
 
 .error {
   color: $form-error-color;
+}
+
+.separator {
+  display: inline-block;
+  margin: 0 $margin-small-3;
+}
+
+.translateButton {
+  font-size: $font-size-small;
+  color: $link-color-default;
 }

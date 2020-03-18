@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -15,10 +15,12 @@ import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import { positions } from 'Components/Widgets/Menu/constants';
 import Paragraph from 'Components/Widgets/Paragraph';
+import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 import { userboxSizes } from 'Components/User/Userbox';
 import { ALBUM_NOT_EMPTY } from 'Error/errorCodes';
 import Translate from 'Hocs/Translate';
 import { batchPhotoUploadForAlbumRoute, editAlbumRoute } from 'Utils/links';
+import AppContext from '~/contexts';
 import { ALBUM_MENU } from '~/ids';
 import routes from '~/routes';
 
@@ -30,8 +32,10 @@ const { STANDARD } = cardTypes;
 const { SMALL } = userboxSizes;
 const { LEFT } = positions;
 const { PROFILE } = routes;
+const { ALBUM } = translateButtonTypes;
 
-const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
+const AlbumView = ({ album, countItems, fetchMore, listMedia, locale, t }) => {
+  const { features } = useContext(AppContext);
   const [deleteError, setDeleteError] = useState(null);
   const [media, setMedia] = useState(listMedia);
   // reachedEnd is set to true if we already have fewer items than in a whole pagination:
@@ -44,7 +48,7 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
     description: { text: description },
     id: albumId,
     submitter,
-    title: { text: title },
+    title: { text: title, locale: textLocale, original },
   } = album;
 
   const lastIndex = media.length - 1;
@@ -97,7 +101,6 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
       </div>
     ));
   }
-
   if (userCanDelete) {
     const variables = { id: albumId };
     const update = (cache, resultObj) => {
@@ -132,16 +135,34 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, t }) => {
     return <Redirect to={redirectTo} />;
   }
 
+  // Show the button if the text is in its original form and the locale is not that of the user
+  const showTranslateButton = features.translation && original && textLocale !== locale;
+
   return (
     <Card type={STANDARD} title={title}>
       {deleteError && <p className={styles.error}>{deleteError}</p>}
       <DualContainer>
-        <Attribution
-          className={styles.attribution}
-          submitter={submitter}
-          userboxSize={SMALL}
-          short={false}
-        />
+        <div>
+          <Attribution
+            className={styles.attribution}
+            submitter={submitter}
+            userboxSize={SMALL}
+            short={false}
+          />
+          {showTranslateButton && (
+            <Fragment>
+              <span aria-hidden className={styles.separator}>
+                &bull;
+              </span>
+              <TranslateButton
+                className={styles.translateButton}
+                type={ALBUM}
+                id={albumId}
+                targetLocale={locale}
+              />
+            </Fragment>
+          )}
+        </div>
         <div className={styles.actionsContainer}>
           {userCanAdd && (
             <Fragment>
