@@ -29,6 +29,7 @@ const VideoEmbed = ({ className, height, loading, mediaSubType, t, url, width })
   return (
     <div className={classNames}>
       <iframe
+        referrerpolicy="no-referrer"
         className={styles.video}
         title={t('videoContent')}
         src={url}
