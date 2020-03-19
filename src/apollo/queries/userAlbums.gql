@@ -1,0 +1,68 @@
+query userAlbums($userId: ID!) {
+    listAlbums(userId: $userId) {
+        actions {
+            add
+            delete
+            edit
+        }
+        albumContributions
+        albumVisibility
+        description {
+            locale
+            text
+        }
+        id
+        itemCount
+        media {
+            actions {
+                delete
+                edit
+            }
+            date
+            description {
+                locale
+                original
+                text
+            }
+            embedUrl
+            id
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            title {
+                locale
+                original
+                text
+            }
+            mediaType
+            mediaSubType
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
+            }
+        }
+        title {
+            locale
+            original
+            text
+        }
+    }
+}

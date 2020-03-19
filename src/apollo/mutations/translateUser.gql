@@ -1,5 +1,5 @@
-query userProfile($userId: ID!) {
-    user(userId: $userId) {
+mutation translateUser($input: TranslationChangeInput!) {
+    translateUser(input: $input) {
         userId
         username
         firstName

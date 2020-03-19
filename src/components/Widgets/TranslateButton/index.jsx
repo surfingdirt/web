@@ -5,6 +5,8 @@ import { useMutation } from '@apollo/react-hooks';
 
 import TRANSLATE_ALBUM_MUTATION from 'Apollo/mutations/translateAlbum.gql';
 import TRANSLATE_COMMENT_MUTATION from 'Apollo/mutations/translateComment.gql';
+import TRANSLATE_MEDIA_MUTATION from 'Apollo/mutations/translateMedia.gql';
+import TRANSLATE_USER_MUTATION from 'Apollo/mutations/translateUser.gql';
 import { InlineSpinner } from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 
@@ -21,8 +23,8 @@ export const translateButtonTypes = {
 const translationMutations = {
   [translateButtonTypes.ALBUM]: TRANSLATE_ALBUM_MUTATION,
   [translateButtonTypes.COMMENT]: TRANSLATE_COMMENT_MUTATION,
-  [translateButtonTypes.MEDIA]: null,
-  [translateButtonTypes.USER]: null,
+  [translateButtonTypes.MEDIA]: TRANSLATE_MEDIA_MUTATION,
+  [translateButtonTypes.USER]: TRANSLATE_USER_MUTATION,
 };
 
 const TranslateButtonRaw = ({ className, id, t, targetLocale, type }) => {

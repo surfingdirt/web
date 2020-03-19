@@ -18,6 +18,9 @@ const apolloClient = (url, locale, ssrMode, accessToken, tracingHeaders) => {
   const cacheOptions = {
     dataIdFromObject: (o) => {
       const { id, __typename } = o;
+      if (__typename === 'User') {
+        return `${__typename}-${o.userId}`;
+      }
       const val = id ? `${__typename}-${id}` : defaultDataIdFromObject(o);
       return val;
     },

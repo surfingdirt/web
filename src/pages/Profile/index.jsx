@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet-async';
 import classnames from 'classnames';
 
-import USER_PROFILE from 'Apollo/queries/user.gql';
+import USER_AND_ALBUMS from 'Apollo/queries/userAndAlbums.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Button, { buttonSizes, buttonTypes } from 'Components/Widgets/Button';
 import Cover from 'Components/Cover';
@@ -93,7 +93,7 @@ class Profile extends React.Component {
     } = this.context;
 
     return (
-      <Query query={USER_PROFILE} variables={{ userId }}>
+      <Query query={USER_AND_ALBUMS} variables={{ userId }}>
         {({ loading, error, data }) => {
           if (loading) return <Spinner />;
           if (error) return <ErrorMessage />;

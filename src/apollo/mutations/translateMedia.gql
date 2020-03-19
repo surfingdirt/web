@@ -1,0 +1,59 @@
+mutation translateMedia($input: TranslationChangeInput!) {
+    translateMedia(input: $input) {
+        actions {
+            delete
+            edit
+        }
+        date
+        description {
+            locale
+            original
+            text
+        }
+        embedUrl
+        height
+        id
+        images {
+          type
+          size
+          url
+          height
+          width
+        }
+        mediaType
+        mediaSubType
+        title {
+            locale
+            original
+            text
+        }
+        vendorUrl
+        width
+        thumbs {
+          type
+          size
+          url
+          height
+          width
+        }
+        album {
+            id
+            title {
+                locale
+                original
+                text
+            }
+        }
+        submitter {
+            userId
+            username
+            avatar {
+              size
+              width
+              height
+              type
+              url
+            }
+        }
+    }
+}

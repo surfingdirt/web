@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
@@ -9,17 +9,22 @@ import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import Heading, { headingTypes } from 'Components/Widgets/Heading/index';
 import Paragraph from 'Components/Widgets/Paragraph';
+import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
+import AppContext from '~/contexts';
 
+import AlbumList from './AlbumList';
 import styles from './styles.scss';
 
 const { BARE } = cardTypes;
 const { PRIMARY } = headingTypes;
+const { USER: USER_BUTTON } = translateButtonTypes;
 
 const MIN_DROPCAP_LENGTH = 200;
 
 // TODO: dedupe code between this and pages/Profile/index.jsx
 
 const User = ({ match }) => {
+  const { features, locale } = useContext(AppContext);
   const { id: userId } = match.params;
 
   return (
@@ -30,12 +35,15 @@ const User = ({ match }) => {
         const {
           user: {
             avatar,
-            bio: { text: bio },
+            bio: { text: bio, locale: textLocale, original },
             cover,
             username,
+            userId,
           },
-          listAlbums,
         } = data;
+
+        // Show the button if the text is in its original form and the locale is not that of the user
+        const showTranslateButton = features.translation && original && textLocale !== locale;
 
         return (
           <Fragment>
@@ -53,21 +61,29 @@ const User = ({ match }) => {
                   {username}
                 </Heading>
                 {bio && (
-                  <Paragraph
-                    withDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
-                    withAutoLink
-                    className={styles.bio}
-                    ugc
-                  >
-                    {bio}
-                  </Paragraph>
+                  <Fragment>
+                    <Paragraph
+                      withDropCap={bio && bio.length > MIN_DROPCAP_LENGTH}
+                      withAutoLink
+                      className={styles.bio}
+                      ugc
+                    >
+                      {bio}
+                    </Paragraph>
+                    {showTranslateButton && (
+                      <TranslateButton
+                        className={styles.translateButton}
+                        type={USER_BUTTON}
+                        id={userId}
+                        targetLocale={locale}
+                      />
+                    )}
+                  </Fragment>
                 )}
               </div>
             </Card>
 
-            {listAlbums.map((album) => (
-              <AlbumPreview album={album} key={album.id} />
-            ))}
+            <AlbumList userId={userId} />
           </Fragment>
         );
       }}
