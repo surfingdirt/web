@@ -2,7 +2,7 @@ const PRODUCTION = 'production';
 
 const features = {
   registration: true,
-  translation: process.env.NODE_ENV !== PRODUCTION,
+  translation: true,
 };
 
 export default features;
