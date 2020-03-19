@@ -18,6 +18,8 @@ const AlbumList = ({ userId }) => {
   return listAlbums.map((album) => <AlbumPreview album={album} key={album.id} />);
 };
 
-AlbumList.PropTypes = {};
+AlbumList.PropTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 export default AlbumList;

@@ -27,7 +27,26 @@
 }
 
 .secondRow {
+  .description {
+    white-space: pre-line;
+    display: inline-block;
+    margin-top: $margin-small-2;
+    background: $media-metadata-description-background-color;
+    overflow-y: auto;
+    @media screen and (min-width: $desktop-min) {
+      max-height: 30vh;
+    }
+  }
+}
+
+.thirdRow {
   font-size: $font-size-small;
+
+  .translateButton {
+    display: inline-block;
+    font-size: $font-size-small;
+    color: $link-color-default;
+  }
 
   .metadataItemName {
     display: inline-block;
@@ -36,16 +55,5 @@
 
   .date {
 
-  }
-}
-
-.description {
-  white-space: pre-line;
-  display: inline-block;
-  margin-top: $margin-small-2;
-  background: $media-metadata-description-background-color;
-  overflow-y: auto;
-  @media screen and (min-width: $desktop-min) {
-    max-height: 30vh;
   }
 }
