@@ -127,6 +127,7 @@ $height5: $width5 / $aspect-ratio;
 
   .titleAndAttribution {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     .title {
