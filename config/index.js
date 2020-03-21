@@ -9,7 +9,8 @@ export const config = {
   local: {
     port: 3033,
     baseUrl: `http://localhost:3033/`,
-    graphql: 'http://localhost:4000',
+    // graphql: 'http://localhost:4000',
+    graphql: 'https://graphql.surfingdirt.com/',
     galleryAlbumId: 'a3833b1c-1db0-4a93-9efc-b6659400ce9f',
     showErrors: true,
     tracing: {

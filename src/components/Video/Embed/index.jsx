@@ -11,6 +11,9 @@ import styles from './styles.scss';
 
 const { INSTAGRAM } = MEDIA_SUBTYPES_VIDEO;
 
+// Height of the header in the embed in pixels:
+const INSTAGRAM_ADDITIONAL_HEIGHT = 54;
+
 const VideoEmbed = ({ className, height, loading, mediaSubType, t, url, width }) => {
   const attrs = {};
 
@@ -23,11 +26,21 @@ const VideoEmbed = ({ className, height, loading, mediaSubType, t, url, width })
       </div>
     );
   }
+
+  const isInstagram = mediaSubType.toLowerCase() === INSTAGRAM;
+
   const classNames = classnames(styles.videoWrapper, className, {
-    [styles.instagram]: mediaSubType.toLowerCase() === INSTAGRAM,
+    [styles.instagram]: isInstagram,
   });
+  let style = null;
+  if (isInstagram) {
+    const percent = `${(height / width) * 100}%`;
+    const paddingTop = `calc(${percent} + ${INSTAGRAM_ADDITIONAL_HEIGHT}px)`;
+
+    style = { paddingTop };
+  }
   return (
-    <div className={classNames}>
+    <div className={classNames} style={style}>
       <iframe
         referrerPolicy="no-referrer"
         className={styles.video}
@@ -44,6 +57,7 @@ VideoEmbed.propTypes = {
   className: PropTypes.string,
   height: PropTypes.number.isRequired,
   loading: PropTypes.bool,
+  mediaSubType: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
