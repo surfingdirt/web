@@ -86,7 +86,7 @@ class Menu extends React.Component {
   handleBlur() {
     // Give next element a tick to take focus
     setTimeout(() => {
-      if (!this.mounted) {
+      if (!this.mounted || !this.menuRef.current) {
         return;
       }
       if (!this.menuRef.current.contains(document.activeElement) && this.state.active) {
