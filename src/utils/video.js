@@ -31,6 +31,12 @@ export const extractKeyAndSubType = (url) => {
     },
 
     {
+      regex: /src="https:\/\/www\.facebook\.com\/plugins(.*)videos%2F(\d+)%2F/,
+      mediaSubType: FACEBOOK,
+      vendorKeyIndex: 2,
+    },
+
+    {
       regex: /www\.instagram\.com\/p\/([0-9a-zA-Z-_]+)/,
       mediaSubType: INSTAGRAM,
       vendorKeyIndex: 1,

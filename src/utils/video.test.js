@@ -14,6 +14,7 @@ const facebookUrls = [
   'www.facebook.com/watch?v=10162168992300290',
   'www.facebook.com/kody.stewart.739/videos/10162168992300290/',
   'www.facebook.com/freshfishfilms/videos/733411660429890/?t=2',
+  '<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FabCD01.23%2Fvideos%2F123456789%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>',
 ];
 const instagramUrls = ['www.instagram.com/p/B1ZRr4flweF/', 'www.instagram.com/p/B1ZRr4flweF/embed'];
 const vimeoUrls = ['//vimeo.com/97276391', '//player.vimeo.com/video/97276391'];
@@ -117,6 +118,11 @@ describe('Parsing returns the right data', () => {
     expect(extractKeyAndSubType('https://' + facebookUrls[2])).toEqual({
       mediaSubType: FACEBOOK,
       vendorKey: '733411660429890',
+    });
+
+    expect(extractKeyAndSubType(facebookUrls[3])).toEqual({
+      mediaSubType: FACEBOOK,
+      vendorKey: '123456789',
     });
   });
 
