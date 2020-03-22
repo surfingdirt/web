@@ -75,6 +75,7 @@ const Step1 = ({ t, onSubmit }) => {
               type="text"
               label={t('url')}
               required
+              autocomplete="off"
               placeholder={t('urlPlaceholder')}
             />
 
