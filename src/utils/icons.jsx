@@ -7,6 +7,7 @@ import Album from 'Images/picture-stack-landscape-bold.svg';
 import ArrowDown from 'Images/arrow-down.svg';
 import Close from 'Images/close.svg';
 import Check from 'Images/check.svg';
+import Comment from 'Images/messages-bubble.svg';
 import Expand from 'Images/expand-6.svg';
 import Home from 'Images/home.svg';
 import Hot from 'Images/trends-hot-flame.svg';
@@ -27,6 +28,7 @@ const ALBUM = 'album';
 const ARROW_DOWN = 'arrow-down';
 const CLOSE = 'close';
 const CHECK = 'check';
+const COMMENT = 'comment';
 const EXPAND = 'expand';
 const HOME = 'home';
 const HOT = 'hot';
@@ -46,6 +48,7 @@ const icons = {
   ARROW_DOWN,
   CLOSE,
   CHECK,
+  COMMENT,
   EXPAND,
   HOME,
   HOT,
@@ -82,6 +85,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.CHECK:
       icon = Check;
+      break;
+    case icons.COMMENT:
+      icon = Comment;
       break;
     case icons.HOME:
       hollow = false;

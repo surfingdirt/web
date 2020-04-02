@@ -1,0 +1,35 @@
+@import "../../styles/boxmodel";
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+
+.feed {
+  padding: 0;
+  margin: 0;
+}
+
+.feedEntry {
+  list-style: none;
+  margin-bottom: 1px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.headerText {
+  .userbox {
+    display: inline;
+  }
+}
+
+.bio {
+  font-size: $font-size-medium;
+}
+
+.userPresentationContent {
+  padding: 0;
+}
+
+.date {
+ font-size: $font-size-tiny;
+}

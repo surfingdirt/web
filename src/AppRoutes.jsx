@@ -50,6 +50,7 @@ const AppRoutes = () => {
         />
         <DefaultLayoutRoute path={routes.CONFIRM_EMAIL} component={pages.ConfirmEmail} />
         <DefaultLayoutRoute path={routes.ERROR} component={pages.Error} />
+        <DefaultLayoutRoute path={routes.FEED} component={pages.Feed} />
         <DefaultLayoutRoute path={routes.LOGIN} component={pages.LogIn} login={FORBIDDEN} />
         <DefaultLayoutRoute
           path={routes.LOST_PASSWORD}

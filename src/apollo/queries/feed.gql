@@ -1,0 +1,57 @@
+query{
+  getPublicFeed{
+    from
+    until
+    feedEntries{
+    date
+      item {
+        __typename
+        ... on Album{
+          id
+          title {
+            text
+          }
+        }
+        ... on Comment{
+          id
+          content {
+            text
+          }
+        }
+        ... on Media{
+          id
+          title {
+            text
+          }
+          mediaSubType
+          mediaType
+        }
+        ... on User {
+          avatar {
+            size
+            width
+            height
+            type
+            url
+          }
+          bio {
+            text
+          }
+          cover {
+            size
+            width
+            height
+            type
+            url
+          }
+          userId
+          username
+        }
+      }
+      subItems{
+        itemType
+        itemId
+      }
+    }
+  }
+}

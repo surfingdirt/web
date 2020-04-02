@@ -18,8 +18,8 @@ const STANDARD = 'standard';
 export const userboxSizes = { SMALLEST, SMALL, STANDARD };
 
 const sizeMapping = {
-  [SMALLEST]: ['smallest'],
   [SMALL]: ['small'],
+  [STANDARD]: ['standard'],
   [STANDARD]: ['standard'],
 };
 
@@ -43,14 +43,20 @@ export const getInitialsData = (username) => {
 const UserboxRaw = (props) => {
   const {
     className,
-    metadata,
     renderName,
     size,
+    inline,
     t,
     user: { username, userId, avatar },
   } = props;
 
-  const sizeClassName = styles[sizeMapping[size]];
+  const wrapperClassNames = [styles.wrapper];
+  if (inline) {
+    wrapperClassNames.push(styles.inline);
+  } else {
+    wrapperClassNames.push(styles[sizeMapping[size]]);
+  }
+  wrapperClassNames.push(className);
 
   const img = avatar && avatar.find((a) => a.size === smallMediaSize);
   const imgStyle = img ? { backgroundImage: `url(${img.url})` } : {};
@@ -58,11 +64,7 @@ const UserboxRaw = (props) => {
   const { initials, initialsColor, bgColor } = getInitialsData(username);
 
   return (
-    <Link
-      to={userRoute(userId)}
-      className={classnames(styles.wrapper, sizeClassName, className)}
-      title={username}
-    >
+    <Link to={userRoute(userId)} className={classnames(wrapperClassNames)} title={username}>
       <div className={classnames(styles.avatarWrapper)} aria-hidden="true">
         {avatar ? (
           <div className={styles.avatar} style={imgStyle} />
@@ -77,13 +79,18 @@ const UserboxRaw = (props) => {
           </div>
         )}
       </div>
-      {renderName && <div className={styles.username}>{username}</div>}
+      {renderName && (
+        <div className={classnames(styles.username, { [styles.spreadUsername]: inline })}>
+          {username}
+        </div>
+      )}
     </Link>
   );
 };
 
 UserboxRaw.propTypes = {
   className: PropTypes.string,
+  inline: PropTypes.bool,
   renderName: PropTypes.bool,
   size: PropTypes.string,
   t: PropTypes.func.isRequired,
@@ -97,6 +104,7 @@ UserboxRaw.propTypes = {
 
 UserboxRaw.defaultProps = {
   className: null,
+  inline: false,
   renderName: true,
   size: STANDARD,
 };

@@ -10,7 +10,7 @@ import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
-import Translate from 'Hocs/Translate/index';
+import Translate from 'Hocs/Translate';
 import {
   albumRoute,
   editPhotoRoute,

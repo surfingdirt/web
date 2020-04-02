@@ -24,6 +24,7 @@ const pages = {
     () => import(/* webpackChunkName: 'ConfirmEmail' */ './pages/ConfirmEmail'),
     options,
   ),
+  Feed: loadable(() => import(/* webpackChunkName: 'Feed' */ './pages/Feed'), options),
   Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
   Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), options),
   LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),

@@ -1,0 +1,25 @@
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+@import '../../../styles/font-sizes';
+
+.contentWrapper {
+  padding: 0 $padding-medium-1 $padding-medium-1;
+
+  &.bareContent {
+    padding: 0;
+  }
+}
+
+.bio {
+  display: inline;
+  min-height: 3rem;
+  white-space: pre-line;
+}
+
+.translateButton {
+  display: inline-block;
+  margin-left: $margin-small-3;
+  font-size: $font-size-small;
+  color: $link-color-default;
+}
+

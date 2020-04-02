@@ -1,0 +1,29 @@
+@import "../../../styles/boxmodel";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: $padding-small-2;
+}
+
+.icon {
+  padding: 0 $padding-small-2 0 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.header {
+  margin-bottom: $margin-small-3;
+  line-height: 1.3rem;
+
+  & > * {
+    vertical-align: middle;
+  }
+}
+
+.main {}
+.footer {}

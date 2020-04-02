@@ -36,3 +36,10 @@ export const MediaType = PropTypes.shape({
 export const AlbumType = PropTypes.shape({
   id: PropTypes.string.isRequired,
 });
+
+export const FeedEntryType = PropTypes.shape({
+  date: PropTypes.string.isRequired,
+  item: PropTypes.oneOf([AlbumType, CommentType, MediaType, UserType]).isRequired,
+  subItems: PropTypes.arrayOf(PropTypes.oneOf([AlbumType, CommentType, MediaType, UserType]))
+    .isRequired,
+}).isRequired;

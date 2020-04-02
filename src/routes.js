@@ -8,6 +8,7 @@ const routes = {
   CONTACT: '/contact',
   CONFIRM_EMAIL: '/confirm-email',
   ERROR: '/error/:id/:message',
+  FEED: '/feed',
   LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/signIn',
