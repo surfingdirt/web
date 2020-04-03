@@ -9,7 +9,6 @@ import iconSizes from 'Utils/iconSizes';
 import { UserType } from 'Utils/types';
 
 import messages from '../../messages';
-import Date from '../../Date';
 import styles from '../../styles.scss';
 
 const { PROFILE } = icons;
@@ -29,7 +28,7 @@ RawHeader.propTypes = {
 
 const Header = Translate(messages)(RawHeader);
 
-export const getUserFeedEntryParts = (date, user, locale) => {
+export const getUserFeedEntryParts = (date, user) => {
   const { bio, cover, userId, username } = user;
 
   if (bio && cover) {
@@ -37,7 +36,6 @@ export const getUserFeedEntryParts = (date, user, locale) => {
       content: <Presentation user={user} bareContent />,
       header: <Header user={user} userId={userId} username={username} />,
       icon: getIcon({ type: PROFILE, presentationOnly: true, size: iconSize }),
-      footer: <Date className={styles.date} date={date} locale={locale} />,
     };
   }
 
@@ -45,6 +43,5 @@ export const getUserFeedEntryParts = (date, user, locale) => {
     content: bio ? <span className={styles.bio}>{bio.text}</span> : null,
     header: <Header user={user} userId={userId} username={username} />,
     icon: getIcon({ type: PROFILE, presentationOnly: true, size: iconSize }),
-    footer: <Date className={styles.date} date={date} locale={locale} />,
   };
 };

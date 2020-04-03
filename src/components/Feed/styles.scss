@@ -22,6 +22,32 @@
   }
 }
 
+.headerChildrenList {
+  display: inline;
+  margin-right: $margin-one-char;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline;
+    margin: 0;
+
+    &::after {
+      content: ' • ';
+    }
+
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
+  }
+}
+.addedTo {
+  margin-right: $margin-one-char;
+}
+
+
 .bio {
   font-size: $font-size-medium;
 }

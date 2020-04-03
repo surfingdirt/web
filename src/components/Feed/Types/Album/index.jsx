@@ -9,7 +9,6 @@ import iconSizes from 'Utils/iconSizes';
 import { albumRoute } from 'Utils/links';
 
 import messages from '../../messages';
-import Date from '../../Date';
 import styles from '../../styles.scss';
 
 const { ALBUM } = icons;
@@ -32,7 +31,7 @@ RawHeader.propTypes = {
 
 const Header = Translate(messages)(RawHeader);
 
-export const getAlbumFeedEntryParts = (date, album, locale) => {
+export const getAlbumFeedEntryParts = (date, album) => {
   const {
     id,
     title: { text: title },
@@ -42,6 +41,5 @@ export const getAlbumFeedEntryParts = (date, album, locale) => {
     content: <AlbumPreview album={album} renderSliderOnly />,
     header: <Header id={id} title={title} />,
     icon: getIcon({ type: ALBUM, presentationOnly: true, size: iconSize }),
-    footer: <Date className={styles.date} date={date} locale={locale} />,
   };
 };

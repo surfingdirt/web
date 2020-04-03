@@ -33,6 +33,7 @@ const EXPAND = 'expand';
 const HOME = 'home';
 const HOT = 'hot';
 const NEXT = 'next';
+const MULTIPLE = 'multiple';
 const PHOTO = 'photo';
 const PREVIOUS = 'previous';
 const PROFILE = 'profile';
@@ -53,6 +54,7 @@ const icons = {
   HOME,
   HOT,
   NEXT,
+  MULTIPLE,
   PHOTO,
   PREVIOUS,
   PROFILE,
@@ -102,6 +104,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.NEXT:
       icon = Next;
+      break;
+    case icons.MULTIPLE:
+      icon = Search;
       break;
     case icons.PHOTO:
       icon = Photo;
