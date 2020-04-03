@@ -1,57 +1,121 @@
 query{
   getPublicFeed{
-    from
-    until
-    feedEntries{
-    date
-      item {
-        __typename
-        ... on Album{
-          id
-          title {
-            text
-          }
-        }
-        ... on Comment{
-          id
-          content {
-            text
-          }
-        }
-        ... on Media{
-          id
-          title {
-            text
-          }
-          mediaSubType
-          mediaType
-        }
-        ... on User {
-          avatar {
-            size
-            width
-            height
-            type
-            url
-          }
-          bio {
-            text
-          }
-          cover {
-            size
-            width
-            height
-            type
-            url
-          }
-          userId
-          username
-        }
-      }
-      subItems{
-        itemType
-        itemId
-      }
-    }
+	from
+	until
+	feedEntries{
+	date
+	  item {
+		__typename
+		... on Album{
+			actions {
+				add
+				delete
+				edit
+			}
+			albumContributions
+			albumVisibility
+			date
+			description {
+				locale
+				original
+				text
+			}
+			id
+			itemCount
+			media {
+				actions {
+					delete
+					edit
+				}
+				id
+				date
+				description {
+					locale
+					original
+					text
+				}
+				mediaType
+				mediaSubType
+				embedUrl
+				height
+				width
+				title {
+					locale
+					original
+					text
+				}
+				thumbs {
+					type
+					size
+					url
+					height
+					width
+				}
+				images {
+					type
+					size
+					url
+					height
+					width
+				}
+				submitter {
+					userId
+					username
+					avatar {
+					  size
+					  width
+					  height
+					  type
+					  url
+					}
+				}
+			}
+			title {
+				locale
+				original
+				text
+			}
+		}
+		... on Comment{
+		  id
+		  content {
+			text
+		  }
+		}
+		... on Media{
+		  id
+		  title {
+			text
+		  }
+		  mediaSubType
+		  mediaType
+		}
+		... on User {
+		  avatar {
+			size
+			width
+			height
+			type
+			url
+		  }
+		  bio {
+			text
+		  }
+		  cover {
+			size
+			width
+			height
+			type
+			url
+		  }
+		  userId
+		  username
+		}
+	  }
+	  subItems{
+		itemType
+		itemId
+	  }
+	}
   }
 }

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import AlbumPreview from 'Components/Album/AlbumPreview';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import iconSizes from 'Utils/iconSizes';
@@ -38,7 +39,7 @@ export const getAlbumFeedEntryParts = (date, album, locale) => {
   } = album;
 
   return {
-    content: <p>albumpreview</p>,
+    content: <AlbumPreview album={album} renderSliderOnly />,
     header: <Header id={id} title={title} />,
     icon: getIcon({ type: ALBUM, presentationOnly: true, size: iconSize }),
     footer: <Date className={styles.date} date={date} locale={locale} />,

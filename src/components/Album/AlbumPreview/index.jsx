@@ -32,7 +32,7 @@ const { SMALLEST } = userboxSizes;
 const countItems = mediaPageSize;
 const { ALBUM } = translateButtonTypes;
 
-const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, t }) => {
+const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSliderOnly, t }) => {
   const { features } = useContext(AppContext);
 
   const {
@@ -112,11 +112,19 @@ const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, t }) => {
   // Show the button if the text is in its original form and the locale is not that of the user
   const showTranslateButton = features.translation && original && textLocale !== locale;
 
+  const sliderContent = (
+    <Slider className={styles.items} prevClassName={styles.previous} nextClassName={styles.next}>
+      {sliderChildren}
+    </Slider>
+  );
+
+  if (renderSliderOnly) {
+    return sliderContent;
+  }
+
   return (
     <Card className={styles.wrapper} type={BARE}>
-      <Slider className={styles.items} prevClassName={styles.previous} nextClassName={styles.next}>
-        {sliderChildren}
-      </Slider>
+      {sliderContent}
       <div className={styles.contentWrapper}>
         <div className={styles.titleAndAttribution}>
           <Heading className={styles.title} type={SECONDARY} link={albumUrl}>
@@ -162,12 +170,14 @@ AlbumPreview.propTypes = {
     title: TranslatedTextType.isRequired,
   }).isRequired,
   renderIfEmpty: PropTypes.bool,
+  renderSliderOnly: PropTypes.bool,
   showAttribution: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 
 AlbumPreview.defaultProps = {
   renderIfEmpty: false,
+  renderSliderOnly: false,
   showAttribution: false,
 };
 
