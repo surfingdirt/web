@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet-async';
 
 import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
+import { ALBUM_VIEW_TYPE_VAR_NAME } from 'Components/Album/AlbumViewToggle';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';
 import { getFirstAlbumImageUrls, mediaPageSize } from 'Utils/media';
@@ -12,8 +13,15 @@ import AlbumView from './view';
 
 const countItems = mediaPageSize;
 
-const Album = ({ match }) => {
+const Album = (props) => {
+  const {
+    match,
+    location: { search },
+  } = props;
   const { id } = match.params;
+
+  const query = new URLSearchParams(search);
+  const viewType = query.get(ALBUM_VIEW_TYPE_VAR_NAME);
 
   const { data, error, fetchMore, loading } = useQuery(ALBUM_WITH_MEDIA, {
     variables: {
@@ -47,12 +55,14 @@ const Album = ({ match }) => {
         countItems={countItems}
         fetchMore={fetchMore}
         listMedia={listMedia}
+        viewType={viewType}
       />
     </Fragment>
   );
 };
 
 Album.propTypes = {
+  location: PropTypes.object.isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

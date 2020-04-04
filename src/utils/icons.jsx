@@ -9,6 +9,9 @@ import Close from 'Images/close.svg';
 import Check from 'Images/check.svg';
 import Comment from 'Images/messages-bubble.svg';
 import Expand from 'Images/expand-6.svg';
+import Grid from 'Images/grid.svg';
+import List from 'Images/list.svg';
+import Mosaic from 'Images/mosaic.svg';
 import Home from 'Images/home.svg';
 import Hot from 'Images/trends-hot-flame.svg';
 import Photo from 'Images/camera-bold.svg';
@@ -16,6 +19,7 @@ import Next from 'Images/arrow-right.svg';
 import Previous from 'Images/arrow-left.svg';
 import Profile from 'Images/single-neutral-circle-alternate-bold.svg';
 import Search from 'Images/search-alternate-bold.svg';
+import Slider from 'Images/slider.svg';
 import ThreeDotsHorizontal from 'Images/navigation-menu-horizontal.svg';
 import ThreeDotsVertical from 'Images/navigation-menu-vertical.svg';
 import Users from 'Images/single-neutral-id-card-double.svg';
@@ -30,6 +34,9 @@ const CLOSE = 'close';
 const CHECK = 'check';
 const COMMENT = 'comment';
 const EXPAND = 'expand';
+const GRID = 'grid';
+const LIST = 'list';
+const MOSAIC = 'mosaic';
 const HOME = 'home';
 const HOT = 'hot';
 const NEXT = 'next';
@@ -38,6 +45,7 @@ const PHOTO = 'photo';
 const PREVIOUS = 'previous';
 const PROFILE = 'profile';
 const SEARCH = 'search';
+const SLIDER = 'slider';
 const THREEDOTS_HORIZONTAL = 'threedots-horizontal';
 const THREEDOTS_VERTICAL = 'threedots-vertical';
 const USERS = 'users';
@@ -51,6 +59,9 @@ const icons = {
   CHECK,
   COMMENT,
   EXPAND,
+  GRID,
+  LIST,
+  MOSAIC,
   HOME,
   HOT,
   NEXT,
@@ -59,6 +70,7 @@ const icons = {
   PREVIOUS,
   PROFILE,
   SEARCH,
+  SLIDER,
   THREEDOTS_HORIZONTAL,
   THREEDOTS_VERTICAL,
   USERS,
@@ -102,6 +114,15 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       hollow = false;
       icon = Expand;
       break;
+    case icons.GRID:
+      icon = Grid;
+      break;
+    case icons.LIST:
+      icon = List;
+      break;
+    case icons.MOSAIC:
+      icon = Mosaic;
+      break;
     case icons.NEXT:
       icon = Next;
       break;
@@ -119,6 +140,9 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.SEARCH:
       icon = Search;
+      break;
+    case icons.SLIDER:
+      icon = Slider;
       break;
     case icons.THREEDOTS_HORIZONTAL:
       icon = ThreeDotsHorizontal;

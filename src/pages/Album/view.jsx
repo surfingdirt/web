@@ -6,6 +6,10 @@ import { Redirect } from 'react-router';
 import DELETE_ALBUM from 'Apollo/mutations/deleteAlbum.gql';
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
 import AlbumGrid from 'Components/Album/AlbumGrid';
+import AlbumViewToggle, {
+  ALBUM_VIEW_GRID,
+  ALBUM_VIEW_LIST,
+} from 'Components/Album/AlbumViewToggle';
 import Attribution from 'Components/Widgets/Attribution';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Card, { cardTypes } from 'Components/Widgets/Card';
@@ -34,7 +38,15 @@ const { LEFT } = positions;
 const { PROFILE } = routes;
 const { ALBUM } = translateButtonTypes;
 
-const AlbumView = ({ album, countItems, fetchMore, listMedia, locale, t }) => {
+const AlbumView = ({
+  album,
+  countItems,
+  fetchMore,
+  listMedia,
+  locale,
+  t,
+  viewType: initialViewType,
+}) => {
   const { features } = useContext(AppContext);
   const [deleteError, setDeleteError] = useState(null);
   const [media, setMedia] = useState(listMedia);
@@ -42,6 +54,7 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, locale, t }) => {
   const [reachedEnd, setReachedEnd] = useState(media.length < countItems);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [redirectTo, setRedirectTo] = useState(null);
+  const [viewType, setViewType] = useState(initialViewType || ALBUM_VIEW_GRID);
 
   const {
     actions: { add: userCanAdd, delete: userCanDelete, edit: userCanEdit },
@@ -188,6 +201,15 @@ const AlbumView = ({ album, countItems, fetchMore, listMedia, locale, t }) => {
           {description}
         </Paragraph>
       )}
+
+      <AlbumViewToggle
+        onSubmit={(value) => {
+          console.log('AlbumViewToggle', value);
+          setViewType(value);
+        }}
+        viewType={viewType}
+      />
+
       <AlbumGrid album={album} media={media} />
       {!reachedEnd && (
         <div className={styles.loadMoreWrapper}>
@@ -204,6 +226,11 @@ AlbumView.propTypes = {
   fetchMore: PropTypes.func.isRequired,
   listMedia: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
   t: PropTypes.func.isRequired,
+  viewType: PropTypes.string,
+};
+
+AlbumView.defaultProps = {
+  viewType: null,
 };
 
 export default Translate(messages)(AlbumView);

@@ -1,0 +1,12 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+
+.wrapper {
+
+}
+
+.button {
+  &.selected {
+    color: red;
+  }
+}
