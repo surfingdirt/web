@@ -5,11 +5,13 @@ import { Redirect } from 'react-router';
 
 import DELETE_ALBUM from 'Apollo/mutations/deleteAlbum.gql';
 import AlbumAddButtons from 'Components/Album/AlbumAddButtons';
-import AlbumGrid from 'Components/Album/AlbumGrid';
+import AlbumGrid from 'Components/Album/Layouts/AlbumGrid';
+import AlbumList from 'Components/Album/Layouts/AlbumList';
 import AlbumViewToggle, {
   ALBUM_VIEW_GRID,
   ALBUM_VIEW_LIST,
 } from 'Components/Album/AlbumViewToggle';
+import Date from 'Components/Widgets/Date';
 import Attribution from 'Components/Widgets/Attribution';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Card, { cardTypes } from 'Components/Widgets/Card';
@@ -58,6 +60,7 @@ const AlbumView = ({
 
   const {
     actions: { add: userCanAdd, delete: userCanDelete, edit: userCanEdit },
+    date,
     description: { text: description },
     id: albumId,
     submitter,
@@ -202,9 +205,14 @@ const AlbumView = ({
         </Paragraph>
       )}
 
-      <AlbumViewToggle onChange={setViewType} viewType={viewType} />
+      <DualContainer className={styles.metadata}>
+        <Date className={styles.date} date={date} locale={locale} />
+        <AlbumViewToggle onChange={setViewType} viewType={viewType} />
+      </DualContainer>
 
-      <AlbumGrid album={album} media={media} />
+      {viewType === ALBUM_VIEW_GRID && <AlbumGrid album={album} media={media} />}
+      {viewType === ALBUM_VIEW_LIST && <AlbumList album={album} media={media} />}
+
       {!reachedEnd && (
         <div className={styles.loadMoreWrapper}>
           <Button type={ACTION} loading={isLoadingMore} label={t('loadMore')} onClick={getNext} />

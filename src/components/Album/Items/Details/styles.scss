@@ -1,0 +1,43 @@
+@import '../../../../styles/boxmodel';
+@import '../../../../styles/font-faces';
+@import '../../../../styles/font-sizes';
+@import '../../../../styles/utils';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.link {
+  flex: 1 0;
+  margin-right: $margin-small-2;
+}
+
+.info {
+  flex: 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .title {
+    font-family: $title-font-families;
+    font-size: $font-size-medium;
+    @include lineclamp(3);
+  }
+
+  .metadata {
+
+    .attribution,
+    .date {
+      font-size: $font-size-small;
+    }
+
+    .date {
+      display: block;
+    }
+
+    &.bottom {
+      align-self: flex-start;
+    }
+  }
+}

@@ -13,7 +13,7 @@ const Attribution = ({ className, short, submitter, t, userboxSize }) => {
   return (
     <div className={classnames(styles.wrapper, className)}>
       <span className={classnames(styles.by, { [styles.short]: short })}>{by}</span>
-      <Userbox user={submitter} size={userboxSize} />
+      <Userbox user={submitter} size={userboxSize} inline />
     </div>
   );
 };

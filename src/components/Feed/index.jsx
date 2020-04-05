@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Date from 'Components/Widgets/Date';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
 import iconSizes from 'Utils/iconSizes';
@@ -9,7 +10,6 @@ import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
 import { FeedEntryType } from 'Utils/types';
 
 import FeedEntryWrapper from './FeedEntryWrapper';
-import Date from './Date';
 import { getAlbumFeedEntryParts } from './Types/Album';
 import { getUserFeedEntryParts } from './Types/User';
 import messages from './messages';

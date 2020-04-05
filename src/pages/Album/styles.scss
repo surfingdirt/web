@@ -31,3 +31,11 @@
   font-size: $font-size-small;
   color: $link-color-default;
 }
+
+.metadata {
+  margin: 0 0 $margin-medium-1;
+
+  .date {
+    font-size: $font-size-small;
+  }
+}

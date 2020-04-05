@@ -1,0 +1,59 @@
+@import '../../../../styles/boxmodel';
+@import '../../../../styles/media-queries';
+
+// Grid calculations at https://docs.google.com/spreadsheets/d/1VW15y9L9hD9LPT8BEEaQ5c-QjCR6aach4EHji4zRQQU/edit?usp=sharing
+
+$gutter-mobile: $margin-small-1;
+$gutter-desktop: $margin-big;
+
+.grid {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-gap: $gutter-mobile;
+  grid-auto-rows: 100px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 420px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 540px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 611px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 740px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 888px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1048px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

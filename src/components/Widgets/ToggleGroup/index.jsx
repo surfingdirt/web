@@ -16,6 +16,8 @@ const ToggleGroup = ({ history, items, location, name, onChange, selected }) => 
       {items.map(({ icon, label, value }) => (
         <button
           className={classnames(styles.button, { [styles.selected]: selected === value })}
+          disabled={selected === value}
+          aria-pressed={selected === value}
           name={name}
           key={value}
           type="submit"

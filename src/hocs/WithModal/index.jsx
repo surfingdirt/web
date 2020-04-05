@@ -10,6 +10,7 @@ const withModal = ({
   modalTitle,
   onModalClosed,
   shouldShowModal,
+  tag,
   type,
 }) => (BaseComponent) => {
   class WithModal extends PureComponent {
@@ -43,11 +44,13 @@ const withModal = ({
         closeModal: this.closeModal,
       });
 
+      const Tag = tag || 'div';
+
       return (
         <Fragment>
-          <div onClickCapture={this.outsideClickListener} className={className}>
+          <Tag onClickCapture={this.outsideClickListener} className={className}>
             {BaseComponent}
-          </div>
+          </Tag>
           {showModal && (
             <Modal
               modalTitle={modalTitle}
@@ -73,6 +76,7 @@ withModal.propTypes = {
   modalTitle: PropTypes.string.isRequired,
   onModalClosed: PropTypes.func,
   shouldShowModal: PropTypes.bool,
+  tag: PropTypes.string,
   type: PropTypes.string.isRequired,
 };
 
@@ -80,6 +84,7 @@ withModal.defaultProps = {
   className: null,
   onModalClosed: null,
   shouldShowModal: null,
+  tag: null,
 };
 
 export default withModal;

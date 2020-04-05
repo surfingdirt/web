@@ -1,0 +1,13 @@
+@import '../../../../styles/boxmodel';
+@import '../../../../styles/media-queries';
+
+.list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .item {
+    margin: $margin-small-1 0;
+  }
+}
