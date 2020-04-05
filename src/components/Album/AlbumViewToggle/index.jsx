@@ -15,7 +15,7 @@ export const ALBUM_VIEW_TYPE_VAR_NAME = 'viewType';
 export const ALBUM_VIEW_GRID = 'grid';
 export const ALBUM_VIEW_LIST = 'list';
 
-const AlbumViewToggle = ({ onSubmit, t, viewType }) => {
+const AlbumViewToggle = ({ onChange, t, viewType }) => {
   const toggleItems = [
     {
       icon: getIcon({ type: GRID, presentationOnly: true, size: iconSize }),
@@ -33,7 +33,7 @@ const AlbumViewToggle = ({ onSubmit, t, viewType }) => {
     <div>
       <ToggleGroup
         items={toggleItems}
-        onSubmit={onSubmit}
+        onChange={onChange}
         selected={viewType}
         name={ALBUM_VIEW_TYPE_VAR_NAME}
       />
@@ -42,7 +42,7 @@ const AlbumViewToggle = ({ onSubmit, t, viewType }) => {
 };
 
 AlbumViewToggle.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   viewType: PropTypes.oneOf([ALBUM_VIEW_GRID, ALBUM_VIEW_LIST]).isRequired,
 };

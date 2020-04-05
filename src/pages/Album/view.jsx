@@ -202,13 +202,7 @@ const AlbumView = ({
         </Paragraph>
       )}
 
-      <AlbumViewToggle
-        onSubmit={(value) => {
-          console.log('AlbumViewToggle', value);
-          setViewType(value);
-        }}
-        viewType={viewType}
-      />
+      <AlbumViewToggle onChange={setViewType} viewType={viewType} />
 
       <AlbumGrid album={album} media={media} />
       {!reachedEnd && (

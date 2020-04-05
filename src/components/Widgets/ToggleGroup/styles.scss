@@ -1,12 +1,51 @@
 @import "../../../styles/boxmodel";
 @import "../../../styles/colors";
+@import "../../../styles/constants";
+
+$icon-height: 1.25rem;
+$wrapper-border-width: $icon-height / 16;
+$wrapper-border-radius: $icon-height / 2 + $wrapper-border-width;
+$wrapper-horizontal-padding: $icon-height / 2;
+
+$button-horizontal-margin: $icon-height / 16;
+$button-horizontal-padding: $icon-height / 8;
+
+$button-background-color: $toggle-foreground-color;
+$button-background-color-selected: $toggle-background-color-selected;
 
 .wrapper {
+  display: flex;
+  width: max-content;
+  padding: 0 $wrapper-horizontal-padding;
+  border-radius: $wrapper-border-radius;
+  border: $wrapper-border-width solid $toggle-border-color;
+  background: $toggle-foreground-color;
+  color: $toggle-foreground-color;
 
-}
+  .background {
+    background: $toggle-background-color;
+    display: flex;
 
-.button {
-  &.selected {
-    color: red;
+    .button {
+      border: 0;
+      background: $button-background-color;
+      margin: 0 $button-horizontal-margin;
+      padding: 0 $button-horizontal-padding;
+      height: $icon-height;
+
+      &:first-child {
+        margin-right: 0;
+      }
+
+      &:last-child {
+        margin-left: 0;
+      }
+
+      &.selected {
+        color: $toggle-foreground-color-selected;
+        background: $button-background-color-selected;
+      }
+    }
   }
 }
+

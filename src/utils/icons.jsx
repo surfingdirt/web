@@ -116,9 +116,11 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.GRID:
       icon = Grid;
+      hollow = false;
       break;
     case icons.LIST:
       icon = List;
+      hollow = false;
       break;
     case icons.MOSAIC:
       icon = Mosaic;
