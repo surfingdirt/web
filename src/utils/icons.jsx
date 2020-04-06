@@ -124,6 +124,7 @@ export const getIcon = ({ type, label, className, size, presentationOnly }) => {
       break;
     case icons.MOSAIC:
       icon = Mosaic;
+      hollow = false;
       break;
     case icons.NEXT:
       icon = Next;

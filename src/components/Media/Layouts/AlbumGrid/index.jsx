@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ThumbOnly from 'Components/Album/Items/ThumbOnly';
+import ThumbOnly from 'Components/Media/Items/ThumbOnly';
 
 import styles from './styles.scss';
 

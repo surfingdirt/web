@@ -1,0 +1,80 @@
+@import '../../../../styles/boxmodel';
+@import '../../../../styles/media-queries';
+
+@import './cells';
+
+$gutter-mobile: $margin-small-3;
+$gutter-desktop: $margin-big;
+
+.mosaic {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-gap: $gutter-mobile;
+  grid-auto-rows: 20vh;
+
+  &.grid-1-items {
+    @extend .grid-1-cell;
+  }
+  &.grid-2-items {
+    @extend .grid-2-cell;
+  }
+  &.grid-3-items {
+    @extend .grid-3-cell;
+  }
+  &.grid-4-items {
+    @include grid4Cell;
+  }
+  &.grid-5-items {
+    @extend .grid-5-cell;
+    @media (max-width: $tablet-max) {
+      @include grid4Cell;
+      .item4,
+      .item5 {
+        display: none;
+      }
+      .more {
+        grid-area: item4;
+      }
+    }
+  }
+  &.grid-6-items {
+    @extend .grid-6-cell;
+    @media (max-width: $tablet-max) {
+      @include grid4Cell;
+      .item4,
+      .item5,
+      .item6 {
+        display: none;
+      }
+      .more {
+        grid-area: item4;
+      }
+    }
+  }
+  &.grid-7-items {
+    @extend .grid-7-cell;
+    @media (max-width: $tablet-max) {
+      @include grid4Cell;
+      .item4,
+      .item5,
+      .item6,
+      .item7 {
+        display: none;
+        grid-area: none;
+      }
+      .more {
+        grid-area: item4;
+      }
+    }
+  }
+
+  .item1 { grid-area: item1; }
+  .item2 { grid-area: item2; }
+  .item3 { grid-area: item3; }
+  .item4 { grid-area: item4; }
+  .item5 { grid-area: item5; }
+  .item6 { grid-area: item6; }
+  .item7 { grid-area: item7; }
+}

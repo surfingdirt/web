@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Details from 'Components/Album/Items/Details';
+import Details from 'Components/Media/Items/Details';
 
 import styles from './styles.scss';
 

@@ -22,6 +22,7 @@ const ToggleGroup = ({ history, items, location, name, onChange, selected }) => 
           key={value}
           type="submit"
           value={value}
+          title={label}
           aria-label={label}
           onClick={() => {
             const { search } = location;

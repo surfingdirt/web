@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MediaOverlay from 'Components/Media/MediaOverlay';
-import MediaThumb from 'Components/Media/MediaThumb/index';
+import MediaThumb from 'Components/Media/MediaThumb';
 import { modalTypes } from 'Components/Widgets/Modal';
 
 import WithModal from 'Hocs/WithModal';
@@ -16,7 +16,7 @@ import styles from './styles.scss';
 const { HERO } = modalTypes;
 const countItems = mediaPageSize;
 
-const ThumbOnly = ({ album, item, index, media, t }) => {
+const ThumbOnly = ({ album, className, item, index, media, t }) => {
   const {
     title: { text: albumTitle },
   } = album;
@@ -30,6 +30,7 @@ const ThumbOnly = ({ album, item, index, media, t }) => {
 
   const ThumbWithModal = WithModal({
     ariaLabel: t('mediaPreviewModal'),
+    className,
     modalContent: (
       <MediaOverlay album={album} media={media} countItems={countItems} index={index} />
     ),
@@ -43,10 +44,15 @@ const ThumbOnly = ({ album, item, index, media, t }) => {
 
 ThumbOnly.propTypes = {
   album: AlbumType.isRequired,
+  className: PropTypes.string,
   index: PropTypes.number.isRequired,
   item: MediaType.isRequired,
   media: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   t: PropTypes.func.isRequired,
+};
+
+ThumbOnly.defaultProps = {
+  className: null,
 };
 
 export default Translate(messages)(ThumbOnly);

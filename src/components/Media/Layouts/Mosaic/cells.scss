@@ -1,0 +1,45 @@
+.grid-1-cell {
+  grid-template-areas: "cell1";
+}
+
+.grid-2-cell {
+  grid-template-areas:
+          "cell1"
+          "cell2";
+}
+
+.grid-3-cell {
+  grid-template-areas:
+          "item1 item1"
+          "item2 item3";
+}
+
+@mixin grid4Cell {
+  grid-template-areas:
+          "item1 item2"
+          "item3 item4";
+}
+.grid-4-cell {
+  @include grid4Cell;
+}
+
+.grid-5-cell {
+  grid-template-areas:
+          "item1 item1 item1 item2 item2 item2"
+          "item3 item3 item4 item4 item5 item5";
+}
+
+.grid-6-cell {
+  grid-template-areas:
+          "item1 item2 item3"
+          "item4 item5 item6";
+}
+
+.grid-7-cell {
+  grid-template-areas:
+          "item1 item1 item2"
+          "item1 item1 item3"
+          "item1 item1 item4"
+          "item5 item6 item7";
+}
+
