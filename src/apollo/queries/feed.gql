@@ -112,9 +112,44 @@ query{
 		  username
 		}
 	  }
-	  subItems{
+	  subItems {
 		itemType
 		itemId
+		item {
+          __typename
+          ... on Comment{
+            id
+            content {
+              text
+            }
+          }
+          ... on Media{
+            id
+            title {
+              text
+            }
+            embedUrl
+            height
+            width
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
+
+            mediaSubType
+            mediaType
+          }
+		}
 	  }
 	}
   }

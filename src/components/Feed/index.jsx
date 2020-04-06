@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Mosaic from 'Components/Media/Layouts/Mosaic';
 import Date from 'Components/Widgets/Date';
 import Translate from 'Hocs/Translate';
 import icons, { getIcon } from 'Utils/icons';
@@ -105,7 +106,15 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
     }
   } else {
     // Subitems are the main attraction here
-    attrs.content = <p>content</p>;
+    if (type === 'Album') {
+      console.log('Rendering album subitems', subItems);
+      const media = subItems
+        .filter(({ itemType }) => ['photo', 'video'].includes(itemType))
+        .map(({ item }) => item);
+      attrs.content = <Mosaic album={item} media={media} />;
+    } else {
+      attrs.content = <p>content not handled yet</p>;
+    }
     attrs.header = getHeaderFromSubItems(feedEntry, t);
     attrs.icon = getIconFromSubItems(subItems);
   }
@@ -118,11 +127,10 @@ const Feed = ({ entries, locale, t }) => (
   <Fragment>
     <h1>Feed</h1>
     <ul className={styles.feed}>
-      {entries.map((entry, index) => {
+      {entries.map((entry) => {
         const attrs = getAttrsFromFedEntry(entry, locale, t);
         return (
-          // eslint-disable-next-line react/no-array-index-key
-          <li className={styles.feedEntry} key={index}>
+          <li className={styles.feedEntry} key={entry.date}>
             <FeedEntryWrapper {...attrs} />
           </li>
         );

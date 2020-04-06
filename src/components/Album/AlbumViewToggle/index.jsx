@@ -8,13 +8,12 @@ import iconSizes from 'Utils/iconSizes';
 
 import messages from './messages';
 
-const { GRID, LIST, MOSAIC } = icons;
+const { GRID, LIST } = icons;
 const iconSize = iconSizes.SMALL;
 
 export const ALBUM_VIEW_TYPE_VAR_NAME = 'viewType';
 export const ALBUM_VIEW_GRID = 'grid';
 export const ALBUM_VIEW_LIST = 'list';
-export const ALBUM_VIEW_MOSAIC = 'mosaic';
 
 const AlbumViewToggle = ({ onChange, t, viewType }) => {
   const toggleItems = [
@@ -27,11 +26,6 @@ const AlbumViewToggle = ({ onChange, t, viewType }) => {
       icon: getIcon({ type: LIST, presentationOnly: true, size: iconSize }),
       label: t('listView'),
       value: ALBUM_VIEW_LIST,
-    },
-    {
-      icon: getIcon({ type: MOSAIC, presentationOnly: true, size: iconSize }),
-      label: 'mosaic',
-      value: ALBUM_VIEW_MOSAIC,
     },
   ];
 

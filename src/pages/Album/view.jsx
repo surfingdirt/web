@@ -11,7 +11,6 @@ import Mosaic from 'Components/Media/Layouts/Mosaic';
 import AlbumViewToggle, {
   ALBUM_VIEW_GRID,
   ALBUM_VIEW_LIST,
-  ALBUM_VIEW_MOSAIC,
 } from 'Components/Album/AlbumViewToggle';
 import Date from 'Components/Widgets/Date';
 import Attribution from 'Components/Widgets/Attribution';
@@ -214,7 +213,6 @@ const AlbumView = ({
 
       {viewType === ALBUM_VIEW_GRID && <AlbumGrid album={album} media={media} />}
       {viewType === ALBUM_VIEW_LIST && <AlbumList album={album} media={media} />}
-      {viewType === ALBUM_VIEW_MOSAIC && <Mosaic album={album} media={media} />}
 
       {!reachedEnd && (
         <div className={styles.loadMoreWrapper}>
