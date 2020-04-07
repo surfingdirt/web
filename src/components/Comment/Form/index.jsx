@@ -41,6 +41,9 @@ const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + strin
 const CommentForm = ({ className, id: parentId, t, type }) => {
   const action = ACTIONS[type];
   const mutation = MUTATIONS[type];
+  if (!mutation) {
+    throw new Error(`Unsupported type '${type}' for comment post mutation`);
+  }
 
   const { locale } = useContext(AppContext);
 

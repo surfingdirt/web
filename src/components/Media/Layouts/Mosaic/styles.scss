@@ -1,10 +1,13 @@
 @import '../../../../styles/boxmodel';
+@import '../../../../styles/colors';
+@import '../../../../styles/font-sizes';
 @import '../../../../styles/media-queries';
 
 @import './cells';
 
 $gutter-mobile: $margin-small-3;
 $gutter-desktop: $margin-big;
+$more-display: inline-flex;
 
 .mosaic {
   display: grid;
@@ -12,7 +15,33 @@ $gutter-desktop: $margin-big;
   padding: 0;
   list-style: none;
   grid-gap: $gutter-mobile;
-  grid-auto-rows: 20vh;
+  grid-auto-rows: 12vmin;
+
+  @media (max-width: $tablet-max) {
+    grid-auto-rows: 12vmax;
+  }
+
+  .more {
+    align-items: center;
+    justify-content: center;
+    color: $brand-bright;
+    font-size: $font-size-huge;
+    background: rgba($empty, .5);
+    grid-area: none;
+    display: none;
+
+    .moreDesktop {
+      @media (max-width: $tablet-max) {
+        display: none;
+      }
+    }
+    .moreMobile {
+      display: none;
+      @media (max-width: $tablet-max) {
+        display: initial;
+      }
+    }
+  }
 
   &.grid-1-items {
     @extend .grid-1-cell;
@@ -55,6 +84,22 @@ $gutter-desktop: $margin-big;
   }
   &.grid-7-items {
     @extend .grid-7-cell;
+
+    &.showMoreDesktop {
+      .item7 {
+        display: none;
+        grid-area: none;
+      }
+      .more {
+        display: $more-display;
+        grid-area: item7;
+        @media (max-width: $tablet-max) {
+          // This is to make sure we comply with the mobile rule below
+          grid-area: item4;
+        }
+      }
+    }
+
     @media (max-width: $tablet-max) {
       @include grid4Cell;
       .item4,
@@ -65,6 +110,7 @@ $gutter-desktop: $margin-big;
         grid-area: none;
       }
       .more {
+        display: $more-display;
         grid-area: item4;
       }
     }

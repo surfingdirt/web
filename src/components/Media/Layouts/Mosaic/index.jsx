@@ -6,15 +6,33 @@ import ThumbOnly from 'Components/Media/Items/ThumbOnly';
 
 import styles from './styles.scss';
 
-const MAX_MOSAIC_CELL_COUNT = 7;
+const MAX_MOSAIC_CELL_COUNT_DESKTOP = 7;
+const MAX_MOSAIC_CELL_COUNT_MOBILE = 4;
 
 const Mosaic = ({ album, media }) => {
-  const cellCount = media.length >= MAX_MOSAIC_CELL_COUNT ? MAX_MOSAIC_CELL_COUNT : media.length;
+  const truncated = media.slice(0, MAX_MOSAIC_CELL_COUNT_DESKTOP);
+
+  const cellCount =
+    media.length >= MAX_MOSAIC_CELL_COUNT_DESKTOP ? MAX_MOSAIC_CELL_COUNT_DESKTOP : media.length;
   const layoutClassName = `grid-${cellCount}-items`;
 
+  const moreCountDesktop =
+    media.length > MAX_MOSAIC_CELL_COUNT_DESKTOP
+      ? media.length - (MAX_MOSAIC_CELL_COUNT_DESKTOP - 1)
+      : 0;
+  const moreCountMobile =
+    media.length > MAX_MOSAIC_CELL_COUNT_MOBILE
+      ? media.length - (MAX_MOSAIC_CELL_COUNT_MOBILE - 1)
+      : 0;
+  const showMore = moreCountMobile || moreCountDesktop;
+
   return (
-    <ul className={classnames(styles.mosaic, styles[layoutClassName])}>
-      {media.slice(0, cellCount).map((item, index) => {
+    <ul
+      className={classnames(styles.mosaic, styles[layoutClassName], {
+        [styles.showMoreDesktop]: !!moreCountDesktop,
+      })}
+    >
+      {truncated.map((item, index) => {
         const attrs = {
           album,
           className: styles[`item${index + 1}`],
@@ -25,6 +43,16 @@ const Mosaic = ({ album, media }) => {
 
         return <ThumbOnly key={item.id} {...attrs} />;
       })}
+      {showMore && (
+        <li className={styles.more}>
+          {moreCountDesktop > 0 && (
+            <span className={styles.moreDesktop}>{`+${moreCountDesktop}`}</span>
+          )}
+          {moreCountMobile > 0 && (
+            <span className={styles.moreMobile}>{`+${moreCountMobile}`}</span>
+          )}
+        </li>
+      )}
     </ul>
   );
 };

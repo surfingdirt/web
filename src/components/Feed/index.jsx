@@ -126,11 +126,17 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
         .filter(({ itemType }) => itemType === COMMENT_ITEMTYPE)
         .map(({ item: i }) => i);
       const renderDate = comments.length > 1;
+
+      let commentType = type;
+      if (commentType === MEDIA_TYPE) {
+        commentType = item.mediaType.toLowerCase();
+      }
+
       attrs.content = (
         <CommentList
           className=""
           comments={comments}
-          type={type}
+          type={commentType}
           id={item.id}
           renderDate={renderDate}
         />
