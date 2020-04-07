@@ -25,6 +25,8 @@ const sizeMapping = {
 
 export const getInitialsData = (username) => {
   const initials = username
+    .trimStart()
+    .trimEnd()
     .split(' ')
     .reduce((acc, word) => `${acc}${word[0]}`, '')
     .slice(0, 2);
