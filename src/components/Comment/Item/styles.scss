@@ -36,6 +36,20 @@
       align-items: center;
       margin: $margin-small-4 0 $margin-small-3;
 
+      .metadataList {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li::after {
+          content: '.';
+        }
+
+        li:last-child::after {
+          content: none;
+        }
+      }
+
       .metadataText {
         color: $comment-metadata-text-color;
         font-size: $font-size-tiny;

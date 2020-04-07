@@ -28,7 +28,16 @@ const { NEUTRAL } = tones;
 const { COMMENT } = translateButtonTypes;
 const { SMALL } = userboxSizes;
 
-const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }) => {
+const CommentRaw = ({
+  className,
+  comment,
+  locale,
+  parentId,
+  parentType,
+  renderDate: shouldRenderDate,
+  t,
+  tag,
+}) => {
   const { features } = useContext(AppContext);
 
   const {
@@ -107,30 +116,24 @@ const CommentRaw = ({ className, comment, locale, parentId, parentType, t, tag }
           {content}
         </div>
         <div className={styles.metadata}>
-          <div className={styles.metadataText}>
+          <ul className={classnames(styles.metadataText, styles.metadataList)}>
             {showTranslateButton && (
-              <Fragment>
+              <li>
                 <TranslateButton
                   className={styles.metadataText}
                   type={COMMENT}
                   id={id}
                   targetLocale={locale}
                 />
-                <span aria-hidden className={styles.separator}>
-                  &bull;
-                </span>
-              </Fragment>
+              </li>
             )}
             {shouldRenderTone && (
-              <Fragment>
+              <li>
                 <span className={styles.tone}>{t(tone)}</span>
-                <span aria-hidden className={styles.separator}>
-                  &bull;
-                </span>
-              </Fragment>
+              </li>
             )}
-            {renderDate(date, locale)}
-          </div>
+            {shouldRenderDate && <li>{renderDate(date, locale)}</li>}
+          </ul>
           {showMenu && (
             <Menu
               menuId={COMMENT_MENU}
@@ -150,14 +153,16 @@ CommentRaw.propTypes = {
   className: PropTypes.string,
   comment: CommentType.isRequired,
   locale: PropTypes.string.isRequired,
-  t: PropTypes.func.isRequired,
-  tag: PropTypes.string,
   parentId: PropTypes.string.isRequired,
   parentType: PropTypes.string.isRequired,
+  renderDate: PropTypes.bool,
+  t: PropTypes.func.isRequired,
+  tag: PropTypes.string,
 };
 
 CommentRaw.defaultProps = {
   className: null,
+  renderDate: true,
   tag: 'li',
 };
 

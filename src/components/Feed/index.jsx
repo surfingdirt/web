@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import CommentList from 'Components/Comment/List';
 import Mosaic from 'Components/Media/Layouts/Mosaic';
 import Date from 'Components/Widgets/Date';
 import Translate from 'Hocs/Translate';
@@ -18,12 +19,21 @@ import styles from './styles.scss';
 
 const { COMMENT, MULTIPLE, PHOTO, VIDEO } = icons;
 
+const COMMENT_ITEMTYPE = 'comment';
+const PHOTO_ITEMTYPE = 'photo';
+const VIDEO_ITEMTYPE = 'video';
+
+const ALBUM_TYPE = 'Album';
+const COMMENT_TYPE = 'Comment';
+const MEDIA_TYPE = 'Media';
+const USER_TYPE = 'User';
+
 const iconSize = iconSizes.SMALL;
 
 const getIconFromSubItems = (subItems) => {
   let hasMultipleTypes = false;
   let lastType;
-  for (let i = 0, l = subItems.length; i < l; i++) {
+  for (let i = 0, l = subItems.length; i < l; i += 1) {
     const current = subItems[i];
     if (lastType && current.itemType !== lastType) {
       hasMultipleTypes = true;
@@ -37,14 +47,14 @@ const getIconFromSubItems = (subItems) => {
   }
 
   switch (lastType) {
-    case 'comment':
+    case COMMENT_ITEMTYPE:
       return getIcon({ type: COMMENT, presentationOnly: true, size: iconSize });
-    case 'photo':
+    case PHOTO_ITEMTYPE:
       return getIcon({ type: PHOTO, presentationOnly: true, size: iconSize });
-    case 'video':
+    case VIDEO_ITEMTYPE:
       return getIcon({ type: VIDEO, presentationOnly: true, size: iconSize });
     default:
-      throw new Error(`Unsupported subItem type '${type}'`);
+      throw new Error(`Unsupported subItem type '${lastType}'`);
   }
 };
 
@@ -97,23 +107,36 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
 
   if (subItems.length === 0) {
     // Render top-level items only
-    if (type === 'Album') {
+    if (type === ALBUM_TYPE) {
       attrs = getAlbumFeedEntryParts(date, item);
-    } else if (type === 'User') {
+    } else if (type === USER_TYPE) {
       attrs = getUserFeedEntryParts(date, item);
     } else {
       throw new Error(`Unsupported top-level item type '${type}'`);
     }
   } else {
     // Subitems are the main attraction here
-    if (type === 'Album') {
-      console.log('Rendering album subitems', subItems);
+    if (type === ALBUM_TYPE) {
       const media = subItems
-        .filter(({ itemType }) => ['photo', 'video'].includes(itemType))
-        .map(({ item }) => item);
+        .filter(({ itemType }) => [PHOTO_ITEMTYPE, VIDEO_ITEMTYPE].includes(itemType))
+        .map(({ item: i }) => i);
       attrs.content = <Mosaic album={item} media={media} />;
+    } else if (type === MEDIA_TYPE) {
+      const comments = subItems
+        .filter(({ itemType }) => itemType === COMMENT_ITEMTYPE)
+        .map(({ item: i }) => i);
+      const renderDate = comments.length > 1;
+      attrs.content = (
+        <CommentList
+          className=""
+          comments={comments}
+          type={type}
+          id={item.id}
+          renderDate={renderDate}
+        />
+      );
     } else {
-      attrs.content = <p>content not handled yet</p>;
+      throw new Error(`Unsupported top-level item type '${type}'`);
     }
     attrs.header = getHeaderFromSubItems(feedEntry, t);
     attrs.icon = getIconFromSubItems(subItems);

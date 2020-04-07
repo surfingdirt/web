@@ -11,7 +11,7 @@ import AppContext from '~/contexts';
 import messages from './messages';
 import styles from './styles.scss';
 
-const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
+const CommentListRaw = ({ className, comments, id, renderDate, singleColumn, type }) => {
   const { login } = useContext(AppContext);
   const accessToken = !!login.data.accessToken;
 
@@ -21,7 +21,14 @@ const CommentListRaw = ({ className, comments, id, singleColumn, type }) => {
     <div className={classnames(styles.wrapper, { [styles.twoColumns]: twoColumns })}>
       <ul className={classnames(styles.list, className)}>
         {comments.map((c) => (
-          <Comment comment={c} className={styles.item} key={c.id} parentType={type} parentId={id} />
+          <Comment
+            comment={c}
+            className={styles.item}
+            key={c.id}
+            parentType={type}
+            parentId={id}
+            renderDate={renderDate}
+          />
         ))}
       </ul>
       {accessToken && (
@@ -35,12 +42,14 @@ CommentListRaw.propTypes = {
   className: PropTypes.string,
   comments: PropTypes.arrayOf(CommentType).isRequired,
   id: PropTypes.string.isRequired,
+  renderDate: PropTypes.bool,
   singleColumn: PropTypes.bool,
   type: PropTypes.string.isRequired,
 };
 
 CommentListRaw.defaultProps = {
   className: null,
+  renderDate: true,
   singleColumn: false,
 };
 

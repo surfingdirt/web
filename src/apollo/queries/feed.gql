@@ -76,13 +76,32 @@ query{
 				text
 			}
 		}
-		... on Comment{
-		  id
-		  content {
-			text
-		  }
+		... on Comment {
+            actions {
+                delete
+                edit
+            }
+            id
+            content {
+                locale
+                original
+                text
+            }
+            date
+            submitter {
+                userId
+                username
+                avatar {
+                    size
+                    width
+                    height
+                    type
+                    url
+                }
+            }
+            tone
 		}
-		... on Media{
+		... on Media {
 		  id
 		  title {
 			text
@@ -118,10 +137,29 @@ query{
 		item {
           __typename
           ... on Comment{
+            actions {
+                delete
+                edit
+            }
             id
             content {
-              text
+                locale
+                original
+                text
             }
+            date
+            submitter {
+                userId
+                username
+                avatar {
+                    size
+                    width
+                    height
+                    type
+                    url
+                }
+            }
+            tone
           }
           ... on Media{
             id
