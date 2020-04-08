@@ -64,10 +64,19 @@ const getHeaderFromSubItems = ({ item, subItems }, t) => {
     photo: 'newPhotos',
     video: 'newVideos',
   };
-  const routeMap = {
-    Album: albumRoute,
-    Photo: photoRoute,
-    Video: videoRoute,
+
+  const getItemLink = ({ id, __typename: type, mediaType }) => {
+    switch (type) {
+      case ALBUM_TYPE:
+        return albumRoute(id);
+      case MEDIA_TYPE:
+        if (mediaType === 'photo') {
+          return photoRoute(id);
+        }
+        return videoRoute(id);
+      default:
+        throw new Error(`Unsupported type '${type}'`);
+    }
   };
 
   const contentEntries = Object.entries(
@@ -91,7 +100,7 @@ const getHeaderFromSubItems = ({ item, subItems }, t) => {
     <Fragment>
       <ul className={styles.headerChildrenList}>{contentEntries}</ul>
       <span className={styles.addedTo}>{t('addedTo')}</span>
-      <Link title={title} to={routeMap[item.__typename]}>
+      <Link title={title} to={getItemLink(item)}>
         {title}
       </Link>
     </Fragment>

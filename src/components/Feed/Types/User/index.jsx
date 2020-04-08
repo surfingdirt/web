@@ -29,9 +29,9 @@ RawHeader.propTypes = {
 const Header = Translate(messages)(RawHeader);
 
 export const getUserFeedEntryParts = (date, user) => {
-  const { bio, cover, userId, username } = user;
+  const { bio, userId, username } = user;
 
-  if (bio && cover) {
+  if (bio.text) {
     return {
       content: <Presentation user={user} bareContent />,
       header: <Header user={user} userId={userId} username={username} />,
