@@ -9,7 +9,7 @@ $gutter-mobile: $margin-small-3;
 $gutter-desktop: $margin-big;
 $more-display: inline-flex;
 
-$narrow-width: $tablet-max;
+$narrow-width: $mobile-layout-threshold-max;
 
 .mosaic {
   display: grid;

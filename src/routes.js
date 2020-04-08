@@ -7,6 +7,7 @@ const routes = {
   COMMENT_EDIT: '/edit-comment/:id',
   CONTACT: '/contact',
   CONFIRM_EMAIL: '/confirm-email',
+  DISCOVER: '/discover',
   ERROR: '/error/:id/:message',
   FEED: '/feed',
   LOST_PASSWORD: '/lost-password',

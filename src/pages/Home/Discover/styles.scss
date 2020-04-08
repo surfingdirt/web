@@ -1,7 +1,7 @@
-@import '../../styles/boxmodel';
-@import '../../styles/colors';
-@import '../../styles/font-sizes';
-@import '../../styles/media-queries';
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+@import '../../../styles/font-sizes';
+@import '../../../styles/media-queries';
 
 $cover-card-height: 30vh;
 $cover-card-content-distance: $margin-medium-2;
@@ -40,7 +40,7 @@ $cover-card-content-distance-desktop: $margin-very-big;
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('../../images/home-cover-s.jpg');
+    background-image: url('../../../images/home-cover-s.jpg');
   }
 
   .splashLogo {

@@ -27,6 +27,8 @@ const AppRoutes = () => {
 
       <Switch>
         <DefaultLayoutRoute exact path={routes.HOME} component={pages.Home} />
+        <DefaultLayoutRoute path={routes.DISCOVER} component={pages.Home} />
+        <DefaultLayoutRoute path={routes.FEED} component={pages.Home} />
 
         <DefaultLayoutRoute path={routes.ABOUT} component={pages.About} />
         <DefaultLayoutRoute path={routes.ALBUM} component={pages.Album} exact />
@@ -50,7 +52,6 @@ const AppRoutes = () => {
         />
         <DefaultLayoutRoute path={routes.CONFIRM_EMAIL} component={pages.ConfirmEmail} />
         <DefaultLayoutRoute path={routes.ERROR} component={pages.Error} />
-        <DefaultLayoutRoute path={routes.FEED} component={pages.Feed} />
         <DefaultLayoutRoute path={routes.LOGIN} component={pages.LogIn} login={FORBIDDEN} />
         <DefaultLayoutRoute
           path={routes.LOST_PASSWORD}
@@ -101,7 +102,6 @@ const AppRoutes = () => {
           component={pages.NewVideo}
           login={MANDATORY}
         />
-
         <DefaultLayoutRoute component={Page404} />
       </Switch>
     </Fragment>

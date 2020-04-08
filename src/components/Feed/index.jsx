@@ -163,7 +163,6 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
 
 const Feed = ({ entries, locale, t }) => (
   <Fragment>
-    <h1>Feed</h1>
     <ul className={styles.feed}>
       {entries.map((entry) => {
         const attrs = getAttrsFromFedEntry(entry, locale, t);
