@@ -24,7 +24,7 @@ const Mosaic = ({ album, media }) => {
     media.length > MAX_MOSAIC_CELL_COUNT_MOBILE
       ? media.length - (MAX_MOSAIC_CELL_COUNT_MOBILE - 1)
       : 0;
-  const showMore = moreCountMobile || moreCountDesktop;
+  const showMore = !!(moreCountMobile || moreCountDesktop);
 
   return (
     <ul

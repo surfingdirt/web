@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import MediaOverlay from 'Components/Media/MediaOverlay';
 import MediaThumb from 'Components/Media/MediaThumb/index';
@@ -11,7 +12,8 @@ import Date from 'Components/Widgets/Date';
 import { userboxSizes } from 'Components/User/Userbox';
 import WithModal from 'Hocs/WithModal';
 import Translate from 'Hocs/Translate';
-import { mediaPageSize } from 'Utils/media';
+import { photoRoute, videoRoute } from 'Utils/links';
+import { mediaPageSize, mediaTypes } from 'Utils/media';
 import { AlbumType, MediaType } from 'Utils/types';
 
 import messages from './messages';
@@ -20,6 +22,7 @@ import styles from './styles.scss';
 const { HERO } = modalTypes;
 const countItems = mediaPageSize;
 const { SMALL } = userboxSizes;
+const { PHOTO } = mediaTypes;
 
 const DetailsFull = ({ album, className, item, index, locale, media, t }) => {
   const {
@@ -34,6 +37,7 @@ const DetailsFull = ({ album, className, item, index, locale, media, t }) => {
     thumbs,
   } = item;
   const attrs = { className: styles.link, id, mediaType, title, thumbs };
+  const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
 
   const ThumbWithModal = WithModal({
     ariaLabel: t('mediaPreviewModal'),
@@ -47,7 +51,11 @@ const DetailsFull = ({ album, className, item, index, locale, media, t }) => {
     <article className={classnames(styles.wrapper, className)}>
       <MediaThumb {...attrs} objectFit />
       <div className={styles.info}>
-        {title && <h1 className={styles.title}>{title}</h1>}
+        {title && (
+          <Link to={to}>
+            <h1 className={styles.title}>{title}</h1>
+          </Link>
+        )}
         <div className={classnames(styles.metadata, { [styles.bottom]: !title })}>
           <Attribution
             className={styles.attribution}
@@ -68,6 +76,7 @@ DetailsFull.propTypes = {
   album: AlbumType.isRequired,
   className: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  locale: PropTypes.string.isRequired,
   item: MediaType.isRequired,
   media: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   t: PropTypes.func.isRequired,

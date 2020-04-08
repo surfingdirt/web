@@ -70,7 +70,7 @@ const getHeaderFromSubItems = ({ item, subItems }, t) => {
       case ALBUM_TYPE:
         return albumRoute(id);
       case MEDIA_TYPE:
-        if (mediaType === 'photo') {
+        if (mediaType.toLowerCase() === 'photo') {
           return photoRoute(id);
         }
         return videoRoute(id);

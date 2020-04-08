@@ -9,17 +9,14 @@ $gutter-mobile: $margin-small-3;
 $gutter-desktop: $margin-big;
 $more-display: inline-flex;
 
+$narrow-width: $tablet-max;
+
 .mosaic {
   display: grid;
   margin: 0;
   padding: 0;
   list-style: none;
   grid-gap: $gutter-mobile;
-  grid-auto-rows: 12vmin;
-
-  @media (max-width: $tablet-max) {
-    grid-auto-rows: 12vmax;
-  }
 
   .more {
     align-items: center;
@@ -31,13 +28,13 @@ $more-display: inline-flex;
     display: none;
 
     .moreDesktop {
-      @media (max-width: $tablet-max) {
+      @media (max-width: $narrow-width) {
         display: none;
       }
     }
     .moreMobile {
       display: none;
-      @media (max-width: $tablet-max) {
+      @media (max-width: $narrow-width) {
         display: initial;
       }
     }
@@ -45,19 +42,37 @@ $more-display: inline-flex;
 
   &.grid-1-items {
     @extend .grid-1-cell;
+
+    grid-auto-rows: 50vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 50vmax;
+    }
   }
   &.grid-2-items {
     @extend .grid-2-cell;
+
+    grid-auto-rows: 25vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 25vmax;
+    }
   }
   &.grid-3-items {
     @extend .grid-3-cell;
+
+    grid-auto-rows: 25vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 25vmax;
+    }
   }
   &.grid-4-items {
     @include grid4Cell;
   }
   &.grid-5-items {
     @extend .grid-5-cell;
-    @media (max-width: $tablet-max) {
+    grid-auto-rows: 25vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 25vmax;
+
       @include grid4Cell;
       .item4,
       .item5 {
@@ -70,7 +85,9 @@ $more-display: inline-flex;
   }
   &.grid-6-items {
     @extend .grid-6-cell;
-    @media (max-width: $tablet-max) {
+    grid-auto-rows: 25vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 25vmax;
       @include grid4Cell;
       .item4,
       .item5,
@@ -93,14 +110,16 @@ $more-display: inline-flex;
       .more {
         display: $more-display;
         grid-area: item7;
-        @media (max-width: $tablet-max) {
+        @media (max-width: $narrow-width) {
           // This is to make sure we comply with the mobile rule below
           grid-area: item4;
         }
       }
     }
 
-    @media (max-width: $tablet-max) {
+    grid-auto-rows: 12.5vmin;
+    @media (max-width: $narrow-width) {
+      grid-auto-rows: 12.5vmax;
       @include grid4Cell;
       .item4,
       .item5,

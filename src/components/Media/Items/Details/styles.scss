@@ -1,4 +1,5 @@
 @import '../../../../styles/boxmodel';
+@import '../../../../styles/colors';
 @import '../../../../styles/font-faces';
 @import '../../../../styles/font-sizes';
 @import '../../../../styles/utils';
@@ -22,6 +23,7 @@
   .title {
     font-family: $title-font-families;
     font-size: $font-size-medium;
+    color: $text-color-default;
     @include lineclamp(3);
   }
 
