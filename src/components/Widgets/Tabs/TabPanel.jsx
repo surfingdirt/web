@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
+
+import styles from './styles.scss';
 
 const TabPanel = ({ children, className, id, label }) => (
   <div
@@ -8,7 +11,7 @@ const TabPanel = ({ children, className, id, label }) => (
     id={id}
     role="tabpanel"
     tabIndex="0"
-    className={className}
+    className={classnames(styles.tabPanel, className)}
   >
     {children}
   </div>
@@ -17,14 +20,12 @@ const TabPanel = ({ children, className, id, label }) => (
 TabPanel.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]).isRequired,
   className: PropTypes.string,
-  defaultTab: PropTypes.bool,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 };
 
 TabPanel.defaultProps = {
   className: null,
-  defaultTab: false,
 };
 
 export default TabPanel;

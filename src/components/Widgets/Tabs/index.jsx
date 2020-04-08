@@ -93,7 +93,7 @@ const Tabs = ({ ariaLabel, children, history, location, reverseTabOrder, url }) 
 
   return (
     <div aria-label={ariaLabel} className={styles.tabs}>
-      <div className={styles.tabsList} role="tablist">
+      <div className={styles.tabList} role="tablist">
         {tabs.map((tab, tabIndex) => {
           const { id: tabId, label: tabLabel, className: tabClassName } = tab.props;
           const to = getTabLink(tabIndex, tabId);
@@ -102,7 +102,7 @@ const Tabs = ({ ariaLabel, children, history, location, reverseTabOrder, url }) 
               to={to}
               aria-controls={tabId}
               id={tabId}
-              className={classnames(styles.tabItem, tabClassName)}
+              className={classnames(styles.tab, tabClassName)}
               aria-selected={tabIndex === selectedIndex}
               key={tabId}
               onClick={(e) => handleClick(e, tab)}
