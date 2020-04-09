@@ -213,7 +213,6 @@ class Layout extends React.Component {
         <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
 
         <MoreLinkNavigation
-          actionClassName={styles.actions}
           actionItems={actionItems}
           className={classnames(styles.navigation, styles.navigationRight)}
           currentUrl={url}

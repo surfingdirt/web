@@ -58,7 +58,7 @@
 }
 
 /******************************************************************************
- * HEADER, MAIN, NAVIGATION & ACTIONS
+ * HEADER, MAIN, NAVIGATION
  *****************************************************************************/
 
 .main {
@@ -67,10 +67,6 @@
 }
 
 @media (max-width: $mobile-layout-threshold-max) {
-  .actions {
-    display: none;
-  }
-
   .navigation {
     position: fixed;
     z-index: $z-index-navigation-menu;
@@ -113,16 +109,8 @@
     min-height: 100vh;
   }
 
-  .navigation,
-  .actions {
-    flex: 0 0;
-  }
-
-  .actions {
-    margin: 0;
-  }
-
   .navigation {
+    flex: 0 0;
     margin: $masthead-height 0 0;
     display: flex;
     justify-content: center;
@@ -139,10 +127,6 @@
       height: initial;
     }
   }
-
-  .actions {
-    flex-basis: $rhs-width-small;
-  }
 }
 
 @media (min-width: $desktop-big) {
@@ -152,10 +136,6 @@
 
   .navigation {
     flex-basis: $lhs-width-big;
-  }
-
-  .actions {
-    flex-basis: $rhs-width-medium;
   }
 }
 

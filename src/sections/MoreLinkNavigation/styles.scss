@@ -71,4 +71,8 @@ $footer-height: 2.5rem;
   }
 }
 
-
+@media (max-width: $mobile-layout-threshold-max) {
+  .actions {
+    display: none;
+  }
+}

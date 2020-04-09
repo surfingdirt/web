@@ -21,7 +21,6 @@ const { STANDARD } = sizes;
 
 class MoreLinkNavigationRaw extends React.Component {
   static propTypes = {
-    actionClassName: PropTypes.string.isRequired,
     actionItems: PropTypes.arrayOf(
       PropTypes.shape({
         to: PropTypes.string.isRequired,
@@ -45,7 +44,6 @@ class MoreLinkNavigationRaw extends React.Component {
 
   render() {
     const {
-      actionClassName,
       actionItems,
       className,
       currentUrl,
@@ -76,7 +74,7 @@ class MoreLinkNavigationRaw extends React.Component {
                 </li>
               ))}
             </ul>
-            <Actions className={actionClassName} items={actionItems} label={t('actionNav')} />
+            <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
           </div>
 
           <Footer className={styles.footer} />
