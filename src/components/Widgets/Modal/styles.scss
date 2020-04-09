@@ -75,8 +75,8 @@ $title-line-count: 2;
     right: 0;
     bottom: 0;
     @media screen and (min-width: $desktop-min) {
-      $width: 80vw;
-      max-height: 80vh;
+      $width: 100vmin;
+      max-height: 100vmin;
       top: 50%;
       left: 50%;
       right: auto;
