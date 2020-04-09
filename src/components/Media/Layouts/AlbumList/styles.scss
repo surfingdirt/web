@@ -7,6 +7,27 @@
   padding: 0;
   list-style: none;
 
+  & > * {
+    display: inline-block;
+    width: 100%;
+    @media (min-width: $desktop-small) {
+      width: 50%;
+    }
+  }
+
+  @supports (display: grid) {
+    display: grid;
+    grid-gap: $margin-small-2;
+    grid-template-columns: 100%;
+    @media (min-width: $desktop-small) {
+      grid-template-columns: 50% 50%;
+    }
+
+    & > * {
+      width: 100%;
+    }
+  }
+
   .item {
     margin: $margin-small-1 0;
   }
