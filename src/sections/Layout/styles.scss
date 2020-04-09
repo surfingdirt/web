@@ -115,11 +115,15 @@
 
   .navigation,
   .actions {
-    margin: $masthead-height 0 0;
     flex: 0 0;
   }
 
+  .actions {
+    margin: 0;
+  }
+
   .navigation {
+    margin: $masthead-height 0 0;
     display: flex;
     justify-content: center;
     flex-basis: $lhs-width-small;
@@ -138,10 +142,6 @@
 
   .actions {
     flex-basis: $rhs-width-small;
-    & > * {
-      position: fixed;
-      bottom: 0;
-    }
   }
 }
 

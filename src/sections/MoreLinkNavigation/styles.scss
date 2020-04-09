@@ -33,13 +33,16 @@ $footer-height: 2.5rem;
   order: 3;
 }
 
-.linkList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: $margin-medium-2 0;
-  padding: 0;
+.topNavWrapper {
   order: 2;
+
+  .linkList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: $margin-medium-2 0;
+    padding: 0;
+  }
 }
 
 .footer {
@@ -62,7 +65,7 @@ $footer-height: 2.5rem;
     flex-grow: 0;
   }
 
-  .linkList {
+  .topNavWrapper {
     order: initial;
     flex-grow: 1;
   }

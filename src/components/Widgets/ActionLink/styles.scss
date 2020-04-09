@@ -12,9 +12,6 @@
   margin: $margin-small-3 $margin-small-3 0;
   color: $action-bar-button-label-color;
   font-size: $font-size-small;
-  @media (max-width: $desktop-big) {
-    display: none;
-  }
 }
 
 .defaultIcon {
@@ -27,17 +24,4 @@
   background-color: $actionlink-color-inverted;
   padding: .5rem;
   box-sizing: content-box;
-}
-
-@media (min-width: $desktop-big) {
-  .defaultIcon {
-    width: $standardIconSize;
-    padding: .75rem;
-  }
-}
-
-@media (min-width: $desktop-max) {
-  .defaultIcon {
-    border-width: 3px;
-  }
 }

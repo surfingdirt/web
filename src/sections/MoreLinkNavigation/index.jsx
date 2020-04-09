@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
 import NavigationLink from 'Components/Widgets/NavigationLink';
+import Actions from 'Sections/Actions';
 import Footer from 'Sections/Footer';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
@@ -20,6 +21,14 @@ const { STANDARD } = sizes;
 
 class MoreLinkNavigationRaw extends React.Component {
   static propTypes = {
+    actionClassName: PropTypes.string.isRequired,
+    actionItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        to: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
     t: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -36,6 +45,8 @@ class MoreLinkNavigationRaw extends React.Component {
 
   render() {
     const {
+      actionClassName,
+      actionItems,
       className,
       currentUrl,
       id,
@@ -57,14 +68,19 @@ class MoreLinkNavigationRaw extends React.Component {
         aria-label={t('linkNav')}
       >
         <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
-          <ul className={styles.linkList}>
-            {items.map((props) => (
-              <li key={props.to}>
-                <NavigationLink {...props} active={props.to === currentUrl} />
-              </li>
-            ))}
-          </ul>
+          <div className={styles.topNavWrapper}>
+            <ul className={styles.linkList}>
+              {items.map((props) => (
+                <li key={props.to}>
+                  <NavigationLink {...props} active={props.to === currentUrl} />
+                </li>
+              ))}
+            </ul>
+            <Actions className={actionClassName} items={actionItems} label={t('actionNav')} />
+          </div>
+
           <Footer className={styles.footer} />
+
           <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
             {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
           </button>

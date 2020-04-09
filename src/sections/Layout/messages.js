@@ -6,10 +6,6 @@ const messages = (getText, getPlural) => (key) =>
       'Account',
       'NavigationProfile',
     ) /* Label for a menu to manage the user's account */,
-    actionNav: getText(
-      'Actions',
-      'Page Layout',
-    ) /* Label for a navigation section containing links to add new items */,
     actionButton: getText(
       'Add',
       'Page Layout',

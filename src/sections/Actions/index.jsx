@@ -8,7 +8,7 @@ import styles from './styles.scss';
 
 const Actions = ({ className, items, label }) => {
   return (
-    <nav className={classnames(styles.wrapper, className)} aria-label={label}>
+    <div className={classnames(styles.wrapper, className)} aria-label={label}>
       <ul className={styles.linkList}>
         {items.map((item) => (
           <li key={item.to}>
@@ -16,7 +16,7 @@ const Actions = ({ className, items, label }) => {
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   );
 };
 

@@ -213,9 +213,11 @@ class Layout extends React.Component {
         <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
 
         <MoreLinkNavigation
+          actionClassName={styles.actions}
+          actionItems={actionItems}
           className={classnames(styles.navigation, styles.navigationRight)}
-          id={MORE_NAVIGATION_ID}
           currentUrl={url}
+          id={MORE_NAVIGATION_ID}
           onCloseClick={this.closeMoreNavigationMenu}
           openClassName={styles.navigationOpen}
           openOnMobile={moreNavigationMenuOpen}
@@ -236,8 +238,6 @@ class Layout extends React.Component {
         <main ref={this.mainRef} className={styles.main} aria-label={t('mainAriaLabel')}>
           {children}
         </main>
-
-        <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
 
         <BottomBar {...bottomBarProps} />
 
