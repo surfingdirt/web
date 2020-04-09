@@ -11,9 +11,17 @@ import AppContext from '~/contexts';
 import messages from './messages';
 import styles from './styles.scss';
 
-const CommentListRaw = ({ className, comments, id, renderDate, singleColumn, type }) => {
+const CommentListRaw = ({
+  className,
+  comments,
+  id,
+  renderDate,
+  showCommentForm,
+  singleColumn,
+  type,
+}) => {
   const { login } = useContext(AppContext);
-  const accessToken = !!login.data.accessToken;
+  const loggedIn = !!login.data.accessToken;
 
   const twoColumns = !singleColumn;
 
@@ -31,7 +39,7 @@ const CommentListRaw = ({ className, comments, id, renderDate, singleColumn, typ
           />
         ))}
       </ul>
-      {accessToken && (
+      {showCommentForm && loggedIn && (
         <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />
       )}
     </div>
@@ -43,6 +51,7 @@ CommentListRaw.propTypes = {
   comments: PropTypes.arrayOf(CommentType).isRequired,
   id: PropTypes.string.isRequired,
   renderDate: PropTypes.bool,
+  showCommentForm: PropTypes.bool,
   singleColumn: PropTypes.bool,
   type: PropTypes.string.isRequired,
 };
@@ -50,6 +59,7 @@ CommentListRaw.propTypes = {
 CommentListRaw.defaultProps = {
   className: null,
   renderDate: true,
+  showCommentForm: true,
   singleColumn: false,
 };
 

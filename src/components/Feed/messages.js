@@ -1,5 +1,7 @@
 const messages = (getText, getPlural) => (key) =>
   ({
+    reply: getText('Reply', 'Comments') /* Label for a button to post a comment */,
+
     newAlbum: getText('New album', 'Feed') /* Indicates a new album was created */,
     newComment: getText('New comment', 'Feed') /* Indicates a new comment was posted */,
     newPhoto: getText('New photo', 'Feed') /* Indicates a new photo was posted */,

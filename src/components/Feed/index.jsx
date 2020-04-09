@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import icons, { getIcon } from 'Utils/icons';
 import iconSizes from 'Utils/iconSizes';
 import { albumRoute, photoRoute, videoRoute } from 'Utils/links';
 import { FeedEntryType } from 'Utils/types';
+import AppContext from '~/contexts';
 
 import FeedEntryWrapper from './FeedEntryWrapper';
 import { getAlbumFeedEntryParts } from './Types/Album';
@@ -29,6 +30,20 @@ const MEDIA_TYPE = 'Media';
 const USER_TYPE = 'User';
 
 const iconSize = iconSizes.SMALL;
+
+const getItemLink = ({ id, __typename: type, mediaType }) => {
+  switch (type) {
+    case ALBUM_TYPE:
+      return albumRoute(id);
+    case MEDIA_TYPE:
+      if (mediaType.toLowerCase() === 'photo') {
+        return photoRoute(id);
+      }
+      return videoRoute(id);
+    default:
+      throw new Error(`Unsupported type '${type}'`);
+  }
+};
 
 const getIconFromSubItems = (subItems) => {
   let hasMultipleTypes = false;
@@ -65,20 +80,6 @@ const getHeaderFromSubItems = ({ item, subItems }, t) => {
     video: 'newVideos',
   };
 
-  const getItemLink = ({ id, __typename: type, mediaType }) => {
-    switch (type) {
-      case ALBUM_TYPE:
-        return albumRoute(id);
-      case MEDIA_TYPE:
-        if (mediaType.toLowerCase() === 'photo') {
-          return photoRoute(id);
-        }
-        return videoRoute(id);
-      default:
-        throw new Error(`Unsupported type '${type}'`);
-    }
-  };
-
   const contentEntries = Object.entries(
     subItems.reduce((acc, { itemType }) => {
       if (typeof acc[itemType] === 'undefined') {
@@ -107,7 +108,7 @@ const getHeaderFromSubItems = ({ item, subItems }, t) => {
   );
 };
 
-const getAttrsFromFedEntry = (feedEntry, locale, t) => {
+const getAttrsFromFedEntry = (feedEntry, locale, t, loggedIn) => {
   let attrs = {};
 
   const { date, item, subItems } = feedEntry;
@@ -142,13 +143,21 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
       }
 
       attrs.content = (
-        <CommentList
-          className=""
-          comments={comments}
-          type={commentType}
-          id={item.id}
-          renderDate={renderDate}
-        />
+        <Fragment>
+          <CommentList
+            className=""
+            comments={comments.slice().reverse()}
+            id={item.id}
+            renderDate={renderDate}
+            showCommentForm={false}
+            type={commentType}
+          />
+          {loggedIn && (
+            <Link className={styles.reply} to={getItemLink(item)}>
+              {t('reply')}
+            </Link>
+          )}
+        </Fragment>
       );
     } else {
       throw new Error(`Unsupported top-level item type '${type}'`);
@@ -161,20 +170,31 @@ const getAttrsFromFedEntry = (feedEntry, locale, t) => {
   return attrs;
 };
 
-const Feed = ({ entries, locale, t }) => (
-  <Fragment>
-    <ul className={styles.feed}>
-      {entries.map((entry) => {
-        const attrs = getAttrsFromFedEntry(entry, locale, t);
-        return (
-          <li className={styles.feedEntry} key={entry.date}>
-            <FeedEntryWrapper {...attrs} />
-          </li>
-        );
-      })}
-    </ul>
-  </Fragment>
-);
+const Feed = ({ entries, locale, t }) => {
+  const {
+    login: {
+      data: {
+        me: { username },
+      },
+    },
+  } = useContext(AppContext);
+  const loggedIn = !!username;
+
+  return (
+    <Fragment>
+      <ul className={styles.feed}>
+        {entries.map((entry) => {
+          const attrs = getAttrsFromFedEntry(entry, locale, t, loggedIn);
+          return (
+            <li className={styles.feedEntry} key={entry.date}>
+              <FeedEntryWrapper {...attrs} />
+            </li>
+          );
+        })}
+      </ul>
+    </Fragment>
+  );
+};
 
 Feed.propTypes = {
   entries: PropTypes.arrayOf(FeedEntryType).isRequired,
