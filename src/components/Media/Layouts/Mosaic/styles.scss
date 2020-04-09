@@ -79,6 +79,7 @@ $narrow-width: $mobile-layout-threshold-max;
         display: none;
       }
       .more {
+        display: $more-display;
         grid-area: item4;
       }
     }
@@ -95,6 +96,7 @@ $narrow-width: $mobile-layout-threshold-max;
         display: none;
       }
       .more {
+        display: $more-display;
         grid-area: item4;
       }
     }
