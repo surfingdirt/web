@@ -1,4 +1,4 @@
-const fs = require('fs');
+`const fs = require('fs');
 const { GettextExtractor, JsExtractors } = require('gettext-extractor');
 
 const OUTPUT_FOLDER = './src/translations';
