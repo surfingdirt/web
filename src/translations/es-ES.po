@@ -858,7 +858,7 @@ msgctxt "Feed"
 msgid "1 new comment"
 msgid_plural "123 new comments"
 msgstr[0] "1 comentario nuevo"
-msgstr[1] ""
+msgstr[1] "123 comentarios nuevos"
 
 #: src/components/Feed/messages.js:19
 #. Indicates how many new photos were posted
