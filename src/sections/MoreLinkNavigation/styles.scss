@@ -11,16 +11,18 @@ $footer-height: 2.5rem;
 }
 
 .background {
-  border: 1px solid $card-border-color;
-  border-bottom: 0;
-  border-radius: 3px 0 0 3px;
-
   background-color: $container-background-color-default;
   position: fixed;
   top: $masthead-height + $content-gap;
   bottom: 0;
   height: initial;
   width: $lhs-width-small;
+
+  @media (min-width: $desktop-min) {
+    border: 1px solid $card-border-color;
+    border-bottom: 0;
+    border-radius: 3px 0 0 3px;
+  }
 
   @media (min-width: $desktop-big) {
     width: $lhs-width-big;

@@ -33,6 +33,7 @@ $tab-width: 10rem;
     margin: 0 $margin-medium-2;
     padding: 0;
     text-align: center;
+    text-transform: uppercase;
 
     &[aria-selected='true' ] {
       border-bottom: $list-border-width solid $tabs-tab-selected-border;
@@ -53,25 +54,5 @@ $tab-width: 10rem;
 
   &.bareHeader {
     margin: 0;
-  }
-}
-
-/* Media Queries */
-@media (max-width: $mobile-layout-threshold-max) {
-  .tabList {
-    border-bottom: 2px solid $tabs-mobile-border-color;
-    font-size: $font-size-small;
-    justify-content: center;
-    width: 100%;
-
-    .tab {
-      margin: 0 $margin-small-2;
-      padding: 0 0 0.5rem;
-      text-transform: uppercase;
-
-      &[aria-selected='true' ] {
-        margin-bottom: -2px;
-      }
-    }
   }
 }

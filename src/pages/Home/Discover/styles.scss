@@ -61,11 +61,12 @@ $cover-card-content-distance-desktop: $margin-very-big;
 .intro {
   max-width: 50rem;
   margin: 0 auto;
+  padding: 0 $padding-small-1 $padding-small-1;
 }
 
 .introSummary {
   display: block;
-  margin: $margin-small-1 0;
+  margin: $margin-small-1 0 0;
   cursor: pointer;
   &::-webkit-details-marker {
     display: none;
@@ -97,4 +98,8 @@ $cover-card-content-distance-desktop: $margin-very-big;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.lastParagraph {
+  margin-bottom: 0;
 }

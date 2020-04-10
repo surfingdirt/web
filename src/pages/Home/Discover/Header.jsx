@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Heading, { headingTypes } from 'Components/Widgets/Heading';
 import Logo, { logoTypes } from 'Components/Widgets/Logo';
@@ -21,27 +22,27 @@ const DiscoverHeader = ({ t }) => (
       <Logo type={NO_TEXT} className={styles.splashLogo} title="" />
       <div className={styles.coverImage} />
     </div>
-    <div>
-      <details className={styles.intro}>
-        <summary className={styles.introSummary}>
-          <Paragraph className={styles.introParagraph} dataContent={t('more')}>
-            {t('paragraph1a')}
-          </Paragraph>
-        </summary>
-
-        <Paragraph withDropCap className={styles.columns}>
-          {t('paragraph1b')}
+    <details className={styles.intro}>
+      <summary className={styles.introSummary}>
+        <Paragraph className={styles.introParagraph} dataContent={t('more')}>
+          {t('paragraph1a')}
         </Paragraph>
+      </summary>
 
-        <Heading type={SECONDARY} className={styles.title2}>
-          {t('title2')}
-        </Heading>
-        <Paragraph className={styles.columns}>{t('paragraph2')}</Paragraph>
+      <Paragraph withDropCap className={styles.columns}>
+        {t('paragraph1b')}
+      </Paragraph>
 
-        <Heading type={SECONDARY}>{t('title3')}</Heading>
-        <Paragraph className={styles.columns}>{t('paragraph3')}</Paragraph>
-      </details>
-    </div>
+      <Heading type={SECONDARY} className={styles.title2}>
+        {t('title2')}
+      </Heading>
+      <Paragraph className={styles.columns}>{t('paragraph2')}</Paragraph>
+
+      <Heading type={SECONDARY}>{t('title3')}</Heading>
+      <Paragraph className={classnames(styles.columns, styles.lastParagraph)}>
+        {t('paragraph3')}
+      </Paragraph>
+    </details>
   </Fragment>
 );
 
