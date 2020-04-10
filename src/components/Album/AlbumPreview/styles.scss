@@ -29,10 +29,6 @@ $height5: $width5 / $aspect-ratio;
 
 .wrapper {
   margin: $margin-medium-1 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }
 
 .separator {

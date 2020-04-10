@@ -65,6 +65,8 @@ $cover-card-content-distance-desktop: $margin-very-big;
 
 .introSummary {
   display: block;
+  margin: $margin-small-1 0;
+  cursor: pointer;
   &::-webkit-details-marker {
     display: none;
   }

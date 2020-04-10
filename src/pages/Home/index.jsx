@@ -9,9 +9,10 @@ import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 
 import Discover from './Discover';
+import DiscoverHeader from './Discover/Header';
 import Feed from './Feed';
+import FeedHeader from './Feed/Header';
 import messages from './messages';
-import styles from './styles.scss';
 
 const Home = ({ t }) => {
   const {
@@ -30,10 +31,16 @@ const Home = ({ t }) => {
         <title>Surfing Dirt</title>
       </Helmet>
       <Tabs ariaLabel={t('tabsLabel')} url="" reverseTabOrder={loggedIn}>
-        <TabPanel label={t('discover')} id="discover" defaultTab={!loggedIn}>
+        <TabPanel
+          label={t('discover')}
+          id="discover"
+          defaultTab={!loggedIn}
+          header={<DiscoverHeader />}
+          bareHeader
+        >
           <Discover />
         </TabPanel>
-        <TabPanel label={t('feed')} id="feed" defaultTab={loggedIn}>
+        <TabPanel label={t('feed')} id="feed" defaultTab={loggedIn} header={<FeedHeader />}>
           <Feed />
         </TabPanel>
       </Tabs>

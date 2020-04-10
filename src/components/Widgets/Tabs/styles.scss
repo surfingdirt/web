@@ -4,32 +4,38 @@
 @import '../../../styles/constants';
 @import '../../../styles/media-queries';
 
+$list-border-width: 3px;
+$tab-width: 10rem;
+
 .tabs {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: $margin-medium-2 0;
-  width: 100%;
+  margin-bottom: $margin-small-2;
 }
 
 .tabList {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  border-bottom: $list-border-width solid rgba($card-border-color, .5);
 
   .tab {
+    position: relative;
+    top: $list-border-width;
+    display: inline-block;
+    width: $tab-width;
+    line-height: 2.5rem;
     align-items: center;
     background: transparent;
     border: 0;
     color: $tabs-tab-color;
     cursor: pointer;
-    display: flex;
     font-weight: bold;
     margin: 0 $margin-medium-2;
     padding: 0;
     text-align: center;
 
     &[aria-selected='true' ] {
-      border-bottom: 2px solid $tabs-tab-selected-border;
-      color: $tabs-tab-selected-color;
+      border-bottom: $list-border-width solid $tabs-tab-selected-border;
     }
 
     &:first-child {
@@ -39,6 +45,14 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+}
+
+.header {
+  margin: $margin-small-2;
+
+  &.bareHeader {
+    margin: 0;
   }
 }
 

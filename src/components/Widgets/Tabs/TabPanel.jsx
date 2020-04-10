@@ -18,14 +18,18 @@ const TabPanel = ({ children, className, id, label }) => (
 );
 
 TabPanel.propTypes = {
+  bareHeader: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]).isRequired,
   className: PropTypes.string,
+  header: PropTypes.node,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 };
 
 TabPanel.defaultProps = {
+  bareHeader: false,
   className: null,
+  header: null,
 };
 
 export default TabPanel;

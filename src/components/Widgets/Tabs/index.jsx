@@ -1,11 +1,14 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, createRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link, withRouter } from 'react-router-dom';
 
+import Card, { cardTypes } from 'Components/Widgets/Card';
 import * as keycode from 'Utils/keycodes';
 
 import styles from './styles.scss';
+
+const { BARE } = cardTypes;
 
 function computeSelectedTab(pathname, tabs) {
   const locationsParts = pathname.split('/');
@@ -91,36 +94,45 @@ const Tabs = ({ ariaLabel, children, history, location, reverseTabOrder, url }) 
     e.preventDefault();
   };
 
+  const { bareHeader, header } = selected.props;
+
   return (
-    <div aria-label={ariaLabel} className={styles.tabs}>
-      <div className={styles.tabList} role="tablist">
-        {tabs.map((tab, tabIndex) => {
-          const { id: tabId, label: tabLabel, className: tabClassName } = tab.props;
-          const to = getTabLink(tabIndex, tabId);
-          return (
-            <Link
-              to={to}
-              aria-controls={tabId}
-              id={tabId}
-              className={classnames(styles.tab, tabClassName)}
-              aria-selected={tabIndex === selectedIndex}
-              key={tabId}
-              onClick={(e) => handleClick(e, tab)}
-              onKeyDown={(e) => handleKeyDown(e, tab)}
-              role="tab"
-              tabIndex={tab === selected ? 0 : -1}
-              innerRef={(ref) => {
-                tabRefs[tabIndex] = ref;
-              }}
-              ref={tabRefs[tabIndex]}
-            >
-              {tabLabel}
-            </Link>
-          );
-        })}
-      </div>
+    <Fragment>
+      <Card type={BARE} className={styles.tabs}>
+        <div className={styles.tabList} role="tablist" aria-label={ariaLabel}>
+          {tabs.map((tab, tabIndex) => {
+            const { id: tabId, label: tabLabel, className: tabClassName } = tab.props;
+            const to = getTabLink(tabIndex, tabId);
+            return (
+              <Link
+                to={to}
+                aria-controls={tabId}
+                id={tabId}
+                className={classnames(styles.tab, tabClassName)}
+                aria-selected={tabIndex === selectedIndex}
+                key={tabId}
+                onClick={(e) => handleClick(e, tab)}
+                onKeyDown={(e) => handleKeyDown(e, tab)}
+                role="tab"
+                tabIndex={tab === selected ? 0 : -1}
+                innerRef={(ref) => {
+                  tabRefs[tabIndex] = ref;
+                }}
+                ref={tabRefs[tabIndex]}
+              >
+                {tabLabel}
+              </Link>
+            );
+          })}
+        </div>
+        {header && (
+          <div className={classnames(styles.header, { [styles.bareHeader]: bareHeader })}>
+            {header}
+          </div>
+        )}
+      </Card>
       {selected}
-    </div>
+    </Fragment>
   );
 };
 
