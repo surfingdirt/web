@@ -4,8 +4,8 @@ const messages = (getText, getPlural) => (key) =>
       'Discover',
       'Homepage',
     ) /* Label for a section containing a lot of things for a new person to discover */,
-    feed: getText(
-      'Feed',
+    activity: getText(
+      'Activity',
       'Homepage',
     ) /* Label for a section containing a vertical list of new things on the site */,
     tabsLabel: getText(

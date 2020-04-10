@@ -796,31 +796,31 @@ msgstr ""
 #. Indicates how many new comments were posted
 #: src/components/Feed/messages.js:12
 msgctxt "Feed"
-msgid "%d new comment"
-msgid_plural "%d new comments"
+msgid "1 new comment"
+msgid_plural "123 new comments"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Indicates how many new photos were posted
 #: src/components/Feed/messages.js:19
 msgctxt "Feed"
-msgid "%d new photo"
-msgid_plural "%d new photos"
+msgid "1 new photo"
+msgid_plural "123 new photos"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Indicates how many new videos were posted
 #: src/components/Feed/messages.js:26
 msgctxt "Feed"
-msgid "%d new video"
-msgid_plural "%d new videos"
+msgid "1 new video"
+msgid_plural "123 new videos"
 msgstr[0] ""
 msgstr[1] ""
 
-#. Indicates what item a comment or photo was added to. Example: 9 new photos added to 'My Album'
+#. Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album'
 #: src/components/Feed/messages.js:33
 msgctxt "Feed"
-msgid "added to"
+msgid "in"
 msgstr ""
 
 #. Indicates a new album was created
@@ -979,16 +979,16 @@ msgctxt "Home"
 msgid "Your mountainboard community"
 msgstr ""
 
+#. Label for a section containing a vertical list of new things on the site
+#: src/pages/Home/messages.js:7
+msgctxt "Homepage"
+msgid "Activity"
+msgstr ""
+
 #. Label for a section containing a lot of things for a new person to discover
 #: src/pages/Home/messages.js:3
 msgctxt "Homepage"
 msgid "Discover"
-msgstr ""
-
-#. Label for a section containing a vertical list of new things on the site
-#: src/pages/Home/messages.js:7
-msgctxt "Homepage"
-msgid "Feed"
 msgstr ""
 
 #. Indicates that what follows is the page's main content (help text for blind users)

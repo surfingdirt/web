@@ -6,7 +6,7 @@ import wrapDisplayName from 'recompose/wrapDisplayName';
 import AppContext from '~/contexts';
 
 const LC_MESSAGE = 'messages';
-const NUMBER_REGEX = /{{n}}|%d/;
+const NUMBER_REGEX = /123|%d/;
 
 const TranslateHOC = (messages) => (BaseComponent) => {
   class Translate extends React.PureComponent {

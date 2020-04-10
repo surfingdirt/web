@@ -35,7 +35,8 @@ msgstr "Réglages avancés"
 
 #. Generic error message
 #: src/components/Album/CreationForm/messages.js:23
-#: src/components/Album/EditForm/messages.js:23 src/components/Cover/messages.js:9
+#: src/components/Album/EditForm/messages.js:23
+#: src/components/Cover/messages.js:9
 #: src/components/Photo/EditForm/messages.js:3
 #: src/components/Photo/UploadForm/messages.js:3
 #: src/components/User/BioUpdate/messages.js:3
@@ -275,8 +276,8 @@ msgid ""
 "Note: other people can post into your public albums, whereas only you can "
 "contribute to your private albums."
 msgstr ""
-"Remarque: d'autres personnes peuvent publier dans tes albums publics, alors que "
-"toi seul peux contribuer à tes albums privés."
+"Remarque: d'autres personnes peuvent publier dans tes albums publics, alors "
+"que toi seul peux contribuer à tes albums privés."
 
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:31
@@ -290,7 +291,8 @@ msgstr "Ouvrir"
 
 #. Label for a menu
 #: src/components/Comment/Item/messages.js:5
-#: src/components/Media/MediaMetadata/messages.js:6 src/pages/Album/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:6
+#: src/pages/Album/messages.js:3
 msgid "Options"
 msgstr "Options"
 
@@ -386,7 +388,8 @@ msgstr "Inscription"
 #: src/components/Photo/EditForm/messages.js:8
 #: src/components/Photo/UploadForm/messages.js:15
 #: src/components/Video/EditForm/messages.js:8
-#: src/components/Video/UploadForm/messages.js:15 src/pages/LogIn/messages.js:10
+#: src/components/Video/UploadForm/messages.js:15
+#: src/pages/LogIn/messages.js:10
 msgid "Required"
 msgstr "Obligatoire"
 
@@ -539,11 +542,11 @@ msgstr "En attente"
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:27
 msgid ""
-"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo "
-"and DailyMotion videos"
+"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, "
+"Vimeo and DailyMotion videos"
 msgstr ""
-"On supporte les photos en JPEG et PNG, ainsi que les vidéos Instagram, Facebook, "
-"YouTube, Vimeo et Dailymotion"
+"On supporte les photos en JPEG et PNG, ainsi que les vidéos Instagram, "
+"Facebook, YouTube, Vimeo et Dailymotion"
 
 #. Label for a button the user can click to confirm they want to delete an item
 #: src/components/Widgets/DeleteItemModal/messages.js:9
@@ -555,33 +558,33 @@ msgstr "Oui, supprimer"
 msgctxt "About"
 msgid ""
 "Remember before Facebook? There were so many resources for mountainboarding "
-"online. Forums, websites, photo galleries… Where are those now? The sad answer "
-"is they’re mostly gone. Facebook has made it so easy to post photos and videos "
-"and share them that people slowly stopped using other sites. That’s actually "
-"what happened to the old Surfing Dirt forum!"
+"online. Forums, websites, photo galleries… Where are those now? The sad "
+"answer is they’re mostly gone. Facebook has made it so easy to post photos "
+"and videos and share them that people slowly stopped using other sites. "
+"That’s actually what happened to the old Surfing Dirt forum!"
 msgstr ""
 "Tu te souviens avant Facebook? Il y avait tellement de trucs sur le "
-"mountainboard sur internet. Des forums, des sites, des galeries photos… Où sont-"
-"ils maintenant? Ils ont presque tous disparu. Facebook a tellement simplifié "
-"l’envoi de photos et de vidéos que petit à petit, les riders ont arrêté "
-"d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux forum "
-"Surfing Dirt!"
+"mountainboard sur internet. Des forums, des sites, des galeries photos… Où "
+"sont-ils maintenant? Ils ont presque tous disparu. Facebook a tellement "
+"simplifié l’envoi de photos et de vidéos que petit à petit, les riders ont "
+"arrêté d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux "
+"forum Surfing Dirt!"
 
 #. Paragraph
 #: src/pages/About/messages.js:12
 msgctxt "About"
 msgid ""
-"Surfing Dirt hopes to solve that problem. We intend to be the social network for "
-"mountainboarders. The place where you’ll share photos and videos from your last "
-"session. Where you’ll learn about riders and spots near you. Where you’ll "
-"discuss trucks and jumps. And where people can see what mountainboarding is "
-"about."
+"Surfing Dirt hopes to solve that problem. We intend to be the social network "
+"for mountainboarders. The place where you’ll share photos and videos from "
+"your last session. Where you’ll learn about riders and spots near you. Where "
+"you’ll discuss trucks and jumps. And where people can see what "
+"mountainboarding is about."
 msgstr ""
-"Surfing Dirt espère bien résoudre ce problème. L’idée c’est de devenir LE réseau "
-"social des mountainboarders. L’endroit où partager photos et vidéos de ta "
-"dernière session. Où tu découvriras des riders et des spots près de chez toi. Où "
-"tu parleras de trucks, de kicks. Et où tout le monde pourra venir découvrir le "
-"mountainboard."
+"Surfing Dirt espère bien résoudre ce problème. L’idée c’est de devenir LE "
+"réseau social des mountainboarders. L’endroit où partager photos et vidéos "
+"de ta dernière session. Où tu découvriras des riders et des spots près de "
+"chez toi. Où tu parleras de trucks, de kicks. Et où tout le monde pourra "
+"venir découvrir le mountainboard."
 
 #. Title of the About page
 #: src/pages/About/messages.js:3
@@ -593,24 +596,25 @@ msgstr "Surfing Dirt est de retour!"
 #: src/pages/About/messages.js:16
 msgctxt "About"
 msgid ""
-"We hoped to launch a long time ago, but we're here now, so enjoy the new Surfing "
-"Dirt!"
+"We hoped to launch a long time ago, but we're here now, so enjoy the new "
+"Surfing Dirt!"
 msgstr ""
-"On espérait lancer plus tôt, mais on est là maintenant, alors profitez bien du "
-"nouveau Surfing Dirt!"
+"On espérait lancer plus tôt, mais on est là maintenant, alors profitez bien "
+"du nouveau Surfing Dirt!"
 
 #. Paragraph
 #: src/pages/About/messages.js:8
 msgctxt "About"
 msgid ""
-"When you meet someone who seems genuinely excited to try mountainboarding, where "
-"do you send them? To a Facebook group, maybe? Sure there are many mountainboard "
-"groups on Facebook, and a lot of people use them. But they feel wrong. We need a "
-"place for mountainboarders to come together online and grow as a community again."
+"When you meet someone who seems genuinely excited to try mountainboarding, "
+"where do you send them? To a Facebook group, maybe? Sure there are many "
+"mountainboard groups on Facebook, and a lot of people use them. But they "
+"feel wrong. We need a place for mountainboarders to come together online and "
+"grow as a community again."
 msgstr ""
 "Quand tu rencontres quelqu’un qui a vraiment envie de se mettre au "
-"mountainboard, tu l’envoies où? Sur un groupe Facebook peut-être? C’est sûr, y’a "
-"plein de groupes Facebook autour du mountainboard, et plein de gens s’en "
+"mountainboard, tu l’envoies où? Sur un groupe Facebook peut-être? C’est sûr, "
+"y’a plein de groupes Facebook autour du mountainboard, et plein de gens s’en "
 "servent. Mais y’a un truc qui va pas. Il nous faut un endroit pour que les "
 "mountainboarders se retrouvent, pour que la communauté grossisse à nouveau."
 
@@ -840,32 +844,32 @@ msgstr "La connexion a échoué"
 #. Indicates how many new comments were posted
 #: src/components/Feed/messages.js:12
 msgctxt "Feed"
-msgid "%d new comment"
-msgid_plural "%d new comments"
-msgstr[0] "%d nouveau commentaire"
-msgstr[1] "%d nouveaux commentaires"
+msgid "1 new comment"
+msgid_plural "123 new comments"
+msgstr[0] "1 nouveau commentaire"
+msgstr[1] "123 nouveaux commentaires"
 
 #. Indicates how many new photos were posted
 #: src/components/Feed/messages.js:19
 msgctxt "Feed"
-msgid "%d new photo"
-msgid_plural "%d new photos"
-msgstr[0] "%d nouvelle photo"
-msgstr[1] "%d nouvelles photos"
+msgid "1 new photo"
+msgid_plural "123 new photos"
+msgstr[0] "1 nouvelle photo"
+msgstr[1] "123 nouvelles photos"
 
 #. Indicates how many new videos were posted
 #: src/components/Feed/messages.js:26
 msgctxt "Feed"
-msgid "%d new vidéo"
-msgid_plural "%d new vidéos"
-msgstr[0] "%d nouvelle vidéo"
-msgstr[1] "%d nouvelles vidéos"
+msgid "1 new video"
+msgid_plural "123 new videos"
+msgstr[0] "1 nouvelle vidéo"
+msgstr[1] "123 nouvelles vidéos"
 
-#. Indicates what item a comment or photo was added to. Example: 9 new photos added to 'My Album'
+#. Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album'
 #: src/components/Feed/messages.js:33
 msgctxt "Feed"
-msgid "added to"
-msgstr "ajouté à"
+msgid "in"
+msgstr "dans"
 
 #. Indicates a new album was created
 #: src/components/Feed/messages.js:5
@@ -901,8 +905,8 @@ msgstr "Nouvelle vidéo"
 #: src/pages/Home/Feed/messages.js:3
 msgctxt "Feed"
 msgid ""
-"This page shows the latest activity on Surfing Dirt: content and messages posted "
-"by our members"
+"This page shows the latest activity on Surfing Dirt: content and messages "
+"posted by our members"
 msgstr ""
 "Cette page montre la dernière activité sur Surfing Dirt: contenu et messages "
 "postés par nos membres"
@@ -964,16 +968,17 @@ msgstr "Go"
 #: src/pages/Home/Discover/messages.js:25
 msgctxt "Home"
 msgid ""
-"It's a lot of work to create a site like this, so we're starting small and will "
-"grow slowly.\n"
+"It's a lot of work to create a site like this, so we're starting small and "
+"will grow slowly.\n"
 "      We're now focusing on user profiles, photos, videos, and albums. Soon "
 "after, we'll add things like spots, events, etc.\n"
-"      So take a look around, sign up, post photos and be part of Surfing Dirt!"
+"      So take a look around, sign up, post photos and be part of Surfing "
+"Dirt!"
 msgstr ""
-"Monter un site comme celui-ci, c’est beaucoup de travail, on va donc commencer "
-"petit et grossir tranquillement.\n"
-"      On commence avec les pages de profil, les photos, vidéos et albums, mais "
-"rapidement on rajoutera des spots, des évènements, etc.\n"
+"Monter un site comme celui-ci, c’est beaucoup de travail, on va donc "
+"commencer petit et grossir tranquillement.\n"
+"      On commence avec les pages de profil, les photos, vidéos et albums, "
+"mais rapidement on rajoutera des spots, des évènements, etc.\n"
 "       Alors, fouille partout, créé-toi un compte, poste des photos et prend "
 "part à Surfing Dirt!"
 
@@ -992,8 +997,8 @@ msgstr "Suite…"
 #: src/pages/Home/Discover/messages.js:9
 msgctxt "Home"
 msgid ""
-"Mountainboarding doesn't have a real home online right now, so we're hoping to "
-"be it. \n"
+"Mountainboarding doesn't have a real home online right now, so we're hoping "
+"to be it. \n"
 "      Unlike the old Surfing Dirt forum, this is more like a social network: "
 "profile pages, galleries, and all kinds of other things.\n"
 "      A place to showcase all the cool things that are happening in "
@@ -1001,10 +1006,10 @@ msgid ""
 msgstr ""
 "Le mountainboard n’a pas vraiment de foyer sur Internet, et on espère le "
 "devenir.\n"
-"      Alors que l’ancien Surfing Dirt était un forum, le nouveau sera plus un "
-"réseau social: pages de profil, galeries, et plein d’autres choses.\n"
-"      Un endroit pour montrer tous les trucs cool qui se passent dans le monde "
-"du mountainboard."
+"      Alors que l’ancien Surfing Dirt était un forum, le nouveau sera plus "
+"un réseau social: pages de profil, galeries, et plein d’autres choses.\n"
+"      Un endroit pour montrer tous les trucs cool qui se passent dans le "
+"monde du mountainboard."
 
 #. Message before a link to go to a page containing more albums
 #: src/pages/Home/Discover/messages.js:31
@@ -1026,23 +1031,23 @@ msgstr "L’avenir"
 #: src/pages/Home/Discover/messages.js:17
 msgctxt "Home"
 msgid ""
-"Well, for one, because the mountainboard community is special and deserves an "
-"online space that resembles it.\n"
+"Well, for one, because the mountainboard community is special and deserves "
+"an online space that resembles it.\n"
 "      Mountainboard events are known for being open, inclusive and positive. "
 "Surfing Dirt intends to provide the same thing online!\n"
-"      Also, since you asked, because Facebook sucks! In general, it causes a lot "
-"of harm, and it would be in everyone's best interest to use it less.\n"
-"      But really, the main reason is that we hope to bring you a cool place for "
-"everyone to come together!"
+"      Also, since you asked, because Facebook sucks! In general, it causes a "
+"lot of harm, and it would be in everyone's best interest to use it less.\n"
+"      But really, the main reason is that we hope to bring you a cool place "
+"for everyone to come together!"
 msgstr ""
 "Ben déjà parce que la communauté du mountainboard est spéciale et mérite un "
 "espace qui lui ressemble.\n"
 "    Les events de mountainboard sont connus pour être ouverts, inclusifs et "
 "positifs. Surfing Dirt espère être la même chose en ligne!\n"
-"    Et puis aussi parce que Facebook ça craint, c’est toxique et on se porterait "
-"tous mieux si on s’en servait moins.\n"
-"    Mais la raison principale c’est qu’on espère créer un lieu pour rassembler "
-"tout le monde!"
+"    Et puis aussi parce que Facebook ça craint, c’est toxique et on se "
+"porterait tous mieux si on s’en servait moins.\n"
+"    Mais la raison principale c’est qu’on espère créer un lieu pour "
+"rassembler tout le monde!"
 
 #. Title of a paragraph
 #: src/pages/Home/Discover/messages.js:16
@@ -1056,17 +1061,17 @@ msgctxt "Home"
 msgid "Your mountainboard community"
 msgstr "Ta communauté mountainboard"
 
+#. Label for a section containing a vertical list of new things on the site
+#: src/pages/Home/messages.js:7
+msgctxt "Homepage"
+msgid "Activity"
+msgstr "Activité"
+
 #. Label for a section containing a lot of things for a new person to discover
 #: src/pages/Home/messages.js:3
 msgctxt "Homepage"
 msgid "Discover"
 msgstr "Découvrir"
-
-#. Label for a section containing a vertical list of new things on the site
-#: src/pages/Home/messages.js:7
-msgctxt "Homepage"
-msgid "Feed"
-msgstr "Activité"
 
 #. Indicates that what follows is the page's main content (help text for blind users)
 #: src/pages/Home/messages.js:11
@@ -1079,7 +1084,8 @@ msgstr "Contenu principal"
 #: src/components/Widgets/Loading/messages.js:3
 msgctxt "Loading"
 msgid "An error occurred while navigating, please reload the page."
-msgstr "Une erreur est survenue pendant la navigation, merci de recharger la page."
+msgstr ""
+"Une erreur est survenue pendant la navigation, merci de recharger la page."
 
 #. An error message
 #: src/components/Widgets/Card/messages.js:7
@@ -1157,8 +1163,8 @@ msgstr "Compte"
 msgctxt "New password activation"
 msgid "Enter the new password we emailed you to sign in!"
 msgstr ""
-"Pour te connecter, saisis le nouveau mot de passe reçu dans l’email qu’on vient "
-"de t’envoyer!"
+"Pour te connecter, saisis le nouveau mot de passe reçu dans l’email qu’on "
+"vient de t’envoyer!"
 
 #. Title of a page
 #: src/pages/NewPasswordActivated/messages.js:7
@@ -1176,8 +1182,10 @@ msgstr "Ton nouveau mot de passe est maintenant activé!"
 #: src/pages/OldForum/messages.js:4
 msgctxt "OldForum"
 msgid ""
-"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still around!"
-msgstr "Tu cherches le vieux forum Surfing Dirt? Pas de souci, il est encore là!"
+"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still "
+"around!"
+msgstr ""
+"Tu cherches le vieux forum Surfing Dirt? Pas de souci, il est encore là!"
 
 #. Paragraph
 #: src/pages/OldForum/messages.js:16
@@ -1189,8 +1197,8 @@ msgstr "Aller au forum!"
 #: src/pages/OldForum/messages.js:12
 msgctxt "OldForum"
 msgid ""
-"In the meantime, go check it out, it may look different than it used to, but the "
-"great content is still there!"
+"In the meantime, go check it out, it may look different than it used to, but "
+"the great content is still there!"
 msgstr ""
 "En attendant, va le voir, il a peut-être une autre tête, mais le contenu est "
 "toujours là!"
@@ -1205,11 +1213,11 @@ msgstr "Le forum Surfing Dirt"
 #: src/pages/OldForum/messages.js:8
 msgctxt "OldForum"
 msgid ""
-"We haven't managed to merge the forum into the new site, but we're thinking it "
-"will happen some day."
+"We haven't managed to merge the forum into the new site, but we're thinking "
+"it will happen some day."
 msgstr ""
-"On a pas encore incorporé le forum dans le nouveau site, mais on se dit que ça "
-"sera fait un jour."
+"On a pas encore incorporé le forum dans le nouveau site, mais on se dit que "
+"ça sera fait un jour."
 
 #. Label for a navigation section containing links to add new items
 #: src/sections/MoreLinkNavigation/messages.js:3
@@ -1304,11 +1312,11 @@ msgstr "Une erreur est survenue pendant la mise à jour de ton mot de passe"
 #: src/pages/LostPassword/messages.js:11
 msgctxt "Password"
 msgid ""
-"If you can't remember your password, enter your username below and we'll send "
-"you a new one."
+"If you can't remember your password, enter your username below and we'll "
+"send you a new one."
 msgstr ""
-"Si tu ne te souviens pas de ton mot de passe, saisis ton nom d’utilisateur ci-"
-"dessous, et on t’en enverra un nouveau."
+"Si tu ne te souviens pas de ton mot de passe, saisis ton nom d’utilisateur "
+"ci-dessous, et on t’en enverra un nouveau."
 
 #. Title for the page where a user can reset their password
 #: src/pages/LostPassword/messages.js:15
@@ -1332,10 +1340,11 @@ msgstr "Nom d’utilisateur"
 #: src/pages/LostPassword/messages.js:7
 msgctxt "Password"
 msgid ""
-"We sent an email to your account. Click the link to activate your new password!"
+"We sent an email to your account. Click the link to activate your new "
+"password!"
 msgstr ""
-"On vient de t’envoyer un email. Clique le lien à l’intérieur pour activer ton "
-"nouveau mot de passe!"
+"On vient de t’envoyer un email. Clique le lien à l’intérieur pour activer "
+"ton nouveau mot de passe!"
 
 #. Title of the photo edition page
 #: src/pages/Photo/Edit/messages.js:4
@@ -1387,14 +1396,15 @@ msgstr "Modifier la présentation"
 #: src/pages/Profile/messages.js:4
 msgctxt "Profile"
 msgid ""
-"You have not entered an introduction yet. Click the button to let other riders "
-"know about you!"
+"You have not entered an introduction yet. Click the button to let other "
+"riders know about you!"
 msgstr ""
-"Tu n’as pas encore saisi de message pour te présenter. Clique sur le bouton pour "
-"que les autres riders sachent qui tu es!"
+"Tu n’as pas encore saisi de message pour te présenter. Clique sur le bouton "
+"pour que les autres riders sachent qui tu es!"
 
 #. Label for a form field to type an email
-#: src/pages/User/Registration/messages.js:3 src/pages/User/Settings/messages.js:3
+#: src/pages/User/Registration/messages.js:3
+#: src/pages/User/Settings/messages.js:3
 msgctxt "Registration"
 msgid "Email"
 msgstr "Email"
@@ -1402,13 +1412,15 @@ msgstr "Email"
 #. Paragraph explaining how to register
 #: src/pages/User/Registration/messages.js:4
 msgctxt "Registration"
-msgid "If you'd like to join us, enter your details below to create an account!"
+msgid ""
+"If you'd like to join us, enter your details below to create an account!"
 msgstr ""
 "Si tu veux te joindre à nous, saisis tes infos ci-dessous pour te créér un "
 "compte!"
 
 #. Label for a list of countries and languages the user can choose from
-#: src/pages/User/Registration/messages.js:8 src/pages/User/Settings/messages.js:9
+#: src/pages/User/Registration/messages.js:8
+#: src/pages/User/Settings/messages.js:9
 msgctxt "Registration"
 msgid "Language"
 msgstr "Langue"
@@ -1429,7 +1441,8 @@ msgstr "Confirmation du mot de passe"
 #. Help message telling the user they need to choose a language
 #: src/pages/User/Registration/messages.js:25
 #: src/pages/User/Registration/messages.js:29
-#: src/pages/User/Settings/messages.js:29 src/pages/User/Settings/messages.js:33
+#: src/pages/User/Settings/messages.js:29
+#: src/pages/User/Settings/messages.js:33
 msgctxt "Registration"
 msgid "Please choose one"
 msgstr "Fais un choix"
@@ -1469,11 +1482,11 @@ msgstr "Nom d’utilisateur"
 #: src/pages/User/Registration/messages.js:17
 msgctxt "Registration"
 msgid ""
-"We just sent you an email, please open it and click the link in order to confirm "
-"your account! Until then, you will not be able to log in."
+"We just sent you an email, please open it and click the link in order to "
+"confirm your account! Until then, you will not be able to log in."
 msgstr ""
-"On vient de t’envoyer un email. Ouvre-le et clique sur le lien pour valider ton "
-"compte. En attendant, tu ne pourras pas te connecter."
+"On vient de t’envoyer un email. Ouvre-le et clique sur le lien pour valider "
+"ton compte. En attendant, tu ne pourras pas te connecter."
 
 #. Welcoming message, includes a new user's username
 #: src/pages/User/Registration/messages.js:46
@@ -1590,3 +1603,11 @@ msgstr "Modifier une vidéo"
 msgctxt "Video post page"
 msgid "Post a new video"
 msgstr "Poster une nouvelle vidéo"
+
+#~ msgctxt "Homepage"
+#~ msgid "Feed"
+#~ msgstr "Activité"
+
+#~ msgctxt "Feed"
+#~ msgid "added to"
+#~ msgstr "ajouté à"

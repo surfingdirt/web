@@ -10,29 +10,29 @@ const messages = (getText, getPlural) => (key) =>
 
     newComments: (count) =>
       getPlural(
-        '%d new comment',
-        '%d new comments',
+        '1 new comment',
+        '123 new comments',
         count,
         'Feed',
       ) /* Indicates how many new comments were posted */,
     newPhotos: (count) =>
       getPlural(
-        '%d new photo',
-        '%d new photos',
+        '1 new photo',
+        '123 new photos',
         count,
         'Feed',
       ) /* Indicates how many new photos were posted */,
     newVideos: (count) =>
       getPlural(
-        '%d new video',
-        '%d new videos',
+        '1 new video',
+        '123 new videos',
         count,
         'Feed',
       ) /* Indicates how many new videos were posted */,
 
     addedTo: getText(
-      'added to',
+      'in',
       'Feed',
-    ) /* Indicates what item a comment or photo was added to. Example: 9 new photos added to 'My Album' */,
+    ) /* Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album' */,
   }[key]);
 export default messages;

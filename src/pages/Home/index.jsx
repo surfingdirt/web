@@ -40,7 +40,7 @@ const Home = ({ t }) => {
         >
           <Discover />
         </TabPanel>
-        <TabPanel label={t('feed')} id="feed" defaultTab={loggedIn} header={<FeedHeader />}>
+        <TabPanel label={t('activity')} id="feed" defaultTab={loggedIn} header={<FeedHeader />}>
           <Feed />
         </TabPanel>
       </Tabs>
