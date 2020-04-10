@@ -12,379 +12,373 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/pages/ConfirmEmail/messages.js:24
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:24
 msgid "Add a cover photo"
 msgstr "Ajouter une photo de couverture"
 
-#: src/pages/ConfirmEmail/messages.js:25
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:25
 msgid "Add a profile photo"
 msgstr "Ajouter une photo de profil"
 
-#: src/pages/ConfirmEmail/messages.js:30
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:30
 msgid "Add an album"
 msgstr "Ajouter un album"
 
+#. Label for a button to reveal more settings
 #: src/components/Album/CreationForm/messages.js:3
 #: src/components/Album/EditForm/messages.js:3
-#. Label for a button to reveal more settings
 msgid "Advanced settings"
 msgstr "Réglages avancés"
 
+#. Generic error message
 #: src/components/Album/CreationForm/messages.js:23
-#: src/components/Album/EditForm/messages.js:23
-#: src/components/Cover/messages.js:9
+#: src/components/Album/EditForm/messages.js:23 src/components/Cover/messages.js:9
 #: src/components/Photo/EditForm/messages.js:3
 #: src/components/Photo/UploadForm/messages.js:3
 #: src/components/User/BioUpdate/messages.js:3
 #: src/components/Video/EditForm/messages.js:3
 #: src/components/Video/UploadForm/messages.js:3 src/pages/Album/messages.js:4
-#. Generic error message
 msgid "An error occurred. Please try again."
 msgstr "Une erreur est survenue. Merci de réessayer."
 
-#: src/components/Widgets/DeleteItemModal/messages.js:3
 #. Label for a button the user can click to stop deleting an item
+#: src/components/Widgets/DeleteItemModal/messages.js:3
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Es-tu certain(e) de vouloir supprimer ‘%s’?"
 
-#: src/components/Widgets/DeleteItemModal/messages.js:15
 #. Title of a dialog window to delete an item
+#: src/components/Widgets/DeleteItemModal/messages.js:15
 msgid "Are you sure?"
 msgstr "Es-tu certain(e)?"
 
-#: src/components/Cover/messages.js:10
 #. Label for a button to stop the current operation
+#: src/components/Cover/messages.js:10
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/components/Cover/messages.js:15
 #. Label for a form field to choose a profile picture (part 1)
+#: src/components/Cover/messages.js:15
 msgid "Choose a picture for your profile page."
 msgstr "Choisis une photo pour ta page de profil."
 
-#: src/components/Cover/messages.js:3
 #. Label for a form field to choose a profile picture (part 1)
+#: src/components/Cover/messages.js:3
 msgid "Choose a picture to represent yourself on the site."
 msgstr "Choisis une photo pour te représenter sur le site."
 
-#: src/components/Photo/BatchUploadForm/messages.js:3
 #. Label for a button to clear a list of photos
+#: src/components/Photo/BatchUploadForm/messages.js:3
 msgid "Clear"
 msgstr "Effacer"
 
-#: src/components/Photo/BatchUploadForm/messages.js:6
 #. Help message
+#: src/components/Photo/BatchUploadForm/messages.js:6
 msgid "Click here to add more photos"
 msgstr "Clique ici pour ajouter d’autres photos"
 
+#. Help message
 #: src/components/Cover/messages.js:22
 #: src/components/Photo/UploadForm/messages.js:8
-#. Help message
 msgid "Click here to choose a file"
 msgstr "Clique ici pour ajouter un fichier"
 
-#: src/components/Photo/BatchUploadForm/messages.js:5
 #. Help message
+#: src/components/Photo/BatchUploadForm/messages.js:5
 msgid "Click here to choose photos"
 msgstr "Clique ici pour choisir des photos"
 
-#: src/components/Video/UploadForm/messages.js:4
 #. Label for a button to continue adding a video
+#: src/components/Video/UploadForm/messages.js:4
 msgid "Continue"
 msgstr "Continuer"
 
+#. Form field to decide whether other users can contribute to an album
 #: src/components/Album/CreationForm/messages.js:4
 #: src/components/Album/EditForm/messages.js:4
-#. Form field to decide whether other users can contribute to an album
 msgid "Contributions"
 msgstr "Contributions"
 
-#: src/components/Video/UploadForm/messages.js:9
 #. Error message showed when a user entered a video address that could not be understood
+#: src/components/Video/UploadForm/messages.js:9
 msgid "Could not understand this address"
 msgstr "Adresse incompréhensible"
 
-#: src/components/Cover/messages.js:45
 #. Label for a dialog window to change the user's cover picture
+#: src/components/Cover/messages.js:45
 msgid "Cover picture update dialog"
 msgstr "Dialogue de mise à jour de photo de couverture"
 
-#: src/components/Album/CreationForm/messages.js:24
 #. Label of a button to create an item
+#: src/components/Album/CreationForm/messages.js:24
 msgid "Create"
 msgstr "Créer"
 
-#: src/components/Comment/Item/messages.js:4
-#: src/components/Widgets/DeleteItemModal/messages.js:12
 #. Label for a button to delete a comment
 #. Label for a menu entry to change delete an item
+#: src/components/Comment/Item/messages.js:4
+#: src/components/Widgets/DeleteItemModal/messages.js:12
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/components/Widgets/DeleteItemModal/messages.js:16
 #. Label for a dialog window to delete an items
+#: src/components/Widgets/DeleteItemModal/messages.js:16
 msgid "Delete dialog"
 msgstr "Dialogue de suppression"
 
+#. Label for a form field to enter a description
 #: src/components/Album/CreationForm/messages.js:25
 #: src/components/Album/EditForm/messages.js:24
 #: src/components/Photo/EditForm/messages.js:4
 #: src/components/Photo/UploadForm/messages.js:4
 #: src/components/Video/EditForm/messages.js:4
 #: src/components/Video/UploadForm/messages.js:5
-#. Label for a form field to enter a description
 msgid "Description"
 msgstr "Description"
 
+#. Label for a button to edit a photo
+#. Label for a button to edit a comment
+#. Link to a page to modify something (a photo for example)
+#. Label for a button to edit a video
 #: src/components/Album/EditForm/messages.js:33
 #: src/components/Comment/Item/messages.js:3
 #: src/components/Media/MediaMetadata/messages.js:4
 #: src/components/Photo/EditForm/messages.js:13
 #: src/components/Video/EditForm/messages.js:13
-#. Label for a button to edit a photo
-#. Label for a button to edit a comment
-#. Link to a page to modify something (a photo for example)
-#. Label for a button to edit a video
 msgid "Edit"
 msgstr "Modifier"
 
-#: src/pages/LogIn/messages.js:8
 #. Label of a form field for the user's email
+#: src/pages/LogIn/messages.js:8
 msgid "Email"
 msgstr "Email"
 
+#. Help text to tell the user what to type
 #: src/components/Album/CreationForm/messages.js:26
 #: src/components/Album/EditForm/messages.js:25
 #: src/components/Photo/EditForm/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:5
 #: src/components/Video/EditForm/messages.js:5
 #: src/components/Video/UploadForm/messages.js:6
-#. Help text to tell the user what to type
 msgid "Enter a description"
 msgstr "Saisis une description"
 
+#. Help text to tell the user what to type
 #: src/components/Album/CreationForm/messages.js:34
 #: src/components/Album/EditForm/messages.js:32
 #: src/components/Photo/EditForm/messages.js:12
 #: src/components/Photo/UploadForm/messages.js:19
 #: src/components/Video/EditForm/messages.js:12
 #: src/components/Video/UploadForm/messages.js:19
-#. Help text to tell the user what to type
 msgid "Enter a title"
 msgstr "Saisis un titre"
 
-#: src/pages/LogIn/messages.js:4
 #. Text appearing inside a form field before the user entered anything
+#: src/pages/LogIn/messages.js:4
 msgid "Enter something"
 msgstr "Saisis quelque chose"
 
-#: src/components/Photo/BatchUploadForm/Preview/messages.js:4
 #. Label for a file name
+#: src/components/Photo/BatchUploadForm/Preview/messages.js:4
 msgid "File"
 msgstr "Fichier"
 
-#: src/components/Media/MediaMetadata/messages.js:3
 #. Label for a link to a media's dedicated page
+#: src/components/Media/MediaMetadata/messages.js:3
 msgid "Full page"
 msgstr "Page dédiée"
 
-#: src/components/Photo/BatchUploadForm/messages.js:4
 #. Label for a link to go to the current album
+#: src/components/Photo/BatchUploadForm/messages.js:4
 msgid "Go to album"
 msgstr "Voir l’album"
 
-#: src/pages/ConfirmEmail/messages.js:23
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:23
 msgid "Go to your profile page"
 msgstr "Voir ton profil"
 
-#: src/components/Album/AlbumViewToggle/messages.js:4
 #. Label of a button to display items as a grid
+#: src/components/Album/AlbumViewToggle/messages.js:4
 msgid "Grid"
 msgstr "Grille"
 
-#: src/components/Widgets/Form/AlbumVisibility/messages.js:3
 #. Choice for an album visibility setting
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:3
 msgid "Hidden"
 msgstr "Caché"
 
+#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:17
 #: src/components/Album/EditForm/messages.js:17
-#. Note to explain how album visibility works
 msgid "Hidden albums are only visible to you."
 msgstr "Les albums cachés ne sont visibles que par toi."
 
-#: src/pages/Photo/Edit/messages.js:3 src/pages/Video/Edit/messages.js:3
 #. Names the album containing the current media item
-#, fuzzy
-#| msgid "Add an album"
+#: src/pages/Photo/Edit/messages.js:3 src/pages/Video/Edit/messages.js:3
 msgid "In album"
-msgstr "Ajouter un album"
+msgstr "Dans l’album"
 
-#: src/components/User/BioUpdate/messages.js:4
 #. Label for a form field where a user can introduce themselves.
+#: src/components/User/BioUpdate/messages.js:4
 msgid "Introduction"
 msgstr "Présentation"
 
+#. Short adjective indicating a form field is incorrect
 #: src/components/Comment/EditForm/messages.js:3
 #: src/components/Comment/Form/messages.js:3
-#. Short adjective indicating a form field is incorrect
 msgid "Invalid"
 msgstr "Invalide"
 
+#. Error message displayed when the user chose a image file that cannot be read
+#. Indicates an image could not be read
 #: src/components/Cover/messages.js:23
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:9
-#. Error message displayed when the user chose a image file that cannot be read
-#. Indicates an image could not be read
 msgid "Invalid image"
 msgstr "Image invalide"
 
-#: src/components/Album/AlbumViewToggle/messages.js:3
 #. Label of a button to display items as a list
+#: src/components/Album/AlbumViewToggle/messages.js:3
 msgid "List"
-msgstr "liste"
+msgstr "Liste"
 
-#: src/components/Cover/messages.js:6
 #. Label for a form field to choose a profile picture  (part 2)
+#: src/components/Cover/messages.js:6
 msgid "Make it personal and easy to recognize!"
 msgstr "Personnel et simple à identifier, c’est mieux!"
 
+#. Label of a button to scroll a list of items forward
 #: src/components/Media/MediaOverlay/messages.js:4
 #: src/components/Widgets/Slider/messages.js:4
 #: src/components/Widgets/ToggleGroup/messages.js:4
-#. Label of a button to scroll a list of items forward
 msgid "Next"
 msgstr "Suivant"
 
-#: src/components/Widgets/DeleteItemModal/messages.js:6
 #. Label for a button the user can click to stop deleting an item
+#: src/components/Widgets/DeleteItemModal/messages.js:6
 msgid "No, cancel"
 msgstr "Non, annuler"
 
+#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:13
 #: src/components/Album/EditForm/messages.js:13
-#. Note to explain how album visibility works
 msgid "Note:"
 msgstr "Remarque:"
 
+#. Note to explain how album contributions work
 #: src/components/Album/CreationForm/messages.js:7
 #: src/components/Album/EditForm/messages.js:7
-#. Note to explain how album contributions work
 msgid ""
 "Note: other people can post into your public albums, whereas only you can "
 "contribute to your private albums."
 msgstr ""
-"Remarque: d'autres personnes peuvent publier dans tes albums publics, alors "
-"que toi seul peux contribuer à tes albums privés."
+"Remarque: d'autres personnes peuvent publier dans tes albums publics, alors que "
+"toi seul peux contribuer à tes albums privés."
 
-#: src/pages/ConfirmEmail/messages.js:31
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:31
 msgid "Only you can contribute to your private albums"
 msgstr "Toi seul(e) peux contribuer à tes albums privés"
 
-#: src/components/Photo/BatchUploadForm/Preview/messages.js:6
 #. Label for a link to open a page
+#: src/components/Photo/BatchUploadForm/Preview/messages.js:6
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/components/Comment/Item/messages.js:5
-#: src/components/Media/MediaMetadata/messages.js:6
-#: src/pages/Album/messages.js:3
 #. Label for a menu
+#: src/components/Comment/Item/messages.js:5
+#: src/components/Media/MediaMetadata/messages.js:6 src/pages/Album/messages.js:3
 msgid "Options"
 msgstr "Options"
 
-#: src/pages/ConfirmEmail/messages.js:34
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:34
 msgid "Other people can post to your public albums"
 msgstr "D’autres utilisateurs peuvent contribuer à tes albums publics"
 
-#: src/pages/LogIn/messages.js:9
 #. Label of a form field for the user's password
+#: src/pages/LogIn/messages.js:9
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/components/Video/UploadForm/messages.js:12
 #. Help text instructing what to do to upload a video
+#: src/components/Video/UploadForm/messages.js:12
 msgid "Paste a video address above"
 msgstr "Colle l’adresse d’une vidéo ci-dessus"
 
-#: src/components/Video/UploadForm/messages.js:21
 #. Help text to tell the user what to type
+#: src/components/Video/UploadForm/messages.js:21
 msgid "Paste the address here"
 msgstr "Colle l’adresse ici"
 
-#: src/pages/ConfirmEmail/messages.js:22
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:22
 msgid "Personalize your account"
 msgstr "Personnalise ton compte"
 
+#. Error message displayed when a user tries to update their profile picture but did not choose file yet.
 #: src/components/Cover/messages.js:27
 #: src/components/Photo/UploadForm/messages.js:12
-#. Error message displayed when a user tries to update their profile picture but did not choose file yet.
 msgid "Please choose a file first"
 msgstr "Merci de choisir un fichier d’abord"
 
-#: src/components/Media/MediaMetadata/messages.js:5
 #. Indicates which album a given item belongs to
+#: src/components/Media/MediaMetadata/messages.js:5
 msgid "Posted in album"
 msgstr "Dans l’album"
 
+#. Names the album the user is posting to
 #: src/pages/Photo/BatchUpload/messages.js:3 src/pages/Photo/Post/messages.js:3
 #: src/pages/Video/Post/messages.js:3
-#. Names the album the user is posting to
 msgid "Posting to album"
 msgstr "Envoi dans l’album"
 
-#: src/components/Photo/BatchUploadForm/messages.js:7
 #. Label for a preview image whose content is unknown
+#: src/components/Photo/BatchUploadForm/messages.js:7
 msgid "Preview"
 msgstr "Aperçu"
 
+#. Label of a button to scroll a list of items back
 #: src/components/Media/MediaOverlay/messages.js:3
 #: src/components/Widgets/Slider/messages.js:3
 #: src/components/Widgets/ToggleGroup/messages.js:3
-#. Label of a button to scroll a list of items back
 msgid "Previous"
 msgstr "Précédent"
 
-#: src/components/Widgets/Form/AlbumContributions/messages.js:3
 #. Choice for an album contributions setting
+#: src/components/Widgets/Form/AlbumContributions/messages.js:3
 msgid "Private"
 msgstr "Privé"
 
-#: src/components/Widgets/NavigationProfile/messages.js:10
 #. Label for a link to the user's profile page
+#: src/components/Widgets/NavigationProfile/messages.js:10
 msgid "Profile"
 msgstr "Profil"
 
-#: src/pages/Profile/messages.js:13
 #. Label for a dialog window to change the user's introduction
+#: src/pages/Profile/messages.js:13
 msgid "Profile introduction update dialog"
 msgstr "Dialogue de mise à jour de la présentation du profil"
 
-#: src/components/Cover/messages.js:36
 #. Label for a dialog window to change the user's profile picture
+#: src/components/Cover/messages.js:36
 msgid "Profile picture update dialog"
 msgstr "Dialogue de mise à jour de la photo de profil"
 
-#: src/components/Widgets/Form/AlbumContributions/messages.js:4
 #. Choice for an album contributions setting
-#, fuzzy
-#| msgctxt "Album"
-#| msgid "Public"
+#: src/components/Widgets/Form/AlbumContributions/messages.js:4
 msgid "Public"
 msgstr "Public"
 
-#: src/components/Widgets/NavigationProfile/messages.js:11
 #. Label for a link to the registration page, or label for a button to actually register
+#: src/components/Widgets/NavigationProfile/messages.js:11
 msgid "Register"
 msgstr "Inscription"
 
+#. Short adjective indicating the user must fill a particular form field
 #: src/components/Album/CreationForm/messages.js:29
 #: src/components/Album/EditForm/messages.js:28
 #: src/components/Comment/EditForm/messages.js:5
@@ -392,342 +386,334 @@ msgstr "Inscription"
 #: src/components/Photo/EditForm/messages.js:8
 #: src/components/Photo/UploadForm/messages.js:15
 #: src/components/Video/EditForm/messages.js:8
-#: src/components/Video/UploadForm/messages.js:15
-#: src/pages/LogIn/messages.js:10
-#. Short adjective indicating the user must fill a particular form field
+#: src/components/Video/UploadForm/messages.js:15 src/pages/LogIn/messages.js:10
 msgid "Required"
 msgstr "Obligatoire"
 
-#: src/components/Widgets/NavigationProfile/messages.js:14
 #. Label for a link to the user's settings page
+#: src/components/Widgets/NavigationProfile/messages.js:14
 msgid "Settings"
 msgstr "Réglages"
 
+#. Label for a link to the signIn page, or label for a button to actually signIn
 #: src/components/Widgets/NavigationProfile/messages.js:7
 #: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/messages.js:19
 #: src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
-#. Label for a link to the signIn page, or label for a button to actually signIn
 msgid "Sign in"
 msgstr "Connexion"
 
-#: src/components/Photo/BatchUploadForm/messages.js:8
 #. Label for a button to stop the uploading process
+#: src/components/Photo/BatchUploadForm/messages.js:8
 msgid "Stop"
 msgstr "Interrompre"
 
-#: src/components/User/BioUpdate/messages.js:7
 #. Explains what to enter in the introduction field
+#: src/components/User/BioUpdate/messages.js:7
 msgid "Tell people a little bit about yourself here."
 msgstr "Dis-en un peu plus sur toi-même."
 
-#: src/pages/ConfirmEmail/messages.js:37
 #. Title of a section of the page
+#: src/pages/ConfirmEmail/messages.js:37
 msgid "Things to do now that you have an account"
 msgstr "Quoi faire maintenant que tu es enregistré(e)"
 
+#. Label for a form field to enter a title
 #: src/components/Album/CreationForm/messages.js:33
 #: src/components/Album/EditForm/messages.js:31
 #: src/components/Photo/EditForm/messages.js:11
 #: src/components/Photo/UploadForm/messages.js:18
 #: src/components/Video/EditForm/messages.js:11
 #: src/components/Video/UploadForm/messages.js:18
-#. Label for a form field to enter a title
 msgid "Title"
 msgstr "Titre"
 
-#: src/components/Widgets/TranslateButton/messages.js:3
 #. Label for a button to translate a message
+#: src/components/Widgets/TranslateButton/messages.js:3
 msgid "Translate"
 msgstr "Traduire"
 
-#: src/components/Media/MediaThumb/messages.js:3
 #. Indicates the system does not know what an image represents
+#: src/components/Media/MediaThumb/messages.js:3
 msgid "Unknown image"
 msgstr "Image inconnue"
 
-#: src/components/Widgets/Form/AlbumVisibility/messages.js:5
 #. Choice for an album visibility setting
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:5
 msgid "Unlisted"
 msgstr "Non répertorié"
 
+#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:20
 #: src/components/Album/EditForm/messages.js:20
-#. Note to explain how album visibility works
 msgid "Unlisted albums are visible to everyone with the link."
 msgstr "Les albums non répertoriés sont visibles par tous avec le lien."
 
-#: src/components/User/BioUpdate/messages.js:11
 #. Label on a button to update something
+#: src/components/User/BioUpdate/messages.js:11
 msgid "Update"
 msgstr "Modifier"
 
-#: src/components/Cover/messages.js:39 src/components/Cover/messages.js:42
 #. Label for a menu entry to change the user's cover picture
 #. Title of a dialog window to change the user's cover picture
+#: src/components/Cover/messages.js:39 src/components/Cover/messages.js:42
 msgid "Update cover picture"
 msgstr "Modifier la photo de couverture"
 
-#: src/components/Cover/messages.js:30 src/components/Cover/messages.js:33
 #. Label for a menu entry to change the user's profile picture
 #. Title of a dialog window to change the user's profile picture
+#: src/components/Cover/messages.js:30 src/components/Cover/messages.js:33
 msgid "Update profile picture"
 msgstr "Modifier la photo de profil"
 
-#: src/pages/Profile/messages.js:10
 #. Title of a dialog window to change the user's introduction
+#: src/pages/Profile/messages.js:10
 msgid "Update your introduction"
 msgstr "Modifier ta présentation"
 
+#. Label for a button to upload a picture
 #: src/components/Cover/messages.js:26
 #: src/components/Photo/BatchUploadForm/messages.js:9
 #: src/components/Photo/UploadForm/messages.js:20
 #: src/components/Video/UploadForm/messages.js:22
-#. Label for a button to upload a picture
 msgid "Upload"
 msgstr "Envoyer"
 
-#: src/components/Photo/BatchUploadForm/Preview/messages.js:3
 #. Indicates a given image failed to upload
+#: src/components/Photo/BatchUploadForm/Preview/messages.js:3
 msgid "Upload failed"
 msgstr "L’envoi a échoué"
 
-#: src/components/Photo/BatchUploadForm/messages.js:10
 #. Indicates the upload process worked properly
+#: src/components/Photo/BatchUploadForm/messages.js:10
 msgid "Upload finished!"
 msgstr "L’envoi est terminé!"
 
-#: src/pages/ConfirmEmail/messages.js:26
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:26
 msgid "Upload photos or videos"
 msgstr "Envoyer des photos ou vidéos"
 
-#: src/pages/LogIn/messages.js:7
 #. Label of a form field for the user's username
+#: src/pages/LogIn/messages.js:7
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
-#: src/components/Video/UploadForm/messages.js:20
 #. Label for a form field to enter a video address
+#: src/components/Video/UploadForm/messages.js:20
 msgid "Video address"
 msgstr "Adresse de la vidéo"
 
-#: src/components/Video/Embed/messages.js:3
 #. Label for a section containing a video
+#: src/components/Video/Embed/messages.js:3
 msgid "Video content"
 msgstr "Contenu vidéo"
 
-#: src/components/Video/UploadForm/messages.js:23
 #. Error message displayed when the user is trying to post a video but the system does not understand the video address
+#: src/components/Video/UploadForm/messages.js:23
 msgid "Video not supported"
 msgstr "Vidéo non supportée"
 
+#. Form field to decide whether other users can see an album
 #: src/components/Album/CreationForm/messages.js:10
 #: src/components/Album/EditForm/messages.js:10
-#. Form field to decide whether other users can see an album
 msgid "Visibility"
 msgstr "Visibilité"
 
-#: src/components/Widgets/Form/AlbumVisibility/messages.js:4
 #. Choice for an album visibility setting
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:4
 msgid "Visible"
 msgstr "Visible"
 
+#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:14
 #: src/components/Album/EditForm/messages.js:14
-#. Note to explain how album visibility works
 msgid "Visible albums (the default) are visible to everyone."
 msgstr "Les albums visibles (par défaut) sont visibles par tous."
 
-#: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 #. Indicates an image will start uploading soon
+#: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 msgid "Waiting"
 msgstr "En attente"
 
-#: src/pages/ConfirmEmail/messages.js:27
 #. Instruction for a user
+#: src/pages/ConfirmEmail/messages.js:27
 msgid ""
-"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, "
-"Vimeo and DailyMotion videos"
+"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo "
+"and DailyMotion videos"
 msgstr ""
-"On supporte les photos en JPEG et PNG, ainsi que les vidéos Instagram, "
-"Facebook, YouTube, Vimeo et Dailymotion"
+"On supporte les photos en JPEG et PNG, ainsi que les vidéos Instagram, Facebook, "
+"YouTube, Vimeo et Dailymotion"
 
-#: src/components/Widgets/DeleteItemModal/messages.js:9
 #. Label for a button the user can click to confirm they want to delete an item
+#: src/components/Widgets/DeleteItemModal/messages.js:9
 msgid "Yes, delete it"
 msgstr "Oui, supprimer"
 
-#: src/pages/About/messages.js:4
 #. Paragraph
+#: src/pages/About/messages.js:4
 msgctxt "About"
 msgid ""
 "Remember before Facebook? There were so many resources for mountainboarding "
-"online. Forums, websites, photo galleries… Where are those now? The sad "
-"answer is they’re mostly gone. Facebook has made it so easy to post photos "
-"and videos and share them that people slowly stopped using other sites. "
-"That’s actually what happened to the old Surfing Dirt forum!"
+"online. Forums, websites, photo galleries… Where are those now? The sad answer "
+"is they’re mostly gone. Facebook has made it so easy to post photos and videos "
+"and share them that people slowly stopped using other sites. That’s actually "
+"what happened to the old Surfing Dirt forum!"
 msgstr ""
 "Tu te souviens avant Facebook? Il y avait tellement de trucs sur le "
-"mountainboard sur internet. Des forums, des sites, des galeries photos… Où "
-"sont-ils maintenant? Ils ont presque tous disparu. Facebook a tellement "
-"simplifié l’envoi de photos et de vidéos que petit à petit, les riders ont "
-"arrêté d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux "
-"forum Surfing Dirt!"
+"mountainboard sur internet. Des forums, des sites, des galeries photos… Où sont-"
+"ils maintenant? Ils ont presque tous disparu. Facebook a tellement simplifié "
+"l’envoi de photos et de vidéos que petit à petit, les riders ont arrêté "
+"d’utiliser autre chose. C’est exactement ce qui est arrivé au vieux forum "
+"Surfing Dirt!"
 
-#: src/pages/About/messages.js:12
 #. Paragraph
+#: src/pages/About/messages.js:12
 msgctxt "About"
 msgid ""
-"Surfing Dirt hopes to solve that problem. We intend to be the social "
-"network for mountainboarders. The place where you’ll share photos and "
-"videos from your last session. Where you’ll learn about riders and spots "
-"near you. Where you’ll discuss trucks and jumps. And where people can see "
-"what mountainboarding is about."
+"Surfing Dirt hopes to solve that problem. We intend to be the social network for "
+"mountainboarders. The place where you’ll share photos and videos from your last "
+"session. Where you’ll learn about riders and spots near you. Where you’ll "
+"discuss trucks and jumps. And where people can see what mountainboarding is "
+"about."
 msgstr ""
-"Surfing Dirt espère bien résoudre ce problème. L’idée c’est de devenir LE "
-"réseau social des mountainboarders. L’endroit où partager photos et vidéos "
-"de ta dernière session. Où tu découvriras des riders et des spots près de "
-"chez toi. Où tu parleras de trucks, de kicks. Et où tout le monde pourra "
-"venir découvrir le mountainboard."
+"Surfing Dirt espère bien résoudre ce problème. L’idée c’est de devenir LE réseau "
+"social des mountainboarders. L’endroit où partager photos et vidéos de ta "
+"dernière session. Où tu découvriras des riders et des spots près de chez toi. Où "
+"tu parleras de trucks, de kicks. Et où tout le monde pourra venir découvrir le "
+"mountainboard."
 
-#: src/pages/About/messages.js:3
 #. Title of the About page
+#: src/pages/About/messages.js:3
 msgctxt "About"
 msgid "Surfing Dirt is back!"
 msgstr "Surfing Dirt est de retour!"
 
+#. Paragraph
 #: src/pages/About/messages.js:16
-#. Paragraph
 msgctxt "About"
 msgid ""
-"We hoped to launch a long time ago, but we're here now, so enjoy the new "
-"Surfing Dirt!"
+"We hoped to launch a long time ago, but we're here now, so enjoy the new Surfing "
+"Dirt!"
 msgstr ""
-"On espérait lancer plus tôt, mais on est là maintenant, alors profitez bien "
-"du nouveau Surfing Dirt!"
+"On espérait lancer plus tôt, mais on est là maintenant, alors profitez bien du "
+"nouveau Surfing Dirt!"
 
-#: src/pages/About/messages.js:8
 #. Paragraph
+#: src/pages/About/messages.js:8
 msgctxt "About"
 msgid ""
-"When you meet someone who seems genuinely excited to try mountainboarding, "
-"where do you send them? To a Facebook group, maybe? Sure there are many "
-"mountainboard groups on Facebook, and a lot of people use them. But they "
-"feel wrong. We need a place for mountainboarders to come together online "
-"and grow as a community again."
+"When you meet someone who seems genuinely excited to try mountainboarding, where "
+"do you send them? To a Facebook group, maybe? Sure there are many mountainboard "
+"groups on Facebook, and a lot of people use them. But they feel wrong. We need a "
+"place for mountainboarders to come together online and grow as a community again."
 msgstr ""
 "Quand tu rencontres quelqu’un qui a vraiment envie de se mettre au "
-"mountainboard, tu l’envoies où? Sur un groupe Facebook peut-être? C’est "
-"sûr, y’a plein de groupes Facebook autour du mountainboard, et plein de "
-"gens s’en servent. Mais y’a un truc qui va pas. Il nous faut un endroit "
-"pour que les mountainboarders se retrouvent, pour que la communauté "
-"grossisse à nouveau."
+"mountainboard, tu l’envoies où? Sur un groupe Facebook peut-être? C’est sûr, y’a "
+"plein de groupes Facebook autour du mountainboard, et plein de gens s’en "
+"servent. Mais y’a un truc qui va pas. Il nous faut un endroit pour que les "
+"mountainboarders se retrouvent, pour que la communauté grossisse à nouveau."
 
+#. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 #: src/components/Album/AlbumAddButtons/messages.js:3
 #: src/sections/Layout/messages.js:26
-#. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 msgctxt "Actions"
 msgid "Add a photo"
 msgstr "Ajouter une photo"
 
+#. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 #: src/components/Album/AlbumAddButtons/messages.js:7
 #: src/sections/Layout/messages.js:30
-#. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 msgctxt "Actions"
 msgid "Add a video"
 msgstr "Ajouter une vidéo"
 
-#: src/sections/Layout/messages.js:17
 #. Label of a link to a page where a user could create a new album. Please keep this translation as short as possible
+#: src/sections/Layout/messages.js:17
 msgctxt "Actions"
 msgid "Add an album"
 msgstr "Créer un album"
 
-#: src/components/Album/AlbumPreview/messages.js:3
-#: src/components/Widgets/Attribution/messages.js:3
 #. Indicates who created an album
 #. Indicates who created an album (short version)
+#: src/components/Album/AlbumPreview/messages.js:3
+#: src/components/Widgets/Attribution/messages.js:3
 msgctxt "Album"
 msgid "by"
 msgstr "par"
 
-#: src/components/Album/AlbumPreview/messages.js:4
 #. Label for a window containing a quick preview of a media page
+#: src/components/Album/AlbumPreview/messages.js:4
 msgctxt "Album"
 msgid "Media preview"
 msgstr "Aperçu"
 
+#. Indicates all registered users can contribute to a given an album
 #: src/components/Album/AlbumPreview/messages.js:8
 #: src/components/Widgets/Attribution/messages.js:5
-#. Indicates all registered users can contribute to a given an album
 msgctxt "Album"
 msgid "Public"
 msgstr "Public"
 
-#: src/components/Widgets/Attribution/messages.js:4
 #. Indicates who created an album (long version)
+#: src/components/Widgets/Attribution/messages.js:4
 msgctxt "Album"
 msgid "Started by"
 msgstr "Démarré par"
 
-#: src/pages/Album/Post/messages.js:3
 #. Title of the album creation page
+#: src/pages/Album/Post/messages.js:3
 msgctxt "Album creation page"
 msgid "Create a new album"
 msgstr "Créer un nouvel album"
 
-#: src/pages/Album/Edit/messages.js:3
 #. Title of the album edition page
-#, fuzzy
-#| msgid "Add an album"
+#: src/pages/Album/Edit/messages.js:3
 msgctxt "Album edit page"
 msgid "Edit an album"
-msgstr "Ajouter un album"
+msgstr "Modifier un album"
 
-#: src/pages/Album/messages.js:13
 #. Label for a menu item to edit an album
-#, fuzzy
-#| msgid "Edit"
+#: src/pages/Album/messages.js:13
 msgctxt "Album page"
 msgid "Edit"
 msgstr "Modifier"
 
-#: src/pages/Album/messages.js:14
 #. Label for a button to load more photos and videos
+#: src/pages/Album/messages.js:14
 msgctxt "Album page"
 msgid "Load more"
 msgstr "Charger la suite"
 
-#: src/pages/Album/messages.js:5
 #. Label for a menu item to add many photos to an album
+#: src/pages/Album/messages.js:5
 msgctxt "Album page"
 msgid "Post multiple photos"
 msgstr "Envoyer plusieurs photos"
 
-#: src/pages/Album/messages.js:9
 #. Error message displayed when a user tries to delete an album which contains photos or videos
+#: src/pages/Album/messages.js:9
 msgctxt "Album page"
 msgid "This album still contains photos or videos, it cannot be deleted."
 msgstr ""
 "Cet album contient toujours des photos ou des vidéos, il ne peut pas être "
 "supprimé."
 
+#. Label for a window containing a quick preview of a media page
 #: src/components/Media/Items/Details/messages.js:3
 #: src/components/Media/Items/ThumbOnly/messages.js:3
-#. Label for a window containing a quick preview of a media page
 msgctxt "AlbumGrid"
 msgid "Media preview"
 msgstr "Aperçu"
 
-#: src/components/Widgets/Empty/messages.js:3
 #. Text displayed when an album is empty
+#: src/components/Widgets/Empty/messages.js:3
 msgctxt "Albums"
 msgid "Nothing to see here, move along!"
 msgstr "Rien à voir, circulez!"
 
-#: src/pages/Albums/messages.js:3
 #. Indicates the user has reached the end of the list of albums
+#: src/pages/Albums/messages.js:3
 msgctxt "Albums page"
 msgid "There are no more albums to load"
 msgstr "Il n’y a plus d’albums à charger"
@@ -742,249 +728,235 @@ msgctxt "Button"
 msgid "Login with Google"
 msgstr "Connexion avec Google"
 
-#: src/pages/Comment/Edit/messages.js:3
 #. Title of the comment edition page
+#: src/pages/Comment/Edit/messages.js:3
 msgctxt "Comment edit page"
 msgid "Edit a comment"
 msgstr "Modifier un commentaire"
 
+#. Indicates a message was written in an angry tone
 #: src/components/Comment/EditForm/messages.js:15
 #: src/components/Comment/Form/messages.js:15
 #: src/components/Comment/Item/messages.js:8
-#. Indicates a message was written in an angry tone
 msgctxt "Comments"
 msgid "angry"
 msgstr "en colère"
 
+#. Indicates a message was written in a happy tone
 #: src/components/Comment/EditForm/messages.js:16
 #: src/components/Comment/Form/messages.js:16
 #: src/components/Comment/Item/messages.js:9
-#. Indicates a message was written in a happy tone
 msgctxt "Comments"
 msgid "happy"
 msgstr "content"
 
+#. Indicates a message was written in a joking tone
 #: src/components/Comment/EditForm/messages.js:14
 #: src/components/Comment/Form/messages.js:14
 #: src/components/Comment/Item/messages.js:7
-#. Indicates a message was written in a joking tone
 msgctxt "Comments"
 msgid "joking"
 msgstr "blague"
 
+#. Label for a text input containing a comment
 #: src/components/Comment/EditForm/messages.js:12
 #: src/components/Comment/Form/messages.js:12
-#. Label for a text input containing a comment
 msgctxt "Comments"
 msgid "Message"
 msgstr "Message"
 
+#. Indicates a message was written in a neutral tone
 #: src/components/Comment/EditForm/messages.js:13
 #: src/components/Comment/Form/messages.js:13
 #: src/components/Comment/Item/messages.js:6
-#. Indicates a message was written in a neutral tone
 msgctxt "Comments"
 msgid "neutral"
 msgstr "neutre"
 
+#. Label for a button to post a comment
 #: src/components/Comment/EditForm/messages.js:4
 #: src/components/Comment/Form/messages.js:4 src/components/Feed/messages.js:3
-#. Label for a button to post a comment
 msgctxt "Comments"
 msgid "Reply"
 msgstr "Répondre"
 
+#. Indicates a message was written in a sad tone
 #: src/components/Comment/EditForm/messages.js:17
 #: src/components/Comment/Form/messages.js:17
 #: src/components/Comment/Item/messages.js:10
-#. Indicates a message was written in a sad tone
 msgctxt "Comments"
 msgid "sad"
 msgstr "triste"
 
+#. Label for the dropdown to choose a message tone (sad, angry, etc.)
 #: src/components/Comment/EditForm/messages.js:8
 #: src/components/Comment/Form/messages.js:8
-#. Label for the dropdown to choose a message tone (sad, angry, etc.)
 msgctxt "Comments"
 msgid "Tone"
 msgstr "Ton"
 
-#: src/components/Widgets/DualContainer/messages.js:3
 #. Title of a button to expand a list
+#: src/components/Widgets/DualContainer/messages.js:3
 msgctxt "DualContainer"
 msgid "View all"
 msgstr "Tout voir"
 
-#: src/pages/ConfirmEmail/messages.js:3
 #. Title for the page where a user confirms their email is valid
+#: src/pages/ConfirmEmail/messages.js:3
 msgctxt "Email"
 msgid "Account validation"
 msgstr "Validation du compte"
 
-#: src/pages/ConfirmEmail/messages.js:7
 #. Error message displayed when something did not work
+#: src/pages/ConfirmEmail/messages.js:7
 msgctxt "Email"
 msgid "An error occurred and you account could not be finalized"
 msgstr "Une erreur est survenue et ton compte n’a pas pu être validé"
 
-#: src/pages/ConfirmEmail/messages.js:11
 #. Message displayed once the user has confirmed their email address
+#: src/pages/ConfirmEmail/messages.js:11
 msgctxt "Email"
 msgid "Congratulations, your account is now fully activated!"
 msgstr "Félicitations, ton compte est maintenant validé!"
 
-#: src/pages/ConfirmEmail/messages.js:15
 #. Message displayed once the user has confirmed their email address
+#: src/pages/ConfirmEmail/messages.js:15
 msgctxt "Email"
 msgid "You can now go ahead and sign in with your email and password:"
 msgstr "Tu peux maintenant te connecter avec ton email et ton mot de passe:"
 
-#: src/components/Widgets/ErrorMessage/messages.js:3
 #. A vague error message to be displayed when we don't know what exactly happened
+#: src/components/Widgets/ErrorMessage/messages.js:3
 msgctxt "Error"
 msgid "An unexpected error occurred"
 msgstr "Une erreur est survenue"
 
-#: src/components/Widgets/ErrorMessage/messages.js:7
 #. Error message displayed when a user tried to signIn
+#: src/components/Widgets/ErrorMessage/messages.js:7
 msgctxt "Error"
 msgid "Login failed"
 msgstr "La connexion a échoué"
 
-#: src/components/Feed/messages.js:12
 #. Indicates how many new comments were posted
+#: src/components/Feed/messages.js:12
 msgctxt "Feed"
 msgid "%d new comment"
 msgid_plural "%d new comments"
 msgstr[0] "%d nouveau commentaire"
-msgstr[1] ""
+msgstr[1] "%d nouveaux commentaires"
 
-#: src/components/Feed/messages.js:19
 #. Indicates how many new photos were posted
-#, fuzzy
-#| msgctxt "Photo post page"
-#| msgid "Post a new photo"
+#: src/components/Feed/messages.js:19
 msgctxt "Feed"
 msgid "%d new photo"
 msgid_plural "%d new photos"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d nouvelle photo"
+msgstr[1] "%d nouvelles photos"
 
-#: src/components/Feed/messages.js:26
 #. Indicates how many new videos were posted
-#, fuzzy
-#| msgctxt "Video post page"
-#| msgid "Post a new video"
+#: src/components/Feed/messages.js:26
 msgctxt "Feed"
 msgid "%d new vidéo"
 msgid_plural "%d new vidéos"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d nouvelle vidéo"
+msgstr[1] "%d nouvelles vidéos"
 
-#: src/components/Feed/messages.js:33
 #. Indicates what item a comment or photo was added to. Example: 9 new photos added to 'My Album'
+#: src/components/Feed/messages.js:33
 msgctxt "Feed"
 msgid "added to"
 msgstr "ajouté à"
 
-#: src/components/Feed/messages.js:5
 #. Indicates a new album was created
-#, fuzzy
-#| msgid "Go to album"
+#: src/components/Feed/messages.js:5
 msgctxt "Feed"
 msgid "New album"
-msgstr "Voir l’album"
+msgstr "Nouvel album"
 
-#: src/components/Feed/messages.js:6
 #. Indicates a new comment was posted
+#: src/components/Feed/messages.js:6
 msgctxt "Feed"
 msgid "New comment"
 msgstr "Nouveau commentaire"
 
-#: src/components/Feed/messages.js:7
 #. Indicates a new photo was posted
-#, fuzzy
-#| msgctxt "Photo post page"
-#| msgid "Post a new photo"
+#: src/components/Feed/messages.js:7
 msgctxt "Feed"
 msgid "New photo"
 msgstr "Nouvelle photo"
 
-#: src/components/Feed/messages.js:9
 #. Indicates a new user registered
+#: src/components/Feed/messages.js:9
 msgctxt "Feed"
 msgid "New rider"
 msgstr "Nouveau rider"
 
-#: src/components/Feed/messages.js:8
 #. Indicates a new video was posted
-#, fuzzy
-#| msgctxt "Video post page"
-#| msgid "Post a new video"
+#: src/components/Feed/messages.js:8
 msgctxt "Feed"
 msgid "New video"
 msgstr "Nouvelle vidéo"
 
-#: src/pages/Home/Feed/messages.js:3
 #. Help text explaining what the feed page is
+#: src/pages/Home/Feed/messages.js:3
 msgctxt "Feed"
 msgid ""
-"This page shows the latest activity on Surfing Dirt: content and messages "
-"posted by our members"
+"This page shows the latest activity on Surfing Dirt: content and messages posted "
+"by our members"
 msgstr ""
-"Cette page montre la dernière activité sur Surfing Dirt: contenu et "
-"messages postés par nos membres"
+"Cette page montre la dernière activité sur Surfing Dirt: contenu et messages "
+"postés par nos membres"
 
-#: src/sections/Footer/messages.js:3
 #. Name of the page where we explain what the site is about
+#: src/sections/Footer/messages.js:3
 msgctxt "Footer"
 msgid "About"
 msgstr "A propos"
 
-#: src/sections/Footer/messages.js:7
 #. Name of the page where a user can write to the site owners
+#: src/sections/Footer/messages.js:7
 msgctxt "Footer"
 msgid "Contact"
 msgstr "Contact"
 
-#: src/sections/Footer/messages.js:11
 #. Name of the forum section of the old site
+#: src/sections/Footer/messages.js:11
 msgctxt "Footer"
 msgid "Forum"
 msgstr "Forum"
 
-#: src/components/Widgets/Form/APIMessage/messages.js:7
 #. Error message displayed foe example when a user chooses a username or email that's already used by someone else
+#: src/components/Widgets/Form/APIMessage/messages.js:7
 msgctxt "Form errors"
 msgid "Already taken!"
 msgstr "Déjà pris!"
 
-#: src/components/Widgets/Form/APIMessage/messages.js:3
 #. Error message displayed when a bad email address was entered
+#: src/components/Widgets/Form/APIMessage/messages.js:3
 msgctxt "Form errors"
 msgid "Email is invalid"
 msgstr "Email invalide"
 
-#: src/components/Widgets/Form/APIMessage/messages.js:11
 #. Error message displayed when a text field is different from another (example: two password fields)
+#: src/components/Widgets/Form/APIMessage/messages.js:11
 msgctxt "Form errors"
 msgid "Not identical"
 msgstr "Pas les mêmes"
 
-#: src/components/Widgets/Form/APIMessage/messages.js:15
 #. Error message displayed when the user left a required field empty
+#: src/components/Widgets/Form/APIMessage/messages.js:15
 msgctxt "Form errors"
 msgid "Required"
 msgstr "Obligatoire"
 
-#: src/components/Widgets/Form/APIMessage/messages.js:19
 #. Error message displayed when the user typed a short message
+#: src/components/Widgets/Form/APIMessage/messages.js:19
 msgctxt "Form errors"
 msgid "Too short"
 msgstr "Trop court"
 
-#: src/pages/Home/Discover/messages.js:35
 #. Label for a link to navigate
+#: src/pages/Home/Discover/messages.js:35
 msgctxt "Home"
 msgid "Go"
 msgstr "Go"
@@ -992,28 +964,27 @@ msgstr "Go"
 #: src/pages/Home/Discover/messages.js:25
 msgctxt "Home"
 msgid ""
-"It's a lot of work to create a site like this, so we're starting small and "
-"will grow slowly.\n"
+"It's a lot of work to create a site like this, so we're starting small and will "
+"grow slowly.\n"
 "      We're now focusing on user profiles, photos, videos, and albums. Soon "
 "after, we'll add things like spots, events, etc.\n"
-"      So take a look around, sign up, post photos and be part of Surfing "
-"Dirt!"
+"      So take a look around, sign up, post photos and be part of Surfing Dirt!"
 msgstr ""
-"Monter un site comme celui-ci, c’est beaucoup de travail, on va donc "
-"commencer petit et grossir tranquillement.\n"
-"      On commence avec les pages de profil, les photos, vidéos et albums, "
-"mais rapidement on rajoutera des spots, des évènements, etc.\n"
-"       Alors, fouille partout, créé-toi un compte, poste des photos et "
-"prend part à Surfing Dirt!"
+"Monter un site comme celui-ci, c’est beaucoup de travail, on va donc commencer "
+"petit et grossir tranquillement.\n"
+"      On commence avec les pages de profil, les photos, vidéos et albums, mais "
+"rapidement on rajoutera des spots, des évènements, etc.\n"
+"       Alors, fouille partout, créé-toi un compte, poste des photos et prend "
+"part à Surfing Dirt!"
 
-#: src/pages/Albums/messages.js:7
 #. Label for a link to a page containing more albums
+#: src/pages/Albums/messages.js:7
 msgctxt "Home"
 msgid "More Albums"
 msgstr "Plus d’Albums"
 
-#: src/pages/Home/Discover/messages.js:3
 #. Label for a button to display a longer text
+#: src/pages/Home/Discover/messages.js:3
 msgctxt "Home"
 msgid "More..."
 msgstr "Suite…"
@@ -1021,22 +992,22 @@ msgstr "Suite…"
 #: src/pages/Home/Discover/messages.js:9
 msgctxt "Home"
 msgid ""
-"Mountainboarding doesn't have a real home online right now, so we're hoping "
-"to be it. \n"
-"      Unlike the old Surfing Dirt forum, this is more like a social "
-"network: profile pages, galleries, and all kinds of other things.\n"
+"Mountainboarding doesn't have a real home online right now, so we're hoping to "
+"be it. \n"
+"      Unlike the old Surfing Dirt forum, this is more like a social network: "
+"profile pages, galleries, and all kinds of other things.\n"
 "      A place to showcase all the cool things that are happening in "
 "mountainboarding."
 msgstr ""
 "Le mountainboard n’a pas vraiment de foyer sur Internet, et on espère le "
 "devenir.\n"
-"      Alors que l’ancien Surfing Dirt était un forum, le nouveau sera plus "
-"un réseau social: pages de profil, galeries, et plein d’autres choses.\n"
-"      Un endroit pour montrer tous les trucs cool qui se passent dans le "
-"monde du mountainboard."
+"      Alors que l’ancien Surfing Dirt était un forum, le nouveau sera plus un "
+"réseau social: pages de profil, galeries, et plein d’autres choses.\n"
+"      Un endroit pour montrer tous les trucs cool qui se passent dans le monde "
+"du mountainboard."
 
-#: src/pages/Home/Discover/messages.js:31
 #. Message before a link to go to a page containing more albums
+#: src/pages/Home/Discover/messages.js:31
 msgctxt "Home"
 msgid "See more photos and videos on the Albums page"
 msgstr "Plus de photos et de vidéos sur la page des Albums"
@@ -1046,8 +1017,8 @@ msgctxt "Home"
 msgid "Surfing Dirt, your mountainboard community"
 msgstr "Surfing Dirt, ta communauté mountainboard"
 
-#: src/pages/Home/Discover/messages.js:24
 #. Title of a paragraph
+#: src/pages/Home/Discover/messages.js:24
 msgctxt "Home"
 msgid "The future"
 msgstr "L’avenir"
@@ -1055,215 +1026,211 @@ msgstr "L’avenir"
 #: src/pages/Home/Discover/messages.js:17
 msgctxt "Home"
 msgid ""
-"Well, for one, because the mountainboard community is special and deserves "
-"an online space that resembles it.\n"
-"      Mountainboard events are known for being open, inclusive and "
-"positive. Surfing Dirt intends to provide the same thing online!\n"
-"      Also, since you asked, because Facebook sucks! In general, it causes "
-"a lot of harm, and it would be in everyone's best interest to use it less.\n"
-"      But really, the main reason is that we hope to bring you a cool place "
-"for everyone to come together!"
+"Well, for one, because the mountainboard community is special and deserves an "
+"online space that resembles it.\n"
+"      Mountainboard events are known for being open, inclusive and positive. "
+"Surfing Dirt intends to provide the same thing online!\n"
+"      Also, since you asked, because Facebook sucks! In general, it causes a lot "
+"of harm, and it would be in everyone's best interest to use it less.\n"
+"      But really, the main reason is that we hope to bring you a cool place for "
+"everyone to come together!"
 msgstr ""
 "Ben déjà parce que la communauté du mountainboard est spéciale et mérite un "
 "espace qui lui ressemble.\n"
 "    Les events de mountainboard sont connus pour être ouverts, inclusifs et "
 "positifs. Surfing Dirt espère être la même chose en ligne!\n"
-"    Et puis aussi parce que Facebook ça craint, c’est toxique et on se "
-"porterait tous mieux si on s’en servait moins.\n"
-"    Mais la raison principale c’est qu’on espère créer un lieu pour "
-"rassembler tout le monde!"
+"    Et puis aussi parce que Facebook ça craint, c’est toxique et on se porterait "
+"tous mieux si on s’en servait moins.\n"
+"    Mais la raison principale c’est qu’on espère créer un lieu pour rassembler "
+"tout le monde!"
 
-#: src/pages/Home/Discover/messages.js:16
 #. Title of a paragraph
+#: src/pages/Home/Discover/messages.js:16
 msgctxt "Home"
 msgid "Why we need that"
 msgstr "Pourquoi on a besoin de ça"
 
-#: src/pages/Home/Discover/messages.js:4
 #. Title on the homepage to welcome users
+#: src/pages/Home/Discover/messages.js:4
 msgctxt "Home"
 msgid "Your mountainboard community"
 msgstr "Ta communauté mountainboard"
 
-#: src/pages/Home/messages.js:3
 #. Label for a section containing a lot of things for a new person to discover
+#: src/pages/Home/messages.js:3
 msgctxt "Homepage"
 msgid "Discover"
 msgstr "Découvrir"
 
-#: src/pages/Home/messages.js:7
 #. Label for a section containing a vertical list of new things on the site
+#: src/pages/Home/messages.js:7
 msgctxt "Homepage"
 msgid "Feed"
 msgstr "Activité"
 
-#: src/pages/Home/messages.js:11
 #. Indicates that what follows is the page's main content (help text for blind users)
-#, fuzzy
-#| msgctxt "Page Layout"
-#| msgid "Main content"
+#: src/pages/Home/messages.js:11
 msgctxt "Homepage"
 msgid "Main content"
 msgstr "Contenu principal"
 
+#. An error message
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
-#. An error message
 msgctxt "Loading"
 msgid "An error occurred while navigating, please reload the page."
 msgstr "Une erreur est survenue pendant la navigation, merci de recharger la page."
 
+#. An error message
 #: src/components/Widgets/Card/messages.js:7
 #: src/components/Widgets/Loading/messages.js:7
-#. An error message
 msgctxt "Loading"
 msgid "The page could not load, please try and reload it."
 msgstr "La page n’a pas pu se charger, merci de reéssayer."
 
-#: src/sections/ProfileLinkNavigation/messages.js:12
 #. Label of a link to the registration page
+#: src/sections/ProfileLinkNavigation/messages.js:12
 msgctxt "LoggedOut"
 msgid "Register"
 msgstr "Inscription"
 
+#. Label of a button to close a dialog window
 #: src/components/User/BioUpdate/messages.js:10
 #: src/components/Widgets/Modal/messages.js:4
-#. Label of a button to close a dialog window
 msgctxt "Modal"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/components/Widgets/Modal/messages.js:3
 #. Label of a button to close a dialog window
+#: src/components/Widgets/Modal/messages.js:3
 msgctxt "Modal"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/pages/Photo/BatchUpload/messages.js:4
 #. Title of the photo post page
+#: src/pages/Photo/BatchUpload/messages.js:4
 msgctxt "Multiple upload page"
 msgid "Post multiple photos"
 msgstr "Envoyer plusieurs photos"
 
-#: src/sections/MoreLinkNavigation/messages.js:7
 #. Name of a page on the site
+#: src/sections/MoreLinkNavigation/messages.js:7
 msgctxt "Navigation"
 msgid "Albums"
 msgstr "Albums"
 
+#. Label for a button to close the navigation menu
 #: src/sections/MoreLinkNavigation/messages.js:8
 #: src/sections/ProfileLinkNavigation/messages.js:3
-#. Label for a button to close the navigation menu
 msgctxt "Navigation"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/sections/MoreLinkNavigation/messages.js:9
 #. Name of a page on the site
+#: src/sections/MoreLinkNavigation/messages.js:9
 msgctxt "Navigation"
 msgid "Gallery"
 msgstr "Galerie"
 
+#. Label for a section containing links to pages on the site
 #: src/sections/MoreLinkNavigation/messages.js:10
 #: src/sections/ProfileLinkNavigation/messages.js:4
-#. Label for a section containing links to pages on the site
 msgctxt "Navigation"
 msgid "Links"
 msgstr "Liens"
 
-#: src/sections/MoreLinkNavigation/messages.js:14
 #. Name of a page on the site
+#: src/sections/MoreLinkNavigation/messages.js:14
 msgctxt "Navigation"
 msgid "Riders"
 msgstr "Riders"
 
+#. Label for a menu to manage the user's account
 #: src/components/Widgets/NavigationProfile/messages.js:3
 #: src/sections/Layout/messages.js:5
-#. Label for a menu to manage the user's account
 msgctxt "NavigationProfile"
 msgid "Account"
 msgstr "Compte"
 
-#: src/pages/NewPasswordActivated/messages.js:14
 #. Indicates how to sign in after a new password was activated
+#: src/pages/NewPasswordActivated/messages.js:14
 msgctxt "New password activation"
 msgid "Enter the new password we emailed you to sign in!"
 msgstr ""
-"Pour te connecter, saisis le nouveau mot de passe reçu dans l’email qu’on "
-"vient de t’envoyer!"
+"Pour te connecter, saisis le nouveau mot de passe reçu dans l’email qu’on vient "
+"de t’envoyer!"
 
-#: src/pages/NewPasswordActivated/messages.js:7
 #. Title of a page
+#: src/pages/NewPasswordActivated/messages.js:7
 msgctxt "New password activation"
 msgid "Password Activation"
 msgstr "Activation du mot de passe"
 
-#: src/pages/NewPasswordActivated/messages.js:3
 #. Message displayed when a new password was successfully activated
+#: src/pages/NewPasswordActivated/messages.js:3
 msgctxt "New password activation"
 msgid "Your new password is now activated!"
 msgstr "Ton nouveau mot de passe est maintenant activé!"
 
-#: src/pages/OldForum/messages.js:4
 #. Paragraph
+#: src/pages/OldForum/messages.js:4
 msgctxt "OldForum"
 msgid ""
-"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still "
-"around!"
+"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still around!"
 msgstr "Tu cherches le vieux forum Surfing Dirt? Pas de souci, il est encore là!"
 
-#: src/pages/OldForum/messages.js:16
 #. Paragraph
+#: src/pages/OldForum/messages.js:16
 msgctxt "OldForum"
 msgid "Go to the forum!"
 msgstr "Aller au forum!"
 
-#: src/pages/OldForum/messages.js:12
 #. Paragraph
+#: src/pages/OldForum/messages.js:12
 msgctxt "OldForum"
 msgid ""
-"In the meantime, go check it out, it may look different than it used to, "
-"but the great content is still there!"
+"In the meantime, go check it out, it may look different than it used to, but the "
+"great content is still there!"
 msgstr ""
-"En attendant, va le voir, il a peut-être une autre tête, mais le contenu "
-"est toujours là!"
+"En attendant, va le voir, il a peut-être une autre tête, mais le contenu est "
+"toujours là!"
 
-#: src/pages/OldForum/messages.js:3
 #. Title of the Forum page
+#: src/pages/OldForum/messages.js:3
 msgctxt "OldForum"
 msgid "The Surfing Dirt Forum"
 msgstr "Le forum Surfing Dirt"
 
-#: src/pages/OldForum/messages.js:8
 #. Paragraph
+#: src/pages/OldForum/messages.js:8
 msgctxt "OldForum"
 msgid ""
-"We haven't managed to merge the forum into the new site, but we're thinking "
-"it will happen some day."
+"We haven't managed to merge the forum into the new site, but we're thinking it "
+"will happen some day."
 msgstr ""
-"On a pas encore incorporé le forum dans le nouveau site, mais on se dit que "
-"ça sera fait un jour."
+"On a pas encore incorporé le forum dans le nouveau site, mais on se dit que ça "
+"sera fait un jour."
 
-#: src/sections/MoreLinkNavigation/messages.js:3
 #. Label for a navigation section containing links to add new items
+#: src/sections/MoreLinkNavigation/messages.js:3
 msgctxt "Page Layout"
 msgid "Actions"
 msgstr "Actions"
 
-#: src/sections/Layout/messages.js:13
 #. Label for a link to a page where the user can see the activity on the site
+#: src/sections/Layout/messages.js:13
 msgctxt "Page Layout"
 msgid "Activity"
 msgstr "Activité"
 
-#: src/sections/Layout/messages.js:9
 #. Label for a button which opens a list of links to add new items
+#: src/sections/Layout/messages.js:9
 msgctxt "Page Layout"
 msgid "Add"
 msgstr "Ajouter"
 
-#: src/sections/Layout/messages.js:21
 #. Label for a link to the homepage
+#: src/sections/Layout/messages.js:21
 msgctxt "Page Layout"
 msgid "Home"
 msgstr "Accueil"
@@ -1278,116 +1245,112 @@ msgctxt "Page Layout"
 msgid "Main header"
 msgstr "Header principal"
 
-#: src/sections/Layout/messages.js:22
 #. Label for a button which opens a list of additional navigation items
+#: src/sections/Layout/messages.js:22
 msgctxt "Page Layout"
 msgid "More"
 msgstr "Plus"
 
+#. Label for a link to the user's profile page
 #: src/sections/Layout/messages.js:34
 #: src/sections/ProfileLinkNavigation/messages.js:11
-#. Label for a link to the user's profile page
 msgctxt "Page Layout"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/sections/Layout/messages.js:35
 #. Label for a button which opens up the search bar
+#: src/sections/Layout/messages.js:35
 msgctxt "Page Layout"
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/sections/ProfileLinkNavigation/messages.js:13
 #. Label for a link to the user's settings page
+#: src/sections/ProfileLinkNavigation/messages.js:13
 msgctxt "Page Layout"
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/pages/Page404/messages.jsx:8
 #. Description of the Not Found page
+#: src/pages/Page404/messages.jsx:8
 msgctxt "Page404"
 msgid "Content not found"
 msgstr "Contenu introuvable"
 
-#: src/pages/Page404/messages.jsx:3
 #. Header
+#: src/pages/Page404/messages.jsx:3
 msgctxt "Page404"
 msgid "Page not found"
 msgstr "Page introuvable"
 
-#: src/pages/Page404/messages.jsx:4
 #. Error message displayed when a page the user attempted to navigate to does not exist
+#: src/pages/Page404/messages.jsx:4
 msgctxt "Page404"
 msgid "The page you requested does not seem to exist."
 msgstr "La page demandée semble ne pas exister."
 
-#: src/pages/LostPassword/messages.js:19
 #. Error message displayed when something went wrong
+#: src/pages/LostPassword/messages.js:19
 msgctxt "Password"
 msgid "An error occurred while requesting a new password"
 msgstr "Une erreur est survenue pendant la demande de nouveau mot de passe"
 
-#: src/pages/LostPassword/messages.js:3
 #. Error message displayed when something went wrong
+#: src/pages/LostPassword/messages.js:3
 msgctxt "Password"
 msgid "An error occurred while resetting your password"
 msgstr "Une erreur est survenue pendant la mise à jour de ton mot de passe"
 
-#: src/pages/LostPassword/messages.js:11
 #. Message explaining how to request a new password
+#: src/pages/LostPassword/messages.js:11
 msgctxt "Password"
 msgid ""
-"If you can't remember your password, enter your username below and we'll "
-"send you a new one."
+"If you can't remember your password, enter your username below and we'll send "
+"you a new one."
 msgstr ""
-"Si tu ne te souviens pas de ton mot de passe, saisis ton nom d’utilisateur "
-"ci-dessous, et on t’en enverra un nouveau."
+"Si tu ne te souviens pas de ton mot de passe, saisis ton nom d’utilisateur ci-"
+"dessous, et on t’en enverra un nouveau."
 
-#: src/pages/LostPassword/messages.js:15
 #. Title for the page where a user can reset their password
+#: src/pages/LostPassword/messages.js:15
 msgctxt "Password"
 msgid "Lost your password?"
 msgstr "Mot de passe perdu?"
 
-#: src/pages/LostPassword/messages.js:23
 #. Label for a button to submit a form
+#: src/pages/LostPassword/messages.js:23
 msgctxt "Password"
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/pages/LostPassword/messages.js:24
 #. Label for a form field to type a username
+#: src/pages/LostPassword/messages.js:24
 msgctxt "Password"
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
-#: src/pages/LostPassword/messages.js:7
 #. Message displayed when a new password was sent successfully
+#: src/pages/LostPassword/messages.js:7
 msgctxt "Password"
 msgid ""
-"We sent an email to your account. Click the link to activate your new "
-"password!"
+"We sent an email to your account. Click the link to activate your new password!"
 msgstr ""
-"On vient de t’envoyer un email. Clique le lien à l’intérieur pour activer "
-"ton nouveau mot de passe!"
+"On vient de t’envoyer un email. Clique le lien à l’intérieur pour activer ton "
+"nouveau mot de passe!"
 
-#: src/pages/Photo/Edit/messages.js:4
 #. Title of the photo edition page
-#, fuzzy
-#| msgctxt "Actions"
-#| msgid "Add a photo"
+#: src/pages/Photo/Edit/messages.js:4
 msgctxt "Photo edit page"
 msgid "Edit a photo"
 msgstr "Modifier une photo"
 
-#: src/pages/Photo/Post/messages.js:4
 #. Title of the photo post page
+#: src/pages/Photo/Post/messages.js:4
 msgctxt "Photo post page"
 msgid "Post a new photo"
 msgstr "Ajouter une nouvelle photo"
 
-#: src/pages/Profile/messages.js:3
 #. Label for a button to enter an introduction
+#: src/pages/Profile/messages.js:3
 msgctxt "Profile"
 msgid "Add intro"
 msgstr "Ajouter présentation"
@@ -1402,234 +1365,228 @@ msgctxt "Profile"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/components/Cover/messages.js:11
 #. An image the user has chosen to associate with themselves
+#: src/components/Cover/messages.js:11
 msgctxt "Profile"
 msgid "Profile cover photo"
 msgstr "Photo de couverture"
 
-#: src/components/Cover/messages.js:18
 #. Label for a button to change settings
+#: src/components/Cover/messages.js:18
 msgctxt "Profile"
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/pages/Profile/messages.js:9
 #. Label for a button to update an introduction
+#: src/pages/Profile/messages.js:9
 msgctxt "Profile"
 msgid "Update intro"
 msgstr "Modifier la présentation"
 
-#: src/pages/Profile/messages.js:4
 #. Placeholder text displayed when the user introduction is still empty
+#: src/pages/Profile/messages.js:4
 msgctxt "Profile"
 msgid ""
-"You have not entered an introduction yet. Click the button to let other "
-"riders know about you!"
+"You have not entered an introduction yet. Click the button to let other riders "
+"know about you!"
 msgstr ""
-"Tu n’as pas encore saisi de message pour te présenter. Clique sur le bouton "
-"pour que les autres riders sachent qui tu es!"
+"Tu n’as pas encore saisi de message pour te présenter. Clique sur le bouton pour "
+"que les autres riders sachent qui tu es!"
 
-#: src/pages/User/Registration/messages.js:3
-#: src/pages/User/Settings/messages.js:3
 #. Label for a form field to type an email
+#: src/pages/User/Registration/messages.js:3 src/pages/User/Settings/messages.js:3
 msgctxt "Registration"
 msgid "Email"
 msgstr "Email"
 
-#: src/pages/User/Registration/messages.js:4
 #. Paragraph explaining how to register
+#: src/pages/User/Registration/messages.js:4
 msgctxt "Registration"
 msgid "If you'd like to join us, enter your details below to create an account!"
 msgstr ""
 "Si tu veux te joindre à nous, saisis tes infos ci-dessous pour te créér un "
 "compte!"
 
-#: src/pages/User/Registration/messages.js:8
-#: src/pages/User/Settings/messages.js:9
 #. Label for a list of countries and languages the user can choose from
+#: src/pages/User/Registration/messages.js:8 src/pages/User/Settings/messages.js:9
 msgctxt "Registration"
 msgid "Language"
 msgstr "Langue"
 
-#: src/pages/User/Registration/messages.js:12
 #. Label for a form field to type a password
+#: src/pages/User/Registration/messages.js:12
 msgctxt "Registration"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/pages/User/Registration/messages.js:21
 #. Label for a form field to type a password confirmation
+#: src/pages/User/Registration/messages.js:21
 msgctxt "Registration"
 msgid "Password confirmation"
 msgstr "Confirmation du mot de passe"
 
-#: src/pages/User/Registration/messages.js:25
-#: src/pages/User/Registration/messages.js:29
-#: src/pages/User/Settings/messages.js:29
-#: src/pages/User/Settings/messages.js:33
 #. Help message telling the user they need to choose a timezone
 #. Help message telling the user they need to choose a language
+#: src/pages/User/Registration/messages.js:25
+#: src/pages/User/Registration/messages.js:29
+#: src/pages/User/Settings/messages.js:29 src/pages/User/Settings/messages.js:33
 msgctxt "Registration"
 msgid "Please choose one"
 msgstr "Fais un choix"
 
-#: src/pages/User/Registration/messages.js:33
 #. Label for a button to submit the registration form
+#: src/pages/User/Registration/messages.js:33
 msgctxt "Registration"
 msgid "Register"
 msgstr "Inscription"
 
-#: src/pages/User/Registration/messages.js:37
 #. Title of the page to create an account
+#: src/pages/User/Registration/messages.js:37
 msgctxt "Registration"
 msgid "Registration"
 msgstr "Formulaire d’inscription"
 
-#: src/pages/User/Registration/messages.js:13
 #. Short message displayed after a user created an account to tell them it won\'t be long anymore.
+#: src/pages/User/Registration/messages.js:13
 msgctxt "Registration"
 msgid "See you in a minute!"
 msgstr "A très vite!"
 
+#. Label for a list of timezones the user can choose from
 #: src/pages/User/Registration/messages.js:41
 #: src/pages/User/Settings/messages.js:48
-#. Label for a list of timezones the user can choose from
 msgctxt "Registration"
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: src/pages/User/Registration/messages.js:45
 #. Label for a form field to type a username
+#: src/pages/User/Registration/messages.js:45
 msgctxt "Registration"
 msgid "Username"
 msgstr "Nom d’utilisateur"
 
-#: src/pages/User/Registration/messages.js:17
 #. Message displayed after a user succeeded in creating a new account
+#: src/pages/User/Registration/messages.js:17
 msgctxt "Registration"
 msgid ""
-"We just sent you an email, please open it and click the link in order to "
-"confirm your account! Until then, you will not be able to log in."
+"We just sent you an email, please open it and click the link in order to confirm "
+"your account! Until then, you will not be able to log in."
 msgstr ""
-"On vient de t’envoyer un email. Ouvre-le et clique sur le lien pour valider "
-"ton compte. En attendant, tu ne pourras pas te connecter."
+"On vient de t’envoyer un email. Ouvre-le et clique sur le lien pour valider ton "
+"compte. En attendant, tu ne pourras pas te connecter."
 
-#: src/pages/User/Registration/messages.js:46
 #. Welcoming message, includes a new user's username
+#: src/pages/User/Registration/messages.js:46
 msgctxt "Registration"
 msgid "Welcome, %s!"
 msgstr "Bienvenue, %s!"
 
-#: src/pages/User/Settings/messages.js:21
 #. Label for a form field to type the user's current password
+#: src/pages/User/Settings/messages.js:21
 msgctxt "Settings"
 msgid "Current password"
 msgstr "Mot de passe actuel"
 
-#: src/pages/User/Settings/messages.js:4
 #. Help text for users
+#: src/pages/User/Settings/messages.js:4
 msgctxt "Settings"
 msgid "Go to your profile page instead!"
 msgstr "Aller à ton profil!"
 
-#: src/pages/User/Settings/messages.js:5
 #. Help text for users
+#: src/pages/User/Settings/messages.js:5
 msgctxt "Settings"
 msgid "Looking for how to update your profile picture or cover photo?"
 msgstr "Tu cherches à mettre à jour tes photos de profil ou de couverture?"
 
-#: src/pages/User/Settings/messages.js:13
 #. Label for a form field to type a new password
+#: src/pages/User/Settings/messages.js:13
 msgctxt "Settings"
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: src/pages/User/Settings/messages.js:17
 #. Label for a form field to type a new password again
+#: src/pages/User/Settings/messages.js:17
 msgctxt "Settings"
 msgid "New password confirmation"
 msgstr "Confirmation du nouveau mot de passe"
 
-#: src/pages/User/Settings/messages.js:37
 #. Label for a link to the user's profile page
+#: src/pages/User/Settings/messages.js:37
 msgctxt "Settings"
 msgid "Profile page"
 msgstr "Page de profil"
 
-#: src/pages/User/Settings/messages.js:41
 #. Label for a button to submit the user settings form
+#: src/pages/User/Settings/messages.js:41
 msgctxt "Settings"
 msgid "Save"
 msgstr "Sauver"
 
-#: src/pages/User/Settings/messages.js:46
 #. Title of the page to change user settings
+#: src/pages/User/Settings/messages.js:46
 msgctxt "Settings"
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/pages/User/Settings/messages.js:42
 #. Message displayed after settings were saved
+#: src/pages/User/Settings/messages.js:42
 msgctxt "Settings"
 msgid "Settings were saved!"
 msgstr "Les réglages ont été sauvegardés!"
 
+#. Label of a button to reveal a section
 #: src/components/Album/CreationForm/messages.js:32
 #: src/pages/User/Settings/messages.js:47
-#. Label of a button to reveal a section
 msgctxt "Settings"
 msgid "Show"
 msgstr "Ouvrir"
 
-#: src/pages/User/Settings/messages.js:25
 #. Title of a section where the user can enter a new password
+#: src/pages/User/Settings/messages.js:25
 msgctxt "Settings"
 msgid "Update your password"
 msgstr "Mise à jour du mot de passe"
 
-#: src/pages/LogIn/messages.js:23
 #. Label for a link to generate a new password
+#: src/pages/LogIn/messages.js:23
 msgctxt "SignIn"
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: src/pages/LogIn/messages.js:15
 #. Error message displayed when the user failed to log in
+#: src/pages/LogIn/messages.js:15
 msgctxt "SignIn"
 msgid "Login failed, please try again"
 msgstr "La connexion a échoué, merci de réessayer"
 
-#: src/pages/LogIn/messages.js:22
 #. Header
+#: src/pages/LogIn/messages.js:22
 msgctxt "SignIn"
 msgid "Register"
 msgstr "Inscription"
 
+#. Title of the About page
 #: src/components/User/Userbox/messages.js:3
 #: src/components/User/Username/messages.js:3
-#. Title of the About page
 msgctxt "User"
 msgid "Surfing Dirt is back!"
 msgstr "Surfing Dirt est de retour!"
 
-#: src/pages/Users/messages.js:3
 #. Title of the Riders page
+#: src/pages/Users/messages.js:3
 msgctxt "Users"
 msgid "Riders list"
 msgstr "Liste des riders"
 
-#: src/pages/Video/Edit/messages.js:4
 #. Title of the video edition page
-#, fuzzy
-#| msgctxt "Actions"
-#| msgid "Add a video"
+#: src/pages/Video/Edit/messages.js:4
 msgctxt "Video edit page"
 msgid "Edit a video"
 msgstr "Modifier une vidéo"
 
-#: src/pages/Video/Post/messages.js:4
 #. Title of the video post page
+#: src/pages/Video/Post/messages.js:4
 msgctxt "Video post page"
 msgid "Post a new video"
 msgstr "Poster une nouvelle vidéo"
