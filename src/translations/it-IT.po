@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.4\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: it_IT\n"
 
 #: src/pages/ConfirmEmail/messages.js:24
 #. Instruction for a user
@@ -28,10 +28,19 @@ msgid "Add an album"
 msgstr "Aggiungi un album"
 
 #: src/components/Album/CreationForm/messages.js:3
+#: src/components/Album/EditForm/messages.js:3
+#. Label for a button to reveal more settings
+msgid "Advanced settings"
+msgstr "Impostazioni avanzate"
+
+#: src/components/Album/CreationForm/messages.js:23
+#: src/components/Album/EditForm/messages.js:23
 #: src/components/Cover/messages.js:9
+#: src/components/Photo/EditForm/messages.js:3
 #: src/components/Photo/UploadForm/messages.js:3
 #: src/components/User/BioUpdate/messages.js:3
-#: src/components/Video/UploadForm/messages.js:3
+#: src/components/Video/EditForm/messages.js:3
+#: src/components/Video/UploadForm/messages.js:3 src/pages/Album/messages.js:4
 #. Generic error message
 msgid "An error occurred. Please try again."
 msgstr "Si è verificato un errore, riprovare."
@@ -87,6 +96,13 @@ msgstr "Clicca qui per scegliere le foto"
 msgid "Continue"
 msgstr "Continua"
 
+#: src/components/Album/CreationForm/messages.js:4
+#: src/components/Album/EditForm/messages.js:4
+#. Form field to decide whether other users can contribute to an album
+#, fuzzy
+msgid "Contributions"
+msgstr "Introduzione"
+
 #: src/components/Video/UploadForm/messages.js:9
 #. Error message showed when a user entered a video address that could not be understood
 msgid "Could not understand this address"
@@ -97,7 +113,7 @@ msgstr "Non ho potuto capire questo indirizzo"
 msgid "Cover picture update dialog"
 msgstr "Finestra di dialogo per l'aggiornamento dell'immagine di copertina"
 
-#: src/components/Album/CreationForm/messages.js:4
+#: src/components/Album/CreationForm/messages.js:24
 #. Label of a button to create an item
 msgid "Create"
 msgstr "Crea"
@@ -114,15 +130,25 @@ msgstr "Cancellare"
 msgid "Delete dialog"
 msgstr "Cancellare il dialogo"
 
-#: src/components/Album/CreationForm/messages.js:5
+#: src/components/Album/CreationForm/messages.js:25
+#: src/components/Album/EditForm/messages.js:24
+#: src/components/Photo/EditForm/messages.js:4
 #: src/components/Photo/UploadForm/messages.js:4
+#: src/components/Video/EditForm/messages.js:4
 #: src/components/Video/UploadForm/messages.js:5
 #. Label for a form field to enter a description
 msgid "Description"
 msgstr "Descrizione"
 
+#: src/components/Album/EditForm/messages.js:33
 #: src/components/Comment/Item/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:4
+#: src/components/Photo/EditForm/messages.js:13
+#: src/components/Video/EditForm/messages.js:13
+#. Label for a button to edit a photo
 #. Label for a button to edit a comment
+#. Link to a page to modify something (a photo for example)
+#. Label for a button to edit a video
 msgid "Edit"
 msgstr "Modifica"
 
@@ -131,15 +157,21 @@ msgstr "Modifica"
 msgid "Email"
 msgstr "Invia un'e-mail a"
 
-#: src/components/Album/CreationForm/messages.js:6
+#: src/components/Album/CreationForm/messages.js:26
+#: src/components/Album/EditForm/messages.js:25
+#: src/components/Photo/EditForm/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:5
+#: src/components/Video/EditForm/messages.js:5
 #: src/components/Video/UploadForm/messages.js:6
 #. Help text to tell the user what to type
 msgid "Enter a description"
 msgstr "Inserire una descrizione"
 
-#: src/components/Album/CreationForm/messages.js:13
+#: src/components/Album/CreationForm/messages.js:34
+#: src/components/Album/EditForm/messages.js:32
+#: src/components/Photo/EditForm/messages.js:12
 #: src/components/Photo/UploadForm/messages.js:19
+#: src/components/Video/EditForm/messages.js:12
 #: src/components/Video/UploadForm/messages.js:19
 #. Help text to tell the user what to type
 msgid "Enter a title"
@@ -155,7 +187,7 @@ msgstr "Inserisci qualcosa"
 msgid "File"
 msgstr "File"
 
-#: src/components/Media/MediaMetadata/messages.js:4
+#: src/components/Media/MediaMetadata/messages.js:3
 #. Label for a link to a media's dedicated page
 msgid "Full page"
 msgstr "Pagina intera"
@@ -170,11 +202,34 @@ msgstr "Vai all'album"
 msgid "Go to your profile page"
 msgstr "Vai alla pagina del tuo profilo"
 
+#: src/components/Album/AlbumViewToggle/messages.js:4
+#. Label of a button to display items as a grid
+msgid "Grid"
+msgstr "Griglia"
+
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:3
+#. Choice for an album visibility setting
+msgid "Hidden"
+msgstr "Nascosto"
+
+#: src/components/Album/CreationForm/messages.js:17
+#: src/components/Album/EditForm/messages.js:17
+#. Note to explain how album visibility works
+msgid "Hidden albums are only visible to you."
+msgstr "Gli album nascosti sono visibili solo a te."
+
+#: src/pages/Photo/Edit/messages.js:3 src/pages/Video/Edit/messages.js:3
+#. Names the album containing the current media item
+#, fuzzy
+msgid "In album"
+msgstr "Aggiungi un album"
+
 #: src/components/User/BioUpdate/messages.js:4
 #. Label for a form field where a user can introduce themselves.
 msgid "Introduction"
 msgstr "Introduzione"
 
+#: src/components/Comment/EditForm/messages.js:3
 #: src/components/Comment/Form/messages.js:3
 #. Short adjective indicating a form field is incorrect
 msgid "Invalid"
@@ -188,6 +243,11 @@ msgstr "Invalido"
 msgid "Invalid image"
 msgstr "Immagine non valida"
 
+#: src/components/Album/AlbumViewToggle/messages.js:3
+#. Label of a button to display items as a list
+msgid "List"
+msgstr "Elenco"
+
 #: src/components/Cover/messages.js:6
 #. Label for a form field to choose a profile picture  (part 2)
 msgid "Make it personal and easy to recognize!"
@@ -195,6 +255,7 @@ msgstr "Rendetelo personale e facile da riconoscere!"
 
 #: src/components/Media/MediaOverlay/messages.js:4
 #: src/components/Widgets/Slider/messages.js:4
+#: src/components/Widgets/ToggleGroup/messages.js:4
 #. Label of a button to scroll a list of items forward
 msgid "Next"
 msgstr "Avanti"
@@ -203,6 +264,22 @@ msgstr "Avanti"
 #. Label for a button the user can click to stop deleting an item
 msgid "No, cancel"
 msgstr "No, cancella"
+
+#: src/components/Album/CreationForm/messages.js:13
+#: src/components/Album/EditForm/messages.js:13
+#. Note to explain how album visibility works
+msgid "Note:"
+msgstr "Nota:"
+
+#: src/components/Album/CreationForm/messages.js:7
+#: src/components/Album/EditForm/messages.js:7
+#. Note to explain how album contributions work
+msgid ""
+"Note: other people can post into your public albums, whereas only you can "
+"contribute to your private albums."
+msgstr ""
+"Nota: altre persone possono pubblicare nei tuoi album pubblici, mentre solo "
+"tu puoi contribuire ai tuoi album privati."
 
 #: src/pages/ConfirmEmail/messages.js:31
 #. Instruction for a user
@@ -215,7 +292,7 @@ msgid "Open"
 msgstr "Aprire"
 
 #: src/components/Comment/Item/messages.js:5
-#: src/components/Media/MediaMetadata/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:6
 #: src/pages/Album/messages.js:3
 #. Label for a menu
 msgid "Options"
@@ -257,8 +334,8 @@ msgstr "Scegliete prima un file"
 msgid "Posted in album"
 msgstr "Pubblicato in album"
 
-#: src/pages/Photo/BatchUpload/messages.js:3 src/pages/Photo/Post/messages.js:3
-#: src/pages/Video/Post/messages.js:3
+#: src/pages/Photo/BatchUpload/messages.js:3
+#: src/pages/Photo/Post/messages.js:3 src/pages/Video/Post/messages.js:3
 #. Names the album the user is posting to
 msgid "Posting to album"
 msgstr "Pubblicare su album"
@@ -270,9 +347,15 @@ msgstr "Anteprima"
 
 #: src/components/Media/MediaOverlay/messages.js:3
 #: src/components/Widgets/Slider/messages.js:3
+#: src/components/Widgets/ToggleGroup/messages.js:3
 #. Label of a button to scroll a list of items back
 msgid "Previous"
 msgstr "Precedente"
+
+#: src/components/Widgets/Form/AlbumContributions/messages.js:3
+#. Choice for an album contributions setting
+msgid "Private"
+msgstr "Privato"
 
 #: src/components/Widgets/NavigationProfile/messages.js:10
 #. Label for a link to the user's profile page
@@ -289,14 +372,24 @@ msgstr "Finestra di dialogo per l'aggiornamento dell'introduzione del profilo"
 msgid "Profile picture update dialog"
 msgstr "Finestra di dialogo per l'aggiornamento dell'immagine del profilo"
 
+#: src/components/Widgets/Form/AlbumContributions/messages.js:4
+#. Choice for an album contributions setting
+#, fuzzy
+msgid "Public"
+msgstr "Pubblico"
+
 #: src/components/Widgets/NavigationProfile/messages.js:11
 #. Label for a link to the registration page, or label for a button to actually register
 msgid "Register"
 msgstr "Registrati"
 
-#: src/components/Album/CreationForm/messages.js:9
+#: src/components/Album/CreationForm/messages.js:29
+#: src/components/Album/EditForm/messages.js:28
+#: src/components/Comment/EditForm/messages.js:5
 #: src/components/Comment/Form/messages.js:5
+#: src/components/Photo/EditForm/messages.js:8
 #: src/components/Photo/UploadForm/messages.js:15
+#: src/components/Video/EditForm/messages.js:8
 #: src/components/Video/UploadForm/messages.js:15
 #: src/pages/LogIn/messages.js:10
 #. Short adjective indicating the user must fill a particular form field
@@ -331,17 +424,36 @@ msgstr "Racconta alla gente un po' di te qui."
 msgid "Things to do now that you have an account"
 msgstr "Cose da fare ora che hai un account"
 
-#: src/components/Album/CreationForm/messages.js:12
+#: src/components/Album/CreationForm/messages.js:33
+#: src/components/Album/EditForm/messages.js:31
+#: src/components/Photo/EditForm/messages.js:11
 #: src/components/Photo/UploadForm/messages.js:18
+#: src/components/Video/EditForm/messages.js:11
 #: src/components/Video/UploadForm/messages.js:18
 #. Label for a form field to enter a title
 msgid "Title"
 msgstr "Titolo"
 
+#: src/components/Widgets/TranslateButton/messages.js:3
+#. Label for a button to translate a message
+msgid "Translate"
+msgstr "Tradurre"
+
 #: src/components/Media/MediaThumb/messages.js:3
 #. Indicates the system does not know what an image represents
 msgid "Unknown image"
 msgstr "Immagine sconosciuta"
+
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:5
+#. Choice for an album visibility setting
+msgid "Unlisted"
+msgstr "Non quotati"
+
+#: src/components/Album/CreationForm/messages.js:20
+#: src/components/Album/EditForm/messages.js:20
+#. Note to explain how album visibility works
+msgid "Unlisted albums are visible to everyone with the link."
+msgstr "Gli album non elencati sono visibili a tutti con il link."
 
 #: src/components/User/BioUpdate/messages.js:11
 #. Label on a button to update something
@@ -407,6 +519,23 @@ msgstr "Contenuti video"
 #. Error message displayed when the user is trying to post a video but the system does not understand the video address
 msgid "Video not supported"
 msgstr "Video non supportato"
+
+#: src/components/Album/CreationForm/messages.js:10
+#: src/components/Album/EditForm/messages.js:10
+#. Form field to decide whether other users can see an album
+msgid "Visibility"
+msgstr "Visibilità"
+
+#: src/components/Widgets/Form/AlbumVisibility/messages.js:4
+#. Choice for an album visibility setting
+msgid "Visible"
+msgstr "Visibile"
+
+#: src/components/Album/CreationForm/messages.js:14
+#: src/components/Album/EditForm/messages.js:14
+#. Note to explain how album visibility works
+msgid "Visible albums (the default) are visible to everyone."
+msgstr "Gli album visibili (impostazione predefinita) sono visibili a tutti."
 
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 #. Indicates an image will start uploading soon
@@ -493,20 +622,20 @@ msgstr ""
 "riunirci online e crescere di nuovo come comunità."
 
 #: src/components/Album/AlbumAddButtons/messages.js:3
-#: src/sections/Layout/messages.js:30
+#: src/sections/Layout/messages.js:26
 #. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 msgctxt "Actions"
 msgid "Add a photo"
 msgstr "Aggiungi una foto"
 
 #: src/components/Album/AlbumAddButtons/messages.js:7
-#: src/sections/Layout/messages.js:34
+#: src/sections/Layout/messages.js:30
 #. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 msgctxt "Actions"
 msgid "Add a video"
 msgstr "Aggiungi un video"
 
-#: src/sections/Layout/messages.js:21
+#: src/sections/Layout/messages.js:17
 #. Label of a link to a page where a user could create a new album. Please keep this translation as short as possible
 msgctxt "Actions"
 msgid "Add an album"
@@ -545,19 +674,40 @@ msgctxt "Album creation page"
 msgid "Create a new album"
 msgstr "Creare un nuovo album"
 
-#: src/pages/Album/messages.js:8
+#: src/pages/Album/Edit/messages.js:3
+#. Title of the album edition page
+#, fuzzy
+msgctxt "Album edit page"
+msgid "Edit an album"
+msgstr "Aggiungi un album"
+
+#: src/pages/Album/messages.js:13
+#. Label for a menu item to edit an album
+#, fuzzy
+msgctxt "Album page"
+msgid "Edit"
+msgstr "Modifica"
+
+#: src/pages/Album/messages.js:14
 #. Label for a button to load more photos and videos
 msgctxt "Album page"
 msgid "Load more"
 msgstr "Carica di più"
 
-#: src/pages/Album/messages.js:4
+#: src/pages/Album/messages.js:5
 #. Label for a menu item to add many photos to an album
 msgctxt "Album page"
 msgid "Post multiple photos"
 msgstr "Pubblicare più foto"
 
-#: src/components/Album/AlbumGrid/messages.js:3
+#: src/pages/Album/messages.js:9
+#. Error message displayed when a user tries to delete an album which contains photos or videos
+msgctxt "Album page"
+msgid "This album still contains photos or videos, it cannot be deleted."
+msgstr "Questo album contiene ancora foto o video, non può essere eliminato."
+
+#: src/components/Media/Items/Details/messages.js:3
+#: src/components/Media/Items/ThumbOnly/messages.js:3
 #. Label for a window containing a quick preview of a media page
 msgctxt "AlbumGrid"
 msgid "Media preview"
@@ -585,6 +735,13 @@ msgctxt "Button"
 msgid "Login with Google"
 msgstr "Accedi con Google"
 
+#: src/pages/Comment/Edit/messages.js:3
+#. Title of the comment edition page
+msgctxt "Comment edit page"
+msgid "Edit a comment"
+msgstr "Modifica un commento"
+
+#: src/components/Comment/EditForm/messages.js:15
 #: src/components/Comment/Form/messages.js:15
 #: src/components/Comment/Item/messages.js:8
 #. Indicates a message was written in an angry tone
@@ -592,6 +749,7 @@ msgctxt "Comments"
 msgid "angry"
 msgstr "arrabbiato"
 
+#: src/components/Comment/EditForm/messages.js:16
 #: src/components/Comment/Form/messages.js:16
 #: src/components/Comment/Item/messages.js:9
 #. Indicates a message was written in a happy tone
@@ -599,6 +757,7 @@ msgctxt "Comments"
 msgid "happy"
 msgstr "felice"
 
+#: src/components/Comment/EditForm/messages.js:14
 #: src/components/Comment/Form/messages.js:14
 #: src/components/Comment/Item/messages.js:7
 #. Indicates a message was written in a joking tone
@@ -606,12 +765,14 @@ msgctxt "Comments"
 msgid "joking"
 msgstr "scherzando"
 
+#: src/components/Comment/EditForm/messages.js:12
 #: src/components/Comment/Form/messages.js:12
 #. Label for a text input containing a comment
 msgctxt "Comments"
 msgid "Message"
 msgstr "Messaggio"
 
+#: src/components/Comment/EditForm/messages.js:13
 #: src/components/Comment/Form/messages.js:13
 #: src/components/Comment/Item/messages.js:6
 #. Indicates a message was written in a neutral tone
@@ -619,12 +780,14 @@ msgctxt "Comments"
 msgid "neutral"
 msgstr "neutro"
 
-#: src/components/Comment/Form/messages.js:4
+#: src/components/Comment/EditForm/messages.js:4
+#: src/components/Comment/Form/messages.js:4 src/components/Feed/messages.js:3
 #. Label for a button to post a comment
 msgctxt "Comments"
 msgid "Reply"
 msgstr "Rispondi a"
 
+#: src/components/Comment/EditForm/messages.js:17
 #: src/components/Comment/Form/messages.js:17
 #: src/components/Comment/Item/messages.js:10
 #. Indicates a message was written in a sad tone
@@ -632,6 +795,7 @@ msgctxt "Comments"
 msgid "sad"
 msgstr "triste"
 
+#: src/components/Comment/EditForm/messages.js:8
 #: src/components/Comment/Form/messages.js:8
 #. Label for the dropdown to choose a message tone (sad, angry, etc.)
 msgctxt "Comments"
@@ -679,6 +843,81 @@ msgstr "Si è verificato un errore inaspettato"
 msgctxt "Error"
 msgid "Login failed"
 msgstr "Login non riuscito"
+
+#: src/components/Feed/messages.js:12
+#. Indicates how many new comments were posted
+msgctxt "Feed"
+msgid "1 new comment"
+msgid_plural "123 new comments"
+msgstr[0] "1 nuovo commento"
+msgstr[1] "123 nuovi commenti"
+
+#: src/components/Feed/messages.js:19
+#. Indicates how many new photos were posted
+#, fuzzy
+msgctxt "Feed"
+msgid "1 new photo"
+msgid_plural "123 new photos"
+msgstr[0] "1 nuova foto"
+msgstr[1] "123 nuove foto"
+
+#: src/components/Feed/messages.js:26
+#. Indicates how many new videos were posted
+#, fuzzy
+msgctxt "Feed"
+msgid "1 new video"
+msgid_plural "123 new videos"
+msgstr[0] "1 nuovo video"
+msgstr[1] "123 nuovi video"
+
+#: src/components/Feed/messages.js:33
+#. Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album'
+msgctxt "Feed"
+msgid "in"
+msgstr "in"
+
+#: src/components/Feed/messages.js:5
+#. Indicates a new album was created
+#, fuzzy
+msgctxt "Feed"
+msgid "New album"
+msgstr "Vai all'album"
+
+#: src/components/Feed/messages.js:6
+#. Indicates a new comment was posted
+msgctxt "Feed"
+msgid "New comment"
+msgstr "Nuovo commento"
+
+#: src/components/Feed/messages.js:7
+#. Indicates a new photo was posted
+#, fuzzy
+msgctxt "Feed"
+msgid "New photo"
+msgstr "Pubblica una nuova foto"
+
+#: src/components/Feed/messages.js:9
+#. Indicates a new user registered
+msgctxt "Feed"
+msgid "New rider"
+msgstr "Nuovo cavaliere"
+
+#: src/components/Feed/messages.js:8
+#. Indicates a new video was posted
+#, fuzzy
+msgctxt "Feed"
+msgid "New video"
+msgstr "Pubblica un nuovo video"
+
+#: src/pages/Home/Feed/messages.js:3
+#. Help text explaining what the feed page is
+msgctxt "Feed"
+msgid ""
+"This page shows the latest activity on Surfing Dirt: content and messages "
+"posted by our members"
+msgstr ""
+"Questa pagina mostra le ultime attività su Surfing Dirt: contenuti e "
+"messaggi pubblicati dai nostri membri"
 
 #: src/sections/Footer/messages.js:3
 #. Name of the page where we explain what the site is about
@@ -728,13 +967,13 @@ msgctxt "Form errors"
 msgid "Too short"
 msgstr "Troppo breve"
 
-#: src/pages/Home/messages.js:35
+#: src/pages/Home/Discover/messages.js:35
 #. Label for a link to navigate
 msgctxt "Home"
 msgid "Go"
 msgstr "Vai a"
 
-#: src/pages/Home/messages.js:25
+#: src/pages/Home/Discover/messages.js:25
 msgctxt "Home"
 msgid ""
 "It's a lot of work to create a site like this, so we're starting small and "
@@ -756,13 +995,13 @@ msgctxt "Home"
 msgid "More Albums"
 msgstr "Altri Album"
 
-#: src/pages/Home/messages.js:3
+#: src/pages/Home/Discover/messages.js:3
 #. Label for a button to display a longer text
 msgctxt "Home"
 msgid "More..."
 msgstr "Di più..."
 
-#: src/pages/Home/messages.js:9
+#: src/pages/Home/Discover/messages.js:9
 msgctxt "Home"
 msgid ""
 "Mountainboarding doesn't have a real home online right now, so we're hoping "
@@ -778,24 +1017,24 @@ msgstr ""
 "ogni altro tipo di cose. Un posto per mostrare tutte le cose belle che "
 "stanno accadendo in mountainboard ."
 
-#: src/pages/Home/messages.js:31
+#: src/pages/Home/Discover/messages.js:31
 #. Message before a link to go to a page containing more albums
 msgctxt "Home"
 msgid "See more photos and videos on the Albums page"
 msgstr "Vedi altre foto e video nella pagina degli Album"
 
-#: src/pages/Home/messages.js:8
+#: src/pages/Home/Discover/messages.js:8
 msgctxt "Home"
 msgid "Surfing Dirt, your mountainboard community"
 msgstr "Surfing Dirt , la tua comunità di mountainboard"
 
-#: src/pages/Home/messages.js:24
+#: src/pages/Home/Discover/messages.js:24
 #. Title of a paragraph
 msgctxt "Home"
 msgid "The future"
 msgstr "Il futuro"
 
-#: src/pages/Home/messages.js:17
+#: src/pages/Home/Discover/messages.js:17
 msgctxt "Home"
 msgid ""
 "Well, for one, because the mountainboard community is special and deserves "
@@ -815,17 +1054,37 @@ msgstr ""
 "tutti usarlo meno. Ma in realtà, il motivo principale è che speriamo di "
 "portarvi un posto fresco per tutti per riunirvi!"
 
-#: src/pages/Home/messages.js:16
+#: src/pages/Home/Discover/messages.js:16
 #. Title of a paragraph
 msgctxt "Home"
 msgid "Why we need that"
 msgstr "Perché ne abbiamo bisogno"
 
-#: src/pages/Home/messages.js:4
+#: src/pages/Home/Discover/messages.js:4
 #. Title on the homepage to welcome users
 msgctxt "Home"
 msgid "Your mountainboard community"
 msgstr "La vostra comunità di mountainboard"
+
+#: src/pages/Home/messages.js:7
+#. Label for a section containing a vertical list of new things on the site
+#, fuzzy
+msgctxt "Homepage"
+msgid "Activity"
+msgstr "Attività"
+
+#: src/pages/Home/messages.js:3
+#. Label for a section containing a lot of things for a new person to discover
+msgctxt "Homepage"
+msgid "Discover"
+msgstr "Scoprire"
+
+#: src/pages/Home/messages.js:11
+#. Indicates that what follows is the page's main content (help text for blind users)
+#, fuzzy
+msgctxt "Homepage"
+msgid "Main content"
+msgstr "Contenuto principale"
 
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
@@ -868,33 +1127,33 @@ msgctxt "Multiple upload page"
 msgid "Post multiple photos"
 msgstr "Pubblicare più foto"
 
-#: src/sections/MoreLinkNavigation/messages.js:3
+#: src/sections/MoreLinkNavigation/messages.js:7
 #. Name of a page on the site
 msgctxt "Navigation"
 msgid "Albums"
 msgstr "Album"
 
-#: src/sections/MoreLinkNavigation/messages.js:4
+#: src/sections/MoreLinkNavigation/messages.js:8
 #: src/sections/ProfileLinkNavigation/messages.js:3
 #. Label for a button to close the navigation menu
 msgctxt "Navigation"
 msgid "Close"
 msgstr "Chiudere"
 
-#: src/sections/MoreLinkNavigation/messages.js:5
+#: src/sections/MoreLinkNavigation/messages.js:9
 #. Name of a page on the site
 msgctxt "Navigation"
 msgid "Gallery"
 msgstr "Galleria"
 
-#: src/sections/MoreLinkNavigation/messages.js:6
+#: src/sections/MoreLinkNavigation/messages.js:10
 #: src/sections/ProfileLinkNavigation/messages.js:4
 #. Label for a section containing links to pages on the site
 msgctxt "Navigation"
 msgid "Links"
 msgstr "Link"
 
-#: src/sections/MoreLinkNavigation/messages.js:10
+#: src/sections/MoreLinkNavigation/messages.js:14
 #. Name of a page on the site
 msgctxt "Navigation"
 msgid "Riders"
@@ -967,25 +1226,25 @@ msgstr ""
 "Non siamo riusciti a fondere il forum nel nuovo sito, ma pensiamo che un "
 "giorno succederà."
 
-#: src/sections/Layout/messages.js:9
+#: src/sections/MoreLinkNavigation/messages.js:3
 #. Label for a navigation section containing links to add new items
 msgctxt "Page Layout"
 msgid "Actions"
 msgstr "Azioni"
 
-#: src/sections/Layout/messages.js:17
+#: src/sections/Layout/messages.js:13
 #. Label for a link to a page where the user can see the activity on the site
 msgctxt "Page Layout"
 msgid "Activity"
 msgstr "Attività"
 
-#: src/sections/Layout/messages.js:13
+#: src/sections/Layout/messages.js:9
 #. Label for a button which opens a list of links to add new items
 msgctxt "Page Layout"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/sections/Layout/messages.js:25
+#: src/sections/Layout/messages.js:21
 #. Label for a link to the homepage
 msgctxt "Page Layout"
 msgid "Home"
@@ -1001,20 +1260,20 @@ msgctxt "Page Layout"
 msgid "Main header"
 msgstr "Intestazione principale"
 
-#: src/sections/Layout/messages.js:26
+#: src/sections/Layout/messages.js:22
 #. Label for a button which opens a list of additional navigation items
 msgctxt "Page Layout"
 msgid "More"
 msgstr "Altro"
 
-#: src/sections/Layout/messages.js:38
+#: src/sections/Layout/messages.js:34
 #: src/sections/ProfileLinkNavigation/messages.js:11
 #. Label for a link to the user's profile page
 msgctxt "Page Layout"
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/sections/Layout/messages.js:39
+#: src/sections/Layout/messages.js:35
 #. Label for a button which opens up the search bar
 msgctxt "Page Layout"
 msgid "Search"
@@ -1093,6 +1352,13 @@ msgid ""
 msgstr ""
 "Abbiamo inviato un'e-mail al tuo account. Clicca sul link per attivare la "
 "tua nuova password!"
+
+#: src/pages/Photo/Edit/messages.js:4
+#. Title of the photo edition page
+#, fuzzy
+msgctxt "Photo edit page"
+msgid "Edit a photo"
+msgstr "Aggiungi una foto"
 
 #: src/pages/Photo/Post/messages.js:4
 #. Title of the photo post page
@@ -1290,6 +1556,7 @@ msgctxt "Settings"
 msgid "Settings were saved!"
 msgstr "Le impostazioni sono state salvate!"
 
+#: src/components/Album/CreationForm/messages.js:32
 #: src/pages/User/Settings/messages.js:47
 #. Label of a button to reveal a section
 msgctxt "Settings"
@@ -1321,6 +1588,7 @@ msgid "Register"
 msgstr "Registrati"
 
 #: src/components/User/Userbox/messages.js:3
+#: src/components/User/Username/messages.js:3
 #. Title of the About page
 msgctxt "User"
 msgid "Surfing Dirt is back!"
@@ -1331,6 +1599,13 @@ msgstr "Surfing Dirt è tornato!"
 msgctxt "Users"
 msgid "Riders list"
 msgstr "Elenco dei piloti"
+
+#: src/pages/Video/Edit/messages.js:4
+#. Title of the video edition page
+#, fuzzy
+msgctxt "Video edit page"
+msgid "Edit a video"
+msgstr "Aggiungi un video"
 
 #: src/pages/Video/Post/messages.js:4
 #. Title of the video post page
