@@ -16,11 +16,6 @@
   z-index: 1;
   margin: 0 auto;
   max-width: $max-content-width;
-  background: $content-background-color;
-
-  @media (max-width: $mobile-layout-threshold-max) {
-    background: transparent;
-  }
 
   @media (min-width: $desktop-layout-threshold-min) {
     display: flex;
@@ -64,6 +59,7 @@
 .main {
   margin: 0;
   padding: $padding-small-2 0 $bottom-bar-height + 1rem;
+  overflow: hidden;
 }
 
 @media (max-width: $mobile-layout-threshold-max) {
@@ -103,28 +99,20 @@
 @media (min-width: $desktop-layout-threshold-min) {
   .main {
     margin: $masthead-height 0 0;
-    padding: $padding-medium-2;
-    padding-bottom: 0;
+    padding: $content-gap 0 0 $content-gap;
     flex-grow: 1;
     min-height: 100vh;
   }
 
   .navigation {
     flex: 0 0;
-    margin: $masthead-height 0 0;
+    margin: $masthead-height + $content-gap 0 0;
     display: flex;
     justify-content: center;
     flex-basis: $lhs-width-small;
 
     &.profileNavigation {
       display: none;
-    }
-
-    & > * {
-      position: fixed;
-      top: $masthead-height;
-      bottom: 0;
-      height: initial;
     }
   }
 }

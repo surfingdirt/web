@@ -65,23 +65,25 @@ class MoreLinkNavigationRaw extends React.Component {
         className={classnames(styles.wrapper, className, { [openClassName]: openOnMobile })}
         aria-label={t('linkNav')}
       >
-        <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
-          <div className={styles.topNavWrapper}>
-            <ul className={styles.linkList}>
-              {items.map((props) => (
-                <li key={props.to}>
-                  <NavigationLink {...props} active={props.to === currentUrl} />
-                </li>
-              ))}
-            </ul>
-            <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
+        <div className={styles.background}>
+          <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
+            <div className={styles.topNavWrapper}>
+              <ul className={styles.linkList}>
+                {items.map((props) => (
+                  <li key={props.to}>
+                    <NavigationLink {...props} active={props.to === currentUrl} />
+                  </li>
+                ))}
+              </ul>
+              <Actions className={styles.actions} items={actionItems} label={t('actionNav')} />
+            </div>
+
+            <Footer className={styles.footer} />
+
+            <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
+              {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
+            </button>
           </div>
-
-          <Footer className={styles.footer} />
-
-          <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
-            {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
-          </button>
         </div>
       </nav>
     );

@@ -6,21 +6,32 @@
 $footer-height: 2.5rem;
 
 .wrapper {
-  background-color: $container-background-color-default;
   color: $container-text-color-default;
   text-align: center;
 }
 
+.background {
+  background-color: $container-background-color-default;
+  position: fixed;
+  top: $masthead-height + $content-gap;
+  bottom: 0;
+  height: initial;
+  width: $lhs-width-small;
+
+  @media (min-width: $desktop-big) {
+    width: $lhs-width-big;
+  }
+}
+
+.background,
 .positioner {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: flex-end;
 }
 
-@supports (display: grid) {
-  .positioner {
-    justify-content: flex-end;
-  }
+.positioner {
+  width: 100%;
 }
 
 .closeBtn {
