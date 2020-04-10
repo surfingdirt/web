@@ -11,6 +11,11 @@
     color: $card-text-color-negative;
     background-color: $card-background-color-negative;
   }
+
+  @media (min-width: $desktop-min) {
+    border: 1px solid $card-border-color;
+    border-radius: 3px;
+  }
 }
 
 .heroContent {

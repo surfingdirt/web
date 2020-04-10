@@ -9,7 +9,7 @@
 
 .feedEntry {
   list-style: none;
-  margin-bottom: 1px;
+  margin-bottom: $margin-small-2;
 
   &:last-child {
     margin-bottom: 0;

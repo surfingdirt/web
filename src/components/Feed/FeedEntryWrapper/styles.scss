@@ -10,6 +10,8 @@
   padding: 0 $padding-small-2 0 0;
   flex-grow: 0;
   flex-shrink: 0;
+  position: relative;
+  top: 2px;
 }
 
 .content {
