@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
-import classnames from 'classnames';
+import React from 'react';
 
+import Paragraph from 'Components/Widgets/Paragraph';
 import Translate from 'Hocs/Translate';
 
-import messages from '../messages';
-import styles from './styles.scss';
+import messages from './messages';
 
-const FeedHeader = (props) => {
-  return <p>This will be the feed header</p>;
+const FeedHeader = ({ t }) => <Paragraph>{t('feedIntro')}</Paragraph>;
+
+FeedHeader.propTypes = {
+  t: PropTypes.func.isRequired,
 };
-
-FeedHeader.propTypes = {};
-
-FeedHeader.defaultProps = {};
 
 export default Translate(messages)(FeedHeader);
