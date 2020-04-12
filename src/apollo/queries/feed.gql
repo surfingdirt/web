@@ -162,13 +162,25 @@ query {
             tone
           }
           ... on Media{
-            id
-            title {
-              text
+            actions {
+                delete
+                edit
             }
+            id
+            date
+            description {
+                locale
+                original
+                text
+            }
+            mediaType
+            mediaSubType
             embedUrl
             height
             width
+            title {
+              text
+            }
             thumbs {
                 type
                 size
@@ -183,9 +195,17 @@ query {
                 height
                 width
             }
-
-            mediaSubType
-            mediaType
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
+            }
           }
 		}
 	  }
