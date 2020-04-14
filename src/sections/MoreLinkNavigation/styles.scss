@@ -13,10 +13,14 @@ $footer-height: 2.5rem;
 .background {
   background-color: $container-background-color-default;
   position: fixed;
-  top: $masthead-height + $content-gap;
+  top: $masthead-height + $small-content-gap;
   bottom: 0;
   height: initial;
   width: $lhs-width-small;
+
+  @media (min-width: $desktop-small) {
+    top: $masthead-height + $content-gap;
+  }
 
   @media (min-width: $desktop-min) {
     border: 1px solid $card-border-color;

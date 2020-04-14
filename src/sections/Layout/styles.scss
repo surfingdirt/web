@@ -98,15 +98,15 @@
 
 @media (min-width: $desktop-layout-threshold-min) {
   .main {
-    margin: $masthead-height 0 0;
-    padding: $content-gap 0 0 $content-gap;
+    margin: $masthead-height $small-content-gap 0 0;
+    padding: $small-content-gap 0 0 $small-content-gap;
     flex-grow: 1;
     min-height: 100vh;
   }
 
   .navigation {
     flex: 0 0;
-    margin: $masthead-height + $content-gap 0 0;
+    margin: $masthead-height + $small-content-gap 0 0 $small-content-gap;
     display: flex;
     justify-content: center;
     flex-basis: $lhs-width-small;
@@ -117,13 +117,28 @@
   }
 }
 
+@media (min-width: $desktop-small) {
+  .main {
+    margin: $masthead-height $content-gap 0 0;
+    padding: $content-gap 0 0 $content-gap;
+  }
+  .navigation {
+    margin: $masthead-height + $content-gap 0 0 $content-gap;
+  }
+}
+
 @media (min-width: $desktop-big) {
+  .navigation {
+    flex-basis: $lhs-width-big;
+  }
+}
+
+@media (min-width: $max-content-width) {
   .main {
     margin: $masthead-height 0 0;
   }
-
   .navigation {
-    flex-basis: $lhs-width-big;
+    margin: $masthead-height + $content-gap 0 0;
   }
 }
 
