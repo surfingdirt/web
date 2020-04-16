@@ -1,14 +1,35 @@
-.img {
-  width: 100%;
-}
+@import "../../../styles/colors";
 
-.objectFit {
-  width: 100%;
-  height: 100%;
-  display: flex;
+.picture {
+  background-color: $picture-background-color;
 
   .img {
-    object-fit: cover;
-    height: auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &.objectFit {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .img {
+      height: auto;
+    }
+
+    &.objectFitContain {
+      .img {
+        object-fit: contain;
+      }
+    }
+
+    &.objectFitCover {
+      .img {
+        object-fit: cover;
+      }
+    }
+
   }
 }
+
+

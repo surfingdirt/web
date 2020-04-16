@@ -41,7 +41,9 @@ class MediaThumb extends React.PureComponent {
     const { className, id, mediaType, objectFit, onClickCapture, t, title, thumbs } = this.props;
     const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
     const alt = title || t('thumbAlt');
-    const responsiveImage = <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit />;
+    const responsiveImage = (
+      <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit="cover" />
+    );
     const attrs = onClickCapture ? { onClickCapture } : {};
     return (
       <Link

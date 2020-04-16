@@ -49,7 +49,7 @@ const DetailsFull = ({ album, className, item, index, locale, media, t }) => {
     type: HERO,
   })(
     <article className={classnames(styles.wrapper, className)}>
-      <MediaThumb {...attrs} objectFit />
+      <MediaThumb {...attrs} objectFit="cover" />
       <div className={styles.info}>
         {title && (
           <Link to={to}>

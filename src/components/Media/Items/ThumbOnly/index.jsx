@@ -15,9 +15,15 @@ const ThumbOnly = ({ className, item }) => {
     title: { text: title },
     thumbs,
   } = item;
-  const attrs = { className: classnames(styles.link, className), id, mediaType, title, thumbs };
+  const attrs = {
+    className: classnames(styles.link, className),
+    id,
+    mediaType,
+    title,
+    thumbs,
+  };
 
-  return <MediaThumb {...attrs} objectFit />;
+  return <MediaThumb {...attrs} objectFit="cover" />;
 };
 
 ThumbOnly.propTypes = {

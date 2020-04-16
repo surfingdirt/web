@@ -21,7 +21,7 @@ const AlbumList = ({ album, media }) => (
   </ul>
 );
 
-AlbumList.propTypes = {
+AlbumList.PropTypes = {
   album: PropTypes.objectOf(PropTypes.any).isRequired,
   media: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };

@@ -6,6 +6,9 @@ import styles from './styles.scss';
 
 const INITIAL = 'initial';
 
+const CONTAIN = 'contain';
+const COVER = 'cover';
+
 const MEDIUM = 'MEDIUM';
 const JPG = 'JPG';
 const WEBP = 'WEBP';
@@ -16,6 +19,10 @@ const mimeTypes = {
 };
 
 const findDefaultImage = (list) => list.find((i) => i.size === MEDIUM && i.type === JPG);
+const findLargestImageWidth = (list) =>
+  list.reduce((acc, i) => {
+    return Math.max(acc, i.width);
+  }, 0);
 
 const buildListsByType = (list) =>
   list.reduce((acc, { url, width, type }) => {
@@ -44,8 +51,10 @@ const ResponsiveImage = ({
   maxHeight,
   objectFit,
   sizes,
+  wrapperClassName,
 }) => {
   const { url: src, width: aspectRatioWidth, height: aspectRatioHeight } = findDefaultImage(images);
+  const maxWidth = findLargestImageWidth(images);
 
   const imagesByType = buildListsByType(images);
 
@@ -64,7 +73,7 @@ const ResponsiveImage = ({
     classNames = classnames(styles.img, className);
     // Enforce height by setting a max-width / aspectRatio
     if (maxHeight !== INITIAL) {
-      styles.maxWidth = `calc(${maxHeight}vh * ${aspectRatioWidth} / ${aspectRatioHeight})`;
+      style.maxWidth = `${maxWidth}px`;
     }
   }
 
@@ -73,14 +82,29 @@ const ResponsiveImage = ({
     className: classNames,
     src,
     style,
+    width: aspectRatioWidth,
+    height: aspectRatioHeight,
   };
 
   if (sizes) {
     imgAttrs.sizes = sizes;
   }
 
+  let objectFitClass;
+  switch (objectFit) {
+    case CONTAIN:
+      objectFitClass = classnames(styles.objectFit, styles.objectFitContain);
+      break;
+    case COVER:
+      objectFitClass = classnames(styles.objectFit, styles.objectFitCover);
+      break;
+    default:
+      objectFitClass = null;
+      break;
+  }
+
   return (
-    <picture className={objectFit ? styles.objectFit : null}>
+    <picture className={classnames(styles.picture, objectFitClass, wrapperClassName)}>
       {sources.map(({ mime, srcSet }) => (
         <source key={mime} type={mime} srcSet={srcSet} />
       ))}
@@ -103,16 +127,18 @@ ResponsiveImage.propTypes = {
     }),
   ).isRequired,
   maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  objectFit: PropTypes.bool,
+  objectFit: PropTypes.string,
   sizes: PropTypes.string,
+  wrapperClassName: PropTypes.string,
 };
 
 ResponsiveImage.defaultProps = {
   className: null,
   fixedHeightClassName: null,
   maxHeight: 75,
-  objectFit: false,
+  objectFit: null,
   sizes: null,
+  wrapperClassName: null,
 };
 
 export default ResponsiveImage;

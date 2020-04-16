@@ -25,7 +25,7 @@ const Cover = ({ avatar, t, cover, username, withUpdateForms }) => {
     <div className={styles.coverWrapper}>
       <div className={styles.coverImagePositionner}>
         {hasCover && (
-          <ResponsiveImage alt={t('cover')} images={cover} objectFit maxHeight="initial" />
+          <ResponsiveImage alt={t('cover')} images={cover} objectFit="cover" maxHeight="initial" />
         )}
       </div>
 
