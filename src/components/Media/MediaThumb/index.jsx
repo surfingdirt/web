@@ -22,6 +22,7 @@ class MediaThumb extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     id: PropTypes.string.isRequired,
+    maxWidth: PropTypes.string,
     mediaType: PropTypes.string.isRequired,
     objectFit: PropTypes.bool,
     onClickCapture: PropTypes.func,
@@ -32,25 +33,38 @@ class MediaThumb extends React.PureComponent {
 
   static defaultProps = {
     className: null,
+    maxWidth: null,
     objectFit: false,
     onClickCapture: null,
     title: null,
   };
 
   render() {
-    const { className, id, mediaType, objectFit, onClickCapture, t, title, thumbs } = this.props;
+    const {
+      className,
+      id,
+      maxWidth,
+      mediaType,
+      objectFit,
+      onClickCapture,
+      t,
+      title,
+      thumbs,
+    } = this.props;
     const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
     const alt = title || t('thumbAlt');
     const responsiveImage = (
-      <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit="cover" />
+      <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit={objectFit} />
     );
     const attrs = onClickCapture ? { onClickCapture } : {};
+    const style = maxWidth ? { maxWidth: `${maxWidth}px` } : {};
     return (
       <Link
         className={classnames(className, { [styles.objectFit]: objectFit })}
         to={to}
         title={title}
         {...attrs}
+        style={style}
       >
         {mediaType === PHOTO ? (
           responsiveImage

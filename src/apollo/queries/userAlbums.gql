@@ -33,6 +33,10 @@ query userAlbums($userId: ID!) {
                 height
                 width
             }
+            height
+            width
+            thumbHeight
+            thumbWidth
             thumbs {
                 type
                 size

@@ -17,15 +17,20 @@ $narrow-width: $mobile-layout-threshold-max;
   padding: 0;
   list-style: none;
   grid-gap: $gutter-mobile;
+  justify-items: center;
+
+  .item {
+  }
 
   .more {
     align-items: center;
     justify-content: center;
     color: $brand-bright;
     font-size: $font-size-huge;
-    background: rgba($empty, .5);
+    background: $picture-background-color;
     grid-area: none;
     display: none;
+    width: 100%;
 
     .moreDesktop {
       @media (max-width: $narrow-width) {
@@ -43,9 +48,9 @@ $narrow-width: $mobile-layout-threshold-max;
   &.grid-1-items {
     @extend .grid-1-cell;
 
-    grid-auto-rows: 50vmin;
+    grid-auto-rows: 30vmin;
     @media (max-width: $narrow-width) {
-      grid-auto-rows: 50vmax;
+      grid-auto-rows: 30vmax;
     }
   }
   &.grid-2-items {

@@ -20,6 +20,8 @@ query userAndAlbums($userId: ID!) {
                 delete
                 edit
             }
+            thumbHeight
+            thumbWidth
             images {
                 size
                 width
@@ -78,6 +80,8 @@ query userAndAlbums($userId: ID!) {
                 height
                 width
             }
+            thumbHeight
+            thumbWidth
             thumbs {
                 type
                 size

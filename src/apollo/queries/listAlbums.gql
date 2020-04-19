@@ -32,6 +32,8 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
             embedUrl
             height
             width
+            thumbHeight
+            thumbWidth
             title {
                 locale
                 original

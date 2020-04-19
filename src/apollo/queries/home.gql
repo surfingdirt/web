@@ -32,6 +32,8 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             embedUrl
             height
             width
+            thumbHeight
+            thumbWidth
             title {
                 locale
                 original
@@ -102,6 +104,8 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             embedUrl
             height
             width
+            thumbHeight
+            thumbWidth
             title {
                 locale
                 original

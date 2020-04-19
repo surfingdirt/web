@@ -22,6 +22,8 @@ query media($id: ID!, $mediaType: String!) {
         }
         mediaType
         mediaSubType
+        thumbHeight
+        thumbWidth
         title {
             locale
             original

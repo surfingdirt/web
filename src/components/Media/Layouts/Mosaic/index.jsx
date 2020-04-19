@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import ThumbOnly from 'Components/Media/Items/ThumbOnly';
+import MediaThumb from 'Components/Media/MediaThumb';
 
 import styles from './styles.scss';
 
@@ -26,22 +26,28 @@ const Mosaic = ({ album, media }) => {
       : 0;
   const showMore = !!(moreCountMobile || moreCountDesktop);
 
+  const firstElHeight = truncated[0].thumbHeight;
+  const style = truncated.length === 7 ? { gridAutoRows: `${12}vh` } : {};
   return (
     <ul
       className={classnames(styles.mosaic, styles[layoutClassName], {
         [styles.showMoreDesktop]: !!moreCountDesktop,
       })}
+      style={style}
     >
       {truncated.map((item, index) => {
         const attrs = {
-          album,
-          className: styles[`item${index + 1}`],
-          index,
-          item,
-          media,
+          className: classnames(styles.item, styles[`item${index + 1}`]),
+          id: item.id,
+          maxWidth: item.thumbWidth,
+          mediaType: item.mediaType,
+          thumbs: item.thumbs,
+          title: item.title.text,
         };
+        // Special case the big hero content: make it crisp even though it may be smaller
+        const objectFit = index === 0 && truncated.length === 7 ? 'contain' : 'cover';
 
-        return <ThumbOnly key={item.id} {...attrs} />;
+        return <MediaThumb key={item.id} {...attrs} objectFit={objectFit} />;
       })}
       {showMore && (
         <li className={styles.more}>

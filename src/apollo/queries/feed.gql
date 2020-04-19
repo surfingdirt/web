@@ -39,6 +39,8 @@ query {
 				embedUrl
 				height
 				width
+                thumbHeight
+                thumbWidth
 				title {
 					locale
 					original
@@ -178,6 +180,8 @@ query {
             embedUrl
             height
             width
+            thumbHeight
+            thumbWidth
             title {
               text
             }

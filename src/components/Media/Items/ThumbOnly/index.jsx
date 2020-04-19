@@ -14,10 +14,12 @@ const ThumbOnly = ({ className, item }) => {
     mediaType,
     title: { text: title },
     thumbs,
+    thumbWidth,
   } = item;
   const attrs = {
     className: classnames(styles.link, className),
     id,
+    maxWidth: thumbWidth,
     mediaType,
     title,
     thumbs,

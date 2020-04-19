@@ -76,11 +76,12 @@ const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSli
   const sliderChildren = media.map((mediaItem, index) => {
     const {
       id,
+      thumbWidth,
       mediaType,
       title: { text: title },
       thumbs,
     } = mediaItem;
-    const attrs = { id, mediaType, title, thumbs };
+    const attrs = { id, maxWidth: thumbWidth, mediaType, title, thumbs };
 
     const ThumbWithModal = WithModal({
       ariaLabel: t('mediaPreviewModal'),

@@ -33,10 +33,11 @@ const DetailsFull = ({ album, className, item, index, locale, media, t }) => {
     id,
     mediaType,
     submitter,
-    title: { text: title },
     thumbs,
+    thumbWidth,
+    title: { text: title },
   } = item;
-  const attrs = { className: styles.link, id, mediaType, title, thumbs };
+  const attrs = { className: styles.link, id, maxWidth: thumbWidth, mediaType, title, thumbs };
   const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
 
   const ThumbWithModal = WithModal({
