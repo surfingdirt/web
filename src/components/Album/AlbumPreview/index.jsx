@@ -91,7 +91,7 @@ const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSli
       ),
       modalTitle: title || albumTitle,
       type: HERO,
-    })(<MediaThumb {...attrs} objectFit />);
+    })(<MediaThumb {...attrs} objectFit="cover" />);
 
     return (
       <div key={id} className={styles.item}>
