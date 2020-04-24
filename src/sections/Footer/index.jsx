@@ -13,21 +13,28 @@ const { ABOUT, OLD_FORUM } = routes;
 
 const Footer = ({ className, t }) => {
   return (
-    <footer className={classnames(styles.wrapper, className)}>
-      <ul>
-        <li className={styles.link}>
-          <Link to={ABOUT}>{t('about')}</Link>
+    <div className={classnames(styles.wrapper, className)} role="none">
+      <ul role="none">
+        <li className={styles.link} role="none">
+          <Link to={ABOUT} role="menuitem">
+            {t('about')}
+          </Link>
         </li>
-        <li className={styles.link}>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-T8XLnoGn1ujbXK4bZg7cCL1v-2JlhCrkPyAZfUXRpVj-aw/viewform">
+        <li className={styles.link} role="none">
+          <a
+            role="menuitem"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd-T8XLnoGn1ujbXK4bZg7cCL1v-2JlhCrkPyAZfUXRpVj-aw/viewform"
+          >
             {t('contact')}
           </a>
         </li>
-        <li className={styles.link}>
-          <Link to={OLD_FORUM}>{t('forum')}</Link>
+        <li className={styles.link} role="none">
+          <Link to={OLD_FORUM} role="menuitem">
+            {t('forum')}
+          </Link>
         </li>
       </ul>
-    </footer>
+    </div>
   );
 };
 

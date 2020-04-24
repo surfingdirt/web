@@ -25,7 +25,7 @@ const { PROFILE } = icons;
 const { STANDARD } = sizes;
 const { HOME } = routes;
 
-const Index = ({
+const BottomBar = ({
   actionButtonRef,
   actionButtonOrigin,
   actionLinkListRef,
@@ -180,7 +180,7 @@ const Index = ({
     </nav>
   );
 };
-Index.propTypes = {
+BottomBar.propTypes = {
   actionButtonRef: PropTypes.shape({
     current: PropTypes.instanceOf(typeof Element === 'undefined' ? () => {} : Element),
   }).isRequired,
@@ -208,4 +208,4 @@ Index.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default Translate(messages)(Index);
+export default Translate(messages)(BottomBar);

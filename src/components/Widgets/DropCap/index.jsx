@@ -7,12 +7,12 @@ const DropCap = ({ word }) => {
   const [letter, ...rest] = word;
 
   return (
-    <span aria-labelledby="word--first" role="text">
+    <span aria-labelledby="word--first">
       <span aria-hidden="true" className={styles.visible}>
         <span className={styles.dropcap}>{letter}</span>
         {rest}
       </span>
-      <span id="word--first" className={styles.hidden}>
+      <span id="word--first" className={styles.hidden} hidden>
         {word}
       </span>
     </span>

@@ -67,11 +67,11 @@ class MoreLinkNavigationRaw extends React.Component {
       >
         <div className={styles.background}>
           <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
-            <div className={styles.topNavWrapper}>
-              <ul className={styles.linkList}>
+            <div className={styles.topNavWrapper} role="none">
+              <ul className={styles.linkList} role="none">
                 {items.map((props) => (
-                  <li key={props.to}>
-                    <NavigationLink {...props} active={props.to === currentUrl} />
+                  <li key={props.to} role="none">
+                    <NavigationLink {...props} active={props.to === currentUrl} role="menuitem" />
                   </li>
                 ))}
               </ul>

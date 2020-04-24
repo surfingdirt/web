@@ -7,7 +7,18 @@ import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
 
-const NavigationLink = ({ active, className, icon, label, negative, onClick, tag, to, type }) => {
+const NavigationLink = ({
+  active,
+  className,
+  icon,
+  label,
+  negative,
+  onClick,
+  role,
+  tag,
+  to,
+  type,
+}) => {
   const classNames = classnames(className, styles.wrapper, {
     [styles.active]: active,
     [styles.negative]: negative,
@@ -15,6 +26,9 @@ const NavigationLink = ({ active, className, icon, label, negative, onClick, tag
 
   const Tag = tag || Link;
   const attrs = { onClick, type, to };
+  if (role) {
+    attrs.role = role;
+  }
 
   return (
     <Tag className={classNames} {...attrs}>
@@ -31,6 +45,7 @@ NavigationLink.propTypes = {
   label: PropTypes.string.isRequired,
   negative: PropTypes.bool,
   onClick: PropTypes.func,
+  role: PropTypes.string,
   tag: PropTypes.string,
   to: PropTypes.string,
   type: PropTypes.string,
@@ -42,6 +57,7 @@ NavigationLink.defaultProps = {
   icon: null,
   negative: false,
   onClick: null,
+  role: null,
   tag: null,
   to: null,
   type: null,

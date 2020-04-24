@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Heading, { headingTypes } from 'Components/Widgets/Heading/index';
@@ -28,6 +29,9 @@ class About extends React.Component {
 
     return (
       <Card type={BARE} negative>
+        <Helmet>
+          <title>{t('title')}</title>
+        </Helmet>
         <div className={styles.wrapper}>
           <header className={styles.header}>
             <Logo title={title} type={BIG_VERTICAL} />

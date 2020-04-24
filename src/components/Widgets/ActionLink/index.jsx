@@ -7,8 +7,8 @@ import { getIcon } from 'Utils/icons';
 
 import styles from './styles.scss';
 
-const ActionLink = ({ className, icon, iconClassName, label, to }) => (
-  <Link to={to} className={classnames(className, styles.wrapper)} title={label}>
+const ActionLink = ({ className, icon, iconClassName, label, role, to }) => (
+  <Link to={to} className={classnames(className, styles.wrapper)} title={label} role={role}>
     {getIcon({
       type: icon,
       className: classnames(styles.defaultIcon, iconClassName),
@@ -25,6 +25,7 @@ ActionLink.propTypes = {
   icon: PropTypes.node,
   iconClassName: PropTypes.string,
   label: PropTypes.string.isRequired,
+  role: PropTypes.string,
   to: PropTypes.string.isRequired,
 };
 
@@ -32,6 +33,7 @@ ActionLink.defaultProps = {
   className: null,
   icon: null,
   iconClassName: null,
+  role: null,
 };
 
 export default ActionLink;

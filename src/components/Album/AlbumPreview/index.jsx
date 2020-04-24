@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, Profiler } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -123,9 +123,19 @@ const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSli
     return sliderContent;
   }
 
+  const callback = (id, phase, actualTime, baseTime, startTime, commitTime) => {
+    console.log(`${id}'s ${phase} phase:`);
+    console.log(`Actual time: ${actualTime}`);
+    console.log(`Base time: ${baseTime}`);
+    console.log(`Start time: ${startTime}`);
+    console.log(`Commit time: ${commitTime}`);
+  };
+
   return (
     <Card className={styles.wrapper} type={BARE}>
-      {sliderContent}
+      <Profiler id={`slider-${album.id}`} onRender={callback}>
+        {sliderContent}
+      </Profiler>
       <div className={styles.contentWrapper}>
         <div className={styles.titleAndAttribution}>
           <Heading className={styles.title} type={SECONDARY} link={albumUrl}>

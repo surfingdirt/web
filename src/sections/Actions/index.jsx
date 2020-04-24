@@ -8,11 +8,16 @@ import styles from './styles.scss';
 
 const Actions = ({ className, items, label }) => {
   return (
-    <div className={classnames(styles.wrapper, className)} aria-label={label}>
-      <ul className={styles.linkList}>
+    <div className={classnames(styles.wrapper, className)} aria-label={label} role="none">
+      <ul className={styles.linkList} role="none">
         {items.map((item) => (
-          <li key={item.to}>
-            <ActionLink {...item} className={styles.actionLink} iconClassName={styles.icon} />
+          <li key={item.to} role="none">
+            <ActionLink
+              {...item}
+              className={styles.actionLink}
+              iconClassName={styles.icon}
+              role="menuitem"
+            />
           </li>
         ))}
       </ul>

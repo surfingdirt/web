@@ -66,14 +66,14 @@ class ProfileLinkNavigationRaw extends React.Component {
         aria-label={t('linkNav')}
       >
         <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
-          <ul className={styles.linkList}>
+          <ul className={styles.linkList} role="none">
             {items.map((props) => (
-              <li key={props.to}>
-                <NavigationLink {...props} active={props.to === currentUrl} />
+              <li key={props.to} role="none">
+                <NavigationLink {...props} active={props.to === currentUrl} role="menuitem" />
               </li>
             ))}
             {loggedIn && (
-              <li>
+              <li role="none">
                 <LogoutForm buttonClassName={menuStyles.menuEntry} renderAsNavigationLink />
               </li>
             )}
