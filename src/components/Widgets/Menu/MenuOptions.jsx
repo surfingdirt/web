@@ -96,6 +96,9 @@ class MenuOptionsRaw extends React.Component {
       styles.menuOptions,
       styles[`menuOptionsHorizontal-${horizontalPlacement}`],
       styles[`menuOptionsVertical-${verticalPlacement}`],
+      {
+        [styles.menuActive]: menuActive,
+      },
     );
 
     return (

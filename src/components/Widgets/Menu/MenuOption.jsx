@@ -8,7 +8,6 @@ class MenuOptionRaw extends React.Component {
   static propTypes = {
     active: PropTypes.bool,
     children: PropTypes.node.isRequired,
-    disabledSelect: PropTypes.func,
     disabled: PropTypes.bool,
     handleBlur: PropTypes.func,
     handleKeys: PropTypes.func,
@@ -22,7 +21,6 @@ class MenuOptionRaw extends React.Component {
   static defaultProps = {
     active: false,
     disabled: false,
-    disabledSelect: null,
     handleBlur: null,
     handleKeys: null,
     onCloseRequested: null,
@@ -38,12 +36,9 @@ class MenuOptionRaw extends React.Component {
   }
 
   handleClick() {
-    const { disabled, disabledSelect, onCloseRequested, onSelect } = this.props;
+    const { disabled, onCloseRequested, onSelect } = this.props;
 
     if (disabled) {
-      if (disabledSelect) {
-        disabledSelect();
-      }
       // Early return if disabled
       return;
     }

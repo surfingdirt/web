@@ -27,12 +27,31 @@ class MenuTriggerRaw extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleActive = this.toggleActive.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  toggleActive() {
-    const { onToggleActive } = this.props;
-    onToggleActive(!this.innerRef.current().checked);
+  toggleActive(e) {
+    e.preventDefault();
+    const { onToggleActive, menuActive } = this.props;
+    onToggleActive(!menuActive);
+  }
+
+  handleKeyUp(e) {
+    if (e.key === SPACE) {
+      this.toggleActive(e);
+    }
+  }
+
+  handleKeyDown(e) {
+    if (e.key === ENTER) {
+      this.toggleActive(e);
+    }
+  }
+
+  handleClick(e) {
+    this.toggleActive(e);
   }
 
   render() {
@@ -52,14 +71,17 @@ class MenuTriggerRaw extends React.Component {
           {children}
         </label>
         <input
-          ref={innerRef}
-          tabIndex="0"
-          role="button"
-          aria-owns={menuId}
           aria-haspopup="true"
+          aria-owns={menuId}
           className={styles.menuCheckbox}
-          type="checkbox"
           id={checkboxId}
+          onClick={this.handleClick}
+          onKeyUp={this.handleKeyUp}
+          onKeyDown={this.handleKeyDown}
+          ref={innerRef}
+          role="button"
+          tabIndex="0"
+          type="checkbox"
         />
       </>
     );

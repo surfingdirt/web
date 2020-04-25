@@ -34,15 +34,21 @@ $border-width: $widget-border-width;
   border: $border-width $menu-border-color solid;
   border-radius: $widget-border-radius;
   box-shadow: 0 0 3px rgba($widget-border-color, .5);
+
+  // With JS
+  &.menuActive {
+    visibility: visible;
+  }
 }
 
+// No JS
 .menuCheckbox {
   display: none;
-
   &:checked ~ .menuOptions {
     visibility: visible;
   }
 }
+
 
 .menuOptionsHorizontal-left {
   right: 0;
