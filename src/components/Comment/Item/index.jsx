@@ -101,7 +101,7 @@ const CommentRaw = ({
   const showMenu = options.length > 0;
 
   const trigger = getIcon({
-    label: t('menuLabel'),
+    presentationOnly: true,
     type: icons.ARROW_DOWN,
     size: sizes.TINY,
   });
@@ -139,6 +139,7 @@ const CommentRaw = ({
               menuId={COMMENT_MENU}
               trigger={trigger}
               triggerClassName={styles.menuTrigger}
+              triggerLabel={t('menuLabel')}
               className={styles.menu}
               options={options}
             />

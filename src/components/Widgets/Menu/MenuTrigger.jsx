@@ -37,7 +37,6 @@ class MenuTriggerRaw extends React.Component {
 
   render() {
     const { children, className, innerRef, menuActive, menuId, triggerLabel } = this.props;
-
     const actualClassName = classnames(
       styles.menuTrigger,
       className,
@@ -49,7 +48,7 @@ class MenuTriggerRaw extends React.Component {
     return (
       <>
         {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-        <label className={actualClassName} htmlFor={checkboxId}>
+        <label className={actualClassName} htmlFor={checkboxId} aria-label={triggerLabel}>
           {children}
         </label>
         <input
@@ -58,7 +57,6 @@ class MenuTriggerRaw extends React.Component {
           role="button"
           aria-owns={menuId}
           aria-haspopup="true"
-          aria-label={triggerLabel}
           className={styles.menuCheckbox}
           type="checkbox"
           id={checkboxId}

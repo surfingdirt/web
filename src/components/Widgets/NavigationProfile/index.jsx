@@ -112,6 +112,7 @@ class NavigationProfile extends React.Component {
       <Menu
         menuId={NAVIGATION_PROFILE_MENU}
         trigger={trigger}
+        triggerLabel={title}
         className={classnames(className, styles.wrapper)}
         options={options}
       />
