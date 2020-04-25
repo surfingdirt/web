@@ -11,6 +11,7 @@ $border-width: $widget-border-width;
 }
 
 .menuTrigger {
+  display: block;
   border-radius: $widget-border-radius;
   padding: $padding-small-4;
   overflow: hidden;
@@ -24,6 +25,7 @@ $border-width: $widget-border-width;
 
 .menuOptions {
   position: absolute;
+  top: 100%;
   z-index: $z-index-threedot-menu;
   width: max-content;
   visibility: hidden;
