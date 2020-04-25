@@ -13,10 +13,12 @@ $border-width: $widget-border-width;
 .menuTrigger {
   border-radius: $widget-border-radius;
   padding: $padding-small-4;
+  overflow: hidden;
 
   &:hover {
     color: $menu-trigger-active-text-color;
     background-color: $menu-trigger-active-background-color;
+    cursor: pointer;
   }
 }
 
@@ -24,11 +26,20 @@ $border-width: $widget-border-width;
   position: absolute;
   z-index: $z-index-threedot-menu;
   width: max-content;
+  visibility: hidden;
   overflow: hidden;
   background-color: $menu-option-active-background-color;
   border: $border-width $menu-border-color solid;
   border-radius: $widget-border-radius;
   box-shadow: 0 0 3px rgba($widget-border-color, .5);
+}
+
+.menuCheckbox {
+  display: none;
+
+  &:checked ~ .menuOptions {
+    visibility: visible;
+  }
 }
 
 .menuOptionsHorizontal-left {

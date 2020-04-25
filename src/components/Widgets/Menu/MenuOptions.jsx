@@ -105,7 +105,6 @@ class MenuOptionsRaw extends React.Component {
         role="menu"
         tabIndex="-1"
         aria-expanded={menuActive}
-        style={{ visibility: menuActive ? 'visible' : 'hidden' }}
         className={actualClassName}
         onBlur={handleBlur}
         onKeyDown={handleKeys}

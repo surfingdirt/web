@@ -17,6 +17,7 @@ class MenuTriggerRaw extends React.Component {
     menuActive: PropTypes.bool.isRequired,
     menuId: PropTypes.string.isRequired,
     onToggleActive: PropTypes.func.isRequired,
+    triggerLabel: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -26,34 +27,16 @@ class MenuTriggerRaw extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
   }
 
   toggleActive() {
-    const { onToggleActive, menuActive } = this.props;
-    onToggleActive(!menuActive);
-  }
-
-  handleKeyUp(e) {
-    if (e.key === SPACE) {
-      this.toggleActive();
-    }
-  }
-
-  handleKeyDown(e) {
-    if (e.key === ENTER) {
-      this.toggleActive();
-    }
-  }
-
-  handleClick() {
-    this.toggleActive();
+    const { onToggleActive } = this.props;
+    onToggleActive(!this.innerRef.current().checked);
   }
 
   render() {
-    const { children, className, innerRef, menuActive, menuId } = this.props;
+    const { children, className, innerRef, menuActive, menuId, triggerLabel } = this.props;
 
     const actualClassName = classnames(
       styles.menuTrigger,
@@ -61,20 +44,26 @@ class MenuTriggerRaw extends React.Component {
       menuActive ? styles.menuTriggerActive : styles.menuTriggerInactive,
     );
 
+    const checkboxId = `${menuId}-input`;
+
     return (
-      <div
-        ref={innerRef}
-        className={actualClassName}
-        onClick={this.handleClick}
-        onKeyUp={this.handleKeyUp}
-        onKeyDown={this.handleKeyDown}
-        tabIndex="0"
-        role="button"
-        aria-owns={menuId}
-        aria-haspopup="true"
-      >
-        {children}
-      </div>
+      <>
+        {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+        <label className={actualClassName} htmlFor={checkboxId}>
+          {children}
+        </label>
+        <input
+          ref={innerRef}
+          tabIndex="0"
+          role="button"
+          aria-owns={menuId}
+          aria-haspopup="true"
+          aria-label={triggerLabel}
+          className={styles.menuCheckbox}
+          type="checkbox"
+          id={checkboxId}
+        />
+      </>
     );
   }
 }

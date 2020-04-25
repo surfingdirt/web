@@ -96,8 +96,7 @@ class Menu extends React.Component {
   }
 
   handleTriggerToggle() {
-    const newActive = !this.state.active;
-    this.setState({ active: newActive, activeOptionIndex: 0 }, this.afterTriggerToggle);
+    this.setState({ activeOptionIndex: 0 }, this.afterTriggerToggle);
   }
 
   afterTriggerToggle() {
@@ -171,21 +170,20 @@ class Menu extends React.Component {
 
   renderTrigger() {
     const { menuId, trigger, triggerLabel, triggerClassName } = this.props;
-    const { active: menuActive } = this.state;
 
     const attrs = {
       className: triggerClassName,
-      menuActive,
       menuId,
       onToggleActive: this.handleTriggerToggle,
       ref: this.triggerRef,
+      triggerLabel,
     };
 
     return (
       <MenuTrigger {...attrs}>
         {trigger ||
           getIcon({
-            label: triggerLabel,
+            presentationOnly: true,
             type: icons.THREEDOTS_VERTICAL,
             size: STANDARD,
           })}
