@@ -14,7 +14,7 @@ const LABEL_ADDITIONAL_RADIUS = 40;
 const START_ANGLE = 180 - 22.5;
 const ANGULAR_DISTANCE = 45;
 
-const BottomBarActionsRaw = ({ className, id, innerRef, items, open, origin }) => {
+const BottomBarActionsRaw = ({ className, id, innerRef, items, origin }) => {
   const offsets = items.map((item, i) => {
     const angle = ((START_ANGLE - i * ANGULAR_DISTANCE) * Math.PI) / 180;
     const iconX = origin[0] + RADIUS * Math.cos(angle) + HORIZONTAL_OFFSET;
@@ -31,8 +31,8 @@ const BottomBarActionsRaw = ({ className, id, innerRef, items, open, origin }) =
       <ul className={styles.linkList} id={id} ref={innerRef}>
         {items.map((props, index) => {
           const { iconX, iconY, labelX, labelY } = offsets[index];
-          const iconStyle = open ? { transform: `translate(${iconX}px, ${iconY}px)` } : {};
-          const labelStyle = open ? { transform: `translate(${labelX}px, ${labelY}px)` } : {};
+          const iconStyle = { transform: `translate(${iconX}px, ${iconY}px)` };
+          const labelStyle = { transform: `translate(${labelX}px, ${labelY}px)` };
 
           const buttonProps = { active: props.active, style: iconStyle, to: props.to };
           const key = `action${index}`;
@@ -66,7 +66,6 @@ BottomBarActionsRaw.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  open: PropTypes.bool.isRequired,
   origin: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 

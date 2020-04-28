@@ -13,7 +13,7 @@ import Translate from 'Hocs/Translate/index';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
-import { NAVIGATION_MORE_MENU, NAVIGATION_PROFILE_MENU_LEFT } from '~/ids';
+import { ACTION_BUTTON_MENU, NAVIGATION_MORE_MENU, NAVIGATION_PROFILE_MENU_LEFT } from '~/ids';
 import routes from '~/routes';
 
 import { MORE_NAVIGATION_ID, PROFILE_NAVIGATION_ID } from '../constants';
@@ -89,19 +89,27 @@ const BottomBar = ({
           [styles.plusButtonWrapperOpen]: bottomBarActionsOpen,
         })}
       >
+        <input
+          type="checkbox"
+          id={ACTION_BUTTON_MENU}
+          className={styles.actionButtonsCheckbox}
+          hidden
+        />
+
         <BottomBarActions
           className={classnames(styles.bottomBarActionContainer, {
             [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
           })}
           id={ACTION_ITEMS_ID}
           items={actionItems}
-          open={bottomBarActionsOpen}
           origin={actionButtonOrigin}
           ref={actionLinkListRef}
         />
 
-        <button
-          type="button"
+        {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+        <label
+          htmlFor={ACTION_BUTTON_MENU}
+          role="button"
           className={styles.plusButtonOffset}
           onClick={onPlusClick}
           aria-label={t('actionButton')}
@@ -122,7 +130,7 @@ const BottomBar = ({
               }),
             })}
           </PopupActionButton>
-        </button>
+        </label>
 
         <NamedNavigationItem
           aria-hidden="true"
