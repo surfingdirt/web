@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { withRouter } from 'react-router';
@@ -11,6 +11,7 @@ import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
 import routes from '~/routes';
+import { NAVIGATION_PROFILE_MENU_LEFT } from '~/ids';
 
 import styles from './styles.scss';
 import messages from './messages';
@@ -21,6 +22,7 @@ const { STANDARD } = sizes;
 class ProfileLinkNavigationRaw extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
+    checkboxClassName: PropTypes.string.isRequired,
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     innerRef: PropTypes.shape({
@@ -37,6 +39,7 @@ class ProfileLinkNavigationRaw extends React.Component {
 
   render() {
     const {
+      checkboxClassName,
       className,
       currentUrl,
       id,
@@ -61,28 +64,42 @@ class ProfileLinkNavigationRaw extends React.Component {
     }
 
     return (
-      <nav
-        className={classnames(styles.wrapper, className, { [openClassName]: openOnMobile })}
-        aria-label={t('linkNav')}
-      >
-        <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
-          <ul className={styles.linkList} role="none">
-            {items.map((props) => (
-              <li key={props.to} role="none">
-                <NavigationLink {...props} active={props.to === currentUrl} role="menuitem" />
-              </li>
-            ))}
-            {loggedIn && (
-              <li role="none">
-                <LogoutForm buttonClassName={menuStyles.menuEntry} renderAsNavigationLink />
-              </li>
-            )}
-          </ul>
-          <button className={styles.closeBtn} type="button" onClick={onCloseClick}>
-            {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
-          </button>
-        </div>
-      </nav>
+      <Fragment>
+        <input
+          type="checkbox"
+          id={NAVIGATION_PROFILE_MENU_LEFT}
+          className={checkboxClassName}
+          hidden
+        />
+        <nav
+          className={classnames(styles.wrapper, className, { [openClassName]: openOnMobile })}
+          aria-label={t('linkNav')}
+        >
+          <div className={styles.positioner} role="menu" id={id} ref={innerRef}>
+            <ul className={styles.linkList} role="none">
+              {items.map((props) => (
+                <li key={props.to} role="none">
+                  <NavigationLink {...props} active={props.to === currentUrl} role="menuitem" />
+                </li>
+              ))}
+              {loggedIn && (
+                <li role="none">
+                  <LogoutForm buttonClassName={menuStyles.menuEntry} renderAsNavigationLink />
+                </li>
+              )}
+            </ul>
+            {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+            <label
+              className={styles.closeBtn}
+              role="button"
+              onClick={onCloseClick}
+              htmlFor={NAVIGATION_PROFILE_MENU_LEFT}
+            >
+              {getIcon({ type: icons.CLOSE, size: STANDARD, label: t('close') })}
+            </label>
+          </div>
+        </nav>
+      </Fragment>
     );
   }
 }

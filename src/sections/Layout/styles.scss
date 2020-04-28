@@ -86,12 +86,14 @@
       right: 0;
       transform: translateX(100%);
     }
+  }
 
-    &.navigationOpen {
-      transform: translateX(0);
-      pointer-events: initial;
-      opacity: .9;
-    }
+  .navigationLeftCheckbox:checked ~ .navigationLeft,
+  .navigationRightCheckbox:checked ~ .navigationRight,
+  .navigation.navigationOpen {
+    transform: translateX(0);
+    pointer-events: initial;
+    opacity: .9;
   }
 }
 

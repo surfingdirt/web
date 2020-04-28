@@ -46,6 +46,8 @@ $footer-height: 2.5rem;
 
 .closeBtn {
   flex: 0 0 $bottom-bar-height;
+  padding-top: 1rem;
+  padding-right: .75rem;
   align-self: flex-end;
   width: 80px;
   background: none;

@@ -4,11 +4,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 import Translate from 'Hocs/Translate';
-import Actions from 'Sections/Actions';
 import MoreLinkNavigation from 'Sections/MoreLinkNavigation';
 import ProfileLinkNavigation from 'Sections/ProfileLinkNavigation';
 import icons from 'Utils/icons';
 import { focusFirstFocusableItemInside } from 'Utils/misc';
+import { NAVIGATION_PROFILE_MENU_LEFT, NAVIGATION_MORE_MENU } from '~/ids';
 import AppContext from '~/contexts';
 import routes from '~/routes';
 
@@ -146,6 +146,10 @@ class Layout extends React.Component {
   }
 
   closeAll() {
+    // Uncheck the inputs used for JS-less menus which would cause the menu to remain open:
+    document.getElementById(NAVIGATION_MORE_MENU).checked = false;
+    document.getElementById(NAVIGATION_PROFILE_MENU_LEFT).checked = false;
+
     this.setState({
       bottomBarActionsOpen: false,
       moreNavigationMenuOpen: false,
@@ -214,6 +218,7 @@ class Layout extends React.Component {
 
         <MoreLinkNavigation
           actionItems={actionItems}
+          checkboxClassName={styles.navigationRightCheckbox}
           className={classnames(styles.navigation, styles.navigationRight)}
           currentUrl={url}
           id={MORE_NAVIGATION_ID}
@@ -224,6 +229,7 @@ class Layout extends React.Component {
         />
 
         <ProfileLinkNavigation
+          checkboxClassName={styles.navigationLeftCheckbox}
           className={classnames(styles.navigation, styles.navigationLeft, styles.profileNavigation)}
           id={PROFILE_NAVIGATION_ID}
           currentUrl={url}

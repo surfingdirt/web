@@ -13,6 +13,7 @@ import Translate from 'Hocs/Translate/index';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import AppContext from '~/contexts';
+import { NAVIGATION_MORE_MENU, NAVIGATION_PROFILE_MENU_LEFT } from '~/ids';
 import routes from '~/routes';
 
 import { MORE_NAVIGATION_ID, PROFILE_NAVIGATION_ID } from '../constants';
@@ -62,8 +63,10 @@ const BottomBar = ({
       />
 
       {/* MORE button */}
-      <button
-        type="button"
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control,jsx-a11y/label-has-for */}
+      <label
+        htmlFor={NAVIGATION_MORE_MENU}
+        role="button"
         className={styles.more}
         aria-haspopup="true"
         aria-expanded={moreNavigationMenuOpen}
@@ -78,7 +81,7 @@ const BottomBar = ({
             size: STANDARD,
           })}
         />
-      </button>
+      </label>
 
       {/* PLUS button */}
       <div
@@ -146,8 +149,10 @@ const BottomBar = ({
       </Link>
 
       {/* PROFILE button */}
-      <button
-        type="button"
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control,jsx-a11y/label-has-for */}
+      <label
+        htmlFor={NAVIGATION_PROFILE_MENU_LEFT}
+        role="button"
         className={styles.profile}
         aria-haspopup="true"
         aria-expanded={profileNavigationMenuOpen}
@@ -164,7 +169,7 @@ const BottomBar = ({
             )
           }
         />
-      </button>
+      </label>
 
       {/* ACTIVITY button */}
       <div className={styles.activity}>
