@@ -73,6 +73,7 @@
 
     .plusButtonOffset {
       position: absolute;
+      z-index: 1;
       left: 0;
       border: 0;
       padding: 0;
@@ -145,6 +146,10 @@
 .bottomBarActionContainer {
   pointer-events: none;
   opacity: 0;
+  position: absolute;
+  top: -1.25rem;
+  left: 1rem;
+  text-align: center;
 
   &.bottomBarActionContainerVisible {
     pointer-events: initial;

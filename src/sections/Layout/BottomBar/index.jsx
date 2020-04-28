@@ -89,6 +89,17 @@ const BottomBar = ({
           [styles.plusButtonWrapperOpen]: bottomBarActionsOpen,
         })}
       >
+        <BottomBarActions
+          className={classnames(styles.bottomBarActionContainer, {
+            [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
+          })}
+          id={ACTION_ITEMS_ID}
+          items={actionItems}
+          open={bottomBarActionsOpen}
+          origin={actionButtonOrigin}
+          ref={actionLinkListRef}
+        />
+
         <button
           type="button"
           className={styles.plusButtonOffset}
@@ -111,18 +122,8 @@ const BottomBar = ({
               }),
             })}
           </PopupActionButton>
-
-          <BottomBarActions
-            className={classnames(styles.bottomBarActionContainer, {
-              [styles.bottomBarActionContainerVisible]: bottomBarActionsOpen,
-            })}
-            id={ACTION_ITEMS_ID}
-            items={actionItems}
-            open={bottomBarActionsOpen}
-            origin={actionButtonOrigin}
-            ref={actionLinkListRef}
-          />
         </button>
+
         <NamedNavigationItem
           aria-hidden="true"
           className={styles.plusLabel}
