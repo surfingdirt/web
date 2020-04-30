@@ -21,6 +21,8 @@ const resolverAliases = {};
   resolverAliases[alias] = path.resolve(srcDir, folder);
 });
 resolverAliases['~'] = srcDir;
+// resolverAliases['react'] = 'preact/compat';
+// resolverAliases['react-dom'] = 'preact/compat';
 
 module.exports = {
   outDirectory: 'dist',
