@@ -87,6 +87,7 @@
 
 <div id="app_root">{{{ html }}}</div>
 
+{{#if renderScripts}}
 {{{ js }}}
 
 <script>
@@ -113,6 +114,8 @@
     }
   })();
 </script>
+
+{{/if}}
 
 </body>
 </html>

@@ -23,7 +23,12 @@ const BottomBarActionsRaw = ({ className, id, innerRef, items, origin }) => {
     const labelX = origin[0] + LABEL_ADDITIONAL_RADIUS * Math.cos(angle) + HORIZONTAL_OFFSET;
     const labelY = origin[1] - LABEL_ADDITIONAL_RADIUS * Math.sin(angle);
 
-    return { iconX, iconY, labelX, labelY };
+    return {
+      iconX: Number.parseFloat(iconX).toFixed(2),
+      iconY: Number.parseFloat(iconY).toFixed(2),
+      labelX: Number.parseFloat(labelX).toFixed(2),
+      labelY: Number.parseFloat(labelY).toFixed(2),
+    };
   });
 
   return (

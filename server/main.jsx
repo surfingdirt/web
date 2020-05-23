@@ -24,9 +24,11 @@ import { buildTracer, getTracingHeaders } from '../src/utils/tracing';
 import Logger from './logger';
 import {
   SUPPORTED_LOCALES,
+  JS_LESS,
   getLocaleAndDirFromRequest,
   getLocaleAndDirFromUser,
   getTracingContext,
+  isJSLess,
 } from './utils';
 import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
 
@@ -75,6 +77,12 @@ const Main = (rootDir) => {
   const tracer = buildTracer(tracingConfig);
 
   return async (req, res, next) => {
+    const noJS = isJSLess(req);
+    if (noJS) {
+      res.cookie(JS_LESS, '1', { expires: new Date(24 * 3600 * 7 * 1000) });
+    } else {
+      res.cookie(JS_LESS);
+    }
     const tracing = getTracingContext(req, tracingConfig);
 
     let span;
@@ -168,6 +176,7 @@ const Main = (rootDir) => {
         locale,
         js,
         meta: meta.toString(),
+        renderScripts: !noJS,
         staticAppContextValues: JSON.stringify(appContextValueObject.getValues()),
         title: title.toString(),
       });
