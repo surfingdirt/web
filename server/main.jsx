@@ -79,7 +79,8 @@ const Main = (rootDir) => {
   return async (req, res, next) => {
     const noJS = isJSLess(req);
     if (noJS) {
-      res.cookie(JS_LESS, '1', { expires: new Date(24 * 3600 * 7 * 1000) });
+      const expires = new Date(Date.now() + 24 * 3600 * 7 * 1000);
+      res.cookie(JS_LESS, '1', { expires });
     } else {
       res.cookie(JS_LESS);
     }
