@@ -77,7 +77,7 @@ const Main = (rootDir) => {
   const tracer = buildTracer(tracingConfig);
 
   return async (req, res, next) => {
-    const noJS = isJSLess(req);
+    const noJS = false; //isJSLess(req);
     if (noJS) {
       const expires = new Date(Date.now() + 24 * 3600 * 365 * 1000);
       res.cookie(JS_LESS, '1', { expires });
