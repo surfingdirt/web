@@ -13,7 +13,7 @@ import messages from './messages';
 import styles from './styles.scss';
 import Paragraph from 'Components/Widgets/Paragraph';
 
-const { LOGIN } = actions;
+const { FORGOT_PASSWORD } = actions;
 const { ACTION } = buttonTypes;
 
 const FormContent = ({ errorMessage, onSubmit, t }) => {
@@ -35,7 +35,7 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
               onSubmit={handleSubmit}
               method="POST"
               encType="multipart/form-data"
-              action={actionRoute(LOGIN)}
+              action={actionRoute(FORGOT_PASSWORD)}
             >
               <div className={styles.inputsContainer}>
                 <div className={styles.usernameField}>
