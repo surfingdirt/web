@@ -80,9 +80,9 @@ const Main = (rootDir) => {
     const noJS = false; //isJSLess(req);
     if (noJS) {
       const expires = new Date(Date.now() + 24 * 3600 * 365 * 1000);
-      res.cookie(JS_LESS, '1', { expires });
+      // res.cookie(JS_LESS, '1', { expires });
     } else {
-      res.cookie(JS_LESS);
+      // res.cookie(JS_LESS);
     }
     const tracing = getTracingContext(req, tracingConfig);
 
