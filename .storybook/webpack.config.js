@@ -4,6 +4,34 @@ const buildConfig = require('../build.config.js');
 
 module.exports = async ({ config }) => {
   config.module.rules.push({
+    test: /\.(js|jsx)?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        configFile: false,
+        plugins: [
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-syntax-dynamic-import',
+          '@loadable/babel-plugin',
+        ],
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              modules: false,
+              loose: false,
+              shippedProposals: true,
+              useBuiltIns: 'usage',
+            },
+          ],
+          '@babel/preset-react',
+        ],
+      },
+    },
+  });
+  config.module.rules.push({
     test: /\.scss$/,
     exclude: /node_modules/,
     use: [

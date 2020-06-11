@@ -24,7 +24,7 @@ const ContextDecorator = (storyFn) => (
   </AppContext.Provider>
 );
 
-const req = require.context('../stories', true, /.stories.jsx?$/);
+const req = require.context('../stories', false, /\.\/.*.stories.js?$/);
 
 addDecorator(ContextDecorator);
 
