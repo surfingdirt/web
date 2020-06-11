@@ -1,16 +1,17 @@
 @import "../../../styles/boxmodel";
+@import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 
-$emoji-size: 5rem;
+$emoji-size: 1rem;
 
 .wrapper {
   display: inline-flex;
   align-items: center;
   font-size: $emoji-size;
   border-radius: $emoji-size/2;
-  background: #eee;
+  background: $reactions-list-background-color;
   padding: $emoji-size/8 $emoji-size/4;
-  color: #333;
+  color: $reactions-list-text-color;
 }
 
 .reactionsList {
