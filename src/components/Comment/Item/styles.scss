@@ -3,6 +3,8 @@
 @import "../../../styles/constants";
 @import "../../../styles/font-sizes";
 
+$metatadatext-min-width: 200px;
+
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -33,16 +35,25 @@
 
     .metadata {
       display: flex;
+      position: relative;
       align-items: center;
-      margin: $margin-small-4 0 $margin-small-3;
+      justify-content: space-between;
+      margin: 0 0 $margin-small-3;
+      height: 1rem;
 
       .metadataList {
         margin: 0;
         padding: 0;
         list-style: none;
 
+        li {
+          display: inline-block;
+        }
+
         li::after {
-          content: '.';
+          content: '•';
+          display: inline-block;
+          margin: 0 $margin-small-2;
         }
 
         li:last-child::after {
@@ -51,12 +62,19 @@
       }
 
       .metadataText {
+        display: inline-block;
         color: $comment-metadata-text-color;
         font-size: $font-size-tiny;
 
         .tone {
           text-transform: capitalize;
         }
+      }
+
+      .reactions {
+        position: relative;
+        top: -.5rem;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
       }
 
       .menu {

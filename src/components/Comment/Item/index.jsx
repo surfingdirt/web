@@ -1,10 +1,11 @@
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import LIST_COMMENTS from 'Apollo/queries/listComments2.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
+import ReactionsList from 'Components/Reactions/List';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Username from 'Components/User/Username';
 import Menu from 'Components/Widgets/Menu';
@@ -42,6 +43,7 @@ const CommentRaw = ({
     content: { text: content, locale: textLocale, original },
     date,
     id,
+    reactions,
     submitter,
     tone,
   } = comment;
@@ -140,6 +142,9 @@ const CommentRaw = ({
               className={styles.menu}
               options={options}
             />
+          )}
+          {reactions.length > 0 && (
+            <ReactionsList className={styles.reactions} reactions={reactions} />
           )}
         </div>
       </div>

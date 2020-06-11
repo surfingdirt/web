@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Emoji from 'Components/Widgets/Emoji';
@@ -46,9 +47,9 @@ const renderReaction = (key, type, className, t) => (
     <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />
   </li>
 );
-const ReactionsList = ({ reactions, t }) => {
+const ReactionsList = ({ className, reactions, t }) => {
   return (
-    <div aria-label={t('reactions')} className={styles.wrapper}>
+    <div aria-label={t('reactions')} className={classnames(styles.wrapper, className)}>
       <ul className={styles.reactionsList}>
         {reactions.map(({ type }) => renderReaction(type, type, styles.reaction, t))}
       </ul>
@@ -59,7 +60,9 @@ const ReactionsList = ({ reactions, t }) => {
   );
 };
 ReactionsList.propTypes = {
+  className: PropTypes.string,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,
   t: PropTypes.func.isRequired,
 };
+ReactionsList.defaultProps = { className: null };
 export default Translate(messages)(ReactionsList);
