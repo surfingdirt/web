@@ -1,9 +1,15 @@
 import { addDecorator, configure } from '@storybook/react';
 import { po } from 'gettext-parser';
 import React from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import AppContext from '~/contexts';
 import '~/main.scss';
+
+import apolloClient from '../src/apollo';
+import { getTracingHeaders } from '../src/utils/tracing';
 
 const translations = po.parse(`
   "Content-Type: text/plain; charset=UTF-8\\n"
@@ -18,10 +24,23 @@ const translations = po.parse(`
   "Language: En\\n"
 `);
 
+const history = createBrowserHistory();
+
+const graphql = 'http://localhost:4000';
+const locale = 'en';
+const accessToken = null;
+const tracingHeaders = getTracingHeaders({ traceAllRequests: false, traceFields: false });
+
+const apolloClientInstance = apolloClient(graphql, locale, false, accessToken, tracingHeaders);
+
 const ContextDecorator = (storyFn) => (
-  <AppContext.Provider value={{ availableLanguages: ['en'], language: 'en', translations }}>
-    {storyFn()}
-  </AppContext.Provider>
+  <ApolloProvider client={apolloClientInstance}>
+    <Router history={history}>
+      <AppContext.Provider value={{ availableLocales: ['en'], locale, translations }}>
+        {storyFn()}
+      </AppContext.Provider>
+    </Router>
+  </ApolloProvider>
 );
 
 const req = require.context('../stories', false, /\.\/.*.stories.js?$/);

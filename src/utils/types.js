@@ -17,7 +17,14 @@ export const TranslatedTextType = PropTypes.shape({
   text: PropTypes.string,
 });
 
+export const ReactionType = PropTypes.shape({
+  type: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  userReactionId: PropTypes.number,
+}).isRequired;
+
 export const CommentType = PropTypes.shape({
+  actions: PropTypes.arrayOf(ActionType).isRequired,
   id: PropTypes.string.isRequired,
   content: TranslatedTextType.isRequired,
   date: PropTypes.string.isRequired,
@@ -25,6 +32,7 @@ export const CommentType = PropTypes.shape({
   lastEditor: UserType,
   parentId: PropTypes.string.isRequired,
   parentType: PropTypes.string.isRequired,
+  reactions: PropTypes.arrayOf(ReactionType).isRequired,
   submitter: UserType.isRequired,
   tone: PropTypes.string,
 });
@@ -42,10 +50,4 @@ export const FeedEntryType = PropTypes.shape({
   item: PropTypes.oneOf([AlbumType, CommentType, MediaType, UserType]).isRequired,
   subItems: PropTypes.arrayOf(PropTypes.oneOf([AlbumType, CommentType, MediaType, UserType]))
     .isRequired,
-}).isRequired;
-
-export const ReactionType = PropTypes.shape({
-  type: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
-  userReactionId: PropTypes.number,
 }).isRequired;
