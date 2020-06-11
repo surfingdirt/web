@@ -28,3 +28,5 @@ This project is licenced under the MIT license
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for the Open Source program they run which helps small teams
 (such as this one) test their open source apps (such as this one) across a variety of devices!
+
+We are also using some SVGs from the [Twemoji project](https://twemoji.twitter.com/).

@@ -43,3 +43,9 @@ export const FeedEntryType = PropTypes.shape({
   subItems: PropTypes.arrayOf(PropTypes.oneOf([AlbumType, CommentType, MediaType, UserType]))
     .isRequired,
 }).isRequired;
+
+export const ReactionType = PropTypes.shape({
+  type: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  userReactionId: PropTypes.number,
+}).isRequired;
