@@ -46,7 +46,7 @@ const renderReaction = (key, type, className, t) => (
     <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />
   </li>
 );
-const ReactionsList = ({ reactions, short, t }) => {
+const ReactionsList = ({ reactions, t }) => {
   return (
     <div aria-label={t('reactions')} className={styles.wrapper}>
       <ul className={styles.reactionsList}>
@@ -59,8 +59,7 @@ const ReactionsList = ({ reactions, short, t }) => {
   );
 };
 ReactionsList.propTypes = {
-  short: PropTypes.bool,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,
+  t: PropTypes.func.isRequired,
 };
-ReactionsList.defaultProps = { short: false };
 export default Translate(messages)(ReactionsList);

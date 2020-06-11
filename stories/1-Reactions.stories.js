@@ -43,46 +43,24 @@ export default {
   title: 'Reactions',
 };
 
-export const ReactionsListShortSingle = () => (
-  <>
-    <SvgSymbols />
-    <ReactionsList short reactions={SINGLE_REACTION} />
-  </>
-);
-
-ReactionsListShortSingle.story = {
-  name: 'Short - Single',
-};
-
-export const ReactionsListFullSingle = () => (
+export const ReactionsListSingle = () => (
   <>
     <SvgSymbols />
     <ReactionsList reactions={SINGLE_REACTION} />
   </>
 );
 
-ReactionsListFullSingle.story = {
-  name: 'Full - Single',
+ReactionsListSingle.story = {
+  name: 'Single',
 };
 
-export const ReactionsListShortMultiple = () => (
-  <>
-    <SvgSymbols />
-    <ReactionsList short reactions={MULTIPLE_REACTIONS} />
-  </>
-);
-
-ReactionsListShortMultiple.story = {
-  name: 'Short - Multiple',
-};
-
-export const ReactionsListFullMultiple = () => (
+export const ReactionsListMultiple = () => (
   <>
     <SvgSymbols />
     <ReactionsList reactions={MULTIPLE_REACTIONS} />
   </>
 );
 
-ReactionsListFullMultiple.story = {
-  name: 'Full - Multiple',
+ReactionsListMultiple.story = {
+  name: 'Multiple',
 };
