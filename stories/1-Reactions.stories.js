@@ -64,3 +64,13 @@ export const ReactionsListMultiple = () => (
 ReactionsListMultiple.story = {
   name: 'Multiple',
 };
+
+export const ReactionsTriggerInactive = () => (
+  <>
+    <SvgSymbols />
+    <ReactionsTrigger />
+  </>
+);
+ReactionsTriggerInactive.story = {
+  name: 'Inactive',
+};

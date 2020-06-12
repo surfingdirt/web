@@ -47,18 +47,16 @@ const renderReaction = (key, type, className, t) => (
     <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />
   </li>
 );
-const ReactionsList = ({ className, reactions, t }) => {
-  return (
-    <div aria-label={t('reactions')} className={classnames(styles.wrapper, className)}>
-      <ul className={styles.reactionsList}>
-        {reactions.map(({ type }) => renderReaction(type, type, styles.reaction, t))}
-      </ul>
-      <p className={styles.count} aria-label={t('')}>
-        {reactions.reduce((acc, r) => acc + r.count, 0)}
-      </p>
-    </div>
-  );
-};
+const ReactionsList = ({ className, reactions, t }) => (
+  <div aria-label={t('reactions')} className={classnames(styles.wrapper, className)}>
+    <ul className={styles.reactionsList}>
+      {reactions.map(({ type }) => renderReaction(type, type, styles.reaction, t))}
+    </ul>
+    <p className={styles.count} aria-label={t('')}>
+      {reactions.reduce((acc, r) => acc + r.count, 0)}
+    </p>
+  </div>
+);
 ReactionsList.propTypes = {
   className: PropTypes.string,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,

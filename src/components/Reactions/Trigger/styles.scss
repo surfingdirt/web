@@ -1,0 +1,25 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/font-sizes";
+
+$emoji-size: 1rem;
+
+.wrapper {
+  padding: $padding-small-2 $padding-small-1;
+  background-color: $reactions-trigger-button-background-color-resting;
+  color: $reactions-trigger-button-color;
+
+  &:hover {
+    background-color: $reactions-trigger-button-background-color-hover;
+  }
+}
+
+.emoji {
+  display: inline-block;
+  width: $emoji-size;
+  height: $emoji-size;
+}
+
+.label {
+  font-size: $font-size-small;
+}
