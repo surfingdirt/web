@@ -53,7 +53,7 @@ $metatadatext-min-width: 200px;
         li::after {
           content: '•';
           display: inline-block;
-          margin: 0 $margin-small-2;
+          margin: 0 $margin-small-3;
         }
 
         li:last-child::after {
@@ -64,7 +64,7 @@ $metatadatext-min-width: 200px;
       .metadataText {
         display: inline-block;
         color: $comment-metadata-text-color;
-        font-size: $font-size-tiny;
+        font-size: $font-size-small;
 
         .tone {
           text-transform: capitalize;

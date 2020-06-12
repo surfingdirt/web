@@ -6,11 +6,12 @@ $emoji-size: 1rem;
 
 .wrapper {
   display: inline-flex;
+  margin-left: .625rem;
+  padding: $emoji-size/8 $emoji-size/4;
   align-items: center;
   font-size: $emoji-size;
   border-radius: $emoji-size * 0.7;
   background: $reactions-list-background-color;
-  padding: $emoji-size/8 $emoji-size/4;
   color: $reactions-list-text-color;
 }
 
