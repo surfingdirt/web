@@ -4,10 +4,12 @@
 
 $emoji-size: $font-size-small;
 
+.positioner {
+  position: relative;
+}
 .wrapper {
   display: inline-flex;
   align-items: center;
-  padding: $padding-small-2 $padding-small-1;
   background-color: $reactions-trigger-button-background-color-resting;
   color: $reactions-trigger-button-color;
   font-size: $emoji-size;
@@ -17,15 +19,42 @@ $emoji-size: $font-size-small;
   &.active {
     background-color: $reactions-trigger-button-background-color-hover;
   }
+
+  .button {
+    padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
+
+    .emoji {
+      display: inline-block;
+      width: $emoji-size;
+      height: $emoji-size;
+      margin-right: $emoji-size / 4;
+    }
+
+    .label {
+      font-size: $emoji-size;
+    }
+  }
 }
 
-.emoji {
+.arrow {
   display: inline-block;
-  width: $emoji-size;
-  height: $emoji-size;
-  margin-right: $emoji-size / 4;
+  padding: $padding-small-2 $padding-small-1 $padding-small-2 $padding-small-1 / 2;
+  opacity: .8;
+  color: $reactions-trigger-arrow-color;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
-.label {
-  font-size: $emoji-size;
+.picker {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 12.5rem;
+}
+
+.pickerButton:checked ~ .picker {
+  display: inline-block;
 }

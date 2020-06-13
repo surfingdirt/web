@@ -8,6 +8,13 @@ export default {
   title: 'Reactions',
 };
 
+const triggerOnReaction = (e) => {
+  console.log('Trigger click');
+};
+const pickerOnReaction = (e) => {
+  console.log(e.currentTarget.getAttribute('data-type'));
+};
+
 /* ReactionsList */
 const listData = {
   SINGLE: [
@@ -40,7 +47,8 @@ export const ListSingle = () => <ReactionsList reactions={listData.SINGLE} />;
 export const ListMultiple = () => <ReactionsList reactions={listData.MULTIPLE} />;
 
 /* ReactionsTrigger */
-const triggerOnReaction = console.log;
+const triggerParentId = '456';
+const triggerParentType = 'comment';
 const triggerData = {
   SINGLE_NO_OWNER: [
     {
@@ -66,17 +74,32 @@ const triggerData = {
 };
 
 export const TriggerInactive = () => (
-  <ReactionsTrigger reactions={triggerData.SINGLE_NO_OWNER} onReaction={triggerOnReaction} />
+  <ReactionsTrigger
+    parentId={triggerParentId}
+    parentType={triggerParentType}
+    reactions={triggerData.SINGLE_NO_OWNER}
+    onPickerReaction={pickerOnReaction}
+    onReaction={triggerOnReaction}
+  />
 );
 export const TriggerActiveDefault = () => (
-  <ReactionsTrigger reactions={triggerData.SINGLE_OWNER_DEFAULT} onReaction={triggerOnReaction} />
+  <ReactionsTrigger
+    parentId={triggerParentId}
+    parentType={triggerParentType}
+    reactions={triggerData.SINGLE_OWNER_DEFAULT}
+    onPickerReaction={pickerOnReaction}
+    onReaction={triggerOnReaction}
+  />
 );
 export const TriggerActiveFire = () => (
-  <ReactionsTrigger reactions={triggerData.SINGLE_FIRE} onReaction={triggerOnReaction} />
+  <ReactionsTrigger
+    parentId={triggerParentId}
+    parentType={triggerParentType}
+    reactions={triggerData.SINGLE_FIRE}
+    onPickerReaction={pickerOnReaction}
+    onReaction={triggerOnReaction}
+  />
 );
 
 /* ReactionsPicker */
-const onReactionPicker = (e) => {
-  console.log(e.currentTarget.getAttribute('data-type'));
-};
-export const Picker = () => <ReactionsPicker onReaction={onReactionPicker} />;
+export const Picker = () => <ReactionsPicker onReaction={pickerOnReaction} />;

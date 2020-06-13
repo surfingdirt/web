@@ -7,3 +7,4 @@ export const NAVIGATION_PROFILE_MENU = 'el5';
 export const ACTION_BUTTON_MENU = 'el6';
 export const NAVIGATION_MORE_MENU = 'el7';
 export const NAVIGATION_PROFILE_MENU_LEFT = 'el8';
+export const REACTION_PICKER_MENU = 'el9';
