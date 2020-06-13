@@ -9,6 +9,16 @@ import { ReactionType } from 'Utils/types';
 import styles from './styles.scss';
 import messages from '../messages';
 
+export const ORDERED_REACTIONS = [
+  'like',
+  'fire',
+  'cool',
+  'laughing',
+  'impressed',
+  'injured',
+  'sad',
+  'angry',
+];
 /*
   Name, emoji, code point (@see https://github.com/twitter/twemoji)
   [
@@ -32,7 +42,7 @@ const TYPE_TO_EMOJI = {
   laughing: '🤣',
   sad: '😢',
 };
-const TYPE_TO_CODEPOINT = {
+export const TYPE_TO_CODEPOINT = {
   angry: '1f621',
   cool: '1f60e',
   fire: '1f525',
@@ -42,6 +52,7 @@ const TYPE_TO_CODEPOINT = {
   laughing: '1f923',
   sad: '1f622',
 };
+export const DEFAULT_REACTION = 'like';
 const renderReaction = (key, type, className, t) => (
   <li key={key} className={className}>
     <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />

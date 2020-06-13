@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
+import SvgSymbols from 'Components/Widgets/SvgSymbols';
 import AppContext from '~/contexts';
 import '~/main.scss';
 
@@ -37,6 +38,7 @@ const ContextDecorator = (storyFn) => (
   <ApolloProvider client={apolloClientInstance}>
     <Router history={history}>
       <AppContext.Provider value={{ availableLocales: ['en'], locale, translations }}>
+        <SvgSymbols />
         {storyFn()}
       </AppContext.Provider>
     </Router>

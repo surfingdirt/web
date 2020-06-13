@@ -2,14 +2,19 @@
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 
-$emoji-size: 1rem;
+$emoji-size: $font-size-small;
 
 .wrapper {
+  display: inline-flex;
+  align-items: center;
   padding: $padding-small-2 $padding-small-1;
   background-color: $reactions-trigger-button-background-color-resting;
   color: $reactions-trigger-button-color;
+  font-size: $emoji-size;
+  line-height: 1rem;
 
-  &:hover {
+  &:hover,
+  &.active {
     background-color: $reactions-trigger-button-background-color-hover;
   }
 }
@@ -18,8 +23,9 @@ $emoji-size: 1rem;
   display: inline-block;
   width: $emoji-size;
   height: $emoji-size;
+  margin-right: $emoji-size / 4;
 }
 
 .label {
-  font-size: $font-size-small;
+  font-size: $emoji-size;
 }
