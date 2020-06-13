@@ -102,4 +102,15 @@ export const TriggerActiveFire = () => (
 );
 
 /* ReactionsPicker */
-export const Picker = () => <ReactionsPicker onReaction={pickerOnReaction} />;
+const PickerData = {
+  SINGLE_FIRE: [
+    {
+      type: 'fire',
+      count: 1,
+      userReactionId: '123',
+    },
+  ],
+};
+export const Picker = () => (
+  <ReactionsPicker onReaction={pickerOnReaction} reactions={PickerData.SINGLE_FIRE} />
+);

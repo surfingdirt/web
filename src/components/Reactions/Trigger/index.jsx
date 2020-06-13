@@ -63,7 +63,11 @@ const ReactionsTrigger = ({
         role="button"
         hidden
       />
-      <ReactionsPicker onReaction={onPickerReaction} className={styles.picker} />
+      <ReactionsPicker
+        className={styles.picker}
+        onReaction={onPickerReaction}
+        reactions={reactions}
+      />
     </div>
   );
 };

@@ -4,6 +4,7 @@
 @import "../../../styles/font-sizes";
 
 $emoji-size: $font-size-huge;
+$border-width: .25rem;
 
 .wrapper {
   list-style: none;
@@ -14,11 +15,16 @@ $emoji-size: $font-size-huge;
 
 .reaction {
   border: 0;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: $margin-small-2;
-  padding: 0;
+  margin: $margin-small-2 - $border-width;
+  padding: $border-width;
+
+  &.active {
+    background-color: $reactions-picker-active-reaction-background-color;
+  }
 
   .emoji {
     display: inline-block;

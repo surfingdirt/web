@@ -37,13 +37,16 @@ $emoji-size: $font-size-small;
 }
 
 .arrow {
+  $vertical-gap: .2rem;
+
   display: inline-block;
-  padding: $padding-small-2 $padding-small-1 $padding-small-2 $padding-small-1 / 2;
-  opacity: .8;
-  color: $reactions-trigger-arrow-color;
+  margin: $vertical-gap 0;
+  padding: $padding-small-2 - $vertical-gap $padding-small-1 $padding-small-2 - $vertical-gap $padding-small-1 / 2;
+  border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
+  color: rgba($reactions-trigger-arrow-color, .5);
 
   &:hover {
-    opacity: 1;
+    color: rgba($reactions-trigger-arrow-color, 1.0);
   }
 }
 
