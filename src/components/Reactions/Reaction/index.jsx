@@ -52,15 +52,19 @@ export const TYPE_TO_CODEPOINT = {
   sad: '1f622',
 };
 export const DEFAULT_REACTION = 'like';
-const Reaction = ({ className, t, type }) => (
-  <li className={classnames(styles.reaction, className)}>
-    <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />
-  </li>
-);
+const Reaction = ({ className, t, tagName, type }) => {
+  const Tag = tagName;
+  return (
+    <Tag className={classnames(styles.reaction, className)}>
+      <Emoji label={t(type)} codepoint={TYPE_TO_CODEPOINT[type]} className={styles.emoji} />
+    </Tag>
+  );
+};
 Reaction.propTypes = {
   className: PropTypes.string,
   t: PropTypes.func.isRequired,
+  tagName: PropTypes.string,
   type: PropTypes.string.isRequired,
 };
-Reaction.defaultProps = { className: null };
+Reaction.defaultProps = { className: null, tagName: 'li' };
 export default Translate(messages)(Reaction);

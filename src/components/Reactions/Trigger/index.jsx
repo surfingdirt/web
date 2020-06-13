@@ -39,29 +39,33 @@ const ReactionsTrigger = ({
     const codepoint = LIKE_OUTLINE;
     content = (
       <>
-        <Emoji codepoint={codepoint} className={styles.emoji} />
+        <span className={styles.reaction}>
+          <Emoji codepoint={codepoint} className={styles.emoji} />
+        </span>
         <span className={styles.label}>{t('defaultReaction')}</span>
       </>
     );
   } else if (userReactions.length === 1) {
     const reactionType = userReactions[0].type;
-    const codepoint = TYPE_TO_CODEPOINT[reactionType];
     content = (
       <>
-        <Emoji codepoint={codepoint} className={styles.emoji} />
-        <span className={styles.label}>{t('defaultReaction')}</span>
+        <Reaction tagName="span" type={reactionType} className={styles.reaction} />
+        <span className={styles.label}>{t(reactionType)}</span>
       </>
     );
   } else {
     const useEllipsis = userReactions.length > MAX_RENDERED_USER_REACTIONS;
-    const reactionEls = userReactions.slice(0, MAX_RENDERED_USER_REACTIONS).map(({ type }) => {
+    const max = useEllipsis ? MAX_RENDERED_USER_REACTIONS - 1 : MAX_RENDERED_USER_REACTIONS;
+    const reactionEls = userReactions.slice(0, max).map(({ type }) => {
       return <Reaction key={type} type={type} className={styles.reaction} />;
     });
     content = (
-      <ul className={styles.reactionsList} aria-hidden="true">
-        {reactionEls}
+      <>
+        <ul className={styles.reactionsList} aria-hidden="true">
+          {reactionEls}
+        </ul>
         {useEllipsis && <span className={styles.ellipsis}>...</span>}
-      </ul>
+      </>
     );
   }
 

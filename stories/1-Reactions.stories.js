@@ -48,7 +48,6 @@ export const ListSingle = () => <ReactionsList reactions={listData.SINGLE} />;
 export const ListMultiple = () => <ReactionsList reactions={listData.MULTIPLE} />;
 
 /* ReactionsTrigger */
-const triggerParentId = '456';
 const triggerParentType = 'comment';
 const triggerData = {
   SINGLE_NO_OWNER: [
@@ -118,50 +117,44 @@ const triggerData = {
   ],
 };
 
-export const TriggerInactive = () => (
-  <ReactionsTrigger
-    parentId={triggerParentId}
-    parentType={triggerParentType}
-    reactions={triggerData.SINGLE_NO_OWNER}
-    onPickerReaction={pickerOnReaction}
-    onReaction={triggerOnReaction}
-  />
-);
-export const TriggerActiveDefault = () => (
-  <ReactionsTrigger
-    parentId={triggerParentId}
-    parentType={triggerParentType}
-    reactions={triggerData.SINGLE_OWNER_DEFAULT}
-    onPickerReaction={pickerOnReaction}
-    onReaction={triggerOnReaction}
-  />
-);
-export const TriggerActiveFire = () => (
-  <ReactionsTrigger
-    parentId={triggerParentId}
-    parentType={triggerParentType}
-    reactions={triggerData.SINGLE_FIRE}
-    onPickerReaction={pickerOnReaction}
-    onReaction={triggerOnReaction}
-  />
-);
-export const TriggerActiveMultiple = () => (
-  <ReactionsTrigger
-    parentId={triggerParentId}
-    parentType={triggerParentType}
-    reactions={triggerData.MULTIPLE}
-    onPickerReaction={pickerOnReaction}
-    onReaction={triggerOnReaction}
-  />
-);
-export const TriggerActiveEllipsis = () => (
-  <ReactionsTrigger
-    parentId={triggerParentId}
-    parentType={triggerParentType}
-    reactions={triggerData.MULTIPLE_ELLIPSIS}
-    onPickerReaction={pickerOnReaction}
-    onReaction={triggerOnReaction}
-  />
+export const Trigger = () => (
+  <div style={{ display: 'grid', gap: '20px', margin: '20px' }}>
+    <ReactionsTrigger
+      parentId="123"
+      parentType={triggerParentType}
+      reactions={triggerData.SINGLE_NO_OWNER}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+    />
+    <ReactionsTrigger
+      parentId="456"
+      parentType={triggerParentType}
+      reactions={triggerData.SINGLE_OWNER_DEFAULT}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+    />
+    <ReactionsTrigger
+      parentId="789"
+      parentType={triggerParentType}
+      reactions={triggerData.SINGLE_FIRE}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+    />
+    <ReactionsTrigger
+      parentId="abc"
+      parentType={triggerParentType}
+      reactions={triggerData.MULTIPLE}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+    />
+    <ReactionsTrigger
+      parentId="def"
+      parentType={triggerParentType}
+      reactions={triggerData.MULTIPLE_ELLIPSIS}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+    />
+  </div>
 );
 
 /* ReactionsPicker */

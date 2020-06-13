@@ -2,7 +2,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 
-$emoji-size: $font-size-small;
+$emoji-size: $font-size-medium;
 
 .positioner {
   position: relative;
@@ -21,6 +21,8 @@ $emoji-size: $font-size-small;
   }
 
   .button {
+    display: inline-flex;
+    align-items: center;
     padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
 
     .reactionsList {
@@ -30,22 +32,25 @@ $emoji-size: $font-size-small;
       line-height: 1rem;
       padding: 0;
       margin: 0;
+    }
 
-      .ellipsis {
-        display: inline-block;
-        margin: 0 $margin-small-4;
-      }
+    .ellipsis {
+      display: inline-block;
+      margin: 0 $margin-small-4;
+      font-size: $font-size-small;
     }
 
     .emoji {
       display: inline-block;
-      width: $emoji-size;
       height: $emoji-size;
+      width: $emoji-size;
       margin-right: $emoji-size / 4;
     }
 
     .label {
-      font-size: $emoji-size;
+      display: inline-block;
+      margin-left: $margin-small-3;
+      font-size: $font-size-small;
     }
   }
 }
