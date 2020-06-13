@@ -3,7 +3,7 @@ import React from 'react';
 import CommentItem from '../src/components/Comment/Item';
 import SvgSymbols from '../src/components/Widgets/SvgSymbols';
 
-const SIMPLE_COMMENT = {
+export const SIMPLE_COMMENT = {
   actions: [],
   id: '456',
   content: {
@@ -14,7 +14,7 @@ const SIMPLE_COMMENT = {
   date: '2020-06-09 12:49:26.367',
   lastEditionDate: '2020-06-09 12:49:26.367',
   lastEditor: null,
-  parentId: '123',
+  parentId: '666',
   parentType: 'photo',
   reactions: [],
   submitter: {
@@ -24,7 +24,7 @@ const SIMPLE_COMMENT = {
   tone: null,
 };
 
-const COMMENT_WITH_REACTIONS = {
+export const COMMENT_WITH_REACTIONS = {
   actions: [],
   id: '456',
   content: {
@@ -35,7 +35,7 @@ const COMMENT_WITH_REACTIONS = {
   date: '2020-06-09 12:49:26.367',
   lastEditionDate: '2020-06-09 12:49:26.367',
   lastEditor: null,
-  parentId: '123',
+  parentId: '45678155',
   parentType: 'photo',
   reactions: [
     {
@@ -46,7 +46,12 @@ const COMMENT_WITH_REACTIONS = {
     {
       type: 'sad',
       count: 1,
-      userReactionId: null,
+      userReactionId: '456789',
+    },
+    {
+      type: 'impressed',
+      count: 1,
+      userReactionId: '456789',
     },
   ],
   submitter: {
@@ -56,7 +61,7 @@ const COMMENT_WITH_REACTIONS = {
   tone: null,
 };
 
-const SUPER_SHORT_WITH_REACTIONS = {
+export const SUPER_SHORT_WITH_REACTIONS = {
   actions: [],
   id: '456',
   content: {
@@ -73,7 +78,7 @@ const SUPER_SHORT_WITH_REACTIONS = {
     {
       type: 'cool',
       count: 1,
-      userReactionId: null,
+      userReactionId: 'dfdf',
     },
     {
       type: 'sad',
@@ -106,15 +111,12 @@ SimpleComment.story = {
 };
 
 export const CommentWithReactions = () => (
-  <>
-    <SvgSymbols />
-    <CommentItem
-      comment={COMMENT_WITH_REACTIONS}
-      locale="fr"
-      parentId={COMMENT_WITH_REACTIONS.parentId}
-      parentType={COMMENT_WITH_REACTIONS.parentType}
-    />
-  </>
+  <CommentItem
+    comment={COMMENT_WITH_REACTIONS}
+    locale="fr"
+    parentId={COMMENT_WITH_REACTIONS.parentId}
+    parentType={COMMENT_WITH_REACTIONS.parentType}
+  />
 );
 
 CommentWithReactions.story = {
@@ -122,15 +124,12 @@ CommentWithReactions.story = {
 };
 
 export const SuperShortWithReactions = () => (
-  <>
-    <SvgSymbols />
-    <CommentItem
-      comment={SUPER_SHORT_WITH_REACTIONS}
-      locale="fr"
-      parentId={SUPER_SHORT_WITH_REACTIONS.parentId}
-      parentType={SUPER_SHORT_WITH_REACTIONS.parentType}
-    />
-  </>
+  <CommentItem
+    comment={SUPER_SHORT_WITH_REACTIONS}
+    locale="fr"
+    parentId={SUPER_SHORT_WITH_REACTIONS.parentId}
+    parentType={SUPER_SHORT_WITH_REACTIONS.parentType}
+  />
 );
 
 SuperShortWithReactions.story = {

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LIST_COMMENTS from 'Apollo/queries/listComments2.gql';
 import DELETE_COMMENT from 'Apollo/mutations/deleteComment2.gql';
 import ReactionsList from 'Components/Reactions/List';
+import ReactionsTrigger from 'Components/Reactions/Trigger';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import Username from 'Components/User/Username';
 import Menu from 'Components/Widgets/Menu';
@@ -105,6 +106,13 @@ const CommentRaw = ({
     size: sizes.TINY,
   });
 
+  const triggerOnReaction = () => {
+    console.log('Trigger click');
+  };
+  const pickerOnReaction = (e) => {
+    console.log(e.currentTarget.getAttribute('data-type'));
+  };
+
   return (
     <Tag className={classnames(styles.wrapper, className)}>
       <Userbox size={SMALL} className={styles.user} user={submitter} renderName={false} />
@@ -116,6 +124,16 @@ const CommentRaw = ({
         </div>
         <div className={styles.metadata}>
           <ul className={classnames(styles.metadataText, styles.metadataList)}>
+            <li className={styles.noSeparator}>
+              <ReactionsTrigger
+                parentId={parentId}
+                parentType={parentType}
+                reactions={reactions}
+                onPickerReaction={pickerOnReaction}
+                onReaction={triggerOnReaction}
+                small
+              />
+            </li>
             {showTranslateButton && (
               <li>
                 <TranslateButton

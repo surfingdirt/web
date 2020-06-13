@@ -51,6 +51,16 @@ export const TYPE_TO_CODEPOINT = {
   laughing: '1f923',
   sad: '1f622',
 };
+export const TYPE_TO_LABEL_COLOR_CLASSNAME = {
+  angry: styles.labelColor1,
+  cool: styles.labelColor0,
+  fire: styles.labelColor2,
+  injured: styles.labelColor0,
+  impressed: styles.labelColor0,
+  like: styles.labelColor0,
+  laughing: styles.labelColor0,
+  sad: styles.labelColor0,
+};
 export const DEFAULT_REACTION = 'like';
 const Reaction = ({ className, t, tagName, type }) => {
   const Tag = tagName;

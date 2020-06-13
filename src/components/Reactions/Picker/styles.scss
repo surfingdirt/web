@@ -11,6 +11,7 @@ $border-width: .25rem;
   display: inline-block;
   border-radius: $widget-border-radius;
   background: $reactions-picker-background-color;
+  box-shadow: $widget-box-shadow;
 }
 
 .reaction {

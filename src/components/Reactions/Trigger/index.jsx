@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Reaction, { TYPE_TO_CODEPOINT } from 'Components/Reactions/Reaction';
+import Reaction, { TYPE_TO_LABEL_COLOR_CLASSNAME } from 'Components/Reactions/Reaction';
 import ReactionsPicker from 'Components/Reactions/Picker';
 import Emoji from 'Components/Widgets/Emoji';
 import { types } from 'Components/Widgets/SvgSymbols';
@@ -27,6 +27,7 @@ const ReactionsTrigger = ({
   parentId,
   parentType,
   reactions,
+  small,
   t,
 }) => {
   const userReactions = reactions.filter((r) => !!r.userReactionId);
@@ -36,24 +37,32 @@ const ReactionsTrigger = ({
 
   let content;
   if (userReactions.length === 0) {
+    /* DEFAULT STATE */
     const codepoint = LIKE_OUTLINE;
     content = (
       <>
-        <span className={styles.reaction}>
-          <Emoji codepoint={codepoint} className={styles.emoji} />
-        </span>
+        {!small && (
+          <span className={styles.reaction}>
+            <Emoji codepoint={codepoint} className={styles.emoji} />
+          </span>
+        )}
         <span className={styles.label}>{t('defaultReaction')}</span>
       </>
     );
   } else if (userReactions.length === 1) {
+    /* SINGLE REACTION */
     const reactionType = userReactions[0].type;
+    const colorClassName = TYPE_TO_LABEL_COLOR_CLASSNAME[reactionType];
     content = (
       <>
-        <Reaction tagName="span" type={reactionType} className={styles.reaction} />
-        <span className={styles.label}>{t(reactionType)}</span>
+        {!small && <Reaction tagName="span" type={reactionType} className={styles.reaction} />}
+        <span className={classnames(styles.label, styles.activeLabel, colorClassName)}>
+          {t(reactionType)}
+        </span>
       </>
     );
   } else {
+    /* MULTIPLE REACTIONS */
     const useEllipsis = userReactions.length > MAX_RENDERED_USER_REACTIONS;
     const max = useEllipsis ? MAX_RENDERED_USER_REACTIONS - 1 : MAX_RENDERED_USER_REACTIONS;
     const reactionEls = userReactions
@@ -70,7 +79,7 @@ const ReactionsTrigger = ({
   }
 
   return (
-    <div className={styles.positioner}>
+    <div className={classnames(styles.positioner, { [styles.small]: small })}>
       <div className={classnames(styles.wrapper, className, { [styles.active]: active })}>
         <button type="button" aria-pressed={active} onClick={onReaction} className={styles.button}>
           {content}
@@ -107,9 +116,10 @@ ReactionsTrigger.propTypes = {
   parentId: PropTypes.string.isRequired,
   parentType: PropTypes.string.isRequired,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,
+  small: PropTypes.bool,
   t: PropTypes.func.isRequired,
 };
 
-ReactionsTrigger.defaultProps = { className: null };
+ReactionsTrigger.defaultProps = { className: null, small: false };
 
 export default Translate(messages)(ReactionsTrigger);

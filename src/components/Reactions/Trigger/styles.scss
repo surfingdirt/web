@@ -3,82 +3,123 @@
 @import "../../../styles/font-sizes";
 
 $emoji-size: $font-size-medium;
+$emoji-size-small: $font-size-small;
 
 .positioner {
+
   position: relative;
-}
-.wrapper {
-  display: inline-flex;
-  align-items: center;
-  background-color: $reactions-trigger-button-background-color-resting;
-  color: $reactions-trigger-button-color;
-  font-size: $emoji-size;
-  line-height: 1rem;
 
-  &:hover,
-  &.active {
-    background-color: $reactions-trigger-button-background-color-hover;
-  }
-
-  .button {
+  .wrapper {
     display: inline-flex;
     align-items: center;
-    padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
+    background: $reactions-trigger-button-background-color-resting;
+    color: $reactions-trigger-button-color;
+    font-size: $emoji-size;
+    line-height: 1rem;
 
-    .reactionsList {
-      position: relative;
-      z-index: 0;
+    &:hover,
+    &.active {
+      background-color: $reactions-trigger-button-background-color-hover;
+    }
+
+    .button {
       display: inline-flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      line-height: 1rem;
+      align-items: center;
+      padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
+
+      .reactionsList {
+        position: relative;
+        z-index: 0;
+        display: inline-flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        line-height: 1rem;
+      }
+
+      .ellipsis {
+        display: inline-block;
+        margin: 0 $margin-small-4;
+        font-size: $font-size-small;
+      }
+
+      .reaction {
+        z-index: 0;
+      }
+
+      .emoji {
+        display: inline-block;
+        height: 1em;
+        width: 1em;
+        margin-right: 1em / 4;
+      }
+
+      .label {
+        display: inline-block;
+        margin-left: $margin-small-3;
+        font-size: $emoji-size;
+
+        &.activeLabel {
+          font-weight: bold;
+        }
+      }
+
+    }
+  }
+
+  .arrow {
+    $vertical-gap: .2rem;
+
+    display: inline-block;
+    margin: $vertical-gap 0;
+    padding: $padding-small-2 - $vertical-gap $padding-small-1 $padding-small-2 - $vertical-gap $padding-small-1 / 2;
+    border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
+    color: rgba($reactions-trigger-arrow-color, .5);
+
+    &:hover {
+      color: rgba($reactions-trigger-arrow-color, 1.0);
+    }
+  }
+
+  .picker {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 100%;
+    width: 12.5rem;
+  }
+
+  .pickerButton:checked ~ .picker {
+    display: inline-block;
+  }
+
+  &.small {
+    display: inline-block;
+
+    .wrapper {
+      background: transparent;
+      font-size: $emoji-size-small;
+
+      .button {
+        padding: 0;
+
+        .label {
+          font-size: $emoji-size-small;
+          color: $reactions-trigger-small-label-color;
+        }
+      }
     }
 
-    .ellipsis {
-      display: inline-block;
-      margin: 0 $margin-small-4;
-      font-size: $font-size-small;
-    }
-
-    .emoji {
-      display: inline-block;
-      height: $emoji-size;
-      width: $emoji-size;
-      margin-right: $emoji-size / 4;
-    }
-
-    .label {
-      display: inline-block;
-      margin-left: $margin-small-3;
-      font-size: $font-size-small;
+    .arrow {
+      margin: 0 $margin-one-char;
+      padding: $padding-small-3;
+      border: none;
+      color: rgba($reactions-trigger-small-arrow-color, .5);
+      &:hover {
+        color: rgba($reactions-trigger-small-arrow-color, 1.0);
+      }
     }
   }
 }
 
-.arrow {
-  $vertical-gap: .2rem;
-
-  display: inline-block;
-  margin: $vertical-gap 0;
-  padding: $padding-small-2 - $vertical-gap $padding-small-1 $padding-small-2 - $vertical-gap $padding-small-1 / 2;
-  border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
-  color: rgba($reactions-trigger-arrow-color, .5);
-
-  &:hover {
-    color: rgba($reactions-trigger-arrow-color, 1.0);
-  }
-}
-
-.picker {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 100%;
-  width: 12.5rem;
-}
-
-.pickerButton:checked ~ .picker {
-  display: inline-block;
-}
