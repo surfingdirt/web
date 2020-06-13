@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { ORDERED_REACTIONS, TYPE_TO_CODEPOINT } from 'Components/Reactions/List';
+import { ORDERED_REACTIONS, TYPE_TO_CODEPOINT } from 'Components/Reactions/Reaction';
 import Emoji from 'Components/Widgets/Emoji';
 import Translate from 'Hocs/Translate';
 import { ReactionType } from 'Utils/types';
@@ -22,7 +22,7 @@ const ReactionsPicker = ({ className, onReaction, reactions, t }) => (
       const active = !!currentReaction && currentReaction.userReactionId;
       return (
         <button
-          aria-label={t(type)}
+          title={t(type)}
           type="button"
           data-type={type}
           key={type}

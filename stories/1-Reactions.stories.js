@@ -1,6 +1,7 @@
 import React from 'react';
 
-import ReactionsList, { DEFAULT_REACTION } from '../src/components/Reactions/List';
+import ReactionsList from '../src/components/Reactions/List';
+import { DEFAULT_REACTION } from '../src/components/Reactions/Reaction';
 import ReactionsPicker from '../src/components/Reactions/Picker';
 import ReactionsTrigger from '../src/components/Reactions/Trigger';
 
@@ -71,6 +72,50 @@ const triggerData = {
       userReactionId: '123',
     },
   ],
+  MULTIPLE: [
+    {
+      type: 'like',
+      count: 1,
+      userReactionId: '123',
+    },
+    {
+      type: 'fire',
+      count: 1,
+      userReactionId: '456',
+    },
+    {
+      type: 'injured',
+      count: 1,
+      userReactionId: '789',
+    },
+  ],
+  MULTIPLE_ELLIPSIS: [
+    {
+      type: 'like',
+      count: 1,
+      userReactionId: '123',
+    },
+    {
+      type: 'fire',
+      count: 1,
+      userReactionId: '456',
+    },
+    {
+      type: 'injured',
+      count: 1,
+      userReactionId: '789',
+    },
+    {
+      type: 'impressed',
+      count: 1,
+      userReactionId: 'abc',
+    },
+    {
+      type: 'cool',
+      count: 1,
+      userReactionId: 'def',
+    },
+  ],
 };
 
 export const TriggerInactive = () => (
@@ -96,6 +141,24 @@ export const TriggerActiveFire = () => (
     parentId={triggerParentId}
     parentType={triggerParentType}
     reactions={triggerData.SINGLE_FIRE}
+    onPickerReaction={pickerOnReaction}
+    onReaction={triggerOnReaction}
+  />
+);
+export const TriggerActiveMultiple = () => (
+  <ReactionsTrigger
+    parentId={triggerParentId}
+    parentType={triggerParentType}
+    reactions={triggerData.MULTIPLE}
+    onPickerReaction={pickerOnReaction}
+    onReaction={triggerOnReaction}
+  />
+);
+export const TriggerActiveEllipsis = () => (
+  <ReactionsTrigger
+    parentId={triggerParentId}
+    parentType={triggerParentType}
+    reactions={triggerData.MULTIPLE_ELLIPSIS}
     onPickerReaction={pickerOnReaction}
     onReaction={triggerOnReaction}
   />

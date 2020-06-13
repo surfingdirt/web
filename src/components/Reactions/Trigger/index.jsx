@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { TYPE_TO_CODEPOINT } from 'Components/Reactions/List';
+import Reaction, { TYPE_TO_CODEPOINT } from 'Components/Reactions/Reaction';
 import ReactionsPicker from 'Components/Reactions/Picker';
 import Emoji from 'Components/Widgets/Emoji';
 import { types } from 'Components/Widgets/SvgSymbols';
@@ -15,6 +15,8 @@ import styles from './styles.scss';
 import messages from '../messages';
 
 const { LIKE_OUTLINE } = types;
+
+const MAX_RENDERED_USER_REACTIONS = 3;
 
 // TODO: create a new type of button for item metadata actions and use it here, for commenting, and for sharing
 
@@ -32,20 +34,42 @@ const ReactionsTrigger = ({
 
   const pickerButtonId = `picker_${parentType}_${parentId.substr(0, 5)}`;
 
-  let codepoint;
+  let content;
   if (userReactions.length === 0) {
-    codepoint = LIKE_OUTLINE;
+    const codepoint = LIKE_OUTLINE;
+    content = (
+      <>
+        <Emoji codepoint={codepoint} className={styles.emoji} />
+        <span className={styles.label}>{t('defaultReaction')}</span>
+      </>
+    );
   } else if (userReactions.length === 1) {
     const reactionType = userReactions[0].type;
-    codepoint = TYPE_TO_CODEPOINT[reactionType];
+    const codepoint = TYPE_TO_CODEPOINT[reactionType];
+    content = (
+      <>
+        <Emoji codepoint={codepoint} className={styles.emoji} />
+        <span className={styles.label}>{t('defaultReaction')}</span>
+      </>
+    );
+  } else {
+    const useEllipsis = userReactions.length > MAX_RENDERED_USER_REACTIONS;
+    const reactionEls = userReactions.slice(0, MAX_RENDERED_USER_REACTIONS).map(({ type }) => {
+      return <Reaction key={type} type={type} className={styles.reaction} />;
+    });
+    content = (
+      <ul className={styles.reactionsList} aria-hidden="true">
+        {reactionEls}
+        {useEllipsis && <span className={styles.ellipsis}>...</span>}
+      </ul>
+    );
   }
 
   return (
     <div className={styles.positioner}>
       <div className={classnames(styles.wrapper, className, { [styles.active]: active })}>
         <button type="button" aria-pressed={active} onClick={onReaction} className={styles.button}>
-          <Emoji codepoint={codepoint} className={styles.emoji} />
-          <span className={styles.label}>{t('trigger')}</span>
+          {content}
         </button>
         {/* eslint-disable-next-line jsx-a11y/label-has-for */}
         <label className={styles.arrow} htmlFor={pickerButtonId} role="button">
