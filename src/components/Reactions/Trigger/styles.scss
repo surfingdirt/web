@@ -1,5 +1,6 @@
 @import "../../../styles/boxmodel";
 @import "../../../styles/colors";
+@import "../../../styles/constants";
 @import "../../../styles/font-sizes";
 
 $emoji-size: $font-size-medium;
@@ -127,8 +128,13 @@ $emoji-size-small: $font-size-small;
     .arrow {
       margin: 0 $margin-one-char;
       border: none;
-      padding: 0;
+      border-radius: $widget-border-radius;
+      padding: $padding-small-4;
       color: $reactions-trigger-small-arrow-color;
+      &:hover {
+        color: $reactions-trigger-small-active-arrow-color;
+        background-color: $reactions-trigger-small-active-arrow-background-color;
+      }
     }
   }
 }
