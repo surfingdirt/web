@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
 
+import SvgSymbols from 'Components/Widgets/SvgSymbols';
 import Translate from 'Hocs/Translate';
 import MoreLinkNavigation from 'Sections/MoreLinkNavigation';
 import ProfileLinkNavigation from 'Sections/ProfileLinkNavigation';
@@ -207,53 +208,60 @@ class Layout extends React.Component {
     };
 
     return (
-      <div
-        className={classnames(styles.wrapper, {
-          [styles.hasActiveForm]: hasActiveForm,
-        })}
-        onFocusCapture={this.onFocus}
-        onBlurCapture={this.onBlur}
-      >
-        <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
-
-        <MoreLinkNavigation
-          actionItems={actionItems}
-          checkboxClassName={styles.navigationRightCheckbox}
-          className={classnames(styles.navigation, styles.navigationRight)}
-          currentUrl={url}
-          id={MORE_NAVIGATION_ID}
-          onCloseClick={this.closeMoreNavigationMenu}
-          openClassName={styles.navigationOpen}
-          openOnMobile={moreNavigationMenuOpen}
-          ref={this.moreNavigationMenuRef}
-        />
-
-        <ProfileLinkNavigation
-          checkboxClassName={styles.navigationLeftCheckbox}
-          className={classnames(styles.navigation, styles.navigationLeft, styles.profileNavigation)}
-          id={PROFILE_NAVIGATION_ID}
-          currentUrl={url}
-          onCloseClick={this.closeProfileNavigationMenu}
-          openClassName={styles.navigationOpen}
-          openOnMobile={profileNavigationMenuOpen}
-          loggedIn={loggedIn}
-          ref={this.profileNavigationMenuRef}
-        />
-
-        <main ref={this.mainRef} className={styles.main} aria-label={t('mainAriaLabel')}>
-          {children}
-        </main>
-
-        <BottomBar {...bottomBarProps} />
-
+      <>
+        <SvgSymbols />
         <div
-          aria-hidden="true"
-          className={classnames(styles.overlay, styles.navigationMenuOverlay, {
-            [styles.overlayVisible]: moreNavigationMenuOpen || profileNavigationMenuOpen,
+          className={classnames(styles.wrapper, {
+            [styles.hasActiveForm]: hasActiveForm,
           })}
-          onClick={this.closeAll}
-        />
-      </div>
+          onFocusCapture={this.onFocus}
+          onBlurCapture={this.onBlur}
+        >
+          <Header className={styles.header} headerRef={this.headerRef} t={t} title={title} />
+
+          <MoreLinkNavigation
+            actionItems={actionItems}
+            checkboxClassName={styles.navigationRightCheckbox}
+            className={classnames(styles.navigation, styles.navigationRight)}
+            currentUrl={url}
+            id={MORE_NAVIGATION_ID}
+            onCloseClick={this.closeMoreNavigationMenu}
+            openClassName={styles.navigationOpen}
+            openOnMobile={moreNavigationMenuOpen}
+            ref={this.moreNavigationMenuRef}
+          />
+
+          <ProfileLinkNavigation
+            checkboxClassName={styles.navigationLeftCheckbox}
+            className={classnames(
+              styles.navigation,
+              styles.navigationLeft,
+              styles.profileNavigation,
+            )}
+            id={PROFILE_NAVIGATION_ID}
+            currentUrl={url}
+            onCloseClick={this.closeProfileNavigationMenu}
+            openClassName={styles.navigationOpen}
+            openOnMobile={profileNavigationMenuOpen}
+            loggedIn={loggedIn}
+            ref={this.profileNavigationMenuRef}
+          />
+
+          <main ref={this.mainRef} className={styles.main} aria-label={t('mainAriaLabel')}>
+            {children}
+          </main>
+
+          <BottomBar {...bottomBarProps} />
+
+          <div
+            aria-hidden="true"
+            className={classnames(styles.overlay, styles.navigationMenuOverlay, {
+              [styles.overlayVisible]: moreNavigationMenuOpen || profileNavigationMenuOpen,
+            })}
+            onClick={this.closeAll}
+          />
+        </div>
+      </>
     );
   }
 }

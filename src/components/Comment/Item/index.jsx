@@ -13,13 +13,16 @@ import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
-import Translate from 'Hocs/Translate/index';
+
+import Translate from 'Hocs/Translate';
+import useReactions from 'Hooks/Reactions';
+
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import { editCommentRoute } from 'Utils/links';
-import { ItemTyoes } from 'Utils/data';
+import { ItemTypes } from 'Utils/data';
 import { CommentType } from 'Utils/types';
 import { COMMENT_MENU } from '~/ids';
 
@@ -38,11 +41,17 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
     id,
     parentId,
     parentType,
-    reactions,
+    reactions: initialReactions,
     submitter,
     tone,
   } = comment;
-  const Tag = tag;
+
+  const [reactions, onTriggerClick, onPickerChoice] = useReactions({
+    initialReactions,
+    itemType: ItemTypes.COMMENT,
+    itemId: id,
+  });
+
   const shouldRenderTone = tone && tone !== NEUTRAL;
   // Show the button if the text is in its original form and the locale is not that of the user
   const showTranslateButton = original && textLocale !== locale;
@@ -100,12 +109,7 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
     size: sizes.TINY,
   });
 
-  const triggerOnReaction = () => {
-    console.log('Trigger click');
-  };
-  const pickerOnReaction = (e) => {
-    console.log(e.currentTarget.getAttribute('data-type'));
-  };
+  const Tag = tag;
 
   return (
     <Tag className={classnames(styles.wrapper, className)}>
@@ -121,10 +125,10 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
             <li>
               <ReactionsTrigger
                 parentId={id}
-                parentType={ItemTyoes.COMMENT}
+                parentType={ItemTypes.COMMENT}
                 reactions={reactions}
-                onPickerReaction={pickerOnReaction}
-                onReaction={triggerOnReaction}
+                onPickerChoice={onPickerChoice}
+                onTriggerClick={onTriggerClick}
                 small
               />
             </li>

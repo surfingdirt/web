@@ -22,6 +22,6 @@ export const AlbumConstants = {
   },
 };
 
-export const ItemTyoes = {
+export const ItemTypes = {
   COMMENT: 'comment',
 };

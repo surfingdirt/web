@@ -13,6 +13,11 @@ query comment($id: ID!) {
         date
         parentId
         parentType
+        reactions{
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

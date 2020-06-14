@@ -22,8 +22,8 @@ const MAX_RENDERED_USER_REACTIONS = 3;
 
 const ReactionsTrigger = ({
   className,
-  onPickerReaction,
-  onReaction,
+  onPickerChoice,
+  onTriggerClick,
   parentId,
   parentType,
   reactions,
@@ -81,7 +81,12 @@ const ReactionsTrigger = ({
   return (
     <div className={classnames(styles.positioner, { [styles.small]: small })}>
       <div className={classnames(styles.wrapper, className, { [styles.active]: active })}>
-        <button type="button" aria-pressed={active} onClick={onReaction} className={styles.button}>
+        <button
+          type="button"
+          aria-pressed={active}
+          onClick={onTriggerClick}
+          className={styles.button}
+        >
           {content}
         </button>
         {/* eslint-disable-next-line jsx-a11y/label-has-for */}
@@ -102,7 +107,7 @@ const ReactionsTrigger = ({
       />
       <ReactionsPicker
         className={styles.picker}
-        onReaction={onPickerReaction}
+        onReaction={onPickerChoice}
         reactions={reactions}
       />
     </div>
@@ -111,8 +116,8 @@ const ReactionsTrigger = ({
 
 ReactionsTrigger.propTypes = {
   className: PropTypes.string,
-  onPickerReaction: PropTypes.func.isRequired,
-  onReaction: PropTypes.func.isRequired,
+  onPickerChoice: PropTypes.func.isRequired,
+  onTriggerClick: PropTypes.func.isRequired,
   parentId: PropTypes.string.isRequired,
   parentType: PropTypes.string.isRequired,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,

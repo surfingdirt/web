@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 
-import FEED from 'Apollo/queries/feed.gql';
+import FEED from 'Apollo/queries/feed2.gql';
 import Feed from 'Components/Feed';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 

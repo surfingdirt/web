@@ -13,6 +13,11 @@ mutation translateComment($input: TranslationChangeInput!) {
         date
         parentId
         parentType
+        reactions{
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

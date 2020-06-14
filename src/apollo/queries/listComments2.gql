@@ -11,6 +11,11 @@ query listComments($parentType: String!, $parentId: ID!) {
             text
         }
         date
+        reactions{
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

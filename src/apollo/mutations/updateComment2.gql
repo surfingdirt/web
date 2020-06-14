@@ -12,6 +12,11 @@ mutation UpdateComment($id: ID!, $input: CommentUpdateInput!) {
         date
         parentId
         parentType
+        reactions{
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

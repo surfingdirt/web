@@ -12,6 +12,11 @@ mutation createVideoComment($input: CommentCreationInput!) {
             text
         }
         date
+        reactions{
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

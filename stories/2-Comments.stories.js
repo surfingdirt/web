@@ -22,7 +22,44 @@ const SIMPLE_COMMENT = {
   reactions: [],
   submitter: {
     userId: '0ccaad29-d95b-4221-b518-29539b39aaf9',
-    username: 'Mountainboard Archives',
+    username: 'Some User',
+  },
+  tone: null,
+};
+
+const SIMPLE_COMMENT_LIKE = {
+  actions: [],
+  id: '123',
+  content: {
+    locale: 'fr',
+    original: true,
+    text: 'This is a simple comment with a user like',
+  },
+  date: '2020-06-09 12:49:26.367',
+  lastEditionDate: '2020-06-09 12:49:26.367',
+  lastEditor: null,
+  parentId: PARENT_ID,
+  parentType: PARENT_TYPE,
+  reactions: [
+    {
+      type: 'like',
+      count: 1,
+      userReactionId: '123456',
+    },
+    {
+      type: 'angry',
+      count: 1,
+      userReactionId: null,
+    },
+    {
+      type: 'injured',
+      count: 1,
+      userReactionId: null,
+    },
+  ],
+  submitter: {
+    userId: '0ccaad29-d95b-4221-b518-29539b39aaf9',
+    username: 'Bobby',
   },
   tone: null,
 };
@@ -96,7 +133,12 @@ const SUPER_SHORT_WITH_REACTIONS = {
   tone: null,
 };
 
-const COMMENT_LIST = [SIMPLE_COMMENT, COMMENT_WITH_REACTIONS, SUPER_SHORT_WITH_REACTIONS];
+const COMMENT_LIST = [
+  SIMPLE_COMMENT,
+  SIMPLE_COMMENT_LIKE,
+  COMMENT_WITH_REACTIONS,
+  SUPER_SHORT_WITH_REACTIONS,
+];
 
 export default {
   title: 'Comments',

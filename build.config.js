@@ -9,6 +9,7 @@ const resolverAliases = {};
   'components',
   'error',
   'hocs',
+  'hooks',
   'images',
   'models',
   'pages',

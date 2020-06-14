@@ -1,0 +1,13 @@
+mutation createReaction($input: ReactionCreationInput!) {
+    createReaction(input: $input) {
+        itemType
+        itemId
+        type
+        id
+        submitter {
+            userId
+            username
+        }
+        date
+    }
+}
