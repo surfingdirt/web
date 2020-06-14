@@ -6,7 +6,7 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import SvgSymbols from 'Components/Widgets/SvgSymbols';
-import AppContext from '~/contexts';
+import AppContext, { AppContextValueObject } from '~/contexts';
 import '~/main.scss';
 
 import apolloClient from '../src/apollo';
@@ -34,10 +34,17 @@ const tracingHeaders = getTracingHeaders({ traceAllRequests: false, traceFields:
 
 const apolloClientInstance = apolloClient(graphql, locale, false, accessToken, tracingHeaders);
 
+const staticAppContextValues = { availableLocales: ['en'], locale, translations };
+const appContextValueObject = new AppContextValueObject({
+  ...staticAppContextValues,
+  SSR: false,
+});
+const contextValue = appContextValueObject.getValues();
+
 const ContextDecorator = (storyFn) => (
   <ApolloProvider client={apolloClientInstance}>
     <Router history={history}>
-      <AppContext.Provider value={{ availableLocales: ['en'], locale, translations }}>
+      <AppContext.Provider value={contextValue}>
         <SvgSymbols />
         {storyFn()}
       </AppContext.Provider>

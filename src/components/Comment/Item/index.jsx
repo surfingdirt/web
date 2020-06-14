@@ -19,6 +19,7 @@ import { tones } from 'Utils/comments';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
 import { editCommentRoute } from 'Utils/links';
+import { ItemTyoes } from 'Utils/data';
 import { CommentType } from 'Utils/types';
 import { COMMENT_MENU } from '~/ids';
 
@@ -29,21 +30,14 @@ const { NEUTRAL } = tones;
 const { COMMENT } = translateButtonTypes;
 const { SMALL } = userboxSizes;
 
-const CommentRaw = ({
-  className,
-  comment,
-  locale,
-  parentId,
-  parentType,
-  renderDate: shouldRenderDate,
-  t,
-  tag,
-}) => {
+const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate, t, tag }) => {
   const {
     actions,
     content: { text: content, locale: textLocale, original },
     date,
     id,
+    parentId,
+    parentType,
     reactions,
     submitter,
     tone,
@@ -126,8 +120,8 @@ const CommentRaw = ({
           <ul className={classnames(styles.metadataText, styles.metadataList)}>
             <li>
               <ReactionsTrigger
-                parentId={parentId}
-                parentType={parentType}
+                parentId={id}
+                parentType={ItemTyoes.COMMENT}
                 reactions={reactions}
                 onPickerReaction={pickerOnReaction}
                 onReaction={triggerOnReaction}
@@ -170,21 +164,19 @@ const CommentRaw = ({
   );
 };
 
-CommentRaw.propTypes = {
+CommentItem.propTypes = {
   className: PropTypes.string,
   comment: CommentType.isRequired,
   locale: PropTypes.string.isRequired,
-  parentId: PropTypes.string.isRequired,
-  parentType: PropTypes.string.isRequired,
   renderDate: PropTypes.bool,
   t: PropTypes.func.isRequired,
   tag: PropTypes.string,
 };
 
-CommentRaw.defaultProps = {
+CommentItem.defaultProps = {
   className: null,
   renderDate: true,
   tag: 'li',
 };
 
-export default Translate(messages)(CommentRaw);
+export default Translate(messages)(CommentItem);

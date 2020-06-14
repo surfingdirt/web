@@ -21,3 +21,7 @@ export const AlbumConstants = {
     ITEM_COUNT: 5,
   },
 };
+
+export const ItemTyoes = {
+  COMMENT: 'comment',
+};

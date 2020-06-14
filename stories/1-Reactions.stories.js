@@ -4,13 +4,6 @@ import ReactionsList from '../src/components/Reactions/List';
 import { DEFAULT_REACTION } from '../src/components/Reactions/Reaction';
 import ReactionsPicker from '../src/components/Reactions/Picker';
 import ReactionsTrigger from '../src/components/Reactions/Trigger';
-import CommentItem from '../src/components/Comment/Item';
-
-import {
-  SIMPLE_COMMENT,
-  COMMENT_WITH_REACTIONS,
-  SUPER_SHORT_WITH_REACTIONS,
-} from './2-Comments.stories';
 
 export default {
   title: 'Reactions',
@@ -208,39 +201,5 @@ export const Picker = () => (
     <div style={{ width: '12.5rem' }}>
       <ReactionsPicker onReaction={pickerOnReaction} reactions={PickerData.SINGLE_FIRE} />
     </div>
-  </Grid>
-);
-
-/* Integration */
-const IntegrationData = {
-  SINGLE_FIRE: [
-    {
-      type: 'fire',
-      count: 1,
-      userReactionId: '123',
-    },
-  ],
-};
-
-export const Integration = () => (
-  <Grid>
-    <CommentItem
-      comment={SIMPLE_COMMENT}
-      locale="fr"
-      parentId={SIMPLE_COMMENT.parentId}
-      parentType={SIMPLE_COMMENT.parentType}
-    />
-    <CommentItem
-      comment={SUPER_SHORT_WITH_REACTIONS}
-      locale="fr"
-      parentId={SUPER_SHORT_WITH_REACTIONS.parentId}
-      parentType={SUPER_SHORT_WITH_REACTIONS.parentType}
-    />
-    <CommentItem
-      comment={COMMENT_WITH_REACTIONS}
-      locale="fr"
-      parentId={COMMENT_WITH_REACTIONS.parentId}
-      parentType={COMMENT_WITH_REACTIONS.parentType}
-    />
   </Grid>
 );

@@ -1,9 +1,12 @@
 import React from 'react';
 
 import CommentItem from '../src/components/Comment/Item';
-import SvgSymbols from '../src/components/Widgets/SvgSymbols';
+import CommentList from '../src/components/Comment/List';
 
-export const SIMPLE_COMMENT = {
+const PARENT_TYPE = 'photo';
+const PARENT_ID = '123';
+
+const SIMPLE_COMMENT = {
   actions: [],
   id: '456',
   content: {
@@ -14,8 +17,8 @@ export const SIMPLE_COMMENT = {
   date: '2020-06-09 12:49:26.367',
   lastEditionDate: '2020-06-09 12:49:26.367',
   lastEditor: null,
-  parentId: '666',
-  parentType: 'photo',
+  parentId: PARENT_ID,
+  parentType: PARENT_TYPE,
   reactions: [],
   submitter: {
     userId: '0ccaad29-d95b-4221-b518-29539b39aaf9',
@@ -24,9 +27,9 @@ export const SIMPLE_COMMENT = {
   tone: null,
 };
 
-export const COMMENT_WITH_REACTIONS = {
+const COMMENT_WITH_REACTIONS = {
   actions: [],
-  id: '456',
+  id: '789',
   content: {
     locale: 'fr',
     original: true,
@@ -35,8 +38,8 @@ export const COMMENT_WITH_REACTIONS = {
   date: '2020-06-09 12:49:26.367',
   lastEditionDate: '2020-06-09 12:49:26.367',
   lastEditor: null,
-  parentId: '45678155',
-  parentType: 'photo',
+  parentId: PARENT_ID,
+  parentType: PARENT_TYPE,
   reactions: [
     {
       type: 'cool',
@@ -61,9 +64,9 @@ export const COMMENT_WITH_REACTIONS = {
   tone: null,
 };
 
-export const SUPER_SHORT_WITH_REACTIONS = {
+const SUPER_SHORT_WITH_REACTIONS = {
   actions: [],
-  id: '456',
+  id: 'abc',
   content: {
     locale: 'fr',
     original: true,
@@ -72,8 +75,8 @@ export const SUPER_SHORT_WITH_REACTIONS = {
   date: '2020-06-09 12:49:26.367',
   lastEditionDate: '2020-06-09 12:49:26.367',
   lastEditor: null,
-  parentId: '123',
-  parentType: 'photo',
+  parentId: PARENT_ID,
+  parentType: PARENT_TYPE,
   reactions: [
     {
       type: 'cool',
@@ -93,45 +96,30 @@ export const SUPER_SHORT_WITH_REACTIONS = {
   tone: null,
 };
 
+const COMMENT_LIST = [SIMPLE_COMMENT, COMMENT_WITH_REACTIONS, SUPER_SHORT_WITH_REACTIONS];
+
 export default {
   title: 'Comments',
 };
 
-export const SimpleComment = () => (
-  <CommentItem
-    comment={SIMPLE_COMMENT}
-    locale="fr"
-    parentId={SIMPLE_COMMENT.parentId}
-    parentType={SIMPLE_COMMENT.parentType}
-  />
+export const Plain = () => <CommentItem comment={SIMPLE_COMMENT} locale="fr" />;
+
+export const WithReactions = () => <CommentItem comment={COMMENT_WITH_REACTIONS} locale="fr" />;
+
+export const ShortWithReactions = () => (
+  <CommentItem comment={SUPER_SHORT_WITH_REACTIONS} locale="fr" />
 );
 
-SimpleComment.story = {
-  name: 'Plain',
-};
-
-export const CommentWithReactions = () => (
-  <CommentItem
-    comment={COMMENT_WITH_REACTIONS}
-    locale="fr"
-    parentId={COMMENT_WITH_REACTIONS.parentId}
-    parentType={COMMENT_WITH_REACTIONS.parentType}
-  />
+export const List = () => (
+  <CommentList id="comment-list" comments={COMMENT_LIST} renderDate type="photo" showCommentForm />
 );
 
-CommentWithReactions.story = {
-  name: 'With reactions',
-};
-
-export const SuperShortWithReactions = () => (
-  <CommentItem
-    comment={SUPER_SHORT_WITH_REACTIONS}
-    locale="fr"
-    parentId={SUPER_SHORT_WITH_REACTIONS.parentId}
-    parentType={SUPER_SHORT_WITH_REACTIONS.parentType}
+export const ListWithoutDates = () => (
+  <CommentList
+    id="comment-list"
+    comments={COMMENT_LIST}
+    renderDate={false}
+    type="photo"
+    showCommentForm
   />
 );
-
-SuperShortWithReactions.story = {
-  name: 'Short w/ reactions',
-};

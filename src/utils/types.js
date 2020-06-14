@@ -20,7 +20,7 @@ export const TranslatedTextType = PropTypes.shape({
 export const ReactionType = PropTypes.shape({
   type: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
-  userReactionId: PropTypes.number,
+  userReactionId: PropTypes.string,
 }).isRequired;
 
 export const CommentType = PropTypes.shape({
