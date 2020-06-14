@@ -124,7 +124,7 @@ const CommentRaw = ({
         </div>
         <div className={styles.metadata}>
           <ul className={classnames(styles.metadataText, styles.metadataList)}>
-            <li className={styles.noSeparator}>
+            <li>
               <ReactionsTrigger
                 parentId={parentId}
                 parentType={parentType}

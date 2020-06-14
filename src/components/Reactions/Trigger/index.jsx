@@ -67,7 +67,7 @@ const ReactionsTrigger = ({
     const max = useEllipsis ? MAX_RENDERED_USER_REACTIONS - 1 : MAX_RENDERED_USER_REACTIONS;
     const reactionEls = userReactions
       .slice(0, max)
-      .map(({ type }) => <Reaction key={type} type={type} className={styles.reaction} />);
+      .map(({ type }) => <Reaction key={type} type={type} className={styles.reactionListItem} />);
     content = (
       <>
         <ul className={styles.reactionsList} aria-hidden="true">

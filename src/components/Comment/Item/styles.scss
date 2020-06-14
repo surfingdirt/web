@@ -37,7 +37,7 @@ $metatadatext-min-width: 200px;
       display: flex;
       position: relative;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
       margin: 0 0 $margin-small-3;
       height: 1rem;
 
@@ -48,16 +48,13 @@ $metatadatext-min-width: 200px;
 
         & > li {
           display: inline-block;
+          vertical-align: middle;
         }
 
         & > li::after {
           content: '•';
           display: inline-block;
           margin: 0 $margin-small-3;
-        }
-
-        & > li.noSeparator::after {
-          content: none;
         }
 
         & > li:last-child::after {
