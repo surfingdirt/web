@@ -17,7 +17,7 @@ $emoji-size: 1em;
     z-index: 7;
   }
   &:nth-child(n+2) {
-    margin-left: -$emoji-size / 4;
+    margin-left: -$emoji-size / 2;
     z-index: 6;
   }
   &:nth-child(n+3) {
