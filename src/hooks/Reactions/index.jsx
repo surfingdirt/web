@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import CREATE_REACTION from 'Apollo/mutations/createReaction3.gql';
@@ -6,6 +6,7 @@ import DELETE_REACTION from 'Apollo/mutations/deleteReaction.gql';
 import { DEFAULT_REACTION } from 'Components/Reactions/Reaction';
 
 const useReactions = ({ initialReactions, itemType, itemId }) => {
+  const pickerRef = useRef(null);
   const [reactions, setReactions] = useState(initialReactions);
   const [pickerOpen, setPickerOpen] = useState(false);
   const userReactions = reactions.filter((r) => !!r.userReactionId);
@@ -59,7 +60,7 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
 
   const deleteReaction = async (id) => {
     try {
-      const deleteResponse = await deleteReactionMutation({ variables: { id } });
+      await deleteReactionMutation({ variables: { id } });
       removeReaction(id);
     } catch (e) {
       console.error('Error while deleting reaction', e, { id });
@@ -92,7 +93,14 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
     }
   };
 
-  return [reactions, pickerOpen, onTriggerClick, onPickerChoice];
+  const setPickerOpenWithFocus = (open) => {
+    setPickerOpen(open);
+    if (open) {
+      pickerRef.current.focus();
+    }
+  };
+  console.log('Reactions hook', pickerRef);
+  return [reactions, pickerRef, pickerOpen, setPickerOpenWithFocus, onTriggerClick, onPickerChoice];
 };
 
 export default useReactions;

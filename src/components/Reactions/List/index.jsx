@@ -10,8 +10,6 @@ import messages from '../messages';
 import Reaction from '../Reaction';
 
 const ReactionsList = ({ className, reactions, t }) => {
-  console.log('ReactionsList', { reactions });
-
   const total = reactions.reduce((acc, r) => acc + r.count, 0);
   return (
     <div className={classnames(styles.wrapper, className)}>

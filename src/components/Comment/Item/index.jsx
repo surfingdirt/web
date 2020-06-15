@@ -46,11 +46,19 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
     tone,
   } = comment;
 
-  const [reactions, pickerOpen, onTriggerClick, onPickerChoice] = useReactions({
+  const [
+    reactions,
+    pickerRef,
+    pickerOpen,
+    setPickerOpen,
+    onTriggerClick,
+    onPickerChoice,
+  ] = useReactions({
     initialReactions,
     itemType: ItemTypes.COMMENT,
     itemId: id,
   });
+  console.log('Comment Item', pickerRef);
 
   const shouldRenderTone = tone && tone !== NEUTRAL;
   // Show the button if the text is in its original form and the locale is not that of the user
@@ -124,12 +132,14 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
           <ul className={classnames(styles.metadataText, styles.metadataList)}>
             <li>
               <ReactionsTrigger
-                parentId={id}
-                parentType={ItemTypes.COMMENT}
-                reactions={reactions}
                 onPickerChoice={onPickerChoice}
                 onTriggerClick={onTriggerClick}
+                parentId={id}
+                parentType={ItemTypes.COMMENT}
                 pickerOpen={pickerOpen}
+                reactions={reactions}
+                pickerRef={pickerRef}
+                setPickerOpen={setPickerOpen}
                 small
               />
             </li>
