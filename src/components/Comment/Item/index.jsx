@@ -46,7 +46,7 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
     tone,
   } = comment;
 
-  const [reactions, onTriggerClick, onPickerChoice] = useReactions({
+  const [reactions, pickerOpen, onTriggerClick, onPickerChoice] = useReactions({
     initialReactions,
     itemType: ItemTypes.COMMENT,
     itemId: id,
@@ -129,6 +129,7 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
                 reactions={reactions}
                 onPickerChoice={onPickerChoice}
                 onTriggerClick={onTriggerClick}
+                pickerOpen={pickerOpen}
                 small
               />
             </li>

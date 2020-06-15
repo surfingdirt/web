@@ -146,6 +146,7 @@ export const Trigger = () => (
       reactions={triggerData.SINGLE_NO_OWNER}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen={false}
     />
     <ReactionsTrigger
       parentId="123b"
@@ -153,6 +154,15 @@ export const Trigger = () => (
       reactions={triggerData.SINGLE_NO_OWNER}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen
+    />
+    <ReactionsTrigger
+      parentId="123c"
+      parentType={triggerParentType}
+      reactions={triggerData.SINGLE_NO_OWNER}
+      onPickerReaction={pickerOnReaction}
+      onReaction={triggerOnReaction}
+      pickerOpen={false}
       small
     />
     <ReactionsTrigger
@@ -161,6 +171,7 @@ export const Trigger = () => (
       reactions={triggerData.SINGLE_OWNER_DEFAULT}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen={false}
     />
     <ReactionsTrigger
       parentId="789"
@@ -168,6 +179,7 @@ export const Trigger = () => (
       reactions={triggerData.SINGLE_FIRE}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen={false}
     />
     <ReactionsTrigger
       parentId="abc"
@@ -175,6 +187,7 @@ export const Trigger = () => (
       reactions={triggerData.MULTIPLE}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen={false}
     />
     <ReactionsTrigger
       parentId="def"
@@ -182,6 +195,7 @@ export const Trigger = () => (
       reactions={triggerData.MULTIPLE_ELLIPSIS}
       onPickerReaction={pickerOnReaction}
       onReaction={triggerOnReaction}
+      pickerOpen={false}
     />
   </Grid>
 );
