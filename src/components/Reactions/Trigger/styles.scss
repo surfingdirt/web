@@ -112,12 +112,10 @@ $emoji-size-small: $font-size-small;
           font-size: $emoji-size-small;
         }
 
-        //.emoji {
-        //  width: $emoji-size-small;
-        //  height: $emoji-size-small;
-        //  padding: 0;
-        //}
-        //
+        .ellipsis {
+          color: $reactions-trigger-small-label-color;
+        }
+
         .label {
           font-size: $emoji-size-small;
           color: $reactions-trigger-small-label-color;

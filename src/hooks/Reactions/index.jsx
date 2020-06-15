@@ -58,6 +58,7 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   };
 
   const createReaction = async (type) => {
+    const reactionsBackup = reactions.slice();
     const input = { itemType, itemId, type };
     try {
       insertOptimisticNewReaction(type);
@@ -66,15 +67,18 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
       updateNewReaction(createResponse.data.createReaction);
     } catch (e) {
       console.error('Error while saving reaction', e, { input });
+      setReactions(reactionsBackup);
     }
   };
 
   const deleteReaction = async (id) => {
+    const reactionsBackup = reactions.slice();
     try {
       removeReaction(id);
       await deleteReactionMutation({ variables: { id } });
     } catch (e) {
       console.error('Error while deleting reaction', e, { id });
+      setReactions(reactionsBackup);
     }
   };
 
