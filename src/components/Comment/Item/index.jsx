@@ -58,7 +58,6 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
     itemType: ItemTypes.COMMENT,
     itemId: id,
   });
-  console.log('Comment Item', pickerRef);
 
   const shouldRenderTone = tone && tone !== NEUTRAL;
   // Show the button if the text is in its original form and the locale is not that of the user

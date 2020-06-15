@@ -5,6 +5,8 @@ import CREATE_REACTION from 'Apollo/mutations/createReaction3.gql';
 import DELETE_REACTION from 'Apollo/mutations/deleteReaction.gql';
 import { DEFAULT_REACTION } from 'Components/Reactions/Reaction';
 
+const TEMP_REACTION_ID = 'tempReactionId';
+
 const useReactions = ({ initialReactions, itemType, itemId }) => {
   const pickerRef = useRef(null);
   const [reactions, setReactions] = useState(initialReactions);
@@ -17,19 +19,26 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   const [createReactionMutation] = useMutation(CREATE_REACTION, {});
   const [deleteReactionMutation] = useMutation(DELETE_REACTION, {});
 
-  const insertNewReaction = ({ id, type }) => {
+  const insertOptimisticNewReaction = (type) => {
     const newReactions = reactions.slice();
     const existingEntryIndex = newReactions.findIndex((r) => r.type === type);
-    if (typeof existingEntry !== 'undefined') {
+    if (existingEntryIndex !== -1) {
       newReactions[existingEntryIndex].count += 1;
-      newReactions[existingEntryIndex].userReactionId = id;
+      newReactions[existingEntryIndex].userReactionId = TEMP_REACTION_ID;
     } else {
       newReactions.push({
         type,
         count: 1,
-        userReactionId: id,
+        userReactionId: TEMP_REACTION_ID,
       });
     }
+    setReactions(newReactions);
+  };
+
+  const updateNewReaction = (id) => {
+    const newReactions = reactions.slice();
+    const existingEntryIndex = newReactions.findIndex((r) => r.userReactionId === TEMP_REACTION_ID);
+    newReactions[existingEntryIndex].userReactionId = id;
     setReactions(newReactions);
   };
 
@@ -51,8 +60,10 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   const createReaction = async (type) => {
     const input = { itemType, itemId, type };
     try {
+      insertOptimisticNewReaction(type);
+
       const createResponse = await createReactionMutation({ variables: { input } });
-      insertNewReaction(createResponse.data.createReaction);
+      updateNewReaction(createResponse.data.createReaction);
     } catch (e) {
       console.error('Error while saving reaction', e, { input });
     }
@@ -60,8 +71,8 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
 
   const deleteReaction = async (id) => {
     try {
-      await deleteReactionMutation({ variables: { id } });
       removeReaction(id);
+      await deleteReactionMutation({ variables: { id } });
     } catch (e) {
       console.error('Error while deleting reaction', e, { id });
     }
@@ -99,7 +110,6 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
       pickerRef.current.focus();
     }
   };
-  console.log('Reactions hook', pickerRef);
   return [reactions, pickerRef, pickerOpen, setPickerOpenWithFocus, onTriggerClick, onPickerChoice];
 };
 

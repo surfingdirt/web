@@ -33,7 +33,6 @@ const ReactionsTrigger = ({
   small,
   t,
 }) => {
-  console.log('ReactionsTrigger', pickerRef);
   const userReactions = reactions.filter((r) => !!r.userReactionId);
   const active = userReactions.length > 0;
 

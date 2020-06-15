@@ -11,7 +11,6 @@ import styles from './styles.scss';
 import messages from '../messages';
 
 const ReactionsPicker = ({ className, onReaction, pickerRef, reactions, t }) => {
-  console.log('ReactionsPicker', pickerRef);
   return (
     <div
       aria-label={t('reactions')}
