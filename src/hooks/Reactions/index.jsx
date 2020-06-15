@@ -34,10 +34,11 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
       });
     }
     setReactions(newReactions);
+
+    return newReactions;
   };
 
-  const updateNewReaction = (id) => {
-    const newReactions = reactions.slice();
+  const updateNewReaction = (newReactions, { id }) => {
     const existingEntryIndex = newReactions.findIndex((r) => r.userReactionId === TEMP_REACTION_ID);
     newReactions[existingEntryIndex].userReactionId = id;
     setReactions(newReactions);
@@ -62,10 +63,10 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
     const reactionsBackup = reactions.slice();
     const input = { itemType, itemId, type };
     try {
-      insertOptimisticNewReaction(type);
+      const newReactions = insertOptimisticNewReaction(type);
 
       const createResponse = await createReactionMutation({ variables: { input } });
-      updateNewReaction(createResponse.data.createReaction);
+      updateNewReaction(newReactions, createResponse.data.createReaction);
     } catch (e) {
       console.error('Error while saving reaction', e, { input });
       setReactions(reactionsBackup);
