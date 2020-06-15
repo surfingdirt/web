@@ -48,6 +48,7 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
 
   const [
     reactions,
+    triggerRef,
     pickerRef,
     pickerOpen,
     setPickerOpen,
@@ -138,8 +139,9 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
                 pickerOpen={pickerOpen}
                 reactions={reactions}
                 pickerRef={pickerRef}
-                setPickerOpen={setPickerOpen}
                 small
+                setPickerOpen={setPickerOpen}
+                triggerRef={triggerRef}
               />
             </li>
             {showTranslateButton && (

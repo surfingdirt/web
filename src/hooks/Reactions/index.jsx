@@ -9,6 +9,7 @@ const TEMP_REACTION_ID = 'tempReactionId';
 
 const useReactions = ({ initialReactions, itemType, itemId }) => {
   const pickerRef = useRef(null);
+  const triggerRef = useRef(null);
   const [reactions, setReactions] = useState(initialReactions);
   const [pickerOpen, setPickerOpen] = useState(false);
   const userReactions = reactions.filter((r) => !!r.userReactionId);
@@ -112,9 +113,19 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
     setPickerOpen(open);
     if (open) {
       pickerRef.current.focus();
+    } else {
+      triggerRef.current.focus();
     }
   };
-  return [reactions, pickerRef, pickerOpen, setPickerOpenWithFocus, onTriggerClick, onPickerChoice];
+  return [
+    reactions,
+    triggerRef,
+    pickerRef,
+    pickerOpen,
+    setPickerOpenWithFocus,
+    onTriggerClick,
+    onPickerChoice,
+  ];
 };
 
 export default useReactions;

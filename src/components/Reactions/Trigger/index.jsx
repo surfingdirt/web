@@ -32,6 +32,7 @@ const ReactionsTrigger = ({
   reactions,
   small,
   t,
+  triggerRef,
 }) => {
   const userReactions = reactions.filter((r) => !!r.userReactionId);
   const active = userReactions.length > 0;
@@ -102,16 +103,17 @@ const ReactionsTrigger = ({
         </label>
       </div>
       <input
-        id={pickerButtonId}
-        className={styles.pickerButton}
-        type="checkbox"
-        role="button"
         aria-pressed={pickerOpen}
         checked={pickerOpen}
+        className={styles.pickerButton}
         hidden
         onClick={() => {
           setPickerOpen(!pickerOpen);
         }}
+        id={pickerButtonId}
+        ref={triggerRef}
+        role="button"
+        type="checkbox"
       />
       <ReactionsPicker
         className={styles.picker}
@@ -132,10 +134,12 @@ ReactionsTrigger.propTypes = {
   parentId: PropTypes.string.isRequired,
   parentType: PropTypes.string.isRequired,
   pickerOpen: PropTypes.bool.isRequired,
+  pickerRef: PropTypes.shape({ current: PropTypes.node }).isRequired,
   reactions: PropTypes.arrayOf(ReactionType).isRequired,
   setPickerOpen: PropTypes.func.isRequired,
   small: PropTypes.bool,
   t: PropTypes.func.isRequired,
+  triggerRef: PropTypes.shape({ current: PropTypes.node }).isRequired,
 };
 
 ReactionsTrigger.defaultProps = { className: null, small: false };
