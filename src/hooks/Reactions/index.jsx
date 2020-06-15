@@ -40,6 +40,7 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
 
   const updateNewReaction = (newReactions, { id }) => {
     const existingEntryIndex = newReactions.findIndex((r) => r.userReactionId === TEMP_REACTION_ID);
+    // eslint-disable-next-line no-param-reassign
     newReactions[existingEntryIndex].userReactionId = id;
     setReactions(newReactions);
   };

@@ -90,7 +90,7 @@ query {
                 text
             }
             date
-            reactions{
+            reactions {
               count
               userReactionId
               type
@@ -155,6 +155,11 @@ query {
                 text
             }
             date
+            reactions {
+              count
+              userReactionId
+              type
+            }
             submitter {
                 userId
                 username
