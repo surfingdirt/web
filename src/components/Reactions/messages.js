@@ -5,13 +5,13 @@ const messages = (getText, getPlural) => (key) =>
     defaultReaction: getText('Like') /* Label for a button to 'like' something */,
     reactionCount: getText('Reactions') /* Indicates the number of reactions */,
 
-    angry: getText('Angry') /* Label for a user reaction icon: 😡 */,
-    cool: getText('Cool') /* Label for a user reaction icon: 😎 */,
-    fire: getText('Fire') /* Label for a user reaction icon: 🔥 */,
-    injured: getText('Injured') /* Label for a user reaction icon: 🤕 */,
-    impressed: getText('Impressed') /* Label for a user reaction icon: 😮 */,
-    like: getText('Like') /* Label for a user reaction icon: 👍 */,
-    laughing: getText('Laughing') /* Label for a user reaction icon: 🤣 */,
-    sad: getText('Sad') /* Label for a user reaction icon: 😢 */,
+    angry: getText('Grrr') /* Label for a user reaction icon: angry 😡 */,
+    cool: getText('Cool') /* Label for a user reaction icon: cool 😎 */,
+    fire: getText('Fire') /* Label for a user reaction icon: fire 🔥 */,
+    injured: getText('Ouch') /* Label for a user reaction icon: injured 🤕 */,
+    impressed: getText('Wow') /* Label for a user reaction icon: impressed 😮 */,
+    like: getText('Like') /* Label for a user reaction icon: like 👍 */,
+    laughing: getText('Haha') /* Label for a user reaction icon: laughing 🤣 */,
+    sad: getText('Sad') /* Label for a user reaction icon: sad 😢 */,
   }[key]);
 export default messages;
