@@ -124,11 +124,12 @@ $emoji-size-small: $font-size-small;
     }
 
     .arrow {
-      margin: 0 $margin-one-char;
+      margin: 0 0 0 $margin-one-char;
       border: none;
       border-radius: $widget-border-radius;
       padding: $padding-small-4;
       color: $reactions-trigger-small-arrow-color;
+
       &:hover {
         color: $reactions-trigger-small-active-arrow-color;
         background-color: $reactions-trigger-small-active-arrow-background-color;
