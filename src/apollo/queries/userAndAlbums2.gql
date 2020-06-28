@@ -29,6 +29,11 @@ query userAndAlbums($userId: ID!) {
                 type
                 url
             }
+            reactions {
+              count
+              userReactionId
+              type
+            }
           }
         }
         avatar {
@@ -96,6 +101,11 @@ query userAndAlbums($userId: ID!) {
             }
             mediaType
             mediaSubType
+            reactions {
+              count
+              userReactionId
+              type
+            }
             submitter {
                 userId
                 username

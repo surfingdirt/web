@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet-async';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
+import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
 import { ALBUM_VIEW_TYPE_VAR_NAME } from 'Components/Album/AlbumViewToggle';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';
 import Spinner from 'Components/Widgets/Spinner';

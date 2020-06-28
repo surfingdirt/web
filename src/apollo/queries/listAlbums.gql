@@ -53,6 +53,11 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
                 height
                 width
             }
+            reactions {
+              count
+              userReactionId
+              type
+            }
             submitter {
                 userId
                 username

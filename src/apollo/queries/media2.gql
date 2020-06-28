@@ -46,6 +46,11 @@ query media($id: ID!, $mediaType: String!) {
                 text
             }
         }
+        reactions {
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

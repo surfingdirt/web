@@ -53,6 +53,11 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 height
                 width
             }
+            reactions {
+              count
+              userReactionId
+              type
+            }
             submitter {
                 userId
                 username
@@ -124,6 +129,11 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
                 url
                 height
                 width
+            }
+            reactions {
+              count
+              userReactionId
+              type
             }
             submitter {
                 userId

@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
 import DELETE_MEDIA from 'Apollo/mutations/deleteMedia.gql';
+import { getReplyAnchorId } from 'Components/Comment/Form';
+import ReactionsList from 'Components/Reactions/List';
+import ReactionsTrigger from 'Components/Reactions/Trigger';
 import Userbox, { userboxSizes } from 'Components/User/Userbox';
 import AutoLink from 'Components/Widgets/AutoLink';
 import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import Menu from 'Components/Widgets/Menu';
 import menuStyles from 'Components/Widgets/Menu/styles.scss';
+import Separator from 'Components/Widgets/Separator';
 import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 import Translate from 'Hocs/Translate';
+import useReactions from 'Hooks/Reactions';
+import { ItemTypes } from 'Utils/data';
 import {
   albumRoute,
   editPhotoRoute,
@@ -31,6 +37,16 @@ import styles from './styles.scss';
 const { PHOTO } = mediaTypes;
 const { STANDARD } = userboxSizes;
 const { MEDIA } = translateButtonTypes;
+
+const scrollToReply = (e) => {
+  const destinationEl = document.getElementById(e.target.getAttribute('href').slice(1));
+  if (!destinationEl) {
+    return;
+  }
+  destinationEl.scrollIntoView({ alignToTop: false, behavior: 'smooth' });
+  destinationEl.focus();
+  e.preventDefault();
+};
 
 const MediaMetadata = (props) => {
   const { features } = useContext(AppContext);
@@ -53,10 +69,27 @@ const MediaMetadata = (props) => {
     id,
     date,
     description,
+    reactions: initialReactions,
     submitter,
     mediaType,
     title: { locale: textLocale, original, text: title },
   } = media;
+
+  const itemType = mediaType === 'PHOTO' ? ItemTypes.PHOTO : ItemTypes.VIDEO;
+  const [
+    reactions,
+    triggerRef,
+    pickerRef,
+    pickerOpen,
+    setPickerOpen,
+    onTriggerClick,
+    onPickerChoice,
+  ] = useReactions({
+    initialReactions,
+    itemType,
+    itemId: id,
+  });
+
   const { username, userId } = submitter;
   const hasDescription = description && description.text && description.text.length > 0;
 
@@ -152,6 +185,29 @@ const MediaMetadata = (props) => {
         <Link to={albumRoute(albumId)}>{albumTitle}</Link>
         <span aria-hidden className="separator" />
         <span className={styles.date}>{renderDate(date, locale)}</span>
+        {reactions.length > 0 && (
+          <ReactionsList className={styles.reactions} reactions={reactions} />
+        )}
+      </div>
+
+      <Separator />
+
+      <div className={styles.fourthRow}>
+        <ReactionsTrigger
+          onPickerChoice={onPickerChoice}
+          onTriggerClick={onTriggerClick}
+          parentId={id}
+          parentType={itemType}
+          pickerOpen={pickerOpen}
+          reactions={reactions}
+          pickerRef={pickerRef}
+          setPickerOpen={setPickerOpen}
+          triggerRef={triggerRef}
+        />
+
+        <a href={`#${getReplyAnchorId(id)}`} onClick={scrollToReply} className={styles.replyLink}>
+          {t('reply')}
+        </a>
       </div>
     </div>
   );

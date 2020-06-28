@@ -24,4 +24,6 @@ export const AlbumConstants = {
 
 export const ItemTypes = {
   COMMENT: 'comment',
+  PHOTO: 'photo',
+  VIDEO: 'video',
 };

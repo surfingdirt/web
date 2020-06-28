@@ -23,6 +23,8 @@ $emoji-size-small: $font-size-small;
       padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
 
       .buttonContent {
+        display: inline-flex;
+        align-items: center;
         color: $reactions-trigger-button-color;
       }
 

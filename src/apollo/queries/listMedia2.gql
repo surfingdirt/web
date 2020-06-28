@@ -37,6 +37,11 @@ query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
             height
             width
         }
+        reactions {
+          count
+          userReactionId
+          type
+        }
         submitter {
             userId
             username

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 
-import USER_ALBUMS from 'Apollo/queries/userAlbums.gql';
+import USER_ALBUMS from 'Apollo/queries/userAlbums2.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Spinner from 'Components/Widgets/Spinner';
 import ErrorMessage from 'Components/Widgets/ErrorMessage';

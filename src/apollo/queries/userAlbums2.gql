@@ -51,6 +51,11 @@ query userAlbums($userId: ID!) {
             }
             mediaType
             mediaSubType
+            reactions {
+              count
+              userReactionId
+              type
+            }
             submitter {
                 userId
                 username

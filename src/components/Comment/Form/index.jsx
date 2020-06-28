@@ -38,6 +38,10 @@ const ACTIONS = {
 
 const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
+export function getReplyAnchorId(id = null) {
+  return `reply-${id}`;
+}
+
 const CommentForm = ({ className, id: parentId, t, type }) => {
   const action = ACTIONS[type];
   const mutation = MUTATIONS[type];
@@ -111,6 +115,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
               action={actionRoute(action)}
               method="POST"
               encType="multipart/form-data"
+              id={getReplyAnchorId(parentId)}
             >
               <Field
                 name="tone"

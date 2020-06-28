@@ -56,4 +56,19 @@
   .date {
 
   }
+
+  .reactions {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+}
+
+.fourthRow {
+  display: flex;
+  align-items: center;
+
+  .replyLink {
+    display: inline-block;
+    margin-left: $margin-medium-1;
+  }
 }

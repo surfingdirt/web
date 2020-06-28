@@ -13,7 +13,7 @@ query comment($id: ID!) {
         date
         parentId
         parentType
-        reactions{
+        reactions {
           count
           userReactionId
           type
