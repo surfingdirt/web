@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -25,6 +25,7 @@ import { editCommentRoute } from 'Utils/links';
 import { ItemTypes } from 'Utils/data';
 import { CommentType } from 'Utils/types';
 import { COMMENT_MENU } from '~/ids';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -34,6 +35,15 @@ const { COMMENT } = translateButtonTypes;
 const { SMALL } = userboxSizes;
 
 const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate, t, tag }) => {
+  const {
+    login: {
+      data: {
+        me: { username },
+      },
+    },
+  } = useContext(AppContext);
+  const isLoggedIn = !!username;
+
   const {
     actions,
     content: { text: content, locale: textLocale, original },
@@ -63,6 +73,8 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
   const shouldRenderTone = tone && tone !== NEUTRAL;
   // Show the button if the text is in its original form and the locale is not that of the user
   const showTranslateButton = original && textLocale !== locale;
+
+  const showReactionTrigger = isLoggedIn;
 
   const options = [];
   if (actions.edit) {
@@ -130,20 +142,22 @@ const CommentItem = ({ className, comment, locale, renderDate: shouldRenderDate,
         </div>
         <div className={styles.metadata}>
           <ul className={classnames(styles.metadataText, styles.metadataList)}>
-            <li>
-              <ReactionsTrigger
-                onPickerChoice={onPickerChoice}
-                onTriggerClick={onTriggerClick}
-                parentId={id}
-                parentType={ItemTypes.COMMENT}
-                pickerOpen={pickerOpen}
-                reactions={reactions}
-                pickerRef={pickerRef}
-                small
-                setPickerOpen={setPickerOpen}
-                triggerRef={triggerRef}
-              />
-            </li>
+            {showReactionTrigger && (
+              <li>
+                <ReactionsTrigger
+                  onPickerChoice={onPickerChoice}
+                  onTriggerClick={onTriggerClick}
+                  parentId={id}
+                  parentType={ItemTypes.COMMENT}
+                  pickerOpen={pickerOpen}
+                  reactions={reactions}
+                  pickerRef={pickerRef}
+                  small
+                  setPickerOpen={setPickerOpen}
+                  triggerRef={triggerRef}
+                />
+              </li>
+            )}
             {showTranslateButton && (
               <li>
                 <TranslateButton
