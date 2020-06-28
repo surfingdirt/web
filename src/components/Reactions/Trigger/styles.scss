@@ -12,20 +12,19 @@ $emoji-size-small: $font-size-small;
   .wrapper {
     display: inline-flex;
     align-items: center;
-    background: $reactions-trigger-button-background-color-resting;
+    background: $reactions-trigger-button-resting-background-color;
     color: $reactions-trigger-button-color;
     font-size: $emoji-size;
     line-height: 1rem;
-
-    &:hover,
-    &.active {
-      background-color: $reactions-trigger-button-background-color-hover;
-    }
 
     .button {
       display: inline-flex;
       align-items: center;
       padding: $padding-small-2 $padding-small-1 / 2 $padding-small-2 $padding-small-1;
+
+      .buttonContent {
+        color: $reactions-trigger-button-color;
+      }
 
       .reactionsList {
         position: relative;
@@ -64,21 +63,53 @@ $emoji-size-small: $font-size-small;
           font-weight: bold;
         }
       }
-
     }
-  }
 
-  .arrow {
-    $vertical-gap: .2rem;
+    .arrow {
+      $vertical-gap: .2rem;
 
-    display: inline-block;
-    margin: $vertical-gap 0;
-    padding: $padding-small-2 - $vertical-gap $padding-small-1 $padding-small-2 - $vertical-gap $padding-small-1 / 2;
-    border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
-    color: rgba($reactions-trigger-arrow-color, .5);
+      display: inline-block;
+      margin: $vertical-gap 0;
+      padding: $padding-small-2 - $vertical-gap $padding-small-1 $padding-small-2 - $vertical-gap $padding-small-1 / 2;
+      border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
+      color: rgba($reactions-trigger-arrow-color, .5);
+
+      &:hover {
+        color: rgba($reactions-trigger-arrow-color, 1.0);
+      }
+    }
+
+    &.active {
+      background-color: $reactions-trigger-button-active-background-color;
+      color: $reactions-trigger-button-active-text-color;
+
+      .buttonContent {
+        color: $reactions-list-active-text-color;
+      }
+
+      .arrow {
+        border-left-color: $reactions-trigger-arrow-active-color;
+        color: $reactions-trigger-arrow-active-color;
+      }
+
+      &:hover {
+        .arrow {
+          border-left: 1px solid rgba($reactions-trigger-arrow-color, .25);
+          color: rgba($reactions-trigger-arrow-color, .5);
+
+          &:hover {
+            color: rgba($reactions-trigger-arrow-color, 1.0);
+          }
+        }
+      }
+    }
 
     &:hover {
-      color: rgba($reactions-trigger-arrow-color, 1.0);
+      background-color: $reactions-trigger-button-hover-background-color;
+
+      .buttonContent{
+        color: $reactions-list-hover-text-color;
+      }
     }
   }
 

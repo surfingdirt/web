@@ -197,15 +197,24 @@ $navigationlink-negative-background-color-active: $brand-dark2;
 // Reactions
 $reactions-list-background-color: $brand-bright;
 $reactions-list-text-color: $brand-dark2;
+$reactions-list-active-text-color: $readable-brand-bright;
+$reactions-list-hover-text-color: $brand-dark2;
 $reactions-list-emoji-background-color: $brand-dark1;
 
 $reactions-picker-background-color: $brand-bright;
 $reactions-picker-active-reaction-background-color: $brand-highlight1;
 
-$reactions-trigger-button-background-color-resting: transparent;
-$reactions-trigger-button-background-color-hover: $brand-bright;
-$reactions-trigger-button-color: $brand-bright;
-$reactions-trigger-arrow-color: $brand-dark2;
+$reactions-trigger-button-resting-background-color: transparent;
+$reactions-trigger-button-color: $readable-brand-bright;
+$reactions-trigger-arrow-color: rgba($brand-dark2, .25);
+
+$reactions-trigger-button-hover-background-color: $brand-bright;
+
+$reactions-trigger-button-active-background-color: transparent;
+$reactions-trigger-button-active-text-color: $brand-bright;
+$reactions-trigger-button-active-color: $brand-bright;
+$reactions-trigger-arrow-active-color: rgba($brand-bright, .5);
+
 $reactions-trigger-small-label-color: $readable-brand-bright;
 $reactions-trigger-small-arrow-color: $readable-brand-bright;
 $reactions-trigger-small-active-arrow-color: $brand-dark2;

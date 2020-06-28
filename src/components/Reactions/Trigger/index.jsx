@@ -91,7 +91,7 @@ const ReactionsTrigger = ({
           onClick={onTriggerClick}
           className={styles.button}
         >
-          {content}
+          <span className={styles.buttonContent}>{content}</span>
         </button>
         {/* eslint-disable-next-line jsx-a11y/label-has-for */}
         <label className={styles.arrow} htmlFor={pickerButtonId} role="button">
