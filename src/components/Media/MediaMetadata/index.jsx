@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -58,9 +58,6 @@ const MediaMetadata = (props) => {
     },
   } = useContext(AppContext);
   const isLoggedIn = !!currentUsername;
-
-  const [redirectTo, setRedirectTo] = useState(null);
-
   const {
     album: {
       id: albumId,
@@ -72,7 +69,6 @@ const MediaMetadata = (props) => {
     t,
     locale,
   } = props;
-
   const {
     actions,
     id,
@@ -83,10 +79,12 @@ const MediaMetadata = (props) => {
     mediaType,
     title: { locale: textLocale, original, text: title },
   } = media;
-
   const itemType = mediaType === 'PHOTO' ? ItemTypes.PHOTO : ItemTypes.VIDEO;
+
+  const [redirectTo, setRedirectTo] = useState(null);
+
   const [
-    reactions,
+    initialHookReactions,
     triggerRef,
     pickerRef,
     pickerOpen,
@@ -98,6 +96,12 @@ const MediaMetadata = (props) => {
     itemType,
     itemId: id,
   });
+
+  const [reactions, setReactions] = useState(initialHookReactions);
+  useEffect(() => {
+    // Make sure to update reactions when itemType or id are changed (eg, in overlays).
+    setReactions(initialReactions);
+  }, [itemType, id]);
 
   const { username, userId } = submitter;
   const hasDescription = description && description.text && description.text.length > 0;
