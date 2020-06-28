@@ -49,7 +49,16 @@ const scrollToReply = (e) => {
 };
 
 const MediaMetadata = (props) => {
-  const { features } = useContext(AppContext);
+  const {
+    features,
+    login: {
+      data: {
+        me: { username: currentUsername },
+      },
+    },
+  } = useContext(AppContext);
+  const isLoggedIn = !!currentUsername;
+
   const [redirectTo, setRedirectTo] = useState(null);
 
   const {
@@ -190,25 +199,33 @@ const MediaMetadata = (props) => {
         )}
       </div>
 
-      <Separator />
+      {isLoggedIn && (
+        <>
+          <Separator />
 
-      <div className={styles.fourthRow}>
-        <ReactionsTrigger
-          onPickerChoice={onPickerChoice}
-          onTriggerClick={onTriggerClick}
-          parentId={id}
-          parentType={itemType}
-          pickerOpen={pickerOpen}
-          reactions={reactions}
-          pickerRef={pickerRef}
-          setPickerOpen={setPickerOpen}
-          triggerRef={triggerRef}
-        />
+          <div className={styles.fourthRow}>
+            <ReactionsTrigger
+              onPickerChoice={onPickerChoice}
+              onTriggerClick={onTriggerClick}
+              parentId={id}
+              parentType={itemType}
+              pickerOpen={pickerOpen}
+              reactions={reactions}
+              pickerRef={pickerRef}
+              setPickerOpen={setPickerOpen}
+              triggerRef={triggerRef}
+            />
 
-        <a href={`#${getReplyAnchorId(id)}`} onClick={scrollToReply} className={styles.replyLink}>
-          {t('reply')}
-        </a>
-      </div>
+            <a
+              href={`#${getReplyAnchorId(id)}`}
+              onClick={scrollToReply}
+              className={styles.replyLink}
+            >
+              {t('reply')}
+            </a>
+          </div>
+        </>
+      )}
     </div>
   );
 };
