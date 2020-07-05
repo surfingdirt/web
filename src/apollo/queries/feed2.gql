@@ -53,6 +53,11 @@ query {
 					height
 					width
 				}
+                reactions {
+                  count
+                  userReactionId
+                  type
+                }
 				images {
 					type
 					size
@@ -115,6 +120,11 @@ query {
 		  }
 		  mediaSubType
 		  mediaType
+            reactions {
+              count
+              userReactionId
+              type
+            }
 		}
 		... on User {
 		  avatar {
@@ -194,6 +204,11 @@ query {
             thumbWidth
             title {
               text
+            }
+            reactions {
+              count
+              userReactionId
+              type
             }
             thumbs {
                 type
