@@ -34,6 +34,10 @@ const ReactionsTrigger = ({
   t,
   triggerRef,
 }) => {
+  console.assert(
+    typeof reactions !== 'undefined',
+    `Reaction Trigger - No reactions set for parentType ${parentType} and parentId ${parentId}`,
+  );
   const userReactions = reactions.filter((r) => !!r.userReactionId);
   const active = userReactions.length > 0;
 

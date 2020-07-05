@@ -12,6 +12,11 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   const triggerRef = useRef(null);
   const [reactions, setReactions] = useState(initialReactions);
   const [pickerOpen, setPickerOpen] = useState(false);
+
+  console.assert(
+    typeof reactions !== 'undefined',
+    `Reaction hook - No reactions set for itemType ${itemType} and itemId ${itemId}`,
+  );
   const userReactions = reactions.filter((r) => !!r.userReactionId);
   const userReactionsCount = userReactions.length;
 
