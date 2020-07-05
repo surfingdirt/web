@@ -15,8 +15,11 @@
 
 .labelContainer {
   @extend %formLabelContainer;
+  margin-right: $margin-small-3;
 
   label {
+    font-size: $font-size-small;
+    padding: 0 $padding-small-3;
     @extend %formLabel;
   }
 }

@@ -9,7 +9,10 @@ const SelectField = ({ children, input, label }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.labelContainer}>
-        <label htmlFor={input.name}>{label}</label>
+        <label htmlFor={input.name}>
+          {label}
+          {':'}
+        </label>
       </div>
       <div className={styles.selectContainer}>
         <select {...input} id={input.name} name={input.name}>
