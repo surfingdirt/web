@@ -5,6 +5,7 @@ import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import EmailPassword from './EmailPassword';
+import FirebaseAuth from './FirebaseAuth';
 
 const { HOME } = routes;
 
@@ -16,14 +17,12 @@ const Login = () => {
     },
   } = useContext(AppContext);
 
-  console.log({ firebaseAuth });
-
   if (accessToken) {
     return <Redirect to={HOME} />;
   }
 
   if (firebaseAuth) {
-    return <p>FirebaseAuth</p>;
+    return <FirebaseAuth />;
   }
 
   return <EmailPassword />;

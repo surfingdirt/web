@@ -26,6 +26,7 @@ export class AppContextValueObject {
       baseUrl: '',
       dir: 'ltr',
       facebookAppId: '',
+      firebaseConfig: {},
       features: {},
       galleryAlbumId: '',
       graphql: '',

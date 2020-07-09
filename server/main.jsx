@@ -63,7 +63,14 @@ const loggedOutME = {
 
 const Main = (rootDir) => {
   const SSR = true;
-  const { baseUrl, galleryAlbumId, graphql, showErrors, tracing: tracingConfig } = config;
+  const {
+    baseUrl,
+    firebaseConfig,
+    galleryAlbumId,
+    graphql,
+    showErrors,
+    tracing: tracingConfig,
+  } = config;
   // Default error page is in English
   const ERROR_500_PAGES = {
     en: fs.readFileSync(`${rootDir}/src/pages/Page500/en.html`, 'utf8'),
@@ -126,6 +133,7 @@ const Main = (rootDir) => {
         baseUrl,
         dir,
         features,
+        firebaseConfig,
         galleryAlbumId,
         graphql,
         locale,
