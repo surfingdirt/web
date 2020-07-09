@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import React, { Component, Fragment } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
@@ -17,33 +17,18 @@ import PageContent from './pageContent';
 const { HOME } = routes;
 const { STANDARD } = cardTypes;
 
-class LogIn extends Component {
-  static contextType = AppContext;
+const Login = ({ t }) => {
+  const {
+    login: {
+      onSuccess: onLoginSuccess,
+      onFailure: onLoginFailure,
+      data: { accessToken },
+    },
+  } = useContext(AppContext);
 
-  static propTypes = {
-    t: PropTypes.func.isRequired,
-  };
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  constructor(props) {
-    super(props);
-
-    this.handleLogin = this.handleLogin.bind(this);
-
-    this.state = {
-      errorMessage: null,
-    };
-  }
-
-  async handleLogin({ username, userP }, mutate) {
-    const {
-      context: {
-        login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
-      },
-      props: { t },
-    } = this;
-
-    let errorMessage;
-
+  const handleLogin = async ({ username, userP }, mutate) => {
     try {
       const loginResponse = await mutate({
         variables: {
@@ -62,45 +47,30 @@ class LogIn extends Component {
       }
 
       onLoginSuccess(login);
-      errorMessage = null;
+      setErrorMessage(null);
     } catch (e) {
       onLoginFailure();
-      errorMessage = t('UserNotAuthorized');
+      setErrorMessage('UserNotAuthorized');
     }
+  };
 
-    this.setState({ errorMessage });
+  if (accessToken) {
+    return <Redirect to={HOME} />;
   }
 
-  render() {
-    const {
-      props: { t },
-      state: { errorMessage },
-      context: {
-        login: {
-          data: { accessToken },
-        },
-      },
-    } = this;
+  return (
+    <Card title={t('signIn')} type={STANDARD}>
+      <Mutation mutation={LOGIN}>
+        {(mutate) => (
+          <PageContent errorMessage={errorMessage} onSubmit={(data) => handleLogin(data, mutate)} />
+        )}
+      </Mutation>
+    </Card>
+  );
+};
 
-    if (accessToken) {
-      return <Redirect to={HOME} />;
-    }
+Login.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
-    return (
-      <Fragment>
-        <Card title={t('signIn')} type={STANDARD}>
-          <Mutation mutation={LOGIN}>
-            {(mutate) => (
-              <PageContent
-                errorMessage={errorMessage}
-                onSubmit={(data) => this.handleLogin(data, mutate)}
-              />
-            )}
-          </Mutation>
-        </Card>
-      </Fragment>
-    );
-  }
-}
-
-export default Translate(messages)(LogIn);
+export default Translate(messages)(Login);
