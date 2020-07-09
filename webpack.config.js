@@ -14,6 +14,8 @@ const buildConfig = require('./build.config.js');
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const devtool = mode === 'production' ? '' : 'eval-source-map';
 
+const srcDir = path.resolve(__dirname, './src');
+
 module.exports = {
   mode,
   devtool,
@@ -26,7 +28,21 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    alias: buildConfig.resolverAliases,
+    alias: {
+      Apollo: path.resolve(srcDir, 'apollo'),
+      Components: path.resolve(srcDir, 'components'),
+      Error: path.resolve(srcDir, 'error'),
+      Hocs: path.resolve(srcDir, 'hocs'),
+      Hooks: path.resolve(srcDir, 'hooks'),
+      Images: path.resolve(srcDir, 'images'),
+      Models: path.resolve(srcDir, 'models'),
+      Pages: path.resolve(srcDir, 'pages'),
+      Sections: path.resolve(srcDir, 'sections'),
+      Server: path.resolve(srcDir, 'server'),
+      Styles: path.resolve(srcDir, 'styles'),
+      Utils: path.resolve(srcDir, 'utils'),
+      '~': srcDir,
+    },
   },
   module: {
     rules: [
