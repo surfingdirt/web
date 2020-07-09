@@ -1,76 +1,21 @@
-/* eslint-disable import/prefer-default-export */
+import React, { useContext } from 'react';
 
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Mutation } from 'react-apollo';
-import { Redirect } from 'react-router';
-
-import LOGIN from 'Apollo/mutations/login.gql';
-import Card, { cardTypes } from 'Components/Widgets/Card';
-import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
-import routes from '~/routes';
 
-import messages from './messages';
-import PageContent from './pageContent';
+import EmailPassword from './EmailPassword';
 
-const { HOME } = routes;
-const { STANDARD } = cardTypes;
-
-const Login = ({ t }) => {
+const Login = () => {
   const {
-    login: {
-      onSuccess: onLoginSuccess,
-      onFailure: onLoginFailure,
-      data: { accessToken },
-    },
+    features: { firebaseAuth },
   } = useContext(AppContext);
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  console.log({ firebaseAuth });
 
-  const handleLogin = async ({ username, userP }, mutate) => {
-    try {
-      const loginResponse = await mutate({
-        variables: {
-          input: {
-            username,
-            userP,
-          },
-        },
-      });
-      const {
-        data: { login },
-      } = loginResponse;
-
-      if (!login.uid) {
-        throw new Error('Bad response');
-      }
-
-      onLoginSuccess(login);
-      setErrorMessage(null);
-    } catch (e) {
-      onLoginFailure();
-      setErrorMessage('UserNotAuthorized');
-    }
-  };
-
-  if (accessToken) {
-    return <Redirect to={HOME} />;
+  if (firebaseAuth) {
+    return <p>FirebaseAuth</p>;
   }
 
-  return (
-    <Card title={t('signIn')} type={STANDARD}>
-      <Mutation mutation={LOGIN}>
-        {(mutate) => (
-          <PageContent errorMessage={errorMessage} onSubmit={(data) => handleLogin(data, mutate)} />
-        )}
-      </Mutation>
-    </Card>
-  );
+  return <EmailPassword />;
 };
 
-Login.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default Translate(messages)(Login);
+export default Login;

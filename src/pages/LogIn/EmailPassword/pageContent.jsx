@@ -11,7 +11,7 @@ import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 import routes from '~/routes';
 
-import translations from './messages';
+import translations from '../messages';
 import styles from './styles.scss';
 
 const { LOGIN } = actions;
