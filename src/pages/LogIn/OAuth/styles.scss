@@ -1,0 +1,8 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/constants";
+@import "../../../styles/font-sizes";
+
+.errorMessage {
+  color: $form-error-color;
+}

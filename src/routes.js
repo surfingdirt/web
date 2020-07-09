@@ -13,7 +13,7 @@ const routes = {
   LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/signin',
-  LOGIN_SUCCESS: '/signin-success',
+  LOGIN_OAUTH: '/signin-oauth',
   NEW_PASSWORD_ACTIVATED: '/new-password-activated',
   OLD_FORUM: '/old-forum',
   PHOTO: '/photo/:id',
