@@ -8,12 +8,10 @@ import LOGIN from 'Apollo/mutations/login.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
-import routes from '~/routes';
 
 import messages from '../messages';
 import PageContent from './pageContent';
 
-const { HOME } = routes;
 const { STANDARD } = cardTypes;
 
 const EmailPassword = ({ t }) => {

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Button, { buttonTypes } from 'Components/Widgets/Button/index';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
-import Validation from 'Utils/validators';
+import { required } from 'Utils/validators';
 import { actionRoute } from 'Utils/links';
 import actions from '~/actions';
 import routes from '~/routes';
@@ -34,7 +34,7 @@ class SignInPageContent extends PureComponent {
       props: { errorMessage, onSubmit, t },
     } = this;
 
-    const requiredValidator = Validation.required(t('required'));
+    const requiredValidator = required(t('required'));
 
     return (
       <Form
