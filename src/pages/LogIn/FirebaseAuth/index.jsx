@@ -9,9 +9,9 @@ import routes from '~/routes';
 
 import messages from '../messages';
 
-const { LOGIN_SUCCESS } = routes;
-const AUTH_METHOD = 'redirect';
-const AUTH_DESTINATION_AFTER_LOGIN = LOGIN_SUCCESS;
+const { LOGIN_OAUTH } = routes;
+const AUTH_METHOD = 'popup';
+const AUTH_DESTINATION_AFTER_LOGIN = LOGIN_OAUTH;
 
 const FirebaseAuth = () => {
   const [ready, setReady] = useState(false);
