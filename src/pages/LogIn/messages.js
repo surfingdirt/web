@@ -24,6 +24,12 @@ const messages = (getText, getPlural) => (key) =>
       'Forgot your password?',
       'SignIn',
     ) /* Label for a link to generate a new password */,
+
+    signInPage: getText('Sign in') /* Title for the page where a user signs in */,
+    noUserFound: getText(
+      'An error occurred and we could not sign you in. Would you like to try again?',
+      'SignIn',
+    ) /* Message displayed when something went wrong. */,
   }[key]);
 
 export default messages;

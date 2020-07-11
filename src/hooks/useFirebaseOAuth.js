@@ -21,6 +21,9 @@ export const steps = {
   STEP_SIGN_IN_ERROR,
 };
 
+export const FACEBOOK = 'facebook';
+export const GOOGLE = 'google';
+
 const useFirebaseOAuth = (firebaseConfig) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -53,7 +56,9 @@ const useFirebaseOAuth = (firebaseConfig) => {
           // Perform login
           const { displayName, email, photoURL, providerId } = user.providerData[0];
           setUserPhoto(photoURL);
-          setProvider(providerId);
+          setProvider(
+            providerId === firebase.auth.FacebookAuthProvider.PROVIDER_ID ? FACEBOOK : GOOGLE,
+          );
           setStep(STEP_SIGN_IN_IN_PROGRESS);
 
           try {
