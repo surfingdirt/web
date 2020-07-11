@@ -15,7 +15,7 @@ import DeleteItemModal from 'Components/Widgets/DeleteItemModal';
 import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 
 import Translate from 'Hocs/Translate';
-import useReactions from 'Hooks/Reactions';
+import useReactions from 'Hooks/useReactions';
 
 import { renderDate } from 'Utils/misc';
 import { tones } from 'Utils/comments';
