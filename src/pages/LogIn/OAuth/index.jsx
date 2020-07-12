@@ -9,7 +9,9 @@ import AppContext from '~/contexts';
 import routes from '~/routes';
 
 import messages from '../messages';
+
 import OAuthAnimation from './Animation';
+import styles from './styles.scss';
 
 const { LOGIN } = routes;
 const { ACTION } = buttonTypes;
@@ -46,7 +48,12 @@ const LoginOAuth = ({ t }) => {
 
   let content;
   if (animationSteps.includes(step)) {
-    content = <OAuthAnimation provider={provider} userPhoto={userPhoto} step={step} />;
+    content = (
+      <div className={styles.animationWrapper}>
+        <OAuthAnimation provider={provider} userPhoto={userPhoto} step={step} />
+        <p>{stepMessages[step]}</p>
+      </div>
+    );
   } else if (step === STEP_OAUTH_NO_USER) {
     content = (
       <>
