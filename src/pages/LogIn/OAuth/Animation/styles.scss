@@ -7,23 +7,6 @@ $distance: 15rem;
 $photoSize: 3rem;
 $pathLength: $distance - $photoSize;
 
-@keyframes start {
-  from { transform: translate(0.0 * $pathLength, 0); }
-  to { transform: translate(.2 * $pathLength, -$margin-medium-1); }
-}
-@keyframes fetching {
-  from { transform: translate(.2 * $pathLength, -$margin-medium-1); }
-  to { transform: translate(.4 * $pathLength, -$margin-medium-1); }
-}
-@keyframes signingIn {
-  from { transform: translate(2/3 * $pathLength, -$margin-medium-1); }
-  to { transform: translate(.9 * $pathLength, 0); }
-}
-@keyframes done {
-  from { transform: translate(.9 * $pathLength, 0); }
-  to { transform: translate(1.0 * $pathLength, 0); }
-}
-
 .wrapper {
   margin: 0 auto;
   padding: $margin-big;
@@ -52,26 +35,29 @@ $pathLength: $distance - $photoSize;
 
   .userBoxWrapper {
     width: $distance;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
-    //transition: transform 500ms ease-in-out;
-    //transform: translateX(0);
+    transition: transform 500ms ease-in-out;
+    transform: translateX(0);
 
     &.start {
-      //transform: translate(0.0 * $pathLength, 0);
-      animation-name: start;
+      transform: translate(0/6 * $pathLength, 0);
     }
     &.fetching {
-      //transform: translate(1/3 * $pathLength, -$margin-medium-1);
-      animation-name: fetching;
+      transform: translate(1/6 * $pathLength, -$margin-medium-1);
+    }
+    &.checkingEmail {
+      transform: translate(2/6 * $pathLength, -$margin-medium-1);
+    }
+    &.enteringUsername {
+      transform: translate(3/6 * $pathLength, -$margin-medium-1);
+    }
+    &.creatingProfile {
+      transform: translate(4/6 * $pathLength, -$margin-medium-1);
     }
     &.signingIn {
-      //transform: translate(2/3 * $pathLength, -$margin-medium-1);
-      animation-name: signingIn;
+      transform: translate(5/6 * $pathLength, -$margin-medium-1);
     }
     &.done {
-      //transform: translate(1.0 * $pathLength, 0);
-      animation-name: done;
+      transform: translate(6/6 * $pathLength, 0);
     }
 
     .userBox {
