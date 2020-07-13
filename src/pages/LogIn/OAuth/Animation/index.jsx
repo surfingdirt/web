@@ -37,17 +37,24 @@ const stepClasses = {
   [STEP_SIGN_IN_SUCCESS]: styles.done,
 };
 
-const OAuthAnimation = ({ provider, step, userPhoto }) => {
-  const userStyle = userPhoto ? { backgroundImage: `url(${userPhoto})` } : null;
-
+const OAuthAnimation = ({ displayName, provider, step, userPhoto }) => {
   return (
     <div className={styles.wrapper}>
       <div className={classnames(styles.box, styles.providerBox)}>
-        {provider ? providerIcons[provider] : <InlineSpinner negative />}
+        {provider ? providerIcons[provider] : <InlineSpinner negative={false} />}
       </div>
       <div className={classnames(styles.userBoxWrapper, stepClasses[step])}>
-        <div className={classnames(styles.box, styles.userBox)} style={userStyle}>
-          {userPhoto ? null : <InlineSpinner />}
+        <div className={classnames(styles.box, styles.userBox)}>
+          {userPhoto ? (
+            <img
+              className={styles.userPhoto}
+              src={userPhoto}
+              alt={displayName}
+              referrerpolicy="no-referrer"
+            />
+          ) : (
+            <InlineSpinner />
+          )}
         </div>
       </div>
       <div className={classnames(styles.box, styles.siteBox)}>
@@ -58,12 +65,14 @@ const OAuthAnimation = ({ provider, step, userPhoto }) => {
 };
 
 OAuthAnimation.propTypes = {
+  displayName: PropTypes.string,
   provider: PropTypes.string,
   // step: PropTypes.oneOf([PropTypes.number, PropTypes.string]).isRequired,
   userPhoto: PropTypes.string,
 };
 
 OAuthAnimation.defaultProps = {
+  displayName: null,
   provider: null,
   userPhoto: null,
 };

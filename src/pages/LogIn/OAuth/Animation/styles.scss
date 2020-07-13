@@ -25,7 +25,7 @@ $pathLength: $distance - $photoSize;
   }
 
   .providerBox {
-    background: #fff;
+    background: $oauth-animation-provider-bg-color;
     border: none;
   }
 
@@ -65,6 +65,10 @@ $pathLength: $distance - $photoSize;
       height: $photoSize;
       background-color: $oauth-animation-user-bg-color;
       background-size: contain;
+
+      .userPhoto {
+        object-fit: contain;
+      }
     }
   }
 }
