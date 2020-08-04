@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import { ApolloConsumer } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/react-hooks';
 
+import CREATE_OAUTH_USER from 'Apollo/mutations/createUserOAuth.gql';
+import EMAIL_EXISTS from 'Apollo/queries/emailExists.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Card, { cardTypes } from 'Components/Widgets/Card';
+import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import Translate from 'Hocs/Translate';
 import useFirebaseOAuth from 'Hooks/useFirebaseOAuth';
 import AppContext from '~/contexts';
@@ -79,8 +82,10 @@ const getSignInPromise = () =>
   });
 
 const LoginOAuth = ({ t, location: { search } }) => {
+  const [emailExistsQuery, { data: emailData, loading: emailCheckInProgress }] = useLazyQuery(
+    EMAIL_EXISTS,
+  );
   const [user, setUser] = useState(null);
-  const [emailCheckInProgress, setEmailCheckInProgress] = useState(false);
   const [signInInProgress, setSignInInProgress] = useState(false);
   const [step, _setStep] = useState(STEP_START);
   const { firebaseConfig } = useContext(AppContext);
@@ -115,20 +120,20 @@ const LoginOAuth = ({ t, location: { search } }) => {
       return;
     }
 
-    if (step === STEP_START && !token) {
+    if (step === STEP_START) {
       setStep(STEP_OAUTH_FETCHING_TOKEN);
     } else if (step === STEP_OAUTH_FETCHING_TOKEN && token) {
       setStep(STEP_OAUTH_CHECKING_EMAIL);
-    } else if (step === STEP_OAUTH_CHECKING_EMAIL && !emailCheckInProgress) {
-      setEmailCheckInProgress(true);
-      getCheckEmailExistsPromise().then((result) => {
-        setEmailCheckInProgress(false);
-        if (result.emailExists) {
+    } else if (step === STEP_OAUTH_CHECKING_EMAIL && email) {
+      if (emailData) {
+        if (emailData.emailExists) {
           setStep(STEP_SIGN_IN_IN_PROGRESS);
         } else {
           setStep(STEP_ENTERING_USERNAME);
         }
-      });
+      } else if (!emailCheckInProgress) {
+        emailExistsQuery({ variables: { email } });
+      }
     } else if (step === STEP_SIGN_IN_IN_PROGRESS && !signInInProgress) {
       setSignInInProgress(true);
       getSignInPromise().then((result) => {
@@ -139,7 +144,7 @@ const LoginOAuth = ({ t, location: { search } }) => {
         }
       });
     }
-  }, [oAuthError, step, token]);
+  }, [oAuthError, step, token, email, emailData, emailCheckInProgress]);
 
   let content;
   if (animationSteps.includes(step)) {
@@ -148,16 +153,11 @@ const LoginOAuth = ({ t, location: { search } }) => {
         <OAuthAnimation provider={provider} userPhoto={userPhoto} step={step} />
         <p>{stepMessages[step]}</p>
         {step === STEP_ENTERING_USERNAME && (
-          <ApolloConsumer>
-            {(client) => (
-              <OAuthRegistrationForm
-                initialErrors={initialErrors}
-                initialValues={initialValues}
-                onSubmit={onFormSubmit}
-                runQuery={client.query}
-              />
-            )}
-          </ApolloConsumer>
+          <OAuthRegistrationForm
+            initialErrors={initialErrors}
+            initialValues={initialValues}
+            onSubmit={onFormSubmit}
+          />
         )}
       </div>
     );

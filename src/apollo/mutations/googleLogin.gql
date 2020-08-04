@@ -1,8 +1,0 @@
-mutation login($googleTokenId: String!) {
-    login(input: { googleTokenId: $googleTokenId }) {
-        id
-        accessToken
-        tokenType
-        expiresIn
-    }
-}

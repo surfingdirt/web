@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
+import { useLazyQuery } from '@apollo/react-hooks';
 
-import EMAIL_EXISTS from 'Apollo/queries/emailExists.gql';
-import USERNAME_EXISTS from 'Apollo/queries/usernameExists.gql';
+import USERNAME_EXISTS from 'Apollo/queries/usernameExists3.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button/index';
 import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import InputField from 'Components/Widgets/Form/InputField';
 import Translate from 'Hocs/Translate';
-import { isValidEmail, isPasswordLongEnough } from 'Utils/validators';
 import AppContext from '~/contexts';
 
 import messages from './messages';
@@ -16,81 +15,57 @@ import styles from './styles.scss';
 
 const { ACTION } = buttonTypes;
 
-const checkedUsernames = {};
-const checkedEmails = {};
+const OAuthRegistrationForm = ({ initialErrors: _initialErrors, initialValues, onSubmit, t }) => {
+  const existsMsg = <FormAPIMessage message="exists" className={styles.apiMessage} />;
+  const requiredMsg = <FormAPIMessage message="required" className={styles.apiMessage} />;
 
-const OAuthRegistrationForm = ({ initialErrors, initialValues, onSubmit, runQuery, t }) => {
   const { locale: currentLocale } = useContext(AppContext);
+  const [usernameExistsQuery, { data, loading }] = useLazyQuery(USERNAME_EXISTS);
+  const [checkedUsernames, setCheckedUsernames] = useState({});
+
+  const initialErrors = { ..._initialErrors };
+
+  const usernameData = data && data.usernameExists;
+  if (usernameData) {
+    if (!Object.keys(checkedUsernames).includes(usernameData.username)) {
+      setCheckedUsernames(
+        Object.assign({}, checkedUsernames, {
+          [usernameData.username]: usernameData.exists,
+        }),
+      );
+    }
+  }
 
   const validate = ({ username, timezone, locale }) => {
-    return new Promise((resolveValidation) => {
-      const required = <FormAPIMessage message="required" className={styles.apiMessage} />;
-      const errors = {};
-      const promises = [];
+    const errors = {};
+    const hasUsername = Object.keys(checkedUsernames).includes(username);
 
-      if (!username) {
-        errors.username = required;
-      } else if (!Object.keys(checkedUsernames).includes(username)) {
-        promises.push(
-          new Promise((resolveUsername, reject) => {
-            // clearTimeout(usernameTimeout);
-            // usernameTimeout = setTimeout(() => {
-            runQuery({
-              query: USERNAME_EXISTS,
-              variables: { username },
-              fetchPolicy: 'network-only',
-            })
-              .then(({ data }) => {
-                const exists = !!data.usernameExists;
-                checkedUsernames[username] = exists;
-                if (exists) {
-                  errors.username = (
-                    <FormAPIMessage message="exists" className={styles.apiMessage} />
-                  );
-                }
-                resolveUsername(exists);
-              })
-              .catch((error) => {
-                console.error('resolveUsername error', error);
-                reject(error);
-              });
-            // }, DEBOUNCE_TIMEOUT);
-          }),
-        );
-      } else if (checkedUsernames[username]) {
-        errors.username = <FormAPIMessage message="exists" className={styles.apiMessage} />;
-      }
-
-      if (!timezone) {
-        errors.timezone = required;
-      }
-
-      if (!locale) {
-        errors.locale = required;
-      }
-      Promise.all(promises)
-        .then(() => {
-          resolveValidation(errors);
-        })
-        .catch((e) => {
-          console.error('Error while validating', e);
-        });
-    });
-  };
-
-  const combineAndTranslateErrors = (name) => {
-    const errors = initialErrors[name];
-    if (!errors) {
-      return null;
+    if (!username) {
+      errors.username = requiredMsg;
+    } else if (!loading && !hasUsername) {
+      // Need to check this new username
+      usernameExistsQuery({ variables: { username }, fetchPolicy: 'network-only' });
+    } else if (checkedUsernames[username]) {
+      errors.username = existsMsg;
     }
 
-    return (
-      <>
-        {errors.map((label, index) => (
-          <FormAPIMessage key={index} message={label} className={styles.apiMessage} />
-        ))}
-      </>
-    );
+    if (!timezone) {
+      errors.timezone = requiredMsg;
+    }
+
+    if (!locale) {
+      errors.locale = requiredMsg;
+    }
+
+    return errors;
+  };
+
+  const getInitialError = (name) => {
+    const error = initialErrors[name];
+    if (!error) {
+      return null;
+    }
+    return <FormAPIMessage message={error} className={styles.apiMessage} />;
   };
 
   return (
@@ -121,7 +96,7 @@ const OAuthRegistrationForm = ({ initialErrors, initialValues, onSubmit, runQuer
                   component={InputField}
                   label={t('username')}
                   placeholder={t('inputPlaceholder')}
-                  initialError={combineAndTranslateErrors('username')}
+                  initialError={getInitialError('username')}
                   required
                 />
               </div>
@@ -133,7 +108,7 @@ const OAuthRegistrationForm = ({ initialErrors, initialValues, onSubmit, runQuer
                   type="timezone"
                   label={t('timezone')}
                   unsetLabel={t('pickATimeZone')}
-                  initialError={combineAndTranslateErrors('timezone')}
+                  initialError={getInitialError('timezone')}
                   required
                 />
               </div>
@@ -145,7 +120,7 @@ const OAuthRegistrationForm = ({ initialErrors, initialValues, onSubmit, runQuer
                   type="locale"
                   label={t('locale')}
                   unsetLabel={t('pickALocale')}
-                  initialError={combineAndTranslateErrors('locale')}
+                  initialError={getInitialError('locale')}
                   required
                 />
               </div>
@@ -171,7 +146,6 @@ OAuthRegistrationForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   initialErrors: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  runQuery: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 

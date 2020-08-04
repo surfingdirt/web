@@ -1,0 +1,17 @@
+mutation createUserOAuth($input: UserCreationOAuthInput!) {
+    createUserOAuth(input: $input) {
+        user {
+            locale
+            status
+            timezone
+            userId
+            username
+        }
+        token {
+            uid
+            accessToken
+            tokenType
+            expires
+        }
+    }
+}

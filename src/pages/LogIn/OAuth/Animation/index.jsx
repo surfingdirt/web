@@ -50,7 +50,7 @@ const OAuthAnimation = ({ displayName, provider, step, userPhoto }) => {
               className={styles.userPhoto}
               src={userPhoto}
               alt={displayName}
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             />
           ) : (
             <InlineSpinner />

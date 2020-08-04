@@ -1,3 +1,0 @@
-query($username: String!) {
-  usernameExists(username: $username)
-}
