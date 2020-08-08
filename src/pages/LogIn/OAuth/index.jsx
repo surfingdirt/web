@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery, useMutation } from '@apollo/react-hooks';
 
-import CREATE_OAUTH_USER from 'Apollo/mutations/createUserOAuth.gql';
+import CREATE_USER_OAUTH from 'Apollo/mutations/createUserOAuth.gql';
+import LOGIN_OAUTH from 'Apollo/mutations/loginOAuth.gql';
 import EMAIL_EXISTS from 'Apollo/queries/emailExists.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Card, { cardTypes } from 'Components/Widgets/Card';
-import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import Translate from 'Hocs/Translate';
 import useFirebaseOAuth from 'Hooks/useFirebaseOAuth';
 import AppContext from '~/contexts';
@@ -61,52 +61,33 @@ const stepMessages = {
   [STEP_SIGN_IN_ERROR]: 'Sign-in error',
 };
 
-const getCheckEmailExistsPromise = () =>
-  new Promise((resolve) => {
-    console.log('Pretending to check email exists...');
-    setTimeout(() => {
-      const emailExists = false;
-      console.log('Returning email exists:', emailExists);
-      resolve({ emailExists });
-    }, 2000);
-  });
-
-const getSignInPromise = () =>
-  new Promise((resolve) => {
-    console.log('Pretending to sign in...');
-    setTimeout(() => {
-      const result = { jwt: 'wazap' };
-      console.log('Returning sign in:', result);
-      resolve(result);
-    }, 2000);
-  });
-
 const LoginOAuth = ({ t, location: { search } }) => {
   const [emailExistsQuery, { data: emailData, loading: emailCheckInProgress }] = useLazyQuery(
     EMAIL_EXISTS,
   );
-  const [user, setUser] = useState(null);
-  const [signInInProgress, setSignInInProgress] = useState(false);
-  const [step, _setStep] = useState(STEP_START);
-  const { firebaseConfig } = useContext(AppContext);
+  const [createUserOAuth, { data: createUserOAuthData, error: createUserOAuthError }] = useMutation(
+    CREATE_USER_OAUTH,
+  );
+  const [loginOAuth, { data: loginOAuthData, error: loginOAuthError }] = useMutation(LOGIN_OAUTH);
+  const [step, setStep] = useState(STEP_START);
+  const {
+    firebaseConfig,
+    login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
+  } = useContext(AppContext);
   const { displayName, email, oAuthError, provider, token, userPhoto } = useFirebaseOAuth(
     firebaseConfig,
   );
 
-  const setStep = (s) => {
-    console.log('settingStep', s);
-    _setStep(s);
-  };
-
-  const onFormSubmit = (data) => {
+  const onFormSubmit = ({ input: { locale, timezone, username } }) => {
     setStep(STEP_CREATING_PROFILE);
-    console.log('Pretending to create user with data', { ...data, email, token, userPhoto });
-    setTimeout(() => {
-      const result = { user: { toto: 1 } };
-      console.log('Returning result:', result);
-      setUser(result.user);
-      setStep(STEP_SIGN_IN_IN_PROGRESS);
-    }, 2000);
+    const input = {
+      locale,
+      photoUrl: userPhoto,
+      timezone,
+      token,
+      username,
+    };
+    createUserOAuth({ variables: { input } });
   };
 
   const queryArgs = qs.parse(search.substr(1));
@@ -115,6 +96,11 @@ const LoginOAuth = ({ t, location: { search } }) => {
   initialValues.username = displayName;
 
   useEffect(() => {
+    if (createUserOAuthError || loginOAuthError) {
+      onLoginFailure();
+      setStep(oAuthError);
+      return;
+    }
     if (oAuthError) {
       setStep(oAuthError);
       return;
@@ -127,6 +113,7 @@ const LoginOAuth = ({ t, location: { search } }) => {
     } else if (step === STEP_OAUTH_CHECKING_EMAIL && email) {
       if (emailData) {
         if (emailData.emailExists) {
+          loginOAuth({ variables: { input: { token } } });
           setStep(STEP_SIGN_IN_IN_PROGRESS);
         } else {
           setStep(STEP_ENTERING_USERNAME);
@@ -134,17 +121,25 @@ const LoginOAuth = ({ t, location: { search } }) => {
       } else if (!emailCheckInProgress) {
         emailExistsQuery({ variables: { email } });
       }
-    } else if (step === STEP_SIGN_IN_IN_PROGRESS && !signInInProgress) {
-      setSignInInProgress(true);
-      getSignInPromise().then((result) => {
-        console.log({ result });
-        setSignInInProgress(false);
-        if (result.jwt) {
-          setStep(STEP_SIGN_IN_SUCCESS);
-        }
-      });
+    } else if (step === STEP_SIGN_IN_IN_PROGRESS && loginOAuthData) {
+      onLoginSuccess(loginOAuthData.loginOAuth);
+      setStep(STEP_SIGN_IN_SUCCESS);
+    } else if (step === STEP_CREATING_PROFILE && createUserOAuthData) {
+      setStep(STEP_SIGN_IN_SUCCESS);
+      onLoginSuccess(createUserOAuthData.createUserOAuth.token);
     }
-  }, [oAuthError, step, token, email, emailData, emailCheckInProgress]);
+  }, [
+    oAuthError,
+    step,
+    token,
+    email,
+    emailData,
+    emailCheckInProgress,
+    createUserOAuthData,
+    createUserOAuthError,
+    loginOAuthData,
+    loginOAuthError,
+  ]);
 
   let content;
   if (animationSteps.includes(step)) {
