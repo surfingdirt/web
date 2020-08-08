@@ -72,7 +72,7 @@ const LoginOAuth = ({ t, location: { search } }) => {
   const [step, setStep] = useState(STEP_START);
   const {
     firebaseConfig,
-    login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
+    login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure, saveOrigin },
   } = useContext(AppContext);
   const { displayName, email, oAuthError, provider, token, userPhoto } = useFirebaseOAuth(
     firebaseConfig,

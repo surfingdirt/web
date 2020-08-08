@@ -27,8 +27,6 @@ const FirebaseAuth = () => {
     signInSuccessUrl: AUTH_DESTINATION_AFTER_LOGIN,
   };
 
-  console.log({ uiConfig });
-
   useEffect(() => {
     firebase.initializeApp(firebaseConfig);
     setReady(true);

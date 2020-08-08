@@ -22,7 +22,12 @@ const Login = () => {
   }
 
   if (firebaseAuth) {
-    return <FirebaseAuth />;
+    return (
+      <>
+        <FirebaseAuth />
+        <EmailPassword />
+      </>
+    );
   }
 
   return <EmailPassword />;
