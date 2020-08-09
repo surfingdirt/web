@@ -34,8 +34,6 @@ const {
   STEP_SIGN_IN_SUCCESS,
   STEP_OAUTH_NO_DATA_ERROR,
   STEP_OAUTH_NO_USER,
-  STEP_EXISTING_USERNAME_ERROR,
-  STEP_PROFILE_CREATION_ERROR,
   STEP_SIGN_IN_ERROR,
 } = steps;
 
@@ -50,15 +48,15 @@ const animationSteps = [
 ];
 
 const stepMessages = {
-  [STEP_START]: 'Start',
-  [STEP_OAUTH_FETCHING_TOKEN]: 'Fetching token',
-  [STEP_OAUTH_CHECKING_EMAIL]: 'Checking email',
-  [STEP_ENTERING_USERNAME]: 'Waiting for profile info',
-  [STEP_CREATING_PROFILE]: 'Creating profile',
-  [STEP_SIGN_IN_IN_PROGRESS]: 'Signing you in',
-  [STEP_SIGN_IN_SUCCESS]: 'Signed you in!',
-  [STEP_OAUTH_NO_DATA_ERROR]: 'No data: error message',
-  [STEP_SIGN_IN_ERROR]: 'Sign-in error',
+  [STEP_START]: 'oAuthStart',
+  [STEP_OAUTH_FETCHING_TOKEN]: 'oAuthFetchingToken',
+  [STEP_OAUTH_CHECKING_EMAIL]: 'oAuthCheckingEmail',
+  [STEP_ENTERING_USERNAME]: 'oAuthEnteringUsername',
+  [STEP_CREATING_PROFILE]: 'oAuthCreatingProfile',
+  [STEP_SIGN_IN_IN_PROGRESS]: 'oAuthSigningYouIn',
+  [STEP_SIGN_IN_SUCCESS]: 'oAuthSignInSuccess',
+  [STEP_OAUTH_NO_DATA_ERROR]: 'oAuthNoDataError',
+  [STEP_SIGN_IN_ERROR]: 'oAuthSignInError',
 };
 
 const LoginOAuth = ({ t, location: { search } }) => {
@@ -146,7 +144,7 @@ const LoginOAuth = ({ t, location: { search } }) => {
     content = (
       <div className={styles.animationWrapper}>
         <OAuthAnimation provider={provider} userPhoto={userPhoto} step={step} />
-        <p>{stepMessages[step]}</p>
+        <p>{t(stepMessages[step])}</p>
         {step === STEP_ENTERING_USERNAME && (
           <OAuthRegistrationForm
             initialErrors={initialErrors}

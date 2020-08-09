@@ -38,6 +38,43 @@ const messages = (getText, getPlural) => (key) =>
       'An error occurred and we could not sign you in. Would you like to try again?',
       'SignIn',
     ) /* Message displayed when something went wrong. */,
+
+    oAuthStart: getText(
+      'Starting',
+      'SignIn',
+    ) /* Message displayed when the user starts logging in */,
+    oAuthFetchingToken: getText(
+      'Authorizing...',
+      'SignIn',
+    ) /* Message displayed when the login request is ongoing */,
+    oAuthCheckingEmail: getText(
+      'Verifying email...',
+      'SignIn',
+    ) /* Message displayed when the user's email is being checked */,
+    oAuthEnteringUsername: getText(
+      'Waiting for additional info',
+      'SignIn',
+    ) /* Message displayed when the user is meant to enter missing information */,
+    oAuthCreatingProfile: getText(
+      'Creating account...',
+      'SignIn',
+    ) /* Message displayed when the user's account is being created */,
+    oAuthSigningYouIn: getText(
+      'Signing you in...',
+      'SignIn',
+    ) /* Message displayed when the user is being logged in */,
+    oAuthSignInSuccess: getText(
+      'Success!',
+      'SignIn',
+    ) /* Message displayed when the user was successfully logged in */,
+    oAuthNoDataError: getText(
+      'No data could be retrieved',
+      'SignIn',
+    ) /* Message displayed when no data could be retrieved from Google or Facebook */,
+    oAuthSignInError: getText(
+      'An error occurred',
+      'SignIn',
+    ) /* Message displayed when a sign-in error occured */,
   }[key]);
 
 export default messages;
