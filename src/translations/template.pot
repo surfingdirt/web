@@ -93,6 +93,11 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
+#. Label for a user reaction icon: cool 😎
+#: src/components/Reactions/messages.js:9
+msgid "Cool"
+msgstr ""
+
 #. Error message showed when a user entered a video address that could not be understood
 #: src/components/Video/UploadForm/messages.js:9
 msgid "Could not understand this address"
@@ -177,6 +182,11 @@ msgstr ""
 msgid "File"
 msgstr ""
 
+#. Label for a user reaction icon: fire 🔥
+#: src/components/Reactions/messages.js:10
+msgid "Fire"
+msgstr ""
+
 #. Label for a link to a media's dedicated page
 #: src/components/Media/MediaMetadata/messages.js:3
 msgid "Full page"
@@ -195,6 +205,16 @@ msgstr ""
 #. Label of a button to display items as a grid
 #: src/components/Album/AlbumViewToggle/messages.js:4
 msgid "Grid"
+msgstr ""
+
+#. Label for a user reaction icon: angry 😡
+#: src/components/Reactions/messages.js:8
+msgid "Grrr"
+msgstr ""
+
+#. Label for a user reaction icon: laughing 🤣
+#: src/components/Reactions/messages.js:14
+msgid "Haha"
 msgstr ""
 
 #. Choice for an album visibility setting
@@ -231,6 +251,13 @@ msgstr ""
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:9
 msgid "Invalid image"
+msgstr ""
+
+#. Label for a button to 'like' something
+#. Label for a user reaction icon: like 👍
+#: src/components/Reactions/messages.js:13
+#: src/components/Reactions/messages.js:5
+msgid "Like"
 msgstr ""
 
 #. Label of a button to display items as a list
@@ -287,6 +314,11 @@ msgstr ""
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:34
 msgid "Other people can post to your public albums"
+msgstr ""
+
+#. Label for a user reaction icon: injured 🤕
+#: src/components/Reactions/messages.js:11
+msgid "Ouch"
 msgstr ""
 
 #. Label of a form field for the user's password
@@ -364,6 +396,13 @@ msgstr ""
 msgid "Public"
 msgstr ""
 
+#. Label for a list of user reactions
+#. Indicates the number of reactions
+#: src/components/Reactions/messages.js:3
+#: src/components/Reactions/messages.js:6
+msgid "Reactions"
+msgstr ""
+
 #. Label for a link to the registration page, or label for a button to actually register
 #: src/components/Widgets/NavigationProfile/messages.js:11
 msgid "Register"
@@ -382,15 +421,22 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+#. Label for a user reaction icon: sad 😢
+#: src/components/Reactions/messages.js:15
+msgid "Sad"
+msgstr ""
+
 #. Label for a link to the user's settings page
 #: src/components/Widgets/NavigationProfile/messages.js:14
 msgid "Settings"
 msgstr ""
 
 #. Label for a link to the signIn page, or label for a button to actually signIn
+#. Title for the page where a user signs in
 #: src/components/Widgets/NavigationProfile/messages.js:7
 #: src/pages/ConfirmEmail/messages.js:19
 #: src/pages/LogIn/messages.js:19
+#: src/pages/LogIn/messages.js:36
 #: src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
 msgid "Sign in"
@@ -419,6 +465,11 @@ msgstr ""
 #: src/components/Video/EditForm/messages.js:11
 #: src/components/Video/UploadForm/messages.js:18
 msgid "Title"
+msgstr ""
+
+#. Indicates how many users reacted to something
+#: src/components/Reactions/messages.js:4
+msgid "Total reactions"
 msgstr ""
 
 #. Label for a button to translate a message
@@ -534,6 +585,11 @@ msgstr ""
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:27
 msgid "We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo and DailyMotion videos"
+msgstr ""
+
+#. Label for a user reaction icon: impressed 😮
+#: src/components/Reactions/messages.js:12
+msgid "Wow"
 msgstr ""
 
 #. Label for a button the user can click to confirm they want to delete an item
@@ -656,7 +712,6 @@ msgstr ""
 
 #. Label for a window containing a quick preview of a media page
 #: src/components/Media/Items/Details/messages.js:3
-#: src/components/Media/Items/ThumbOnly/messages.js:3
 msgctxt "AlbumGrid"
 msgid "Media preview"
 msgstr ""
@@ -732,6 +787,7 @@ msgstr ""
 #: src/components/Comment/EditForm/messages.js:4
 #: src/components/Comment/Form/messages.js:4
 #: src/components/Feed/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:7
 msgctxt "Comments"
 msgid "Reply"
 msgstr ""
@@ -1295,6 +1351,7 @@ msgid "You have not entered an introduction yet. Click the button to let other r
 msgstr ""
 
 #. Label for a form field to type an email
+#: src/pages/User/OAuthRegistration/messages.js:3
 #: src/pages/User/Registration/messages.js:3
 #: src/pages/User/Settings/messages.js:3
 msgctxt "Registration"
@@ -1302,34 +1359,51 @@ msgid "Email"
 msgstr ""
 
 #. Paragraph explaining how to register
-#: src/pages/User/Registration/messages.js:4
+#: src/pages/User/OAuthRegistration/messages.js:4
 msgctxt "Registration"
 msgid "If you'd like to join us, enter your details below to create an account!"
 msgstr ""
 
+#. Paragraph explaining how to register
+#: src/pages/User/Registration/messages.js:4
+msgctxt "Registration"
+msgid "If you'd like to join us, you can either go through Google or Facebook:"
+msgstr ""
+
 #. Label for a list of countries and languages the user can choose from
-#: src/pages/User/Registration/messages.js:8
+#: src/pages/User/OAuthRegistration/messages.js:8
+#: src/pages/User/Registration/messages.js:12
 #: src/pages/User/Settings/messages.js:9
 msgctxt "Registration"
 msgid "Language"
 msgstr ""
 
+#. Paragraph explaining how to register
+#: src/pages/User/Registration/messages.js:8
+msgctxt "Registration"
+msgid "Or you can enter your details below to create an account!"
+msgstr ""
+
 #. Label for a form field to type a password
-#: src/pages/User/Registration/messages.js:12
+#: src/pages/User/OAuthRegistration/messages.js:12
+#: src/pages/User/Registration/messages.js:16
 msgctxt "Registration"
 msgid "Password"
 msgstr ""
 
 #. Label for a form field to type a password confirmation
-#: src/pages/User/Registration/messages.js:21
+#: src/pages/User/OAuthRegistration/messages.js:21
+#: src/pages/User/Registration/messages.js:25
 msgctxt "Registration"
 msgid "Password confirmation"
 msgstr ""
 
 #. Help message telling the user they need to choose a timezone
 #. Help message telling the user they need to choose a language
-#: src/pages/User/Registration/messages.js:25
+#: src/pages/User/OAuthRegistration/messages.js:25
+#: src/pages/User/OAuthRegistration/messages.js:29
 #: src/pages/User/Registration/messages.js:29
+#: src/pages/User/Registration/messages.js:33
 #: src/pages/User/Settings/messages.js:29
 #: src/pages/User/Settings/messages.js:33
 msgctxt "Registration"
@@ -1337,44 +1411,51 @@ msgid "Please choose one"
 msgstr ""
 
 #. Label for a button to submit the registration form
-#: src/pages/User/Registration/messages.js:33
+#: src/pages/User/OAuthRegistration/messages.js:33
+#: src/pages/User/Registration/messages.js:37
 msgctxt "Registration"
 msgid "Register"
 msgstr ""
 
 #. Title of the page to create an account
-#: src/pages/User/Registration/messages.js:37
+#: src/pages/User/OAuthRegistration/messages.js:37
+#: src/pages/User/Registration/messages.js:41
 msgctxt "Registration"
 msgid "Registration"
 msgstr ""
 
 #. Short message displayed after a user created an account to tell them it won\'t be long anymore.
-#: src/pages/User/Registration/messages.js:13
+#: src/pages/User/OAuthRegistration/messages.js:13
+#: src/pages/User/Registration/messages.js:17
 msgctxt "Registration"
 msgid "See you in a minute!"
 msgstr ""
 
 #. Label for a list of timezones the user can choose from
-#: src/pages/User/Registration/messages.js:41
+#: src/pages/User/OAuthRegistration/messages.js:41
+#: src/pages/User/Registration/messages.js:45
 #: src/pages/User/Settings/messages.js:48
 msgctxt "Registration"
 msgid "Timezone"
 msgstr ""
 
 #. Label for a form field to type a username
-#: src/pages/User/Registration/messages.js:45
+#: src/pages/User/OAuthRegistration/messages.js:45
+#: src/pages/User/Registration/messages.js:49
 msgctxt "Registration"
 msgid "Username"
 msgstr ""
 
 #. Message displayed after a user succeeded in creating a new account
-#: src/pages/User/Registration/messages.js:17
+#: src/pages/User/OAuthRegistration/messages.js:17
+#: src/pages/User/Registration/messages.js:21
 msgctxt "Registration"
 msgid "We just sent you an email, please open it and click the link in order to confirm your account! Until then, you will not be able to log in."
 msgstr ""
 
 #. Welcoming message, includes a new user's username
-#: src/pages/User/Registration/messages.js:46
+#: src/pages/User/OAuthRegistration/messages.js:46
+#: src/pages/User/Registration/messages.js:50
 msgctxt "Registration"
 msgid "Welcome, %s!"
 msgstr ""
@@ -1446,8 +1527,32 @@ msgctxt "Settings"
 msgid "Update your password"
 msgstr ""
 
+#. Message displayed when a sign-in error occured
+#: src/pages/LogIn/messages.js:74
+msgctxt "SignIn"
+msgid "An error occurred"
+msgstr ""
+
+#. Message displayed when something went wrong.
+#: src/pages/LogIn/messages.js:37
+msgctxt "SignIn"
+msgid "An error occurred and we could not sign you in. Would you like to try again?"
+msgstr ""
+
+#. Message displayed when the login request is ongoing
+#: src/pages/LogIn/messages.js:46
+msgctxt "SignIn"
+msgid "Authorizing..."
+msgstr ""
+
+#. Message displayed when the user's account is being created
+#: src/pages/LogIn/messages.js:58
+msgctxt "SignIn"
+msgid "Creating account..."
+msgstr ""
+
 #. Label for a link to generate a new password
-#: src/pages/LogIn/messages.js:23
+#: src/pages/LogIn/messages.js:31
 msgctxt "SignIn"
 msgid "Forgot your password?"
 msgstr ""
@@ -1458,10 +1563,58 @@ msgctxt "SignIn"
 msgid "Login failed, please try again"
 msgstr ""
 
+#. Message displayed when no data could be retrieved from Google or Facebook
+#: src/pages/LogIn/messages.js:70
+msgctxt "SignIn"
+msgid "No data could be retrieved"
+msgstr ""
+
+#. Paragraph explaining how to register
+#: src/pages/LogIn/messages.js:26
+msgctxt "SignIn"
+msgid "Or enter your email and password below:"
+msgstr ""
+
 #. Header
-#: src/pages/LogIn/messages.js:22
+#: src/pages/LogIn/messages.js:30
 msgctxt "SignIn"
 msgid "Register"
+msgstr ""
+
+#. Message displayed when the user is being logged in
+#: src/pages/LogIn/messages.js:62
+msgctxt "SignIn"
+msgid "Signing you in..."
+msgstr ""
+
+#. Message displayed when the user starts logging in
+#: src/pages/LogIn/messages.js:42
+msgctxt "SignIn"
+msgid "Starting"
+msgstr ""
+
+#. Message displayed when the user was successfully logged in
+#: src/pages/LogIn/messages.js:66
+msgctxt "SignIn"
+msgid "Success!"
+msgstr ""
+
+#. Message displayed when the user's email is being checked
+#: src/pages/LogIn/messages.js:50
+msgctxt "SignIn"
+msgid "Verifying email..."
+msgstr ""
+
+#. Message displayed when the user is meant to enter missing information
+#: src/pages/LogIn/messages.js:54
+msgctxt "SignIn"
+msgid "Waiting for additional info"
+msgstr ""
+
+#. Paragraph explaining how to register
+#: src/pages/LogIn/messages.js:22
+msgctxt "SignIn"
+msgid "You can login with Google or Facebook:"
 msgstr ""
 
 #. Title of the About page

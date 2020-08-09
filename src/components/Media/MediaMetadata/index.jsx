@@ -15,7 +15,7 @@ import menuStyles from 'Components/Widgets/Menu/styles.scss';
 import Separator from 'Components/Widgets/Separator';
 import TranslateButton, { translateButtonTypes } from 'Components/Widgets/TranslateButton';
 import Translate from 'Hocs/Translate';
-import useReactions from 'Hooks/Reactions';
+import useReactions from 'Hooks/useReactions';
 import { ItemTypes } from 'Utils/data';
 import {
   albumRoute,

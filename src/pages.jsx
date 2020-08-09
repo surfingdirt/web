@@ -27,6 +27,10 @@ const pages = {
   Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
   Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), options),
   LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),
+  LogInOAuth: loadable(
+    () => import(/* webpackChunkName: 'LogInOAuth' */ './pages/LogIn/OAuth'),
+    options,
+  ),
   LostPassword: loadable(
     () => import(/* webpackChunkName: 'LostPassword' */ './pages/LostPassword'),
     options,

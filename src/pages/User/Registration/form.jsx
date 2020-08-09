@@ -3,7 +3,7 @@ import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 
 import EMAIL_EXISTS from 'Apollo/queries/emailExists.gql';
-import USERNAME_EXISTS from 'Apollo/queries/usernameExists.gql';
+import USERNAME_EXISTS from 'Apollo/queries/usernameExists3.gql';
 import Button, { buttonTypes } from 'Components/Widgets/Button/index';
 import FormAPIMessage from 'Components/Widgets/Form/APIMessage';
 import InputField from 'Components/Widgets/Form/InputField';
@@ -48,7 +48,7 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
               fetchPolicy: 'network-only',
             })
               .then(({ data }) => {
-                const exists = !!data.usernameExists;
+                const { exists } = !!data.usernameExists;
                 checkedUsernames[username] = exists;
                 if (exists) {
                   errors.username = (

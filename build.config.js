@@ -3,6 +3,7 @@ const path = require('path');
 const rootDir = path.resolve(__dirname);
 const srcDir = path.resolve(__dirname, './src');
 
+// Keep in sync with webpack.config.js
 const resolverAliases = {};
 [
   'apollo',

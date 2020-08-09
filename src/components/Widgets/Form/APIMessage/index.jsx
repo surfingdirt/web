@@ -5,9 +5,10 @@ import Translate from 'Hocs/Translate';
 
 import messages from './messages';
 
-const FormAPIMessage = ({ className, t, message }) => (
-  <span className={className}>{t(message) || message}</span>
-);
+const FormAPIMessage = ({ className, t, message }) => {
+  console.log('rendering error', message, t(message));
+  return <span className={className}>{t(message) || message}</span>;
+};
 
 FormAPIMessage.propTypes = {
   className: PropTypes.string,

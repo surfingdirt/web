@@ -1,0 +1,8 @@
+mutation loginOAuth($input: LoginOAuthInput!) {
+    loginOAuth(input: $input) {
+        uid
+        accessToken
+        tokenType
+        expires
+    }
+}

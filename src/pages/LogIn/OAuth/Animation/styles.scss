@@ -1,0 +1,74 @@
+@import "../../../../styles/boxmodel";
+@import "../../../../styles/colors";
+@import "../../../../styles/constants";
+@import "../../../../styles/font-sizes";
+
+$distance: 15rem;
+$photoSize: 3rem;
+$pathLength: $distance - $photoSize;
+
+.wrapper {
+  margin: 0 auto;
+  padding: $margin-big;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .box {
+    display: grid;
+    place-items: center;
+    border: 1px solid $widget-border-color;
+    border-radius: $widget-border-radius;
+    height: $photoSize;
+    width: $photoSize;
+  }
+
+  .providerBox {
+    background: $oauth-animation-provider-bg-color;
+    border: none;
+  }
+
+  .siteBox {
+    background-color: $oauth-animation-site-bg-color;
+  }
+
+  .userBoxWrapper {
+    width: $distance;
+    transition: transform 500ms ease-in-out;
+    transform: translateX(0);
+
+    &.start {
+      transform: translate(0/6 * $pathLength, 0);
+    }
+    &.fetching {
+      transform: translate(1/6 * $pathLength, -$margin-medium-1);
+    }
+    &.checkingEmail {
+      transform: translate(2/6 * $pathLength, -$margin-medium-1);
+    }
+    &.enteringUsername {
+      transform: translate(3/6 * $pathLength, -$margin-medium-1);
+    }
+    &.creatingProfile {
+      transform: translate(4/6 * $pathLength, -$margin-medium-1);
+    }
+    &.signingIn {
+      transform: translate(5/6 * $pathLength, -$margin-medium-1);
+    }
+    &.done {
+      transform: translate(6/6 * $pathLength, 0);
+    }
+
+    .userBox {
+      width: $photoSize;
+      height: $photoSize;
+      background-color: $oauth-animation-user-bg-color;
+      background-size: contain;
+
+      .userPhoto {
+        object-fit: contain;
+      }
+    }
+  }
+}

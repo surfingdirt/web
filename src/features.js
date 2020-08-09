@@ -1,8 +1,10 @@
 const PRODUCTION = 'production';
 
+const isProduction = process.env.NODE_ENV === PRODUCTION;
+const isDev = !isProduction;
+
 const features = {
-  registration: true,
-  translation: true,
+  firebaseAuth: isDev,
 };
 
 export default features;

@@ -22,7 +22,6 @@ const InputField = (props) => {
   const { touched, error, submitError } = meta;
 
   const { className, id, initialError, label, placeholder, required } = rest;
-
   let displayError = null;
   if (submitError) {
     displayError = submitError;

@@ -1,8 +1,12 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     email: getText('Email', 'Registration') /* Label for a form field to type an email */,
+    explanationsOAuth: getText(
+      "If you'd like to join us, you can either go through Google or Facebook:",
+      'Registration',
+    ) /* Paragraph explaining how to register */,
     explanations: getText(
-      "If you'd like to join us, enter your details below to create an account!",
+      'Or you can enter your details below to create an account!',
       'Registration',
     ) /* Paragraph explaining how to register */,
     locale: getText(

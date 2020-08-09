@@ -54,6 +54,11 @@ const AppRoutes = () => {
         <DefaultLayoutRoute path={routes.ERROR} component={pages.Error} />
         <DefaultLayoutRoute path={routes.LOGIN} component={pages.LogIn} login={FORBIDDEN} />
         <DefaultLayoutRoute
+          path={routes.LOGIN_OAUTH}
+          component={pages.LogInOAuth}
+          login={FORBIDDEN}
+        />
+        <DefaultLayoutRoute
           path={routes.LOST_PASSWORD}
           component={pages.LostPassword}
           login={FORBIDDEN}

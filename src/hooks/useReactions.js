@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import CREATE_REACTION from 'Apollo/mutations/createReaction3.gql';
@@ -19,8 +19,6 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   );
   const userReactions = reactions.filter((r) => !!r.userReactionId);
   const userReactionsCount = userReactions.length;
-
-  useEffect(() => {}, []);
 
   const [createReactionMutation] = useMutation(CREATE_REACTION, {});
   const [deleteReactionMutation] = useMutation(DELETE_REACTION, {});

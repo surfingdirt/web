@@ -9,379 +9,420 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:24
+#. Instruction for a user
 msgid "Add a cover photo"
 msgstr "カバー写真を追加する"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:25
+#. Instruction for a user
 msgid "Add a profile photo"
 msgstr "プロフィール写真を追加する"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:30
+#. Instruction for a user
 msgid "Add an album"
 msgstr "アルバムを追加する"
 
-#. Label for a button to reveal more settings
 #: src/components/Album/CreationForm/messages.js:3
 #: src/components/Album/EditForm/messages.js:3
+#. Label for a button to reveal more settings
 msgid "Advanced settings"
 msgstr "高度な設定"
 
-#. Generic error message
 #: src/components/Album/CreationForm/messages.js:23
 #: src/components/Album/EditForm/messages.js:23
-#: src/components/Cover/messages.js:9 src/components/Photo/EditForm/messages.js:3
+#: src/components/Cover/messages.js:9
+#: src/components/Photo/EditForm/messages.js:3
 #: src/components/Photo/UploadForm/messages.js:3
 #: src/components/User/BioUpdate/messages.js:3
 #: src/components/Video/EditForm/messages.js:3
 #: src/components/Video/UploadForm/messages.js:3 src/pages/Album/messages.js:4
+#. Generic error message
 msgid "An error occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#. Label for a button the user can click to stop deleting an item
 #: src/components/Widgets/DeleteItemModal/messages.js:3
+#. Label for a button the user can click to stop deleting an item
 msgid "Are you sure you want to delete '%s'?"
 msgstr "「％s」を削除してもよろしいですか？"
 
-#. Title of a dialog window to delete an item
 #: src/components/Widgets/DeleteItemModal/messages.js:15
+#. Title of a dialog window to delete an item
 msgid "Are you sure?"
 msgstr "本気ですか？"
 
-#. Label for a button to stop the current operation
 #: src/components/Cover/messages.js:10
+#. Label for a button to stop the current operation
 msgid "Cancel"
 msgstr "キャンセル"
 
-#. Label for a form field to choose a profile picture (part 1)
 #: src/components/Cover/messages.js:15
+#. Label for a form field to choose a profile picture (part 1)
 msgid "Choose a picture for your profile page."
 msgstr "プロフィールページの画像を選択してください。"
 
-#. Label for a form field to choose a profile picture (part 1)
 #: src/components/Cover/messages.js:3
+#. Label for a form field to choose a profile picture (part 1)
 msgid "Choose a picture to represent yourself on the site."
 msgstr "プロフィール写真を選択してください。"
 
-#. Label for a button to clear a list of photos
 #: src/components/Photo/BatchUploadForm/messages.js:3
+#. Label for a button to clear a list of photos
 msgid "Clear"
 msgstr "削除"
 
-#. Help message
 #: src/components/Photo/BatchUploadForm/messages.js:6
+#. Help message
 msgid "Click here to add more photos"
 msgstr "写真の追加"
 
-#. Help message
 #: src/components/Cover/messages.js:22
 #: src/components/Photo/UploadForm/messages.js:8
+#. Help message
 msgid "Click here to choose a file"
 msgstr "ファイルの選択"
 
-#. Help message
 #: src/components/Photo/BatchUploadForm/messages.js:5
+#. Help message
 msgid "Click here to choose photos"
 msgstr "写真の選択"
 
-#. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
+#. Label for a button to continue adding a video
 msgid "Continue"
 msgstr "継続する"
 
-#. Form field to decide whether other users can contribute to an album
 #: src/components/Album/CreationForm/messages.js:4
 #: src/components/Album/EditForm/messages.js:4
+#. Form field to decide whether other users can contribute to an album
 #, fuzzy
 msgid "Contributions"
 msgstr "前書き"
 
-#. Error message showed when a user entered a video address that could not be understood
+#: src/components/Reactions/messages.js:9
+#. Label for a user reaction icon: cool 😎
+msgid "Cool"
+msgstr "涼しい"
+
 #: src/components/Video/UploadForm/messages.js:9
+#. Error message showed when a user entered a video address that could not be understood
 msgid "Could not understand this address"
 msgstr "この住所を理解できませんでした"
 
-#. Label for a dialog window to change the user's cover picture
 #: src/components/Cover/messages.js:45
+#. Label for a dialog window to change the user's cover picture
 msgid "Cover picture update dialog"
 msgstr "カバー写真更新ダイアログ"
 
-#. Label of a button to create an item
 #: src/components/Album/CreationForm/messages.js:24
+#. Label of a button to create an item
 msgid "Create"
 msgstr "作成"
 
-#. Label for a button to delete a comment
-#. Label for a menu entry to change delete an item
 #: src/components/Comment/Item/messages.js:4
 #: src/components/Widgets/DeleteItemModal/messages.js:12
+#. Label for a button to delete a comment
+#. Label for a menu entry to change delete an item
 msgid "Delete"
 msgstr "削除"
 
-#. Label for a dialog window to delete an items
 #: src/components/Widgets/DeleteItemModal/messages.js:16
+#. Label for a dialog window to delete an items
 msgid "Delete dialog"
 msgstr "削除ダイアログ"
 
-#. Label for a form field to enter a description
 #: src/components/Album/CreationForm/messages.js:25
 #: src/components/Album/EditForm/messages.js:24
 #: src/components/Photo/EditForm/messages.js:4
 #: src/components/Photo/UploadForm/messages.js:4
 #: src/components/Video/EditForm/messages.js:4
 #: src/components/Video/UploadForm/messages.js:5
+#. Label for a form field to enter a description
 msgid "Description"
 msgstr "説明文"
 
-#. Label for a button to edit a photo
-#. Label for a button to edit a comment
-#. Link to a page to modify something (a photo for example)
-#. Label for a button to edit a video
 #: src/components/Album/EditForm/messages.js:33
 #: src/components/Comment/Item/messages.js:3
 #: src/components/Media/MediaMetadata/messages.js:4
 #: src/components/Photo/EditForm/messages.js:13
 #: src/components/Video/EditForm/messages.js:13
+#. Label for a button to edit a photo
+#. Label for a button to edit a comment
+#. Link to a page to modify something (a photo for example)
+#. Label for a button to edit a video
 msgid "Edit"
 msgstr "編集"
 
-#. Label of a form field for the user's email
 #: src/pages/LogIn/messages.js:8
+#. Label of a form field for the user's email
 msgid "Email"
 msgstr "メール"
 
-#. Help text to tell the user what to type
 #: src/components/Album/CreationForm/messages.js:26
 #: src/components/Album/EditForm/messages.js:25
 #: src/components/Photo/EditForm/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:5
 #: src/components/Video/EditForm/messages.js:5
 #: src/components/Video/UploadForm/messages.js:6
+#. Help text to tell the user what to type
 msgid "Enter a description"
 msgstr "説明文記入"
 
-#. Help text to tell the user what to type
 #: src/components/Album/CreationForm/messages.js:34
 #: src/components/Album/EditForm/messages.js:32
 #: src/components/Photo/EditForm/messages.js:12
 #: src/components/Photo/UploadForm/messages.js:19
 #: src/components/Video/EditForm/messages.js:12
 #: src/components/Video/UploadForm/messages.js:19
+#. Help text to tell the user what to type
 msgid "Enter a title"
 msgstr "タイトル記入"
 
-#. Text appearing inside a form field before the user entered anything
 #: src/pages/LogIn/messages.js:4
+#. Text appearing inside a form field before the user entered anything
 msgid "Enter something"
 msgstr "何かを入力してください"
 
-#. Label for a file name
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:4
+#. Label for a file name
 msgid "File"
 msgstr "ファイル"
 
-#. Label for a link to a media's dedicated page
+#: src/components/Reactions/messages.js:10
+#. Label for a user reaction icon: fire 🔥
+msgid "Fire"
+msgstr "火"
+
 #: src/components/Media/MediaMetadata/messages.js:3
+#. Label for a link to a media's dedicated page
 msgid "Full page"
 msgstr "フルページ"
 
-#. Label for a link to go to the current album
 #: src/components/Photo/BatchUploadForm/messages.js:4
+#. Label for a link to go to the current album
 msgid "Go to album"
 msgstr "アルバムへ"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:23
+#. Instruction for a user
 msgid "Go to your profile page"
 msgstr "プロフィールページへ"
 
-#. Label of a button to display items as a grid
 #: src/components/Album/AlbumViewToggle/messages.js:4
+#. Label of a button to display items as a grid
 msgid "Grid"
 msgstr "グリッド"
 
-#. Choice for an album visibility setting
+#: src/components/Reactions/messages.js:8
+#. Label for a user reaction icon: angry 😡
+msgid "Grrr"
+msgstr "Grrr"
+
+#: src/components/Reactions/messages.js:14
+#. Label for a user reaction icon: laughing 🤣
+msgid "Haha"
+msgstr "はは"
+
 #: src/components/Widgets/Form/AlbumVisibility/messages.js:3
+#. Choice for an album visibility setting
 msgid "Hidden"
 msgstr "隠された"
 
-#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:17
 #: src/components/Album/EditForm/messages.js:17
+#. Note to explain how album visibility works
 msgid "Hidden albums are only visible to you."
 msgstr "非表示のアルバムはあなただけが閲覧できます。"
 
-#. Names the album containing the current media item
 #: src/pages/Photo/Edit/messages.js:3 src/pages/Video/Edit/messages.js:3
+#. Names the album containing the current media item
 #, fuzzy
 msgid "In album"
 msgstr "アルバムを追加する"
 
-#. Label for a form field where a user can introduce themselves.
 #: src/components/User/BioUpdate/messages.js:4
+#. Label for a form field where a user can introduce themselves.
 msgid "Introduction"
 msgstr "前書き"
 
-#. Short adjective indicating a form field is incorrect
 #: src/components/Comment/EditForm/messages.js:3
 #: src/components/Comment/Form/messages.js:3
+#. Short adjective indicating a form field is incorrect
 msgid "Invalid"
 msgstr "無効"
 
-#. Error message displayed when the user chose a image file that cannot be read
-#. Indicates an image could not be read
 #: src/components/Cover/messages.js:23
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:5
 #: src/components/Photo/UploadForm/messages.js:9
+#. Error message displayed when the user chose a image file that cannot be read
+#. Indicates an image could not be read
 msgid "Invalid image"
 msgstr "無効な画像"
 
-#. Label of a button to display items as a list
+#: src/components/Reactions/messages.js:13
+#: src/components/Reactions/messages.js:5
+#. Label for a button to 'like' something
+#. Label for a user reaction icon: like 👍
+msgid "Like"
+msgstr "お気に入り"
+
 #: src/components/Album/AlbumViewToggle/messages.js:3
+#. Label of a button to display items as a list
 msgid "List"
 msgstr "リスト"
 
-#. Label for a form field to choose a profile picture  (part 2)
 #: src/components/Cover/messages.js:6
+#. Label for a form field to choose a profile picture  (part 2)
 msgid "Make it personal and easy to recognize!"
 msgstr "それを個人的かつ簡単に認識してください！"
 
-#. Label of a button to scroll a list of items forward
 #: src/components/Media/MediaOverlay/messages.js:4
 #: src/components/Widgets/Slider/messages.js:4
 #: src/components/Widgets/ToggleGroup/messages.js:4
+#. Label of a button to scroll a list of items forward
 msgid "Next"
 msgstr "次"
 
-#. Label for a button the user can click to stop deleting an item
 #: src/components/Widgets/DeleteItemModal/messages.js:6
+#. Label for a button the user can click to stop deleting an item
 msgid "No, cancel"
 msgstr "いいえ、キャンセルしてください"
 
-#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:13
 #: src/components/Album/EditForm/messages.js:13
+#. Note to explain how album visibility works
 msgid "Note:"
 msgstr "注意："
 
-#. Note to explain how album contributions work
 #: src/components/Album/CreationForm/messages.js:7
 #: src/components/Album/EditForm/messages.js:7
+#. Note to explain how album contributions work
 msgid ""
 "Note: other people can post into your public albums, whereas only you can "
 "contribute to your private albums."
-msgstr ""
-"注：他のユーザーはあなたの公開アルバムに投稿できますが、あなただけがあなたの非"
-"公開アルバムに投稿できます。"
+msgstr "注：他のユーザーはあなたの公開アルバムに投稿できますが、あなただけがあなたの非公開アルバムに投稿できます。"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:31
+#. Instruction for a user
 msgid "Only you can contribute to your private albums"
 msgstr "あなたのプライベートアルバムにしか投稿できない"
 
-#. Label for a link to open a page
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:6
+#. Label for a link to open a page
 msgid "Open"
 msgstr "開く"
 
-#. Label for a menu
 #: src/components/Comment/Item/messages.js:5
-#: src/components/Media/MediaMetadata/messages.js:6 src/pages/Album/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:6
+#: src/pages/Album/messages.js:3
+#. Label for a menu
 msgid "Options"
 msgstr "オプション"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:34
+#. Instruction for a user
 msgid "Other people can post to your public albums"
 msgstr "他人はあなたの公開アルバムに投稿できます"
 
-#. Label of a form field for the user's password
+#: src/components/Reactions/messages.js:11
+#. Label for a user reaction icon: injured 🤕
+msgid "Ouch"
+msgstr "痛い"
+
 #: src/pages/LogIn/messages.js:9
+#. Label of a form field for the user's password
 msgid "Password"
 msgstr "パスワード"
 
-#. Help text instructing what to do to upload a video
 #: src/components/Video/UploadForm/messages.js:12
+#. Help text instructing what to do to upload a video
 msgid "Paste a video address above"
 msgstr "上にビデオアドレスを貼り付けてください"
 
-#. Help text to tell the user what to type
 #: src/components/Video/UploadForm/messages.js:21
+#. Help text to tell the user what to type
 msgid "Paste the address here"
 msgstr "メアドの貼り付け"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:22
+#. Instruction for a user
 msgid "Personalize your account"
 msgstr "アカウント設定"
 
-#. Error message displayed when a user tries to update their profile picture but did not choose file yet.
 #: src/components/Cover/messages.js:27
 #: src/components/Photo/UploadForm/messages.js:12
+#. Error message displayed when a user tries to update their profile picture but did not choose file yet.
 msgid "Please choose a file first"
 msgstr "最初にファイルを選択してください"
 
-#. Indicates which album a given item belongs to
 #: src/components/Media/MediaMetadata/messages.js:5
+#. Indicates which album a given item belongs to
 msgid "Posted in album"
 msgstr "アルバムに投稿"
 
-#. Names the album the user is posting to
 #: src/pages/Photo/BatchUpload/messages.js:3 src/pages/Photo/Post/messages.js:3
 #: src/pages/Video/Post/messages.js:3
+#. Names the album the user is posting to
 msgid "Posting to album"
 msgstr "アルバムへの投稿"
 
-#. Label for a preview image whose content is unknown
 #: src/components/Photo/BatchUploadForm/messages.js:7
+#. Label for a preview image whose content is unknown
 msgid "Preview"
 msgstr "プレビュー"
 
-#. Label of a button to scroll a list of items back
 #: src/components/Media/MediaOverlay/messages.js:3
 #: src/components/Widgets/Slider/messages.js:3
 #: src/components/Widgets/ToggleGroup/messages.js:3
+#. Label of a button to scroll a list of items back
 msgid "Previous"
 msgstr "前"
 
-#. Choice for an album contributions setting
 #: src/components/Widgets/Form/AlbumContributions/messages.js:3
+#. Choice for an album contributions setting
 msgid "Private"
 msgstr "民間"
 
-#. Label for a link to the user's profile page
 #: src/components/Widgets/NavigationProfile/messages.js:10
+#. Label for a link to the user's profile page
 msgid "Profile"
 msgstr "プロフィール"
 
-#. Label for a dialog window to change the user's introduction
 #: src/pages/Profile/messages.js:13
+#. Label for a dialog window to change the user's introduction
 msgid "Profile introduction update dialog"
 msgstr "プロファイル紹介更新ダイアログ"
 
-#. Label for a dialog window to change the user's profile picture
 #: src/components/Cover/messages.js:36
+#. Label for a dialog window to change the user's profile picture
 msgid "Profile picture update dialog"
 msgstr "プロフィール画像更新ダイアログ"
 
-#. Choice for an album contributions setting
 #: src/components/Widgets/Form/AlbumContributions/messages.js:4
+#. Choice for an album contributions setting
 #, fuzzy
 msgid "Public"
 msgstr "公衆"
 
-#. Label for a link to the registration page, or label for a button to actually register
+#: src/components/Reactions/messages.js:3
+#: src/components/Reactions/messages.js:6
+#. Label for a list of user reactions
+#. Indicates the number of reactions
+#, fuzzy
+#| msgctxt "Page Layout"
+#| msgid "Actions"
+msgid "Reactions"
+msgstr "アクション"
+
 #: src/components/Widgets/NavigationProfile/messages.js:11
+#. Label for a link to the registration page, or label for a button to actually register
 msgid "Register"
 msgstr "登録"
 
-#. Short adjective indicating the user must fill a particular form field
 #: src/components/Album/CreationForm/messages.js:29
 #: src/components/Album/EditForm/messages.js:28
 #: src/components/Comment/EditForm/messages.js:5
@@ -389,334 +430,346 @@ msgstr "登録"
 #: src/components/Photo/EditForm/messages.js:8
 #: src/components/Photo/UploadForm/messages.js:15
 #: src/components/Video/EditForm/messages.js:8
-#: src/components/Video/UploadForm/messages.js:15 src/pages/LogIn/messages.js:10
+#: src/components/Video/UploadForm/messages.js:15
+#: src/pages/LogIn/messages.js:10
+#. Short adjective indicating the user must fill a particular form field
 msgid "Required"
 msgstr "必須"
 
-#. Label for a link to the user's settings page
+#: src/components/Reactions/messages.js:15
+#. Label for a user reaction icon: sad 😢
+#, fuzzy
+#| msgctxt "Comments"
+#| msgid "sad"
+msgid "Sad"
+msgstr "悲しい"
+
 #: src/components/Widgets/NavigationProfile/messages.js:14
+#. Label for a link to the user's settings page
 msgid "Settings"
 msgstr "設定"
 
-#. Label for a link to the signIn page, or label for a button to actually signIn
 #: src/components/Widgets/NavigationProfile/messages.js:7
 #: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/messages.js:19
-#: src/pages/NewPasswordActivated/messages.js:11
+#: src/pages/LogIn/messages.js:36 src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
+#. Label for a link to the signIn page, or label for a button to actually signIn
+#. Title for the page where a user signs in
 msgid "Sign in"
 msgstr "サインイン"
 
-#. Label for a button to stop the uploading process
 #: src/components/Photo/BatchUploadForm/messages.js:8
+#. Label for a button to stop the uploading process
 msgid "Stop"
 msgstr "中止"
 
-#. Explains what to enter in the introduction field
 #: src/components/User/BioUpdate/messages.js:7
+#. Explains what to enter in the introduction field
 msgid "Tell people a little bit about yourself here."
 msgstr "自己紹介"
 
-#. Title of a section of the page
 #: src/pages/ConfirmEmail/messages.js:37
+#. Title of a section of the page
 msgid "Things to do now that you have an account"
 msgstr "アカウント作成後にまずやること"
 
-#. Label for a form field to enter a title
 #: src/components/Album/CreationForm/messages.js:33
 #: src/components/Album/EditForm/messages.js:31
 #: src/components/Photo/EditForm/messages.js:11
 #: src/components/Photo/UploadForm/messages.js:18
 #: src/components/Video/EditForm/messages.js:11
 #: src/components/Video/UploadForm/messages.js:18
+#. Label for a form field to enter a title
 msgid "Title"
 msgstr "題名"
 
-#. Label for a button to translate a message
+#: src/components/Reactions/messages.js:4
+#. Indicates how many users reacted to something
+msgid "Total reactions"
+msgstr "総反応"
+
 #: src/components/Widgets/TranslateButton/messages.js:3
+#. Label for a button to translate a message
 msgid "Translate"
 msgstr "翻訳する"
 
-#. Indicates the system does not know what an image represents
 #: src/components/Media/MediaThumb/messages.js:3
+#. Indicates the system does not know what an image represents
 msgid "Unknown image"
 msgstr "不明な画像"
 
-#. Choice for an album visibility setting
 #: src/components/Widgets/Form/AlbumVisibility/messages.js:5
+#. Choice for an album visibility setting
 msgid "Unlisted"
 msgstr "非公開"
 
-#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:20
 #: src/components/Album/EditForm/messages.js:20
+#. Note to explain how album visibility works
 msgid "Unlisted albums are visible to everyone with the link."
 msgstr "限定公開アルバムは、リンクを知っている全員が閲覧できます。"
 
-#. Label on a button to update something
 #: src/components/User/BioUpdate/messages.js:11
+#. Label on a button to update something
 msgid "Update"
 msgstr "更新"
 
+#: src/components/Cover/messages.js:39 src/components/Cover/messages.js:42
 #. Label for a menu entry to change the user's cover picture
 #. Title of a dialog window to change the user's cover picture
-#: src/components/Cover/messages.js:39 src/components/Cover/messages.js:42
 msgid "Update cover picture"
 msgstr "カバー写真を更新"
 
+#: src/components/Cover/messages.js:30 src/components/Cover/messages.js:33
 #. Label for a menu entry to change the user's profile picture
 #. Title of a dialog window to change the user's profile picture
-#: src/components/Cover/messages.js:30 src/components/Cover/messages.js:33
 msgid "Update profile picture"
 msgstr "プロフィール写真を更新する"
 
-#. Title of a dialog window to change the user's introduction
 #: src/pages/Profile/messages.js:10
+#. Title of a dialog window to change the user's introduction
 msgid "Update your introduction"
 msgstr "紹介を更新する"
 
-#. Label for a button to upload a picture
 #: src/components/Cover/messages.js:26
 #: src/components/Photo/BatchUploadForm/messages.js:9
 #: src/components/Photo/UploadForm/messages.js:20
 #: src/components/Video/UploadForm/messages.js:22
+#. Label for a button to upload a picture
 msgid "Upload"
 msgstr "アップロード"
 
-#. Indicates a given image failed to upload
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:3
+#. Indicates a given image failed to upload
 msgid "Upload failed"
 msgstr "アップロードに失敗しました"
 
-#. Indicates the upload process worked properly
 #: src/components/Photo/BatchUploadForm/messages.js:10
+#. Indicates the upload process worked properly
 msgid "Upload finished!"
 msgstr "アップロードが完了しました！"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:26
+#. Instruction for a user
 msgid "Upload photos or videos"
 msgstr "写真やビデオのアップロード"
 
-#. Label of a form field for the user's username
 #: src/pages/LogIn/messages.js:7
+#. Label of a form field for the user's username
 msgid "Username"
 msgstr "ユーザー名"
 
-#. Label for a form field to enter a video address
 #: src/components/Video/UploadForm/messages.js:20
+#. Label for a form field to enter a video address
 msgid "Video address"
 msgstr "ビデオアドレス"
 
-#. Label for a section containing a video
 #: src/components/Video/Embed/messages.js:3
+#. Label for a section containing a video
 msgid "Video content"
 msgstr "ビデオコンテンツ"
 
-#. Error message displayed when the user is trying to post a video but the system does not understand the video address
 #: src/components/Video/UploadForm/messages.js:23
+#. Error message displayed when the user is trying to post a video but the system does not understand the video address
 msgid "Video not supported"
 msgstr "ビデオフォーマットは不適切"
 
-#. Form field to decide whether other users can see an album
 #: src/components/Album/CreationForm/messages.js:10
 #: src/components/Album/EditForm/messages.js:10
+#. Form field to decide whether other users can see an album
 msgid "Visibility"
 msgstr "可視性"
 
-#. Choice for an album visibility setting
 #: src/components/Widgets/Form/AlbumVisibility/messages.js:4
+#. Choice for an album visibility setting
 msgid "Visible"
 msgstr "目に見える"
 
-#. Note to explain how album visibility works
 #: src/components/Album/CreationForm/messages.js:14
 #: src/components/Album/EditForm/messages.js:14
+#. Note to explain how album visibility works
 msgid "Visible albums (the default) are visible to everyone."
 msgstr "表示アルバム（デフォルト）は誰でも見ることができます。"
 
-#. Indicates an image will start uploading soon
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:7
+#. Indicates an image will start uploading soon
 msgid "Waiting"
 msgstr "お待ちください"
 
-#. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:27
+#. Instruction for a user
 msgid ""
-"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo "
-"and DailyMotion videos"
-msgstr ""
-"Instagram、Facebook、YouTube、Vimeo、DailyMotionの動画だけでなく、JPEGおよびPNG"
-"の写真も使用できる"
+"We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, "
+"Vimeo and DailyMotion videos"
+msgstr "Instagram、Facebook、YouTube、Vimeo、DailyMotionの動画だけでなく、JPEGおよびPNGの写真も使用できる"
 
-#. Label for a button the user can click to confirm they want to delete an item
+#: src/components/Reactions/messages.js:12
+#. Label for a user reaction icon: impressed 😮
+msgid "Wow"
+msgstr "ワオ"
+
 #: src/components/Widgets/DeleteItemModal/messages.js:9
+#. Label for a button the user can click to confirm they want to delete an item
 msgid "Yes, delete it"
 msgstr "はい、削除する"
 
-#. Paragraph
 #: src/pages/About/messages.js:4
+#. Paragraph
 msgctxt "About"
 msgid ""
 "Remember before Facebook? There were so many resources for mountainboarding "
-"online. Forums, websites, photo galleries… Where are those now? The sad answer "
-"is they’re mostly gone. Facebook has made it so easy to post photos and videos "
-"and share them that people slowly stopped using other sites. That’s actually "
-"what happened to the old Surfing Dirt forum!"
+"online. Forums, websites, photo galleries… Where are those now? The sad "
+"answer is they’re mostly gone. Facebook has made it so easy to post photos "
+"and videos and share them that people slowly stopped using other sites. "
+"That’s actually what happened to the old Surfing Dirt forum!"
 msgstr ""
-"Facebookの前の時代は覚えていますか？オンラインでのマウンテンボーディングには非"
-"常に多くのリソースがありました。フォーラム、ウェブサイト、フォトギャラリー…それ"
-"らは今どこにありますか？悲しい答えは、それらはほとんどなくなっているということ"
-"です。 Facebookにより、写真やビデオを簡単に投稿して共有できるようになったため、"
-"人々は他のサイトの使用を徐々にやめました。それが実際に古いサーフィンダート"
-"フォーラムで起こったことです！"
+"Facebookの前の時代は覚えていますか？オンラインでのマウンテンボーディングには非常に多くのリソースがありました。フォーラム、ウェブサイト、フォトギ"
+"ャラリー…それらは今どこにありますか？悲しい答えは、それらはほとんどなくなっているということです。 "
+"Facebookにより、写真やビデオを簡単に投稿して共有できるようになったため、人々は他のサイトの使用を徐々にやめました。それが実際に古いサーフィンダー"
+"トフォーラムで起こったことです！"
 
-#. Paragraph
 #: src/pages/About/messages.js:12
+#. Paragraph
 msgctxt "About"
 msgid ""
-"Surfing Dirt hopes to solve that problem. We intend to be the social network "
-"for mountainboarders. The place where you’ll share photos and videos from your "
-"last session. Where you’ll learn about riders and spots near you. Where you’ll "
-"discuss trucks and jumps. And where people can see what mountainboarding is "
-"about."
+"Surfing Dirt hopes to solve that problem. We intend to be the social "
+"network for mountainboarders. The place where you’ll share photos and "
+"videos from your last session. Where you’ll learn about riders and spots "
+"near you. Where you’ll discuss trucks and jumps. And where people can see "
+"what mountainboarding is about."
 msgstr ""
-"Surfing Dirtはその問題を解決したいと考えています。私たちは、マウンテンボーダー"
-"のためのソーシャルネットワークになるつもりです。最後のセッションの写真やビデオ"
-"を共有する場所。近くのライダーやスポットについて学ぶ場所。トラックとジャンプに"
-"ついて話し合う場所。そして、人々がマウンテンボーディングが何であるかを見ること"
-"ができる場所。"
+"Surfing "
+"Dirtはその問題を解決したいと考えています。私たちは、マウンテンボーダーのためのソーシャルネットワークになるつもりです。最後のセッションの写真やビデオ"
+"を共有する場所。近くのライダーやスポットについて学ぶ場所。トラックとジャンプについて話し合う場所。そして、人々がマウンテンボーディングが何であるかを見る"
+"ことができる場所。"
 
-#. Title of the About page
 #: src/pages/About/messages.js:3
+#. Title of the About page
 msgctxt "About"
 msgid "Surfing Dirt is back!"
 msgstr "サーフィンダートが戻ってきたぞ！"
 
-#. Paragraph
 #: src/pages/About/messages.js:16
+#. Paragraph
 msgctxt "About"
 msgid ""
 "We hoped to launch a long time ago, but we're here now, so enjoy the new "
 "Surfing Dirt!"
-msgstr ""
-"ずっと前から始まる予定で今更ですが、新しいサーフィンダートをお楽しみください！"
+msgstr "ずっと前から始まる予定で今更ですが、新しいサーフィンダートをお楽しみください！"
 
-#. Paragraph
 #: src/pages/About/messages.js:8
+#. Paragraph
 msgctxt "About"
 msgid ""
 "When you meet someone who seems genuinely excited to try mountainboarding, "
 "where do you send them? To a Facebook group, maybe? Sure there are many "
-"mountainboard groups on Facebook, and a lot of people use them. But they feel "
-"wrong. We need a place for mountainboarders to come together online and grow "
-"as a community again."
+"mountainboard groups on Facebook, and a lot of people use them. But they "
+"feel wrong. We need a place for mountainboarders to come together online "
+"and grow as a community again."
 msgstr ""
-"マウンテンボーディングを試してみたいと心から興奮している人に会ったら、どこに送"
-"りますか？多分、Facebookグループに？ Facebookには多くのマウンテンボードグループ"
-"があり、多くの人々がそれらを使用しています。しかし、彼らは間違っていると感じま"
-"す。マウンテンボーダーがオンラインで集まり、再びコミュニティとして成長する場所"
-"が必要です。"
+"マウンテンボーディングを試してみたいと心から興奮している人に会ったら、どこに送りますか？多分、Facebookグループに？ "
+"Facebookには多くのマウンテンボードグループがあり、多くの人々がそれらを使用しています。しかし、彼らは間違っていると感じます。マウンテンボーダーが"
+"オンラインで集まり、再びコミュニティとして成長する場所が必要です。"
 
-#. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 #: src/components/Album/AlbumAddButtons/messages.js:3
 #: src/sections/Layout/messages.js:26
+#. Label of a link to a page where a user could add a new photo. Please keep this translation as short as possible
 msgctxt "Actions"
 msgid "Add a photo"
 msgstr "写真の追加"
 
-#. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 #: src/components/Album/AlbumAddButtons/messages.js:7
 #: src/sections/Layout/messages.js:30
+#. Label of a link to a page where a user could add a new video. Please keep this translation as short as possible.
 msgctxt "Actions"
 msgid "Add a video"
 msgstr "ビデオの追加"
 
-#. Label of a link to a page where a user could create a new album. Please keep this translation as short as possible
 #: src/sections/Layout/messages.js:17
+#. Label of a link to a page where a user could create a new album. Please keep this translation as short as possible
 msgctxt "Actions"
 msgid "Add an album"
 msgstr "アルバムの追加"
 
-#. Indicates who created an album
-#. Indicates who created an album (short version)
 #: src/components/Album/AlbumPreview/messages.js:3
 #: src/components/Widgets/Attribution/messages.js:3
+#. Indicates who created an album
+#. Indicates who created an album (short version)
 msgctxt "Album"
 msgid "by"
 msgstr "by"
 
-#. Label for a window containing a quick preview of a media page
 #: src/components/Album/AlbumPreview/messages.js:4
+#. Label for a window containing a quick preview of a media page
 msgctxt "Album"
 msgid "Media preview"
 msgstr "メディアプレビュー"
 
-#. Indicates all registered users can contribute to a given an album
 #: src/components/Album/AlbumPreview/messages.js:8
 #: src/components/Widgets/Attribution/messages.js:5
+#. Indicates all registered users can contribute to a given an album
 msgctxt "Album"
 msgid "Public"
 msgstr "公衆"
 
-#. Indicates who created an album (long version)
 #: src/components/Widgets/Attribution/messages.js:4
+#. Indicates who created an album (long version)
 msgctxt "Album"
 msgid "Started by"
 msgstr "Started by"
 
-#. Title of the album creation page
 #: src/pages/Album/Post/messages.js:3
+#. Title of the album creation page
 msgctxt "Album creation page"
 msgid "Create a new album"
 msgstr "新しいアルバムを作成する"
 
-#. Title of the album edition page
 #: src/pages/Album/Edit/messages.js:3
+#. Title of the album edition page
 #, fuzzy
 msgctxt "Album edit page"
 msgid "Edit an album"
 msgstr "アルバムを追加する"
 
-#. Label for a menu item to edit an album
 #: src/pages/Album/messages.js:13
+#. Label for a menu item to edit an album
 #, fuzzy
 msgctxt "Album page"
 msgid "Edit"
 msgstr "編集"
 
-#. Label for a button to load more photos and videos
 #: src/pages/Album/messages.js:14
+#. Label for a button to load more photos and videos
 msgctxt "Album page"
 msgid "Load more"
 msgstr "もっと読み込む"
 
-#. Label for a menu item to add many photos to an album
 #: src/pages/Album/messages.js:5
+#. Label for a menu item to add many photos to an album
 msgctxt "Album page"
 msgid "Post multiple photos"
 msgstr "複数の写真を投稿する"
 
-#. Error message displayed when a user tries to delete an album which contains photos or videos
 #: src/pages/Album/messages.js:9
+#. Error message displayed when a user tries to delete an album which contains photos or videos
 msgctxt "Album page"
 msgid "This album still contains photos or videos, it cannot be deleted."
 msgstr "このアルバムにはまだ写真や動画が含まれているため、削除できません。"
 
-#. Label for a window containing a quick preview of a media page
 #: src/components/Media/Items/Details/messages.js:3
-#: src/components/Media/Items/ThumbOnly/messages.js:3
+#. Label for a window containing a quick preview of a media page
 msgctxt "AlbumGrid"
 msgid "Media preview"
 msgstr "メディアプレビュー"
 
-#. Text displayed when an album is empty
 #: src/components/Widgets/Empty/messages.js:3
+#. Text displayed when an album is empty
 msgctxt "Albums"
 msgid "Nothing to see here, move along!"
 msgstr "ここは見るものは何もないよ！"
 
-#. Indicates the user has reached the end of the list of albums
 #: src/pages/Albums/messages.js:3
+#. Indicates the user has reached the end of the list of albums
 msgctxt "Albums page"
 msgid "There are no more albums to load"
 msgstr "ロードするアルバムはこれ以上ありません"
@@ -731,239 +784,234 @@ msgctxt "Button"
 msgid "Login with Google"
 msgstr "Googleでログイン"
 
-#. Title of the comment edition page
 #: src/pages/Comment/Edit/messages.js:3
+#. Title of the comment edition page
 msgctxt "Comment edit page"
 msgid "Edit a comment"
 msgstr "コメントを編集する"
 
-#. Indicates a message was written in an angry tone
 #: src/components/Comment/EditForm/messages.js:15
 #: src/components/Comment/Form/messages.js:15
 #: src/components/Comment/Item/messages.js:8
+#. Indicates a message was written in an angry tone
 msgctxt "Comments"
 msgid "angry"
 msgstr "怒っている"
 
-#. Indicates a message was written in a happy tone
 #: src/components/Comment/EditForm/messages.js:16
 #: src/components/Comment/Form/messages.js:16
 #: src/components/Comment/Item/messages.js:9
+#. Indicates a message was written in a happy tone
 msgctxt "Comments"
 msgid "happy"
 msgstr "ハッピー"
 
-#. Indicates a message was written in a joking tone
 #: src/components/Comment/EditForm/messages.js:14
 #: src/components/Comment/Form/messages.js:14
 #: src/components/Comment/Item/messages.js:7
+#. Indicates a message was written in a joking tone
 msgctxt "Comments"
 msgid "joking"
 msgstr "冗談"
 
-#. Label for a text input containing a comment
 #: src/components/Comment/EditForm/messages.js:12
 #: src/components/Comment/Form/messages.js:12
+#. Label for a text input containing a comment
 msgctxt "Comments"
 msgid "Message"
 msgstr "メッセージ"
 
-#. Indicates a message was written in a neutral tone
 #: src/components/Comment/EditForm/messages.js:13
 #: src/components/Comment/Form/messages.js:13
 #: src/components/Comment/Item/messages.js:6
+#. Indicates a message was written in a neutral tone
 msgctxt "Comments"
 msgid "neutral"
 msgstr "無感情"
 
-#. Label for a button to post a comment
 #: src/components/Comment/EditForm/messages.js:4
 #: src/components/Comment/Form/messages.js:4 src/components/Feed/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:7
+#. Label for a button to post a comment
 msgctxt "Comments"
 msgid "Reply"
 msgstr "応答"
 
-#. Indicates a message was written in a sad tone
 #: src/components/Comment/EditForm/messages.js:17
 #: src/components/Comment/Form/messages.js:17
 #: src/components/Comment/Item/messages.js:10
+#. Indicates a message was written in a sad tone
 msgctxt "Comments"
 msgid "sad"
 msgstr "悲しい"
 
-#. Label for the dropdown to choose a message tone (sad, angry, etc.)
 #: src/components/Comment/EditForm/messages.js:8
 #: src/components/Comment/Form/messages.js:8
+#. Label for the dropdown to choose a message tone (sad, angry, etc.)
 msgctxt "Comments"
 msgid "Tone"
 msgstr "トーン"
 
-#. Title of a button to expand a list
 #: src/components/Widgets/DualContainer/messages.js:3
+#. Title of a button to expand a list
 msgctxt "DualContainer"
 msgid "View all"
 msgstr "すべてを見る"
 
-#. Title for the page where a user confirms their email is valid
 #: src/pages/ConfirmEmail/messages.js:3
+#. Title for the page where a user confirms their email is valid
 msgctxt "Email"
 msgid "Account validation"
 msgstr "アカウント検証"
 
-#. Error message displayed when something did not work
 #: src/pages/ConfirmEmail/messages.js:7
+#. Error message displayed when something did not work
 msgctxt "Email"
 msgid "An error occurred and you account could not be finalized"
 msgstr "エラーが発生し、アカウントを確定できませんでした"
 
-#. Message displayed once the user has confirmed their email address
 #: src/pages/ConfirmEmail/messages.js:11
+#. Message displayed once the user has confirmed their email address
 msgctxt "Email"
 msgid "Congratulations, your account is now fully activated!"
-msgstr ""
-"おめでとうございます、あなたのアカウントは完全にアクティベートされました！"
+msgstr "おめでとうございます、あなたのアカウントは完全にアクティベートされました！"
 
-#. Message displayed once the user has confirmed their email address
 #: src/pages/ConfirmEmail/messages.js:15
+#. Message displayed once the user has confirmed their email address
 msgctxt "Email"
 msgid "You can now go ahead and sign in with your email and password:"
 msgstr "メールアドレスとパスワードを使用してサインインできます。"
 
-#. A vague error message to be displayed when we don't know what exactly happened
 #: src/components/Widgets/ErrorMessage/messages.js:3
+#. A vague error message to be displayed when we don't know what exactly happened
 msgctxt "Error"
 msgid "An unexpected error occurred"
 msgstr "予期しないエラーが発生しました"
 
-#. Error message displayed when a user tried to signIn
 #: src/components/Widgets/ErrorMessage/messages.js:7
+#. Error message displayed when a user tried to signIn
 msgctxt "Error"
 msgid "Login failed"
 msgstr "ログインに失敗しました"
 
-#. Indicates how many new comments were posted
 #: src/components/Feed/messages.js:12
+#. Indicates how many new comments were posted
 msgctxt "Feed"
 msgid "1 new comment"
 msgid_plural "123 new comments"
 msgstr[0] "1件の新しいコメント"
-msgstr[1] "123件の新しいコメント"
 
-#. Indicates how many new photos were posted
 #: src/components/Feed/messages.js:19
+#. Indicates how many new photos were posted
 msgctxt "Feed"
 msgid "1 new photo"
 msgid_plural "123 new photos"
 msgstr[0] "1新しい写真1枚"
-msgstr[1] "123新しい写真1枚"
 
-#. Indicates how many new videos were posted
 #: src/components/Feed/messages.js:26
+#. Indicates how many new videos were posted
 msgctxt "Feed"
 msgid "1 new video"
 msgid_plural "123 new videos"
 msgstr[0] "1本の新しいビデオ"
-msgstr[1] "123本の新しいビデオ"
 
-#. Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album'
 #: src/components/Feed/messages.js:33
+#. Indicates what item a comment or photo was added to. Example: 9 new photos in 'My Album'
 msgctxt "Feed"
 msgid "in"
 msgstr "に"
 
-#. Indicates a new album was created
 #: src/components/Feed/messages.js:5
+#. Indicates a new album was created
 #, fuzzy
 msgctxt "Feed"
 msgid "New album"
 msgstr "アルバムへ"
 
-#. Indicates a new comment was posted
 #: src/components/Feed/messages.js:6
+#. Indicates a new comment was posted
 msgctxt "Feed"
 msgid "New comment"
 msgstr "新しいコメント"
 
-#. Indicates a new photo was posted
 #: src/components/Feed/messages.js:7
+#. Indicates a new photo was posted
 #, fuzzy
 msgctxt "Feed"
 msgid "New photo"
 msgstr "新しい写真を投稿する"
 
-#. Indicates a new user registered
 #: src/components/Feed/messages.js:9
+#. Indicates a new user registered
 msgctxt "Feed"
 msgid "New rider"
 msgstr "新しいライダー"
 
-#. Indicates a new video was posted
 #: src/components/Feed/messages.js:8
+#. Indicates a new video was posted
 #, fuzzy
 msgctxt "Feed"
 msgid "New video"
 msgstr "新しいビデオを投稿する"
 
-#. Help text explaining what the feed page is
 #: src/pages/Home/Feed/messages.js:3
+#. Help text explaining what the feed page is
 msgctxt "Feed"
 msgid ""
 "This page shows the latest activity on Surfing Dirt: content and messages "
 "posted by our members"
-msgstr ""
-"このページには、Surfing Dirtの最新の活動が表示されます。メンバーが投稿したコン"
-"テンツとメッセージ"
+msgstr "このページには、Surfing Dirtの最新の活動が表示されます。メンバーが投稿したコンテンツとメッセージ"
 
-#. Name of the page where we explain what the site is about
 #: src/sections/Footer/messages.js:3
+#. Name of the page where we explain what the site is about
 msgctxt "Footer"
 msgid "About"
 msgstr "概要"
 
-#. Name of the page where a user can write to the site owners
 #: src/sections/Footer/messages.js:7
+#. Name of the page where a user can write to the site owners
 msgctxt "Footer"
 msgid "Contact"
 msgstr "連絡先"
 
-#. Name of the forum section of the old site
 #: src/sections/Footer/messages.js:11
+#. Name of the forum section of the old site
 msgctxt "Footer"
 msgid "Forum"
 msgstr "フォーラム"
 
-#. Error message displayed foe example when a user chooses a username or email that's already used by someone else
 #: src/components/Widgets/Form/APIMessage/messages.js:7
+#. Error message displayed foe example when a user chooses a username or email that's already used by someone else
 msgctxt "Form errors"
 msgid "Already taken!"
 msgstr "使用中！"
 
-#. Error message displayed when a bad email address was entered
 #: src/components/Widgets/Form/APIMessage/messages.js:3
+#. Error message displayed when a bad email address was entered
 msgctxt "Form errors"
 msgid "Email is invalid"
 msgstr "メールが無効です"
 
-#. Error message displayed when a text field is different from another (example: two password fields)
 #: src/components/Widgets/Form/APIMessage/messages.js:11
+#. Error message displayed when a text field is different from another (example: two password fields)
 msgctxt "Form errors"
 msgid "Not identical"
 msgstr "同一ではない"
 
-#. Error message displayed when the user left a required field empty
 #: src/components/Widgets/Form/APIMessage/messages.js:15
+#. Error message displayed when the user left a required field empty
 msgctxt "Form errors"
 msgid "Required"
 msgstr "必須"
 
-#. Error message displayed when the user typed a short message
 #: src/components/Widgets/Form/APIMessage/messages.js:19
+#. Error message displayed when the user typed a short message
 msgctxt "Form errors"
 msgid "Too short"
 msgstr "短すぎる"
 
-#. Label for a link to navigate
 #: src/pages/Home/Discover/messages.js:35
+#. Label for a link to navigate
 msgctxt "Home"
 msgid "Go"
 msgstr "Go"
@@ -975,23 +1023,21 @@ msgid ""
 "will grow slowly.\n"
 "      We're now focusing on user profiles, photos, videos, and albums. Soon "
 "after, we'll add things like spots, events, etc.\n"
-"      So take a look around, sign up, post photos and be part of Surfing Dirt!"
+"      So take a look around, sign up, post photos and be part of Surfing "
+"Dirt!"
 msgstr ""
-"このようなサイトを作成するのは大変な作業であるため、私たちは小さく始めており、"
-"ゆっくりと成長するつもり。\n"
-"      現在、ユーザープロフィール、写真、ビデオ、アルバムに注目しています。その"
-"後すぐに、スポット、イベントなどを追加します。\n"
-"      だから、周りを見て、サインアップし、写真を投稿し、サーフィンダートの一員"
-"になりましょう！"
+"このようなサイトを作成するのは大変な作業であるため、私たちは小さく始めており、ゆっくりと成長するつもり。\n"
+"      現在、ユーザープロフィール、写真、ビデオ、アルバムに注目しています。その後すぐに、スポット、イベントなどを追加します。\n"
+"      だから、周りを見て、サインアップし、写真を投稿し、サーフィンダートの一員になりましょう！"
 
-#. Label for a link to a page containing more albums
 #: src/pages/Albums/messages.js:7
+#. Label for a link to a page containing more albums
 msgctxt "Home"
 msgid "More Albums"
 msgstr "その他のアルバム"
 
-#. Label for a button to display a longer text
 #: src/pages/Home/Discover/messages.js:3
+#. Label for a button to display a longer text
 msgctxt "Home"
 msgid "More..."
 msgstr "もっと..."
@@ -999,21 +1045,20 @@ msgstr "もっと..."
 #: src/pages/Home/Discover/messages.js:9
 msgctxt "Home"
 msgid ""
-"Mountainboarding doesn't have a real home online right now, so we're hoping to "
-"be it. \n"
-"      Unlike the old Surfing Dirt forum, this is more like a social network: "
-"profile pages, galleries, and all kinds of other things.\n"
+"Mountainboarding doesn't have a real home online right now, so we're hoping "
+"to be it. \n"
+"      Unlike the old Surfing Dirt forum, this is more like a social "
+"network: profile pages, galleries, and all kinds of other things.\n"
 "      A place to showcase all the cool things that are happening in "
 "mountainboarding."
 msgstr ""
-"現在、マウンテンボーディングにはオンラインの本当の家がないので、それを望んでい"
-"ます。\n"
-"      古いSurfing Dirtフォーラムとは異なり、これはソーシャルネットワークのよう"
-"なものです。プロファイルページ、ギャラリー、その他すべての種類のものです。\n"
+"現在、マウンテンボーディングにはオンラインの本当の家がないので、それを望んでいます。\n"
+"      古いSurfing "
+"Dirtフォーラムとは異なり、これはソーシャルネットワークのようなものです。プロファイルページ、ギャラリー、その他すべての種類のものです。\n"
 "      マウンテンボーディングで起こっているすべてのクールなことを紹介する場所。"
 
-#. Message before a link to go to a page containing more albums
 #: src/pages/Home/Discover/messages.js:31
+#. Message before a link to go to a page containing more albums
 msgctxt "Home"
 msgid "See more photos and videos on the Albums page"
 msgstr "アルバムページで他の写真やビデオを見る"
@@ -1023,8 +1068,8 @@ msgctxt "Home"
 msgid "Surfing Dirt, your mountainboard community"
 msgstr "サーフィン・ダート、みんなのマウンテンボードコミュニティ"
 
-#. Title of a paragraph
 #: src/pages/Home/Discover/messages.js:24
+#. Title of a paragraph
 msgctxt "Home"
 msgid "The future"
 msgstr "未来"
@@ -1032,213 +1077,206 @@ msgstr "未来"
 #: src/pages/Home/Discover/messages.js:17
 msgctxt "Home"
 msgid ""
-"Well, for one, because the mountainboard community is special and deserves an "
-"online space that resembles it.\n"
-"      Mountainboard events are known for being open, inclusive and positive. "
-"Surfing Dirt intends to provide the same thing online!\n"
-"      Also, since you asked, because Facebook sucks! In general, it causes a "
-"lot of harm, and it would be in everyone's best interest to use it less.\n"
+"Well, for one, because the mountainboard community is special and deserves "
+"an online space that resembles it.\n"
+"      Mountainboard events are known for being open, inclusive and "
+"positive. Surfing Dirt intends to provide the same thing online!\n"
+"      Also, since you asked, because Facebook sucks! In general, it causes "
+"a lot of harm, and it would be in everyone's best interest to use it less.\n"
 "      But really, the main reason is that we hope to bring you a cool place "
 "for everyone to come together!"
 msgstr ""
-"なぜなら、マウンテンボードコミュニティは特別で、それに似たオンラインスペースに"
-"値するからです。\n"
-"      マウンテンボードのイベントは、オープンで包括的で前向きなものとして知られ"
-"ています。 サーフィン・ダートは同じことをオンラインで提供するつもりです！\n"
-"      また、あなたが尋ねたので、Facebookは吸うので！一般に、それは多くの害を引"
-"き起こし、それをあまり使用しないことが誰にとっても最大の利益になるでしょう。\n"
-"      しかし、実際には、主な理由は、みんなが集まるクールな場所をあなたにもたら"
-"すことを望んでいるということです！"
+"なぜなら、マウンテンボードコミュニティは特別で、それに似たオンラインスペースに値するからです。\n"
+"      マウンテンボードのイベントは、オープンで包括的で前向きなものとして知られています。 "
+"サーフィン・ダートは同じことをオンラインで提供するつもりです！\n"
+"      また、あなたが尋ねたので、Facebookは吸うので！一般に、それは多くの害を引き起こし、それをあまり使用しないことが誰にとっても最大の利益"
+"になるでしょう。\n"
+"      しかし、実際には、主な理由は、みんなが集まるクールな場所をあなたにもたらすことを望んでいるということです！"
 
-#. Title of a paragraph
 #: src/pages/Home/Discover/messages.js:16
+#. Title of a paragraph
 msgctxt "Home"
 msgid "Why we need that"
 msgstr "なぜ必要なのか"
 
-#. Title on the homepage to welcome users
 #: src/pages/Home/Discover/messages.js:4
+#. Title on the homepage to welcome users
 msgctxt "Home"
 msgid "Your mountainboard community"
 msgstr "マウンテンボードコミュニティ"
 
-#. Label for a section containing a vertical list of new things on the site
 #: src/pages/Home/messages.js:7
+#. Label for a section containing a vertical list of new things on the site
 #, fuzzy
 msgctxt "Homepage"
 msgid "Activity"
 msgstr "アクティビティ"
 
-#. Label for a section containing a lot of things for a new person to discover
 #: src/pages/Home/messages.js:3
+#. Label for a section containing a lot of things for a new person to discover
 msgctxt "Homepage"
 msgid "Discover"
 msgstr "発見する"
 
-#. Indicates that what follows is the page's main content (help text for blind users)
 #: src/pages/Home/messages.js:11
+#. Indicates that what follows is the page's main content (help text for blind users)
 #, fuzzy
 msgctxt "Homepage"
 msgid "Main content"
 msgstr "メインコンテンツ"
 
-#. An error message
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
+#. An error message
 msgctxt "Loading"
 msgid "An error occurred while navigating, please reload the page."
 msgstr "移動中にエラーが発生しました。ページを再読み込みしてください。"
 
-#. An error message
 #: src/components/Widgets/Card/messages.js:7
 #: src/components/Widgets/Loading/messages.js:7
+#. An error message
 msgctxt "Loading"
 msgid "The page could not load, please try and reload it."
 msgstr "ページを読み込めませんでした。もう一度試してください。"
 
-#. Label of a link to the registration page
 #: src/sections/ProfileLinkNavigation/messages.js:12
+#. Label of a link to the registration page
 msgctxt "LoggedOut"
 msgid "Register"
 msgstr "登録"
 
-#. Label of a button to close a dialog window
 #: src/components/User/BioUpdate/messages.js:10
 #: src/components/Widgets/Modal/messages.js:4
+#. Label of a button to close a dialog window
 msgctxt "Modal"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#. Label of a button to close a dialog window
 #: src/components/Widgets/Modal/messages.js:3
+#. Label of a button to close a dialog window
 msgctxt "Modal"
 msgid "Close"
 msgstr "閉じる"
 
-#. Title of the photo post page
 #: src/pages/Photo/BatchUpload/messages.js:4
+#. Title of the photo post page
 msgctxt "Multiple upload page"
 msgid "Post multiple photos"
 msgstr "複数の写真を投稿する"
 
-#. Name of a page on the site
 #: src/sections/MoreLinkNavigation/messages.js:7
+#. Name of a page on the site
 msgctxt "Navigation"
 msgid "Albums"
 msgstr "アルバム"
 
-#. Label for a button to close the navigation menu
 #: src/sections/MoreLinkNavigation/messages.js:8
 #: src/sections/ProfileLinkNavigation/messages.js:3
+#. Label for a button to close the navigation menu
 msgctxt "Navigation"
 msgid "Close"
 msgstr "閉じる"
 
-#. Name of a page on the site
 #: src/sections/MoreLinkNavigation/messages.js:9
+#. Name of a page on the site
 msgctxt "Navigation"
 msgid "Gallery"
 msgstr "ギャラリー"
 
-#. Label for a section containing links to pages on the site
 #: src/sections/MoreLinkNavigation/messages.js:10
 #: src/sections/ProfileLinkNavigation/messages.js:4
+#. Label for a section containing links to pages on the site
 msgctxt "Navigation"
 msgid "Links"
 msgstr "リンク集"
 
-#. Name of a page on the site
 #: src/sections/MoreLinkNavigation/messages.js:14
+#. Name of a page on the site
 msgctxt "Navigation"
 msgid "Riders"
 msgstr "ライダー達"
 
-#. Label for a menu to manage the user's account
 #: src/components/Widgets/NavigationProfile/messages.js:3
 #: src/sections/Layout/messages.js:5
+#. Label for a menu to manage the user's account
 msgctxt "NavigationProfile"
 msgid "Account"
 msgstr "アカウント"
 
-#. Indicates how to sign in after a new password was activated
 #: src/pages/NewPasswordActivated/messages.js:14
+#. Indicates how to sign in after a new password was activated
 msgctxt "New password activation"
 msgid "Enter the new password we emailed you to sign in!"
 msgstr "サインインするためにメールで送信した新しいパスワードを入力してください！"
 
-#. Title of a page
 #: src/pages/NewPasswordActivated/messages.js:7
+#. Title of a page
 msgctxt "New password activation"
 msgid "Password Activation"
 msgstr "パスワードアクティベーション"
 
-#. Message displayed when a new password was successfully activated
 #: src/pages/NewPasswordActivated/messages.js:3
+#. Message displayed when a new password was successfully activated
 msgctxt "New password activation"
 msgid "Your new password is now activated!"
 msgstr "新しいパスワードが有効になりました！"
 
-#. Paragraph
 #: src/pages/OldForum/messages.js:4
+#. Paragraph
 msgctxt "OldForum"
 msgid ""
-"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still around!"
-msgstr ""
-"古いサーフィンダートフォーラムをお探しですか？心配しないでください、まだ存在し"
-"ているよ！"
+"Are you looking for the old Surfing Dirt Forum? Don't worry, it's still "
+"around!"
+msgstr "古いサーフィンダートフォーラムをお探しですか？心配しないでください、まだ存在しているよ！"
 
-#. Paragraph
 #: src/pages/OldForum/messages.js:16
+#. Paragraph
 msgctxt "OldForum"
 msgid "Go to the forum!"
 msgstr "フォーラムにアクセスしてください！"
 
-#. Paragraph
 #: src/pages/OldForum/messages.js:12
+#. Paragraph
 msgctxt "OldForum"
 msgid ""
-"In the meantime, go check it out, it may look different than it used to, but "
-"the great content is still there!"
-msgstr ""
-"それまでの間、チェックしてみてください。以前とは違って見えるかもしれませんが、"
-"すばらしいコンテンツはまだそこにあります！"
+"In the meantime, go check it out, it may look different than it used to, "
+"but the great content is still there!"
+msgstr "それまでの間、チェックしてみてください。以前とは違って見えるかもしれませんが、すばらしいコンテンツはまだそこにあります！"
 
-#. Title of the Forum page
 #: src/pages/OldForum/messages.js:3
+#. Title of the Forum page
 msgctxt "OldForum"
 msgid "The Surfing Dirt Forum"
 msgstr "サーフィンダートフォーラム"
 
-#. Paragraph
 #: src/pages/OldForum/messages.js:8
+#. Paragraph
 msgctxt "OldForum"
 msgid ""
-"We haven't managed to merge the forum into the new site, but we're thinking it "
-"will happen some day."
-msgstr ""
-"フォーラムを新しいサイトに統合することはできませんでしたが、いつか行われると考"
-"えています。"
+"We haven't managed to merge the forum into the new site, but we're thinking "
+"it will happen some day."
+msgstr "フォーラムを新しいサイトに統合することはできませんでしたが、いつか行われると考えています。"
 
-#. Label for a navigation section containing links to add new items
 #: src/sections/MoreLinkNavigation/messages.js:3
+#. Label for a navigation section containing links to add new items
 msgctxt "Page Layout"
 msgid "Actions"
 msgstr "アクション"
 
-#. Label for a link to a page where the user can see the activity on the site
 #: src/sections/Layout/messages.js:13
+#. Label for a link to a page where the user can see the activity on the site
 msgctxt "Page Layout"
 msgid "Activity"
 msgstr "アクティビティ"
 
-#. Label for a button which opens a list of links to add new items
 #: src/sections/Layout/messages.js:9
+#. Label for a button which opens a list of links to add new items
 msgctxt "Page Layout"
 msgid "Add"
 msgstr "追加"
 
-#. Label for a link to the homepage
 #: src/sections/Layout/messages.js:21
+#. Label for a link to the homepage
 msgctxt "Page Layout"
 msgid "Home"
 msgstr "ホーム"
@@ -1253,113 +1291,110 @@ msgctxt "Page Layout"
 msgid "Main header"
 msgstr "メインヘッダー"
 
-#. Label for a button which opens a list of additional navigation items
 #: src/sections/Layout/messages.js:22
+#. Label for a button which opens a list of additional navigation items
 msgctxt "Page Layout"
 msgid "More"
 msgstr "もっと読む"
 
-#. Label for a link to the user's profile page
 #: src/sections/Layout/messages.js:34
 #: src/sections/ProfileLinkNavigation/messages.js:11
+#. Label for a link to the user's profile page
 msgctxt "Page Layout"
 msgid "Profile"
 msgstr "プロフィール"
 
-#. Label for a button which opens up the search bar
 #: src/sections/Layout/messages.js:35
+#. Label for a button which opens up the search bar
 msgctxt "Page Layout"
 msgid "Search"
 msgstr "検索"
 
-#. Label for a link to the user's settings page
 #: src/sections/ProfileLinkNavigation/messages.js:13
+#. Label for a link to the user's settings page
 msgctxt "Page Layout"
 msgid "Settings"
 msgstr "設定"
 
-#. Description of the Not Found page
 #: src/pages/Page404/messages.jsx:8
+#. Description of the Not Found page
 msgctxt "Page404"
 msgid "Content not found"
 msgstr "コンテンツが見つかりません"
 
-#. Header
 #: src/pages/Page404/messages.jsx:3
+#. Header
 msgctxt "Page404"
 msgid "Page not found"
 msgstr "ページが見つかりません"
 
-#. Error message displayed when a page the user attempted to navigate to does not exist
 #: src/pages/Page404/messages.jsx:4
+#. Error message displayed when a page the user attempted to navigate to does not exist
 msgctxt "Page404"
 msgid "The page you requested does not seem to exist."
 msgstr "リクエストしたページは存在しないようです。"
 
-#. Error message displayed when something went wrong
 #: src/pages/LostPassword/messages.js:19
+#. Error message displayed when something went wrong
 msgctxt "Password"
 msgid "An error occurred while requesting a new password"
 msgstr "新しいパスワードのリクエスト中にエラーが発生しました"
 
-#. Error message displayed when something went wrong
 #: src/pages/LostPassword/messages.js:3
+#. Error message displayed when something went wrong
 msgctxt "Password"
 msgid "An error occurred while resetting your password"
 msgstr "パスワードのリセット中にエラーが発生しました"
 
-#. Message explaining how to request a new password
 #: src/pages/LostPassword/messages.js:11
+#. Message explaining how to request a new password
 msgctxt "Password"
 msgid ""
-"If you can't remember your password, enter your username below and we'll send "
-"you a new one."
-msgstr ""
-"パスワードを思い出せない場合は、下にユーザー名を入力してください。新しいパス"
-"ワードが送信されます。"
+"If you can't remember your password, enter your username below and we'll "
+"send you a new one."
+msgstr "パスワードを思い出せない場合は、下にユーザー名を入力してください。新しいパスワードが送信されます。"
 
-#. Title for the page where a user can reset their password
 #: src/pages/LostPassword/messages.js:15
+#. Title for the page where a user can reset their password
 msgctxt "Password"
 msgid "Lost your password?"
 msgstr "パスワードを忘れましたか？"
 
-#. Label for a button to submit a form
 #: src/pages/LostPassword/messages.js:23
+#. Label for a button to submit a form
 msgctxt "Password"
 msgid "Send"
 msgstr "送る"
 
-#. Label for a form field to type a username
 #: src/pages/LostPassword/messages.js:24
+#. Label for a form field to type a username
 msgctxt "Password"
 msgid "Username"
 msgstr "ユーザー名"
 
-#. Message displayed when a new password was sent successfully
 #: src/pages/LostPassword/messages.js:7
+#. Message displayed when a new password was sent successfully
 msgctxt "Password"
 msgid ""
-"We sent an email to your account. Click the link to activate your new password!"
-msgstr ""
-"アカウントにメールを送信しました。リンクをクリックして、新しいパスワードを有効"
-"にします！"
+"We sent an email to your account. Click the link to activate your new "
+"password!"
+msgstr "アカウントにメールを送信しました。リンクをクリックして、新しいパスワードを有効にします！"
 
-#. Title of the photo edition page
 #: src/pages/Photo/Edit/messages.js:4
+#. Title of the photo edition page
 #, fuzzy
 msgctxt "Photo edit page"
 msgid "Edit a photo"
 msgstr "写真の追加"
 
-#. Title of the photo post page
 #: src/pages/Photo/Post/messages.js:4
+#. Title of the photo post page
 msgctxt "Photo post page"
 msgid "Post a new photo"
 msgstr "新しい写真を投稿する"
 
-#. Label for a button to enter an introduction
 #: src/pages/Profile/messages.js:3
+#. Label for a button to enter an introduction
 msgctxt "Profile"
 msgid "Add intro"
 msgstr "イントロを追加"
@@ -1374,229 +1409,342 @@ msgctxt "Profile"
 msgid "Profile"
 msgstr "プロフィール"
 
-#. An image the user has chosen to associate with themselves
 #: src/components/Cover/messages.js:11
+#. An image the user has chosen to associate with themselves
 msgctxt "Profile"
 msgid "Profile cover photo"
 msgstr "プロフィールカバー写真"
 
-#. Label for a button to change settings
 #: src/components/Cover/messages.js:18
+#. Label for a button to change settings
 msgctxt "Profile"
 msgid "Settings"
 msgstr "設定"
 
-#. Label for a button to update an introduction
 #: src/pages/Profile/messages.js:9
+#. Label for a button to update an introduction
 msgctxt "Profile"
 msgid "Update intro"
 msgstr "イントロを更新"
 
-#. Placeholder text displayed when the user introduction is still empty
 #: src/pages/Profile/messages.js:4
+#. Placeholder text displayed when the user introduction is still empty
 msgctxt "Profile"
 msgid ""
-"You have not entered an introduction yet. Click the button to let other riders "
-"know about you!"
-msgstr ""
-"まだ紹介を入力していません。ボタンをクリックして、他のライダーにあなたのことを"
-"知らせましょう！"
+"You have not entered an introduction yet. Click the button to let other "
+"riders know about you!"
+msgstr "まだ紹介を入力していません。ボタンをクリックして、他のライダーにあなたのことを知らせましょう！"
 
-#. Label for a form field to type an email
+#: src/pages/User/OAuthRegistration/messages.js:3
 #: src/pages/User/Registration/messages.js:3
 #: src/pages/User/Settings/messages.js:3
+#. Label for a form field to type an email
 msgctxt "Registration"
 msgid "Email"
 msgstr "メールアドレス"
 
+#: src/pages/User/OAuthRegistration/messages.js:4
 #. Paragraph explaining how to register
-#: src/pages/User/Registration/messages.js:4
 msgctxt "Registration"
 msgid "If you'd like to join us, enter your details below to create an account!"
 msgstr "参加したい場合は、以下に詳細を入力してアカウントを作成してください！"
 
-#. Label for a list of countries and languages the user can choose from
-#: src/pages/User/Registration/messages.js:8
+#: src/pages/User/Registration/messages.js:4
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Registration"
+#| msgid ""
+#| "If you'd like to join us, enter your details below to create an account!"
+msgctxt "Registration"
+msgid "If you'd like to join us, you can either go through Google or Facebook:"
+msgstr "参加したい場合は、以下に詳細を入力してアカウントを作成してください！"
+
+#: src/pages/User/OAuthRegistration/messages.js:8
+#: src/pages/User/Registration/messages.js:12
 #: src/pages/User/Settings/messages.js:9
+#. Label for a list of countries and languages the user can choose from
 msgctxt "Registration"
 msgid "Language"
 msgstr "言語"
 
+#: src/pages/User/Registration/messages.js:8
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Registration"
+#| msgid ""
+#| "If you'd like to join us, enter your details below to create an account!"
+msgctxt "Registration"
+msgid "Or you can enter your details below to create an account!"
+msgstr "参加したい場合は、以下に詳細を入力してアカウントを作成してください！"
+
+#: src/pages/User/OAuthRegistration/messages.js:12
+#: src/pages/User/Registration/messages.js:16
 #. Label for a form field to type a password
-#: src/pages/User/Registration/messages.js:12
 msgctxt "Registration"
 msgid "Password"
 msgstr "パスワード"
 
+#: src/pages/User/OAuthRegistration/messages.js:21
+#: src/pages/User/Registration/messages.js:25
 #. Label for a form field to type a password confirmation
-#: src/pages/User/Registration/messages.js:21
 msgctxt "Registration"
 msgid "Password confirmation"
 msgstr "パスワード確認"
 
+#: src/pages/User/OAuthRegistration/messages.js:25
+#: src/pages/User/OAuthRegistration/messages.js:29
+#: src/pages/User/Registration/messages.js:29
+#: src/pages/User/Registration/messages.js:33
+#: src/pages/User/Settings/messages.js:29
+#: src/pages/User/Settings/messages.js:33
 #. Help message telling the user they need to choose a timezone
 #. Help message telling the user they need to choose a language
-#: src/pages/User/Registration/messages.js:25
-#: src/pages/User/Registration/messages.js:29
-#: src/pages/User/Settings/messages.js:29 src/pages/User/Settings/messages.js:33
 msgctxt "Registration"
 msgid "Please choose one"
 msgstr "一つ選んでください"
 
+#: src/pages/User/OAuthRegistration/messages.js:33
+#: src/pages/User/Registration/messages.js:37
 #. Label for a button to submit the registration form
-#: src/pages/User/Registration/messages.js:33
 msgctxt "Registration"
 msgid "Register"
 msgstr "登録"
 
+#: src/pages/User/OAuthRegistration/messages.js:37
+#: src/pages/User/Registration/messages.js:41
 #. Title of the page to create an account
-#: src/pages/User/Registration/messages.js:37
 msgctxt "Registration"
 msgid "Registration"
 msgstr "登録"
 
+#: src/pages/User/OAuthRegistration/messages.js:13
+#: src/pages/User/Registration/messages.js:17
 #. Short message displayed after a user created an account to tell them it won\'t be long anymore.
-#: src/pages/User/Registration/messages.js:13
 msgctxt "Registration"
 msgid "See you in a minute!"
 msgstr "じゃあね！"
 
-#. Label for a list of timezones the user can choose from
-#: src/pages/User/Registration/messages.js:41
+#: src/pages/User/OAuthRegistration/messages.js:41
+#: src/pages/User/Registration/messages.js:45
 #: src/pages/User/Settings/messages.js:48
+#. Label for a list of timezones the user can choose from
 msgctxt "Registration"
 msgid "Timezone"
 msgstr "タイムゾーン"
 
+#: src/pages/User/OAuthRegistration/messages.js:45
+#: src/pages/User/Registration/messages.js:49
 #. Label for a form field to type a username
-#: src/pages/User/Registration/messages.js:45
 msgctxt "Registration"
 msgid "Username"
 msgstr "ユーザー名"
 
+#: src/pages/User/OAuthRegistration/messages.js:17
+#: src/pages/User/Registration/messages.js:21
 #. Message displayed after a user succeeded in creating a new account
-#: src/pages/User/Registration/messages.js:17
 msgctxt "Registration"
 msgid ""
 "We just sent you an email, please open it and click the link in order to "
 "confirm your account! Until then, you will not be able to log in."
-msgstr ""
-"メールを送信しました。メールを開いて、リンクをクリックしてアカウントを確認して"
-"ください。それまではログインできません。"
+msgstr "メールを送信しました。メールを開いて、リンクをクリックしてアカウントを確認してください。それまではログインできません。"
 
+#: src/pages/User/OAuthRegistration/messages.js:46
+#: src/pages/User/Registration/messages.js:50
 #. Welcoming message, includes a new user's username
-#: src/pages/User/Registration/messages.js:46
 msgctxt "Registration"
 msgid "Welcome, %s!"
 msgstr "％sさん、ようこそ！"
 
-#. Label for a form field to type the user's current password
 #: src/pages/User/Settings/messages.js:21
+#. Label for a form field to type the user's current password
 msgctxt "Settings"
 msgid "Current password"
 msgstr "現在のパスワード"
 
-#. Help text for users
 #: src/pages/User/Settings/messages.js:4
+#. Help text for users
 msgctxt "Settings"
 msgid "Go to your profile page instead!"
 msgstr "代わりにプロフィールページにアクセスしてください！"
 
-#. Help text for users
 #: src/pages/User/Settings/messages.js:5
+#. Help text for users
 msgctxt "Settings"
 msgid "Looking for how to update your profile picture or cover photo?"
 msgstr "プロフィール写真またはカバー写真を更新する方法をお探しですか？"
 
-#. Label for a form field to type a new password
 #: src/pages/User/Settings/messages.js:13
+#. Label for a form field to type a new password
 msgctxt "Settings"
 msgid "New password"
 msgstr "新しいパスワード"
 
-#. Label for a form field to type a new password again
 #: src/pages/User/Settings/messages.js:17
+#. Label for a form field to type a new password again
 msgctxt "Settings"
 msgid "New password confirmation"
 msgstr "新しいパスワードの確認"
 
-#. Label for a link to the user's profile page
 #: src/pages/User/Settings/messages.js:37
+#. Label for a link to the user's profile page
 msgctxt "Settings"
 msgid "Profile page"
 msgstr "自己紹介ページ"
 
-#. Label for a button to submit the user settings form
 #: src/pages/User/Settings/messages.js:41
+#. Label for a button to submit the user settings form
 msgctxt "Settings"
 msgid "Save"
 msgstr "セーブ"
 
-#. Title of the page to change user settings
 #: src/pages/User/Settings/messages.js:46
+#. Title of the page to change user settings
 msgctxt "Settings"
 msgid "Settings"
 msgstr "設定"
 
-#. Message displayed after settings were saved
 #: src/pages/User/Settings/messages.js:42
+#. Message displayed after settings were saved
 msgctxt "Settings"
 msgid "Settings were saved!"
 msgstr "設定が保存されました！"
 
-#. Label of a button to reveal a section
 #: src/components/Album/CreationForm/messages.js:32
 #: src/pages/User/Settings/messages.js:47
+#. Label of a button to reveal a section
 msgctxt "Settings"
 msgid "Show"
 msgstr "公演する"
 
-#. Title of a section where the user can enter a new password
 #: src/pages/User/Settings/messages.js:25
+#. Title of a section where the user can enter a new password
 msgctxt "Settings"
 msgid "Update your password"
 msgstr "パスワードを更新する"
 
+#: src/pages/LogIn/messages.js:74
+#. Message displayed when a sign-in error occured
+#, fuzzy
+#| msgctxt "Error"
+#| msgid "An unexpected error occurred"
+msgctxt "SignIn"
+msgid "An error occurred"
+msgstr "予期しないエラーが発生しました"
+
+#: src/pages/LogIn/messages.js:37
+#. Message displayed when something went wrong.
+#, fuzzy
+#| msgctxt "Email"
+#| msgid "An error occurred and you account could not be finalized"
+msgctxt "SignIn"
+msgid "An error occurred and we could not sign you in. Would you like to try again?"
+msgstr "エラーが発生し、アカウントを確定できませんでした"
+
+#: src/pages/LogIn/messages.js:46
+#. Message displayed when the login request is ongoing
+msgctxt "SignIn"
+msgid "Authorizing..."
+msgstr "承認しています..."
+
+#: src/pages/LogIn/messages.js:58
+#. Message displayed when the user's account is being created
+msgctxt "SignIn"
+msgid "Creating account..."
+msgstr "アカウントを作成しています..."
+
+#: src/pages/LogIn/messages.js:31
 #. Label for a link to generate a new password
-#: src/pages/LogIn/messages.js:23
 msgctxt "SignIn"
 msgid "Forgot your password?"
 msgstr "パスワードをお忘れですか？"
 
-#. Error message displayed when the user failed to log in
 #: src/pages/LogIn/messages.js:15
+#. Error message displayed when the user failed to log in
 msgctxt "SignIn"
 msgid "Login failed, please try again"
 msgstr "ログインに失敗しました。もう一度お試しください"
 
+#: src/pages/LogIn/messages.js:70
+#. Message displayed when no data could be retrieved from Google or Facebook
+msgctxt "SignIn"
+msgid "No data could be retrieved"
+msgstr "データを取得できませんでした"
+
+#: src/pages/LogIn/messages.js:26
+#. Paragraph explaining how to register
+msgctxt "SignIn"
+msgid "Or enter your email and password below:"
+msgstr "または、以下にメールアドレスとパスワードを入力してください："
+
+#: src/pages/LogIn/messages.js:30
 #. Header
-#: src/pages/LogIn/messages.js:22
 msgctxt "SignIn"
 msgid "Register"
 msgstr "登録"
 
-#. Title of the About page
+#: src/pages/LogIn/messages.js:62
+#. Message displayed when the user is being logged in
+msgctxt "SignIn"
+msgid "Signing you in..."
+msgstr "ログインしています..."
+
+#: src/pages/LogIn/messages.js:42
+#. Message displayed when the user starts logging in
+#, fuzzy
+#| msgid "Settings"
+msgctxt "SignIn"
+msgid "Starting"
+msgstr "設定"
+
+#: src/pages/LogIn/messages.js:66
+#. Message displayed when the user was successfully logged in
+msgctxt "SignIn"
+msgid "Success!"
+msgstr "成功！"
+
+#: src/pages/LogIn/messages.js:50
+#. Message displayed when the user's email is being checked
+msgctxt "SignIn"
+msgid "Verifying email..."
+msgstr "メールを確認しています..."
+
+#: src/pages/LogIn/messages.js:54
+#. Message displayed when the user is meant to enter missing information
+msgctxt "SignIn"
+msgid "Waiting for additional info"
+msgstr "追加情報を待っています"
+
+#: src/pages/LogIn/messages.js:22
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Button"
+#| msgid "Login with Facebook"
+msgctxt "SignIn"
+msgid "You can login with Google or Facebook:"
+msgstr "Facebookでログイン"
+
 #: src/components/User/Userbox/messages.js:3
 #: src/components/User/Username/messages.js:3
+#. Title of the About page
 msgctxt "User"
 msgid "Surfing Dirt is back!"
 msgstr "サーフィンダートが帰ってきた！"
 
-#. Title of the Riders page
 #: src/pages/Users/messages.js:3
+#. Title of the Riders page
 msgctxt "Users"
 msgid "Riders list"
 msgstr "ライダーリスト"
 
-#. Title of the video edition page
 #: src/pages/Video/Edit/messages.js:4
+#. Title of the video edition page
 #, fuzzy
 msgctxt "Video edit page"
 msgid "Edit a video"
 msgstr "ビデオの追加"
 
-#. Title of the video post page
 #: src/pages/Video/Post/messages.js:4
+#. Title of the video post page
 msgctxt "Video post page"
 msgid "Post a new video"
 msgstr "新しいビデオを投稿する"

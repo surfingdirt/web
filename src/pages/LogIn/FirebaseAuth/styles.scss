@@ -1,0 +1,116 @@
+.spinner {
+  // Measured for 2 items
+  height: 95px;
+  // Meant to replicate margin on the Firebase ul
+  margin: 1em 0;
+}
+
+$hideTextSize: 0;
+$showTextSize: 14px;
+
+.loginExternalWrapper {
+  :global(.firebaseui-idp-button) {
+    max-width: 16rem;
+  }
+
+  :global(.firebaseui-idp-text-long) {
+    font-size: $hideTextSize;
+    &:after {
+      font-size: $showTextSize;
+    }
+  }
+  :global(.firebaseui-idp-text-short) {
+    font-size: $hideTextSize;
+    &:after {
+      font-size: $showTextSize;
+    }
+  }
+
+  :global(.firebaseui-idp-facebook .firebaseui-idp-text-short:after) {
+    content: "Facebook";
+  }
+  :global(.firebaseui-idp-google .firebaseui-idp-text-short:after) {
+    content: "Google";
+  }
+
+  &.lang-de {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Mit Facebook anmelden";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Mit Google anmelden";
+    }
+  }
+
+  &.lang-en {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Sign in with Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Sign in with Google";
+    }
+  }
+
+  &.lang-es {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Iniciar sesión con Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Iniciar sesión con Google";
+    }
+  }
+
+  &.lang-fr {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Se connecter avec Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Se connecter avec Google";
+    }
+  }
+
+  &.lang-it {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Accedi con Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Accedi con Google";
+    }
+  }
+
+  &.lang-ja {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Facebook でログイン";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Google でログイン";
+    }
+  }
+
+  &.lang-pl {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Zaloguj się z Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Zaloguj się z Google";
+    }
+  }
+
+  &.lang-pt {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Fazer login com Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Fazer login com Google";
+    }
+  }
+
+  &.lang-ru {
+    :global(.firebaseui-idp-facebook .firebaseui-idp-text-long:after) {
+      content: "Войти через аккаунт Facebook";
+    }
+    :global(.firebaseui-idp-google .firebaseui-idp-text-long:after) {
+      content: "Войти через аккаунт Google";
+    }
+  }
+}
