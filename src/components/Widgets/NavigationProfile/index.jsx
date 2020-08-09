@@ -83,13 +83,11 @@ class NavigationProfile extends React.Component {
           </Link>
         ),
       ];
-      if (features.registration) {
-        options.push(() => (
-          <Link to={REGISTRATION} className={menuStyles.menuEntry}>
-            {t('register')}
-          </Link>
-        ));
-      }
+      options.push(() => (
+        <Link to={REGISTRATION} className={menuStyles.menuEntry}>
+          {t('register')}
+        </Link>
+      ));
     }
 
     const profileItem = <NamedNavigationItem label={title} visual={visual} />;

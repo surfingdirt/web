@@ -19,6 +19,14 @@ const messages = (getText, getPlural) => (key) =>
     signIn: getText(
       'Sign in',
     ) /* Label for a link to the signIn page, or label for a button to actually signIn */,
+    explanationsOAuth: getText(
+      'You can login with Google or Facebook:',
+      'SignIn',
+    ) /* Paragraph explaining how to register */,
+    explanationsEmailPassword: getText(
+      'Or enter your email and password below:',
+      'SignIn',
+    ) /* Paragraph explaining how to register */,
     register: getText('Register', 'SignIn') /* Header */,
     forgotYourPassword: getText(
       'Forgot your password?',

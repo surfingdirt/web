@@ -1,20 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 
 import LOGIN from 'Apollo/mutations/login.gql';
-import Card, { cardTypes } from 'Components/Widgets/Card';
-import Translate from 'Hocs/Translate';
 import AppContext from '~/contexts';
 
 import messages from '../messages';
 import PageContent from './pageContent';
 
-const { STANDARD } = cardTypes;
-
-const EmailPassword = ({ t }) => {
+const EmailPassword = () => {
   const {
     login: { onSuccess: onLoginSuccess, onFailure: onLoginFailure },
   } = useContext(AppContext);
@@ -48,18 +43,12 @@ const EmailPassword = ({ t }) => {
   };
 
   return (
-    <Card title={t('signIn')} type={STANDARD}>
-      <Mutation mutation={LOGIN}>
-        {(mutate) => (
-          <PageContent errorMessage={errorMessage} onSubmit={(data) => handleLogin(data, mutate)} />
-        )}
-      </Mutation>
-    </Card>
+    <Mutation mutation={LOGIN}>
+      {(mutate) => (
+        <PageContent errorMessage={errorMessage} onSubmit={(data) => handleLogin(data, mutate)} />
+      )}
+    </Mutation>
   );
 };
 
-EmailPassword.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default Translate(messages)(EmailPassword);
+export default EmailPassword;

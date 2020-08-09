@@ -10,6 +10,7 @@ import Heading, { headingTypes } from 'Components/Widgets/Heading';
 import Paragraph from 'Components/Widgets/Paragraph';
 import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
+import FirebaseAuth from 'Pages/LogIn/FirebaseAuth';
 import { handleMutationSubmit } from 'Utils/misc';
 
 import messages from './messages';
@@ -48,6 +49,8 @@ const Registration = (props) => {
   } else {
     content = (
       <>
+        <Paragraph>{t('explanationsOAuth')}</Paragraph>
+        <FirebaseAuth />
         <Paragraph>{t('explanations')}</Paragraph>
         <ApolloConsumer>
           {(client) => (
