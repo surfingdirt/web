@@ -12,7 +12,7 @@ const { manifest } = require('./config/pwaConfig');
 const buildConfig = require('./build.config.js');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-const devtool = mode === 'production' ? '' : 'eval-source-map';
+const devtool = mode === 'production' ? 'hidden-source-map' : 'eval-source-map';
 
 const srcDir = path.resolve(__dirname, './src');
 
