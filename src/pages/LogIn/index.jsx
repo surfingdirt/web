@@ -18,11 +18,13 @@ const Login = ({ t }) => {
   const {
     features: { firebaseAuth },
     login: {
-      data: { accessToken },
+      data: {
+        me: { username },
+      },
     },
   } = useContext(AppContext);
 
-  if (accessToken) {
+  if (username) {
     return <Redirect to={HOME} />;
   }
 
