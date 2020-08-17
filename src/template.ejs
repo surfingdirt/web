@@ -87,14 +87,14 @@
 
 <div id="app_root">{{{ html }}}</div>
 
-{{#if renderScripts}}
-{{{ js }}}
-
 <script>
   <!-- TODO: apply the technique from https://www.youtube.com/watch?v=ff4fgQxPaO0 -->
   window.staticAppContextValues = {{{ staticAppContextValues }}};
   window.__APOLLO_STATE__ = {{{ apolloState }}};
 </script>
+
+{{#if renderScripts}}
+{{{ js }}}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id={{{ analyticsId }}}"></script>
 
