@@ -46,6 +46,7 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
         mediaType
         mediaSubType
         embedUrl
+        vendorUrl
         height
         width
         thumbHeight

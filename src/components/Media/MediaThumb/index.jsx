@@ -27,7 +27,9 @@ class MediaThumb extends React.PureComponent {
     objectFit: PropTypes.bool,
     onClickCapture: PropTypes.func,
     t: PropTypes.func.isRequired,
+    target: PropTypes.string,
     title: PropTypes.string,
+    to: PropTypes.string,
     thumbs: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   };
 
@@ -36,7 +38,9 @@ class MediaThumb extends React.PureComponent {
     maxWidth: null,
     objectFit: false,
     onClickCapture: null,
+    target: null,
     title: null,
+    to: null,
   };
 
   render() {
@@ -48,36 +52,49 @@ class MediaThumb extends React.PureComponent {
       objectFit,
       onClickCapture,
       t,
+      target,
       title,
+      to,
       thumbs,
     } = this.props;
-    const to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
+
     const alt = title || t('thumbAlt');
     const responsiveImage = (
       <ResponsiveImage alt={alt} images={thumbs} sizes={sizes} objectFit={objectFit} />
     );
-    const attrs = onClickCapture ? { onClickCapture } : {};
     const style = maxWidth ? { maxWidth: `${maxWidth}px` } : {};
-    return (
-      <Link
-        className={classnames(className, { [styles.objectFit]: objectFit })}
-        to={to}
-        title={title}
-        {...attrs}
-        style={style}
-      >
-        {mediaType === PHOTO ? (
-          responsiveImage
-        ) : (
-          <div className={styles.videoWrapper}>
-            {responsiveImage}
-            <div className={styles.videoOverlay}>
-              {getIcon({ type: VIDEO, label: null, className: styles.playIcon })}
-            </div>
+
+    const content =
+      mediaType === PHOTO ? (
+        responsiveImage
+      ) : (
+        <div className={styles.videoWrapper}>
+          {responsiveImage}
+          <div className={styles.videoOverlay}>
+            {getIcon({ type: VIDEO, label: null, className: styles.playIcon })}
           </div>
-        )}
-      </Link>
-    );
+        </div>
+      );
+
+    const attrs = {
+      className: classnames(className, { [styles.objectFit]: objectFit }),
+      title,
+      style,
+      target,
+    };
+    if (onClickCapture) {
+      attrs.onClickCapture = onClickCapture;
+    }
+    let Tag;
+    if (to) {
+      Tag = 'a';
+      attrs.href = to;
+    } else {
+      Tag = Link;
+      attrs.to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
+    }
+    console.log({ Tag, attrs });
+    return <Tag {...attrs}>{content}</Tag>;
   }
 }
 

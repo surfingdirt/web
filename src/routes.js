@@ -10,6 +10,7 @@ const routes = {
   DISCOVER: '/discover',
   ERROR: '/error/:id/:message',
   FEED: '/feed',
+  FOUR_DOWN: '/the-4-down-video-contest',
   LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/signin',

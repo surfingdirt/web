@@ -1,0 +1,60 @@
+@import '../../../../styles/boxmodel';
+@import '../../../../styles/colors';
+@import '../../../../styles/font-faces';
+@import '../../../../styles/font-sizes';
+@import '../../../../styles/media-queries';
+@import '../../../../styles/utils';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  @media (min-width: $desktop-layout-threshold-min) {
+    flex-direction: row;
+  }
+
+  .thumb {
+    flex: 1 0;
+    margin: auto $margin-small-2 auto 0
+  }
+
+  .info {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: $padding-small-2;
+    @media (min-width: $desktop-small) {
+      padding: $padding-medium-2;
+    }
+
+    .header {
+      margin-bottom: $margin-small-3;
+
+      .title {
+        @include lineclamp(3);
+        font-family: $title-font-families;
+        color: $text-color-default;
+        font-size: $font-size-big;
+        @media (min-width: $desktop-small) {
+          font-size: 1.5vmin;
+        }
+      }
+    }
+
+    .descriptionWrapper {
+      .description {
+        margin: 0;
+      }
+
+      .translateButton {
+        display: inline-block;
+        font-size: $font-size-small;
+        color: $link-color-default;
+      }
+    }
+
+    .voteWrapper {
+      flex-shrink: 0;
+    }
+  }
+}

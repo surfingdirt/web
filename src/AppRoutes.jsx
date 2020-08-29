@@ -10,6 +10,8 @@ import routes from '~/routes';
 
 const AppRoutes = () => {
   const { features } = useContext(AppContext);
+  const is4DownOpen = features.fourDown;
+
   return (
     <Fragment>
       {/* Google Analytics */}
@@ -107,6 +109,9 @@ const AppRoutes = () => {
           component={pages.NewVideo}
           login={MANDATORY}
         />
+
+        {is4DownOpen && <DefaultLayoutRoute path={routes.FOUR_DOWN} component={pages.FourDown} />}
+
         <DefaultLayoutRoute component={Page404} />
       </Switch>
     </Fragment>
