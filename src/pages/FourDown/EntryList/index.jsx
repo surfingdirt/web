@@ -5,8 +5,10 @@ import EntryItem from './EntryItem';
 import styles from './styles.scss';
 
 const EntryList = ({ album, media }) => {
+  const hasVoted = media.some(({ selected }) => !!selected);
+
   const items = media.map((item) => {
-    const attrs = { album, item, media };
+    const attrs = { album, item, media, hasVoted };
     return (
       <li className={styles.item} key={item.id}>
         <EntryItem {...attrs} />

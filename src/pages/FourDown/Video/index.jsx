@@ -18,11 +18,12 @@ const { STANDARD } = cardTypes;
 const FourDownVideo = ({ match, t }) => {
   const { id } = match.params;
 
-  const [album, videos, loading, error] = useFourDownAlbum();
+  const [album, videos, vote, loading, error] = useFourDownAlbum();
 
   if (loading) return <Spinner />;
   if (error) return <ErrorMessage />;
 
+  const hasVoted = videos.some(({ selected }) => !!selected);
   const item = videos.find((video) => video.id === id);
   const {
     description: { text: description },
@@ -43,7 +44,7 @@ const FourDownVideo = ({ match, t }) => {
         <p>{t('voteForThisVideo')}</p>
       </Card>
 
-      <EntryItem item={item} />
+      <EntryItem item={item} hasVoted={hasVoted} />
     </>
   );
 };

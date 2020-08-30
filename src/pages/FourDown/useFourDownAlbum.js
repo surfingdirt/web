@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/react-hooks';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
-import Spinner from 'Components/Widgets/Spinner';
-import ErrorMessage from 'Components/Widgets/ErrorMessage';
+import FOUR_DOWN from 'Apollo/queries/fourDown.gql';
 
 // const albumId = 'bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3';
 const albumId = 'ce7573d5-fea4-4902-8ce1-04fa4e6a2401';
+
+const surveyId = '1f78dda7-789f-472b-b7e1-0bacfe3ece39';
 
 // The order of this list must match the order of the album items:
 const hardcodedData = [
@@ -35,16 +35,21 @@ const hardcodedData = [
   },
 ];
 const useFourDownAlbum = () => {
-  const { data, error, loading } = useQuery(ALBUM_WITH_MEDIA, {
-    variables: { id: albumId, startItem: 0, countItems: 4 },
+  const { data, error, loading } = useQuery(FOUR_DOWN, {
+    variables: { id: albumId, startItem: 0, countItems: 4, surveyId },
   });
   let album = null;
   let videos = null;
+  let vote = null;
   if (data) {
     // eslint-disable-next-line prefer-destructuring
     album = data.album;
-    videos = data.listMedia.map((video, i) => Object.assign({}, video, hardcodedData[i]));
-  }
-  return [album, videos, loading, error];
+    vote = data.getSurveyVote;
+    videos = data.listMedia.map((video, i) => {
+      const selected = vote.choice === video.id;
+      return Object.assign({}, video, hardcodedData[i], { selected });
+    });
+  } // console.log('useFourDownAlbum', { vote, videos });
+  return [album, videos, vote, loading, error];
 };
 export default useFourDownAlbum;

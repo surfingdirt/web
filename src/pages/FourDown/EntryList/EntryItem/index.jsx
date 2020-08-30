@@ -10,14 +10,15 @@ import Translate from 'Hocs/Translate';
 import { fourDownLoginRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
 import AppContext from '~/contexts';
-import routes from '~/routes';
+import icons, { getIcon } from 'Utils/icons';
+import sizes from 'Utils/iconSizes';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ACTION } = buttonTypes;
+const { ACTION, MAIN } = buttonTypes;
 
-const EntryItem = ({ item, t }) => {
+const EntryItem = ({ hasVoted, item, t }) => {
   const {
     login: {
       data: {
@@ -33,6 +34,7 @@ const EntryItem = ({ item, t }) => {
     formUrl,
     id,
     mediaType,
+    selected,
     thumbs,
     thumbWidth,
     vendorUrl,
@@ -51,14 +53,27 @@ const EntryItem = ({ item, t }) => {
   const target = '_blank';
 
   const buttonProps = {
-    type: ACTION,
+    type: hasVoted ? MAIN : ACTION,
     label: t('vote'),
+    className: styles.voteButton,
   };
   if (isLoggedIn) {
     // add an onClick with a call to a dedicated mutation hook
     buttonProps.onClick = () => {
       console.log('voting yo');
     };
+    if (selected) {
+      buttonProps.label = (
+        <span className={styles.selectedContent}>
+          {getIcon({
+            type: icons.CHECK,
+            size: sizes.SMALL,
+            className: styles.selectedIcon,
+          })}
+          {t('selected')}
+        </span>
+      );
+    }
   } else {
     // add props to send the user to the login page
     buttonProps.href = fourDownLoginRoute(id);
@@ -93,6 +108,7 @@ const EntryItem = ({ item, t }) => {
 };
 
 EntryItem.propTypes = {
+  hasVoted: PropTypes.bool.isRequired,
   item: MediaType.isRequired,
   t: PropTypes.func.isRequired,
 };

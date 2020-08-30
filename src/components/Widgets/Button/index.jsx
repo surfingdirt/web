@@ -92,10 +92,8 @@ const Button = ({
 
 Button.propTypes = {
   /* Common props */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   onClick: PropTypes.func,
-  iconLeft: PropTypes.string,
-  iconRight: PropTypes.string,
   type: (props, propName, componentName) => {
     const type = props[propName];
     if (!type) {
@@ -137,8 +135,6 @@ Button.defaultProps = {
   type: MAIN,
   size: DEFAULT,
   onClick: () => {},
-  iconLeft: null,
-  iconRight: null,
 
   buttonType: 'button',
 

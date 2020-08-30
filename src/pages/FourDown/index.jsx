@@ -14,7 +14,7 @@ import messages from './messages';
 const { STANDARD } = cardTypes;
 
 const FourDown = ({ t }) => {
-  const [album, videos, loading, error] = useFourDownAlbum();
+  const [album, videos, vote, loading, error] = useFourDownAlbum();
 
   if (loading) return <Spinner />;
   if (error) return <ErrorMessage />;

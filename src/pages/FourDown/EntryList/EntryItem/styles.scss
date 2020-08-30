@@ -55,6 +55,19 @@
 
     .voteWrapper {
       flex-shrink: 0;
+
+      .voteButton {
+        display: inline-flex;
+      }
+
+      .selectedContent {
+        display: inline-flex;
+        align-items: center;
+
+        .selectedIcon {
+          margin-right: 1ch;
+        }
+      }
     }
   }
 }
