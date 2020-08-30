@@ -51,15 +51,12 @@ class ProfileLinkNavigationRaw extends React.Component {
       t,
     } = this.props;
 
-    const { features } = this.context;
     const items = [];
 
     if (loggedIn) {
       items.push({ to: PROFILE, label: t('profile') }, { to: SETTINGS, label: t('settings') });
     } else {
-      if (features.registration) {
-        items.push({ to: REGISTRATION, label: t('register') });
-      }
+      items.push({ to: REGISTRATION, label: t('register') });
       items.push({ to: LOGIN, label: t('login') });
     }
 

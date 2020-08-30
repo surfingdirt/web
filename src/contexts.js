@@ -71,12 +71,12 @@ export class AppContextValueObject {
       this.resetUser();
     };
 
-    this.values.login.saveOrigin = () => {
+    this.values.login.saveOrigin = (origin) => {
       if (!global.window) {
         // Don't worry about that on the server.
         return;
       }
-      sessionStorage.setItem(signupDestinationKey, window.location.pathname);
+      sessionStorage.setItem(signupDestinationKey, origin || window.location.pathname);
     };
 
     this.values.login.clearOrigin = () => {

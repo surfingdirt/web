@@ -8,7 +8,7 @@
 $hideTextSize: 0;
 $showTextSize: 14px;
 
-.loginExternalWrapper {
+:global(.firebaseLoginExternalWrapper) {
   :global(.firebaseui-idp-button) {
     max-width: 16rem;
   }

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import classnames from 'classnames';
@@ -21,6 +22,7 @@ const FirebaseAuth = ({ locale }) => {
   const [ready, setReady] = useState(false);
   const { firebaseConfig } = useContext(AppContext);
 
+  const signInSuccessUrl = AUTH_DESTINATION_AFTER_LOGIN;
   const uiConfig = {
     credentialHelper: 'none',
     signInFlow: AUTH_METHOD,
@@ -28,7 +30,7 @@ const FirebaseAuth = ({ locale }) => {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     ],
-    signInSuccessUrl: AUTH_DESTINATION_AFTER_LOGIN,
+    signInSuccessUrl,
   };
 
   useEffect(() => {
@@ -43,13 +45,17 @@ const FirebaseAuth = ({ locale }) => {
     // https://github.com/firebase/firebaseui-web-react/issues/21#issuecomment-602180824
     return (
       <StyledFirebaseAuth
-        className={classnames(styles.loginExternalWrapper, styles[langClassName])}
+        className={classnames('firebaseLoginExternalWrapper', styles[langClassName])}
         uiConfig={uiConfig}
         firebaseAuth={firebase.auth()}
       />
     );
   }
   return <Spinner negative containerClassName={styles.spinner} />;
+};
+
+FirebaseAuth.propTypes = {
+  locale: PropTypes.string.isRequired,
 };
 
 export default Translate(messages)(FirebaseAuth);

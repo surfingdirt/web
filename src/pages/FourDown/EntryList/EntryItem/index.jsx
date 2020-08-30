@@ -7,15 +7,17 @@ import Card, { cardTypes } from 'Components/Widgets/Card';
 import DualContainer from 'Components/Widgets/DualContainer';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Translate from 'Hocs/Translate';
-import { AlbumType, MediaType } from 'Utils/types';
+import { fourDownLoginRoute } from 'Utils/links';
+import { MediaType } from 'Utils/types';
 import AppContext from '~/contexts';
+import routes from '~/routes';
 
 import messages from './messages';
 import styles from './styles.scss';
 
 const { ACTION } = buttonTypes;
 
-const EntryItem = ({ className, item, t }) => {
+const EntryItem = ({ item, t }) => {
   const {
     login: {
       data: {
@@ -48,6 +50,26 @@ const EntryItem = ({ className, item, t }) => {
 
   const target = '_blank';
 
+  const buttonProps = {
+    type: ACTION,
+    label: t('vote'),
+  };
+  if (isLoggedIn) {
+    // add an onClick with a call to a dedicated mutation hook
+    buttonProps.onClick = () => {
+      console.log('voting yo');
+    };
+  } else {
+    // add props to send the user to the login page
+    buttonProps.href = fourDownLoginRoute(id);
+  }
+
+  /*
+  if error, add these to the Vote button:
+      buttonProps.href = formUrl;
+      buttonProps.targetBlank = true;
+   */
+
   return (
     <Card type={cardTypes.BARE}>
       <div className={classnames(styles.wrapper)}>
@@ -58,7 +80,7 @@ const EntryItem = ({ className, item, t }) => {
               <h1 className={styles.title}>{videoTitle}</h1>
             </a>
             <div className={styles.voteWrapper}>
-              <Button href={formUrl} targetBlank type={ACTION} label={t('vote')} />
+              <Button {...buttonProps} />
             </div>
           </DualContainer>
           <div className={styles.descriptionWrapper}>
@@ -71,7 +93,6 @@ const EntryItem = ({ className, item, t }) => {
 };
 
 EntryItem.propTypes = {
-  className: PropTypes.string.isRequired,
   item: MediaType.isRequired,
   t: PropTypes.func.isRequired,
 };

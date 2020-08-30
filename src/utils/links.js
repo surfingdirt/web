@@ -9,6 +9,8 @@ const {
   ALBUM_EDIT,
   COMMENT_EDIT,
   ERROR,
+  FOUR_DOWN_LOGIN,
+  FOUR_DOWN_VIDEO,
   USER,
   PHOTO,
   PHOTO_BATCH_UPLOAD_FOR_ALBUM,
@@ -27,12 +29,17 @@ const MESSAGE_REGEXP = new RegExp(':message');
 export const actionRoute = (name) => `${ACTION_PREFIX}${name}`;
 
 export const albumRoute = (id) => ALBUM.replace(ID_REGEXP, id);
+
+export const batchPhotoUploadForAlbumRoute = (id) =>
+  PHOTO_BATCH_UPLOAD_FOR_ALBUM.replace(ID_REGEXP, id);
+
 export const editAlbumRoute = (id) => ALBUM_EDIT.replace(ID_REGEXP, id);
 
 export const editCommentRoute = (id) => COMMENT_EDIT.replace(ID_REGEXP, id);
 
-export const batchPhotoUploadForAlbumRoute = (id) =>
-  PHOTO_BATCH_UPLOAD_FOR_ALBUM.replace(ID_REGEXP, id);
+export const fourDownLoginRoute = (id) => FOUR_DOWN_LOGIN.replace(ID_REGEXP, id);
+
+export const fourDownVideoRoute = (id) => FOUR_DOWN_VIDEO.replace(ID_REGEXP, id);
 
 export const errorRoute = (code, message = '', queryArgs) => {
   let result = ERROR.replace(ID_REGEXP, code).replace(MESSAGE_REGEXP, querystring.escape(message));

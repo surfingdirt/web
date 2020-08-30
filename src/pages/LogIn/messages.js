@@ -75,6 +75,20 @@ const messages = (getText, getPlural) => (key) =>
       'An error occurred',
       'SignIn',
     ) /* Message displayed when a sign-in error occured */,
+
+    registerLong: getText(
+      'Register a new account',
+      'SignInRegister',
+    ) /* Long label for a registration button */,
+    registerShort: getText(
+      'Register',
+      'SignInRegister',
+    ) /* Short label for a registration button */,
+    loginLong: getText(
+      'Sign in with your account',
+      'SignInRegister',
+    ) /* Long label for a login button */,
+    loginShort: getText('Sign in', 'SignInRegister') /* Short label for a login button */,
   }[key]);
 
 export default messages;
