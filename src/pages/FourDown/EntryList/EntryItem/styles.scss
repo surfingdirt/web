@@ -41,18 +41,6 @@
       }
     }
 
-    .descriptionWrapper {
-      .description {
-        margin: 0;
-      }
-
-      .translateButton {
-        display: inline-block;
-        font-size: $font-size-small;
-        color: $link-color-default;
-      }
-    }
-
     .voteWrapper {
       flex-shrink: 0;
 
@@ -68,6 +56,22 @@
           margin-right: 1ch;
         }
       }
+    }
+
+    .descriptionWrapper {
+      .description {
+        margin: 0;
+      }
+
+      .translateButton {
+        display: inline-block;
+        font-size: $font-size-small;
+        color: $link-color-default;
+      }
+    }
+
+    .shareWrapper {
+      text-align: right;
     }
   }
 }

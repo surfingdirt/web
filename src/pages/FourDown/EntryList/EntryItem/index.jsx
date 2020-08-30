@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -7,7 +8,7 @@ import Card, { cardTypes } from 'Components/Widgets/Card';
 import DualContainer from 'Components/Widgets/DualContainer';
 import MediaThumb from 'Components/Media/MediaThumb';
 import Translate from 'Hocs/Translate';
-import { fourDownLoginRoute } from 'Utils/links';
+import { fourDownLoginRoute, fourDownVideoRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
 import AppContext from '~/contexts';
 import icons, { getIcon } from 'Utils/icons';
@@ -100,6 +101,9 @@ const EntryItem = ({ hasVoted, item, t }) => {
           </DualContainer>
           <div className={styles.descriptionWrapper}>
             <p className={styles.description}>{description}</p>
+          </div>
+          <div className={styles.shareWrapper}>
+            <Link to={fourDownVideoRoute(id)}>{t('shareLink')}</Link>
           </div>
         </div>
       </div>
