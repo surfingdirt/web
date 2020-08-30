@@ -93,7 +93,6 @@ class MediaThumb extends React.PureComponent {
       Tag = Link;
       attrs.to = mediaType === PHOTO ? photoRoute(id) : videoRoute(id);
     }
-    console.log({ Tag, attrs });
     return <Tag {...attrs}>{content}</Tag>;
   }
 }
