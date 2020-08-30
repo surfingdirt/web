@@ -11,6 +11,8 @@ const routes = {
   ERROR: '/error/:id/:message',
   FEED: '/feed',
   FOUR_DOWN: '/the-4-down-video-contest',
+  FOUR_DOWN_LOGIN: '/the-4-down-video-contest/:id/login',
+  FOUR_DOWN_VIDEO: '/the-4-down-video-contest/:id',
   LOST_PASSWORD: '/lost-password',
   HOME: '/',
   LOGIN: '/signin',

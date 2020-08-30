@@ -26,6 +26,14 @@ const pages = {
   ),
   Error: loadable(() => import(/* webpackChunkName: 'Error' */ './pages/Error'), options),
   FourDown: loadable(() => import(/* webpackChunkName: 'FourDown' */ './pages/FourDown'), options),
+  FourDownVideo: loadable(
+    () => import(/* webpackChunkName: 'FourDownVideo' */ './pages/FourDown/Video'),
+    options,
+  ),
+  FourDownLogIn: loadable(
+    () => import(/* webpackChunkName: 'FourDownLogIn' */ './pages/LogIn/FourDown'),
+    options,
+  ),
   Home: loadable(() => import(/* webpackChunkName: 'Home' */ './pages/Home'), options),
   LogIn: loadable(() => import(/* webpackChunkName: 'LogIn' */ './pages/LogIn'), options),
   LogInOAuth: loadable(

@@ -6,8 +6,12 @@ import styles from './styles.scss';
 
 const EntryList = ({ album, media }) => {
   const items = media.map((item) => {
-    const attrs = { album, className: styles.item, item, media };
-    return <EntryItem key={item.id} {...attrs} />;
+    const attrs = { album, item, media };
+    return (
+      <li className={styles.item} key={item.id}>
+        <EntryItem {...attrs} />
+      </li>
+    );
   });
 
   return <ul className={styles.list}>{items}</ul>;

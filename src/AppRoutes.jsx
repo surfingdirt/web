@@ -110,6 +110,16 @@ const AppRoutes = () => {
           login={MANDATORY}
         />
 
+        {is4DownOpen && (
+          <DefaultLayoutRoute
+            path={routes.FOUR_DOWN_LOGIN}
+            component={pages.FourDownLogIn}
+            login={FORBIDDEN}
+          />
+        )}
+        {is4DownOpen && (
+          <DefaultLayoutRoute path={routes.FOUR_DOWN_VIDEO} component={pages.FourDownVideo} />
+        )}
         {is4DownOpen && <DefaultLayoutRoute path={routes.FOUR_DOWN} component={pages.FourDown} />}
 
         <DefaultLayoutRoute component={Page404} />
