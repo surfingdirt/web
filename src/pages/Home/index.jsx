@@ -3,6 +3,7 @@ import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
+import FourDownHomeSection from 'Components/FourDown/HomeSection';
 import Tabs from 'Components/Widgets/Tabs';
 import TabPanel from 'Components/Widgets/Tabs/TabPanel';
 import Translate from 'Hocs/Translate';
@@ -16,6 +17,7 @@ import messages from './messages';
 
 const Home = ({ t }) => {
   const {
+    features: { fourDown },
     login: {
       data: {
         me: { username },
@@ -30,6 +32,7 @@ const Home = ({ t }) => {
       <Helmet>
         <title>Surfing Dirt</title>
       </Helmet>
+      {fourDown && <FourDownHomeSection />}
       <Tabs ariaLabel={t('tabsLabel')} url="" reverseTabOrder={loggedIn}>
         <TabPanel
           label={t('discover')}

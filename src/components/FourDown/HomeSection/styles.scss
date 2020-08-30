@@ -1,0 +1,24 @@
+@import "../../../styles/boxmodel";
+@import "../../../styles/constants";
+@import "../../../styles/media-queries";
+
+.wrapper {
+  margin-bottom: $margin-medium-1;
+
+  .content {
+    display: flex;
+
+    flex-direction: column;
+    @media (min-width: $desktop-layout-threshold-min) {
+      flex-direction: row;
+    }
+
+    .splash {
+      object-fit: contain;
+    }
+
+    .description {
+      padding: $padding-small-1;
+    }
+  }
+}
