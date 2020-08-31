@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/pages/ConfirmEmail/messages.js:24
@@ -91,6 +91,15 @@ msgstr "Clique aqui para escolher um arquivo"
 #. Help message
 msgid "Click here to choose photos"
 msgstr "Clique aqui para escolher as fotos"
+
+#: src/components/FourDown/HomeSection/messages.js:4
+#. Description of the 4 Down Project
+msgid ""
+"Come watch all 4 productions from across the world, and cast your vote once "
+"you've picked your favorite video!"
+msgstr ""
+"Venha assistir a todas as 4 produções de todo o mundo e vote assim que "
+"tiver escolhido seu vídeo favorito!"
 
 #: src/components/Video/UploadForm/messages.js:4
 #. Label for a button to continue adding a video
@@ -453,8 +462,9 @@ msgid "Settings"
 msgstr "Configurações"
 
 #: src/components/Widgets/NavigationProfile/messages.js:7
-#: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/messages.js:19
-#: src/pages/LogIn/messages.js:36 src/pages/NewPasswordActivated/messages.js:11
+#: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/FourDown/messages.js:3
+#: src/pages/LogIn/messages.js:19 src/pages/LogIn/messages.js:36
+#: src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
 #. Label for a link to the signIn page, or label for a button to actually signIn
 #. Title for the page where a user signs in
@@ -470,6 +480,10 @@ msgstr "Pare"
 #. Explains what to enter in the introduction field
 msgid "Tell people a little bit about yourself here."
 msgstr "Fale um pouco sobre si aqui."
+
+#: src/components/FourDown/HomeSection/messages.js:3
+msgid "The IMA's video contest is open!"
+msgstr "O concurso de vídeo do IMA está aberto!"
 
 #: src/pages/ConfirmEmail/messages.js:37
 #. Title of a section of the page
@@ -594,6 +608,11 @@ msgstr "Visível"
 msgid "Visible albums (the default) are visible to everyone."
 msgstr "Álbuns visíveis (o padrão) são visíveis para todos."
 
+#: src/components/FourDown/HomeSection/messages.js:7
+#. Label for a link to the survey page
+msgid "Vote"
+msgstr "Voto"
+
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 #. Indicates an image will start uploading soon
 msgid "Waiting"
@@ -617,6 +636,124 @@ msgstr "Uau"
 #. Label for a button the user can click to confirm they want to delete an item
 msgid "Yes, delete it"
 msgstr "Sim, apague-o"
+
+#: src/pages/FourDown/messages.js:15
+#. Video page title
+msgctxt "4 Down"
+msgid "4 Down Project vote page"
+msgstr "4 Abaixo página de votação do projeto"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:6
+#. Error message
+#, fuzzy
+#| msgctxt "Loading"
+#| msgid "An error occurred while navigating, please reload the page."
+msgctxt "4 Down"
+msgid "An error occurred while saving your vote. Please click here to try again."
+msgstr "Ocorreu um erro durante a navegação, por favor recarregue a página."
+
+#: src/pages/FourDown/messages.js:16
+#. Info paragraph
+msgctxt "4 Down"
+msgid "Click the button below to cast your vote!"
+msgstr "Clique no botão abaixo para votar!"
+
+#: src/pages/FourDown/messages.js:11
+#. Promo paragraph 3
+msgctxt "4 Down"
+msgid "Let us know which video was your favorite below!"
+msgstr "Diga-nos abaixo qual é o seu vídeo favorito!"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:4
+#. Label for an item chosen for a vote
+msgctxt "4 Down"
+msgid "Selected"
+msgstr "Selecionado"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:5
+#. Label for a link
+msgctxt "4 Down"
+msgid "Share link"
+msgstr "Compartilhar link"
+
+#: src/pages/FourDown/messages.js:7
+#. Promo paragraph 2
+msgctxt "4 Down"
+msgid ""
+"Surfing Dirt is proud to sponsor this year's edition of the IMA's 4 Down "
+"video contest with a cash purse of $500."
+msgstr ""
+"Surfing Dirt tem o orgulho de patrocinar a edição deste ano do concurso de "
+"vídeo 4 Down do IMA com uma bolsa de $ 500 em dinheiro."
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:3
+#. Label for a button to cast a vote
+msgctxt "4 Down"
+msgid "Vote"
+msgstr "Voto"
+
+#: src/pages/FourDown/messages.js:3
+#. Promo paragraph 1
+msgctxt "4 Down"
+msgid "Welcome to the 4 Down Project voting page!"
+msgstr "Bem-vindo à página de votação do Projeto 4 Down!"
+
+#: src/pages/FourDown/messages.js:28
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid ""
+"While you're here, would you like to subscribe to our newsletter? We "
+"promise you'll like it!"
+msgstr ""
+"Enquanto você estiver aqui, gostaria de assinar nossa newsletter? Nós "
+"prometemos que você vai gostar!"
+
+#: src/pages/FourDown/messages.js:24
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid ""
+"You can share this page with your friends if you want them to participate "
+"as well."
+msgstr ""
+"Você pode compartilhar esta página com seus amigos se quiser que eles "
+"participem também."
+
+#: src/pages/FourDown/messages.js:20
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid "Your vote was registered. Thanks for participating!"
+msgstr "Seu voto foi registrado. Obrigado por participar!"
+
+#: src/pages/LogIn/FourDown/messages.js:10
+#. Paragraph explaining why registering is necessary
+msgctxt "4 Down SignIn"
+msgid ""
+"Because we only allow one vote per person, we need you to login or create "
+"an account."
+msgstr ""
+"Como permitimos apenas um voto por pessoa, precisamos que você faça o login "
+"ou crie uma conta."
+
+#: src/pages/LogIn/FourDown/messages.js:18
+#. Link to a Google Form page
+msgctxt "4 Down SignIn"
+msgid "If you would rather not create an account, you can cast your vote here:"
+msgstr "Se você preferir não criar uma conta, pode votar aqui:"
+
+#: src/pages/LogIn/FourDown/messages.js:6
+#. Introduced the name of the video to vote for:
+msgctxt "4 Down SignIn"
+msgid "Voting for:"
+msgstr "Votando para:"
+
+#: src/pages/LogIn/FourDown/messages.js:14
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Button"
+#| msgid "Login with Facebook"
+msgctxt "4 Down SignIn"
+msgid "You can login with Google or Facebook, or use an email and password:"
+msgstr "Entre com o Facebook"
 
 #: src/pages/About/messages.js:4
 #. Paragraph
@@ -1247,6 +1384,20 @@ msgctxt "New password activation"
 msgid "Your new password is now activated!"
 msgstr "Sua nova senha está agora ativada!"
 
+#: src/components/Widgets/NewsletterForm/messages.js:3
+#. Label for a form field
+#, fuzzy
+#| msgid "Video address"
+msgctxt "Newsletter form"
+msgid "Email Address"
+msgstr "Endereço do vídeo"
+
+#: src/components/Widgets/NewsletterForm/messages.js:4
+#. Label for a newsletter subscription button
+msgctxt "Newsletter form"
+msgid "Subscribe"
+msgstr "Se inscrever"
+
 #: src/pages/OldForum/messages.js:4
 #. Paragraph
 msgctxt "OldForum"
@@ -1768,6 +1919,36 @@ msgstr "Esperando por informações adicionais"
 msgctxt "SignIn"
 msgid "You can login with Google or Facebook:"
 msgstr "Entre com o Facebook"
+
+#: src/pages/LogIn/messages.js:83
+#. Short label for a registration button
+#, fuzzy
+#| msgid "Register"
+msgctxt "SignInRegister"
+msgid "Register"
+msgstr "Registe-se"
+
+#: src/pages/LogIn/messages.js:79
+#. Long label for a registration button
+msgctxt "SignInRegister"
+msgid "Register a new account"
+msgstr "Registrar uma nova conta"
+
+#: src/pages/LogIn/messages.js:91
+#. Short label for a login button
+#, fuzzy
+#| msgid "Sign in"
+msgctxt "SignInRegister"
+msgid "Sign in"
+msgstr "Iniciar Sessão"
+
+#: src/pages/LogIn/messages.js:87
+#. Long label for a login button
+#, fuzzy
+#| msgid "Personalize your account"
+msgctxt "SignInRegister"
+msgid "Sign in with your account"
+msgstr "Personalize a sua conta"
 
 #: src/components/User/Userbox/messages.js:3
 #: src/components/User/Username/messages.js:3

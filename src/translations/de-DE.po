@@ -91,6 +91,15 @@ msgstr "Klicken Sie hier, um eine Datei auszuwählen"
 msgid "Click here to choose photos"
 msgstr "Klicken Sie hier, um Fotos auszuwählen"
 
+#: src/components/FourDown/HomeSection/messages.js:4
+#. Description of the 4 Down Project
+msgid ""
+"Come watch all 4 productions from across the world, and cast your vote once "
+"you've picked your favorite video!"
+msgstr ""
+"Schauen Sie sich alle 4 Produktionen aus der ganzen Welt an und geben Sie "
+"Ihre Stimme ab, sobald Sie Ihr Lieblingsvideo ausgewählt haben!"
+
 #: src/components/Video/UploadForm/messages.js:4
 #. Label for a button to continue adding a video
 msgid "Continue"
@@ -102,6 +111,11 @@ msgstr "Weiter"
 #, fuzzy
 msgid "Contributions"
 msgstr "Einführung"
+
+#: src/components/Reactions/messages.js:9
+#. Label for a user reaction icon: cool 😎
+msgid "Cool"
+msgstr "Cool"
 
 #: src/components/Video/UploadForm/messages.js:9
 #. Error message showed when a user entered a video address that could not be understood
@@ -187,6 +201,11 @@ msgstr "Etwas eingeben"
 msgid "File"
 msgstr "Datei"
 
+#: src/components/Reactions/messages.js:10
+#. Label for a user reaction icon: fire 🔥
+msgid "Fire"
+msgstr "Feuer"
+
 #: src/components/Media/MediaMetadata/messages.js:3
 #. Label for a link to a media's dedicated page
 msgid "Full page"
@@ -206,6 +225,16 @@ msgstr "Gehen Sie zu Ihrer Profilseite"
 #. Label of a button to display items as a grid
 msgid "Grid"
 msgstr "Gitter"
+
+#: src/components/Reactions/messages.js:8
+#. Label for a user reaction icon: angry 😡
+msgid "Grrr"
+msgstr "Grrr"
+
+#: src/components/Reactions/messages.js:14
+#. Label for a user reaction icon: laughing 🤣
+msgid "Haha"
+msgstr "Haha"
 
 #: src/components/Widgets/Form/AlbumVisibility/messages.js:3
 #. Choice for an album visibility setting
@@ -242,6 +271,13 @@ msgstr "Ungültig"
 #. Indicates an image could not be read
 msgid "Invalid image"
 msgstr "Ungültiges Bild"
+
+#: src/components/Reactions/messages.js:13
+#: src/components/Reactions/messages.js:5
+#. Label for a button to 'like' something
+#. Label for a user reaction icon: like 👍
+msgid "Like"
+msgstr "Mögen"
 
 #: src/components/Album/AlbumViewToggle/messages.js:3
 #. Label of a button to display items as a list
@@ -303,6 +339,11 @@ msgstr "Optionen"
 msgid "Other people can post to your public albums"
 msgstr "Andere Personen können in Ihre öffentlichen Alben posten"
 
+#: src/components/Reactions/messages.js:11
+#. Label for a user reaction icon: injured 🤕
+msgid "Ouch"
+msgstr "Autsch"
+
 #: src/pages/LogIn/messages.js:9
 #. Label of a form field for the user's password
 msgid "Password"
@@ -334,8 +375,8 @@ msgstr "Bitte wählen Sie zunächst eine Datei aus"
 msgid "Posted in album"
 msgstr "Geschrieben in Album"
 
-#: src/pages/Photo/BatchUpload/messages.js:3
-#: src/pages/Photo/Post/messages.js:3 src/pages/Video/Post/messages.js:3
+#: src/pages/Photo/BatchUpload/messages.js:3 src/pages/Photo/Post/messages.js:3
+#: src/pages/Video/Post/messages.js:3
 #. Names the album the user is posting to
 msgid "Posting to album"
 msgstr "Veröffentlichung im Album"
@@ -378,6 +419,16 @@ msgstr "Dialog zur Aktualisierung von Profilbildern"
 msgid "Public"
 msgstr "Öffentlich"
 
+#: src/components/Reactions/messages.js:3
+#: src/components/Reactions/messages.js:6
+#. Label for a list of user reactions
+#. Indicates the number of reactions
+#, fuzzy
+#| msgctxt "Page Layout"
+#| msgid "Actions"
+msgid "Reactions"
+msgstr "Aktionen"
+
 #: src/components/Widgets/NavigationProfile/messages.js:11
 #. Label for a link to the registration page, or label for a button to actually register
 msgid "Register"
@@ -396,16 +447,26 @@ msgstr "Registrieren Sie"
 msgid "Required"
 msgstr "Erforderlich"
 
+#: src/components/Reactions/messages.js:15
+#. Label for a user reaction icon: sad 😢
+#, fuzzy
+#| msgctxt "Comments"
+#| msgid "sad"
+msgid "Sad"
+msgstr "traurig"
+
 #: src/components/Widgets/NavigationProfile/messages.js:14
 #. Label for a link to the user's settings page
 msgid "Settings"
 msgstr "Einstellungen"
 
 #: src/components/Widgets/NavigationProfile/messages.js:7
-#: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/messages.js:19
+#: src/pages/ConfirmEmail/messages.js:19 src/pages/LogIn/FourDown/messages.js:3
+#: src/pages/LogIn/messages.js:19 src/pages/LogIn/messages.js:36
 #: src/pages/NewPasswordActivated/messages.js:11
 #: src/sections/ProfileLinkNavigation/messages.js:8
 #. Label for a link to the signIn page, or label for a button to actually signIn
+#. Title for the page where a user signs in
 msgid "Sign in"
 msgstr "Anmelden"
 
@@ -418,6 +479,10 @@ msgstr "Stopp"
 #. Explains what to enter in the introduction field
 msgid "Tell people a little bit about yourself here."
 msgstr "Erzählen Sie den Leuten hier ein wenig über sich selbst."
+
+#: src/components/FourDown/HomeSection/messages.js:3
+msgid "The IMA's video contest is open!"
+msgstr "Der IMA-Videowettbewerb ist offen!"
 
 #: src/pages/ConfirmEmail/messages.js:37
 #. Title of a section of the page
@@ -433,6 +498,11 @@ msgstr "Dinge, die Sie jetzt tun müssen, da Sie ein Konto haben"
 #. Label for a form field to enter a title
 msgid "Title"
 msgstr "Titel"
+
+#: src/components/Reactions/messages.js:4
+#. Indicates how many users reacted to something
+msgid "Total reactions"
+msgstr "Gesamtreaktionen"
 
 #: src/components/Widgets/TranslateButton/messages.js:3
 #. Label for a button to translate a message
@@ -537,6 +607,11 @@ msgstr "Sichtbar"
 msgid "Visible albums (the default) are visible to everyone."
 msgstr "Sichtbare Alben (Standardeinstellung) sind für alle sichtbar."
 
+#: src/components/FourDown/HomeSection/messages.js:7
+#. Label for a link to the survey page
+msgid "Vote"
+msgstr "Abstimmung"
+
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 #. Indicates an image will start uploading soon
 msgid "Waiting"
@@ -551,10 +626,136 @@ msgstr ""
 "Wir unterstützen JPEG- und PNG-Fotos sowie Videos von Instagram, Facebook, "
 "YouTube, Vimeo und DailyMotion"
 
+#: src/components/Reactions/messages.js:12
+#. Label for a user reaction icon: impressed 😮
+msgid "Wow"
+msgstr "Beeindruckend"
+
 #: src/components/Widgets/DeleteItemModal/messages.js:9
 #. Label for a button the user can click to confirm they want to delete an item
 msgid "Yes, delete it"
 msgstr "Ja, löschen Sie es"
+
+#: src/pages/FourDown/messages.js:15
+#. Video page title
+msgctxt "4 Down"
+msgid "4 Down Project vote page"
+msgstr "4 Down Project Abstimmungsseite"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:6
+#. Error message
+#, fuzzy
+#| msgctxt "Loading"
+#| msgid "An error occurred while navigating, please reload the page."
+msgctxt "4 Down"
+msgid "An error occurred while saving your vote. Please click here to try again."
+msgstr "Beim Navigieren ist ein Fehler aufgetreten, bitte laden Sie die Seite neu."
+
+#: src/pages/FourDown/messages.js:16
+#. Info paragraph
+msgctxt "4 Down"
+msgid "Click the button below to cast your vote!"
+msgstr "Klicken Sie auf die Schaltfläche unten, um Ihre Stimme abzugeben!"
+
+#: src/pages/FourDown/messages.js:11
+#. Promo paragraph 3
+msgctxt "4 Down"
+msgid "Let us know which video was your favorite below!"
+msgstr "Lass uns unten wissen, welches Video dein Favorit war!"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:4
+#. Label for an item chosen for a vote
+msgctxt "4 Down"
+msgid "Selected"
+msgstr "Ausgewählt"
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:5
+#. Label for a link
+msgctxt "4 Down"
+msgid "Share link"
+msgstr "Einen Link teilen"
+
+#: src/pages/FourDown/messages.js:7
+#. Promo paragraph 2
+msgctxt "4 Down"
+msgid ""
+"Surfing Dirt is proud to sponsor this year's edition of the IMA's 4 Down "
+"video contest with a cash purse of $500."
+msgstr ""
+"Surfing Dirt ist stolz darauf, die diesjährige Ausgabe des 4 "
+"Down-Videowettbewerbs der IMA mit einem Geldbeutel von 500 US-Dollar zu "
+"sponsern."
+
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:3
+#. Label for a button to cast a vote
+msgctxt "4 Down"
+msgid "Vote"
+msgstr "Abstimmung"
+
+#: src/pages/FourDown/messages.js:3
+#. Promo paragraph 1
+msgctxt "4 Down"
+msgid "Welcome to the 4 Down Project voting page!"
+msgstr "Willkommen auf der Abstimmungsseite von 4 Down Project!"
+
+#: src/pages/FourDown/messages.js:28
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid ""
+"While you're here, would you like to subscribe to our newsletter? We "
+"promise you'll like it!"
+msgstr ""
+"Möchten Sie unseren Newsletter abonnieren, während Sie hier sind? Wir "
+"versprechen, es wird Ihnen gefallen!"
+
+#: src/pages/FourDown/messages.js:24
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid ""
+"You can share this page with your friends if you want them to participate "
+"as well."
+msgstr ""
+"Sie können diese Seite mit Ihren Freunden teilen, wenn Sie möchten, dass "
+"sie ebenfalls teilnehmen."
+
+#: src/pages/FourDown/messages.js:20
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid "Your vote was registered. Thanks for participating!"
+msgstr "Ihre Stimme wurde registriert. Vielen Dank für Ihre Teilnahme!"
+
+#: src/pages/LogIn/FourDown/messages.js:10
+#. Paragraph explaining why registering is necessary
+msgctxt "4 Down SignIn"
+msgid ""
+"Because we only allow one vote per person, we need you to login or create "
+"an account."
+msgstr ""
+"Da wir nur eine Stimme pro Person zulassen, müssen Sie sich anmelden oder "
+"ein Konto erstellen."
+
+#: src/pages/LogIn/FourDown/messages.js:18
+#. Link to a Google Form page
+msgctxt "4 Down SignIn"
+msgid "If you would rather not create an account, you can cast your vote here:"
+msgstr ""
+"Wenn Sie lieber kein Konto erstellen möchten, können Sie hier Ihre Stimme "
+"abgeben:"
+
+#: src/pages/LogIn/FourDown/messages.js:6
+#. Introduced the name of the video to vote for:
+msgctxt "4 Down SignIn"
+msgid "Voting for:"
+msgstr "Abstimmung für:"
+
+#: src/pages/LogIn/FourDown/messages.js:14
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Email"
+#| msgid "You can now go ahead and sign in with your email and password:"
+msgctxt "4 Down SignIn"
+msgid "You can login with Google or Facebook, or use an email and password:"
+msgstr "Sie können sich jetzt mit Ihrer E-Mail und Ihrem Passwort anmelden:"
 
 #: src/pages/About/messages.js:4
 #. Paragraph
@@ -708,7 +909,6 @@ msgid "This album still contains photos or videos, it cannot be deleted."
 msgstr "Dieses Album enthält noch Fotos oder Videos und kann nicht gelöscht werden."
 
 #: src/components/Media/Items/Details/messages.js:3
-#: src/components/Media/Items/ThumbOnly/messages.js:3
 #. Label for a window containing a quick preview of a media page
 msgctxt "AlbumGrid"
 msgid "Media preview"
@@ -783,6 +983,7 @@ msgstr "neutral"
 
 #: src/components/Comment/EditForm/messages.js:4
 #: src/components/Comment/Form/messages.js:4 src/components/Feed/messages.js:3
+#: src/components/Media/MediaMetadata/messages.js:7
 #. Label for a button to post a comment
 msgctxt "Comments"
 msgid "Reply"
@@ -1185,6 +1386,20 @@ msgctxt "New password activation"
 msgid "Your new password is now activated!"
 msgstr "Ihr neues Passwort ist jetzt aktiviert!"
 
+#: src/components/Widgets/NewsletterForm/messages.js:3
+#. Label for a form field
+#, fuzzy
+#| msgid "Video address"
+msgctxt "Newsletter form"
+msgid "Email Address"
+msgstr "Video-Adresse"
+
+#: src/components/Widgets/NewsletterForm/messages.js:4
+#. Label for a newsletter subscription button
+msgctxt "Newsletter form"
+msgid "Subscribe"
+msgstr "Abonnieren"
+
 #: src/pages/OldForum/messages.js:4
 #. Paragraph
 msgctxt "OldForum"
@@ -1409,6 +1624,7 @@ msgstr ""
 "Sie haben noch keine Einleitung eingegeben. Klicken Sie auf den Button, um "
 "andere Reiter über Sie zu informieren!"
 
+#: src/pages/User/OAuthRegistration/messages.js:3
 #: src/pages/User/Registration/messages.js:3
 #: src/pages/User/Settings/messages.js:3
 #. Label for a form field to type an email
@@ -1416,7 +1632,7 @@ msgctxt "Registration"
 msgid "Email"
 msgstr "E-Mail"
 
-#: src/pages/User/Registration/messages.js:4
+#: src/pages/User/OAuthRegistration/messages.js:4
 #. Paragraph explaining how to register
 msgctxt "Registration"
 msgid "If you'd like to join us, enter your details below to create an account!"
@@ -1424,27 +1640,56 @@ msgstr ""
 "Wenn Sie sich uns anschließen möchten, geben Sie Ihre Daten unten ein, um "
 "ein Konto zu erstellen!"
 
-#: src/pages/User/Registration/messages.js:8
+#: src/pages/User/Registration/messages.js:4
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Registration"
+#| msgid ""
+#| "If you'd like to join us, enter your details below to create an account!"
+msgctxt "Registration"
+msgid "If you'd like to join us, you can either go through Google or Facebook:"
+msgstr ""
+"Wenn Sie sich uns anschließen möchten, geben Sie Ihre Daten unten ein, um "
+"ein Konto zu erstellen!"
+
+#: src/pages/User/OAuthRegistration/messages.js:8
+#: src/pages/User/Registration/messages.js:12
 #: src/pages/User/Settings/messages.js:9
 #. Label for a list of countries and languages the user can choose from
 msgctxt "Registration"
 msgid "Language"
 msgstr "Sprache"
 
-#: src/pages/User/Registration/messages.js:12
+#: src/pages/User/Registration/messages.js:8
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Registration"
+#| msgid ""
+#| "If you'd like to join us, enter your details below to create an account!"
+msgctxt "Registration"
+msgid "Or you can enter your details below to create an account!"
+msgstr ""
+"Wenn Sie sich uns anschließen möchten, geben Sie Ihre Daten unten ein, um "
+"ein Konto zu erstellen!"
+
+#: src/pages/User/OAuthRegistration/messages.js:12
+#: src/pages/User/Registration/messages.js:16
 #. Label for a form field to type a password
 msgctxt "Registration"
 msgid "Password"
 msgstr "Kennwort"
 
-#: src/pages/User/Registration/messages.js:21
+#: src/pages/User/OAuthRegistration/messages.js:21
+#: src/pages/User/Registration/messages.js:25
 #. Label for a form field to type a password confirmation
 msgctxt "Registration"
 msgid "Password confirmation"
 msgstr "Bestätigung des Passworts"
 
-#: src/pages/User/Registration/messages.js:25
+#: src/pages/User/OAuthRegistration/messages.js:25
+#: src/pages/User/OAuthRegistration/messages.js:29
 #: src/pages/User/Registration/messages.js:29
+#: src/pages/User/Registration/messages.js:33
 #: src/pages/User/Settings/messages.js:29
 #: src/pages/User/Settings/messages.js:33
 #. Help message telling the user they need to choose a timezone
@@ -1453,38 +1698,44 @@ msgctxt "Registration"
 msgid "Please choose one"
 msgstr "Bitte wählen Sie eine"
 
-#: src/pages/User/Registration/messages.js:33
+#: src/pages/User/OAuthRegistration/messages.js:33
+#: src/pages/User/Registration/messages.js:37
 #. Label for a button to submit the registration form
 msgctxt "Registration"
 msgid "Register"
 msgstr "Registrieren Sie"
 
-#: src/pages/User/Registration/messages.js:37
+#: src/pages/User/OAuthRegistration/messages.js:37
+#: src/pages/User/Registration/messages.js:41
 #. Title of the page to create an account
 msgctxt "Registration"
 msgid "Registration"
 msgstr "Anmeldung"
 
-#: src/pages/User/Registration/messages.js:13
+#: src/pages/User/OAuthRegistration/messages.js:13
+#: src/pages/User/Registration/messages.js:17
 #. Short message displayed after a user created an account to tell them it won\'t be long anymore.
 msgctxt "Registration"
 msgid "See you in a minute!"
 msgstr "Bis gleich!"
 
-#: src/pages/User/Registration/messages.js:41
+#: src/pages/User/OAuthRegistration/messages.js:41
+#: src/pages/User/Registration/messages.js:45
 #: src/pages/User/Settings/messages.js:48
 #. Label for a list of timezones the user can choose from
 msgctxt "Registration"
 msgid "Timezone"
 msgstr "Zeitzone"
 
-#: src/pages/User/Registration/messages.js:45
+#: src/pages/User/OAuthRegistration/messages.js:45
+#: src/pages/User/Registration/messages.js:49
 #. Label for a form field to type a username
 msgctxt "Registration"
 msgid "Username"
 msgstr "Benutzername"
 
-#: src/pages/User/Registration/messages.js:17
+#: src/pages/User/OAuthRegistration/messages.js:17
+#: src/pages/User/Registration/messages.js:21
 #. Message displayed after a user succeeded in creating a new account
 msgctxt "Registration"
 msgid ""
@@ -1495,7 +1746,8 @@ msgstr ""
 "klicken Sie auf den Link, um Ihr Konto zu bestätigen! Bis dahin können Sie "
 "sich nicht einloggen."
 
-#: src/pages/User/Registration/messages.js:46
+#: src/pages/User/OAuthRegistration/messages.js:46
+#: src/pages/User/Registration/messages.js:50
 #. Welcoming message, includes a new user's username
 msgctxt "Registration"
 msgid "Welcome, %s!"
@@ -1570,7 +1822,37 @@ msgctxt "Settings"
 msgid "Update your password"
 msgstr "Aktualisieren Sie Ihr Passwort"
 
-#: src/pages/LogIn/messages.js:23
+#: src/pages/LogIn/messages.js:74
+#. Message displayed when a sign-in error occured
+#, fuzzy
+#| msgctxt "Error"
+#| msgid "An unexpected error occurred"
+msgctxt "SignIn"
+msgid "An error occurred"
+msgstr "Ein unerwarteter Fehler ist aufgetreten"
+
+#: src/pages/LogIn/messages.js:37
+#. Message displayed when something went wrong.
+#, fuzzy
+#| msgctxt "Email"
+#| msgid "An error occurred and you account could not be finalized"
+msgctxt "SignIn"
+msgid "An error occurred and we could not sign you in. Would you like to try again?"
+msgstr "Ein Fehler ist aufgetreten und Ihr Konto konnte nicht abgeschlossen werden"
+
+#: src/pages/LogIn/messages.js:46
+#. Message displayed when the login request is ongoing
+msgctxt "SignIn"
+msgid "Authorizing..."
+msgstr "Autorisierung ..."
+
+#: src/pages/LogIn/messages.js:58
+#. Message displayed when the user's account is being created
+msgctxt "SignIn"
+msgid "Creating account..."
+msgstr "Account erstellen..."
+
+#: src/pages/LogIn/messages.js:31
 #. Label for a link to generate a new password
 msgctxt "SignIn"
 msgid "Forgot your password?"
@@ -1582,11 +1864,94 @@ msgctxt "SignIn"
 msgid "Login failed, please try again"
 msgstr "Anmeldung fehlgeschlagen, bitte versuchen Sie es erneut"
 
-#: src/pages/LogIn/messages.js:22
+#: src/pages/LogIn/messages.js:70
+#. Message displayed when no data could be retrieved from Google or Facebook
+msgctxt "SignIn"
+msgid "No data could be retrieved"
+msgstr "Es konnten keine Daten abgerufen werden"
+
+#: src/pages/LogIn/messages.js:26
+#. Paragraph explaining how to register
+msgctxt "SignIn"
+msgid "Or enter your email and password below:"
+msgstr "Oder geben Sie unten Ihre E-Mail-Adresse und Ihr Passwort ein:"
+
+#: src/pages/LogIn/messages.js:30
 #. Header
 msgctxt "SignIn"
 msgid "Register"
 msgstr "Registrieren Sie"
+
+#: src/pages/LogIn/messages.js:62
+#. Message displayed when the user is being logged in
+msgctxt "SignIn"
+msgid "Signing you in..."
+msgstr "Sie anmelden ..."
+
+#: src/pages/LogIn/messages.js:42
+#. Message displayed when the user starts logging in
+#, fuzzy
+#| msgid "Settings"
+msgctxt "SignIn"
+msgid "Starting"
+msgstr "Einstellungen"
+
+#: src/pages/LogIn/messages.js:66
+#. Message displayed when the user was successfully logged in
+msgctxt "SignIn"
+msgid "Success!"
+msgstr "Erfolg!"
+
+#: src/pages/LogIn/messages.js:50
+#. Message displayed when the user's email is being checked
+msgctxt "SignIn"
+msgid "Verifying email..."
+msgstr "E-Mail überprüfen ..."
+
+#: src/pages/LogIn/messages.js:54
+#. Message displayed when the user is meant to enter missing information
+msgctxt "SignIn"
+msgid "Waiting for additional info"
+msgstr "Warten auf zusätzliche Informationen"
+
+#: src/pages/LogIn/messages.js:22
+#. Paragraph explaining how to register
+#, fuzzy
+#| msgctxt "Button"
+#| msgid "Login with Facebook"
+msgctxt "SignIn"
+msgid "You can login with Google or Facebook:"
+msgstr "Anmeldung mit Facebook"
+
+#: src/pages/LogIn/messages.js:83
+#. Short label for a registration button
+#, fuzzy
+#| msgid "Register"
+msgctxt "SignInRegister"
+msgid "Register"
+msgstr "Registrieren Sie"
+
+#: src/pages/LogIn/messages.js:79
+#. Long label for a registration button
+msgctxt "SignInRegister"
+msgid "Register a new account"
+msgstr "Ein neues Konto eröffnen"
+
+#: src/pages/LogIn/messages.js:91
+#. Short label for a login button
+#, fuzzy
+#| msgid "Sign in"
+msgctxt "SignInRegister"
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: src/pages/LogIn/messages.js:87
+#. Long label for a login button
+#, fuzzy
+#| msgid "Personalize your account"
+msgctxt "SignInRegister"
+msgid "Sign in with your account"
+msgstr "Personalisieren Sie Ihr Konto"
 
 #: src/components/User/Userbox/messages.js:3
 #: src/components/User/Username/messages.js:3

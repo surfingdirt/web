@@ -1,7 +1,7 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     welcome: getText(
-      'Welcome to the 4 Down contest voting page!',
+      'Welcome to the 4 Down Project voting page!',
       '4 Down',
     ) /* Promo paragraph 1 */,
     weAreProud: getText(
@@ -12,7 +12,7 @@ const messages = (getText, getPlural) => (key) =>
       'Let us know which video was your favorite below!',
       '4 Down',
     ) /* Promo paragraph 3 */,
-    votePage: getText('4 Down project vote page', '4 Down') /* Video page title */,
+    votePage: getText('4 Down Project vote page', '4 Down') /* Video page title */,
     voteForThisVideo: getText(
       'Click the button below to cast your vote!',
       '4 Down',

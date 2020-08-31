@@ -82,6 +82,11 @@ msgstr ""
 msgid "Click here to choose photos"
 msgstr ""
 
+#. Description of the 4 Down Project
+#: src/components/FourDown/HomeSection/messages.js:4
+msgid "Come watch all 4 productions from across the world, and cast your vote once you've picked your favorite video!"
+msgstr ""
+
 #. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
 msgid "Continue"
@@ -435,6 +440,7 @@ msgstr ""
 #. Title for the page where a user signs in
 #: src/components/Widgets/NavigationProfile/messages.js:7
 #: src/pages/ConfirmEmail/messages.js:19
+#: src/pages/LogIn/FourDown/messages.js:3
 #: src/pages/LogIn/messages.js:19
 #: src/pages/LogIn/messages.js:36
 #: src/pages/NewPasswordActivated/messages.js:11
@@ -450,6 +456,10 @@ msgstr ""
 #. Explains what to enter in the introduction field
 #: src/components/User/BioUpdate/messages.js:7
 msgid "Tell people a little bit about yourself here."
+msgstr ""
+
+#: src/components/FourDown/HomeSection/messages.js:3
+msgid "The IMA's video contest is open!"
 msgstr ""
 
 #. Title of a section of the page
@@ -577,6 +587,11 @@ msgstr ""
 msgid "Visible albums (the default) are visible to everyone."
 msgstr ""
 
+#. Label for a link to the survey page
+#: src/components/FourDown/HomeSection/messages.js:7
+msgid "Vote"
+msgstr ""
+
 #. Indicates an image will start uploading soon
 #: src/components/Photo/BatchUploadForm/Preview/messages.js:7
 msgid "Waiting"
@@ -595,6 +610,102 @@ msgstr ""
 #. Label for a button the user can click to confirm they want to delete an item
 #: src/components/Widgets/DeleteItemModal/messages.js:9
 msgid "Yes, delete it"
+msgstr ""
+
+#. Video page title
+#: src/pages/FourDown/messages.js:15
+msgctxt "4 Down"
+msgid "4 Down Project vote page"
+msgstr ""
+
+#. Error message
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:6
+msgctxt "4 Down"
+msgid "An error occurred while saving your vote. Please click here to try again."
+msgstr ""
+
+#. Info paragraph
+#: src/pages/FourDown/messages.js:16
+msgctxt "4 Down"
+msgid "Click the button below to cast your vote!"
+msgstr ""
+
+#. Promo paragraph 3
+#: src/pages/FourDown/messages.js:11
+msgctxt "4 Down"
+msgid "Let us know which video was your favorite below!"
+msgstr ""
+
+#. Label for an item chosen for a vote
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:4
+msgctxt "4 Down"
+msgid "Selected"
+msgstr ""
+
+#. Label for a link
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:5
+msgctxt "4 Down"
+msgid "Share link"
+msgstr ""
+
+#. Promo paragraph 2
+#: src/pages/FourDown/messages.js:7
+msgctxt "4 Down"
+msgid "Surfing Dirt is proud to sponsor this year's edition of the IMA's 4 Down video contest with a cash purse of $500."
+msgstr ""
+
+#. Label for a button to cast a vote
+#: src/pages/FourDown/EntryList/EntryItem/messages.js:3
+msgctxt "4 Down"
+msgid "Vote"
+msgstr ""
+
+#. Promo paragraph 1
+#: src/pages/FourDown/messages.js:3
+msgctxt "4 Down"
+msgid "Welcome to the 4 Down Project voting page!"
+msgstr ""
+
+#. Message displayed after voting
+#: src/pages/FourDown/messages.js:28
+msgctxt "4 Down"
+msgid "While you're here, would you like to subscribe to our newsletter? We promise you'll like it!"
+msgstr ""
+
+#. Message displayed after voting
+#: src/pages/FourDown/messages.js:24
+msgctxt "4 Down"
+msgid "You can share this page with your friends if you want them to participate as well."
+msgstr ""
+
+#. Message displayed after voting
+#: src/pages/FourDown/messages.js:20
+msgctxt "4 Down"
+msgid "Your vote was registered. Thanks for participating!"
+msgstr ""
+
+#. Paragraph explaining why registering is necessary
+#: src/pages/LogIn/FourDown/messages.js:10
+msgctxt "4 Down SignIn"
+msgid "Because we only allow one vote per person, we need you to login or create an account."
+msgstr ""
+
+#. Link to a Google Form page
+#: src/pages/LogIn/FourDown/messages.js:18
+msgctxt "4 Down SignIn"
+msgid "If you would rather not create an account, you can cast your vote here:"
+msgstr ""
+
+#. Introduced the name of the video to vote for:
+#: src/pages/LogIn/FourDown/messages.js:6
+msgctxt "4 Down SignIn"
+msgid "Voting for:"
+msgstr ""
+
+#. Paragraph explaining how to register
+#: src/pages/LogIn/FourDown/messages.js:14
+msgctxt "4 Down SignIn"
+msgid "You can login with Google or Facebook, or use an email and password:"
 msgstr ""
 
 #. Paragraph
@@ -1149,6 +1260,18 @@ msgctxt "New password activation"
 msgid "Your new password is now activated!"
 msgstr ""
 
+#. Label for a form field
+#: src/components/Widgets/NewsletterForm/messages.js:3
+msgctxt "Newsletter form"
+msgid "Email Address"
+msgstr ""
+
+#. Label for a newsletter subscription button
+#: src/components/Widgets/NewsletterForm/messages.js:4
+msgctxt "Newsletter form"
+msgid "Subscribe"
+msgstr ""
+
 #. Paragraph
 #: src/pages/OldForum/messages.js:4
 msgctxt "OldForum"
@@ -1615,6 +1738,30 @@ msgstr ""
 #: src/pages/LogIn/messages.js:22
 msgctxt "SignIn"
 msgid "You can login with Google or Facebook:"
+msgstr ""
+
+#. Short label for a registration button
+#: src/pages/LogIn/messages.js:83
+msgctxt "SignInRegister"
+msgid "Register"
+msgstr ""
+
+#. Long label for a registration button
+#: src/pages/LogIn/messages.js:79
+msgctxt "SignInRegister"
+msgid "Register a new account"
+msgstr ""
+
+#. Short label for a login button
+#: src/pages/LogIn/messages.js:91
+msgctxt "SignInRegister"
+msgid "Sign in"
+msgstr ""
+
+#. Long label for a login button
+#: src/pages/LogIn/messages.js:87
+msgctxt "SignInRegister"
+msgid "Sign in with your account"
 msgstr ""
 
 #. Title of the About page
