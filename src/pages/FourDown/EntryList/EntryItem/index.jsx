@@ -11,16 +11,16 @@ import { InlineSpinner } from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import { fourDownLoginRoute, fourDownVideoRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
-import AppContext from '~/contexts';
 import icons, { getIcon } from 'Utils/icons';
 import sizes from 'Utils/iconSizes';
+import AppContext from '~/contexts';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const { ACTION, MAIN } = buttonTypes;
+const { ACTION, MAIN, NEGATIVE } = buttonTypes;
 
-const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
+const EntryItem = ({ hasVoted, item, onVoteClick, t, voteError, voteInProgress }) => {
   const {
     login: {
       data: {
@@ -30,7 +30,6 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
   } = useContext(AppContext);
 
   const isLoggedIn = !!username;
-
   const {
     description: { text: description },
     formUrl,
@@ -42,6 +41,8 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
     vendorUrl,
     videoTitle,
   } = item;
+
+  const isError = voteError === id;
 
   const attrs = {
     className: styles.thumb,
@@ -55,7 +56,7 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
   const target = '_blank';
 
   const buttonProps = {
-    type: hasVoted ? MAIN : ACTION,
+    type: ACTION,
     label: t('vote'),
     className: styles.voteButton,
   };
@@ -73,6 +74,7 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
       // Some other button was clicked
       buttonProps.disabled = true;
     } else if (selected) {
+      buttonProps.type = MAIN;
       buttonProps.label = (
         <span className={styles.selectedContent}>
           {getIcon({
@@ -83,6 +85,12 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
           {t('selected')}
         </span>
       );
+    } else if (hasVoted) {
+      buttonProps.type = NEGATIVE;
+    }
+
+    if (isError) {
+      buttonProps.className = styles.hiddenVoteButton;
     }
   } else {
     // add props to send the user to the login page
@@ -114,6 +122,11 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
           <div className={styles.shareWrapper}>
             <Link to={fourDownVideoRoute(id)}>{t('shareLink')}</Link>
           </div>
+          {isError && (
+            <a className={styles.error} target="_blank" href={formUrl} rel="noreferrer noopener">
+              {t('errorTryHere')}
+            </a>
+          )}
         </div>
       </div>
     </Card>
@@ -125,7 +138,13 @@ EntryItem.propTypes = {
   item: MediaType.isRequired,
   onVoteClick: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  voteInProgress: PropTypes.string.isRequired,
+  voteError: PropTypes.string,
+  voteInProgress: PropTypes.string,
+};
+
+EntryItem.defaultProps = {
+  voteError: null,
+  voteInProgress: null,
 };
 
 export default Translate(messages)(EntryItem);

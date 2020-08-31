@@ -48,6 +48,10 @@
         display: inline-flex;
       }
 
+      .hiddenVoteButton {
+        display: none;
+      }
+
       .selectedContent {
         display: inline-flex;
         align-items: center;
@@ -80,5 +84,9 @@
     .shareWrapper {
       text-align: right;
     }
+  }
+
+  .error {
+    color: $form-error-color;
   }
 }

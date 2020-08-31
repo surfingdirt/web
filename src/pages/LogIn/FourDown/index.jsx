@@ -32,7 +32,8 @@ const FourDownLogin = ({ match, t }) => {
     return <Redirect to={HOME} />;
   }
 
-  const [album, videos, loading, error] = useFourDownAlbum();
+  const { videos, loading, error } = useFourDownAlbum();
+
   if (loading) return <Spinner />;
   if (error) return <ErrorMessage />;
 

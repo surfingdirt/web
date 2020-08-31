@@ -8,8 +8,7 @@ import Spinner from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import { getBiggestMediaImageUrl } from 'Utils/media';
 
-import useVote from '../useVote';
-import useFourDownAlbum, { surveyId } from '../useFourDownAlbum';
+import useFourDownAlbum from '../useFourDownAlbum';
 import EntryItem from '../EntryList/EntryItem';
 import messages from '../messages';
 import styles from './styles.scss';
@@ -19,8 +18,16 @@ const { STANDARD } = cardTypes;
 const FourDownVideo = ({ match, t }) => {
   const { id } = match.params;
 
-  const [choice, voteInProgress, voteError, onVoteClick] = useVote(surveyId);
-  const [album, videos, loading, error] = useFourDownAlbum();
+  const {
+    album,
+    choice,
+    videos,
+    loading,
+    error,
+    onVoteClick,
+    voteError,
+    voteInProgress,
+  } = useFourDownAlbum();
 
   console.log('FourDownVideo', { choice });
 
@@ -48,7 +55,13 @@ const FourDownVideo = ({ match, t }) => {
         <p>{t('voteForThisVideo')}</p>
       </Card>
 
-      <EntryItem hasVoted={hasVoted} item={item} onVoteClick={onVoteClick} />
+      <EntryItem
+        hasVoted={hasVoted}
+        item={item}
+        onVoteClick={onVoteClick}
+        voteError={voteError}
+        voteInProgress={voteInProgress}
+      />
     </>
   );
 };
