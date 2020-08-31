@@ -1,0 +1,6 @@
+mutation castVote($input: VoteInput!) {
+    castVote(input: $input) {
+        surveyId
+        choice
+    }
+}

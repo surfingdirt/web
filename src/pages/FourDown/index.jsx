@@ -7,14 +7,18 @@ import Spinner from 'Components/Widgets/Spinner';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Translate from 'Hocs/Translate';
 
-import useFourDownAlbum from './useFourDownAlbum';
+import useVote from './useVote';
+import useFourDownAlbum, { surveyId } from './useFourDownAlbum';
 import EntryList from './EntryList';
 import messages from './messages';
 
 const { STANDARD } = cardTypes;
 
 const FourDown = ({ t }) => {
-  const [album, videos, vote, loading, error] = useFourDownAlbum();
+  const [choice, voteInProgress, voteError, onVoteClick] = useVote(surveyId);
+  const [album, videos, loading, error] = useFourDownAlbum();
+
+  console.log('FourDown', { choice });
 
   if (loading) return <Spinner />;
   if (error) return <ErrorMessage />;
@@ -38,7 +42,12 @@ const FourDown = ({ t }) => {
         <p>{t('teams')}</p>
       </Card>
 
-      <EntryList album={album} media={videos} />
+      <EntryList
+        album={album}
+        media={videos}
+        onVoteClick={onVoteClick}
+        voteInProgress={voteInProgress}
+      />
     </>
   );
 };

@@ -7,6 +7,7 @@ import Button, { buttonTypes } from 'Components/Widgets/Button';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DualContainer from 'Components/Widgets/DualContainer';
 import MediaThumb from 'Components/Media/MediaThumb';
+import { InlineSpinner } from 'Components/Widgets/Spinner';
 import Translate from 'Hocs/Translate';
 import { fourDownLoginRoute, fourDownVideoRoute } from 'Utils/links';
 import { MediaType } from 'Utils/types';
@@ -19,7 +20,7 @@ import styles from './styles.scss';
 
 const { ACTION, MAIN } = buttonTypes;
 
-const EntryItem = ({ hasVoted, item, t }) => {
+const EntryItem = ({ hasVoted, item, onVoteClick, t, voteInProgress }) => {
   const {
     login: {
       data: {
@@ -61,9 +62,17 @@ const EntryItem = ({ hasVoted, item, t }) => {
   if (isLoggedIn) {
     // add an onClick with a call to a dedicated mutation hook
     buttonProps.onClick = () => {
-      console.log('voting yo');
+      console.log('EntryItem - voting yo', id);
+      onVoteClick(id);
     };
-    if (selected) {
+    if (voteInProgress === id) {
+      // We just clicked on this button
+      buttonProps.disabled = true;
+      buttonProps.label = <InlineSpinner className={styles.spinner} />;
+    } else if (voteInProgress) {
+      // Some other button was clicked
+      buttonProps.disabled = true;
+    } else if (selected) {
       buttonProps.label = (
         <span className={styles.selectedContent}>
           {getIcon({
@@ -114,7 +123,9 @@ const EntryItem = ({ hasVoted, item, t }) => {
 EntryItem.propTypes = {
   hasVoted: PropTypes.bool.isRequired,
   item: MediaType.isRequired,
+  onVoteClick: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+  voteInProgress: PropTypes.string.isRequired,
 };
 
 export default Translate(messages)(EntryItem);
