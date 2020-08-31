@@ -63,7 +63,6 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteError, voteInProgress }
   if (isLoggedIn) {
     // add an onClick with a call to a dedicated mutation hook
     buttonProps.onClick = () => {
-      console.log('EntryItem - voting yo', id);
       onVoteClick(id);
     };
     if (voteInProgress === id) {
@@ -96,12 +95,6 @@ const EntryItem = ({ hasVoted, item, onVoteClick, t, voteError, voteInProgress }
     // add props to send the user to the login page
     buttonProps.href = fourDownLoginRoute(id);
   }
-
-  /*
-  if error, add these to the Vote button:
-      buttonProps.href = formUrl;
-      buttonProps.targetBlank = true;
-   */
 
   return (
     <Card type={cardTypes.BARE}>

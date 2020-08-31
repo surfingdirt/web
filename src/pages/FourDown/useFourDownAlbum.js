@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import VOTE from 'Apollo/mutations/castVote.gql';
@@ -62,12 +62,16 @@ const useFourDownAlbum = () => {
   const { data, error, loading } = useQuery(FOUR_DOWN, {
     variables: { id: albumId, startItem: 0, countItems: 4, surveyId },
   });
+  useEffect(() => {
+    setChoice(data.getSurveyVote.choice);
+  }, [data]);
   const [album, videos] = buildAlbumAndVideos(data, choice);
   const onVoteClick = async (newChoice) => {
-    setVoteInProgress(newChoice); // If newChoice === choice, then send null to remove the entry
+    setVoteInProgress(newChoice);
+    const newValue = newChoice === choice ? null : newChoice; // If we click the same button again, remove the vote
     try {
-      await voteMutation({ variables: { input: { surveyId, choice: newChoice } } });
-      setChoice(newChoice);
+      await voteMutation({ variables: { input: { surveyId, choice: newValue } } });
+      setChoice(newValue);
       setVoteInProgress(null);
     } catch (e) {
       setVoteError(newChoice);

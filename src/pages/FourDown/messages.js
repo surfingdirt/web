@@ -17,6 +17,18 @@ const messages = (getText, getPlural) => (key) =>
       'Click the button below to cast your vote!',
       '4 Down',
     ) /* Info paragraph */,
+    thankYou: getText(
+      'Your vote was registered. Thanks for participating!',
+      '4 Down',
+    ) /* Message displayed after voting */,
+    share: getText(
+      'You can share this page with your friends if you want them to participate as well.',
+      '4 Down',
+    ) /* Message displayed after voting */,
+    maybeSubscribe: getText(
+      "While you're here, would you like to subscribe to our newsletter? We promise you'll like it!",
+      '4 Down',
+    ) /* Message displayed after voting */,
   }[key]);
 
 export default messages;
