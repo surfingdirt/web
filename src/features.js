@@ -8,7 +8,6 @@ const getFeatures = (forceDevFeatures) => {
     firebaseAuth: true,
     fourDown: isProduction,
   };
-  console.log({ features });
 
   return features;
 };
