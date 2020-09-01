@@ -33,6 +33,7 @@ const FourDownVideo = ({ match, t }) => {
   if (error) return <ErrorMessage />;
 
   const hasVoted = videos.some(({ selected }) => !!selected);
+  const hasVotedForThis = hasVoted && choice === id;
   const item = videos.find((video) => video.id === id);
   const {
     description: { text: description },
@@ -61,7 +62,7 @@ const FourDownVideo = ({ match, t }) => {
         voteInProgress={voteInProgress}
       />
 
-      {choice && (
+      {hasVotedForThis && (
         <Card type={BARE} className={styles.postCard}>
           <div className={styles.section}>
             <p>{t('thankYou')}</p>

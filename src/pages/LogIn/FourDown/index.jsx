@@ -43,7 +43,7 @@ const FourDownLogin = ({ match, t }) => {
   const item = videos.find((video) => video.id === id);
 
   return (
-    <Card title={`${t('votingFor')} ${item.title.text}`} type={STANDARD}>
+    <Card title={`${t('votingFor')} ${item.videoTitle}`} type={STANDARD}>
       <p>{t('explanations1')}</p>
       <p>{t('explanations2')}</p>
       <FirebaseAuth />
