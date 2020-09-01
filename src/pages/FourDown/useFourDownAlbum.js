@@ -4,8 +4,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import VOTE from 'Apollo/mutations/castVote.gql';
 import FOUR_DOWN from 'Apollo/queries/fourDown.gql';
 
-// const albumId = 'bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3';
-const albumId = 'ce7573d5-fea4-4902-8ce1-04fa4e6a2401';
+const albumId = 'bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3';
 
 export const surveyId = '1f78dda7-789f-472b-b7e1-0bacfe3ece39';
 
