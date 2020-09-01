@@ -6,7 +6,7 @@ const getFeatures = (forceDevFeatures) => {
 
   const features = {
     firebaseAuth: true,
-    fourDown: isDev || forceDevFeatures,
+    fourDown: true,
   };
 
   return features;
