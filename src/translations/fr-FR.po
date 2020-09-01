@@ -98,7 +98,7 @@ msgid ""
 "you've picked your favorite video!"
 msgstr ""
 "Regarde les 4 productions venues du monde entier, et vote quand tu as "
-"choisie ta préférée!"
+"choisi ta préférée!"
 
 #. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
