@@ -16,7 +16,7 @@ import useragent from 'useragent';
 import ME from 'Apollo/queries/me.gql';
 import apolloClient from '~/apollo';
 import { AppContextValueObject } from '~/contexts';
-import getFeatures from '~/features';
+import features from '~/features';
 import App from '~/App';
 
 import contentBaseUrl from '../config/contentBaseUrl';
@@ -29,7 +29,6 @@ import {
   getLocaleAndDirFromUser,
   getTracingContext,
   isJSLess,
-  forceDevFeatures,
 } from './utils';
 import { analyticsId, config, fbAppId, title as siteTitle } from '../config';
 
@@ -133,7 +132,7 @@ const Main = (rootDir) => {
         availableLocales: SUPPORTED_LOCALES,
         baseUrl,
         dir,
-        features: getFeatures(forceDevFeatures(req)),
+        features,
         firebaseConfig,
         galleryAlbumId,
         graphql,

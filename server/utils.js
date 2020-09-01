@@ -36,14 +36,11 @@ export const RIGHT_TO_LEFT = 'rtl';
 export const LEFT_TO_RIGHT = 'ltr';
 
 export const JS_LESS = 'nojs';
-export const FORCE_DEV_FEATURES = 'forceDevFeatures';
 const LOCALE_QUERY_ARG = 'locale';
 const TRACING_REQUESTS_QUERY_ARG = 'tracing';
 const TRACING_FIELDS_QUERY_ARG = 'traceFields';
 
 export const isJSLess = (req) => !!req.query[JS_LESS] || !!req.cookies[JS_LESS];
-
-export const forceDevFeatures = (req) => !!req.query[FORCE_DEV_FEATURES];
 
 export const getLocaleAndDirFromRequest = (req) => {
   let locale = parser.pick(SUPPORTED_LOCALES, req.headers['accept-language'] || '');
