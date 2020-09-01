@@ -1,12 +1,12 @@
 const PRODUCTION = 'production';
 
 const getFeatures = (forceDevFeatures) => {
-  const isProduction = process.env.NODE_ENV === PRODUCTION || forceDevFeatures;
+  const isProduction = process.env.NODE_ENV === PRODUCTION;
   const isDev = !isProduction;
 
   const features = {
     firebaseAuth: true,
-    fourDown: isProduction,
+    fourDown: isDev || forceDevFeatures,
   };
 
   return features;
