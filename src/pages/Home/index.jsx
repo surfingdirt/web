@@ -17,7 +17,6 @@ import messages from './messages';
 
 const Home = ({ t }) => {
   const {
-    features: { fourDown },
     login: {
       data: {
         me: { username },
@@ -32,7 +31,7 @@ const Home = ({ t }) => {
       <Helmet>
         <title>Surfing Dirt</title>
       </Helmet>
-      {fourDown && <FourDownHomeSection />}
+      <FourDownHomeSection />
       <Tabs ariaLabel={t('tabsLabel')} url="" reverseTabOrder={loggedIn}>
         <TabPanel
           label={t('discover')}
