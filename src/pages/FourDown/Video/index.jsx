@@ -54,14 +54,6 @@ const FourDownVideo = ({ match, t }) => {
         <p>{t('voteForThisVideo')}</p>
       </Card>
 
-      <EntryItem
-        hasVoted={hasVoted}
-        item={item}
-        onVoteClick={onVoteClick}
-        voteError={voteError}
-        voteInProgress={voteInProgress}
-      />
-
       {hasVotedForThis && (
         <Card type={BARE} className={styles.postCard}>
           <div className={styles.section}>
@@ -74,6 +66,14 @@ const FourDownVideo = ({ match, t }) => {
           </div>
         </Card>
       )}
+
+      <EntryItem
+        hasVoted={hasVoted}
+        item={item}
+        onVoteClick={onVoteClick}
+        voteError={voteError}
+        voteInProgress={voteInProgress}
+      />
     </>
   );
 };
