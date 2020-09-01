@@ -7,6 +7,7 @@ import Spinner from 'Components/Widgets/Spinner';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Translate from 'Hocs/Translate';
 import FourDown2020 from 'Images/FourDown2020.png';
+import { fourDownVideoRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 
 import useFourDownAlbum from './useFourDownAlbum';
@@ -23,17 +24,21 @@ const FourDown = ({ t }) => {
     loading,
     error,
     onVoteClick,
+    redirect,
     voteError,
     voteInProgress,
   } = useFourDownAlbum();
 
   const { baseUrl } = useContext(AppContext);
 
-  console.log('FourDown', { choice });
-
   if (loading) return <Spinner />;
   if (error) return <ErrorMessage />;
-
+  if (redirect && choice) {
+    const to = fourDownVideoRoute(choice);
+    // Full reload because the video page does not fetch the
+    window.location.href = to;
+    return null;
+  }
   const {
     description: { text: albumDescription },
     title: { text: albumTitle },

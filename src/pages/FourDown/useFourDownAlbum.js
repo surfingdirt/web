@@ -54,6 +54,7 @@ function buildAlbumAndVideos(data, newChoice) {
   return [album, videos];
 }
 const useFourDownAlbum = () => {
+  const [redirect, setRedirect] = useState(null);
   const [choice, setChoice] = useState(null);
   const [voteInProgress, setVoteInProgress] = useState(null);
   const [voteError, setVoteError] = useState(null);
@@ -72,11 +73,26 @@ const useFourDownAlbum = () => {
       await voteMutation({ variables: { input: { surveyId, choice: newValue } } });
       setChoice(newValue);
       setVoteInProgress(null);
+      setTimeout(() => {
+        if (newValue) {
+          setRedirect(newValue);
+        }
+      }, 1000);
     } catch (e) {
       setVoteError(newChoice);
       setVoteInProgress(null);
     }
   };
-  return { album, choice, videos, loading, error, onVoteClick, voteError, voteInProgress };
+  return {
+    album,
+    choice,
+    videos,
+    loading,
+    error,
+    onVoteClick,
+    redirect,
+    voteError,
+    voteInProgress,
+  };
 };
 export default useFourDownAlbum;
