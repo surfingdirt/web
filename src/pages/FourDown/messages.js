@@ -29,6 +29,10 @@ const messages = (getText, getPlural) => (key) =>
       "While you're here, would you like to subscribe to our newsletter? We promise you'll like it!",
       '4 Down',
     ) /* Message displayed after voting */,
+    troubleVoting: getText(
+      'Are you having trouble voting? Try here: ',
+      '4 Down',
+    ) /* Message displayed after voting */,
   }[key]);
 
 export default messages;

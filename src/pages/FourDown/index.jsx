@@ -13,6 +13,7 @@ import AppContext from '~/contexts';
 import useFourDownAlbum from './useFourDownAlbum';
 import EntryList from './EntryList';
 import messages from './messages';
+import styles from './styles.scss';
 
 const { STANDARD } = cardTypes;
 
@@ -57,6 +58,13 @@ const FourDown = ({ t }) => {
         <p>{t('welcome')}</p>
         <p>{t('weAreProud')}</p>
         <p>{t('teams')}</p>
+
+        <div className={styles.trouble}>
+          {t('troubleVoting')}
+          <a href="https://forms.gle/t8BPNNmy5EgQSXBw6" target="_blank" rel="noreferrer noopener">
+            Google Form
+          </a>
+        </div>
       </Card>
 
       <EntryList
