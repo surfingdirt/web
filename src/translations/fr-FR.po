@@ -97,8 +97,8 @@ msgid ""
 "Come watch all 4 productions from across the world, and cast your vote once "
 "you've picked your favorite video!"
 msgstr ""
-"Regarde les 4 productions venues du monde entier, et vote quand tu as "
-"choisi ta préférée!"
+"Regarde les 4 productions venues du monde entier, et vote quand tu as choisi "
+"ta préférée!"
 
 #. Label for a button to continue adding a video
 #: src/components/Video/UploadForm/messages.js:4
@@ -640,6 +640,12 @@ msgid ""
 "An error occurred while saving your vote. Please click here to try again."
 msgstr ""
 "Une erreur est survenue pendant le vote, merci de cliquer ici pour réessayer."
+
+#. Message displayed after voting
+#: src/pages/FourDown/messages.js:32
+msgctxt "4 Down"
+msgid "Are you having trouble voting? Try here: "
+msgstr "Des difficultés pour voter? Essaye ici:"
 
 #. Info paragraph
 #: src/pages/FourDown/messages.js:16
@@ -1873,7 +1879,7 @@ msgstr "Vérification de l’email…"
 #: src/pages/LogIn/messages.js:54
 msgctxt "SignIn"
 msgid "Waiting for additional info"
-msgstr "Saisie des informations manquantes:"
+msgstr "Saisie des informations manquantes"
 
 #. Paragraph explaining how to register
 #: src/pages/LogIn/messages.js:22

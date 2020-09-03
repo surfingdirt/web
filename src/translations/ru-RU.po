@@ -652,6 +652,12 @@ msgctxt "4 Down"
 msgid "An error occurred while saving your vote. Please click here to try again."
 msgstr "Во время навигации произошла ошибка, пожалуйста, перезагрузите страницу."
 
+#: src/pages/FourDown/messages.js:32
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid "Are you having trouble voting? Try here: "
+msgstr "У вас проблемы с голосованием? Попробуйте здесь:"
+
 #: src/pages/FourDown/messages.js:16
 #. Info paragraph
 msgctxt "4 Down"

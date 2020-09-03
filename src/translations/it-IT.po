@@ -653,6 +653,12 @@ msgstr ""
 "Si è verificato un errore durante la navigazione, si prega di ricaricare la "
 "pagina."
 
+#: src/pages/FourDown/messages.js:32
+#. Message displayed after voting
+msgctxt "4 Down"
+msgid "Are you having trouble voting? Try here: "
+msgstr "Hai problemi a votare? Prova qui:"
+
 #: src/pages/FourDown/messages.js:16
 #. Info paragraph
 msgctxt "4 Down"
