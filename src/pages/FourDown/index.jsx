@@ -60,7 +60,7 @@ const FourDown = ({ t }) => {
         <p>{t('teams')}</p>
 
         <div className={styles.trouble}>
-          {t('troubleVoting')}
+          {t('troubleVoting')}&nbsp;
           <a href="https://forms.gle/t8BPNNmy5EgQSXBw6" target="_blank" rel="noreferrer noopener">
             Google Form
           </a>

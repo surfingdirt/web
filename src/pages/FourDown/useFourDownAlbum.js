@@ -63,7 +63,9 @@ const useFourDownAlbum = () => {
     variables: { id: albumId, startItem: 0, countItems: 4, surveyId },
   });
   useEffect(() => {
-    setChoice(data.getSurveyVote.choice);
+    if (data && data.getSurveyVote) {
+      setChoice(data.getSurveyVote.choice);
+    }
   }, [data]);
   const [album, videos] = buildAlbumAndVideos(data, choice);
   const onVoteClick = async (newChoice) => {
