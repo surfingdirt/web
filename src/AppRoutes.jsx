@@ -87,6 +87,7 @@ const AppRoutes = () => {
           component={pages.PhotoEdit}
           login={MANDATORY}
         />
+        <DefaultLayoutRoute path={routes.PRIVACY} component={pages.Privacy} />
         <DefaultLayoutRoute path={routes.PROFILE} component={pages.Profile} login={MANDATORY} />
         <DefaultLayoutRoute
           path={routes.REGISTRATION}
@@ -94,6 +95,7 @@ const AppRoutes = () => {
           login={FORBIDDEN}
         />
         <DefaultLayoutRoute path={routes.SETTINGS} component={pages.Settings} login={MANDATORY} />
+        <DefaultLayoutRoute path={routes.TERMS} component={pages.Terms} />
         <DefaultLayoutRoute path={routes.USER} component={pages.User} exact />
         <DefaultLayoutRoute path={routes.USERS} component={pages.Users} />
         <DefaultLayoutRoute path={routes.VIDEO} component={pages.Video} exact />

@@ -66,6 +66,7 @@ const pages = {
     () => import(/* webpackChunkName: 'PhotoEdit' */ './pages/Photo/Edit'),
     options,
   ),
+  Privacy: loadable(() => import(/* webpackChunkName: 'Privacy' */ './pages/Privacy'), options),
   Profile: loadable(() => import(/* webpackChunkName: 'Profile' */ './pages/Profile'), options),
   Registration: loadable(
     () => import(/* webpackChunkName: 'UserRegistration' */ './pages/User/Registration'),
@@ -75,6 +76,7 @@ const pages = {
     () => import(/* webpackChunkName: 'UserSettings' */ './pages/User/Settings'),
     options,
   ),
+  Terms: loadable(() => import(/* webpackChunkName: 'Terms' */ './pages/Terms'), options),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
   Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),
