@@ -20,12 +20,7 @@ const Privacy = ({ t }) => (
       </p>
       <p>
         We use Your Personal data to provide and improve the Service. By using the Service, You
-        agree to the collection and use of information in accordance with this Privacy Policy. This
-        Privacy Policy has been created with the help of the{' '}
-        <a href="https://www.privacypolicies.com/privacy-policy-generator/" target="_blank">
-          Privacy Policy Generator
-        </a>
-        .
+        agree to the collection and use of information in accordance with this Privacy Policy.
       </p>
       <h1>Interpretation and Definitions</h1>
       <h2>Interpretation</h2>
@@ -168,11 +163,7 @@ const Privacy = ({ t }) => (
       <p>
         Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on your personal
         computer or mobile device when You go offline, while Session Cookies are deleted as soon as
-        You close your web browser. Learn more about cookies:{' '}
-        <a href="https://www.privacypolicies.com/blog/cookies/" target="_blank">
-          What Are Cookies?
-        </a>
-        .
+        You close your web browser.
       </p>
       <p>We use both session and persistent Cookies for the purposes set out below:</p>
       <ul>
