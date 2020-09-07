@@ -14,7 +14,7 @@ import messages from '../messages';
 import styles from './styles.scss';
 
 const { LOGIN_OAUTH } = routes;
-const AUTH_METHOD = 'popup';
+const AUTH_METHOD = 'redirect';
 const AUTH_DESTINATION_AFTER_LOGIN = LOGIN_OAUTH;
 
 const FirebaseAuth = ({ locale }) => {
