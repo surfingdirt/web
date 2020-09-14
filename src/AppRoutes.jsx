@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 
 import { FORBIDDEN, MANDATORY } from 'Components/Widgets/EnforceLogin';
 import { DefaultLayoutRoute } from 'Components/Widgets/Route';
@@ -111,13 +111,15 @@ const AppRoutes = () => {
           login={MANDATORY}
         />
 
-        <DefaultLayoutRoute
-          path={routes.FOUR_DOWN_LOGIN}
-          component={pages.FourDownLogIn}
-          login={FORBIDDEN}
-        />
-        <DefaultLayoutRoute path={routes.FOUR_DOWN_VIDEO} component={pages.FourDownVideo} />
-        <DefaultLayoutRoute path={routes.FOUR_DOWN} component={pages.FourDown} />
+        <Route path={routes.FOUR_DOWN_LOGIN}>
+          <Redirect to={routes.HOME} />
+        </Route>
+        <Route path={routes.FOUR_DOWN_VIDEO}>
+          <Redirect to={routes.HOME} />
+        </Route>
+        <Route path={routes.FOUR_DOWN}>
+          <Redirect to={routes.HOME} />
+        </Route>
 
         <DefaultLayoutRoute component={Page404} />
       </Switch>
