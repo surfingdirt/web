@@ -4,12 +4,15 @@ import { Route, Switch, Redirect } from 'react-router';
 import { FORBIDDEN, MANDATORY } from 'Components/Widgets/EnforceLogin';
 import { DefaultLayoutRoute } from 'Components/Widgets/Route';
 import Page404 from 'Pages/Page404';
+import { albumRoute } from 'Utils/links';
 import AppContext from '~/contexts';
 import pages from '~/pages';
 import routes from '~/routes';
 
 const AppRoutes = () => {
   const { features } = useContext(AppContext);
+
+  const FOUR_DOWN_ALBUM = albumRoute('bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3');
 
   return (
     <Fragment>
@@ -112,13 +115,13 @@ const AppRoutes = () => {
         />
 
         <Route path={routes.FOUR_DOWN_LOGIN}>
-          <Redirect to={routes.HOME} />
+          <Redirect to={FOUR_DOWN_ALBUM} />
         </Route>
         <Route path={routes.FOUR_DOWN_VIDEO}>
-          <Redirect to={routes.HOME} />
+          <Redirect to={FOUR_DOWN_ALBUM} />
         </Route>
         <Route path={routes.FOUR_DOWN}>
-          <Redirect to={routes.HOME} />
+          <Redirect to={FOUR_DOWN_ALBUM} />
         </Route>
 
         <DefaultLayoutRoute component={Page404} />
