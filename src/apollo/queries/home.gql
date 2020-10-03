@@ -30,6 +30,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             mediaType
             mediaSubType
             embedUrl
+            vendorKey
             height
             width
             thumbHeight
@@ -107,6 +108,7 @@ query home($galleryAlbumId: ID!, $count: Int!, $countItems: Int!, $skipAlbums: [
             mediaType
             mediaSubType
             embedUrl
+            vendorKey
             height
             width
             thumbHeight

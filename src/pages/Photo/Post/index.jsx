@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia.gql';
+import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoUploadForm from 'Components/Photo/UploadForm';

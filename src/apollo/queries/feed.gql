@@ -37,6 +37,7 @@ query {
 				mediaType
 				mediaSubType
 				embedUrl
+				vendorKey
 				height
 				width
                 thumbHeight
@@ -198,6 +199,7 @@ query {
             mediaType
             mediaSubType
             embedUrl
+            vendorKey
             height
             width
             thumbHeight

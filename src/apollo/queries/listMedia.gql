@@ -14,6 +14,7 @@ query listMedia($albumId: ID!, $countItems: Int, $startItem: Int) {
         mediaType
         mediaSubType
         embedUrl
+        vendorKey
         height
         images {
             type

@@ -27,6 +27,7 @@ mutation translateMedia($input: TranslationChangeInput!) {
             original
             text
         }
+        vendorKey
         vendorUrl
         width
         thumbs {

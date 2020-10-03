@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ResponsiveImage from 'Components/Widgets/ResponsiveImage';
 import VideoEmbed from 'Components/Video/Embed';
 import { mediaTypes } from 'Utils/media';
+import { MediaType } from 'Utils/types';
 
 import styles from './styles.scss';
 
@@ -13,10 +14,11 @@ const HeroContent = ({ className, media }) => {
   let heroContent;
 
   if (media.mediaType === VIDEO) {
-    const { embedUrl, height, width, mediaSubType } = media;
+    const { embedUrl, height, width, mediaSubType, vendorKey } = media;
     heroContent = (
       <VideoEmbed
         url={embedUrl}
+        vendorKey={vendorKey}
         height={height}
         mediaSubType={mediaSubType}
         width={width}
@@ -42,6 +44,7 @@ const HeroContent = ({ className, media }) => {
 
 HeroContent.propTypes = {
   className: PropTypes.string,
+  media: MediaType.isRequired,
 };
 
 HeroContent.defaultProps = {

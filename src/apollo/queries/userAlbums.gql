@@ -1,56 +1,4 @@
-query userAndAlbums($userId: ID!) {
-    user(userId: $userId) {
-        userId
-        username
-        firstName
-        bio {
-            locale
-            original
-            text
-        }
-        album {
-          id
-          title {
-            locale
-            original
-            text
-          }
-          media {
-            actions {
-                delete
-                edit
-            }
-            thumbHeight
-            thumbWidth
-            images {
-                size
-                width
-                height
-                type
-                url
-            }
-            reactions {
-              count
-              userReactionId
-              type
-            }
-          }
-        }
-        avatar {
-          size
-          width
-          height
-          type
-          url
-        }
-        cover {
-          size
-          width
-          height
-          type
-          url
-        }
-    }
+query userAlbums($userId: ID!) {
     listAlbums(userId: $userId) {
         actions {
             add
@@ -77,6 +25,7 @@ query userAndAlbums($userId: ID!) {
                 text
             }
             embedUrl
+            vendorKey
             id
             images {
                 type
@@ -85,6 +34,8 @@ query userAndAlbums($userId: ID!) {
                 height
                 width
             }
+            height
+            width
             thumbHeight
             thumbWidth
             thumbs {

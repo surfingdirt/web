@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import MEDIA from 'Apollo/queries/media2.gql';
+import MEDIA from 'Apollo/queries/media.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoEditForm from 'Components/Photo/EditForm';

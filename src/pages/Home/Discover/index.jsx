@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import HOMEPAGE from 'Apollo/queries/home2.gql';
+import HOMEPAGE from 'Apollo/queries/home.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import MoreAlbums from 'Components/Album/MoreAlbums';
 import DataRenderer from 'Components/Widgets/DataRenderer';

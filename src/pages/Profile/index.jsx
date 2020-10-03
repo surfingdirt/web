@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet-async';
 import classnames from 'classnames';
 
-import USER_AND_ALBUMS from 'Apollo/queries/userAndAlbums2.gql';
+import USER_AND_ALBUMS from 'Apollo/queries/userAndAlbums.gql';
 import AlbumPreview from 'Components/Album/AlbumPreview';
 import Button, { buttonSizes, buttonTypes } from 'Components/Widgets/Button';
 import Cover from 'Components/Cover';

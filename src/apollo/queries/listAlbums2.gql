@@ -30,6 +30,7 @@ query listAlbums($count: Int!, $start: Int, $countItems: Int!, $skipAlbums: [Str
             mediaType
             mediaSubType
             embedUrl
+            vendorKey
             height
             width
             thumbHeight

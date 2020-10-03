@@ -50,6 +50,7 @@ query fourDown($id: ID!, $countItems: Int, $startItem: Int, $surveyId: ID!) {
         mediaType
         mediaSubType
         embedUrl
+        vendorKey
         vendorUrl
         height
         width

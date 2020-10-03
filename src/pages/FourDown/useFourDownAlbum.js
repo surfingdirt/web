@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import VOTE from 'Apollo/mutations/castVote.gql';
-import FOUR_DOWN from 'Apollo/queries/fourDown.gql';
+import FOUR_DOWN from 'Apollo/queries/fourDown2.gql';
 
 const albumId = 'bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3';
 
