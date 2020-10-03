@@ -149,6 +149,7 @@
     "react-slick": "^0.23.2",
     "react-svg-inline": "^2.1.1",
     "react-test-renderer": "16.11.0",
+    "react-youtube": "7.12.0",
     "recompose": "^0.30.0",
     "regenerator-runtime": "^0.12.1",
     "resolve-url-loader": "^3.0.0",

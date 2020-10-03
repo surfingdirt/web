@@ -14,11 +14,12 @@ const HeroContent = ({ className, media }) => {
   let heroContent;
 
   if (media.mediaType === VIDEO) {
-    const { embedUrl, height, width, mediaSubType, vendorKey } = media;
+    const { embedUrl, height, width, mediaSubType, vendorKey, vendorUrl } = media;
     heroContent = (
       <VideoEmbed
         url={embedUrl}
         vendorKey={vendorKey}
+        vendorUrl={vendorUrl}
         height={height}
         mediaSubType={mediaSubType}
         width={width}
