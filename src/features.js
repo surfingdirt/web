@@ -6,6 +6,7 @@ const isDev = !isProduction;
 const features = {
   firebaseAuth: true,
   fourDown: true,
+  translation: true,
 };
 
 export default features;
