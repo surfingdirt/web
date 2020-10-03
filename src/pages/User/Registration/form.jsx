@@ -169,40 +169,44 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t }) =>
             <div className={styles.inputsContainer}>
               <div className={styles.field}>
                 <Field
-                  name="username"
+                  autoComplete="username"
+                  component={InputField}
                   id="username"
-                  component={InputField}
-                  label={t('username')}
-                  placeholder={t('inputPlaceholder')}
                   initialError={combineAndTranslateErrors('username')}
+                  label={t('username')}
+                  name="username"
+                  placeholder={t('inputPlaceholder')}
                   required
                 />
               </div>
               <div className={styles.field}>
                 <Field
-                  name="email"
+                  autoComplete="email"
+                  component={InputField}
                   id="email"
-                  component={InputField}
-                  label={t('email')}
-                  placeholder={t('inputPlaceholder')}
                   initialError={combineAndTranslateErrors('email')}
-                  required
-                />
-              </div>
-              <div className={styles.field}>
-                <Field
-                  name="userP"
-                  id="userP"
-                  component={InputField}
-                  type="password"
-                  label={t('password')}
+                  label={t('email')}
+                  name="email"
                   placeholder={t('inputPlaceholder')}
-                  initialError={combineAndTranslateErrors('userP')}
                   required
                 />
               </div>
               <div className={styles.field}>
                 <Field
+                  autoComplete="new-password"
+                  component={InputField}
+                  id="userP"
+                  initialError={combineAndTranslateErrors('userP')}
+                  label={t('password')}
+                  name="userP"
+                  placeholder={t('inputPlaceholder')}
+                  required
+                  type="password"
+                />
+              </div>
+              <div className={styles.field}>
+                <Field
+                  autoComplete="new-password"
                   name="userPC"
                   id="userPC"
                   component={InputField}

@@ -56,23 +56,25 @@ class SignInPageContent extends PureComponent {
                 <div className={styles.inputsContainer}>
                   <div className={styles.usernameField}>
                     <Field
-                      name="username"
-                      id="username"
+                      autoComplete="username"
                       component={InputField}
-                      type="username"
+                      id="username"
                       label={t('username')}
+                      name="username"
                       placeholder={t('inputPlaceholder')}
+                      type="username"
                       validate={requiredValidator}
                     />
                   </div>
                   <div className={styles.passwordField}>
                     <Field
-                      name="userP"
-                      id="userP"
+                      autoComplete="current-password"
                       component={InputField}
-                      type="password"
+                      id="userP"
                       label={t('password')}
+                      name="userP"
                       placeholder={t('inputPlaceholder')}
+                      type="password"
                       validate={requiredValidator}
                     />
                   </div>

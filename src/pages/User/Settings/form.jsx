@@ -171,32 +171,33 @@ const FormContent = ({ initialErrors, initialValues, onSubmit, runQuery, t, user
                   <div className={styles.passwords}>
                     <div className={styles.field}>
                       <Field
-                        name="userP"
-                        id="userP"
+                        autoComplete="new-password"
                         component={InputField}
-                        type="password"
-                        label={t('newPassword')}
-                        placeholder={t('inputPlaceholder')}
+                        id="userP"
                         initialError={combineAndTranslateErrors('userP')}
+                        label={t('newPassword')}
+                        name="userP"
+                        placeholder={t('inputPlaceholder')}
                         required={false}
-                        autocomplete="off"
+                        type="password"
                       />
                     </div>
                     <div className={styles.field}>
                       <Field
+                        autoComplete="new-password"
+                        component={InputField}
                         name="userPC"
                         id="userPC"
-                        component={InputField}
-                        type="password"
+                        initialError={combineAndTranslateErrors('userPC')}
                         label={t('newPasswordConfirmation')}
                         placeholder={t('inputPlaceholder')}
-                        initialError={combineAndTranslateErrors('userPC')}
                         required={false}
-                        autocomplete="off"
+                        type="password"
                       />
                     </div>
                     <div className={styles.field}>
                       <Field
+                        autoComplete="current-password"
                         name="userPO"
                         id="userPO"
                         component={InputField}

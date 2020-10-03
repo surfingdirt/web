@@ -40,12 +40,13 @@ const FormContent = ({ errorMessage, onSubmit, t }) => {
               <div className={styles.inputsContainer}>
                 <div className={styles.usernameField}>
                   <Field
-                    name="username"
-                    id="username"
+                    autoComplete="username"
                     component={InputField}
-                    type="username"
+                    id="username"
                     label={t('username')}
+                    name="username"
                     placeholder={t('inputPlaceholder')}
+                    type="username"
                     validate={requiredValidator}
                   />
                 </div>

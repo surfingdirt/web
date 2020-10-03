@@ -91,12 +91,13 @@ const OAuthRegistrationForm = ({ initialErrors: _initialErrors, initialValues, o
             <div className={styles.inputsContainer}>
               <div className={styles.field}>
                 <Field
-                  name="username"
-                  id="username"
+                  autoComplete="username"
                   component={InputField}
-                  label={t('username')}
-                  placeholder={t('inputPlaceholder')}
+                  id="username"
                   initialError={getInitialError('username')}
+                  label={t('username')}
+                  name="username"
+                  placeholder={t('inputPlaceholder')}
                   required
                 />
               </div>
