@@ -4,6 +4,7 @@ const routes = {
   ALBUM_EDIT: '/edit-album/:id',
   ALBUM_NEW: '/new-album',
   ALBUMS: '/albums',
+  ARTICLE_KEEP_ON_TRUCKING: '/article/keep-on-trucking',
   COMMENT_EDIT: '/edit-comment/:id',
   CONTACT: '/contact',
   CONFIRM_EMAIL: '/confirm-email',

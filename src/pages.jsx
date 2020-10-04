@@ -12,6 +12,13 @@ const pages = {
     options,
   ),
   Albums: loadable(() => import(/* webpackChunkName: 'Albums' */ './pages/Albums'), options),
+  Articles: {
+    KeepOnTrucking: loadable(
+      () =>
+        import(/* webpackChunkName: 'Article-KeepOnTrucking' */ './pages/Articles/KeepOnTrucking'),
+      options,
+    ),
+  },
   BatchUpload: loadable(
     () => import(/* webpackChunkName: 'BatchUpload' */ './pages/Photo/BatchUpload'),
     options,
