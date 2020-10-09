@@ -32,7 +32,15 @@ const { SMALLEST } = userboxSizes;
 const countItems = mediaPageSize;
 const { ALBUM } = translateButtonTypes;
 
-const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSliderOnly, t }) => {
+const AlbumPreview = ({
+  album,
+  className,
+  locale,
+  showAttribution,
+  renderIfEmpty,
+  renderSliderOnly,
+  t,
+}) => {
   const { features } = useContext(AppContext);
 
   const {
@@ -59,7 +67,7 @@ const AlbumPreview = ({ album, locale, showAttribution, renderIfEmpty, renderSli
         title={albumTitle}
         titleLink={albumUrl}
         headingType={SECONDARY}
-        className={styles.wrapper}
+        className={classnames(styles.wrapper, className)}
       >
         <div className={styles.emptyWrapper}>
           <Empty />
@@ -170,6 +178,7 @@ AlbumPreview.propTypes = {
     media: PropTypes.any,
     title: TranslatedTextType.isRequired,
   }).isRequired,
+  className: PropTypes.string,
   renderIfEmpty: PropTypes.bool,
   renderSliderOnly: PropTypes.bool,
   showAttribution: PropTypes.bool,
@@ -177,6 +186,7 @@ AlbumPreview.propTypes = {
 };
 
 AlbumPreview.defaultProps = {
+  className: null,
   renderIfEmpty: false,
   renderSliderOnly: false,
   showAttribution: false,

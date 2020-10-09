@@ -14,6 +14,62 @@ query album($id: ID!, $countItems: Int, $startItem: Int) {
             text
         }
         id
+        media {
+            actions {
+                delete
+                edit
+            }
+            id
+            date
+            description {
+                locale
+                original
+                text
+            }
+            mediaType
+            mediaSubType
+            embedUrl
+            vendorKey
+            height
+            width
+            thumbHeight
+            thumbWidth
+            title {
+                locale
+                original
+                text
+            }
+            thumbs {
+                type
+                size
+                url
+                height
+                width
+            }
+            images {
+                type
+                size
+                url
+                height
+                width
+            }
+            reactions {
+              count
+              userReactionId
+              type
+            }
+            submitter {
+                userId
+                username
+                avatar {
+                  size
+                  width
+                  height
+                  type
+                  url
+                }
+            }
+        }
         submitter {
             userId
             username

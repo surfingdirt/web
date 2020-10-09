@@ -37,8 +37,8 @@ const AppRoutes = () => {
         <DefaultLayoutRoute path={routes.ABOUT} component={pages.About} />
         <DefaultLayoutRoute path={routes.ALBUM} component={pages.Album} exact />
         <DefaultLayoutRoute
-          path={routes.ARTICLE_KEEP_ON_TRUCKING}
-          component={pages.Articles.KeepOnTrucking}
+          path={routes.ARTICLE_MBS_MATRIX_2_MODS}
+          component={pages.Articles.MBSMatrix2Mods}
           exact
         />
         <DefaultLayoutRoute

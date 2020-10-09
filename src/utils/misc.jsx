@@ -24,15 +24,23 @@ export const renderDate = (date, locale) => {
   // React will end up re-rendering all date strings on the client.
   // Solution: store user's timezones on the server, which can only work for logged-in users.
 
-  const r = new RegExp(/(\d{4}-\d{2}-\d{2})\s{1}(\d{2}:\d{2}:\d{2})/);
-  const res = date.match(r);
-  if (!res || res.length !== 3) {
-    console.warn(`Could not parse date '${date}'`);
-    return date;
+  const rDateTime = new RegExp(/(\d{4}-\d{2}-\d{2})\s{1}(\d{2}:\d{2}:\d{2})/);
+  const resDateTime = date.match(rDateTime);
+  if (!resDateTime || resDateTime.length !== 3) {
+    const rDate = new RegExp(/(\d{4}-\d{2}-\d{2})/);
+    const resDate = date.match(rDate);
+    if (!resDate || resDate.length !== 2) {
+      console.warn(`Could not parse date '${date}' as either date and time or date only`);
+      return date;
+    }
+
+    // Render date.
+    const d = new Date(resDate[1]);
+    return d.toLocaleDateString(locale);
   }
 
-  const d = new Date(`${res[1]}T${res[2]}`);
-
+  // Render date and time.
+  const d = new Date(`${resDateTime[1]}T${resDateTime[2]}`);
   if (Date.now() - d > 12 * 3600 * 1000) {
     // More than 12h ago, display the full date and time
     return d.toLocaleDateString(locale, {

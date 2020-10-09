@@ -38,9 +38,11 @@ const renderContent = (props) => {
         <Fragment>
           <div className={styles.heroContent}>{heroContent}</div>
           <div className={styles.contentWrapper}>
-            <Heading className={styles.title} type={headingType} link={titleLink}>
-              {title}
-            </Heading>
+            {title && (
+              <Heading className={styles.title} type={headingType} link={titleLink}>
+                {title}
+              </Heading>
+            )}
             {children}
           </div>
         </Fragment>

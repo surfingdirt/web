@@ -1,0 +1,71 @@
+@import "../../../styles/boxmodel";
+
+.card {
+  margin-bottom: $margin-medium-1;
+
+  summary {
+    cursor: pointer;
+  }
+
+  .intro {
+    max-width: 50rem;
+
+    div {
+      flex: 3 0;
+      min-width: 300px;
+      margin: 0 10px 0 0;
+    }
+
+    figure {
+      margin: 0 auto;
+      width: 300px;
+      text-align: center;
+    }
+  }
+
+  .firstParagraph {
+    margin-top: 0;
+  }
+
+  .lastParagraph {
+    margin-bottom: 0;
+  }
+
+  .coverImage {
+    height: calc(50vh + 5rem);
+    object-fit: cover;
+  }
+
+  .description {
+    font-style: italic;
+  }
+
+  .date {
+    display: inline-block;
+  }
+
+  .qa {
+    margin: $margin-medium-2 0 0;
+
+    dt, dd {
+      margin: 0;
+      padding: 0;
+    }
+
+    dd {
+      margin-bottom: $margin-medium-2;
+    }
+
+    .message {
+
+    }
+
+    .attribution {
+      font-weight: bold;
+
+      &::after {
+        content: ': ';
+      }
+    }
+  }
+}

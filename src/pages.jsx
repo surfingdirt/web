@@ -13,9 +13,9 @@ const pages = {
   ),
   Albums: loadable(() => import(/* webpackChunkName: 'Albums' */ './pages/Albums'), options),
   Articles: {
-    KeepOnTrucking: loadable(
+    MBSMatrix2Mods: loadable(
       () =>
-        import(/* webpackChunkName: 'Article-KeepOnTrucking' */ './pages/Articles/KeepOnTrucking'),
+        import(/* webpackChunkName: 'Article-MBSMatrix2Mods' */ './pages/Articles/MBSMatrix2Mods'),
       options,
     ),
   },

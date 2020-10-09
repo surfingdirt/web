@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ALBUM_WITH_MEDIA from 'Apollo/queries/albumWithMedia2.gql';
+import ALBUM_WITH_LIST_MEDIA from 'Apollo/queries/albumWithListMedia.gql';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import DataRenderer from 'Components/Widgets/DataRenderer';
 import PhotoUploadForm from 'Components/Photo/UploadForm';
@@ -31,7 +31,7 @@ class NewPhoto extends React.Component {
     const albumId = id || galleryAlbumId;
     return (
       <DataRenderer
-        query={ALBUM_WITH_MEDIA}
+        query={ALBUM_WITH_LIST_MEDIA}
         variables={{
           id: albumId,
           countItems: mediaPageSize,
