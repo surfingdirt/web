@@ -29,7 +29,7 @@ const classMapping = {
 const { PRIMARY } = headingTypes;
 
 const renderContent = (props) => {
-  const { children, headingType, heroContent, title, titleLink, type } = props;
+  const { children, headingType, heroContent, id, title, titleLink, type } = props;
   switch (type) {
     case BARE:
       return children;
@@ -39,7 +39,7 @@ const renderContent = (props) => {
           <div className={styles.heroContent}>{heroContent}</div>
           <div className={styles.contentWrapper}>
             {title && (
-              <Heading className={styles.title} type={headingType} link={titleLink}>
+              <Heading id={id} className={styles.title} type={headingType} link={titleLink}>
                 {title}
               </Heading>
             )}
@@ -51,7 +51,7 @@ const renderContent = (props) => {
       return (
         <div className={styles.contentWrapper}>
           {title && (
-            <Heading className={styles.title} type={headingType} link={titleLink}>
+            <Heading id={id} className={styles.title} type={headingType} link={titleLink}>
               {title}
             </Heading>
           )}
@@ -79,6 +79,7 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   headingType: PropTypes.string,
+  id: PropTypes.string,
   heroContent: PropTypes.node,
   negative: PropTypes.bool,
   t: PropTypes.func.isRequired,

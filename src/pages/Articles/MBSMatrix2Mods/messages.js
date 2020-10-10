@@ -1,14 +1,15 @@
 const messages = (getText, getPlural) => (key) =>
   ({
     // General
+    tableOfContents: getText(
+      'Table of contents',
+      'Matrix 2 top plate article',
+    ) /* Label for the article's table of contents */,
     coverAlt: getText(
       'A foundry pouring molten metal with a Matrix 2 truck in the foreground',
       'Matrix 2 top plate article',
     ) /* Article cover description */,
-    title: getText(
-      'Keep On Trucking - MBS Matrix II Channel Truck modification',
-      'Matrix 2 top plate article',
-    ) /* Article title */,
+    title: getText('MBS Matrix II Truck mods', 'Matrix 2 top plate article') /* Article title */,
     description: getText(
       'Leon Dove recently designed new top plates to improve the adjustability and reliability of MBS Matrix II Trucks. Read on to find out why and where to get some!',
       'Matrix 2 top plate article',
@@ -26,6 +27,79 @@ const messages = (getText, getPlural) => (key) =>
       'Matrix 2 top plate article',
     ) /* Text content */,
 
+    // Instructions
+    step1: getText(
+      'Remove the shock blocks and bottom preload bolts',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 1 */,
+    step2: getText(
+      'Remove the MBS plate that is bolted to the Top Truck. You will need a 5mm Hex Key. The bolts have thread lock on them so you may need to apply a fair amount of force.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 2 */,
+    topPlate: getText(
+      'The MBS top plate',
+      'Matrix 2 top plate article',
+    ) /* Description of a photo */,
+    step3: getText(
+      'Make sure that the top preload bolts holes in the deck, the riser pad (if fitted) and the Top Truck are in line.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 3 */,
+    step4: getText(
+      'Insert the top preload bolts through the deck and turn clockwise to engage the thread in the Top Truck. Keep turning the bolts clockwise (use a 4mm Hex Key) until you can see the threaded section of the bolts appear out of the underside of the Top Truck. If the bolts do not turn freely, see Step 3.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 4 */,
+    step5: getText(
+      'Turn the top preload bolts anti-clockwise until around 2mm of the bolt end is visible out of the underside of the Top Truck.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 5 */,
+    step6: getText(
+      'Re-insert one of the bottom preload bolts enough to fit a shock block.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 6 */,
+    step7: getText(
+      'Insert the Mod Plate, make sure that the protruding ends of the top preload bolts sit in the recess holes in the Mod Plate.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 7 */,
+    step8: getText(
+      'Holding the Mod Plate in place by hand, fit a shock block to the bottom pre load bolt.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 8 */,
+    step9: getText(
+      'Insert the other shock block and bottom pre load bolt.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 9 */,
+    step10: getText(
+      'Check that the Mod Plate is located properly then wind the lower pre-load bolts in until the shock blocks are properly seated but not lifted away from the truck.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 10 */,
+    step11: getText(
+      'Adjust the Mod Plate by turning the top preload bolts clockwise to stiffen your steering or counter clockwise to loosen. It is very important to adjust the top preload bolts evenly so that the Mod Plate stays horizontal in relation to the Top Truck.',
+      'Matrix 2 top plate article',
+    ) /* Instructions - step 11 */,
+
+    tipsIntro: getText('Tips', 'Matrix 2 top plate article') /* Label for the tips section */,
+    tip1: getText(
+      'When using the loosest setting make sure that top preload bolts are still in contact with the Mod Plate in their recess holes.',
+      'Matrix 2 top plate article',
+    ) /* Text for a tip */,
+    tip2: getText(
+      'Leon recommends a maximum compression of 5mm between the Top Truck and the Mod Plate.',
+      'Matrix 2 top plate article',
+    ) /* Text for a tip */,
+    tip3: getText(
+      'Do not over compress your Shock Blocs, if they can’t stiffen your steering to the desired level, insert stiffer shock blocks or replace worn/compressed shock blocks with new ones. If you have the Matrix II’s with the plastic Top Truck, you can replace the Top Truck with an alloy one from the Matrix I Pro trucks, then fit the Mod Plates. The fitting instructions are the same with the exception that there is no MBS plate to remove.',
+      'Matrix 2 top plate article',
+    ) /* Text for a tip */,
+    tip4: getText(
+      'This is a peer to peer project, the aim is not to get rich but to innovate, doing our bit to help push the sport forward, your feedback is key to that process',
+      'Matrix 2 top plate article',
+    ) /* Text for a tip */,
+    important: getText('Important', 'Matrix 2 top plate article') /* Warning message */,
+    importantMsg: getText(
+      'The Mod Plate is designed to work by adjusting the top preload bolts only, do not use the bottom preload bolts to make any adjustments.',
+      'Matrix 2 top plate article',
+    ) /* Warning message */,
+
     // Questions and Answers
     qaTitle: getText(
       'The full story behind this project',
@@ -36,7 +110,7 @@ const messages = (getText, getPlural) => (key) =>
       'Matrix 2 top plate article',
     ) /* Label for a button to reveal a paragraph */,
     qaIntro1: getText(
-      'Having seen pictures of the design and being intrigued by the explanation of how it works, we asked Leon for a bit more info.',
+      'Because some of you will want more information, we asked Leon a few questions!',
       'Matrix 2 top plate article',
     ) /* Text content */,
     qa1: getText(

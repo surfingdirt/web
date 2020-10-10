@@ -1,4 +1,6 @@
 @import "../../../styles/boxmodel";
+@import "../../../styles/colors";
+@import "../../../styles/font-faces";
 
 .card {
   margin-bottom: $margin-medium-1;
@@ -7,20 +9,12 @@
     cursor: pointer;
   }
 
-  .intro {
+  .paragraph {
+    font-family: $paragraph-font-families;
+  }
+
+  .limited {
     max-width: 50rem;
-
-    div {
-      flex: 3 0;
-      min-width: 300px;
-      margin: 0 10px 0 0;
-    }
-
-    figure {
-      margin: 0 auto;
-      width: 300px;
-      text-align: center;
-    }
   }
 
   .firstParagraph {
@@ -36,12 +30,31 @@
     object-fit: cover;
   }
 
-  .description {
-    font-style: italic;
+  .intro {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: $margin-medium-2;
+
+    .metadata {
+      .description {
+        font-style: italic;
+      }
+    }
+
+    .navWrapper {
+      .date {
+        display: inline-block;
+      }
+      ol {
+        display: block;
+        margin: 0;
+        padding: 0 0 0 $padding-medium-2;
+      }
+    }
   }
 
-  .date {
-    display: inline-block;
+  .important {
+    color: $form-error-color;
   }
 
   .qa {
@@ -54,10 +67,6 @@
 
     dd {
       margin-bottom: $margin-medium-2;
-    }
-
-    .message {
-
     }
 
     .attribution {

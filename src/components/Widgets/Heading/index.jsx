@@ -31,6 +31,7 @@ export default class Heading extends React.PureComponent {
       return undefined;
     },
     className: PropTypes.string,
+    id: PropTypes.string,
     link: PropTypes.string,
     tag: PropTypes.string,
     children: PropTypes.node.isRequired,
@@ -38,24 +39,30 @@ export default class Heading extends React.PureComponent {
 
   static defaultProps = {
     className: null,
+    id: null,
     link: null,
     tag: null,
   };
 
   render() {
-    const { className, children, link, tag, type } = this.props;
+    const { className, children, id, link, tag, type } = this.props;
     const [defaultTag, defaultClassName] = typeMapping[type];
 
     const Tag = tag || defaultTag;
+    const attrs = {
+      className: classnames(styles.heading, styles[defaultClassName], className),
+    };
+    if (id) {
+      attrs.id = id;
+    }
 
-    const actualClassName = classnames(styles.heading, styles[defaultClassName], className);
     if (link) {
       return (
         <Link to={link} className={styles.titleLink}>
-          <Tag className={actualClassName}>{children}</Tag>
+          <Tag {...attrs}>{children}</Tag>
         </Link>
       );
     }
-    return <Tag className={actualClassName}>{children}</Tag>;
+    return <Tag {...attrs}>{children}</Tag>;
   }
 }

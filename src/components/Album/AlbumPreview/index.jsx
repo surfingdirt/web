@@ -35,6 +35,7 @@ const { ALBUM } = translateButtonTypes;
 const AlbumPreview = ({
   album,
   className,
+  id,
   locale,
   showAttribution,
   renderIfEmpty,
@@ -64,6 +65,7 @@ const AlbumPreview = ({
     return (
       <Card
         type={STANDARD}
+        id={id}
         title={albumTitle}
         titleLink={albumUrl}
         headingType={SECONDARY}
@@ -179,6 +181,7 @@ AlbumPreview.propTypes = {
     title: TranslatedTextType.isRequired,
   }).isRequired,
   className: PropTypes.string,
+  id: PropTypes.string,
   renderIfEmpty: PropTypes.bool,
   renderSliderOnly: PropTypes.bool,
   showAttribution: PropTypes.bool,
@@ -187,6 +190,7 @@ AlbumPreview.propTypes = {
 
 AlbumPreview.defaultProps = {
   className: null,
+  id: null,
   renderIfEmpty: false,
   renderSliderOnly: false,
   showAttribution: false,
