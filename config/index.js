@@ -20,7 +20,7 @@ const firebaseConfig = {
 export const config = {
   local: {
     port: 3033,
-    baseUrl: `http://localhost:3033/`,
+    baseUrl: `http://localhost:3033`,
     firebaseConfig,
     // graphql: 'http://localhost:4000',
     graphql: 'https://graphql.surfingdirt.com/',

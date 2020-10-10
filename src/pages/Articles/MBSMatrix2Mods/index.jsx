@@ -26,8 +26,8 @@ const NAV = {
 
 const MBSMatrix2Mods = ({ locale, t }) => {
   const { baseUrl } = useContext(AppContext);
-  const coverImgSrc = `${baseUrl}${Cover}`;
-  const MBSTopPlateSrc = `${baseUrl}${MBSTopPlate}`;
+  const coverImgSrc = `${baseUrl}/${Cover}`;
+  const MBSTopPlateSrc = `${baseUrl}/${MBSTopPlate}`;
   const title = t('title');
   const description = t('description');
   const date = '2020-10-10';
@@ -35,19 +35,6 @@ const MBSMatrix2Mods = ({ locale, t }) => {
   const interviewer = 'Surfing Dirt';
   const interviewee = 'Leon';
   const items = [['qa1', 'qa2'], ['qa3', 'qa4'], ['qa5', 'qa6'], ['qa7', 'qa8'], ['qa9', 'qa10']];
-  const instructions = [
-    'step1',
-    'step2',
-    'step3',
-    'step4',
-    'step5',
-    'step6',
-    'step7',
-    'step8',
-    'step9',
-    'step10',
-    'step11',
-  ];
   const tips = ['tip1', 'tip2', 'tip3', 'tip4'];
 
   const { data, error, loading } = useQuery(ALBUM_WITH_MEDIA, {
