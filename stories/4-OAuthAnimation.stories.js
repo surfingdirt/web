@@ -1,7 +1,8 @@
 import React from 'react';
 
 import OAuthAnimation from '../src/pages/LogIn/OAuth/Animation';
-import { steps, FACEBOOK, GOOGLE } from '../src/hooks/useFirebaseOAuth';
+import steps from '../src/pages/LogIn/OAuth/steps';
+import { FACEBOOK, GOOGLE } from '../src/hooks/useFirebaseOAuth';
 import ProfilePhoto from '../src/images/rockman.jpg';
 
 const {

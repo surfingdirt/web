@@ -1,50 +1,26 @@
 /* eslint-disable import/prefer-default-export */
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
-import Tabs from 'Components/Widgets/Tabs';
-import TabPanel from 'Components/Widgets/Tabs/TabPanel';
 import Translate from 'Hocs/Translate';
-import AppContext from '~/contexts';
 
-import Discover from './Discover';
-import DiscoverHeader from './Discover/Header';
+import Aside from './Aside';
 import Feed from './Feed';
-import FeedHeader from './Feed/Header';
 import messages from './messages';
+import styles from './styles.scss';
 
 const Home = ({ t }) => {
-  const {
-    login: {
-      data: {
-        me: { username },
-      },
-    },
-  } = useContext(AppContext);
-
-  const loggedIn = !!username;
-
   return (
-    <Fragment>
+    <>
       <Helmet>
         <title>Surfing Dirt</title>
       </Helmet>
-      <Tabs ariaLabel={t('tabsLabel')} url="" reverseTabOrder={loggedIn}>
-        <TabPanel
-          label={t('discover')}
-          id="discover"
-          defaultTab={!loggedIn}
-          header={<DiscoverHeader />}
-          bareHeader
-        >
-          <Discover />
-        </TabPanel>
-        <TabPanel label={t('activity')} id="feed" defaultTab={loggedIn} header={<FeedHeader />}>
-          <Feed />
-        </TabPanel>
-      </Tabs>
-    </Fragment>
+      <div className={styles.wrapper}>
+        <Feed className={styles.feed} />
+        <Aside className={styles.aside} />
+      </div>
+    </>
   );
 };
 

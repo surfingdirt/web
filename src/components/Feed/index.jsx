@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import CommentList from 'Components/Comment/List';
@@ -170,7 +171,7 @@ const getAttrsFromFedEntry = (feedEntry, locale, t, loggedIn) => {
   return attrs;
 };
 
-const Feed = ({ entries, locale, t }) => {
+const Feed = ({ className, entries, locale, t }) => {
   const {
     login: {
       data: {
@@ -182,7 +183,7 @@ const Feed = ({ entries, locale, t }) => {
 
   return (
     <Fragment>
-      <ul className={styles.feed}>
+      <ul className={classnames(styles.feed, className)}>
         {entries.map((entry) => {
           const attrs = getAttrsFromFedEntry(entry, locale, t, loggedIn);
           return (
@@ -197,9 +198,14 @@ const Feed = ({ entries, locale, t }) => {
 };
 
 Feed.propTypes = {
+  className: PropTypes.string,
   entries: PropTypes.arrayOf(FeedEntryType).isRequired,
   locale: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
+};
+
+Feed.defaultProps = {
+  className: null,
 };
 
 export default Translate(messages)(Feed);

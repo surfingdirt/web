@@ -12,3 +12,6 @@ $desktop-max: 1920px;
 // Logical sizes
 $desktop-layout-threshold-min: $tablet-max + 1px;
 $mobile-layout-threshold-max: $tablet-max;
+
+// Homepage
+$home-wide-viewport-threshold: 75rem;

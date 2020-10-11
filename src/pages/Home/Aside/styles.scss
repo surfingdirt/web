@@ -1,0 +1,44 @@
+@import '../../../styles/boxmodel';
+@import '../../../styles/colors';
+@import '../../../styles/font-sizes';
+@import '../../../styles/media-queries';
+
+.wrapper {
+  .articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: $desktop-layout-threshold-min) and (max-width: $home-wide-viewport-threshold) {
+      display: flex;
+      gap: $margin-medium-2;
+    }
+  }
+}
+
+.articleListItem {
+  margin-bottom: $margin-medium-2;
+}
+
+.articleItem {
+  img {
+    width: 100%;
+    margin-bottom: $margin-small-1;
+  }
+
+  .articleTitle {
+    margin-bottom: $margin-small-1;
+  }
+
+  .articleDescription, .articleDate {
+    color: $container-text-color-default;
+  }
+
+  .articleDescription {
+    margin-bottom: 0;
+  }
+
+  .articleDate {
+    font-size: $font-size-tiny;
+  }
+}
