@@ -91,6 +91,13 @@ msgstr "ファイルの選択"
 msgid "Click here to choose photos"
 msgstr "写真の選択"
 
+#: src/components/Video/Embed/messages.js:6
+#. Message displayed when a video won't play, probably because of copyright issues - part 2
+#, fuzzy
+#| msgid "Click here to choose a file"
+msgid "Click here to open YouTube instead."
+msgstr "ファイルの選択"
+
 #: src/components/FourDown/HomeSection/messages.js:4
 #. Description of the 4 Down Project
 msgid ""
@@ -576,7 +583,7 @@ msgstr "ユーザー名"
 msgid "Video address"
 msgstr "ビデオアドレス"
 
-#: src/components/Video/Embed/messages.js:3
+#: src/components/Video/Embed/messages.js:9
 #. Label for a section containing a video
 msgid "Video content"
 msgstr "ビデオコンテンツ"
@@ -619,6 +626,11 @@ msgid ""
 "We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, "
 "Vimeo and DailyMotion videos"
 msgstr "Instagram、Facebook、YouTube、Vimeo、DailyMotionの動画だけでなく、JPEGおよびPNGの写真も使用できる"
+
+#: src/components/Video/Embed/messages.js:3
+#. Message displayed when a video won't play, probably because of copyright issues - part 1
+msgid "Whoops, Google doesn't want us to play this video!"
+msgstr "おっと、グーグルは私たちがこのビデオを再生することを望んでいません！"
 
 #: src/components/Reactions/messages.js:12
 #. Label for a user reaction icon: impressed 😮
@@ -776,7 +788,8 @@ msgstr ""
 "を共有する場所。近くのライダーやスポットについて学ぶ場所。トラックとジャンプについて話し合う場所。そして、人々がマウンテンボーディングが何であるかを見る"
 "ことができる場所。"
 
-#: src/pages/About/messages.js:3
+#: src/pages/About/messages.js:3 src/pages/Privacy/messages.js:3
+#: src/pages/Terms/messages.js:3
 #. Title of the About page
 msgctxt "About"
 msgid "Surfing Dirt is back!"
@@ -1258,6 +1271,22 @@ msgctxt "Homepage"
 msgid "Main content"
 msgstr "メインコンテンツ"
 
+#: src/pages/Home/Aside/messages.js:7
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid ""
+"Another year, another edition of the video contest, with 4 new productions "
+"from all around the world."
+msgstr "別の年、ビデオコンテストの別のエディション。世界中から4つの新しい作品があります。"
+
+#: src/pages/Home/Aside/messages.js:3
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid ""
+"Leon Dove tells you all about his new tweak to get the best out of the MBS "
+"Matrix II trucks."
+msgstr "Leon Doveは、MBS MatrixIIトラックを最大限に活用するための彼の新しい調整についてすべて説明します。"
+
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
 #. An error message
@@ -1277,6 +1306,400 @@ msgstr "ページを読み込めませんでした。もう一度試してくだ
 msgctxt "LoggedOut"
 msgid "Register"
 msgstr "登録"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:163
+#. Text content
+#, fuzzy
+#| msgid ""
+msgctxt "Matrix 2 top plate article"
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:8
+#. Article cover description
+msgctxt "Matrix 2 top plate article"
+msgid "A foundry pouring molten metal with a Matrix 2 truck in the foreground"
+msgstr "フォアグラウンドでMatrix2トラックを使用して溶融金属を注ぐ鋳造所"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:75
+#. Instructions - step 11
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Adjust the Mod Plate by turning the top preload bolts clockwise to stiffen "
+"your steering or counter clockwise to loosen. It is very important to "
+"adjust the top preload bolts evenly so that the Mod Plate stays horizontal "
+"in relation to the Top Truck."
+msgstr ""
+"上部のプリロードボルトを時計回りに回してステアリングを固めるか、反時計回りに回して緩めることにより、Modプレートを調整します。 "
+"Modプレートがトップトラックに対して水平に保たれるように、トッププリロードボルトを均等に調整することが非常に重要です。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:112
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Because some of you will want more information, we asked Leon a few "
+"questions!"
+msgstr "より多くの情報が必要な方もいらっしゃるので、レオンにいくつか質問しました。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:71
+#. Instructions - step 10
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Check that the Mod Plate is located properly then wind the lower pre-load "
+"bolts in until the shock blocks are properly seated but not lifted away "
+"from the truck."
+msgstr ""
+"Modプレートが適切に配置されていることを確認してから、ショックブロックが適切に固定されるまで、下部のプリロードボルトを巻き込みますが、トラックから持ち"
+"上げられないようにします。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:108
+#. Label for a button to reveal a paragraph
+#, fuzzy
+#| msgid "Click here to choose a file"
+msgctxt "Matrix 2 top plate article"
+msgid "Click here for the full interview"
+msgstr "ファイルの選択"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:89
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Do not over compress your Shock Blocs, if they can’t stiffen your steering "
+"to the desired level, insert stiffer shock blocks or replace "
+"worn/compressed shock blocks with new ones. If you have the Matrix II’s "
+"with the plastic Top Truck, you can replace the Top Truck with an alloy one "
+"from the Matrix I Pro trucks, then fit the Mod Plates. The fitting "
+"instructions are the same with the exception that there is no MBS plate to "
+"remove."
+msgstr ""
+"ショックブロックを過度に圧縮しないでください。ステアリングを希望のレベルまで強化できない場合は、より剛性の高いショックブロックを挿入するか、摩耗/"
+"圧縮されたショックブロックを新しいものと交換してください。プラスチック製のトップトラックを備えたマトリックスIIをお持ちの場合は、トップトラックをマトリ"
+"ックスIプロトラックの合金製のものと交換してから、Modプレートを取り付けることができます。取り外すMBSプレートがないことを除いて、取り付け手順は同じ"
+"です。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:159
+#. Instructions section title
+#, fuzzy
+#| msgid "Introduction"
+msgctxt "Matrix 2 top plate article"
+msgid "Fitting Instructions"
+msgstr "前書き"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:149
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Going back to our first question, what is your modification and how does it "
+"work?"
+msgstr "最初の質問に戻って、あなたの変更は何ですか、そしてそれはどのように機能しますか？"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:63
+#. Instructions - step 8
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Holding the Mod Plate in place by hand, fit a shock block to the bottom pre "
+"load bolt."
+msgstr "Modプレートを手で所定の位置に保持し、ショックブロックを下部のプリロードボルトに取り付けます。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:136
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"I had always wanted to take my initial idea further but I was put off by "
+"the expense of creating my own truck from scratch, when MBS released the "
+"Matrix II I was really pleased that it looked very close to the design that "
+"had been floating around my head since 2010."
+msgstr ""
+"私はいつも最初のアイデアをさらに推し進めたいと思っていましたが、MBSがMatrix "
+"IIをリリースしたとき、自分の周りに浮かんでいたデザインに非常に近いものに見えたことを本当に嬉しく思いました。 2010年から頭。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:128
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"I think it was a combination of disbelief in the wider mountainboard "
+"community that you didn’t need the springs that we had all become "
+"accustomed to, plus the extra stress it put on the egg shocks meant the "
+"design wasn’t as bullet-proof as the standard design. The trade off in "
+"performance against durability was not something the majority of riders "
+"wanted to make. That being said, I and many others rode that design "
+"trouble-free right up until MBS released the Matrix II."
+msgstr ""
+"私たち全員が慣れ親しんだスプリングを必要としなかったのは、より広いマウンテンボードコミュニティへの不信と、エッグショックにかかる余分なストレスの組み合わ"
+"せであり、デザインは防弾性能が劣っていたと思います。標準設計。パフォーマンスと耐久性のトレードオフは、大多数のライダーが望んでいたことではありませんでし"
+"た。そうは言っても、MBSがマトリックスIIをリリースするまで、私や他の多くの人々は問題なくその設計に乗りました。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:140
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "If you like new design so much, why have you felt the need to modify it?"
+msgstr "新しいデザインがとても好きなら、なぜそれを修正する必要性を感じたのですか？"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:97
+#. Warning message
+msgctxt "Matrix 2 top plate article"
+msgid "Important"
+msgstr "重要"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:25
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"In 2010, Leon modified his Matrix Pro trucks to run without springs just "
+"using the egg shocks. This generated enough interest from other riders for "
+"him to make a conversion kit under the name of WestCoastATB which while "
+"never going mainstream, did gain a cult following among a small core of "
+"boarders. Ten years later he’s back with another modification that’s caught "
+"the attention of riders from around the world, this time it’s for the "
+"latest incarnation of the MBS channel truck, the Matrix Pro II."
+msgstr ""
+"2010年、レオンはMatrix "
+"Proトラックを改造して、エッグショックを使用するだけでスプリングなしで走行できるようにしました。これは彼がWestCoastATBの名前で変換キットを"
+"作るのに十分な関心を他のライダーから生み出しました。それは決して主流になることはありませんでしたが、ボーダーの小さなコアの間でカルトの支持を得ました。 "
+"10年後、彼は世界中のライダーの注目を集めた別の改造で戻ってきました。今回は、MBSチャンネルトラックの最新の化身であるマトリックスプロIIです。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:59
+#. Instructions - step 7
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Insert the Mod Plate, make sure that the protruding ends of the top preload "
+"bolts sit in the recess holes in the Mod Plate."
+msgstr "Modプレートを挿入し、上部の予圧ボルトの突き出た端がModプレートのくぼみ穴に収まっていることを確認します。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:67
+#. Instructions - step 9
+msgctxt "Matrix 2 top plate article"
+msgid "Insert the other shock block and bottom pre load bolt."
+msgstr "もう一方のショックブロックと下部のプリロードボルトを挿入します。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:47
+#. Instructions - step 4
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Insert the top preload bolts through the deck and turn clockwise to engage "
+"the thread in the Top Truck. Keep turning the bolts clockwise (use a 4mm "
+"Hex Key) until you can see the threaded section of the bolts appear out of "
+"the underside of the Top Truck. If the bolts do not turn freely, see Step 3."
+msgstr ""
+"上部のプリロードボルトをデッキに挿入し、時計回りに回して上部トラックのねじ山にかみ合わせます。トップトラックの下側からボルトのねじ部分が見えるまで、ボル"
+"トを時計回りに回し続けます（4mm六角レンチを使用）。ボルトが自由に回転しない場合は、手順3を参照してください。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:153
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"It’s a pretty simple solution, rather than adjusting the shock blocks by "
+"moving them up, I designed a plate that could be adjusted down from the Top "
+"Truck. As the plate compress the shock blocks they stay in position because "
+"they sit squarely on the bottom truck and can’t move around."
+msgstr ""
+"ショックブロックを上に動かして調整するのではなく、トップトラックから下に調整できるプレートを設計しました。これは非常に簡単な解決策です。プレートがショッ"
+"クブロックを圧縮するとき、それらは一番下のトラックに真っ直ぐに座って動き回ることができないため、所定の位置に留まります。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:13
+#. Article description
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon Dove recently designed new top plates to improve the adjustability and "
+"reliability of MBS Matrix II Trucks. Read on to find out why and where to "
+"get some!"
+msgstr ""
+"Leon Doveは最近、MBS "
+"MatrixIIトラックの調整可能性と信頼性を向上させるために新しいトッププレートを設計しました。なぜ、どこで入手できるのかを知るために読んでください！"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:21
+#. Description of a photo
+msgctxt "Matrix 2 top plate article"
+msgid "Leon in the lead at the 2017 World Championships"
+msgstr "2017年世界選手権で首位のレオン"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:17
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon is a long time UK mountainboarder, a former MBS team rider with a "
+"couple of UK and a World Masters Boarder X title under his belt. Leon’s "
+"passion for boarding doesn’t stop at riding, he’s been tinkering and "
+"modifying his boards ever since he started riding nearly two decades ago."
+msgstr ""
+"レオンは長年の英国のマウンテンボーダーであり、元MBSチームのライダーであり、英国で2"
+"名、ワールドマスターズボーダーXのタイトルを獲得しています。レオンの搭乗への情熱は乗馬にとどまらず、20"
+"年近く前に乗馬を始めて以来、ボードをいじくり回して改造してきました。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:85
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon recommends a maximum compression of 5mm between the Top Truck and the "
+"Mod Plate."
+msgstr "レオンは、トップトラックとモッドプレートの間で最大5mmの圧縮を推奨しています。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:116
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "Leon, can you explain what your modification is and why you made it?"
+msgstr "レオン、あなたの修正とは何か、そしてなぜそれをしたのか説明できますか？"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:43
+#. Instructions - step 3
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Make sure that the top preload bolts holes in the deck, the riser pad (if "
+"fitted) and the Top Truck are in line."
+msgstr "デッキの上部プリロードボルト穴、ライザーパッド（取り付けられている場合）、および上部トラックが一列に並んでいることを確認します。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:12
+#. Article title
+msgctxt "Matrix 2 top plate article"
+msgid "MBS Matrix II Truck mods"
+msgstr "MBSマトリックスIIトラック改造"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:55
+#. Instructions - step 6
+msgctxt "Matrix 2 top plate article"
+msgid "Re-insert one of the bottom preload bolts enough to fit a shock block."
+msgstr "ショックブロックに合うように、下部のプリロードボルトの1つを再挿入します。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:35
+#. Instructions - step 2
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Remove the MBS plate that is bolted to the Top Truck. You will need a 5mm "
+"Hex Key. The bolts have thread lock on them so you may need to apply a fair "
+"amount of force."
+msgstr ""
+"トップトラックにボルトで固定されているMBSプレートを取り外します。 "
+"5mmの六角レンチが必要になります。ボルトにはネジロックが付いているので、かなりの力を加える必要があるかもしれません。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:31
+#. Instructions - step 1
+msgctxt "Matrix 2 top plate article"
+msgid "Remove the shock blocks and bottom preload bolts"
+msgstr "ショックブロックと下部プリロードボルトを取り外します"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:124
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "So why do you think it didn’t catch on?"
+msgstr "では、なぜそれがうまくいかなかったと思いますか？"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:4
+#. Label for the article's table of contents
+#, fuzzy
+#| msgid "Video content"
+msgctxt "Matrix 2 top plate article"
+msgid "Table of contents"
+msgstr "ビデオコンテンツ"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:104
+#. Questions and Answers section title
+msgctxt "Matrix 2 top plate article"
+msgid "The full story behind this project"
+msgstr "このプロジェクトの背後にある全容"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:39
+#. Description of a photo
+msgctxt "Matrix 2 top plate article"
+msgid "The MBS top plate"
+msgstr "MBSトッププレート"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:98
+#. Warning message
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"The Mod Plate is designed to work by adjusting the top preload bolts only, "
+"do not use the bottom preload bolts to make any adjustments."
+msgstr "Modプレートは上部のプリロードボルトのみを調整するように設計されており、下部のプリロードボルトを使用して調整しないでください。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:93
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"This is a peer to peer project, the aim is not to get rich but to innovate, "
+"doing our bit to help push the sport forward, your feedback is key to that "
+"process"
+msgstr ""
+"これはピアツーピアプロジェクトです。目的は金持ちになることではなく革新することであり、スポーツを前進させるために私たちのビットを実行します。あなたのフィ"
+"ードバックはそのプロセスの鍵です"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:80
+#. Label for the tips section
+msgctxt "Matrix 2 top plate article"
+msgid "Tips"
+msgstr "チップ"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:51
+#. Instructions - step 5
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Turn the top preload bolts anti-clockwise until around 2mm of the bolt end "
+"is visible out of the underside of the Top Truck."
+msgstr "トップトラックの下側からボルトの端の約2mmが見えるようになるまで、トッププリロードボルトを反時計回りに回します。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:144
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Well, I pretty much like everything about the Matrix II, the turning is so "
+"much more progressive and responsive than any other truck I’ve ridden "
+"before plus it’s lighter and the shape of the lower truck is so much better "
+"for rails, copings and ground clearance. The one thing I didn’t like was "
+"its preload system, after a certain point the more I tried to stiffen the "
+"steering, the looser it got.\n"
+"On closer inspection, I could see this was because the shock blocks were "
+"lifted away from the lower truck to such a degree that they started "
+"pivoting on the preload bolts, this allowed them to slide off the top plate "
+"rather than compress up against it."
+msgstr ""
+"まあ、私はマトリックスIIのすべてが好きです。曲がり角は、これまでに乗った他のどのトラックよりもはるかに進歩的で応答性が高く、さらに軽量で、下のトラック"
+"の形状はレール、コーピング、地面に非常に優れています。クリアランス。私が気に入らなかったのは、プリロードシステムでした。ある時点以降、ステアリングを固め"
+"ようとすればするほど、ステアリングが緩くなりました。\n"
+"よく調べてみると、ショックブロックが下のトラックから持ち上げられてプリロードボルトで回転し始めたため、トッププレートに押し付けられるのではなくスライドし"
+"て外れたことがわかりました。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:81
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"When using the loosest setting make sure that top preload bolts are still "
+"in contact with the Mod Plate in their recess holes."
+msgstr "最も緩い設定を使用するときは、上部の予圧ボルトがそれらのくぼみ穴でModプレートと接触していることを確認してください。"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:132
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "Why did you swap that set up for the Matrix II ?"
+msgstr "なぜマトリックスIIのセットアップを交換したのですか？"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:120
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Yeah of course, with the exception of my first board (a Mongoose Unicamb) "
+"I’ve always ridden MBS channel trucks. MBS kept tweaking the design over "
+"the years, making improvements, always producing something that kept them "
+"ahead of their rivals. However because of my background in motor cycle "
+"mechanics I always thought it was odd to use a spring without any form of "
+"rebound dampening and that’s why in 2010 I decided on a bit of an "
+"experiment, to run my Matrix Pro’s without any springs. To my surprise it "
+"worked incredibly well for me and quite a few other riders."
+msgstr ""
+"ええ、もちろん、私の最初のボード（マングースユニカム）を除いて、私はいつもMBSチャンネルトラックに乗っていました。 "
+"MBSは何年にもわたってデザインを微調整し、改善を行い、常にライバルに先んじる何かを生み出しました。しかし、モーターサイクルのメカニックの経歴があるため"
+"、リバウンドダンピングなしでスプリングを使用するのは奇妙だといつも思っていました。そのため、2010"
+"年に、スプリングなしでMatrixProを実行するというちょっとした実験をすることにしました。驚いたことに、それは私と他のかなりの数のライダーにとって信"
+"じられないほどうまく機能しました。"
 
 #: src/components/User/BioUpdate/messages.js:10
 #: src/components/Widgets/Modal/messages.js:4

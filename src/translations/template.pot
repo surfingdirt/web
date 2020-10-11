@@ -82,6 +82,11 @@ msgstr ""
 msgid "Click here to choose photos"
 msgstr ""
 
+#. Message displayed when a video won't play, probably because of copyright issues - part 2
+#: src/components/Video/Embed/messages.js:6
+msgid "Click here to open YouTube instead."
+msgstr ""
+
 #. Description of the 4 Down Project
 #: src/components/FourDown/HomeSection/messages.js:4
 msgid "Come watch all 4 productions from across the world, and cast your vote once you've picked your favorite video!"
@@ -561,7 +566,7 @@ msgid "Video address"
 msgstr ""
 
 #. Label for a section containing a video
-#: src/components/Video/Embed/messages.js:3
+#: src/components/Video/Embed/messages.js:9
 msgid "Video content"
 msgstr ""
 
@@ -600,6 +605,11 @@ msgstr ""
 #. Instruction for a user
 #: src/pages/ConfirmEmail/messages.js:27
 msgid "We support JPEG and PNG photos, as well as Instagram, Facebook, YouTube, Vimeo and DailyMotion videos"
+msgstr ""
+
+#. Message displayed when a video won't play, probably because of copyright issues - part 1
+#: src/components/Video/Embed/messages.js:3
+msgid "Whoops, Google doesn't want us to play this video!"
 msgstr ""
 
 #. Label for a user reaction icon: impressed 😮
@@ -728,6 +738,8 @@ msgstr ""
 
 #. Title of the About page
 #: src/pages/About/messages.js:3
+#: src/pages/Privacy/messages.js:3
+#: src/pages/Terms/messages.js:3
 msgctxt "About"
 msgid "Surfing Dirt is back!"
 msgstr ""
@@ -1170,6 +1182,18 @@ msgctxt "Homepage"
 msgid "Main content"
 msgstr ""
 
+#. Description for an article
+#: src/pages/Home/Aside/messages.js:7
+msgctxt "Homepage Aside"
+msgid "Another year, another edition of the video contest, with 4 new productions from all around the world."
+msgstr ""
+
+#. Description for an article
+#: src/pages/Home/Aside/messages.js:3
+msgctxt "Homepage Aside"
+msgid "Leon Dove tells you all about his new tweak to get the best out of the MBS Matrix II trucks."
+msgstr ""
+
 #. An error message
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
@@ -1188,6 +1212,254 @@ msgstr ""
 #: src/sections/ProfileLinkNavigation/messages.js:12
 msgctxt "LoggedOut"
 msgid "Register"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:163
+msgctxt "Matrix 2 top plate article"
+msgid ""
+msgstr ""
+
+#. Article cover description
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:8
+msgctxt "Matrix 2 top plate article"
+msgid "A foundry pouring molten metal with a Matrix 2 truck in the foreground"
+msgstr ""
+
+#. Instructions - step 11
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:75
+msgctxt "Matrix 2 top plate article"
+msgid "Adjust the Mod Plate by turning the top preload bolts clockwise to stiffen your steering or counter clockwise to loosen. It is very important to adjust the top preload bolts evenly so that the Mod Plate stays horizontal in relation to the Top Truck."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:112
+msgctxt "Matrix 2 top plate article"
+msgid "Because some of you will want more information, we asked Leon a few questions!"
+msgstr ""
+
+#. Instructions - step 10
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:71
+msgctxt "Matrix 2 top plate article"
+msgid "Check that the Mod Plate is located properly then wind the lower pre-load bolts in until the shock blocks are properly seated but not lifted away from the truck."
+msgstr ""
+
+#. Label for a button to reveal a paragraph
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:108
+msgctxt "Matrix 2 top plate article"
+msgid "Click here for the full interview"
+msgstr ""
+
+#. Text for a tip
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:89
+msgctxt "Matrix 2 top plate article"
+msgid "Do not over compress your Shock Blocs, if they can’t stiffen your steering to the desired level, insert stiffer shock blocks or replace worn/compressed shock blocks with new ones. If you have the Matrix II’s with the plastic Top Truck, you can replace the Top Truck with an alloy one from the Matrix I Pro trucks, then fit the Mod Plates. The fitting instructions are the same with the exception that there is no MBS plate to remove."
+msgstr ""
+
+#. Instructions section title
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:159
+msgctxt "Matrix 2 top plate article"
+msgid "Fitting Instructions"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:149
+msgctxt "Matrix 2 top plate article"
+msgid "Going back to our first question, what is your modification and how does it work?"
+msgstr ""
+
+#. Instructions - step 8
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:63
+msgctxt "Matrix 2 top plate article"
+msgid "Holding the Mod Plate in place by hand, fit a shock block to the bottom pre load bolt."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:136
+msgctxt "Matrix 2 top plate article"
+msgid "I had always wanted to take my initial idea further but I was put off by the expense of creating my own truck from scratch, when MBS released the Matrix II I was really pleased that it looked very close to the design that had been floating around my head since 2010."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:128
+msgctxt "Matrix 2 top plate article"
+msgid "I think it was a combination of disbelief in the wider mountainboard community that you didn’t need the springs that we had all become accustomed to, plus the extra stress it put on the egg shocks meant the design wasn’t as bullet-proof as the standard design. The trade off in performance against durability was not something the majority of riders wanted to make. That being said, I and many others rode that design trouble-free right up until MBS released the Matrix II."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:140
+msgctxt "Matrix 2 top plate article"
+msgid "If you like new design so much, why have you felt the need to modify it?"
+msgstr ""
+
+#. Warning message
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:97
+msgctxt "Matrix 2 top plate article"
+msgid "Important"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:25
+msgctxt "Matrix 2 top plate article"
+msgid "In 2010, Leon modified his Matrix Pro trucks to run without springs just using the egg shocks. This generated enough interest from other riders for him to make a conversion kit under the name of WestCoastATB which while never going mainstream, did gain a cult following among a small core of boarders. Ten years later he’s back with another modification that’s caught the attention of riders from around the world, this time it’s for the latest incarnation of the MBS channel truck, the Matrix Pro II."
+msgstr ""
+
+#. Instructions - step 7
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:59
+msgctxt "Matrix 2 top plate article"
+msgid "Insert the Mod Plate, make sure that the protruding ends of the top preload bolts sit in the recess holes in the Mod Plate."
+msgstr ""
+
+#. Instructions - step 9
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:67
+msgctxt "Matrix 2 top plate article"
+msgid "Insert the other shock block and bottom pre load bolt."
+msgstr ""
+
+#. Instructions - step 4
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:47
+msgctxt "Matrix 2 top plate article"
+msgid "Insert the top preload bolts through the deck and turn clockwise to engage the thread in the Top Truck. Keep turning the bolts clockwise (use a 4mm Hex Key) until you can see the threaded section of the bolts appear out of the underside of the Top Truck. If the bolts do not turn freely, see Step 3."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:153
+msgctxt "Matrix 2 top plate article"
+msgid "It’s a pretty simple solution, rather than adjusting the shock blocks by moving them up, I designed a plate that could be adjusted down from the Top Truck. As the plate compress the shock blocks they stay in position because they sit squarely on the bottom truck and can’t move around."
+msgstr ""
+
+#. Article description
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:13
+msgctxt "Matrix 2 top plate article"
+msgid "Leon Dove recently designed new top plates to improve the adjustability and reliability of MBS Matrix II Trucks. Read on to find out why and where to get some!"
+msgstr ""
+
+#. Description of a photo
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:21
+msgctxt "Matrix 2 top plate article"
+msgid "Leon in the lead at the 2017 World Championships"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:17
+msgctxt "Matrix 2 top plate article"
+msgid "Leon is a long time UK mountainboarder, a former MBS team rider with a couple of UK and a World Masters Boarder X title under his belt. Leon’s passion for boarding doesn’t stop at riding, he’s been tinkering and modifying his boards ever since he started riding nearly two decades ago."
+msgstr ""
+
+#. Text for a tip
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:85
+msgctxt "Matrix 2 top plate article"
+msgid "Leon recommends a maximum compression of 5mm between the Top Truck and the Mod Plate."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:116
+msgctxt "Matrix 2 top plate article"
+msgid "Leon, can you explain what your modification is and why you made it?"
+msgstr ""
+
+#. Instructions - step 3
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:43
+msgctxt "Matrix 2 top plate article"
+msgid "Make sure that the top preload bolts holes in the deck, the riser pad (if fitted) and the Top Truck are in line."
+msgstr ""
+
+#. Article title
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:12
+msgctxt "Matrix 2 top plate article"
+msgid "MBS Matrix II Truck mods"
+msgstr ""
+
+#. Instructions - step 6
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:55
+msgctxt "Matrix 2 top plate article"
+msgid "Re-insert one of the bottom preload bolts enough to fit a shock block."
+msgstr ""
+
+#. Instructions - step 2
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:35
+msgctxt "Matrix 2 top plate article"
+msgid "Remove the MBS plate that is bolted to the Top Truck. You will need a 5mm Hex Key. The bolts have thread lock on them so you may need to apply a fair amount of force."
+msgstr ""
+
+#. Instructions - step 1
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:31
+msgctxt "Matrix 2 top plate article"
+msgid "Remove the shock blocks and bottom preload bolts"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:124
+msgctxt "Matrix 2 top plate article"
+msgid "So why do you think it didn’t catch on?"
+msgstr ""
+
+#. Label for the article's table of contents
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:4
+msgctxt "Matrix 2 top plate article"
+msgid "Table of contents"
+msgstr ""
+
+#. Questions and Answers section title
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:104
+msgctxt "Matrix 2 top plate article"
+msgid "The full story behind this project"
+msgstr ""
+
+#. Description of a photo
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:39
+msgctxt "Matrix 2 top plate article"
+msgid "The MBS top plate"
+msgstr ""
+
+#. Warning message
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:98
+msgctxt "Matrix 2 top plate article"
+msgid "The Mod Plate is designed to work by adjusting the top preload bolts only, do not use the bottom preload bolts to make any adjustments."
+msgstr ""
+
+#. Text for a tip
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:93
+msgctxt "Matrix 2 top plate article"
+msgid "This is a peer to peer project, the aim is not to get rich but to innovate, doing our bit to help push the sport forward, your feedback is key to that process"
+msgstr ""
+
+#. Label for the tips section
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:80
+msgctxt "Matrix 2 top plate article"
+msgid "Tips"
+msgstr ""
+
+#. Instructions - step 5
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:51
+msgctxt "Matrix 2 top plate article"
+msgid "Turn the top preload bolts anti-clockwise until around 2mm of the bolt end is visible out of the underside of the Top Truck."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:144
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Well, I pretty much like everything about the Matrix II, the turning is so much more progressive and responsive than any other truck I’ve ridden before plus it’s lighter and the shape of the lower truck is so much better for rails, copings and ground clearance. The one thing I didn’t like was its preload system, after a certain point the more I tried to stiffen the steering, the looser it got.\n"
+"On closer inspection, I could see this was because the shock blocks were lifted away from the lower truck to such a degree that they started pivoting on the preload bolts, this allowed them to slide off the top plate rather than compress up against it."
+msgstr ""
+
+#. Text for a tip
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:81
+msgctxt "Matrix 2 top plate article"
+msgid "When using the loosest setting make sure that top preload bolts are still in contact with the Mod Plate in their recess holes."
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:132
+msgctxt "Matrix 2 top plate article"
+msgid "Why did you swap that set up for the Matrix II ?"
+msgstr ""
+
+#. Text content
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:120
+msgctxt "Matrix 2 top plate article"
+msgid "Yeah of course, with the exception of my first board (a Mongoose Unicamb) I’ve always ridden MBS channel trucks. MBS kept tweaking the design over the years, making improvements, always producing something that kept them ahead of their rivals. However because of my background in motor cycle mechanics I always thought it was odd to use a spring without any form of rebound dampening and that’s why in 2010 I decided on a bit of an experiment, to run my Matrix Pro’s without any springs. To my surprise it worked incredibly well for me and quite a few other riders."
 msgstr ""
 
 #. Label of a button to close a dialog window

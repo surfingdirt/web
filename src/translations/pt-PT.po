@@ -92,6 +92,13 @@ msgstr "Clique aqui para escolher um arquivo"
 msgid "Click here to choose photos"
 msgstr "Clique aqui para escolher as fotos"
 
+#: src/components/Video/Embed/messages.js:6
+#. Message displayed when a video won't play, probably because of copyright issues - part 2
+#, fuzzy
+#| msgid "Click here to choose a file"
+msgid "Click here to open YouTube instead."
+msgstr "Clique aqui para escolher um arquivo"
+
 #: src/components/FourDown/HomeSection/messages.js:4
 #. Description of the 4 Down Project
 msgid ""
@@ -581,7 +588,7 @@ msgstr "Nome de usuário"
 msgid "Video address"
 msgstr "Endereço do vídeo"
 
-#: src/components/Video/Embed/messages.js:3
+#: src/components/Video/Embed/messages.js:9
 #. Label for a section containing a video
 msgid "Video content"
 msgstr "Conteúdo do vídeo"
@@ -626,6 +633,11 @@ msgid ""
 msgstr ""
 "Nós suportamos fotos JPEG e PNG, assim como Instagram, Facebook, YouTube, "
 "Vimeo e vídeos do DailyMotion"
+
+#: src/components/Video/Embed/messages.js:3
+#. Message displayed when a video won't play, probably because of copyright issues - part 1
+msgid "Whoops, Google doesn't want us to play this video!"
+msgstr "Opa, o Google não quer que reproduzamos este vídeo!"
 
 #: src/components/Reactions/messages.js:12
 #. Label for a user reaction icon: impressed 😮
@@ -795,7 +807,8 @@ msgstr ""
 "discutir manobras e equipamentos de proteção, peças. E onde as pessoas "
 "podem ver o que acontece no cenário do mountainboard "
 
-#: src/pages/About/messages.js:3
+#: src/pages/About/messages.js:3 src/pages/Privacy/messages.js:3
+#: src/pages/Terms/messages.js:3
 #. Title of the About page
 msgctxt "About"
 msgid "Surfing Dirt is back!"
@@ -1294,6 +1307,26 @@ msgctxt "Homepage"
 msgid "Main content"
 msgstr "Conteúdo principal"
 
+#: src/pages/Home/Aside/messages.js:7
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid ""
+"Another year, another edition of the video contest, with 4 new productions "
+"from all around the world."
+msgstr ""
+"Mais um ano, mais uma edição do concurso de vídeos, com 4 novas produções "
+"de todo o mundo."
+
+#: src/pages/Home/Aside/messages.js:3
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid ""
+"Leon Dove tells you all about his new tweak to get the best out of the MBS "
+"Matrix II trucks."
+msgstr ""
+"Leon Dove conta a você tudo sobre seu novo ajuste para obter o melhor dos "
+"caminhões MBS Matrix II."
+
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
 #. An error message
@@ -1313,6 +1346,465 @@ msgstr "A página não pôde ser carregada, por favor tente carregá-la novament
 msgctxt "LoggedOut"
 msgid "Register"
 msgstr "Registe-se"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:163
+#. Text content
+#, fuzzy
+#| msgid ""
+msgctxt "Matrix 2 top plate article"
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:8
+#. Article cover description
+msgctxt "Matrix 2 top plate article"
+msgid "A foundry pouring molten metal with a Matrix 2 truck in the foreground"
+msgstr ""
+"Uma fundição despejando metal fundido com um caminhão Matrix 2 em primeiro "
+"plano"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:75
+#. Instructions - step 11
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Adjust the Mod Plate by turning the top preload bolts clockwise to stiffen "
+"your steering or counter clockwise to loosen. It is very important to "
+"adjust the top preload bolts evenly so that the Mod Plate stays horizontal "
+"in relation to the Top Truck."
+msgstr ""
+"Ajuste o Mod Plate girando os parafusos de pré-carga superiores no sentido "
+"horário para enrijecer a direção ou no sentido anti-horário para afrouxar. "
+"É muito importante ajustar os parafusos de pré-carga superiores "
+"uniformemente para que o Mod Plate fique na horizontal em relação ao Top "
+"Truck."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:112
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Because some of you will want more information, we asked Leon a few "
+"questions!"
+msgstr ""
+"Porque alguns de vocês vão querer mais informações, fizemos algumas "
+"perguntas ao Leon!"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:71
+#. Instructions - step 10
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Check that the Mod Plate is located properly then wind the lower pre-load "
+"bolts in until the shock blocks are properly seated but not lifted away "
+"from the truck."
+msgstr ""
+"Verifique se o Mod Plate está localizado corretamente, em seguida, enrole "
+"os parafusos de pré-carga inferiores até que os blocos de choque estejam "
+"devidamente assentados, mas não levantados do caminhão."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:108
+#. Label for a button to reveal a paragraph
+#, fuzzy
+#| msgid "Click here to choose a file"
+msgctxt "Matrix 2 top plate article"
+msgid "Click here for the full interview"
+msgstr "Clique aqui para escolher um arquivo"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:89
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Do not over compress your Shock Blocs, if they can’t stiffen your steering "
+"to the desired level, insert stiffer shock blocks or replace "
+"worn/compressed shock blocks with new ones. If you have the Matrix II’s "
+"with the plastic Top Truck, you can replace the Top Truck with an alloy one "
+"from the Matrix I Pro trucks, then fit the Mod Plates. The fitting "
+"instructions are the same with the exception that there is no MBS plate to "
+"remove."
+msgstr ""
+"Não comprima demais seus blocos de choque, se eles não puderem enrijecer "
+"sua direção até o nível desejado, insira blocos de choque mais rígidos ou "
+"substitua blocos de choque desgastados / comprimidos por novos. Se você "
+"tiver o Matrix II com o Top Truck de plástico, poderá substituir o Top "
+"Truck por um de liga dos trucks Matrix I Pro e, em seguida, encaixar as "
+"Placas Mod. As instruções de instalação são as mesmas, exceto que não há "
+"placa MBS para remover."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:159
+#. Instructions section title
+#, fuzzy
+#| msgid "Introduction"
+msgctxt "Matrix 2 top plate article"
+msgid "Fitting Instructions"
+msgstr "Introdução"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:149
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Going back to our first question, what is your modification and how does it "
+"work?"
+msgstr ""
+"Voltando à nossa primeira pergunta, qual é a sua modificação e como "
+"funciona?"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:63
+#. Instructions - step 8
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Holding the Mod Plate in place by hand, fit a shock block to the bottom pre "
+"load bolt."
+msgstr ""
+"Segurando a Mod Plate no lugar com a mão, encaixe um bloco de choque no "
+"parafuso de pré-carga inferior."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:136
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"I had always wanted to take my initial idea further but I was put off by "
+"the expense of creating my own truck from scratch, when MBS released the "
+"Matrix II I was really pleased that it looked very close to the design that "
+"had been floating around my head since 2010."
+msgstr ""
+"Eu sempre quis levar minha ideia inicial mais longe, mas fiquei desanimado "
+"com a despesa de criar meu próprio caminhão do zero, quando a MBS lançou o "
+"Matrix II fiquei muito satisfeito por ele se parecer muito com o design que "
+"estava flutuando em meu chefe desde 2010."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:128
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"I think it was a combination of disbelief in the wider mountainboard "
+"community that you didn’t need the springs that we had all become "
+"accustomed to, plus the extra stress it put on the egg shocks meant the "
+"design wasn’t as bullet-proof as the standard design. The trade off in "
+"performance against durability was not something the majority of riders "
+"wanted to make. That being said, I and many others rode that design "
+"trouble-free right up until MBS released the Matrix II."
+msgstr ""
+"Eu acho que foi uma combinação de descrença na comunidade mais ampla do "
+"mountainboard de que você não precisava das molas às quais todos nós nos "
+"acostumamos, além do estresse extra que colocava nos choques de ovo "
+"significava que o design não era tão à prova de balas quanto o design "
+"padrão. A troca entre desempenho e durabilidade não era algo que a maioria "
+"dos pilotos queria fazer. Dito isso, eu e muitos outros montamos esse "
+"projeto sem problemas até a MBS lançar o Matrix II."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:140
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "If you like new design so much, why have you felt the need to modify it?"
+msgstr ""
+"Se você gosta tanto do novo design, por que sentiu a necessidade de "
+"modificá-lo?"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:97
+#. Warning message
+msgctxt "Matrix 2 top plate article"
+msgid "Important"
+msgstr "Importante"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:25
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"In 2010, Leon modified his Matrix Pro trucks to run without springs just "
+"using the egg shocks. This generated enough interest from other riders for "
+"him to make a conversion kit under the name of WestCoastATB which while "
+"never going mainstream, did gain a cult following among a small core of "
+"boarders. Ten years later he’s back with another modification that’s caught "
+"the attention of riders from around the world, this time it’s for the "
+"latest incarnation of the MBS channel truck, the Matrix Pro II."
+msgstr ""
+"Em 2010, Leon modificou seus caminhões Matrix Pro para rodarem sem molas "
+"usando apenas os amortecedores de ovo. Isso gerou interesse suficiente de "
+"outros pilotos para que ele fizesse um kit de conversão sob o nome de "
+"WestCoastATB que, embora nunca tenha se tornado popular, ganhou um culto de "
+"seguidores entre um pequeno grupo de internos. Dez anos depois, ele está de "
+"volta com outra modificação que chamou a atenção de pilotos de todo o "
+"mundo, desta vez para a mais recente encarnação do caminhão de canal MBS, o "
+"Matrix Pro II."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:59
+#. Instructions - step 7
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Insert the Mod Plate, make sure that the protruding ends of the top preload "
+"bolts sit in the recess holes in the Mod Plate."
+msgstr ""
+"Insira a Placa Mod, certifique-se de que as extremidades salientes dos "
+"parafusos de pré-carga superiores fiquem nos orifícios de recesso na Placa "
+"Mod."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:67
+#. Instructions - step 9
+msgctxt "Matrix 2 top plate article"
+msgid "Insert the other shock block and bottom pre load bolt."
+msgstr "Insira o outro bloco de choque e o parafuso de pré-carga inferior."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:47
+#. Instructions - step 4
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Insert the top preload bolts through the deck and turn clockwise to engage "
+"the thread in the Top Truck. Keep turning the bolts clockwise (use a 4mm "
+"Hex Key) until you can see the threaded section of the bolts appear out of "
+"the underside of the Top Truck. If the bolts do not turn freely, see Step 3."
+msgstr ""
+"Insira os parafusos de pré-carga superiores através da plataforma e gire no "
+"sentido horário para engatar a rosca no Top Truck. Continue girando os "
+"parafusos no sentido horário (use uma chave sextavada de 4 mm) até que você "
+"possa ver a seção rosqueada dos parafusos aparecer na parte inferior do Top "
+"Truck. Se os parafusos não girarem livremente, consulte a Etapa 3."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:153
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"It’s a pretty simple solution, rather than adjusting the shock blocks by "
+"moving them up, I designed a plate that could be adjusted down from the Top "
+"Truck. As the plate compress the shock blocks they stay in position because "
+"they sit squarely on the bottom truck and can’t move around."
+msgstr ""
+"É uma solução muito simples, em vez de ajustar os blocos de choque "
+"movendo-os para cima, projetei uma placa que poderia ser ajustada para "
+"baixo a partir do Top Truck. À medida que a placa comprime os blocos de "
+"choque, eles permanecem em posição porque se assentam diretamente no fundo "
+"do caminhão e não podem se mover."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:13
+#. Article description
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon Dove recently designed new top plates to improve the adjustability and "
+"reliability of MBS Matrix II Trucks. Read on to find out why and where to "
+"get some!"
+msgstr ""
+"Leon Dove projetou recentemente novas placas superiores para melhorar o "
+"ajuste e a confiabilidade dos caminhões MBS Matrix II. Continue lendo para "
+"descobrir por que e onde conseguir alguns!"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:21
+#. Description of a photo
+msgctxt "Matrix 2 top plate article"
+msgid "Leon in the lead at the 2017 World Championships"
+msgstr "Leon na liderança do Campeonato Mundial de 2017"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:17
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon is a long time UK mountainboarder, a former MBS team rider with a "
+"couple of UK and a World Masters Boarder X title under his belt. Leon’s "
+"passion for boarding doesn’t stop at riding, he’s been tinkering and "
+"modifying his boards ever since he started riding nearly two decades ago."
+msgstr ""
+"Leon é um alpinista britânico de longa data, um ex-piloto da equipe MBS com "
+"um par de UK e um título World Masters Boarder X em seu currículo. A paixão "
+"de Leon pelo embarque não para na equitação, ele tem mexido e modificado "
+"suas pranchas desde que começou a pedalar, há quase duas décadas."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:85
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Leon recommends a maximum compression of 5mm between the Top Truck and the "
+"Mod Plate."
+msgstr ""
+"Leon recomenda uma compressão máxima de 5 mm entre o Top Truck e o Mod "
+"Plate."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:116
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "Leon, can you explain what your modification is and why you made it?"
+msgstr "Leon, você pode explicar qual é a sua modificação e por que você a fez?"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:43
+#. Instructions - step 3
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Make sure that the top preload bolts holes in the deck, the riser pad (if "
+"fitted) and the Top Truck are in line."
+msgstr ""
+"Certifique-se de que os orifícios dos parafusos de pré-carga superiores na "
+"plataforma, a almofada do riser (se instalada) e o Top Truck estão "
+"alinhados."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:12
+#. Article title
+msgctxt "Matrix 2 top plate article"
+msgid "MBS Matrix II Truck mods"
+msgstr "Mods MBS Matrix II Truck"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:55
+#. Instructions - step 6
+msgctxt "Matrix 2 top plate article"
+msgid "Re-insert one of the bottom preload bolts enough to fit a shock block."
+msgstr ""
+"Reinsira um dos parafusos de pré-carga inferiores o suficiente para "
+"encaixar um bloco de impacto."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:35
+#. Instructions - step 2
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Remove the MBS plate that is bolted to the Top Truck. You will need a 5mm "
+"Hex Key. The bolts have thread lock on them so you may need to apply a fair "
+"amount of force."
+msgstr ""
+"Remova a placa MBS que está aparafusada ao Top Truck. Você precisará de uma "
+"chave hexagonal de 5 mm. Os parafusos têm bloqueio de rosca, portanto, pode "
+"ser necessário aplicar uma boa quantidade de força."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:31
+#. Instructions - step 1
+msgctxt "Matrix 2 top plate article"
+msgid "Remove the shock blocks and bottom preload bolts"
+msgstr "Remova os blocos de choque e os parafusos de pré-carga inferiores"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:124
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "So why do you think it didn’t catch on?"
+msgstr "Então, por que você acha que não pegou?"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:4
+#. Label for the article's table of contents
+#, fuzzy
+#| msgid "Video content"
+msgctxt "Matrix 2 top plate article"
+msgid "Table of contents"
+msgstr "Conteúdo do vídeo"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:104
+#. Questions and Answers section title
+msgctxt "Matrix 2 top plate article"
+msgid "The full story behind this project"
+msgstr "A história completa por trás deste projeto"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:39
+#. Description of a photo
+msgctxt "Matrix 2 top plate article"
+msgid "The MBS top plate"
+msgstr "A placa superior MBS"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:98
+#. Warning message
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"The Mod Plate is designed to work by adjusting the top preload bolts only, "
+"do not use the bottom preload bolts to make any adjustments."
+msgstr ""
+"O Mod Plate foi projetado para funcionar ajustando apenas os parafusos de "
+"pré-carga superiores, não use os parafusos de pré-carga inferiores para "
+"fazer quaisquer ajustes."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:93
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"This is a peer to peer project, the aim is not to get rich but to innovate, "
+"doing our bit to help push the sport forward, your feedback is key to that "
+"process"
+msgstr ""
+"Este é um projeto peer to peer, o objetivo não é ficar rico, mas inovar, "
+"fazendo a nossa parte para ajudar a impulsionar o esporte, seu feedback é a "
+"chave para esse processo"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:80
+#. Label for the tips section
+msgctxt "Matrix 2 top plate article"
+msgid "Tips"
+msgstr "Dicas"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:51
+#. Instructions - step 5
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Turn the top preload bolts anti-clockwise until around 2mm of the bolt end "
+"is visible out of the underside of the Top Truck."
+msgstr ""
+"Gire os parafusos de pré-carga superiores no sentido anti-horário até que "
+"cerca de 2 mm da extremidade do parafuso sejam visíveis na parte de baixo "
+"do Top Truck."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:144
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Well, I pretty much like everything about the Matrix II, the turning is so "
+"much more progressive and responsive than any other truck I’ve ridden "
+"before plus it’s lighter and the shape of the lower truck is so much better "
+"for rails, copings and ground clearance. The one thing I didn’t like was "
+"its preload system, after a certain point the more I tried to stiffen the "
+"steering, the looser it got.\n"
+"On closer inspection, I could see this was because the shock blocks were "
+"lifted away from the lower truck to such a degree that they started "
+"pivoting on the preload bolts, this allowed them to slide off the top plate "
+"rather than compress up against it."
+msgstr ""
+"Bem, eu gosto muito de tudo no Matrix II, a curva é muito mais progressiva "
+"e ágil do que qualquer outro caminhão que eu já usei antes, além de ser "
+"mais leve e o formato do caminhão inferior é muito melhor para trilhos, "
+"copings e solo liberação. A única coisa que não gostei foi seu sistema de "
+"pré-carga, depois de um certo ponto, quanto mais eu tentava enrijecer a "
+"direção, mais solta ela ficava.\n"
+"Em uma inspeção mais próxima, pude ver que isso aconteceu porque os blocos "
+"de choque foram levantados do caminhão inferior a tal ponto que começaram a "
+"girar nos parafusos de pré-carga, o que permitiu que deslizassem para fora "
+"da placa superior em vez de se comprimirem contra ela."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:81
+#. Text for a tip
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"When using the loosest setting make sure that top preload bolts are still "
+"in contact with the Mod Plate in their recess holes."
+msgstr ""
+"Ao usar a configuração mais frouxa, certifique-se de que os parafusos de "
+"pré-carga superiores ainda estejam em contato com a Placa Mod em seus "
+"orifícios de recesso."
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:132
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid "Why did you swap that set up for the Matrix II ?"
+msgstr "Por que você trocou aquela configuração pelo Matrix II?"
+
+#: src/pages/Articles/MBSMatrix2Mods/messages.js:120
+#. Text content
+msgctxt "Matrix 2 top plate article"
+msgid ""
+"Yeah of course, with the exception of my first board (a Mongoose Unicamb) "
+"I’ve always ridden MBS channel trucks. MBS kept tweaking the design over "
+"the years, making improvements, always producing something that kept them "
+"ahead of their rivals. However because of my background in motor cycle "
+"mechanics I always thought it was odd to use a spring without any form of "
+"rebound dampening and that’s why in 2010 I decided on a bit of an "
+"experiment, to run my Matrix Pro’s without any springs. To my surprise it "
+"worked incredibly well for me and quite a few other riders."
+msgstr ""
+"Sim, claro, com exceção da minha primeira prancha (uma Mongoose Unicamb), "
+"eu sempre montei em caminhões de canal MBS. A MBS continuou aprimorando o "
+"design ao longo dos anos, fazendo melhorias, sempre produzindo algo que os "
+"mantinha à frente de seus rivais. No entanto, por causa da minha "
+"experiência em mecânica de motocicletas, sempre achei estranho usar uma "
+"mola sem qualquer forma de amortecimento de recuperação e é por isso que em "
+"2010 eu decidi fazer um pouco de experimento, rodar meu Matrix Pro sem "
+"molas. Para minha surpresa, funcionou incrivelmente bem para mim e para "
+"alguns outros pilotos."
 
 #: src/components/User/BioUpdate/messages.js:10
 #: src/components/Widgets/Modal/messages.js:4
