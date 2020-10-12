@@ -79,10 +79,10 @@ const MBSMatrix2Mods = ({ locale, t }) => {
                   <a href={`#${NAV.ALBUM}`}>Photos & videos</a>
                 </li>
                 <li>
-                  <a href={`#${NAV.INSTRUCTIONS}`}>Instructions</a>
+                  <a href={`#${NAV.INSTRUCTIONS}`}>{t('instructionsTitle')}</a>
                 </li>
                 <li>
-                  <a href={`#${NAV.INTERVIEW}`}>The full story</a>
+                  <a href={`#${NAV.INTERVIEW}`}>{t('qaTitle')}</a>
                 </li>
               </ol>
             </nav>
