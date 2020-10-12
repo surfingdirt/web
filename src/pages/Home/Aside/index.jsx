@@ -20,7 +20,7 @@ const Aside = ({ className, t }) => {
     {
       id: 'mbs-matrix-2-mods',
       date: '2020-10-10',
-      description: t('matrixArticle'),
+      description: t('matrixArticleDescription'),
       link: ARTICLE_MBS_MATRIX_2_MODS,
       thumbnail:
         'https://apisurfingdirt.b-cdn.net/files/22b9b3af-4f7a-41bf-9fba-83018a44095b/img_tl.jpg',
@@ -29,11 +29,11 @@ const Aside = ({ className, t }) => {
     {
       id: '2020-4-down',
       date: '2020-09-14',
-      description: t('the2020FourDown'),
+      description: t('the2020FourDownDescription'),
       link: albumRoute('bf8bac1c-4a2a-42bb-a801-6d85a9ed49a3'),
       thumbnail:
         'https://apisurfingdirt.b-cdn.net/files/1525d0d6-9cdf-45a6-bc37-7bb9c2b1bad7/img_tl.jpg',
-      title: 'Videos from the 2020 edition of the 4 Down Project',
+      title: t('the2020FourDownTitle'),
     },
   ];
 

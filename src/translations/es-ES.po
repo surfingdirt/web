@@ -93,10 +93,8 @@ msgstr "Clic aquí para elegir las fotos"
 
 #: src/components/Video/Embed/messages.js:6
 #. Message displayed when a video won't play, probably because of copyright issues - part 2
-#, fuzzy
-#| msgid "Click here to choose a file"
 msgid "Click here to open YouTube instead."
-msgstr "Clic aquí para elegir un archivo"
+msgstr "Haga clic aquí para abrir YouTube en su lugar."
 
 #: src/components/FourDown/HomeSection/messages.js:4
 #. Description of the 4 Down Project
@@ -769,12 +767,11 @@ msgstr "Votando por:"
 
 #: src/pages/LogIn/FourDown/messages.js:14
 #. Paragraph explaining how to register
-#, fuzzy
-#| msgctxt "Button"
-#| msgid "Login with Facebook"
 msgctxt "4 Down SignIn"
 msgid "You can login with Google or Facebook, or use an email and password:"
-msgstr "Iniciar sesión con Facebook"
+msgstr ""
+"Puede iniciar sesión con Google o Facebook, o utilizar un correo "
+"electrónico y una contraseña:"
 
 #: src/pages/About/messages.js:4
 #. Paragraph
@@ -1338,6 +1335,12 @@ msgstr ""
 "Leon Dove te cuenta todo sobre su nuevo ajuste para sacar lo mejor de los "
 "camiones MBS Matrix II."
 
+#: src/pages/Home/Aside/messages.js:11
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid "Videos from the 2020 edition of the 4 Down Project"
+msgstr "Vídeos de la edición 2020 del 4 Down Project"
+
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
 #. An error message
@@ -1360,22 +1363,9 @@ msgstr "Registrarse"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:163
 #. Text content
-#, fuzzy
-#| msgid ""
 msgctxt "Matrix 2 top plate article"
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: es_ES\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:8
 #. Article cover description
@@ -2148,13 +2138,9 @@ msgstr "Si desea unirte, ingrea tus datos a continuación para crear una cuenta!
 
 #: src/pages/User/Registration/messages.js:4
 #. Paragraph explaining how to register
-#, fuzzy
-#| msgctxt "Registration"
-#| msgid ""
-#| "If you'd like to join us, enter your details below to create an account!"
 msgctxt "Registration"
 msgid "If you'd like to join us, you can either go through Google or Facebook:"
-msgstr "Si desea unirte, ingrea tus datos a continuación para crear una cuenta!"
+msgstr "Si desea unirse a nosotros, puede hacerlo a través de Google o Facebook:"
 
 #: src/pages/User/OAuthRegistration/messages.js:8
 #: src/pages/User/Registration/messages.js:12
@@ -2333,12 +2319,11 @@ msgstr "Se produjo un error inesperado"
 
 #: src/pages/LogIn/messages.js:37
 #. Message displayed when something went wrong.
-#, fuzzy
-#| msgctxt "Email"
-#| msgid "An error occurred and you account could not be finalized"
 msgctxt "SignIn"
 msgid "An error occurred and we could not sign you in. Would you like to try again?"
-msgstr "Se produjo un error y no se pudo finalizar su cuenta"
+msgstr ""
+"Se produjo un error y no pudimos iniciar sesión. ¿Quieres volver a "
+"intentarlo?"
 
 #: src/pages/LogIn/messages.js:46
 #. Message displayed when the login request is ongoing
@@ -2416,12 +2401,9 @@ msgstr "Esperando información adicional"
 
 #: src/pages/LogIn/messages.js:22
 #. Paragraph explaining how to register
-#, fuzzy
-#| msgctxt "Button"
-#| msgid "Login with Facebook"
 msgctxt "SignIn"
 msgid "You can login with Google or Facebook:"
-msgstr "Iniciar sesión con Facebook"
+msgstr "Puede iniciar sesión con Google o Facebook:"
 
 #: src/pages/LogIn/messages.js:83
 #. Short label for a registration button

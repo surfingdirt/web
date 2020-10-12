@@ -1194,6 +1194,12 @@ msgctxt "Homepage Aside"
 msgid "Leon Dove tells you all about his new tweak to get the best out of the MBS Matrix II trucks."
 msgstr ""
 
+#. Description for an article
+#: src/pages/Home/Aside/messages.js:11
+msgctxt "Homepage Aside"
+msgid "Videos from the 2020 edition of the 4 Down Project"
+msgstr ""
+
 #. An error message
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3

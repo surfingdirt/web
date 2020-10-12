@@ -93,10 +93,8 @@ msgstr "Klicken Sie hier, um Fotos auszuwählen"
 
 #: src/components/Video/Embed/messages.js:6
 #. Message displayed when a video won't play, probably because of copyright issues - part 2
-#, fuzzy
-#| msgid "Click here to choose a file"
 msgid "Click here to open YouTube instead."
-msgstr "Klicken Sie hier, um eine Datei auszuwählen"
+msgstr "Klicken Sie hier, um stattdessen YouTube zu öffnen."
 
 #: src/components/FourDown/HomeSection/messages.js:4
 #. Description of the 4 Down Project
@@ -456,11 +454,8 @@ msgstr "Erforderlich"
 
 #: src/components/Reactions/messages.js:15
 #. Label for a user reaction icon: sad 😢
-#, fuzzy
-#| msgctxt "Comments"
-#| msgid "sad"
 msgid "Sad"
-msgstr "traurig"
+msgstr "Traurig"
 
 #: src/components/Widgets/NavigationProfile/messages.js:14
 #. Label for a link to the user's settings page
@@ -1075,12 +1070,11 @@ msgstr[1] "123 neue Kommentare"
 
 #: src/components/Feed/messages.js:19
 #. Indicates how many new photos were posted
-#, fuzzy
 msgctxt "Feed"
 msgid "1 new photo"
 msgid_plural "123 new photos"
 msgstr[0] "1 neues Foto"
-msgstr[1] " 123 neue Fotos"
+msgstr[1] ""
 
 #: src/components/Feed/messages.js:26
 #. Indicates how many new videos were posted
@@ -1325,6 +1319,12 @@ msgstr ""
 "Leon Dove erzählt Ihnen alles über seine neue Optimierung, um das Beste aus "
 "den MBS Matrix II-Trucks herauszuholen."
 
+#: src/pages/Home/Aside/messages.js:11
+#. Description for an article
+msgctxt "Homepage Aside"
+msgid "Videos from the 2020 edition of the 4 Down Project"
+msgstr "Videos aus der Ausgabe 2020 des 4 Down-Projekts"
+
 #: src/components/Widgets/Card/messages.js:3
 #: src/components/Widgets/Loading/messages.js:3
 #. An error message
@@ -1349,22 +1349,9 @@ msgstr "Registrieren Sie"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:163
 #. Text content
-#, fuzzy
-#| msgid ""
 msgctxt "Matrix 2 top plate article"
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: de_DE\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:8
 #. Article cover description
@@ -2144,15 +2131,11 @@ msgstr ""
 
 #: src/pages/User/Registration/messages.js:4
 #. Paragraph explaining how to register
-#, fuzzy
-#| msgctxt "Registration"
-#| msgid ""
-#| "If you'd like to join us, enter your details below to create an account!"
 msgctxt "Registration"
 msgid "If you'd like to join us, you can either go through Google or Facebook:"
 msgstr ""
-"Wenn Sie sich uns anschließen möchten, geben Sie Ihre Daten unten ein, um "
-"ein Konto zu erstellen!"
+"Wenn Sie sich uns anschließen möchten, können Sie entweder über Google oder "
+"Facebook gehen:"
 
 #: src/pages/User/OAuthRegistration/messages.js:8
 #: src/pages/User/Registration/messages.js:12
@@ -2335,12 +2318,11 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
 #: src/pages/LogIn/messages.js:37
 #. Message displayed when something went wrong.
-#, fuzzy
-#| msgctxt "Email"
-#| msgid "An error occurred and you account could not be finalized"
 msgctxt "SignIn"
 msgid "An error occurred and we could not sign you in. Would you like to try again?"
-msgstr "Ein Fehler ist aufgetreten und Ihr Konto konnte nicht abgeschlossen werden"
+msgstr ""
+"Ein Fehler ist aufgetreten und wir konnten Sie nicht anmelden. Möchten Sie "
+"es erneut versuchen?"
 
 #: src/pages/LogIn/messages.js:46
 #. Message displayed when the login request is ongoing
@@ -2418,12 +2400,9 @@ msgstr "Warten auf zusätzliche Informationen"
 
 #: src/pages/LogIn/messages.js:22
 #. Paragraph explaining how to register
-#, fuzzy
-#| msgctxt "Button"
-#| msgid "Login with Facebook"
 msgctxt "SignIn"
 msgid "You can login with Google or Facebook:"
-msgstr "Anmeldung mit Facebook"
+msgstr "Sie können sich mit Google oder Facebook anmelden:"
 
 #: src/pages/LogIn/messages.js:83
 #. Short label for a registration button
