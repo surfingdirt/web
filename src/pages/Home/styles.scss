@@ -3,7 +3,8 @@
 @import '../../styles/font-sizes';
 @import '../../styles/media-queries';
 
-$feed-width: 40rem;
+$empty-column-width: 6fr;
+$feed-width: 40fr;
 $aside-width: $feed-width / 1.618;
 
 .wrapper {
@@ -15,7 +16,7 @@ $aside-width: $feed-width / 1.618;
 
   @media (min-width: $home-wide-viewport-threshold) {
     grid-template-areas: "spacer1 feed spacer2 aside";
-    grid-auto-columns: 1fr $feed-width 1fr $aside-width;
+    grid-auto-columns: $empty-column-width $feed-width $empty-column-width $aside-width;
   }
 
   .feed {
