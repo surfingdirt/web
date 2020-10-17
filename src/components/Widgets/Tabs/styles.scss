@@ -4,7 +4,8 @@
 @import '../../../styles/constants';
 @import '../../../styles/media-queries';
 
-$list-border-width: 3px;
+$list-border-width: 4px;
+$selected-border-width: $list-border-width - 1px;
 $tab-width: 10rem;
 
 .wrapper {
@@ -16,7 +17,7 @@ $tab-width: 10rem;
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  border-bottom: $list-border-width solid rgba($card-border-color, .5);
+  border-bottom: $list-border-width solid rgba($card-background-color, .5);
   /* // Make this scrollable horizontally by touch
   flex-wrap: nowrap;
   white-space: nowrap;
@@ -41,7 +42,7 @@ $tab-width: 10rem;
     text-transform: uppercase;
 
     &[aria-selected='true' ] {
-      border-bottom: $list-border-width solid $tabs-tab-selected-border;
+      border-bottom: $selected-border-width solid $tabs-tab-selected-border;
     }
 
     &:first-child {

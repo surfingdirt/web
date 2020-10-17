@@ -8,6 +8,7 @@ const messages = (getText, getPlural) => (key) =>
       'Activity',
       'Homepage',
     ) /* Label for a section containing a vertical list of new things on the site */,
+    news: getText('News', 'Homepage') /* Label for a section containing links to news articles */,
     tabsLabel: getText(
       'Main content',
       'Homepage',

@@ -182,18 +182,16 @@ const Feed = ({ className, entries, locale, t }) => {
   const loggedIn = !!username;
 
   return (
-    <Fragment>
-      <ul className={classnames(styles.feed, className)}>
-        {entries.map((entry) => {
-          const attrs = getAttrsFromFedEntry(entry, locale, t, loggedIn);
-          return (
-            <li className={styles.feedEntry} key={entry.date}>
-              <FeedEntryWrapper {...attrs} />
-            </li>
-          );
-        })}
-      </ul>
-    </Fragment>
+    <ul className={classnames(styles.feed, className)}>
+      {entries.map((entry) => {
+        const attrs = getAttrsFromFedEntry(entry, locale, t, loggedIn);
+        return (
+          <li className={styles.feedEntry} key={entry.date}>
+            <FeedEntryWrapper {...attrs} />
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
+import ResponsiveLayout from 'Components/Widgets/ResponsiveLayout';
 import Translate from 'Hocs/Translate';
 
 import Aside from './Aside';
@@ -11,15 +12,21 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const Home = ({ t }) => {
+  const childrenData = [
+    [t('activity'), <Feed className={styles.feed} />],
+    [t('news'), <Aside className={styles.aside} />],
+  ];
+
   return (
     <>
       <Helmet>
         <title>Surfing Dirt</title>
       </Helmet>
-      <div className={styles.wrapper}>
-        <Feed className={styles.feed} />
-        <Aside className={styles.aside} />
-      </div>
+      <ResponsiveLayout
+        ariaLabel={t('tabsLabel')}
+        className={styles.wrapper}
+        childrenData={childrenData}
+      />
     </>
   );
 };

@@ -12,14 +12,12 @@ export const layoutTypes = {
   THREE_COLUMNS: 'threeColumns',
 };
 
-const DEFAULT_LAYOUT = layoutTypes.TWO_COLUMNS;
-
 const layoutClassNames = {
   [layoutTypes.TWO_COLUMNS]: styles.twoColumns,
   [layoutTypes.THREE_COLUMNS]: styles.threeColumns,
 };
 
-const ResponsiveLayout = ({ childrenData, className, layout }) => {
+const ResponsiveLayout = ({ ariaLabel, childrenData, className, layout }) => {
   const [selected, setSelected] = useState(0);
   const classes = [
     styles.contentA,
@@ -30,6 +28,7 @@ const ResponsiveLayout = ({ childrenData, className, layout }) => {
     styles.contentF,
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const clonedChildren = childrenData.map(([label, child], i) =>
     React.cloneElement(child, {
       className: classnames(child.props.className, classes[i], {
@@ -38,16 +37,16 @@ const ResponsiveLayout = ({ childrenData, className, layout }) => {
     }),
   );
 
-  const onSelect = (index) => {
-    console.log('onSelect', index);
-    setSelected(index);
-  };
-
-  const layoutClassName = layoutClassNames[layout];
+  const layoutClassName = layout && layoutClassNames[layout];
 
   return (
     <div className={classnames(styles.wrapper, layoutClassName, className)}>
-      <Tabs className={styles.tabs} ariaLabel="something" onSelect={onSelect} selected={selected}>
+      <Tabs
+        className={styles.tabs}
+        ariaLabel={ariaLabel}
+        onSelect={setSelected}
+        selected={selected}
+      >
         {childrenData.map(([label]) => (
           <TabPanel key={label} label={label} />
         ))}
@@ -61,9 +60,14 @@ ResponsiveLayout.propTypes = {
   childrenData: PropTypes.arrayOf([PropTypes.string.isRequired, PropTypes.node.isRequired])
     .isRequired,
   className: PropTypes.string,
+  ariaLabel: PropTypes.string.isRequired,
   layout: (props, propName, componentName) => {
     const layout = props[propName];
-    if (layout && !Object.values(layoutTypes).includes(layout)) {
+    if (!layout) {
+      return null;
+    }
+
+    if (!Object.values(layoutTypes).includes(layout)) {
       return new Error(`Invalid layout set for component '${componentName}': '${layout}'`);
     }
 
@@ -72,7 +76,6 @@ ResponsiveLayout.propTypes = {
 };
 ResponsiveLayout.defaultProps = {
   className: null,
-  layout: DEFAULT_LAYOUT,
 };
 
 export default ResponsiveLayout;

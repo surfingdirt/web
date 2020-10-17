@@ -17,6 +17,9 @@
 
   .tabs {
     display: none;
+    border: none;
+    border-radius: unset;
+    margin-bottom: 0;
   }
 
   .contentA { grid-area: a; }
@@ -27,7 +30,7 @@
   .contentF { grid-area: f; }
 }
 
-@media screen and (max-width: $mobile-layout-threshold-max) {
+@media screen and (max-width: $desktop-small) {
   .wrapper {
     display: block;
 
