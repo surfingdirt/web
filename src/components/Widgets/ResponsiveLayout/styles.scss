@@ -1,0 +1,55 @@
+@import "../../../styles/colors";
+@import "../../../styles/media-queries";
+
+.wrapper {
+  display: grid;
+  &.twoColumns {
+    grid-template-areas:
+           "a b"
+           "a c"
+           "a d";
+  }
+  &.threeColumns {
+    grid-template-areas:
+           "a b c"
+           "a b d"
+  }
+
+  .tabs {
+    display: none;
+  }
+
+  .contentA { grid-area: a; }
+  .contentB { grid-area: b; }
+  .contentC { grid-area: c; }
+  .contentD { grid-area: d; }
+  .contentE { grid-area: e; }
+  .contentF { grid-area: f; }
+}
+
+@media screen and (max-width: $mobile-layout-threshold-max) {
+  .wrapper {
+    display: block;
+
+    .tabs {
+      display: block;
+    }
+
+    .contentA,
+    .contentB,
+    .contentC,
+    .contentD,
+    .contentE,
+    .contentF {
+      display: none;
+
+      &.visible {
+        display: block;
+      }
+    }
+  }
+}
+
+
+
+

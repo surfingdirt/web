@@ -8,3 +8,16 @@ export const RIGHT = 39;
 export const LEFT = 37;
 export const HOME = 36;
 export const END = 35;
+
+export default {
+  TAB,
+  ENTER,
+  SPACE,
+  ESC,
+  UP,
+  DOWN,
+  RIGHT,
+  LEFT,
+  HOME,
+  END,
+};
