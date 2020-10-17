@@ -28,14 +28,15 @@ const ResponsiveLayout = ({ ariaLabel, childrenData, className, layout }) => {
     styles.contentF,
   ];
 
-  // eslint-disable-next-line no-unused-vars
-  const clonedChildren = childrenData.map(([label, child], i) =>
-    React.cloneElement(child, {
-      className: classnames(child.props.className, classes[i], {
-        [styles.visible]: i === selected,
-      }),
-    }),
-  );
+  const wrappedChildren = childrenData.map(([label, child], i) => (
+    <div
+      key={`child-${label}`}
+      className={classnames(classes[i], { [styles.visible]: i === selected })}
+    >
+      <div className={styles.childLabel}>{label}</div>
+      {child}
+    </div>
+  ));
 
   const layoutClassName = layout && layoutClassNames[layout];
 
@@ -51,7 +52,7 @@ const ResponsiveLayout = ({ ariaLabel, childrenData, className, layout }) => {
           <TabPanel key={label} label={label} />
         ))}
       </Tabs>
-      {clonedChildren}
+      {wrappedChildren}
     </div>
   );
 };

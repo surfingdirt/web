@@ -100,7 +100,7 @@
 
 @media (min-width: $desktop-layout-threshold-min) {
   .main {
-    margin: $masthead-height $small-content-gap 0 0;
+    margin: $main-margin-top $small-content-gap 0 0;
     padding: $small-content-gap 0 0 $small-content-gap;
     flex-grow: 1;
     min-height: 100vh;
@@ -121,7 +121,7 @@
 
 @media (min-width: $desktop-small) {
   .main {
-    margin: $masthead-height $content-gap 0 0;
+    margin: $main-margin-top-desktop $content-gap 0 0;
     padding: $content-gap 0 0 $content-gap;
   }
   .navigation {
@@ -137,7 +137,7 @@
 
 @media (min-width: $max-content-width) {
   .main {
-    margin: $masthead-height 0 0;
+    margin: $main-margin-top-desktop 0 0;
   }
   .navigation {
     margin: $masthead-height + $content-gap 0 0;

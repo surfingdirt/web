@@ -2,7 +2,10 @@ $max-content-width: 1545px;
 
 $navigation-mobile-width: 250px;
 
+$responsive-layout-section-font-size: $font-size-small;
 $masthead-height: 3.75rem;
+$main-margin-top: $masthead-height;
+$main-margin-top-desktop: $masthead-height - $responsive-layout-section-font-size / 2;
 
 $small-gap: $margin-small-2;
 $medium-gap: $margin-medium-1;

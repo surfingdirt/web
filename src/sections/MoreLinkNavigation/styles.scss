@@ -1,5 +1,6 @@
 @import '../../styles/boxmodel';
 @import '../../styles/colors';
+@import '../../styles/font-sizes';
 @import '../../styles/layout';
 @import '../../styles/media-queries';
 
@@ -20,6 +21,7 @@ $footer-height: 2.5rem;
 
   @media (min-width: $desktop-small) {
     top: $masthead-height + $content-gap;
+    margin-top: $responsive-layout-section-font-size / 2;
   }
 
   @media (min-width: $desktop-min) {

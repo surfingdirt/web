@@ -1,4 +1,7 @@
+@import "../../../styles/boxmodel";
 @import "../../../styles/colors";
+@import '../../../styles/font-sizes';
+@import '../../../styles/layout';
 @import "../../../styles/media-queries";
 
 .wrapper {
@@ -22,6 +25,10 @@
     margin-bottom: 0;
   }
 
+  .childLabel {
+    font-size: $responsive-layout-section-font-size;
+  }
+
   .contentA { grid-area: a; }
   .contentB { grid-area: b; }
   .contentC { grid-area: c; }
@@ -36,6 +43,10 @@
 
     .tabs {
       display: block;
+    }
+
+    .childLabel {
+      display: none;
     }
 
     .contentA,
