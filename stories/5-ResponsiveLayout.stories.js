@@ -13,18 +13,5 @@ export const Basic = () => {
     ['C', <div>c content</div>],
     ['D', <div>d content</div>],
   ];
-  return (
-    <>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-          
-       .my-content-wrapper {
-       }
-      `,
-        }}
-      />
-      <ResponsiveLayout childrenData={childrenData} />
-    </>
-  );
+  return <ResponsiveLayout childrenData={childrenData} />;
 };
