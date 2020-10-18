@@ -799,7 +799,7 @@ msgstr ""
 "Surfing Dirt Speriamo di risolvere questo problema. Vogliamo essere il "
 "social network per mountainboarders . Il luogo dove condividerete le foto e "
 "i video della vostra ultima sessione. Dove imparerete a conoscere i piloti "
-"e gli spot vicino a voi. Dove parlerete di camion e salti. E dove la gente "
+"e gli spot vicino a voi. Dove parlerete di truck e salti. E dove la gente "
 "potrà vedere di cosa mountainboard si tratta."
 
 #: src/pages/About/messages.js:3 src/pages/Privacy/messages.js:3
@@ -1318,7 +1318,7 @@ msgid ""
 "Matrix II trucks."
 msgstr ""
 "Leon Dove ti racconta tutto della sua nuova modifica per ottenere il meglio "
-"dai camion MBS Matrix II."
+"dai truck MBS Matrix II."
 
 #: src/pages/Home/Aside/messages.js:11
 #. Description for an article
@@ -1358,7 +1358,7 @@ msgstr ""
 #. Article cover description
 msgctxt "Matrix 2 top plate article"
 msgid "A foundry pouring molten metal with a Matrix 2 truck in the foreground"
-msgstr "Una fonderia che versa metallo fuso con un camion Matrix 2 in primo piano"
+msgstr "Una fonderia che versa metallo fuso con un truck Matrix 2 in primo piano"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:75
 #. Instructions - step 11
@@ -1372,7 +1372,7 @@ msgstr ""
 "Regola il Mod Plate ruotando i bulloni di precarico superiori in senso "
 "orario per irrigidire lo sterzo o in senso antiorario per allentarlo. È "
 "molto importante regolare i bulloni di precarico superiore in modo uniforme "
-"in modo che la piastra Mod rimanga orizzontale rispetto al camion superiore."
+"in modo che la piastra Mod rimanga orizzontale rispetto al truck superiore."
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:112
 #. Text content
@@ -1420,7 +1420,7 @@ msgstr ""
 "irrigidire lo sterzo al livello desiderato, inserire blocchi degli "
 "ammortizzatori più rigidi o sostituire i blocchi degli ammortizzatori "
 "usurati / compressi con altri nuovi. Se hai Matrix II con il Top Truck in "
-"plastica, puoi sostituire il Top Truck con uno in lega dei camion Matrix I "
+"plastica, puoi sostituire il Top Truck con uno in lega dei truck Matrix I "
 "Pro, quindi montare le Mod Plates. Le istruzioni di montaggio sono le "
 "stesse con l'eccezione che non è presente alcuna piastra MBS da rimuovere."
 
@@ -1460,7 +1460,7 @@ msgid ""
 "had been floating around my head since 2010."
 msgstr ""
 "Ho sempre voluto portare avanti la mia idea iniziale, ma sono stato "
-"scoraggiato dalla spesa di creare il mio camion da zero, quando MBS ha "
+"scoraggiato dalla spesa di creare il mio truck da zero, quando MBS ha "
 "rilasciato il Matrix II sono stato davvero contento che fosse molto vicino "
 "al design che era stato fluttuante intorno al mio capo dal 2010."
 
@@ -1511,14 +1511,14 @@ msgid ""
 "the attention of riders from around the world, this time it’s for the "
 "latest incarnation of the MBS channel truck, the Matrix Pro II."
 msgstr ""
-"Nel 2010, Leon ha modificato i suoi camion Matrix Pro per funzionare senza "
+"Nel 2010, Leon ha modificato i suoi truck Matrix Pro per funzionare senza "
 "molle usando solo gli ammortizzatori a uovo. Ciò ha generato abbastanza "
 "interesse da parte di altri motociclisti da consentirgli di realizzare un "
 "kit di conversione con il nome di WestCoastATB che, pur non essendo mai "
 "diventato mainstream, ha ottenuto un seguito di culto tra un piccolo nucleo "
 "di boarder. Dieci anni dopo è tornato con un'altra modifica che ha attirato "
 "l'attenzione dei motociclisti di tutto il mondo, questa volta è per "
-"l'ultima incarnazione del camion del canale MBS, il Matrix Pro II."
+"l'ultima incarnazione del channel truck MBS, il Matrix Pro II."
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:59
 #. Instructions - step 7
@@ -1578,7 +1578,7 @@ msgid ""
 "get some!"
 msgstr ""
 "Leon Dove ha recentemente progettato nuove piastre superiori per migliorare "
-"la regolazione e l'affidabilità dei camion MBS Matrix II. Continua a "
+"la regolazione e l'affidabilità dei truck MBS Matrix II. Continua a "
 "leggere per scoprire perché e dove trovarne un po '!"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:21
@@ -1633,7 +1633,7 @@ msgstr ""
 #. Article title
 msgctxt "Matrix 2 top plate article"
 msgid "MBS Matrix II Truck mods"
-msgstr "Mods per camion MBS Matrix II"
+msgstr "Mods per truck MBS Matrix II"
 
 #: src/pages/Articles/MBSMatrix2Mods/messages.js:55
 #. Instructions - step 6
@@ -1744,13 +1744,13 @@ msgid ""
 "rather than compress up against it."
 msgstr ""
 "Bene, mi piace praticamente tutto ciò che riguarda il Matrix II, la svolta "
-"è molto più progressiva e reattiva di qualsiasi altro camion che ho guidato "
-"prima, inoltre è più leggero e la forma del camion inferiore è molto "
+"è molto più progressiva e reattiva di qualsiasi altro truck che ho guidato "
+"prima, inoltre è più leggero e la forma del truck inferiore è molto "
 "migliore per i binari, i copings e il terreno liquidazione. L'unica cosa "
 "che non mi è piaciuta era il suo sistema di precarico, dopo un certo punto "
 "più cercavo di irrigidire lo sterzo, più si allentava.\n"
 "A un'ispezione più attenta, ho potuto vedere che ciò era dovuto al fatto "
-"che i blocchi degli ammortizzatori sono stati sollevati dal camion "
+"che i blocchi degli ammortizzatori sono stati sollevati dal truck "
 "inferiore a tal punto che hanno iniziato a ruotare sui bulloni di "
 "precarico, questo ha permesso loro di scivolare fuori dalla piastra "
 "superiore piuttosto che comprimersi contro di essa."

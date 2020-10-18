@@ -1304,7 +1304,7 @@ msgid ""
 "Matrix II trucks."
 msgstr ""
 "Leon Dove vous dit tout sur son nouveau tweak pour tirer le meilleur parti "
-"des camions MBS Matrix II."
+"des trucks MBS Matrix II."
 
 #. Description for an article
 #: src/pages/Home/Aside/messages.js:11
@@ -1561,7 +1561,7 @@ msgid ""
 "get some!"
 msgstr ""
 "Leon Dove a récemment conçu de nouvelles plaques supérieures pour améliorer "
-"l'ajustement et la fiabilité des camions MBS Matrix II. Lisez la suite pour "
+"l'ajustement et la fiabilité des trucks MBS Matrix II. Lisez la suite pour "
 "savoir pourquoi et où en trouver!"
 
 #. Description of a photo
