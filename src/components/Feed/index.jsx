@@ -199,6 +199,7 @@ Feed.propTypes = {
   className: PropTypes.string,
   entries: PropTypes.arrayOf(FeedEntryType).isRequired,
   locale: PropTypes.string.isRequired,
+  nextOffset: PropTypes.number.isRequired,
   t: PropTypes.func.isRequired,
 };
 

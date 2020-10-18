@@ -1,7 +1,6 @@
-query {
-  getPublicFeed{
-	from
-	until
+query($count: Int, $offset: Int) {
+  getPublicFeed(count: $count, offset: $offset){
+	nextOffset
 	feedEntries{
 	date
 	  item {

@@ -11,10 +11,6 @@
   position: relative;
   list-style: none;
   margin-bottom: $margin-small-2;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .headerText {

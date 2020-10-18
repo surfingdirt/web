@@ -27,3 +27,8 @@ export const ItemTypes = {
   PHOTO: 'photo',
   VIDEO: 'video',
 };
+
+export const FeedConstants = {
+  PAGE_SIZE: 50,
+  INITIAL_OFFSET: 0,
+};
