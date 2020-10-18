@@ -93,7 +93,8 @@ const BottomBar = ({
           type="checkbox"
           id={ACTION_BUTTON_MENU}
           className={styles.actionButtonsCheckbox}
-          hidden
+          checked={bottomBarActionsOpen}
+          hidde
         />
 
         <BottomBarActions
