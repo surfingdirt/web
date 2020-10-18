@@ -14,7 +14,7 @@ import styles from './styles.scss';
 const Home = ({ t }) => {
   const childrenData = [
     [t('activity'), <Feed className={styles.feed} />],
-    [t('news'), <Aside className={styles.aside} />],
+    ['News', <Aside className={styles.aside} />],
   ];
 
   return (
