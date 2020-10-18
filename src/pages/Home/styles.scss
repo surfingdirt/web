@@ -16,6 +16,14 @@ $aside-width: $feed-width / 1.618;
     gap: 0;
   }
 
+  .discoverHeader {
+    margin-bottom: $margin-small-2;
+
+    .discoverHeaderContent {
+      padding: 0;
+    }
+  }
+
   .aside {
     height: min-content;
   }
