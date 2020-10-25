@@ -82,13 +82,6 @@ const VideoEmbed = ({
   const classNames = classnames(styles.videoWrapper, className, {
     [styles.instagram]: isInstagram,
   });
-  let style = null;
-  // if (isInstagram) {
-  //   const percent = `${(height / width) * 100}%`;
-  //   const paddingTop = `calc(${percent} + ${INSTAGRAM_ADDITIONAL_HEIGHT}px)`;
-  //
-  //   style = { paddingTop };
-  // }
 
   let content;
   if (isYouTube) {
@@ -112,11 +105,7 @@ const VideoEmbed = ({
     );
   }
 
-  return (
-    <div className={classNames} style={style}>
-      {content}
-    </div>
-  );
+  return <div className={classNames}>{content}</div>;
 };
 
 VideoEmbed.propTypes = {
