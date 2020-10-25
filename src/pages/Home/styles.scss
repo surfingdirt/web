@@ -11,6 +11,7 @@ $aside-width: $feed-width / 1.618;
   grid-template-areas: "spacer1 a spacer2 b";
   grid-auto-columns: $empty-column-width $feed-width $empty-column-width $aside-width;
   gap: $margin-small-1;
+  margin-top: - 1rem;
 
   @media screen and (max-width: $mobile-layout-threshold-max) {
     gap: 0;
