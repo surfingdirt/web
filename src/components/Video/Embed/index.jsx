@@ -83,12 +83,12 @@ const VideoEmbed = ({
     [styles.instagram]: isInstagram,
   });
   let style = null;
-  if (isInstagram) {
-    const percent = `${(height / width) * 100}%`;
-    const paddingTop = `calc(${percent} + ${INSTAGRAM_ADDITIONAL_HEIGHT}px)`;
-
-    style = { paddingTop };
-  }
+  // if (isInstagram) {
+  //   const percent = `${(height / width) * 100}%`;
+  //   const paddingTop = `calc(${percent} + ${INSTAGRAM_ADDITIONAL_HEIGHT}px)`;
+  //
+  //   style = { paddingTop };
+  // }
 
   let content;
   if (isYouTube) {

@@ -9,7 +9,10 @@
   }
 
   &.instagram {
-    padding-top: 120%;
+    // All instagram videos have a fixed size because their embed sucks.
+    width: 300px;
+    padding-top: 470px;
+    margin: 0 auto;
   }
 }
 
