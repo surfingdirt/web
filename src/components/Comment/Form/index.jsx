@@ -42,7 +42,7 @@ export function getReplyAnchorId(id = null) {
   return `reply-${id}`;
 }
 
-const CommentForm = ({ className, id: parentId, t, type }) => {
+const CommentForm = ({ className, id: parentId, refetch, t, type }) => {
   const action = ACTIONS[type];
   const mutation = MUTATIONS[type];
   if (!mutation) {
@@ -90,6 +90,7 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
         content: { text: values.content, locale },
       });
       await addComment({ variables: { input } });
+      refetch();
     } catch (e) {
       errors = { content: 'some error' };
     }
@@ -164,12 +165,14 @@ const CommentForm = ({ className, id: parentId, t, type }) => {
 CommentForm.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string.isRequired,
+  refetch: PropTypes.func,
   t: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 
 CommentForm.defaultProps = {
   className: null,
+  refetch: () => {},
 };
 
 export default Translate(messages)(CommentForm);

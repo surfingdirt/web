@@ -1,4 +1,4 @@
-query media($id: ID!, $mediaType: String!) {
+query media($id: ID!) {
     media(id: $id) {
         actions {
             delete
@@ -63,35 +63,5 @@ query media($id: ID!, $mediaType: String!) {
               url
             }
         }
-    }
-    listComments(parentType: $mediaType, parentId: $id) {
-        actions {
-            delete
-            edit
-        }
-        id
-        content {
-            locale
-            original
-            text
-        }
-        date
-        reactions{
-          count
-          userReactionId
-          type
-        }
-        submitter {
-            userId
-            username
-            avatar {
-                size
-                width
-                height
-                type
-                url
-            }
-        }
-        tone
     }
 }

@@ -15,6 +15,7 @@ const CommentListRaw = ({
   className,
   comments,
   id,
+  refetch,
   renderDate,
   showCommentForm,
   singleColumn,
@@ -40,7 +41,12 @@ const CommentListRaw = ({
         ))}
       </ul>
       {showCommentForm && loggedIn && (
-        <CommentForm type={type} id={id} className={classnames(styles.postForm, className)} />
+        <CommentForm
+          type={type}
+          id={id}
+          className={classnames(styles.postForm, className)}
+          refetch={refetch}
+        />
       )}
     </div>
   );
@@ -50,6 +56,7 @@ CommentListRaw.propTypes = {
   className: PropTypes.string,
   comments: PropTypes.arrayOf(CommentType).isRequired,
   id: PropTypes.string.isRequired,
+  refetch: PropTypes.func,
   renderDate: PropTypes.bool,
   showCommentForm: PropTypes.bool,
   singleColumn: PropTypes.bool,
@@ -58,6 +65,7 @@ CommentListRaw.propTypes = {
 
 CommentListRaw.defaultProps = {
   className: null,
+  refetch: () => {},
   renderDate: true,
   showCommentForm: true,
   singleColumn: false,

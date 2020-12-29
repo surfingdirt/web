@@ -3,14 +3,13 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
-import CommentList from 'Components/Comment/List';
+import CommentListFetcher from 'Components/Comment/ListFetcher';
 import { parentTypes } from 'Utils/comments';
 import HeroContent from 'Components/Media/HeroContent';
 import MediaMetadata from 'Components/Media/MediaMetadata';
 import Card, { cardTypes } from 'Components/Widgets/Card';
 import Separator from 'Components/Widgets/Separator';
 import { getBiggestMediaImageUrl } from 'Utils/media';
-import { CommentType } from 'Utils/types';
 
 import styles from './styles.scss';
 
@@ -18,7 +17,7 @@ const { HERO } = cardTypes;
 const { PHOTO: PHOTO_COMMENT, VIDEO: VIDEO_COMMENT } = parentTypes;
 
 const MediaPageContent = (props) => {
-  const { comments, media } = props;
+  const { media } = props;
   const {
     album: {
       title: { text: albumTitle },
@@ -53,11 +52,10 @@ const MediaPageContent = (props) => {
           isOverlay={false}
         />
         <Separator />
-        <CommentList
+        <CommentListFetcher
           className={classnames(styles.comments)}
-          comments={comments}
-          type={commentType}
-          id={id}
+          itemId={id}
+          itemType={commentType}
         />
       </Card>
     </Fragment>
@@ -65,7 +63,6 @@ const MediaPageContent = (props) => {
 };
 
 MediaPageContent.propTypes = {
-  comments: PropTypes.arrayOf(CommentType).isRequired,
   media: PropTypes.shape().isRequired,
 };
 

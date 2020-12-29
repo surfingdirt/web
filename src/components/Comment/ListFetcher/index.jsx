@@ -13,7 +13,7 @@ import messages from './messages';
 import styles from './styles.scss';
 
 const CommentListFetcherRaw = ({ className, itemId, itemType, singleColumn }) => {
-  const { data, error, loading } = useQuery(LIST_COMMENTS, {
+  const { data, error, loading, refetch } = useQuery(LIST_COMMENTS, {
     variables: {
       parentType: itemType,
       parentId: itemId,
@@ -34,6 +34,7 @@ const CommentListFetcherRaw = ({ className, itemId, itemType, singleColumn }) =>
       id={itemId}
       singleColumn={singleColumn}
       type={itemType}
+      refetch={refetch}
     />
   );
 };

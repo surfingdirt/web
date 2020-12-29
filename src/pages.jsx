@@ -63,12 +63,12 @@ const pages = {
     () => import(/* webpackChunkName: 'NewPhoto' */ './pages/Photo/Post'),
     options,
   ),
+  Media: loadable(() => import(/* webpackChunkName: 'Media' */ './pages/Media'), options),
   NewVideo: loadable(
     () => import(/* webpackChunkName: 'NewVideo' */ './pages/Video/Post'),
     options,
   ),
   OldForum: loadable(() => import(/* webpackChunkName: 'OldForum' */ './pages/OldForum'), options),
-  Photo: loadable(() => import(/* webpackChunkName: 'Photo' */ './pages/Photo'), options),
   PhotoEdit: loadable(
     () => import(/* webpackChunkName: 'PhotoEdit' */ './pages/Photo/Edit'),
     options,
@@ -86,7 +86,6 @@ const pages = {
   Terms: loadable(() => import(/* webpackChunkName: 'Terms' */ './pages/Terms'), options),
   User: loadable(() => import(/* webpackChunkName: 'User' */ './pages/User'), options),
   Users: loadable(() => import(/* webpackChunkName: 'Users' */ './pages/Users'), options),
-  Video: loadable(() => import(/* webpackChunkName: 'Video' */ './pages/Video'), options),
   VideoEdit: loadable(
     () => import(/* webpackChunkName: 'VideoEdit' */ './pages/Video/Edit'),
     options,
