@@ -84,7 +84,7 @@ const MediaMetadata = (props) => {
   const [redirectTo, setRedirectTo] = useState(null);
 
   const [
-    initialHookReactions,
+    reactions,
     triggerRef,
     pickerRef,
     pickerOpen,
@@ -96,12 +96,6 @@ const MediaMetadata = (props) => {
     itemType,
     itemId: id,
   });
-
-  const [reactions, setReactions] = useState(initialHookReactions);
-  useEffect(() => {
-    // Make sure to update reactions when itemType or id are changed (eg, in overlays).
-    setReactions(initialReactions);
-  }, [itemType, id]);
 
   const { username, userId } = submitter;
   const hasDescription = description && description.text && description.text.length > 0;

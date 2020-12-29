@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import CREATE_REACTION from 'Apollo/mutations/createReaction3.gql';
@@ -12,6 +12,13 @@ const useReactions = ({ initialReactions, itemType, itemId }) => {
   const triggerRef = useRef(null);
   const [reactions, setReactions] = useState(initialReactions);
   const [pickerOpen, setPickerOpen] = useState(false);
+
+  useEffect(() => {
+    // TODO: fix this naive implementation
+    //  going back and forth b/w album items always restores the initial list of reactions, meaning
+    //  we always lose the new list.
+    setReactions(initialReactions);
+  }, [itemType, itemId]);
 
   console.assert(
     typeof reactions !== 'undefined',
