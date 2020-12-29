@@ -152,6 +152,10 @@
   text-align: center;
 }
 
+.actionButtonsCheckbox {
+  display: none;
+}
+
 .actionButtonsCheckbox:checked ~ .bottomBarActionContainer,
 .bottomBarActionContainer.bottomBarActionContainerVisible {
   pointer-events: initial;
