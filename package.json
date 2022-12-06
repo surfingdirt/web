@@ -133,7 +133,7 @@
     "postcss-rtl": "1.5.0",
     "prettier-eslint": "8.8.2",
     "prop-types": "15.7.2",
-    "qs": "6.9.1",
+    "qs": "6.9.7",
     "query-string": "6.8.2",
     "raw-loader": "^0.5.1",
     "raw-module-require-hook": "^1.0.1",
